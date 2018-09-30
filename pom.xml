@@ -1,0 +1,242 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.logicware</groupId>
+	<artifactId>prolobjectlink-jpi</artifactId>
+	<version>1.0.0</version>
+	<name>prolobjectlink-jpi</name>
+	<description>Java Prolog Interface</description>
+
+
+	<url>http://www.logicware.org</url>
+	<inceptionYear>2012</inceptionYear>
+
+	<organization>
+		<name>Logicware Project</name>
+		<url>http://www.logicware.org</url>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>Apache 2</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>jzalacain</id>
+			<name>Jose Zalacain</name>
+			<email>jzalacain@nauta.cu</email>
+			<organization>Logicware Developments</organization>
+			<organizationUrl>http://www.logicware.org</organizationUrl>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+				<role>founder</role>
+			</roles>
+			<timezone>-5</timezone>
+		</developer>
+	</developers>
+
+	<scm>
+		<url>D:\Desarrollo\EclipseWorkspace\eclipse-java-neon-workspace\prolobjectlink\.git</url>
+	</scm>
+
+	<ciManagement>
+		<system>jenkins</system>
+		<url>http://jenkins.delnet.cu:8080/jenkins</url>
+	</ciManagement>
+
+	<issueManagement>
+		<system>bugzilla</system>
+		<url>http://bugzilla.delnet.cu/</url>
+	</issueManagement>
+
+	<distributionManagement>
+		<downloadUrl>http://www.logicware.org/download</downloadUrl>
+	</distributionManagement>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.source>1.5</maven.compiler.source>
+		<maven.compiler.target>1.5</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.logicware</groupId>
+			<artifactId>prolobjectlink-jpc</artifactId>
+			<version>[1.0.0, )</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<nohelp>true</nohelp>
+					<!-- <source>1.8</source> -->
+					<!-- <target>1.8</target> -->
+				</configuration>
+				<!-- <executions> -->
+				<!-- <execution> -->
+				<!-- <id>attach-javadocs</id> -->
+				<!-- <goals> -->
+				<!-- <goal>jar</goal> -->
+				<!-- </goals> -->
+				<!-- </execution> -->
+				<!-- </executions> -->
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.0.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- <plugin> -->
+			<!-- <groupId>org.apache.maven.plugins</groupId> -->
+			<!-- <artifactId>maven-javadoc-plugin</artifactId> -->
+			<!-- <version>3.0.0</version> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>attach-javadocs</id> -->
+			<!-- <goals> -->
+			<!-- <goal>jar</goal> -->
+			<!-- </goals> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>1.5</version>
+				<configuration>
+					<canUpdateDescription>true</canUpdateDescription>
+					<failOnMissingHeader>true</failOnMissingHeader>
+					<acceptPomPackaging>true</acceptPomPackaging>
+					<licenseName>apache_v2</licenseName>
+					<addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
+					<roots>
+						<root>src/main</root>
+						<root>src/test</root>
+						<root>src/site</root>
+					</roots>
+				</configuration>
+				<executions>
+					<execution>
+						<id>update-file-header</id>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>update-file-header</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>add-license</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>update-project-license</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pdf-plugin</artifactId>
+				<version>1.2</version>
+				<executions>
+					<execution>
+						<id>site-pdf</id>
+						<phase>site</phase>
+						<goals>
+							<goal>pdf</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.reporting.outputDirectory}</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.5.3</version>
+				<configuration>
+					<descriptors>
+						<descriptor>src/assembly/dist.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>create-archive</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10.4</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.8</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.8</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>2.3.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jdepend-maven-plugin</artifactId>
+				<version>2.0</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<targetJdk>1.5</targetJdk>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+
+</project>
