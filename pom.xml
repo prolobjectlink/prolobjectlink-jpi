@@ -8,8 +8,7 @@
 	<name>prolobjectlink-jpi</name>
 	<description>Java Prolog Interface</description>
 
-
-	<url>http://www.logicware.org</url>
+<url>http://www.logicware.org</url>
 	<inceptionYear>2012</inceptionYear>
 
 	<organization>
@@ -41,22 +40,23 @@
 	</developers>
 
 	<scm>
-		<url>D:\Desarrollo\EclipseWorkspace\eclipse-java-neon-workspace\prolobjectlink\.git</url>
+		<url>http://gitlab.delnet.cu/logicware/prolobjectlink-jpi.git</url>
 	</scm>
 
 	<ciManagement>
 		<system>jenkins</system>
-		<url>http://jenkins.delnet.cu:8080/jenkins</url>
+		<url>http://jenkins.delnet.cu:8080/jenkins/</url>
 	</ciManagement>
 
 	<issueManagement>
-		<system>bugzilla</system>
+		<system>Bugzilla</system>
 		<url>http://bugzilla.delnet.cu/</url>
 	</issueManagement>
 
 	<distributionManagement>
 		<downloadUrl>http://www.logicware.org/download</downloadUrl>
 	</distributionManagement>
+
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
