@@ -40,7 +40,10 @@
 	</developers>
 
 	<scm>
-		<url>http://gitlab.delnet.cu/logicware/prolobjectlink-jpi.git</url>
+		<developerConnection>scm:git:git@gitlab.delnet.cu:logicware/prolobjectlink-jpi.git</developerConnection>
+		<connection>scm:git:git@gitlab.delnet.cu:logicware/prolobjectlink-jpi.git</connection>
+		<url>http://gitlab.delnet.cu/logicware/prolobjectlink-jpi</url>
+		<tag>${project.name}-${project.version}</tag>
 	</scm>
 
 	<ciManagement>
