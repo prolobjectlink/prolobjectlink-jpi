@@ -82,7 +82,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.logicware</groupId>
-			<artifactId>prolobjectlink-jpe</artifactId>
+			<artifactId>prolobjectlink-jpg</artifactId>
 			<version>[1.0.0, )</version>
 		</dependency>
 	</dependencies>
