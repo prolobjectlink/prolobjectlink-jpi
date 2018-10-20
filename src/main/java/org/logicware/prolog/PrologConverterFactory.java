@@ -19,7 +19,15 @@
  */
 package org.logicware.prolog;
 
+import static org.logicware.platform.logging.LoggerConstants.CLASS_NOT_FOUND;
+import static org.logicware.platform.logging.LoggerConstants.ILLEGAL_ACCESS;
+import static org.logicware.platform.logging.LoggerConstants.INSTANTIATION;
+import static org.logicware.platform.logging.LoggerConstants.NO_SUCH_METHOD;
+import static org.logicware.platform.logging.LoggerConstants.SECURITY;
+
 import java.lang.reflect.Constructor;
+
+import org.logicware.platform.logging.LoggerUtils;
 
 public final class PrologConverterFactory {
 
@@ -31,7 +39,7 @@ public final class PrologConverterFactory {
 		try {
 			provider = createPrologConverter(Class.forName(converterClassName));
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			LoggerUtils.error(PrologConverterFactory.class, CLASS_NOT_FOUND, e);
 		}
 		return provider;
 	}
@@ -44,13 +52,13 @@ public final class PrologConverterFactory {
 			provider = (PrologConverter<T>) converterClass.newInstance();
 			constructor.setAccessible(false);
 		} catch (InstantiationException e) {
-			e.printStackTrace();
+			LoggerUtils.error(PrologConverterFactory.class, INSTANTIATION, e);
 		} catch (IllegalAccessException e) {
-			e.printStackTrace();
+			LoggerUtils.error(PrologConverterFactory.class, ILLEGAL_ACCESS, e);
 		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
+			LoggerUtils.error(PrologConverterFactory.class, NO_SUCH_METHOD, e);
 		} catch (SecurityException e) {
-			e.printStackTrace();
+			LoggerUtils.error(PrologConverterFactory.class, SECURITY, e);
 		}
 		return provider;
 	}

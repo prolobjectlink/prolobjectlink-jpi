@@ -264,13 +264,15 @@ public abstract class AbstractConverter<T> implements PrologConverter<T> {
 		if (sharedPrologVariables == null) {
 			if (other.sharedPrologVariables != null)
 				return false;
-		} else if (!sharedPrologVariables.equals(other.sharedPrologVariables))
+		} else if (!sharedPrologVariables.equals(other.sharedPrologVariables)) {
 			return false;
+		}
 		if (sharedVariables == null) {
 			if (other.sharedVariables != null)
 				return false;
-		} else if (!sharedVariables.equals(other.sharedVariables))
+		} else if (!sharedVariables.equals(other.sharedVariables)) {
 			return false;
+		}
 		return true;
 	}
 

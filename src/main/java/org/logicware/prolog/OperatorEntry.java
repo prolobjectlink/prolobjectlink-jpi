@@ -70,15 +70,17 @@ public final class OperatorEntry implements PrologOperator {
 		if (operator == null) {
 			if (other.operator != null)
 				return false;
-		} else if (!operator.equals(other.operator))
+		} else if (!operator.equals(other.operator)) {
 			return false;
+		}
 		if (priority != other.priority)
 			return false;
 		if (specifier == null) {
 			if (other.specifier != null)
 				return false;
-		} else if (!specifier.equals(other.specifier))
+		} else if (!specifier.equals(other.specifier)) {
 			return false;
+		}
 		return true;
 	}
 

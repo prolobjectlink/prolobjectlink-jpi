@@ -195,8 +195,9 @@ public abstract class AbstractClause implements PrologClause {
 		if (body == null) {
 			if (other.body != null)
 				return false;
-		} else if (!body.equals(other.body))
+		} else if (!body.equals(other.body)) {
 			return false;
+		}
 		if (discontiguous != other.discontiguous)
 			return false;
 		if (dynamic != other.dynamic)
@@ -204,8 +205,9 @@ public abstract class AbstractClause implements PrologClause {
 		if (head == null) {
 			if (other.head != null)
 				return false;
-		} else if (!head.equals(other.head))
+		} else if (!head.equals(other.head)) {
 			return false;
+		}
 		return multifile == other.multifile;
 	}
 

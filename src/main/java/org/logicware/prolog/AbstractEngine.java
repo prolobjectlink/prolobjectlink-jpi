@@ -152,8 +152,9 @@ public abstract class AbstractEngine extends AbstractPlatform implements PrologE
 		if (provider == null) {
 			if (other.provider != null)
 				return false;
-		} else if (!provider.equals(other.provider))
+		} else if (!provider.equals(other.provider)) {
 			return false;
+		}
 		return true;
 	}
 

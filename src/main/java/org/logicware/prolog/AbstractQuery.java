@@ -147,8 +147,9 @@ public abstract class AbstractQuery extends AbstractWrapper implements PrologQue
 		if (engine == null) {
 			if (other.engine != null)
 				return false;
-		} else if (!engine.equals(other.engine))
+		} else if (!engine.equals(other.engine)) {
 			return false;
+		}
 		return true;
 	}
 

@@ -70,8 +70,9 @@ public final class PredicateIndicator implements PrologIndicator {
 		if (functor == null) {
 			if (other.functor != null)
 				return false;
-		} else if (!functor.equals(other.functor))
+		} else if (!functor.equals(other.functor)) {
 			return false;
+		}
 		return true;
 	}
 
