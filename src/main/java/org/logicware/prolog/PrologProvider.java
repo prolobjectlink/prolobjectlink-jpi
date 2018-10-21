@@ -136,40 +136,6 @@ public interface PrologProvider {
 	public PrologLong newLong(Number value);
 
 	/**
-	 * Create an anonymous variable instance.
-	 * 
-	 * @return An anonymous variable instance.
-	 * @throws UnsupportedOperationException if the wrapped prolog provider use an
-	 *                                       anonymous instantiation with associated
-	 *                                       index {@link #newVariable(int)}
-	 * @since 1.0
-	 * @see PrologProvider#newVariable(int)
-	 * @see PrologProvider#newVariable(String)
-	 * @see PrologProvider#newVariable(String, int)
-	 * @deprecated use PrologProvider#newVariable(int) instead
-	 */
-	@Deprecated
-	public PrologVariable newVariable();
-
-	/**
-	 * Create a named variable instance.
-	 * 
-	 * @param name variable name (upper case beginning)
-	 * @return A named variable instance.
-	 * @throws UnsupportedOperationException if the wrapped prolog provider use an
-	 *                                       anonymous instantiation with associated
-	 *                                       index
-	 *                                       {@link PrologProvider#newVariable(String, int)}
-	 * @since 1.0
-	 * @see PrologProvider#newVariable()
-	 * @see PrologProvider#newVariable(int)
-	 * @see PrologProvider#newVariable(String, int)
-	 * @deprecated use PrologProvider#newVariable(String, int) instead
-	 */
-	@Deprecated
-	public PrologVariable newVariable(String name);
-
-	/**
 	 * Create an anonymous variable instance with associated index. Index is a non
 	 * negative integer that represent the variable position of the Structure where
 	 * the variable is first time declared. If the wrapped prolog provider no use
