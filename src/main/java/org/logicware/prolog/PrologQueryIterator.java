@@ -19,8 +19,11 @@
  */
 package org.logicware.prolog;
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
+import org.logicware.platform.AbstractIterator;
 
 /**
  * Iterator class implementation for Prolog Query
@@ -28,7 +31,8 @@ import java.util.NoSuchElementException;
  * @author Jose Zalacain
  * @since 1.0
  */
-public final class PrologQueryIterator implements Iterator<PrologTerm[]> {
+public final class PrologQueryIterator extends AbstractIterator<Collection<PrologTerm>>
+		implements Iterator<Collection<PrologTerm>> {
 
 	private final PrologQuery query;
 
@@ -47,16 +51,17 @@ public final class PrologQueryIterator implements Iterator<PrologTerm[]> {
 	/**
 	 * Next Prolog solution terms
 	 */
-	public PrologTerm[] next() {
+	public Collection<PrologTerm> next() {
 		if (!query.hasMoreSolutions()) {
 			throw new NoSuchElementException();
 		}
-		return query.nextSolution();
+		return query.nextVariablesSolution().values();
 	}
 
 	/**
 	 * Skip the next solution invoking next solution method
 	 */
+	@Override
 	public void remove() {
 		query.nextSolution();
 	}

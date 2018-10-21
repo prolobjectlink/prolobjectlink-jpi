@@ -19,14 +19,14 @@
  */
 package org.logicware.prolog;
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.logicware.platform.Wrapper;
 
-public interface PrologQuery extends Wrapper, Iterator<PrologTerm[]>, Iterable<PrologTerm[]> {
-
+public interface PrologQuery extends Wrapper, Iterator<Collection<PrologTerm>>, Iterable<Collection<PrologTerm>> {
 	/**
 	 * Engine hold by the current query
 	 * 
@@ -68,9 +68,9 @@ public interface PrologQuery extends Wrapper, Iterator<PrologTerm[]>, Iterable<P
 
 	/**
 	 * <p>
-	 * Return the prolog terms that conform the solution set for the current
-	 * query. The solution set is a prolog terms array and each term is an
-	 * instance value for the variables not anonymous involved in the query.
+	 * Return the prolog terms that conform the solution set for the current query.
+	 * The solution set is a prolog terms array and each term is an instance value
+	 * for the variables not anonymous involved in the query.
 	 * </p>
 	 * 
 	 * <pre>

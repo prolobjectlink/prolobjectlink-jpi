@@ -20,13 +20,14 @@
 package org.logicware.prolog;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.logicware.platform.AbstractWrapper;
+import org.logicware.platform.AbstractIterator;
 
-public abstract class AbstractQuery extends AbstractWrapper implements PrologQuery {
+public abstract class AbstractQuery extends AbstractIterator<Collection<PrologTerm>> implements PrologQuery {
 
 	// engine for execute queries
 	protected final AbstractEngine engine;
@@ -104,7 +105,7 @@ public abstract class AbstractQuery extends AbstractWrapper implements PrologQue
 		return false;
 	}
 
-	public final Iterator<PrologTerm[]> iterator() {
+	public final Iterator<Collection<PrologTerm>> iterator() {
 		return new PrologQueryIterator(this);
 	}
 
@@ -112,12 +113,14 @@ public abstract class AbstractQuery extends AbstractWrapper implements PrologQue
 		return hasMoreSolutions();
 	}
 
-	public final PrologTerm[] next() {
+	public final Collection<PrologTerm> next() {
 		// don't check has next
 		// don't raise NoSuchElementException
-		return nextSolution();
+//		return Arrays.asList(nextSolution());
+		return nextVariablesSolution().values();
 	}
 
+	@Override
 	public final void remove() {
 		// skip invoking next
 		nextSolution();
