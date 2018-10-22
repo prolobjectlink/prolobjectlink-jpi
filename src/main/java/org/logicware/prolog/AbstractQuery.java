@@ -116,7 +116,6 @@ public abstract class AbstractQuery extends AbstractIterator<Collection<PrologTe
 	public final Collection<PrologTerm> next() {
 		// don't check has next
 		// don't raise NoSuchElementException
-//		return Arrays.asList(nextSolution());
 		return nextVariablesSolution().values();
 	}
 

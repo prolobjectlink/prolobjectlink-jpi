@@ -27,6 +27,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
+import org.logicware.platform.AbstractIterator;
 import org.logicware.platform.AbstractPlatform;
 
 public abstract class AbstractEngine extends AbstractPlatform implements PrologEngine {
@@ -158,7 +159,7 @@ public abstract class AbstractEngine extends AbstractPlatform implements PrologE
 		return true;
 	}
 
-	protected class PrologProgramIterator implements Iterator<PrologClause> {
+	protected class PrologProgramIterator extends AbstractIterator<PrologClause> implements Iterator<PrologClause> {
 
 		private PrologClause last;
 		private final Iterator<PrologClause> i;
@@ -179,6 +180,7 @@ public abstract class AbstractEngine extends AbstractPlatform implements PrologE
 			return last;
 		}
 
+		@Override
 		public void remove() {
 			PrologTerm h = last.getHead();
 			PrologTerm b = last.getBody();

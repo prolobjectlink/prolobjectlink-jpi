@@ -24,6 +24,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import org.logicware.platform.AbstractIterator;
+
 public abstract class AbstractClause implements PrologClause {
 
 	private boolean dynamic;
@@ -229,7 +231,7 @@ public abstract class AbstractClause implements PrologClause {
 		return "" + b + "";
 	}
 
-	private class BodyIterator implements Iterator<PrologTerm> {
+	private class BodyIterator extends AbstractIterator<PrologTerm> implements Iterator<PrologTerm> {
 
 		private int nextIndex;
 
@@ -250,9 +252,6 @@ public abstract class AbstractClause implements PrologClause {
 			return elements[nextIndex++];
 		}
 
-		public void remove() {
-			throw new UnsupportedOperationException();
-		}
 	}
 
 }
