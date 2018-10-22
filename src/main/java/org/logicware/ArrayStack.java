@@ -17,22 +17,10 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.platform;
+package org.logicware;
 
-public interface GraphEdge<E> extends GraphElement<E> {
+public class ArrayStack<T> extends AbstractArrayStack<T> implements Stack<T> {
 
-	public <V> GraphVertex<V> getFrom();
-
-	public <V> GraphVertex<V> getTo();
-
-	Class<?> getToVertexElementClass();
-
-	Class<?> getFromVertexElementClass();
-
-	public boolean equals(Object obj);
-
-	public int hashCode();
-
-	Direction getDirection();
+	private static final long serialVersionUID = -6769914163671435871L;
 
 }

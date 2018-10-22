@@ -21,7 +21,7 @@ package org.logicware.prolog;
 
 import java.util.Map;
 
-import org.logicware.platform.AbstractWrapper;
+import org.logicware.AbstractWrapper;
 
 public abstract class AbstractTerm extends AbstractWrapper implements PrologTerm {
 

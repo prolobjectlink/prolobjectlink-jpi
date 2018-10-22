@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.platform;
+package org.logicware;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,8 +27,8 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 
-import org.logicware.platform.logging.LoggerConstants;
-import org.logicware.platform.logging.LoggerUtils;
+import org.logicware.logging.LoggerConstants;
+import org.logicware.logging.LoggerUtils;
 
 public abstract class AbstractPlatform extends AbstractWrapper implements Platform {
 

@@ -1,4 +1,4 @@
-package org.logicware.platform;
+package org.logicware;
 
 import java.util.Iterator;
 

@@ -21,8 +21,8 @@ package org.logicware.graph;
 
 import org.junit.After;
 import org.junit.Before;
-import org.logicware.platform.GraphEdge;
-import org.logicware.platform.GraphVertex;
+import org.logicware.GraphEdge;
+import org.logicware.GraphVertex;
 
 public abstract class BaseTest {
 

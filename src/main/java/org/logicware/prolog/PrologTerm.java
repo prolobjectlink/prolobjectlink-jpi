@@ -19,7 +19,7 @@
  */
 package org.logicware.prolog;
 
-import org.logicware.platform.Wrapper;
+import org.logicware.Wrapper;
 
 /**
  * 

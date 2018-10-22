@@ -17,12 +17,10 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.platform;
+package org.logicware;
 
-import java.util.Queue;
+public enum Direction {
 
-public class ArrayQueue<E> extends AbstractArrayQueue<E> implements Queue<E> {
-
-	private static final long serialVersionUID = 8659174251748733801L;
+	IN, OUT, BOTH
 
 }

@@ -17,24 +17,12 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.platform;
+package org.logicware;
 
-public interface GraphVertex<V> extends GraphElement<V> {
+import java.util.Queue;
 
-	public boolean isWrappedFor(Class<?> cls);
+public class ArrayQueue<E> extends AbstractArrayQueue<E> implements Queue<E> {
 
-	public <K> K unwrap(Class<K> cls);
-
-	public Iterable<GraphVertex<V>> getIncomingsVertices();
-
-	public Iterable<GraphVertex<V>> getOutgoingsVertices();
-
-	public int countIncomings();
-
-	public int countOutgoings();
-
-	public boolean equals(Object obj);
-
-	public int hashCode();
+	private static final long serialVersionUID = 8659174251748733801L;
 
 }

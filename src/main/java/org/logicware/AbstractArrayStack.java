@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.platform;
+package org.logicware;
 
 import java.util.ArrayList;
 import java.util.EmptyStackException;

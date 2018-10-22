@@ -27,8 +27,8 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-import org.logicware.platform.AbstractIterator;
-import org.logicware.platform.AbstractPlatform;
+import org.logicware.AbstractIterator;
+import org.logicware.AbstractPlatform;
 
 public abstract class AbstractEngine extends AbstractPlatform implements PrologEngine {
 

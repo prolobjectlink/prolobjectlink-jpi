@@ -24,11 +24,11 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import org.logicware.Direction;
+import org.logicware.Graph;
+import org.logicware.GraphEdge;
+import org.logicware.GraphVertex;
 import org.logicware.graph.DirectedGraph.GenericGraphVertex;
-import org.logicware.platform.Direction;
-import org.logicware.platform.Graph;
-import org.logicware.platform.GraphEdge;
-import org.logicware.platform.GraphVertex;
 
 /**
  * Partial implementation of {@link Graph} interface.

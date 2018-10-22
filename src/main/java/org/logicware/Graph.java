@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.platform;
+package org.logicware;
 
 public interface Graph<V, E> {
 

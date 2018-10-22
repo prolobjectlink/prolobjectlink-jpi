@@ -25,7 +25,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.logicware.platform.AbstractIterator;
+import org.logicware.AbstractIterator;
 
 public abstract class AbstractQuery extends AbstractIterator<Collection<PrologTerm>> implements PrologQuery {
 

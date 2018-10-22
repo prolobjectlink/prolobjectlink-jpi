@@ -17,18 +17,11 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.platform;
+package org.logicware;
 
-import java.util.List;
+public interface GraphElement<E> {
 
-public interface Stack<E> extends List<E> {
+	public E getElement();
 
-	public E push(E item);
-
-	public E pop();
-
-	public E peek();
-
-	public boolean empty();
-
+	public Class<E> getElementClass();
 }

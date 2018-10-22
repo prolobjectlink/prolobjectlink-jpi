@@ -17,10 +17,24 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.platform;
+package org.logicware;
 
-public class ArrayStack<T> extends AbstractArrayStack<T> implements Stack<T> {
+public interface GraphVertex<V> extends GraphElement<V> {
 
-	private static final long serialVersionUID = -6769914163671435871L;
+	public boolean isWrappedFor(Class<?> cls);
+
+	public <K> K unwrap(Class<K> cls);
+
+	public Iterable<GraphVertex<V>> getIncomingsVertices();
+
+	public Iterable<GraphVertex<V>> getOutgoingsVertices();
+
+	public int countIncomings();
+
+	public int countOutgoings();
+
+	public boolean equals(Object obj);
+
+	public int hashCode();
 
 }

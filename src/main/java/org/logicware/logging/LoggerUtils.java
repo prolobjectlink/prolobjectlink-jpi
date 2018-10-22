@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.platform.logging;
+package org.logicware.logging;
 
 import java.util.logging.Level;
 

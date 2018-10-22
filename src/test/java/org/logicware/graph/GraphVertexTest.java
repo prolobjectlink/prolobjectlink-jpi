@@ -26,8 +26,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.Iterator;
 
 import org.junit.Test;
-import org.logicware.platform.Graph;
-import org.logicware.platform.GraphVertex;
+import org.logicware.Graph;
+import org.logicware.GraphVertex;
 
 public class GraphVertexTest extends BaseTest {
 

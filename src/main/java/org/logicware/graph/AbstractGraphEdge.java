@@ -19,8 +19,8 @@
  */
 package org.logicware.graph;
 
-import org.logicware.platform.Direction;
-import org.logicware.platform.GraphEdge;
+import org.logicware.Direction;
+import org.logicware.GraphEdge;
 
 public abstract class AbstractGraphEdge<E> extends AbstractGraphElement<E> implements GraphEdge<E> {
 

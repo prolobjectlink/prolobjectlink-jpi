@@ -19,7 +19,7 @@
  */
 package org.logicware.graph;
 
-import org.logicware.platform.GraphElement;
+import org.logicware.GraphElement;
 
 public abstract class AbstractGraphElement<E> implements GraphElement<E> {
 

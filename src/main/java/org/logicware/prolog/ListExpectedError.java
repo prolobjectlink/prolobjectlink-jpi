@@ -19,7 +19,7 @@
  */
 package org.logicware.prolog;
 
-import org.logicware.platform.RuntimeError;
+import org.logicware.RuntimeError;
 
 public final class ListExpectedError extends RuntimeError {
 

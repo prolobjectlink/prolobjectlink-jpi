@@ -19,7 +19,7 @@
  */
 package org.logicware.graph;
 
-import org.logicware.platform.GraphVertex;
+import org.logicware.GraphVertex;
 
 public abstract class AbstractGraphVertex<V> extends AbstractGraphElement<V> implements GraphVertex<V> {
 

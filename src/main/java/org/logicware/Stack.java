@@ -17,10 +17,18 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.platform;
+package org.logicware;
 
-public enum Direction {
+import java.util.List;
 
-	IN, OUT, BOTH
+public interface Stack<E> extends List<E> {
+
+	public E push(E item);
+
+	public E pop();
+
+	public E peek();
+
+	public boolean empty();
 
 }

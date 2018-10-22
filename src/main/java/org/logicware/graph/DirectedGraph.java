@@ -23,10 +23,10 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.logicware.platform.Direction;
-import org.logicware.platform.Graph;
-import org.logicware.platform.GraphEdge;
-import org.logicware.platform.GraphVertex;
+import org.logicware.Direction;
+import org.logicware.Graph;
+import org.logicware.GraphEdge;
+import org.logicware.GraphVertex;
 
 /**
  * Directed graph implementation

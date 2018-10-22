@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.platform;
+package org.logicware;
 
 /**
  * Wrapper class that contains methods for unwrap objects obtaining a down

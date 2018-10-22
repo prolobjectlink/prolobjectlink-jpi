@@ -17,11 +17,22 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.platform;
+package org.logicware;
 
-public interface GraphElement<E> {
+public interface GraphEdge<E> extends GraphElement<E> {
 
-	public E getElement();
+	public <V> GraphVertex<V> getFrom();
 
-	public Class<E> getElementClass();
+	public <V> GraphVertex<V> getTo();
+
+	Class<?> getToVertexElementClass();
+
+	Class<?> getFromVertexElementClass();
+
+	public boolean equals(Object obj);
+
+	public int hashCode();
+
+	Direction getDirection();
+
 }

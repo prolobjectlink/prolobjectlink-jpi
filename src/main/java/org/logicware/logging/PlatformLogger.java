@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.platform.logging;
+package org.logicware.logging;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -28,8 +28,8 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.logicware.platform.AbstractPlatform;
-import org.logicware.platform.Platform;
+import org.logicware.AbstractPlatform;
+import org.logicware.Platform;
 
 public final class PlatformLogger extends AbstractPlatform implements Platform {
 

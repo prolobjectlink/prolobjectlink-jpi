@@ -19,15 +19,15 @@
  */
 package org.logicware.prolog;
 
-import static org.logicware.platform.logging.LoggerConstants.CLASS_NOT_FOUND;
-import static org.logicware.platform.logging.LoggerConstants.ILLEGAL_ACCESS;
-import static org.logicware.platform.logging.LoggerConstants.INSTANTIATION;
-import static org.logicware.platform.logging.LoggerConstants.NO_SUCH_METHOD;
-import static org.logicware.platform.logging.LoggerConstants.SECURITY;
+import static org.logicware.logging.LoggerConstants.CLASS_NOT_FOUND;
+import static org.logicware.logging.LoggerConstants.ILLEGAL_ACCESS;
+import static org.logicware.logging.LoggerConstants.INSTANTIATION;
+import static org.logicware.logging.LoggerConstants.NO_SUCH_METHOD;
+import static org.logicware.logging.LoggerConstants.SECURITY;
 
 import java.lang.reflect.Constructor;
 
-import org.logicware.platform.logging.LoggerUtils;
+import org.logicware.logging.LoggerUtils;
 
 public final class PrologConverterFactory {
 

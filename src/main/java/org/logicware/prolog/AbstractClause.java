@@ -24,7 +24,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import org.logicware.platform.AbstractIterator;
+import org.logicware.AbstractIterator;
 
 public abstract class AbstractClause implements PrologClause {
 
