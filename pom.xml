@@ -20,7 +20,7 @@
 		<license>
 			<name>Apache 2</name>
 			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-                        <distribution>repo</distribution>
+			<distribution>repo</distribution>
 		</license>
 	</licenses>
 
@@ -81,9 +81,10 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.logicware</groupId>
-			<artifactId>prolobjectlink-jpg</artifactId>
-			<version>[1.0.0, )</version>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+			<version>[4.10, )</version>
 		</dependency>
 	</dependencies>
 
