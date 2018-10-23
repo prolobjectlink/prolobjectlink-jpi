@@ -39,12 +39,16 @@ public abstract class AbstractClause implements PrologClause {
 	private final PrologIndicator indicator;
 
 	/**
-	 * Fact clause
+	 * Create a new fact clause. A fatc clause is only represented by clause head
+	 * and no have clause body. The body for this clause type is null. The other
+	 * parameters are boolean clause properties. If a clause have any of this
+	 * properties specify with true value.
 	 * 
-	 * @param head
-	 * @param dynamic
-	 * @param multifile
-	 * @param discontiguous
+	 * @param provider      prolog provider
+	 * @param head          clause head
+	 * @param dynamic       true if clause is dynamic, false otherwise
+	 * @param multifile     true if clause is multifile, false otherwise
+	 * @param discontiguous true if clause is discontiguous, false otherwise
 	 * @since 1.0
 	 */
 	protected AbstractClause(PrologProvider provider, PrologTerm head, boolean dynamic, boolean multifile,
@@ -53,13 +57,16 @@ public abstract class AbstractClause implements PrologClause {
 	}
 
 	/**
-	 * Rule Clause
+	 * Create a new rule clause. A rule clause is represented by clause head and
+	 * body. The other parameters are boolean clause properties. If a clause have
+	 * any of this properties specify with true value.
 	 * 
-	 * @param head
-	 * @param body
-	 * @param dynamic
-	 * @param multifile
-	 * @param discontiguous
+	 * @param provider      prolog provider
+	 * @param head          clause head
+	 * @param body          clause body
+	 * @param dynamic       true if clause is dynamic, false otherwise
+	 * @param multifile     true if clause is multifile, false otherwise
+	 * @param discontiguous true if clause is discontiguous, false otherwise
 	 * @since 1.0
 	 */
 	protected AbstractClause(PrologProvider provider, PrologTerm head, PrologTerm body, boolean dynamic,
