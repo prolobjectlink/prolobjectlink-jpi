@@ -155,13 +155,53 @@ public class DirectedGraph<V, E> extends AbstractGraph<V, E> implements Graph<V,
 
 		@Override
 		public int hashCode() {
-			return super.hashCode();
+			final int prime = 31;
+			int result = super.hashCode();
+			result = prime * result + getOuterType().hashCode();
+			result = prime * result + ((from == null) ? 0 : from.hashCode());
+			result = prime * result + ((to == null) ? 0 : to.hashCode());
+			return result;
 		}
 
 		@Override
 		public boolean equals(Object obj) {
-			return super.equals(obj);
+			if (this == obj)
+				return true;
+			if (!super.equals(obj))
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			GenericGraphEdge other = (GenericGraphEdge) obj;
+			if (!getOuterType().equals(other.getOuterType()))
+				return false;
+			if (from == null) {
+				if (other.from != null)
+					return false;
+			} else if (!from.equals(other.from))
+				return false;
+			if (to == null) {
+				if (other.to != null)
+					return false;
+			} else if (!to.equals(other.to))
+				return false;
+			return true;
 		}
+
+		private DirectedGraph getOuterType() {
+			return DirectedGraph.this;
+		}
+
+//		@Override
+//		public int hashCode() {
+//			return super.hashCode();
+//		}
+//
+//		@Override
+//		public boolean equals(Object obj) {
+//			return super.equals(obj);
+//		}
+		
+		
 
 	}
 

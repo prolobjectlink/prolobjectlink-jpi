@@ -76,6 +76,7 @@ public interface PrologProvider {
 	/**
 	 * Create a prolog float number instance with 0.0 value.
 	 * 
+	 * @param value numeric value
 	 * @return prolog float number with 0.0 value.
 	 * @since 1.0
 	 */
@@ -93,7 +94,6 @@ public interface PrologProvider {
 	 * Create a prolog double number instance with the given value.
 	 * 
 	 * @param value numeric value
-	 * 
 	 * @return prolog double number
 	 * @since 1.0
 	 */
@@ -111,7 +111,6 @@ public interface PrologProvider {
 	 * Create a prolog integer number instance with the given value.
 	 * 
 	 * @param value numeric value
-	 * 
 	 * @return prolog integer number
 	 * @since 1.0
 	 */
@@ -129,7 +128,6 @@ public interface PrologProvider {
 	 * Create a prolog long number instance with the given value.
 	 * 
 	 * @param value numeric value
-	 * 
 	 * @return prolog long number
 	 * @since 1.0
 	 */
@@ -138,26 +136,20 @@ public interface PrologProvider {
 	/**
 	 * Create an anonymous variable instance with associated index. Index is a non
 	 * negative integer that represent the variable position of the Structure where
-	 * the variable is first time declared. If the wrapped prolog provider no use
-	 * specific index, have the same effect of {@link PrologProvider#newVariable()}
+	 * the variable is first time declared.
 	 * 
 	 * @param position Position of its Structure where the variable is first time
 	 *                 declared.
 	 * @return An anonymous variable instance with associated index.
 	 * @throws IllegalArgumentException if position is a negative number
 	 * @since 1.0
-	 * @see PrologProvider#newVariable()
-	 * @see PrologProvider#newVariable(String)
-	 * @see PrologProvider#newVariable(String, int)
 	 */
 	public PrologVariable newVariable(int position);
 
 	/**
 	 * Create an named variable instance with associated index. Index is a non
 	 * negative integer that represent the variable position of the Structure where
-	 * the variable is first time declared. If the wrapped prolog provider no use
-	 * specific index, have the same effect of
-	 * {@link PrologProvider#newVariable(String)}
+	 * the variable is first time declared.
 	 * 
 	 * @param name     variable name (upper case beginning)
 	 * 
@@ -166,9 +158,6 @@ public interface PrologProvider {
 	 * @return A named variable instance with associated index.
 	 * @throws IllegalArgumentException if position is a negative number
 	 * @since 1.0
-	 * @see PrologProvider#newVariable()
-	 * @see PrologProvider#newVariable(int)
-	 * @see PrologProvider#newVariable(String)
 	 */
 	public PrologVariable newVariable(String name, int position);
 

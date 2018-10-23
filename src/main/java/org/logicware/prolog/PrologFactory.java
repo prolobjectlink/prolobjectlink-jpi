@@ -29,7 +29,7 @@ public final class PrologFactory {
 	private PrologFactory() {
 	}
 
-	public static final PrologProvider newProvider(String providerClassName) {
+	public static PrologProvider newProvider(String providerClassName) {
 		PrologProvider provider = null;
 		try {
 			provider = newProvider(Class.forName(providerClassName));
@@ -39,7 +39,7 @@ public final class PrologFactory {
 		return provider;
 	}
 
-	public static final PrologProvider newProvider(Class<?> providerClass) {
+	public static PrologProvider newProvider(Class<?> providerClass) {
 		PrologProvider provider = null;
 		try {
 			Constructor<?> constructor = providerClass.getDeclaredConstructor();

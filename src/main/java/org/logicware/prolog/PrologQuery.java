@@ -27,6 +27,7 @@ import java.util.Map;
 import org.logicware.Wrapper;
 
 public interface PrologQuery extends Wrapper, Iterator<Collection<PrologTerm>>, Iterable<Collection<PrologTerm>> {
+
 	/**
 	 * Engine hold by the current query
 	 * 
@@ -67,11 +68,11 @@ public interface PrologQuery extends Wrapper, Iterator<Collection<PrologTerm>>, 
 	public boolean hasMoreSolutions();
 
 	/**
-	 * <p>
+	 * 
 	 * Return the prolog terms that conform the solution set for the current query.
-	 * The solution set is a prolog terms array and each term is an instance value
+	 * The solution set is a prolog terms array and every term is an instance value
 	 * for the variables not anonymous involved in the query.
-	 * </p>
+	 * 
 	 * 
 	 * <pre>
 	 * PrologTerm[] solution = query.oneSolution();
@@ -87,59 +88,30 @@ public interface PrologQuery extends Wrapper, Iterator<Collection<PrologTerm>>, 
 
 	/**
 	 * 
+	 * Return the prolog terms that conform the solution set for the current query.
+	 * The solution set is a prolog terms map and every map entry is a pair variable
+	 * name and variable instance value for the variables not anonymous involved in
+	 * the query.
+	 * 
 	 * @return
 	 * @since 1.0
 	 */
 	public Map<String, PrologTerm> oneVariablesSolution();
 
-	/**
-	 * @since 1.0
-	 * @return
-	 */
 	public PrologTerm[] nextSolution();
 
-	/**
-	 * @since 1.0
-	 * @return
-	 */
 	public Map<String, PrologTerm> nextVariablesSolution();
 
-	/**
-	 * @since 1.0
-	 * @param n
-	 * @return
-	 */
 	public PrologTerm[][] nSolutions(int n);
 
-	/**
-	 * @since 1.0
-	 * @param n
-	 * @return
-	 */
 	public Map<String, PrologTerm>[] nVariablesSolutions(int n);
 
-	/**
-	 * @since 1.0
-	 * @return
-	 */
 	public PrologTerm[][] allSolutions();
 
-	/**
-	 * @since 1.0
-	 * @return
-	 */
 	public Map<String, PrologTerm>[] allVariablesSolutions();
 
-	/**
-	 * @since 1.0
-	 * @return
-	 */
 	public Map<String, PrologTerm> one();
 
-	/**
-	 * @since 1.0
-	 * @return
-	 */
 	public List<Map<String, PrologTerm>> all();
 
 	/**

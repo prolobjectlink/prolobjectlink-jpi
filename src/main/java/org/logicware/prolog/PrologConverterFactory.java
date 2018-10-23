@@ -34,7 +34,7 @@ public final class PrologConverterFactory {
 	private PrologConverterFactory() {
 	}
 
-	public static final <T> PrologConverter<T> createPrologConverter(String converterClassName) {
+	public static <T> PrologConverter<T> createPrologConverter(String converterClassName) {
 		PrologConverter<T> provider = null;
 		try {
 			provider = createPrologConverter(Class.forName(converterClassName));
@@ -44,7 +44,7 @@ public final class PrologConverterFactory {
 		return provider;
 	}
 
-	public static final <T> PrologConverter<T> createPrologConverter(Class<?> converterClass) {
+	public static <T> PrologConverter<T> createPrologConverter(Class<?> converterClass) {
 		PrologConverter<T> provider = null;
 		try {
 			Constructor<?> constructor = converterClass.getDeclaredConstructor();

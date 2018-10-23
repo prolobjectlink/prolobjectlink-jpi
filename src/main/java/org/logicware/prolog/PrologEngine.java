@@ -43,11 +43,11 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	public void abolish(String functor, int arity);
 
 	/**
-	 * Parse the string creating internal prolog clause and add the clause in
-	 * the main memory program if the clause non exist. If the clause exist,
-	 * will not overwritten and the clause will not added. The string have
-	 * prolog fact or rule syntax. The added clause will be the first clause for
-	 * a clause lot with the same predicate indicator (PI).
+	 * Parse the string creating internal prolog clause and add the clause in the
+	 * main memory program if the clause non exist. If the clause exist, will not
+	 * overwritten and the clause will not added. The string have prolog fact or
+	 * rule syntax. The added clause will be the first clause for a clause lot with
+	 * the same predicate indicator (PI).
 	 * 
 	 * <pre>
 	 * engine.asserta(&quot;grandparent(X,Z):-parent(X,Y),parent(Y,Z)&quot;);
@@ -59,27 +59,20 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 * engine.asserta(&quot;parent( pam, bob)&quot;);
 	 * </pre>
 	 * 
-	 * @param stringClause
-	 *            - string for create internal prolog clause
+	 * @param stringClause - string for create internal prolog clause
 	 * @since 1.0
-	 * @see #assertz(PrologTerm)
-	 * @see #assertz(PrologTerm, PrologTerm...)
-	 * @see #assertz(String)
-	 * @see #asserta(PrologTerm)
-	 * @see #asserta(PrologTerm, PrologTerm...)
 	 */
 	public void asserta(String stringClause);
 
 	/**
 	 * Add a rule specified by the rule head and rule body if the specified rule
 	 * clause non exist. If the rule clause exist, will not overwritten and the
-	 * clause will not added. The head term is the first argument and the body
-	 * is constituted by the terms array followed of the rule head. If the body
-	 * array is empty the clause will be considered like fact specified by head
-	 * only. The added clause will be the first clause for a clause lot with the
-	 * same predicate indicator (PI). The shared variables in the clause are
-	 * declared once and use for build the terms that conform the clause to be
-	 * added
+	 * clause will not added. The head term is the first argument and the body is
+	 * constituted by the terms array followed of the rule head. If the body array
+	 * is empty the clause will be considered like fact specified by head only. The
+	 * added clause will be the first clause for a clause lot with the same
+	 * predicate indicator (PI). The shared variables in the clause are declared
+	 * once and use for build the terms that conform the clause to be added
 	 * 
 	 * <pre>
 	 * String parent = &quot;parent&quot;;
@@ -104,25 +97,18 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 * engine.asserta(provider.newPrologStructure(parent, pam, bob));
 	 * </pre>
 	 * 
-	 * @param head
-	 *            head of rule
-	 * @param body
-	 *            array of terms that compound the body of the rule
+	 * @param head head of rule
+	 * @param body array of terms that compound the body of the rule
 	 * @since 1.0
-	 * @see #assertz(String)
-	 * @see #assertz(PrologTerm)
-	 * @see #asserta(String)
-	 * @see #asserta(PrologTerm)
-	 * @see #asserta(PrologTerm, PrologTerm...)
 	 */
 	public void asserta(PrologTerm head, PrologTerm... body);
 
 	/**
-	 * Parse the string creating internal prolog clause and add the clause in
-	 * the main memory program if the clause non exist. If the clause exist,
-	 * will not overwritten and the clause will not added. The string have
-	 * prolog fact or rule syntax. The added clause will be the last clause for
-	 * a clause lot with the same predicate indicator (PI).
+	 * Parse the string creating internal prolog clause and add the clause in the
+	 * main memory program if the clause non exist. If the clause exist, will not
+	 * overwritten and the clause will not added. The string have prolog fact or
+	 * rule syntax. The added clause will be the last clause for a clause lot with
+	 * the same predicate indicator (PI).
 	 * 
 	 * <pre>
 	 * engine.assertz(&quot;parent( pam, bob)&quot;);
@@ -134,14 +120,8 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 * engine.assertz(&quot;grandparent(X,Z):-parent(X,Y),parent(Y,Z)&quot;);
 	 * </pre>
 	 * 
-	 * @param stringClause
-	 *            string clause to be added
+	 * @param stringClause string clause to be added
 	 * @since 1.0
-	 * @see #assertz(PrologTerm)
-	 * @see #assertz(PrologTerm, PrologTerm...)
-	 * @see #asserta(String)
-	 * @see #asserta(PrologTerm)
-	 * @see #asserta(PrologTerm, PrologTerm...)
 	 */
 	public void assertz(String stringClause);
 
@@ -149,13 +129,12 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 * <p>
 	 * Add a rule specified by the rule head and rule body if the specified rule
 	 * clause non exist. If the rule clause exist, will not overwritten and the
-	 * clause will not added. The head term is the first argument and the body
-	 * is constituted by the terms array followed of the rule head. If the body
-	 * array is empty the clause will be considered like fact specified by head
-	 * only. The added clause will be the last clause for a clause lot with the
-	 * same predicate indicator (PI). The shared variables in the clause are
-	 * declared once and use for build the terms that conform the clause to be
-	 * added
+	 * clause will not added. The head term is the first argument and the body is
+	 * constituted by the terms array followed of the rule head. If the body array
+	 * is empty the clause will be considered like fact specified by head only. The
+	 * added clause will be the last clause for a clause lot with the same predicate
+	 * indicator (PI). The shared variables in the clause are declared once and use
+	 * for build the terms that conform the clause to be added
 	 * </p>
 	 * 
 	 * <pre>
@@ -178,25 +157,17 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 * 		provider.newPrologStructure(parent, y, z));
 	 * </pre>
 	 * 
-	 * @param head
-	 *            head of rule
-	 * @param body
-	 *            array of terms that compound the body of the rule
+	 * @param head head of rule
+	 * @param body array of terms that compound the body of the rule
 	 * @since 1.0
-	 * @see #assertz(String)
-	 * @see #assertz(PrologTerm)
-	 * @see #asserta(String)
-	 * @see #asserta(PrologTerm)
-	 * @see #asserta(PrologTerm, PrologTerm...)
 	 */
 	public void assertz(PrologTerm head, PrologTerm... body);
 
 	/**
-	 * Parse the string creating internal prolog clause and returning true if
-	 * the clause in the main memory program unify with the given clause. If the
-	 * clause not exist in main memory program or exist but not unify with the
-	 * given clause false value is returned. The string have prolog fact or rule
-	 * syntax.
+	 * Parse the string creating internal prolog clause and returning true if the
+	 * clause in the main memory program unify with the given clause. If the clause
+	 * not exist in main memory program or exist but not unify with the given clause
+	 * false value is returned. The string have prolog fact or rule syntax.
 	 * 
 	 * <pre>
 	 * boolean b = engine.clause(&quot;parent( pam, bob)&quot;);
@@ -206,24 +177,22 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 * boolean b = engine.clause(&quot;grandparent(X,Z):-parent(X,Y),parent(Y,Z)&quot;);
 	 * </pre>
 	 * 
-	 * @param stringClause
-	 *            string clause to be removed
+	 * @param stringClause string clause to be match
+	 * @return true if the clause in the main memory program unify with the given
+	 *         clause, false otherwise
 	 * @since 1.0
-	 * @see #clause(PrologTerm, PrologTerm...)
 	 */
-
 	public boolean clause(String stringClause);
 
 	/**
-	 * Find a rule specified by the rule head and rule body in main memory
-	 * program that unify with the given clause returning true in this case.If
-	 * the clause not exist in main memory program or exist but not unify with
-	 * the given clause false value is returned. The head term is the first
-	 * argument and the body is constituted by the terms array followed of the
-	 * rule head. If the body array is empty the clause will be considered like
-	 * fact specified by head only. The shared variables in the clause are
-	 * declared once and use for build the terms that conform the clause to be
-	 * found.
+	 * Find a rule specified by the rule head and rule body in main memory program
+	 * that unify with the given clause returning true in this case.If the clause
+	 * not exist in main memory program or exist but not unify with the given clause
+	 * false value is returned. The head term is the first argument and the body is
+	 * constituted by the terms array followed of the rule head. If the body array
+	 * is empty the clause will be considered like fact specified by head only. The
+	 * shared variables in the clause are declared once and use for build the terms
+	 * that conform the clause to be found.
 	 * 
 	 * <pre>
 	 * String parent = &quot;parent&quot;;
@@ -241,19 +210,18 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 * 		provider.newPrologStructure(parent, x, y), provider.newPrologStructure(parent, y, z));
 	 * </pre>
 	 * 
-	 * @param head
-	 *            head of rule
-	 * @param body
-	 *            array of terms that compound the body of the rule
+	 * @param head head of rule
+	 * @param body array of terms that compound the body of the rule
+	 * @return true if the clause in the main memory program unify with the given
+	 *         clause, false otherwise
 	 * @since 1.0
-	 * @see #clause(String)
 	 */
 	public boolean clause(PrologTerm head, PrologTerm... body);
 
 	/**
-	 * Parse the string creating internal prolog clause and remove the clause in
-	 * the main memory program if the clause exist. The string have prolog fact
-	 * or rule syntax.
+	 * Parse the string creating internal prolog clause and remove the clause in the
+	 * main memory program if the clause exist. The string have prolog fact or rule
+	 * syntax.
 	 * 
 	 * <pre>
 	 * engine.retract(&quot;parent( pam, bob).&quot;);
@@ -265,20 +233,18 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 * engine.retract(&quot;grandparent(X,Z):-parent(X,Y),parent(Y,Z)&quot;);
 	 * </pre>
 	 * 
-	 * @param stringClause
-	 *            string clause to be removed
+	 * @param stringClause string clause to be removed
 	 * @since 1.0
-	 * @see #retract(PrologTerm, PrologTerm...)
 	 */
 	public void retract(String stringClause);
 
 	/**
-	 * Remove a rule specified by the rule head and rule body if the specified
-	 * rule clause exist. The head term is the first argument and the body is
-	 * constituted by the terms array followed of the rule head. If the body
-	 * array is empty the clause will be considered like fact specified by head
-	 * only. The shared variables in the clause are declared once and use for
-	 * build the terms that conform the clause to be removed.
+	 * Remove a rule specified by the rule head and rule body if the specified rule
+	 * clause exist. The head term is the first argument and the body is constituted
+	 * by the terms array followed of the rule head. If the body array is empty the
+	 * clause will be considered like fact specified by head only. The shared
+	 * variables in the clause are declared once and use for build the terms that
+	 * conform the clause to be removed.
 	 * 
 	 * <pre>
 	 * String parent = &quot;parent&quot;;
@@ -300,30 +266,23 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 * 		provider.newPrologStructure(parent, y, z));
 	 * </pre>
 	 * 
-	 * @param head
-	 *            head of rule
-	 * @param body
-	 *            array of terms that compound the body of the rule
+	 * @param head head of rule
+	 * @param body array of terms that compound the body of the rule
 	 * @since 1.0
-	 * @see #retract(String)
 	 */
 	public void retract(PrologTerm head, PrologTerm... body);
 
 	/**
-	 * Parse the string creating internal prolog clause and returning true if
-	 * the given goal have solution using the resolution engine mechanism. If
-	 * wrapped engine not support a dedicated method the
+	 * Parse the string creating internal prolog clause and returning true if the
+	 * given goal have solution using the resolution engine mechanism. If wrapped
+	 * engine not support a dedicated method the
 	 * 
 	 * {@link #contains(String)} will be defined like
 	 * {@code query(goal).hasSolution()}
 	 * 
-	 * @param goal
-	 *            goal to be queried
+	 * @param goal goal to be queried
 	 * @return true if the given goal has solution
 	 * @since 1.0
-	 * @see #contains(PrologTerm...)
-	 * @see #clause(String)
-	 * @see #clause(PrologTerm, PrologTerm...)
 	 */
 	public boolean contains(String goal);
 
@@ -334,13 +293,9 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 * {@link #contains(PrologTerm...)} will be defined like
 	 * {@code query(goal).hasSolution()}
 	 * 
-	 * @param goal
-	 *            goal array to be queried
+	 * @param goal goal array to be queried
 	 * @return true if the given goal has solution
 	 * @since 1.0
-	 * @see #contains(String)
-	 * @see #clause(String)
-	 * @see #clause(PrologTerm, PrologTerm...)
 	 */
 	public boolean contains(PrologTerm... goal);
 
@@ -358,8 +313,8 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 
 	/**
 	 * Define an operator in the wrapped prolog engine with priority priority
-	 * between 0 and 1200 and associativity determined by specifier according to
-	 * the table
+	 * between 0 and 1200 and associativity determined by specifier according to the
+	 * table
 	 * 
 	 * <pre>
 	 * Specifier----Type----Associativity
@@ -373,45 +328,34 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 * </pre>
 	 * 
 	 * @since 1.0
-	 * @see #currentOperators()
-	 * @see #currentOperator(int, String, String)
-	 * @param priority
-	 *            operator priority between 0 and 1200
-	 * @param specifier
-	 *            associative and position of the operator
-	 * @param operator
-	 *            operator to be defined
+	 * @param priority  operator priority between 0 and 1200
+	 * @param specifier associative and position of the operator
+	 * @param operator  operator to be defined
 	 */
 	public void operator(int priority, String specifier, String operator);
 
 	/**
-	 * Check if in the wrapped prolog engine is defined some particular
-	 * predicate specified by your predicate indicator (PI = functor/arity). If
-	 * the predicate is defined by prolog engine built-in support or by user
-	 * definition return true and false in other case. If wrapped engine not
-	 * support a dedicated method the
+	 * Check if in the wrapped prolog engine is defined some particular predicate
+	 * specified by your predicate indicator (PI = functor/arity). If the predicate
+	 * is defined by prolog engine built-in or by user definition return true and
+	 * false in other case. If wrapped engine not support a dedicated method the
 	 * 
 	 * {@link #currentPredicate(String, int)} will be defined like
 	 * 
 	 * {@code currentPredicates().contains(new PredicateIndicator(functor, arity));}
 	 * 
 	 * @since 1.0
-	 * @see #currentPredicates()
-	 * @param functor
-	 *            name of the predicate to be check.
-	 * @param arity
-	 *            argument number of the predicate to be check.
-	 * @return true in functor/arity predicate is defined and false in other
-	 *         case.
+	 * @param functor name of the predicate to be check.
+	 * @param arity   argument number of the predicate to be check.
+	 * @return true in functor/arity predicate is defined and false otherwise.
 	 */
 	public boolean currentPredicate(String functor, int arity);
 
 	/**
 	 * Check if in the wrapped prolog engine is defined some particular operator
-	 * specified by your (Priority, Specifier, Operator). If the operator is
-	 * defined by prolog engine built-in support or by user definition return
-	 * true and false in other case. If wrapped engine not support a dedicated
-	 * method the
+	 * specified by your Priority, Specifier and Operator. If the operator is
+	 * defined by prolog engine built-in or by user definition return true and false
+	 * in other case. If wrapped engine not support a dedicated method the
 	 * 
 	 * {@link #currentOperator(int, String, String)}
 	 * 
@@ -419,40 +363,32 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 * 
 	 * {@code currentOperators().contains(new PrologOperator(priority, specifier, operator));}
 	 * 
+	 * @param priority  operator priority between 0 and 1200
+	 * @param specifier associative and position of the operator
+	 * @param operator  operator to be checked
+	 * @return true if the operator is defined by prolog engine built-in or by user
+	 *         definition, false otherwise.
 	 * @since 1.0
-	 * @see #currentOperators()
-	 * @see #operator(int, String, String)
-	 * @param priority
-	 *            operator priority between 0 and 1200
-	 * @param specifier
-	 *            associative and position of the operator
-	 * @param operator
-	 *            operator to be checked
-	 * @return
 	 */
 	public boolean currentOperator(int priority, String specifier, String operator);
 
 	/**
-	 * Predicate set defined in the wrapped prolog engine. The predicate set
-	 * will be constituted by the supported built-ins predicate in the wrapped
-	 * prolog engine and user defined predicates present in the prolog
-	 * program/database.
+	 * Predicate set defined in the wrapped prolog engine. The predicate set will be
+	 * constituted by the supported built-ins predicate in the wrapped prolog engine
+	 * and user defined predicates present in the prolog program/database.
 	 * 
-	 * @since 1.0
-	 * @see #currentPredicate(String, int)
 	 * @return Defined Predicate Set.
+	 * @since 1.0
 	 */
 	public Set<PrologIndicator> currentPredicates();
 
 	/**
-	 * Operator set defined in the wrapped prolog engine. The operator set will
-	 * be constituted by the supported built-ins operator in the wrapped prolog
-	 * engine and user defined operators present in the prolog program/database.
+	 * Operator set defined in the wrapped prolog engine. The operator set will be
+	 * constituted by the supported built-ins operator in the wrapped prolog engine
+	 * and user defined operators present in the prolog program/database.
 	 * 
+	 * @return defined operator set.
 	 * @since 1.0
-	 * @see #operator(int, String, String)
-	 * @see #currentOperator(int, String, String)
-	 * @return Defined Operator Set.
 	 */
 	public Set<PrologOperator> currentOperators();
 
@@ -462,7 +398,6 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 * Number of clauses in main memory program.
 	 * 
 	 * @return number of clauses in the program.
-	 * @see #isProgramEmpty()
 	 * @since 1.0
 	 */
 	public int getProgramSize();
@@ -473,9 +408,7 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 * support a dedicated method {@link #isProgramEmpty()} will be defined like
 	 * {@code IPrologEngine#getProgramSize()==0;}.
 	 * 
-	 * @return true if the clause number in the program is 0 and false in
-	 *         otherwise.
-	 * @see #getProgramSize()
+	 * @return true if the clause number in the program is 0 and false in otherwise.
 	 * @since 1.0
 	 */
 	public boolean isProgramEmpty();

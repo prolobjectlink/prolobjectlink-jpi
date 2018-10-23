@@ -27,11 +27,10 @@ public interface PrologGoal extends PrologClause, Iterable<PrologClause> {
 	 * Link the current goal with a clause recovery in the program database or
 	 * runtime built-in.
 	 * 
-	 * @param program
-	 *            program for lookup clause that match with the current goal
-	 * @param builtins
-	 *            prolog built-ins for lookup clause that match with the current
-	 *            goal
+	 * @param program  program for lookup clause that match with the current goal
+	 * @param builtins prolog built-ins for lookup clause that match with the
+	 *                 current goal
+	 * @param next     continuation goal to be execute
 	 * @return the current goal linked with the matched clause
 	 * @since 1.0
 	 */

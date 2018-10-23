@@ -60,51 +60,51 @@ public final class PlatformLogger extends AbstractPlatform implements Platform {
 		return new PlatformLogger();
 	}
 
-	public final void log(Object sender, Level level, Object message) {
+	public void log(Object sender, Level level, Object message) {
 		LOGGER.log(level, sender + "\n" + message, (Throwable) null);
 	}
 
-	public final void log(Object sender, Level level, Object message, Throwable throwable) {
+	public void log(Object sender, Level level, Object message, Throwable throwable) {
 		LOGGER.log(level, sender + "\n" + message, throwable);
 	}
 
-	public final void trace(Object sender, Object message) {
+	public void trace(Object sender, Object message) {
 		log(sender, Level.FINEST, message);
 	}
 
-	public final void trace(Object sender, Object message, Throwable throwable) {
+	public void trace(Object sender, Object message, Throwable throwable) {
 		log(sender, Level.FINEST, message, throwable);
 	}
 
-	public final void debug(Object sender, Object message) {
+	public void debug(Object sender, Object message) {
 		log(sender, Level.FINE, message);
 	}
 
-	public final void debug(Object sender, Object message, Throwable throwable) {
+	public void debug(Object sender, Object message, Throwable throwable) {
 		log(sender, Level.FINE, message, throwable);
 	}
 
-	public final void info(Object sender, Object message) {
+	public void info(Object sender, Object message) {
 		log(sender, Level.INFO, message);
 	}
 
-	public final void info(Object sender, Object message, Throwable throwable) {
+	public void info(Object sender, Object message, Throwable throwable) {
 		log(sender, Level.INFO, message, throwable);
 	}
 
-	public final void warn(Object sender, Object message) {
+	public void warn(Object sender, Object message) {
 		log(sender, Level.WARNING, message);
 	}
 
-	public final void warn(Object sender, Object message, Throwable throwable) {
+	public void warn(Object sender, Object message, Throwable throwable) {
 		log(sender, Level.WARNING, message, throwable);
 	}
 
-	public final void error(Object sender, Object message) {
+	public void error(Object sender, Object message) {
 		log(sender, Level.SEVERE, message);
 	}
 
-	public final void error(Object sender, Object message, Throwable throwable) {
+	public void error(Object sender, Object message, Throwable throwable) {
 		log(sender, Level.SEVERE, message, throwable);
 	}
 

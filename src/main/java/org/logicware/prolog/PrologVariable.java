@@ -41,10 +41,10 @@ public interface PrologVariable extends PrologTerm {
 	public void setName(String name);
 
 	/**
-	 * Non negative integer that represent the variable position of the
-	 * Structure where the variable is first time declared.
+	 * Non negative integer that represent the variable position of the Structure
+	 * where the variable is first time declared.
 	 * 
-	 * @return
+	 * @return the variable position
 	 * @since 1.0
 	 */
 	public int getPosition();
