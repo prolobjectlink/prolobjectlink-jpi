@@ -20,6 +20,7 @@
 package org.logicware.prolog;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -67,6 +68,26 @@ public abstract class AbstractEngine extends AbstractPlatform implements PrologE
 		return query(goal).all();
 	}
 
+	public final Set<PrologClause> getProgramClauses() {
+		Set<PrologClause> c = new LinkedHashSet<PrologClause>();
+		for (Iterator<PrologClause> i = iterator(); i.hasNext();) {
+			PrologClause prologClause = i.next();
+			c.add(prologClause);
+		}
+		return c;
+	}
+
+	public final boolean isProgramEmpty() {
+		return getProgramSize() == 0;
+	}
+
+	public final Set<PrologIndicator> currentPredicates() {
+		Set<PrologIndicator> pis = new HashSet<PrologIndicator>();
+		pis.addAll(getPredicates());
+		pis.addAll(getBuiltIns());
+		return pis;
+	}
+
 	protected final <K extends PrologTerm> K toTerm(Object o, Class<K> from) {
 		return provider.toTerm(o, from);
 	}
@@ -106,31 +127,6 @@ public abstract class AbstractEngine extends AbstractPlatform implements PrologE
 			return functor.substring(1, functor.length() - 1);
 		}
 		return functor;
-	}
-
-	public final Set<PrologClause> getProgramClauses() {
-		Set<PrologClause> c = new LinkedHashSet<PrologClause>();
-		for (Iterator<PrologClause> i = iterator(); i.hasNext();) {
-			PrologClause prologClause = i.next();
-			c.add(prologClause);
-		}
-		return c;
-	}
-
-	public final boolean isProgramEmpty() {
-		return getProgramSize() == 0;
-	}
-
-	public final Set<PrologIndicator> getBuiltIns() {
-		Set<PrologIndicator> pis = currentPredicates();
-		Set<PrologClause> clauses = getProgramClauses();
-		for (PrologClause prologClause : clauses) {
-			PrologIndicator pi = prologClause.getPrologIndicator();
-			if (pis.contains(pi)) {
-				pis.remove(pi);
-			}
-		}
-		return pis;
 	}
 
 	@Override

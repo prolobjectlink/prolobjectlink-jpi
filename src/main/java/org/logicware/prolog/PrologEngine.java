@@ -413,6 +413,8 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 */
 	public boolean isProgramEmpty();
 
+	public Set<PrologIndicator> getPredicates();
+
 	public Set<PrologIndicator> getBuiltIns();
 
 	public PrologProvider getProvider();
