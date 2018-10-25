@@ -48,24 +48,24 @@ public abstract class AbstractEngine extends AbstractPlatform implements PrologE
 		return query(goal).hasSolution();
 	}
 
-	public final boolean contains(PrologTerm... goal) {
-		return query(goal).hasSolution();
+	public final boolean contains(PrologTerm goal, PrologTerm... goals) {
+		return query(goal, goals).hasSolution();
 	}
 
 	public final Map<String, PrologTerm> queryOne(String goal) {
 		return query(goal).oneVariablesSolution();
 	}
 
-	public final Map<String, PrologTerm> queryOne(PrologTerm... goal) {
-		return query(goal).oneVariablesSolution();
+	public final Map<String, PrologTerm> queryOne(PrologTerm goal, PrologTerm... goals) {
+		return query(goal, goals).oneVariablesSolution();
 	}
 
 	public final List<Map<String, PrologTerm>> queryAll(String goal) {
 		return query(goal).all();
 	}
 
-	public final List<Map<String, PrologTerm>> queryAll(PrologTerm... goal) {
-		return query(goal).all();
+	public final List<Map<String, PrologTerm>> queryAll(PrologTerm goal, PrologTerm... goals) {
+		return query(goal, goals).all();
 	}
 
 	public final Set<PrologClause> getProgramClauses() {

@@ -297,19 +297,19 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 * @return true if the given goal has solution
 	 * @since 1.0
 	 */
-	public boolean contains(PrologTerm... goal);
+	public boolean contains(PrologTerm goal, PrologTerm... goals);
 
 	public PrologQuery query(String stringQuery);
 
-	public PrologQuery query(PrologTerm... terms);
+	public PrologQuery query(PrologTerm term, PrologTerm... terms);
 
 	public Map<String, PrologTerm> queryOne(String goal);
 
-	public Map<String, PrologTerm> queryOne(PrologTerm... goal);
+	public Map<String, PrologTerm> queryOne(PrologTerm term, PrologTerm... goal);
 
 	public List<Map<String, PrologTerm>> queryAll(String goal);
 
-	public List<Map<String, PrologTerm>> queryAll(PrologTerm... goal);
+	public List<Map<String, PrologTerm>> queryAll(PrologTerm term, PrologTerm... goal);
 
 	/**
 	 * Define an operator in the wrapped prolog engine with priority priority
