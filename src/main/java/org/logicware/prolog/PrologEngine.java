@@ -299,7 +299,9 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 */
 	public boolean contains(PrologTerm goal, PrologTerm... goals);
 
-	public PrologQuery query(String stringQuery);
+	public PrologQuery query(String query);
+
+	PrologQuery query(PrologTerm[] terms);
 
 	public PrologQuery query(PrologTerm term, PrologTerm... terms);
 
