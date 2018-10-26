@@ -17,12 +17,12 @@
 	outputName="${project.artifactId}">
 
 	<meta>
-		<title>Maven PDF Plugin</title>
-		<author>The Apache Maven Project</author>
+		<title>Prolobjectlink Java Prolog Interface</title>
+		<author>Logicware Project</author>
 	</meta>
 
 	<toc name="Table of Contents">
-		<item name="History" ref="history.apt" />
+		<item name="History" ref="changes.apt.vm" />
 		<item name="Introduction" ref="index.apt.vm" />
 		<item name="FAQ" ref="faq.fml" />
 	</toc>
