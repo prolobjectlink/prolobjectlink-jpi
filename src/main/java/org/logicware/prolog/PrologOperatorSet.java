@@ -21,7 +21,7 @@ package org.logicware.prolog;
 
 import java.util.Set;
 
-public interface PrologOperatorSet extends Set<OperatorEntry> {
+public interface PrologOperatorSet extends Set<PrologOperator> {
 
 	public boolean currentOp(String opreator);
 
