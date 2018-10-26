@@ -277,7 +277,6 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 * given goal have solution using the resolution engine mechanism. If wrapped
 	 * engine not support a dedicated method the
 	 * 
-	 * {@link #contains(String)} will be defined like
 	 * {@code query(goal).hasSolution()}
 	 * 
 	 * @param goal goal to be queried
@@ -290,7 +289,6 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 * Check if the given goal array have solution using the resolution engine
 	 * mechanism. If wrapped engine not support a dedicated method the
 	 * 
-	 * {@link #contains(PrologTerm...)} will be defined like
 	 * {@code query(goal).hasSolution()}
 	 * 
 	 * @param goal goal array to be queried
