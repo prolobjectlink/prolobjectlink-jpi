@@ -19,17 +19,22 @@
  */
 package org.logicware.prolog;
 
-public abstract class AbstractTerm extends AbstractPrologWrapper implements PrologTerm {
+import java.util.Map;
+
+import org.logicware.AbstractWrapper;
+
+public abstract class AbstractTerm extends AbstractWrapper implements PrologTerm {
 
 	protected int type;
+	protected final PrologProvider provider;
 
 	public AbstractTerm(PrologProvider provider) {
 		this(0, provider);
 	}
 
 	public AbstractTerm(int type, PrologProvider provider) {
-		super(provider);
 		this.type = type;
+		this.provider = provider;
 	}
 
 	protected final void checkIndex(int index) {
@@ -49,6 +54,40 @@ public abstract class AbstractTerm extends AbstractPrologWrapper implements Prol
 			return functor.substring(1, functor.length() - 1);
 		}
 		return functor;
+	}
+
+	protected final <K extends PrologTerm> K toTerm(Object o, Class<K> from) {
+		return provider.toTerm(o, from);
+	}
+
+	protected final <K extends PrologTerm> K[] toTermArray(Object[] os, Class<K[]> from) {
+		return provider.toTermArray(os, from);
+	}
+
+	protected final <K extends PrologTerm> K[][] toTermTable(Object[][] oss, Class<K[][]> from) {
+		return provider.toTermMatrix(oss, from);
+	}
+
+	protected final <K extends PrologTerm, V extends Object> Map<String, PrologTerm> toTermMap(Map<String, V> map,
+			Class<K> from) {
+		return provider.toTermMap(map, from);
+	}
+
+	protected final <K extends PrologTerm, V extends Object> Map<String, PrologTerm>[] toTermMapArray(
+			Map<String, V>[] map, Class<K> from) {
+		return provider.toTermMapArray(map, from);
+	}
+
+	protected final <K> K fromTerm(PrologTerm term, Class<K> to) {
+		return provider.fromTerm(term, to);
+	}
+
+	protected final <K> K[] fromTermArray(PrologTerm[] terms, Class<K[]> to) {
+		return provider.fromTermArray(terms, to);
+	}
+
+	protected final <K> K fromTerm(PrologTerm head, PrologTerm[] body, Class<K> to) {
+		return provider.fromTerm(head, body, to);
 	}
 
 	public PrologTerm getArgument(int index) {

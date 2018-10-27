@@ -29,13 +29,15 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 
 import org.logicware.AbstractIterator;
+import org.logicware.AbstractPlatform;
 
-public abstract class AbstractEngine extends AbstractPrologPlatform implements PrologEngine {
+public abstract class AbstractEngine extends AbstractPlatform implements PrologEngine {
 
+	protected final PrologProvider provider;
 	protected static final String UNKNOW_VERSION = "unknow";
 
 	protected AbstractEngine(PrologProvider provider) {
-		super(provider);
+		this.provider = provider;
 	}
 
 	public final PrologProvider getProvider() {
@@ -84,6 +86,40 @@ public abstract class AbstractEngine extends AbstractPrologPlatform implements P
 		pis.addAll(getPredicates());
 		pis.addAll(getBuiltIns());
 		return pis;
+	}
+
+	protected final <K extends PrologTerm> K toTerm(Object o, Class<K> from) {
+		return provider.toTerm(o, from);
+	}
+
+	protected final <K extends PrologTerm> K[] toTermArray(Object[] os, Class<K[]> from) {
+		return provider.toTermArray(os, from);
+	}
+
+	protected final <K extends PrologTerm> K[][] toTermMatrix(Object[][] oss, Class<K[][]> from) {
+		return provider.toTermMatrix(oss, from);
+	}
+
+	protected final <K extends PrologTerm, V extends Object> Map<String, PrologTerm> toTermMap(Map<String, V> map,
+			Class<K> from) {
+		return provider.toTermMap(map, from);
+	}
+
+	protected final <K extends PrologTerm, V extends Object> Map<String, PrologTerm>[] toTermMapArray(
+			Map<String, V>[] map, Class<K> from) {
+		return provider.toTermMapArray(map, from);
+	}
+
+	protected final <K> K fromTerm(PrologTerm term, Class<K> to) {
+		return provider.fromTerm(term, to);
+	}
+
+	protected final <K> K[] fromTermArray(PrologTerm[] terms, Class<K[]> to) {
+		return provider.fromTermArray(terms, to);
+	}
+
+	protected final <K> K fromTerm(PrologTerm head, PrologTerm[] body, Class<K> to) {
+		return provider.fromTerm(head, body, to);
 	}
 
 	protected final String removeQuoted(String functor) {
