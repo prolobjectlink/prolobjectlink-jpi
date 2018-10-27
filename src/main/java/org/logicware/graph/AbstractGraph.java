@@ -82,6 +82,20 @@ public abstract class AbstractGraph<V, E> implements Graph<V, E> {
 		return vertex;
 	}
 
+	public final void removeEdges(GraphVertex<V> vertex) {
+		GenericGraphVertex v = vertex.unwrap(GenericGraphVertex.class);
+		for (GraphEdge<E> e : new ArrayList<GraphEdge<E>>(v.outgoing.values())) {
+			if (e.getFrom() == v) {
+				v.outgoing.remove(e.getTo());
+			}
+		}
+		for (GraphEdge<E> e : new ArrayList<GraphEdge<E>>(v.incoming.values())) {
+			if (e.getTo() == v) {
+				v.incoming.remove(e.getFrom());
+			}
+		}
+	}
+
 	public final GraphEdge<E> getEdge(Object o) {
 		for (GraphEdge<E> edge : edges) {
 			if (edge.getElement().equals(o)) {
@@ -217,17 +231,7 @@ public abstract class AbstractGraph<V, E> implements Graph<V, E> {
 	public final void clear() {
 		for (GraphVertex<V> vertex : new ArrayList<GraphVertex<V>>(vertices)) {
 			removeVertex(vertex);
-			GenericGraphVertex v = vertex.unwrap(GenericGraphVertex.class);
-			for (GraphEdge<E> e : new ArrayList<GraphEdge<E>>(v.outgoing.values())) {
-				if (e.getFrom() == v) {
-					v.outgoing.remove(e.getTo());
-				}
-			}
-			for (GraphEdge<E> e : new ArrayList<GraphEdge<E>>(v.incoming.values())) {
-				if (e.getTo() == v) {
-					v.incoming.remove(e.getFrom());
-				}
-			}
+			removeEdges(vertex);
 		}
 		vertices.clear();
 		edges.clear();

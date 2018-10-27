@@ -136,7 +136,7 @@
 					<failOnMissingHeader>true</failOnMissingHeader>
 					<acceptPomPackaging>true</acceptPomPackaging>
 					<licenseName>apache_v2</licenseName>
-					<dryRun>true</dryRun>
+					<!-- <dryRun>true</dryRun> -->
 					<addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
 					<roots>
 						<root>src/main</root>

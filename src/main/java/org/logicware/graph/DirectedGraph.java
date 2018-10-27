@@ -84,19 +84,7 @@ public class DirectedGraph<V, E> extends AbstractGraph<V, E> implements Graph<V,
 
 	public final void removeVertex(GraphVertex<V> vertex) {
 		vertices.remove(vertex);
-		if (vertex.isWrappedFor(GenericGraphVertex.class)) {
-			GenericGraphVertex v = vertex.unwrap(GenericGraphVertex.class);
-			for (GraphEdge<E> e : new ArrayList<GraphEdge<E>>(v.outgoing.values())) {
-				if (e.getFrom() == v) {
-					v.outgoing.remove(e.getTo());
-				}
-			}
-			for (GraphEdge<E> e : new ArrayList<GraphEdge<E>>(v.incoming.values())) {
-				if (e.getTo() == v) {
-					v.incoming.remove(e.getFrom());
-				}
-			}
-		}
+		removeEdges(vertex);
 	}
 
 	public final Iterable<GraphEdge<E>> outEdges(GraphVertex<V> vertex) {

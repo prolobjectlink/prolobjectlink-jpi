@@ -27,22 +27,9 @@ import java.util.Map;
  * 
  * @author Jose Zalacain
  * @since 1.0
- * @param <T>
- *            Native Term Representation
+ * @param <T> Native Term Representation
  */
-public interface PrologConverter<T> {
-
-	public <K extends PrologTerm, V extends Object> Map<String, PrologTerm>[] toTermMapArray(Map<String, V>[] map,
-			Class<K> from);
-
-	public <K extends PrologTerm, V extends Object> Map<String, PrologTerm> toTermMap(Map<String, V> map,
-			Class<K> from);
-
-	public <K extends PrologTerm> K[][] toTermMatrix(Object[][] oss, Class<K[][]> from);
-
-	public <K extends PrologTerm> K[] toTermArray(Object[] os, Class<K[]> from);
-
-	public <K extends PrologTerm> K toTerm(Object o, Class<K> from);
+public interface PrologConverter<T> extends PrologWrapper {
 
 	public Map<String, PrologTerm>[] toTermMapArray(Map<String, T>[] map);
 
@@ -59,12 +46,6 @@ public interface PrologConverter<T> {
 	public T[] fromTermArray(PrologTerm[] terms);
 
 	public T fromTerm(PrologTerm head, PrologTerm[] body);
-
-	public <K> K fromTerm(PrologTerm term, Class<K> to);
-
-	public <K> K[] fromTermArray(PrologTerm[] terms, Class<K[]> to);
-
-	public <K> K fromTerm(PrologTerm head, PrologTerm[] body, Class<K> to);
 
 	public Class<T> getGenericClass();
 

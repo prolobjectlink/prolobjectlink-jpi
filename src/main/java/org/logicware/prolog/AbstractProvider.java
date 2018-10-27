@@ -21,7 +21,9 @@ package org.logicware.prolog;
 
 import java.util.Map;
 
-public abstract class AbstractProvider implements PrologProvider {
+import org.logicware.AbstractWrapper;
+
+public abstract class AbstractProvider extends AbstractWrapper implements PrologProvider {
 
 	protected final PrologConverter<?> converter;
 

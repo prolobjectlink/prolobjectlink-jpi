@@ -27,11 +27,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.logicware.AbstractWrapper;
 import org.logicware.RuntimeError;
 import org.logicware.logging.LoggerConstants;
 import org.logicware.logging.LoggerUtils;
 
-public abstract class AbstractConverter<T> implements PrologConverter<T> {
+public abstract class AbstractConverter<T> extends AbstractWrapper implements PrologConverter<T> {
 
 	protected static final String SIMPLE_ATOM_REGEX = ".|[a-z][A-Za-z0-9_]*";
 	private static final String IMPOSIBLE_CONVERT = "Impossible convert '";

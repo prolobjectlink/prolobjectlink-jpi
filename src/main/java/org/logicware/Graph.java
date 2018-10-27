@@ -79,4 +79,6 @@ public interface Graph<V, E> {
 
 	boolean isEmpty();
 
+	void removeEdges(GraphVertex<V> vertex);
+
 }
