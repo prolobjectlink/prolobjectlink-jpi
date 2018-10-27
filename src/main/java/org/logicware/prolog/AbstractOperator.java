@@ -19,37 +19,37 @@
  */
 package org.logicware.prolog;
 
-public final class OperatorEntry implements PrologOperator {
+public abstract class AbstractOperator implements PrologOperator {
 
 	private final int priority;
 	private final String specifier;
 	private final String operator;
 
-	public OperatorEntry(int priority, String specifier, String operator) {
+	public AbstractOperator(int priority, String specifier, String operator) {
 		this.priority = priority;
 		this.specifier = specifier;
 		this.operator = operator;
 	}
 
-	public int getPriority() {
+	public final int getPriority() {
 		return priority;
 	}
 
-	public String getSpecifier() {
+	public final String getSpecifier() {
 		return specifier;
 	}
 
-	public String getOperator() {
+	public final String getOperator() {
 		return operator;
 	}
 
 	@Override
-	public String toString() {
+	public final String toString() {
 		return "(" + priority + "," + specifier + "," + operator + ")";
 	}
 
 	@Override
-	public int hashCode() {
+	public final int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((operator == null) ? 0 : operator.hashCode());
@@ -59,14 +59,14 @@ public final class OperatorEntry implements PrologOperator {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public final boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		OperatorEntry other = (OperatorEntry) obj;
+		AbstractOperator other = (AbstractOperator) obj;
 		if (operator == null) {
 			if (other.operator != null)
 				return false;
