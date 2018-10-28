@@ -24,9 +24,9 @@ import java.lang.reflect.Constructor;
 import org.logicware.logging.LoggerConstants;
 import org.logicware.logging.LoggerUtils;
 
-public final class PrologFactory {
+public final class Prolog {
 
-	private PrologFactory() {
+	private Prolog() {
 	}
 
 	public static PrologProvider newProvider(String providerClassName) {
@@ -34,7 +34,7 @@ public final class PrologFactory {
 		try {
 			provider = newProvider(Class.forName(providerClassName));
 		} catch (ClassNotFoundException e) {
-			LoggerUtils.error(PrologFactory.class, LoggerConstants.CLASS_NOT_FOUND, e);
+			LoggerUtils.error(Prolog.class, LoggerConstants.CLASS_NOT_FOUND, e);
 		}
 		return provider;
 	}
@@ -47,13 +47,13 @@ public final class PrologFactory {
 			provider = (PrologProvider) providerClass.newInstance();
 			constructor.setAccessible(false);
 		} catch (InstantiationException e) {
-			LoggerUtils.error(PrologFactory.class, LoggerConstants.INSTANTIATION, e);
+			LoggerUtils.error(Prolog.class, LoggerConstants.INSTANTIATION, e);
 		} catch (IllegalAccessException e) {
-			LoggerUtils.error(PrologFactory.class, LoggerConstants.ILLEGAL_ACCESS, e);
+			LoggerUtils.error(Prolog.class, LoggerConstants.ILLEGAL_ACCESS, e);
 		} catch (NoSuchMethodException e) {
-			LoggerUtils.error(PrologFactory.class, LoggerConstants.NO_SUCH_METHOD, e);
+			LoggerUtils.error(Prolog.class, LoggerConstants.NO_SUCH_METHOD, e);
 		} catch (SecurityException e) {
-			LoggerUtils.error(PrologFactory.class, LoggerConstants.SECURITY, e);
+			LoggerUtils.error(Prolog.class, LoggerConstants.SECURITY, e);
 		}
 		return provider;
 	}
