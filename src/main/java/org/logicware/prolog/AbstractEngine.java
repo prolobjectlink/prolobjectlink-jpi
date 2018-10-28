@@ -70,8 +70,7 @@ public abstract class AbstractEngine extends AbstractPlatform implements PrologE
 
 	public final Set<PrologClause> getProgramClauses() {
 		Set<PrologClause> c = new LinkedHashSet<PrologClause>();
-		for (Iterator<PrologClause> i = iterator(); i.hasNext();) {
-			PrologClause prologClause = i.next();
+		for (PrologClause prologClause : this) {
 			c.add(prologClause);
 		}
 		return c;
