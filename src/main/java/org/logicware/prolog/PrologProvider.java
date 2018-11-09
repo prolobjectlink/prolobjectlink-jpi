@@ -19,7 +19,7 @@
  */
 package org.logicware.prolog;
 
-public interface PrologProvider extends PrologWrapper {
+public interface PrologProvider extends PrologParser {
 
 	/**
 	 * True if wrapped engine implement ISO Prolog and false in other case
@@ -42,16 +42,6 @@ public interface PrologProvider extends PrologWrapper {
 	public PrologTerm prologFalse();
 
 	public PrologTerm prologEmpty();
-
-	// term parser helpers
-
-	public PrologTerm parsePrologTerm(String term);
-
-	public PrologTerm[] parsePrologTerms(String stringTerms);
-
-	public PrologList parsePrologList(String stringList);
-
-	public PrologStructure parsePrologStructure(String stringStructure);
 
 	// engine
 
@@ -172,5 +162,7 @@ public interface PrologProvider extends PrologWrapper {
 	public PrologTerm newStructure(PrologTerm left, String operator, PrologTerm right);
 
 	public <K> PrologConverter<K> getConverter();
+	
+	public PrologParser getParser();
 
 }

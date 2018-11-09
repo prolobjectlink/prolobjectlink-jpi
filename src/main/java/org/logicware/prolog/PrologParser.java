@@ -17,10 +17,23 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware;
+package org.logicware.prolog;
 
-public enum Direction {
+import java.io.File;
+import java.util.Set;
 
-	IN, OUT, BOTH
+public interface PrologParser extends PrologWrapper {
+
+	public PrologTerm parseTerm(String term);
+
+	public PrologTerm[] parseTerms(String stringTerms);
+
+	public PrologList parseList(String stringList);
+
+	public PrologStructure parseStructure(String stringStructure);
+
+	public Set<PrologClause> parseProgram(String file);
+
+	public Set<PrologClause> parseProgram(File in);
 
 }

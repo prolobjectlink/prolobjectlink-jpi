@@ -26,7 +26,7 @@ public final class ListExpectedError extends RuntimeError {
 	private static final long serialVersionUID = -3064952286859633255L;
 
 	public ListExpectedError(Object term) {
-		super("The expected term is not an atom : " + term);
+		super("The expected term is not a list : " + term);
 	}
 
 }

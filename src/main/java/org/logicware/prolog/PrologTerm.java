@@ -19,6 +19,8 @@
  */
 package org.logicware.prolog;
 
+import java.util.Map;
+
 import org.logicware.Wrapper;
 
 /**
@@ -216,6 +218,14 @@ public interface PrologTerm extends Wrapper, Comparable<PrologTerm> {
 	 * @since 1.0
 	 */
 	public boolean unify(PrologTerm term);
+
+	/**
+	 * Match to other term returning list of substitutions.
+	 * 
+	 * @param term - term to match check
+	 * @return list of substitutions.
+	 */
+	public Map<String, PrologTerm> match(PrologTerm term);
 
 	public int hashCode();
 

@@ -19,7 +19,9 @@
  */
 package org.logicware.prolog;
 
+import java.io.File;
 import java.util.Map;
+import java.util.Set;
 
 import org.logicware.AbstractWrapper;
 
@@ -31,16 +33,24 @@ public abstract class AbstractProvider extends AbstractWrapper implements Prolog
 		this.converter = converter;
 	}
 
-	public final PrologList parsePrologList(String stringList) {
-		PrologTerm term = parsePrologTerm(stringList);
+	public final PrologList parseList(String stringList) {
+		PrologTerm term = parseTerm(stringList);
 		checkListType(term);
 		return (PrologList) term;
 	}
 
-	public final PrologStructure parsePrologStructure(String stringStructure) {
-		PrologTerm term = parsePrologTerm(stringStructure);
+	public final PrologStructure parseStructure(String stringStructure) {
+		PrologTerm term = parseTerm(stringStructure);
 		checkStructureType(term);
 		return (PrologStructure) term;
+	}
+
+	public final Set<PrologClause> parseProgram(String file) {
+		return newEngine(file).getProgramClauses();
+	}
+
+	public final Set<PrologClause> parseProgram(File in) {
+		return parseProgram(in.getAbsolutePath());
 	}
 
 	public PrologEngine newEngine(String path) {
@@ -101,6 +111,10 @@ public abstract class AbstractProvider extends AbstractWrapper implements Prolog
 
 	public final <K> K fromTerm(PrologTerm head, PrologTerm[] body, Class<K> to) {
 		return converter.fromTerm(head, body, to);
+	}
+
+	public PrologParser getParser() {
+		return this;
 	}
 
 	@Override
