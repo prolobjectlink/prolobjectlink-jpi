@@ -191,8 +191,26 @@ public interface PrologTerm extends Wrapper, Comparable<PrologTerm> {
 
 	public PrologTerm getRight();
 
+	/**
+	 * Term arity. The arity of a term is a argument number for compound terms. If a
+	 * the current term is not a compound term, then an exception is raised
+	 * indicating a violation.
+	 * 
+	 * @return term arity for compound terms or an exception is raised if the term
+	 *         is not a compound term.
+	 * @since 1.0
+	 */
 	public int getArity();
 
+	/**
+	 * Term functor.The functor of a term is a name for compound terms. If a the
+	 * current term is not a compound term, then an exception is raised indicating a
+	 * violation.
+	 * 
+	 * @return term functor for compound terms or an exception is raised if the term
+	 *         is not a compound term.
+	 * @since 1.0
+	 */
 	public String getFunctor();
 
 	public PrologTerm[] getArguments();
@@ -220,19 +238,26 @@ public interface PrologTerm extends Wrapper, Comparable<PrologTerm> {
 	public boolean unify(PrologTerm term);
 
 	/**
-	 * Match to other term returning list of substitutions.
+	 * Unify with other term returning a substitutions map with variable name as key
+	 * and instance variable term as value. In other words compute the Most General
+	 * Unifier (MGU) for the current term and the given parameter term. The
+	 * substitution map for not unification terms is an empty map. The substitutions
+	 * instance terms depend of prolog implementation data type such as for two
+	 * different prolog engines the resulting substitutions map are not equals
+	 * necessary.
 	 * 
 	 * @param term - term to match check
 	 * @return list of substitutions.
+	 * @since 1.0
 	 */
 	public Map<String, PrologTerm> match(PrologTerm term);
+
+	public PrologProvider getProvider();
 
 	public int hashCode();
 
 	public boolean equals(Object obj);
 
 	public String toString();
-
-	public PrologProvider getProvider();
 
 }
