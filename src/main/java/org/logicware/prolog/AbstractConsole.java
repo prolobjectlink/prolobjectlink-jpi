@@ -1,6 +1,6 @@
 /*
  * #%L
- * prolobjectlink-jcl
+ * prolobjectlink-jpi
  * %%
  * Copyright (C) 2012 - 2018 Logicware Project
  * %%
@@ -19,9 +19,110 @@
  */
 package org.logicware.prolog;
 
-import org.logicware.AbstractPlatform;
-import org.logicware.Platform;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Properties;
 
-public class AbstractConsole extends AbstractPlatform implements Platform {
+import org.logicware.AbstractPlatform;
+import org.logicware.logging.LoggerConstants;
+import org.logicware.logging.LoggerUtils;
+
+public abstract class AbstractConsole extends AbstractPlatform implements PrologConsole {
+
+	// default input stream
+	private final InputStreamReader reader = new InputStreamReader(System.in);
+
+	// buffered reader for read from standard input stream
+	private final BufferedReader stdin = new BufferedReader(reader);
+
+	// standard output stream
+	private final PrintStream stdout = System.out;
+
+	//
+	private final PrologEngine engine;
+
+	public AbstractConsole(PrologProvider provider) {
+		this.engine = provider.newEngine();
+	}
+
+	public final void run(String[] args) {
+
+		String input;
+
+		stdout.print(engine.getName());
+		stdout.print(" v");
+		stdout.println(engine.getVersion());
+		stdout.println(engine.getLicense());
+		stdout.println(engine.getJavaName());
+		stdout.println(engine.getJavaVendor());
+		stdout.println(engine.getJavaVersion());
+//		stdout.println(engine.getCopyright());
+//		stdout.println(engine.getPoweredBy());
+		stdout.println();
+
+		try {
+
+			if (args.length > 0) {
+				engine.consult(args[0]);
+			}
+
+			stdout.print("?- ");
+			stdout.flush();
+			input = stdin.readLine();
+
+			while (true) {
+
+				if (!input.equals("")) {
+					stdout.println();
+
+					if (input.lastIndexOf('.') == input.length() - 1) {
+						input = input.substring(0, input.length() - 1);
+					}
+
+					PrologQuery query = engine.query(input);
+					if (query.hasSolution()) {
+						Map<String, PrologTerm> s = query.oneVariablesSolution();
+						for (Entry<String, PrologTerm> e : s.entrySet()) {
+							stdout.println(e.getKey() + " = " + e.getValue());
+						}
+						stdout.println("Yes.");
+					}
+
+//					else if (engine.hasCause()) {
+//						stdout.println(engine.getCause());
+//					} 
+
+					else {
+						stdout.println("No.");
+					}
+
+					stdout.println();
+//					stdout.println("Stack Size: " + query.stack.size());
+//					stdout.println("Backtracks: " + query.getBacktracks());
+//					stdout.println("Inferences: " + query.getInferences());
+//					stdout.println("Unifications: " + query.getUnifications());
+//					stdout.println("Query time: " + query.getCputime() + " seconds.");
+//					stdout.println("      LIPS: " + query.getInferences() / query.getCputime());
+					stdout.println();
+
+				} else {
+					stdout.println("Emty query");
+					stdout.println();
+				}
+
+				stdout.print("?- ");
+				stdout.flush();
+				input = stdin.readLine();
+
+			}
+
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		}
+	}
 
 }

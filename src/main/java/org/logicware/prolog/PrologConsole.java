@@ -1,6 +1,6 @@
 /*
  * #%L
- * prolobjectlink-jcl
+ * prolobjectlink-jpi
  * %%
  * Copyright (C) 2012 - 2018 Logicware Project
  * %%
@@ -22,5 +22,7 @@ package org.logicware.prolog;
 import org.logicware.Platform;
 
 public interface PrologConsole extends Platform {
+
+	public void run(String[] args);
 
 }
