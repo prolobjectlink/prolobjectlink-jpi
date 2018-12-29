@@ -37,8 +37,6 @@ public interface PrologParser extends PrologWrapper {
 
 	public Set<PrologClause> parseProgram(String file);
 
-	public Set<PrologClause> parseProgram(Reader in);
-
 	public Set<PrologClause> parseProgram(File in);
 
 }
