@@ -22,10 +22,19 @@
 			</includes>
 		</fileSet>
 
-		<!-- documentation and api documentation -->
+		<!-- api documentation -->
 		<fileSet>
 			<directory>${project.build.directory}/apidocs</directory>
 			<outputDirectory>doc/apidocs</outputDirectory>
+		</fileSet>
+		
+		<!-- documentation pdf -->
+		<fileSet>
+			<directory>${project.build.directory}/site</directory>
+			<outputDirectory>doc</outputDirectory>
+			<includes>
+				<include>${project.name}.pdf</include>
+			</includes>
 		</fileSet>
 
 		<!-- configuration properties folder -->
