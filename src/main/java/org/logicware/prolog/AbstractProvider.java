@@ -20,6 +20,7 @@
 package org.logicware.prolog;
 
 import java.io.File;
+import java.io.Reader;
 import java.util.Map;
 import java.util.Set;
 
@@ -39,6 +40,11 @@ public abstract class AbstractProvider extends AbstractWrapper implements Prolog
 		return (PrologList) term;
 	}
 
+	public final PrologClause parseClause(String clause) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public final PrologStructure parseStructure(String stringStructure) {
 		PrologTerm term = parseTerm(stringStructure);
 		checkStructureType(term);
@@ -47,6 +53,11 @@ public abstract class AbstractProvider extends AbstractWrapper implements Prolog
 
 	public final Set<PrologClause> parseProgram(String file) {
 		return newEngine(file).getProgramClauses();
+	}
+
+	public final Set<PrologClause> parseProgram(Reader in) {
+		// TODO
+		return null;
 	}
 
 	public final Set<PrologClause> parseProgram(File in) {

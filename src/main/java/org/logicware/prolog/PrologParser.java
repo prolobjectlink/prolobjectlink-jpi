@@ -20,6 +20,7 @@
 package org.logicware.prolog;
 
 import java.io.File;
+import java.io.Reader;
 import java.util.Set;
 
 public interface PrologParser extends PrologWrapper {
@@ -32,7 +33,11 @@ public interface PrologParser extends PrologWrapper {
 
 	public PrologStructure parseStructure(String stringStructure);
 
+	public PrologClause parseClause(String clause);
+
 	public Set<PrologClause> parseProgram(String file);
+
+	public Set<PrologClause> parseProgram(Reader in);
 
 	public Set<PrologClause> parseProgram(File in);
 
