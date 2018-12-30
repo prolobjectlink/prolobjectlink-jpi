@@ -22,7 +22,7 @@
 	</meta>
 
 	<toc name="Table of Contents">
-		<item name="What Is" ref="whatis.apt.vm" />
+		<item name="What Is ${project.name}" ref="whatis.apt.vm" />
 		<item name="Overview" ref="overview.apt.vm" />
 		<item name="Getting Started" ref="started.apt.vm" />
 		<item name="Built-in Predicates" ref="builtins.apt.vm" />
