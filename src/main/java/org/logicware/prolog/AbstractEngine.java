@@ -129,6 +129,11 @@ public abstract class AbstractEngine extends AbstractPlatform implements PrologE
 	}
 
 	@Override
+	public final String toString() {
+		return getName() + " " + getVersion();
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
