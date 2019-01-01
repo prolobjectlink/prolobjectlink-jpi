@@ -20,9 +20,11 @@
 package org.logicware.prolog;
 
 import java.io.BufferedReader;
+import java.io.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
@@ -40,7 +42,7 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 	private final BufferedReader stdin = new BufferedReader(reader);
 
 	// standard output stream
-	private final PrintStream stdout = System.out;
+	private final PrintWriter stdout = System.console().writer();
 
 	//
 	private final PrologEngine engine;
@@ -53,6 +55,8 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 
 		String input;
 
+		stdout.print("Prolobjectlink");
+		stdout.print("WorkLogic (C).");
 		stdout.print(engine.getName());
 		stdout.print(" v");
 		stdout.println(engine.getVersion());
@@ -60,8 +64,6 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 		stdout.println(engine.getJavaName());
 		stdout.println(engine.getJavaVendor());
 		stdout.println(engine.getJavaVersion());
-//		stdout.println(engine.getCopyright());
-//		stdout.println(engine.getPoweredBy());
 		stdout.println();
 
 		try {
@@ -101,12 +103,6 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 					}
 
 					stdout.println();
-//					stdout.println("Stack Size: " + query.stack.size());
-//					stdout.println("Backtracks: " + query.getBacktracks());
-//					stdout.println("Inferences: " + query.getInferences());
-//					stdout.println("Unifications: " + query.getUnifications());
-//					stdout.println("Query time: " + query.getCputime() + " seconds.");
-//					stdout.println("      LIPS: " + query.getInferences() / query.getCputime());
 					stdout.println();
 
 				} else {
