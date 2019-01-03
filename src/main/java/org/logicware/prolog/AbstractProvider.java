@@ -53,7 +53,6 @@ public abstract class AbstractProvider extends AbstractWrapper implements Prolog
 		return newEngine(file).getProgramClauses();
 	}
 
-
 	public final Set<PrologClause> parseProgram(File in) {
 		return parseProgram(in.getAbsolutePath());
 	}
@@ -116,6 +115,18 @@ public abstract class AbstractProvider extends AbstractWrapper implements Prolog
 
 	public final <K> K fromTerm(PrologTerm head, PrologTerm[] body, Class<K> to) {
 		return converter.fromTerm(head, body, to);
+	}
+
+	public final DefaultQueryBuilder newQueryBuilder() {
+		return new DefaultQueryBuilder(this);
+	}
+
+	public final DefaultClauseBuilder newClauseBuilder() {
+		return new DefaultClauseBuilder(this);
+	}
+
+	public final DefaultClauseBuilder newClauseBuilder(String file) {
+		return new DefaultClauseBuilder(newEngine(file));
 	}
 
 	public PrologParser getParser() {

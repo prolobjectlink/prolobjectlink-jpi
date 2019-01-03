@@ -87,6 +87,14 @@ public abstract class AbstractEngine extends AbstractPlatform implements PrologE
 		return pis;
 	}
 
+	public final DefaultQueryBuilder newQueryBuilder() {
+		return new DefaultQueryBuilder(this);
+	}
+
+	public final DefaultClauseBuilder newClauseBuilder() {
+		return new DefaultClauseBuilder(this);
+	}
+
 	protected final <K extends PrologTerm> K toTerm(Object o, Class<K> from) {
 		return provider.toTerm(o, from);
 	}

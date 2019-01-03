@@ -24,29 +24,63 @@ package org.logicware.prolog;
  * @author Jose Zalacain
  * @since 1.0
  */
-public abstract class AbstractBuilder implements PrologBuilder {
+public abstract class AbstractDefaultBuilder implements PrologBuilder {
 
 	protected final PrologEngine engine;
 	protected final StringBuilder builder;
+	protected final PrologProvider provider;
 
-	public AbstractBuilder(PrologEngine engine) {
+	public AbstractDefaultBuilder(PrologEngine engine) {
+		this.provider = engine.getProvider();
 		this.builder = new StringBuilder();
 		this.engine = engine;
 	}
 
-	public PrologEngine getEngine() {
+	public AbstractDefaultBuilder(PrologProvider provider) {
+		this.engine = provider.newEngine();
+		this.builder = new StringBuilder();
+		this.provider = provider;
+	}
+
+	public AbstractDefaultBuilder(PrologProvider provider, String file) {
+		this.engine = provider.newEngine(file);
+		this.builder = new StringBuilder();
+		this.provider = provider;
+	}
+
+	protected final void append(Object object) {
+		builder.append(object);
+	}
+
+	protected final void append(String functor, PrologTerm... arguments) {
+		if (arguments != null && arguments.length > 0) {
+			builder.append(provider.newStructure(functor, arguments));
+		} else {
+			builder.append(provider.newAtom(functor));
+		}
+	}
+
+	protected final void append(Object left, String operator, Object right) {
+		builder.append(left);
+		append(' ');
+		builder.append(operator);
+		append(' ');
+		builder.append(right);
+	}
+
+	public final PrologEngine getEngine() {
 		return engine;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public final boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PrologQueryBuilder other = (PrologQueryBuilder) obj;
+		DefaultQueryBuilder other = (DefaultQueryBuilder) obj;
 		if (engine == null) {
 			if (other.engine != null)
 				return false;
@@ -63,7 +97,7 @@ public abstract class AbstractBuilder implements PrologBuilder {
 	}
 
 	@Override
-	public int hashCode() {
+	public final int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((engine == null) ? 0 : engine.hashCode());
@@ -72,7 +106,7 @@ public abstract class AbstractBuilder implements PrologBuilder {
 	}
 
 	@Override
-	public String toString() {
+	public final String toString() {
 		return "" + builder + "";
 	}
 

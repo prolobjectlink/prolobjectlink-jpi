@@ -455,4 +455,8 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 */
 	public void dispose();
 
+	DefaultClauseBuilder newClauseBuilder();
+
+	DefaultQueryBuilder newQueryBuilder();
+
 }
