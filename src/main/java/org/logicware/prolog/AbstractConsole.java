@@ -19,17 +19,23 @@
  */
 package org.logicware.prolog;
 
+import static org.logicware.prolog.About.COPYRIHT;
+import static org.logicware.prolog.About.PROLOBJECTLINK;
+
 import java.io.BufferedReader;
-import java.io.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
-import java.io.PrintWriter;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.security.ProtectionDomain;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Properties;
 
 import org.logicware.AbstractPlatform;
+import org.logicware.ArrayIterator;
 import org.logicware.logging.LoggerConstants;
 import org.logicware.logging.LoggerUtils;
 
@@ -42,7 +48,8 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 	private final BufferedReader stdin = new BufferedReader(reader);
 
 	// standard output stream
-	private final PrintWriter stdout = System.console().writer();
+//	private final PrintWriter stdout = System.console().writer();
+	private static final PrintStream stdout = System.out;
 
 	//
 	private final PrologEngine engine;
@@ -51,27 +58,84 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 		this.engine = provider.newEngine();
 	}
 
+	public final Map<String, String> getArguments(String[] args) {
+		final Map<String, String> map = new HashMap<String, String>();
+		if (args.length > 1) {
+			Iterator<String> i = new ArrayIterator<String>(args);
+			String name = i.next();
+			if (i.hasNext()) {
+				String value = i.next();
+				map.put(name, value);
+			} else {
+				map.put(name, "");
+			}
+		}
+		return map;
+	}
+
+	public final void printUsage() {
+		stdout.println("Usage: prolog [-option] [file] to consult a file");
+		stdout.println("options:");
+		stdout.println("	-r	to consult/run a prolog file");
+		stdout.println("	-v	print the prolog engine version");
+		stdout.println("	-n	print the prolog engine name");
+		stdout.println("	-l	print the prolog engine license");
+		stdout.println("	-i	print the prolog engine information");
+		stdout.println("	-a	print the prolog engine information");
+	}
+
 	public final void run(String[] args) {
 
-		String input;
-
-		stdout.print("Prolobjectlink");
-		stdout.print("WorkLogic (C).");
-		stdout.print(engine.getName());
-		stdout.print(" v");
-		stdout.println(engine.getVersion());
-		stdout.println(engine.getLicense());
-		stdout.println(engine.getJavaName());
-		stdout.println(engine.getJavaVendor());
-		stdout.println(engine.getJavaVersion());
-		stdout.println();
+		Map<String, String> m = getArguments(args);
+		if (!m.isEmpty()) {
+			if (m.containsKey("-v")) {
+				stdout.println(engine.getVersion());
+			} else if (m.containsKey("-n")) {
+				stdout.println(engine.getName());
+			} else if (m.containsKey("-l")) {
+				stdout.println(engine.getLicense());
+			} else if (m.containsKey("-i")) {
+				stdout.print(PROLOBJECTLINK);
+				stdout.print(COPYRIHT);
+				stdout.print(engine.getName());
+				stdout.print(" v");
+				stdout.println(engine.getVersion());
+				stdout.println(engine.getLicense());
+				stdout.println(engine.getJavaName());
+				stdout.println(engine.getJavaVendor());
+				stdout.println(engine.getJavaVersion());
+				stdout.println();
+			} else if (m.containsKey("-w")) {
+				try {
+					stdout.println("Working directory");
+					ProtectionDomain p = getClass().getProtectionDomain();
+					URI d = p.getCodeSource().getLocation().toURI();
+					stdout.println(d);
+				} catch (URISyntaxException e) {
+					LoggerUtils.error(getClass(), LoggerConstants.URI, e);
+				}
+			} else if (m.containsKey("-e")) {
+				stdout.println("Enviroment");
+				stdout.println("Class path");
+				stdout.println(getClassPath());
+				stdout.println("System path");
+				stdout.println(getPath());
+			} else if (m.containsKey("-a")) {
+				stdout.print(PROLOBJECTLINK);
+				stdout.print(COPYRIHT);
+			} else if (m.containsKey("-r")) {
+				String file = m.get("-r");
+				stdout.print("Consult ");
+				stdout.println(file);
+				engine.consult(file);
+			} else {
+				printUsage();
+			}
+		}
 
 		try {
 
-			if (args.length > 0) {
-				engine.consult(args[0]);
-			}
-
+			String input;
 			stdout.print("?- ");
 			stdout.flush();
 			input = stdin.readLine();

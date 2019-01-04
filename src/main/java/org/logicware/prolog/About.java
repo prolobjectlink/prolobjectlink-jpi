@@ -2,7 +2,7 @@
  * #%L
  * prolobjectlink-jpi
  * %%
- * Copyright (C) 2012 - 2018 WorkLogic Project
+ * Copyright (C) 2012 - 2019 WorkLogic Project
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,10 +19,12 @@
  */
 package org.logicware.prolog;
 
-import org.logicware.PlatformConsole;
+class About {
 
-public interface PrologConsole extends PlatformConsole {
+	static final String PROLOBJECTLINK = "Prolobjectlink";
+	static final String COPYRIHT = "WorkLogic (c)";
 
-	
+	private About() {
+	}
 
 }
