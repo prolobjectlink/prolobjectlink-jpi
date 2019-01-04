@@ -22,16 +22,13 @@
 	</meta>
 
 	<toc name="Table of Contents">
-		<item name="What Is ${project.name}" ref="whatis.apt.vm" />
-		<item name="Overview" ref="overview.apt.vm" />
-		<item name="Getting Started" ref="started.apt.vm" />
-		<item name="Built-in Predicates" ref="builtins.apt.vm" />
-		<item name="Bidirectional Interface" ref="interface.apt.vm" />
-		<item name="Development Tools" ref="tools.apt.vm" />
-		<item name="Contribution" ref="contribution.apt.vm" />
-		<item name="Related Works" ref="related.apt.vm" />
-		<item name="Benchmark" ref="benchmark.apt.vm" />
-		<item name="Snippets" ref="snippets.apt.vm" />
+		<item name="What Is" ref="pdf-whatis.apt.vm" />
+		<item name="Getting Started" ref="pdf-started.apt.vm" />
+		<item name="Prolog Programming" ref="pdf-prolog.apt.vm" />
+		<item name="Bidirectional Interface" ref="pdf-interface.apt.vm" />
+		<item name="Development Tools" ref="pdf-tools.apt.vm" />
+		<item name="Contribution" ref="pdf-contribution.apt.vm" />
+		<item name="Related Works" ref="pdf-related.apt.vm" />
 		<item name="FAQ" ref="faq.fml" />
 	</toc>
 
