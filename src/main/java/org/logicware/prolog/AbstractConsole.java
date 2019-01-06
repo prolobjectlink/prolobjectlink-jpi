@@ -60,7 +60,7 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 
 	public final Map<String, String> getArguments(String[] args) {
 		final Map<String, String> map = new HashMap<String, String>();
-		if (args.length > 1) {
+		if (args.length > 0) {
 			Iterator<String> i = new ArrayIterator<String>(args);
 			String name = i.next();
 			if (i.hasNext()) {
@@ -97,6 +97,7 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 			} else if (m.containsKey("-i")) {
 				stdout.print(PROLOBJECTLINK);
 				stdout.print(COPYRIHT);
+				stdout.print(" ");
 				stdout.print(engine.getName());
 				stdout.print(" v");
 				stdout.println(engine.getVersion());
@@ -182,6 +183,7 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 
 		} catch (IOException e) {
 			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+			System.exit(0);
 		}
 	}
 
