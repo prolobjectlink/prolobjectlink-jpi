@@ -23,6 +23,7 @@ import static org.logicware.prolog.About.COPYRIHT;
 import static org.logicware.prolog.About.PROLOBJECTLINK;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
@@ -181,6 +182,30 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 
 			}
 
+		} catch (UnsatisfiedLinkError e) {
+			checkJDKInstalation();
+			stdout.println("You need prolog native engine and set this routes in your system class path:");
+			if (runOnWindows()) {
+				stdout.println(getJavaHome().replace(File.separator + "jre", File.separator) + "/jdk" + getJavaVersion()
+						+ "/bin" + getPathSeparator());
+				stdout.println(getJavaHome().replace(File.separator + "jre", File.separator) + "/jdk" + getJavaVersion()
+						+ "/lib/tools.jar" + getPathSeparator());
+				stdout.println(getJavaHome().replace(File.separator + "jre", File.separator) + "/jdk" + getJavaVersion()
+						+ "/jre/lib/rt.jar;" + getPathSeparator());
+				stdout.println("C:/Program Files/swipl/lib/jpl.jar" + getPathSeparator());
+				stdout.println("C:/Program Files/swipl/bin");
+			} else if (runOnOsX()) {
+				// TODO environment routes for MacOSX
+			} else if (runOnLinux()) {
+				stdout.println("/usr/lib/jvm/java-" + getJavaVersion() + "-openjdk-" + getArch() + "/bin"
+						+ getPathSeparator());
+				stdout.println("/usr/lib/jvm/java-" + getJavaVersion() + "-openjdk-" + getArch() + "/lib/tools.jar"
+						+ getPathSeparator());
+				stdout.println("/usr/lib/jvm/java-" + getJavaVersion() + "-openjdk-" + getArch() + "/jre/lib/rt.jar"
+						+ getPathSeparator());
+				stdout.println("C:/Program Files/swipl/lib/jpl.jar" + getPathSeparator());
+				stdout.println("C:/Program Files/swipl/bin");
+			}
 		} catch (IOException e) {
 			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
 			System.exit(0);
