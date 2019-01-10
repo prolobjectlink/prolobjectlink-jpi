@@ -21,7 +21,7 @@ package org.logicware.prolog;
 
 import java.util.Map;
 
-import org.logicware.Wrapper;
+import org.worklogic.Wrapper;
 
 /**
  * 

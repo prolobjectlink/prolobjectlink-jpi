@@ -23,8 +23,13 @@ import java.io.File;
 import java.util.Map;
 import java.util.Set;
 
-import org.logicware.AbstractWrapper;
+import org.worklogic.AbstractWrapper;
 
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public abstract class AbstractProvider extends AbstractWrapper implements PrologProvider {
 
 	protected final PrologConverter<?> converter;

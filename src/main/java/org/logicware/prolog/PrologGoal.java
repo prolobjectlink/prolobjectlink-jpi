@@ -21,6 +21,11 @@ package org.logicware.prolog;
 
 import java.util.Map;
 
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public interface PrologGoal extends PrologClause, Iterable<PrologClause> {
 
 	/**

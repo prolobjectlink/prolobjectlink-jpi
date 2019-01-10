@@ -21,8 +21,8 @@ package org.logicware.prolog;
 
 import java.lang.reflect.Constructor;
 
-import org.logicware.logging.LoggerConstants;
-import org.logicware.logging.LoggerUtils;
+import org.worklogic.logging.LoggerConstants;
+import org.worklogic.logging.LoggerUtils;
 
 public final class Prolog {
 

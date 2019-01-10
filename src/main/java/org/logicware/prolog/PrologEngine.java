@@ -23,14 +23,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.logicware.Platform;
+import org.worklogic.Platform;
 
 /**
  * 
  * @author Jose Zalacain
  * @since 1.0
- * @see AbstractEngine
- *
  */
 public interface PrologEngine extends Platform, Iterable<PrologClause> {
 

@@ -24,8 +24,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import org.logicware.AbstractIterator;
+import org.worklogic.AbstractIterator;
 
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public abstract class AbstractClause implements PrologClause {
 
 	private boolean dynamic;

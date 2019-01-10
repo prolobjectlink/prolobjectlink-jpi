@@ -21,8 +21,13 @@ package org.logicware.prolog;
 
 import java.util.Map;
 
-import org.logicware.Wrapper;
+import org.worklogic.Wrapper;
 
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public interface PrologWrapper extends Wrapper {
 
 	public <K extends PrologTerm, V extends Object> Map<String, PrologTerm>[] toTermMapArray(Map<String, V>[] map,

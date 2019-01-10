@@ -21,6 +21,11 @@ package org.logicware.prolog;
 
 import java.util.Iterator;
 
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public interface PrologClause {
 
 	public int getArity();

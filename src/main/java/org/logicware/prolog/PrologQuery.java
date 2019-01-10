@@ -24,8 +24,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.logicware.Wrapper;
+import org.worklogic.Wrapper;
 
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public interface PrologQuery extends Wrapper, Iterator<Collection<PrologTerm>>, Iterable<Collection<PrologTerm>> {
 
 	/**

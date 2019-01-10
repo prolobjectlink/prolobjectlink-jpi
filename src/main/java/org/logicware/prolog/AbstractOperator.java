@@ -19,6 +19,11 @@
  */
 package org.logicware.prolog;
 
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public abstract class AbstractOperator implements PrologOperator {
 
 	private final int priority;

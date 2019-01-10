@@ -21,6 +21,11 @@ package org.logicware.prolog;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public interface PrologIndicator extends Serializable {
 
 	public int getArity();

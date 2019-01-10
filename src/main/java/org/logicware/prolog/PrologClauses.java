@@ -21,6 +21,11 @@ package org.logicware.prolog;
 
 import java.util.List;
 
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public interface PrologClauses extends List<PrologClause> {
 
 	public boolean isDynamic();

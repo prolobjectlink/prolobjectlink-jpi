@@ -23,6 +23,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public interface PrologProgram extends Set<PrologClauses>, Iterable<PrologClauses> {
 
 	public PrologClauses get(String key);

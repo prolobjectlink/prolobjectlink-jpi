@@ -35,11 +35,16 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.logicware.AbstractPlatform;
-import org.logicware.ArrayIterator;
-import org.logicware.logging.LoggerConstants;
-import org.logicware.logging.LoggerUtils;
+import org.worklogic.AbstractPlatform;
+import org.worklogic.ArrayIterator;
+import org.worklogic.logging.LoggerConstants;
+import org.worklogic.logging.LoggerUtils;
 
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public abstract class AbstractConsole extends AbstractPlatform implements PrologConsole {
 
 	// default input stream
@@ -203,8 +208,8 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 						+ getPathSeparator());
 				stdout.println("/usr/lib/jvm/java-" + getJavaVersion() + "-openjdk-" + getArch() + "/jre/lib/rt.jar"
 						+ getPathSeparator());
-				stdout.println("C:/Program Files/swipl/lib/jpl.jar" + getPathSeparator());
-				stdout.println("C:/Program Files/swipl/bin");
+				stdout.println("/usr/local/bin/swipl/lib/jpl.jar" + getPathSeparator());
+				stdout.println("/usr/local/bin");
 			}
 		} catch (IOException e) {
 			LoggerUtils.error(getClass(), LoggerConstants.IO, e);

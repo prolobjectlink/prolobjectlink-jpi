@@ -28,9 +28,14 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-import org.logicware.AbstractIterator;
-import org.logicware.AbstractPlatform;
+import org.worklogic.AbstractIterator;
+import org.worklogic.AbstractPlatform;
 
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public abstract class AbstractEngine extends AbstractPlatform implements PrologEngine {
 
 	protected final PrologProvider provider;

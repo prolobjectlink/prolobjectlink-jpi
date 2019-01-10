@@ -19,10 +19,14 @@
  */
 package org.logicware.prolog;
 
-import org.logicware.PlatformConsole;
+import org.worklogic.PlatformConsole;
 
+/**
+ * 
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public interface PrologConsole extends PlatformConsole {
-
-	
 
 }

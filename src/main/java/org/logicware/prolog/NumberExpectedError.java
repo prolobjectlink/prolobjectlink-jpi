@@ -19,7 +19,7 @@
  */
 package org.logicware.prolog;
 
-import org.logicware.RuntimeError;
+import org.worklogic.RuntimeError;
 
 public final class NumberExpectedError extends RuntimeError {
 

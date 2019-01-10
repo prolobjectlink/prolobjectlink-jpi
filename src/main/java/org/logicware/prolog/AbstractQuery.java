@@ -25,8 +25,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.logicware.AbstractIterator;
+import org.worklogic.AbstractIterator;
 
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public abstract class AbstractQuery extends AbstractIterator<Collection<PrologTerm>> implements PrologQuery {
 
 	// engine for execute queries

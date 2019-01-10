@@ -19,6 +19,11 @@
  */
 package org.logicware.prolog;
 
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public interface PrologStructure extends PrologTerm {
 
 	public PrologTerm getArgument(int index);
