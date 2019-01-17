@@ -34,6 +34,44 @@ public interface PrologClauseBuilder extends PrologBuilder {
 
 	void asserta();
 
+	PrologClauseBuilder semicolon(PrologTerm left, String operator, PrologTerm right);
+
+	PrologClauseBuilder semicolon(double left, String operator, PrologTerm right);
+
+	PrologClauseBuilder semicolon(PrologTerm left, String operator, double right);
+
+	PrologClauseBuilder semicolon(long left, String operator, PrologTerm right);
+
+	PrologClauseBuilder semicolon(PrologTerm left, String operator, long right);
+
+	PrologClauseBuilder semicolon(int left, String operator, PrologTerm right);
+
+	PrologClauseBuilder semicolon(PrologTerm left, String operator, int right);
+
+	PrologClauseBuilder semicolon(String functor, PrologTerm... arguments);
+
+	PrologClauseBuilder semicolon(PrologTerm term);
+
+	PrologClauseBuilder comma(PrologTerm left, String operator, PrologTerm right);
+
+	PrologClauseBuilder comma(double left, String operator, PrologTerm right);
+
+	PrologClauseBuilder comma(PrologTerm left, String operator, double right);
+
+	PrologClauseBuilder comma(long left, String operator, PrologTerm right);
+
+	PrologClauseBuilder comma(PrologTerm left, String operator, long right);
+
+	PrologClauseBuilder comma(int left, String operator, PrologTerm right);
+
+	PrologClauseBuilder comma(PrologTerm left, String operator, int right);
+
+	PrologClauseBuilder comma(String functor, PrologTerm... arguments);
+
+	PrologClauseBuilder comma(PrologTerm body);
+
+	PrologClauseBuilder begin(String functor, PrologTerm... arguments);
+
 	PrologClauseBuilder choice(PrologTerm left, String operator, PrologTerm right);
 
 	PrologClauseBuilder choice(double left, String operator, PrologTerm right);

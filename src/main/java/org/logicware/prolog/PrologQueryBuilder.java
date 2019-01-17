@@ -26,6 +26,46 @@ package org.logicware.prolog;
  */
 public interface PrologQueryBuilder extends PrologBuilder {
 
+	PrologQueryBuilder begin(PrologTerm term);
+
+	PrologQueryBuilder begin(String functor, PrologTerm... arguments);
+
+	PrologQueryBuilder semicolon(PrologTerm left, String operator, PrologTerm right);
+
+	PrologQueryBuilder semicolon(double left, String operator, PrologTerm right);
+
+	PrologQueryBuilder semicolon(PrologTerm left, String operator, double right);
+
+	PrologQueryBuilder semicolon(long left, String operator, PrologTerm right);
+
+	PrologQueryBuilder semicolon(PrologTerm left, String operator, long right);
+
+	PrologQueryBuilder semicolon(int left, String operator, PrologTerm right);
+
+	PrologQueryBuilder semicolon(PrologTerm left, String operator, int right);
+
+	PrologQueryBuilder semicolon(String functor, PrologTerm... arguments);
+
+	PrologQueryBuilder semicolon(PrologTerm term);
+
+	PrologQueryBuilder comma(PrologTerm left, String operator, PrologTerm right);
+
+	PrologQueryBuilder comma(double left, String operator, PrologTerm right);
+
+	PrologQueryBuilder comma(PrologTerm left, String operator, double right);
+
+	PrologQueryBuilder comma(long left, String operator, PrologTerm right);
+
+	PrologQueryBuilder comma(PrologTerm left, String operator, long right);
+
+	PrologQueryBuilder comma(int left, String operator, PrologTerm right);
+
+	PrologQueryBuilder comma(PrologTerm left, String operator, int right);
+
+	PrologQueryBuilder comma(String functor, PrologTerm... arguments);
+
+	PrologQueryBuilder comma(PrologTerm body);
+
 	String getQueryString();
 
 	PrologQuery dot();

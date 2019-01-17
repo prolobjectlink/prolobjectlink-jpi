@@ -24,7 +24,7 @@ package org.logicware.prolog;
  * @author Jose Zalacain
  * @since 1.0
  */
-public final class DefaultClauseBuilder extends DefaultQueryBuilder implements PrologClauseBuilder {
+public final class DefaultClauseBuilder extends AbstractDefaultBuilder implements PrologClauseBuilder {
 
 	public DefaultClauseBuilder(PrologEngine engine) {
 		super(engine);
@@ -41,6 +41,11 @@ public final class DefaultClauseBuilder extends DefaultQueryBuilder implements P
 	public PrologClauseBuilder begin(PrologTerm term) {
 		append(' ');
 		append(term);
+		return this;
+	}
+
+	public PrologClauseBuilder begin(String functor, PrologTerm... arguments) {
+		append(functor, arguments);
 		return this;
 	}
 
@@ -111,6 +116,132 @@ public final class DefaultClauseBuilder extends DefaultQueryBuilder implements P
 	public PrologClauseBuilder neck(PrologTerm left, String operator, PrologTerm right) {
 		append(':');
 		append('-');
+		append(' ');
+		append(left, operator, right);
+		return this;
+	}
+
+	public PrologClauseBuilder comma(PrologTerm body) {
+		append(',');
+		append(' ');
+		append(body);
+		return this;
+	}
+
+	public PrologClauseBuilder comma(String functor, PrologTerm... arguments) {
+		append(',');
+		append(' ');
+		append(functor, arguments);
+		return this;
+	}
+
+	public PrologClauseBuilder comma(PrologTerm left, String operator, int right) {
+		append(',');
+		append(' ');
+		append(left, operator, right);
+		return this;
+	}
+
+	public PrologClauseBuilder comma(int left, String operator, PrologTerm right) {
+		append(',');
+		append(' ');
+		append(left, operator, right);
+		return this;
+	}
+
+	public PrologClauseBuilder comma(PrologTerm left, String operator, long right) {
+		append(',');
+		append(' ');
+		append(left, operator, right);
+		return this;
+	}
+
+	public PrologClauseBuilder comma(long left, String operator, PrologTerm right) {
+		append(',');
+		append(' ');
+		append(left, operator, right);
+		return this;
+	}
+
+	public PrologClauseBuilder comma(PrologTerm left, String operator, double right) {
+		append(',');
+		append(' ');
+		append(left, operator, right);
+		return this;
+	}
+
+	public PrologClauseBuilder comma(double left, String operator, PrologTerm right) {
+		append(',');
+		append(' ');
+		append(left, operator, right);
+		return this;
+	}
+
+	public PrologClauseBuilder comma(PrologTerm left, String operator, PrologTerm right) {
+		append(',');
+		append(' ');
+		append(left, operator, right);
+		return this;
+	}
+
+	public PrologClauseBuilder semicolon(PrologTerm term) {
+		append(';');
+		append(' ');
+		append(term);
+		return this;
+	}
+
+	public PrologClauseBuilder semicolon(String functor, PrologTerm... arguments) {
+		append(';');
+		append(' ');
+		append(functor, arguments);
+		return this;
+	}
+
+	public PrologClauseBuilder semicolon(PrologTerm left, String operator, int right) {
+		append(';');
+		append(' ');
+		append(left, operator, right);
+		return this;
+	}
+
+	public PrologClauseBuilder semicolon(int left, String operator, PrologTerm right) {
+		append(';');
+		append(' ');
+		append(left, operator, right);
+		return this;
+	}
+
+	public PrologClauseBuilder semicolon(PrologTerm left, String operator, long right) {
+		append(';');
+		append(' ');
+		append(left, operator, right);
+		return this;
+	}
+
+	public PrologClauseBuilder semicolon(long left, String operator, PrologTerm right) {
+		append(';');
+		append(' ');
+		append(left, operator, right);
+		return this;
+	}
+
+	public PrologClauseBuilder semicolon(PrologTerm left, String operator, double right) {
+		append(';');
+		append(' ');
+		append(left, operator, right);
+		return this;
+	}
+
+	public PrologClauseBuilder semicolon(double left, String operator, PrologTerm right) {
+		append(';');
+		append(' ');
+		append(left, operator, right);
+		return this;
+	}
+
+	public PrologClauseBuilder semicolon(PrologTerm left, String operator, PrologTerm right) {
+		append(';');
 		append(' ');
 		append(left, operator, right);
 		return this;

@@ -24,7 +24,7 @@ package org.logicware.prolog;
  * @author Jose Zalacain
  * @since 1.0
  */
-public class DefaultQueryBuilder extends AbstractDefaultBuilder implements PrologQueryBuilder {
+public final class DefaultQueryBuilder extends AbstractDefaultBuilder implements PrologQueryBuilder {
 
 	public DefaultQueryBuilder(PrologEngine engine) {
 		super(engine);
@@ -38,143 +38,148 @@ public class DefaultQueryBuilder extends AbstractDefaultBuilder implements Prolo
 		super(provider, file);
 	}
 
-	public final PrologQueryBuilder begin(String functor, PrologTerm... arguments) {
+	public PrologQueryBuilder begin(String functor, PrologTerm... arguments) {
 		append(functor, arguments);
 		return this;
 	}
 
-	public final PrologQueryBuilder comma(PrologTerm body) {
+	public PrologQueryBuilder begin(PrologTerm term) {
+		append(term);
+		return this;
+	}
+
+	public PrologQueryBuilder comma(PrologTerm body) {
 		append(',');
 		append(' ');
 		append(body);
 		return this;
 	}
 
-	public final PrologQueryBuilder comma(String functor, PrologTerm... arguments) {
+	public PrologQueryBuilder comma(String functor, PrologTerm... arguments) {
 		append(',');
 		append(' ');
 		append(functor, arguments);
 		return this;
 	}
 
-	public final PrologQueryBuilder comma(PrologTerm left, String operator, int right) {
+	public PrologQueryBuilder comma(PrologTerm left, String operator, int right) {
 		append(',');
 		append(' ');
 		append(left, operator, right);
 		return this;
 	}
 
-	public final PrologQueryBuilder comma(int left, String operator, PrologTerm right) {
+	public PrologQueryBuilder comma(int left, String operator, PrologTerm right) {
 		append(',');
 		append(' ');
 		append(left, operator, right);
 		return this;
 	}
 
-	public final PrologQueryBuilder comma(PrologTerm left, String operator, long right) {
+	public PrologQueryBuilder comma(PrologTerm left, String operator, long right) {
 		append(',');
 		append(' ');
 		append(left, operator, right);
 		return this;
 	}
 
-	public final PrologQueryBuilder comma(long left, String operator, PrologTerm right) {
+	public PrologQueryBuilder comma(long left, String operator, PrologTerm right) {
 		append(',');
 		append(' ');
 		append(left, operator, right);
 		return this;
 	}
 
-	public final PrologQueryBuilder comma(PrologTerm left, String operator, double right) {
+	public PrologQueryBuilder comma(PrologTerm left, String operator, double right) {
 		append(',');
 		append(' ');
 		append(left, operator, right);
 		return this;
 	}
 
-	public final PrologQueryBuilder comma(double left, String operator, PrologTerm right) {
+	public PrologQueryBuilder comma(double left, String operator, PrologTerm right) {
 		append(',');
 		append(' ');
 		append(left, operator, right);
 		return this;
 	}
 
-	public final PrologQueryBuilder comma(PrologTerm left, String operator, PrologTerm right) {
+	public PrologQueryBuilder comma(PrologTerm left, String operator, PrologTerm right) {
 		append(',');
 		append(' ');
 		append(left, operator, right);
 		return this;
 	}
 
-	public final PrologQueryBuilder semicolon(PrologTerm term) {
+	public PrologQueryBuilder semicolon(PrologTerm term) {
 		append(';');
 		append(' ');
 		append(term);
 		return this;
 	}
 
-	public final PrologQueryBuilder semicolon(String functor, PrologTerm... arguments) {
+	public PrologQueryBuilder semicolon(String functor, PrologTerm... arguments) {
 		append(';');
 		append(' ');
 		append(functor, arguments);
 		return this;
 	}
 
-	public final PrologQueryBuilder semicolon(PrologTerm left, String operator, int right) {
+	public PrologQueryBuilder semicolon(PrologTerm left, String operator, int right) {
 		append(';');
 		append(' ');
 		append(left, operator, right);
 		return this;
 	}
 
-	public final PrologQueryBuilder semicolon(int left, String operator, PrologTerm right) {
+	public PrologQueryBuilder semicolon(int left, String operator, PrologTerm right) {
 		append(';');
 		append(' ');
 		append(left, operator, right);
 		return this;
 	}
 
-	public final PrologQueryBuilder semicolon(PrologTerm left, String operator, long right) {
+	public PrologQueryBuilder semicolon(PrologTerm left, String operator, long right) {
 		append(';');
 		append(' ');
 		append(left, operator, right);
 		return this;
 	}
 
-	public final PrologQueryBuilder semicolon(long left, String operator, PrologTerm right) {
+	public PrologQueryBuilder semicolon(long left, String operator, PrologTerm right) {
 		append(';');
 		append(' ');
 		append(left, operator, right);
 		return this;
 	}
 
-	public final PrologQueryBuilder semicolon(PrologTerm left, String operator, double right) {
+	public PrologQueryBuilder semicolon(PrologTerm left, String operator, double right) {
 		append(';');
 		append(' ');
 		append(left, operator, right);
 		return this;
 	}
 
-	public final PrologQueryBuilder semicolon(double left, String operator, PrologTerm right) {
+	public PrologQueryBuilder semicolon(double left, String operator, PrologTerm right) {
 		append(';');
 		append(' ');
 		append(left, operator, right);
 		return this;
 	}
 
-	public final PrologQueryBuilder semicolon(PrologTerm left, String operator, PrologTerm right) {
+	public PrologQueryBuilder semicolon(PrologTerm left, String operator, PrologTerm right) {
 		append(';');
 		append(' ');
 		append(left, operator, right);
 		return this;
 	}
 
-	public final PrologQuery dot() {
+	public PrologQuery dot() {
 		String q = "" + builder + "";
 		return engine.query(q);
 	}
 
-	public final String getQueryString() {
+	public String getQueryString() {
 		return "" + builder + "";
 	}
 

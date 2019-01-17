@@ -34,42 +34,4 @@ public interface PrologBuilder {
 
 	public int hashCode();
 
-	PrologBuilder semicolon(PrologTerm left, String operator, PrologTerm right);
-
-	PrologBuilder semicolon(double left, String operator, PrologTerm right);
-
-	PrologBuilder semicolon(PrologTerm left, String operator, double right);
-
-	PrologBuilder semicolon(long left, String operator, PrologTerm right);
-
-	PrologBuilder semicolon(PrologTerm left, String operator, long right);
-
-	PrologBuilder semicolon(int left, String operator, PrologTerm right);
-
-	PrologBuilder semicolon(PrologTerm left, String operator, int right);
-
-	PrologBuilder semicolon(String functor, PrologTerm... arguments);
-
-	PrologBuilder semicolon(PrologTerm term);
-
-	PrologBuilder comma(PrologTerm left, String operator, PrologTerm right);
-
-	PrologBuilder comma(double left, String operator, PrologTerm right);
-
-	PrologBuilder comma(PrologTerm left, String operator, double right);
-
-	PrologBuilder comma(long left, String operator, PrologTerm right);
-
-	PrologBuilder comma(PrologTerm left, String operator, long right);
-
-	PrologBuilder comma(int left, String operator, PrologTerm right);
-
-	PrologBuilder comma(PrologTerm left, String operator, int right);
-
-	PrologBuilder comma(String functor, PrologTerm... arguments);
-
-	PrologBuilder comma(PrologTerm body);
-
-	PrologBuilder begin(String functor, PrologTerm... arguments);
-
 }
