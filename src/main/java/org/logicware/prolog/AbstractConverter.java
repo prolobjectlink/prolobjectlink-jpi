@@ -39,7 +39,7 @@ import org.worklogic.logging.LoggerUtils;
  */
 public abstract class AbstractConverter<T> extends AbstractWrapper implements PrologConverter<T> {
 
-	protected static final String SIMPLE_ATOM_REGEX = ".|[a-z][A-Za-z0-9_]*";
+	public static final String SIMPLE_ATOM_REGEX = ".|[a-z][A-Za-z0-9_]*";
 	private static final String IMPOSIBLE_CONVERT = "Impossible convert '";
 	private static final String FROM = "' from '";
 	private static final String TO = "' to '";
