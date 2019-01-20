@@ -85,7 +85,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.worklogic</groupId>
-			<artifactId>prolobjectlink-jap</artifactId>
+			<artifactId>prolobjectlink-jpe</artifactId>
 			<version>[1.0.0, )</version>
 		</dependency>
 		<dependency>
