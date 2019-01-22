@@ -8,12 +8,12 @@
 	<name>prolobjectlink-jpi</name>
 	<description>Java Prolog Interface</description>
 
-	<url>http://www.logicware.org</url>
+	<url>https://github.com/prolobjectlink/${project.name}</url>
 	<inceptionYear>2012</inceptionYear>
 
 	<organization>
-		<name>WorkLogic Project</name>
-		<url>http://www.logicware.org</url>
+		<name>Prolobjectlink Project</name>
+		<url>https://github.com/prolobjectlink/${project.name}</url>
 	</organization>
 
 	<licenses>
@@ -29,7 +29,7 @@
 			<id>jzalacain</id>
 			<name>Jose Zalacain</name>
 			<email>jzalacain@nauta.cu</email>
-			<organization>WorkLogic Project</organization>
+			<organization>Prolobjectlink Project</organization>
 			<organizationUrl>http://www.logicware.org</organizationUrl>
 			<roles>
 				<role>architect</role>
@@ -48,13 +48,13 @@
 	</scm>
 
 	<ciManagement>
-		<system>Jenkins</system>
-		<url>http://jenkins.delnet.cu:8080/jenkins/</url>
+		<system>Travis CI</system>
+		<url>https://travis-ci.org/prolobjectlink/${project.name}</url>
 	</ciManagement>
 
 	<issueManagement>
-		<system>Bugzilla</system>
-		<url>http://bugzilla.delnet.cu/</url>
+		<system>GitHub</system>
+		<url>https://github.com/prolobjectlink/${project.name}/issues</url>
 	</issueManagement>
 
 	<distributionManagement>
