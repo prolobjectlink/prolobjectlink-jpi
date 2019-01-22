@@ -41,10 +41,9 @@
 	</developers>
 
 	<scm>
-		<developerConnection>scm:git:git@gitlab.delnet.cu:logicware/${project.name}.git</developerConnection>
-		<connection>scm:git:git@gitlab.delnet.cu:logicware/${project.name}.git</connection>
-		<url>http://gitlab.delnet.cu/logicware/${project.name}</url>
-		<tag>${project.name}-${project.version}</tag>
+		<developerConnection>scm:git:https://github.com/prolobjectlink/${project.name}.git</developerConnection>
+		<connection>scm:git:https://github.com/prolobjectlink/${project.name}.git</connection>
+		<url>https://github.com/prolobjectlink/${project.name}</url>
 	</scm>
 
 	<ciManagement>
