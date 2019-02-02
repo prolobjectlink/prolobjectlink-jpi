@@ -2,7 +2,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.worklogic</groupId>
+	<groupId>org.prolobjectlink</groupId>
 	<artifactId>prolobjectlink-jpi</artifactId>
 	<version>1.0.0</version>
 	<name>prolobjectlink-jpi</name>
@@ -83,7 +83,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.worklogic</groupId>
+			<groupId>org.prolobjectlink</groupId>
 			<artifactId>prolobjectlink-jpe</artifactId>
 			<version>[1.0.0, )</version>
 		</dependency>
