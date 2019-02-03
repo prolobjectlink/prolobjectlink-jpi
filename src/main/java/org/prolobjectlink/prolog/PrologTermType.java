@@ -43,6 +43,10 @@ public final class PrologTermType {
 	public static final int STREAM_TYPE = 0x401;
 
 	// constants for prolog list and prolog structure
+	/**
+	 * @deprecated Empty list use list type
+	 */
+	@Deprecated
 	public static final int EMPTY_TYPE = 0x500;
 	public static final int LIST_TYPE = 0x501;
 	public static final int STRUCTURE_TYPE = 0x502;
