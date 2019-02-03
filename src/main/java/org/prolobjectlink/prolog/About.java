@@ -22,7 +22,7 @@ package org.prolobjectlink.prolog;
 class About {
 
 	static final String PROLOBJECTLINK = "Prolobjectlink";
-	static final String COPYRIHT = "WorkLogic (c)";
+	static final String COPYRIHT = " (c)";
 
 	private About() {
 	}
