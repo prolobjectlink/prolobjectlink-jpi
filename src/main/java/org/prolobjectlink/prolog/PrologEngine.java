@@ -309,6 +309,10 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 
 	public List<Map<String, PrologTerm>> queryAll(PrologTerm term, PrologTerm... goal);
 
+	public PrologClauseBuilder newClauseBuilder();
+
+	public PrologQueryBuilder newQueryBuilder();
+
 	/**
 	 * Define an operator in the wrapped prolog engine with priority priority
 	 * between 0 and 1200 and associativity determined by specifier according to the
@@ -452,9 +456,5 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 * @since 1.0
 	 */
 	public void dispose();
-
-	DefaultClauseBuilder newClauseBuilder();
-
-	DefaultQueryBuilder newQueryBuilder();
 
 }

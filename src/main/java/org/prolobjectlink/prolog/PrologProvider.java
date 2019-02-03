@@ -166,12 +166,6 @@ public interface PrologProvider extends PrologParser {
 
 	public PrologTerm newStructure(PrologTerm left, String operator, PrologTerm right);
 
-	public PrologQueryBuilder newQueryBuilder();
-
-	public PrologClauseBuilder newClauseBuilder();
-
-	public PrologClauseBuilder newClauseBuilder(String file);
-
 	public <K> PrologConverter<K> getConverter();
 
 	public PrologParser getParser();

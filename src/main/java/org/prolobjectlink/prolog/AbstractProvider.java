@@ -122,18 +122,6 @@ public abstract class AbstractProvider extends AbstractWrapper implements Prolog
 		return converter.fromTerm(head, body, to);
 	}
 
-	public final DefaultQueryBuilder newQueryBuilder() {
-		return new DefaultQueryBuilder(this);
-	}
-
-	public final DefaultClauseBuilder newClauseBuilder() {
-		return new DefaultClauseBuilder(this);
-	}
-
-	public final DefaultClauseBuilder newClauseBuilder(String file) {
-		return new DefaultClauseBuilder(newEngine(file));
-	}
-
 	public PrologParser getParser() {
 		return this;
 	}
