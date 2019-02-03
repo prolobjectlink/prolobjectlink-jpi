@@ -292,28 +292,32 @@ public final class DefaultClauseBuilder extends AbstractDefaultBuilder implement
 		return null;
 	}
 
+	public String getClauseString() {
+		return "" + builder + "";
+	}
+
 	public void asserta() {
 		String c = getClauseString();
+		builder = new StringBuilder();
 		engine.asserta(c);
 	}
 
 	public void assertz() {
 		String c = getClauseString();
+		builder = new StringBuilder();
 		engine.assertz(c);
 	}
 
 	public boolean clause() {
 		String c = getClauseString();
+		builder = new StringBuilder();
 		return engine.clause(c);
 	}
 
 	public void retract() {
 		String c = getClauseString();
+		builder = new StringBuilder();
 		engine.retract(c);
-	}
-
-	public String getClauseString() {
-		return "" + builder + "";
 	}
 
 }

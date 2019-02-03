@@ -176,6 +176,7 @@ public final class DefaultQueryBuilder extends AbstractDefaultBuilder implements
 
 	public PrologQuery dot() {
 		String q = "" + builder + "";
+		builder = new StringBuilder();
 		return engine.query(q);
 	}
 

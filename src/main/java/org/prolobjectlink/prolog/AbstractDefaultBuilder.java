@@ -26,8 +26,8 @@ package org.prolobjectlink.prolog;
  */
 public abstract class AbstractDefaultBuilder implements PrologBuilder {
 
+	protected StringBuilder builder;
 	protected final PrologEngine engine;
-	protected final StringBuilder builder;
 	protected final PrologProvider provider;
 
 	public AbstractDefaultBuilder(PrologEngine engine) {
