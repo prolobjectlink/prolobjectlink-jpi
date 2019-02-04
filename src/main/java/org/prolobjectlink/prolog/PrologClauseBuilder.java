@@ -72,24 +72,6 @@ public interface PrologClauseBuilder extends PrologBuilder {
 
 	PrologClauseBuilder begin(String functor, PrologTerm... arguments);
 
-	PrologClauseBuilder choice(PrologTerm left, String operator, PrologTerm right);
-
-	PrologClauseBuilder choice(double left, String operator, PrologTerm right);
-
-	PrologClauseBuilder choice(PrologTerm left, String operator, double right);
-
-	PrologClauseBuilder choice(long left, String operator, PrologTerm right);
-
-	PrologClauseBuilder choice(PrologTerm left, String operator, long right);
-
-	PrologClauseBuilder choice(int left, String operator, PrologTerm right);
-
-	PrologClauseBuilder choice(PrologTerm left, String operator, int right);
-
-	PrologClauseBuilder choice(String functor, PrologTerm... arguments);
-
-	PrologClauseBuilder choice(PrologTerm head);
-
 	PrologClauseBuilder neck(PrologTerm left, String operator, PrologTerm right);
 
 	PrologClauseBuilder neck(double left, String operator, PrologTerm right);

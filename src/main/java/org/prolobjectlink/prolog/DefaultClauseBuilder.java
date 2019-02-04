@@ -247,51 +247,6 @@ public final class DefaultClauseBuilder extends AbstractDefaultBuilder implement
 		return this;
 	}
 
-	public PrologClauseBuilder choice(PrologTerm head) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public PrologClauseBuilder choice(String functor, PrologTerm... arguments) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public PrologClauseBuilder choice(PrologTerm left, String operator, int right) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public PrologClauseBuilder choice(int left, String operator, PrologTerm right) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public PrologClauseBuilder choice(PrologTerm left, String operator, long right) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public PrologClauseBuilder choice(long left, String operator, PrologTerm right) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public PrologClauseBuilder choice(PrologTerm left, String operator, double right) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public PrologClauseBuilder choice(double left, String operator, PrologTerm right) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public PrologClauseBuilder choice(PrologTerm left, String operator, PrologTerm right) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public String getClauseString() {
 		return "" + builder + "";
 	}
