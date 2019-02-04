@@ -54,7 +54,6 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 	private final BufferedReader stdin = new BufferedReader(reader);
 
 	// standard output stream
-//	private final PrintWriter stdout = System.console().writer();
 	private static final PrintStream stdout = System.out;
 
 	//
@@ -87,7 +86,10 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 		stdout.println("	-n	print the prolog engine name");
 		stdout.println("	-l	print the prolog engine license");
 		stdout.println("	-i	print the prolog engine information");
-		stdout.println("	-a	print the prolog engine information");
+		stdout.println("	-a	print the prolog engine about");
+		stdout.println("	-e	print the prolog engine enviroment paths");
+		stdout.println("	-x	start the prolog engine execution");
+		stdout.println("	-w	print the current work directory ");
 	}
 
 	public final void run(String[] args) {
@@ -96,10 +98,13 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 		if (!m.isEmpty()) {
 			if (m.containsKey("-v")) {
 				stdout.println(engine.getVersion());
+				interaction();
 			} else if (m.containsKey("-n")) {
 				stdout.println(engine.getName());
+				interaction();
 			} else if (m.containsKey("-l")) {
 				stdout.println(engine.getLicense());
+				interaction();
 			} else if (m.containsKey("-i")) {
 				stdout.print(PROLOBJECTLINK);
 				stdout.print(COPYRIHT);
@@ -112,12 +117,14 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 				stdout.println(engine.getJavaVendor());
 				stdout.println(engine.getJavaVersion());
 				stdout.println();
+				interaction();
 			} else if (m.containsKey("-w")) {
 				try {
 					stdout.println("Working directory");
 					ProtectionDomain p = getClass().getProtectionDomain();
 					URI d = p.getCodeSource().getLocation().toURI();
 					stdout.println(d);
+					interaction();
 				} catch (URISyntaxException e) {
 					LoggerUtils.error(getClass(), LoggerConstants.URI, e);
 				}
@@ -127,18 +134,31 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 				stdout.println(getClassPath());
 				stdout.println("System path");
 				stdout.println(getPath());
+				interaction();
 			} else if (m.containsKey("-a")) {
 				stdout.print(PROLOBJECTLINK);
 				stdout.print(COPYRIHT);
+				interaction();
 			} else if (m.containsKey("-r")) {
 				String file = m.get("-r");
 				stdout.print("Consult ");
 				stdout.println(file);
 				engine.consult(file);
+				interaction();
+			} else if (m.containsKey("-x")) {
+				interaction();
 			} else {
 				printUsage();
+				System.exit(1);
 			}
+		} else {
+			printUsage();
+			System.exit(1);
 		}
+
+	}
+
+	private void interaction() {
 
 		try {
 
@@ -215,6 +235,7 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
 			System.exit(0);
 		}
+
 	}
 
 }
