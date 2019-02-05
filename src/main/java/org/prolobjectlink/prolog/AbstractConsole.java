@@ -98,13 +98,10 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 		if (!m.isEmpty()) {
 			if (m.containsKey("-v")) {
 				stdout.println(engine.getVersion());
-				interaction();
 			} else if (m.containsKey("-n")) {
 				stdout.println(engine.getName());
-				interaction();
 			} else if (m.containsKey("-l")) {
 				stdout.println(engine.getLicense());
-				interaction();
 			} else if (m.containsKey("-i")) {
 				stdout.print(PROLOBJECTLINK);
 				stdout.print(COPYRIHT);
@@ -117,14 +114,12 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 				stdout.println(engine.getJavaVendor());
 				stdout.println(engine.getJavaVersion());
 				stdout.println();
-				interaction();
 			} else if (m.containsKey("-w")) {
 				try {
 					stdout.println("Working directory");
 					ProtectionDomain p = getClass().getProtectionDomain();
 					URI d = p.getCodeSource().getLocation().toURI();
 					stdout.println(d);
-					interaction();
 				} catch (URISyntaxException e) {
 					LoggerUtils.error(getClass(), LoggerConstants.URI, e);
 				}
@@ -134,106 +129,99 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 				stdout.println(getClassPath());
 				stdout.println("System path");
 				stdout.println(getPath());
-				interaction();
 			} else if (m.containsKey("-a")) {
 				stdout.print(PROLOBJECTLINK);
 				stdout.print(COPYRIHT);
-				interaction();
 			} else if (m.containsKey("-r")) {
 				String file = m.get("-r");
 				stdout.print("Consult ");
 				stdout.println(file);
 				engine.consult(file);
-				interaction();
 			} else if (m.containsKey("-x")) {
-				interaction();
 			} else {
 				printUsage();
 				System.exit(1);
 			}
-		} else {
-			printUsage();
-			System.exit(1);
-		}
 
-	}
+			try {
 
-	private void interaction() {
-
-		try {
-
-			String input;
-			stdout.print("?- ");
-			stdout.flush();
-			input = stdin.readLine();
-
-			while (true) {
-
-				if (!input.equals("")) {
-					stdout.println();
-
-					if (input.lastIndexOf('.') == input.length() - 1) {
-						input = input.substring(0, input.length() - 1);
-					}
-
-					PrologQuery query = engine.query(input);
-					if (query.hasSolution()) {
-						Map<String, PrologTerm> s = query.oneVariablesSolution();
-						for (Entry<String, PrologTerm> e : s.entrySet()) {
-							stdout.println(e.getKey() + " = " + e.getValue());
-						}
-						stdout.println("Yes.");
-					}
-
-//					else if (engine.hasCause()) {
-//						stdout.println(engine.getCause());
-//					} 
-
-					else {
-						stdout.println("No.");
-					}
-
-					stdout.println();
-					stdout.println();
-
-				} else {
-					stdout.println("Emty query");
-					stdout.println();
-				}
-
+				String input;
 				stdout.print("?- ");
 				stdout.flush();
 				input = stdin.readLine();
 
+				while (true) {
+
+					if (!input.equals("")) {
+						stdout.println();
+
+						if (input.lastIndexOf('.') == input.length() - 1) {
+							input = input.substring(0, input.length() - 1);
+						}
+
+						PrologQuery query = engine.query(input);
+						if (query.hasSolution()) {
+							Map<String, PrologTerm> s = query.oneVariablesSolution();
+							for (Entry<String, PrologTerm> e : s.entrySet()) {
+								stdout.println(e.getKey() + " = " + e.getValue());
+							}
+							stdout.println("Yes.");
+						}
+
+//						else if (engine.hasCause()) {
+//							stdout.println(engine.getCause());
+//						} 
+
+						else {
+							stdout.println("No.");
+						}
+
+						stdout.println();
+						stdout.println();
+
+					} else {
+						stdout.println("Emty query");
+						stdout.println();
+					}
+
+					stdout.print("?- ");
+					stdout.flush();
+					input = stdin.readLine();
+
+				}
+
+			} catch (UnsatisfiedLinkError e) {
+				checkJDKInstalation();
+				stdout.println("You need prolog native engine and set this routes in your system class path:");
+				if (runOnWindows()) {
+					stdout.println(getJavaHome().replace(File.separator + "jre", File.separator) + "/jdk"
+							+ getJavaVersion() + "/bin" + getPathSeparator());
+					stdout.println(getJavaHome().replace(File.separator + "jre", File.separator) + "/jdk"
+							+ getJavaVersion() + "/lib/tools.jar" + getPathSeparator());
+					stdout.println(getJavaHome().replace(File.separator + "jre", File.separator) + "/jdk"
+							+ getJavaVersion() + "/jre/lib/rt.jar;" + getPathSeparator());
+					stdout.println("C:/Program Files/swipl/lib/jpl.jar" + getPathSeparator());
+					stdout.println("C:/Program Files/swipl/bin");
+				} else if (runOnOsX()) {
+					// TODO environment routes for MacOSX
+				} else if (runOnLinux()) {
+					stdout.println("/usr/lib/jvm/java-" + getJavaVersion() + "-openjdk-" + getArch() + "/bin"
+							+ getPathSeparator());
+					stdout.println("/usr/lib/jvm/java-" + getJavaVersion() + "-openjdk-" + getArch() + "/lib/tools.jar"
+							+ getPathSeparator());
+					stdout.println("/usr/lib/jvm/java-" + getJavaVersion() + "-openjdk-" + getArch() + "/jre/lib/rt.jar"
+							+ getPathSeparator());
+					stdout.println("/usr/local/bin/swipl/lib/jpl.jar" + getPathSeparator());
+					stdout.println("/usr/local/bin");
+				}
+			} catch (IOException e) {
+				LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+				System.exit(0);
 			}
 
-		} catch (UnsatisfiedLinkError e) {
-			checkJDKInstalation();
-			stdout.println("You need prolog native engine and set this routes in your system class path:");
-			if (runOnWindows()) {
-				stdout.println(getJavaHome().replace(File.separator + "jre", File.separator) + "/jdk" + getJavaVersion()
-						+ "/bin" + getPathSeparator());
-				stdout.println(getJavaHome().replace(File.separator + "jre", File.separator) + "/jdk" + getJavaVersion()
-						+ "/lib/tools.jar" + getPathSeparator());
-				stdout.println(getJavaHome().replace(File.separator + "jre", File.separator) + "/jdk" + getJavaVersion()
-						+ "/jre/lib/rt.jar;" + getPathSeparator());
-				stdout.println("C:/Program Files/swipl/lib/jpl.jar" + getPathSeparator());
-				stdout.println("C:/Program Files/swipl/bin");
-			} else if (runOnOsX()) {
-				// TODO environment routes for MacOSX
-			} else if (runOnLinux()) {
-				stdout.println("/usr/lib/jvm/java-" + getJavaVersion() + "-openjdk-" + getArch() + "/bin"
-						+ getPathSeparator());
-				stdout.println("/usr/lib/jvm/java-" + getJavaVersion() + "-openjdk-" + getArch() + "/lib/tools.jar"
-						+ getPathSeparator());
-				stdout.println("/usr/lib/jvm/java-" + getJavaVersion() + "-openjdk-" + getArch() + "/jre/lib/rt.jar"
-						+ getPathSeparator());
-				stdout.println("/usr/local/bin/swipl/lib/jpl.jar" + getPathSeparator());
-				stdout.println("/usr/local/bin");
-			}
-		} catch (IOException e) {
-			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
-			System.exit(0);
+		} else {
+			printUsage();
+			System.exit(1);
 		}
 
 	}
