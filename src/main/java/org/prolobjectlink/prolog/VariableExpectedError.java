@@ -38,8 +38,8 @@ public final class VariableExpectedError extends RuntimeError {
 		super("The expected term is not a variable : " + term);
 	}
 
-	public VariableExpectedError(Class<?> sender, Object term) {
-		super(sender, "The expected term is not a variable : " + term);
+	public VariableExpectedError(Object term) {
+		super("The expected term is not a variable : " + term);
 	}
 
 }
