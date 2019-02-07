@@ -17,12 +17,11 @@
 	</organization>
 
 	<licenses>
-		<license>
-			<name>Apache License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
+	    <license>
+	      <name>Simplified BSD License</name>
+	      <url>https://github.com/prolobjectlink/${project.name}/blob/master/LICENSE</url>
+	    </license>
+    </licenses>
 
 	<developers>
 		<developer>
@@ -152,12 +151,12 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>license-maven-plugin</artifactId>
-				<version>1.5</version>
+				<version>1.16</version>
 				<configuration>
 					<canUpdateDescription>true</canUpdateDescription>
 					<failOnMissingHeader>true</failOnMissingHeader>
 					<acceptPomPackaging>true</acceptPomPackaging>
-					<licenseName>apache_v2</licenseName>
+					<licenseName>bsd_2</licenseName>
 					<!-- <dryRun>true</dryRun> -->
 					<addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
 					<roots>
