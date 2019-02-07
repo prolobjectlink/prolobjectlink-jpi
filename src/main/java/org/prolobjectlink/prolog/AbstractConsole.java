@@ -63,6 +63,7 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 	private final BufferedReader stdin = new BufferedReader(reader);
 
 	// standard output stream
+	// private final PrintWriter stdout = System.console().writer()
 	private static final PrintStream stdout = System.out;
 
 	//
@@ -88,9 +89,9 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 	}
 
 	public final void printUsage() {
-		stdout.println("Usage: prolog [-option] [file] to consult a file");
+		stdout.println("Usage: prolog option [file] to consult a file");
 		stdout.println("options:");
-		stdout.println("	-r	to consult/run a prolog file");
+		stdout.println("	-r	consult/run a prolog file");
 		stdout.println("	-v	print the prolog engine version");
 		stdout.println("	-n	print the prolog engine name");
 		stdout.println("	-l	print the prolog engine license");
@@ -99,6 +100,7 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 		stdout.println("	-e	print the prolog engine enviroment paths");
 		stdout.println("	-x	start the prolog engine execution");
 		stdout.println("	-w	print the current work directory ");
+		stdout.println("	-f	consult a prolog file and save formatted code");
 	}
 
 	public final void run(String[] args) {
@@ -147,6 +149,13 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 				stdout.println(file);
 				engine.consult(file);
 			} else if (m.containsKey("-x")) {
+				// do nothing
+			} else if (m.containsKey("-f")) {
+				String file = m.get("-r");
+				stdout.print("Format ");
+				stdout.println(file);
+				engine.consult(file);
+				engine.persist(file);
 			} else {
 				printUsage();
 				System.exit(1);
