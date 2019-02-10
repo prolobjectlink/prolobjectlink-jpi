@@ -42,11 +42,11 @@ public abstract class AbstractTerm extends AbstractWrapper implements PrologTerm
 	protected int type;
 	protected final PrologProvider provider;
 
-	public AbstractTerm(PrologProvider provider) {
+	protected AbstractTerm(PrologProvider provider) {
 		this(0, provider);
 	}
 
-	public AbstractTerm(int type, PrologProvider provider) {
+	protected AbstractTerm(int type, PrologProvider provider) {
 		this.type = type;
 		this.provider = provider;
 	}
