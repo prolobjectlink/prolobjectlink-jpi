@@ -279,6 +279,10 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	 */
 	public void retract(PrologTerm head, PrologTerm... body);
 
+	public boolean unify(PrologTerm t1, PrologTerm t2);
+
+	public Map<String, PrologTerm> match(PrologTerm t1, PrologTerm t2);
+
 	/**
 	 * Parse the string creating internal prolog clause and returning true if the
 	 * given goal have solution using the resolution engine mechanism. If wrapped
