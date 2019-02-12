@@ -39,14 +39,6 @@ public final class DefaultClauseBuilder extends AbstractDefaultBuilder implement
 		super(engine);
 	}
 
-	public DefaultClauseBuilder(PrologProvider provider) {
-		super(provider);
-	}
-
-	public DefaultClauseBuilder(PrologProvider provider, String file) {
-		super(provider, file);
-	}
-
 	public PrologClauseBuilder begin(PrologTerm term) {
 		append(' ');
 		append(term);

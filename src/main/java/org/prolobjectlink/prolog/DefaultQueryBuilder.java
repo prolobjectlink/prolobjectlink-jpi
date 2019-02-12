@@ -39,14 +39,6 @@ public final class DefaultQueryBuilder extends AbstractDefaultBuilder implements
 		super(engine);
 	}
 
-	public DefaultQueryBuilder(PrologProvider provider) {
-		super(provider);
-	}
-
-	public DefaultQueryBuilder(PrologProvider provider, String file) {
-		super(provider, file);
-	}
-
 	public PrologQueryBuilder begin(String functor, PrologTerm... arguments) {
 		append(functor, arguments);
 		return this;
