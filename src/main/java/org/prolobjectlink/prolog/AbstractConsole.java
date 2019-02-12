@@ -43,10 +43,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.prolobjectlink.AbstractPlatform;
-import org.prolobjectlink.logging.LoggerConstants;
-import org.prolobjectlink.logging.LoggerUtils;
 
 /**
  * 
@@ -104,6 +104,14 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 
 	public final void run(String[] args) {
 
+		// CTRL+C termination
+		Runtime.getRuntime().addShutdownHook(new Thread() {
+			@Override
+			public void run() {
+				engine.dispose();
+			}
+		});
+
 		Map<String, String> m = getArguments(args);
 		if (!m.isEmpty()) {
 			if (m.containsKey("-v")) {
@@ -131,7 +139,7 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 					URI d = p.getCodeSource().getLocation().toURI();
 					stdout.println(d);
 				} catch (URISyntaxException e) {
-					LoggerUtils.error(getClass(), LoggerConstants.URI, e);
+					Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
 				}
 			} else if (m.containsKey("-e")) {
 				stdout.println("Enviroment");
@@ -232,7 +240,7 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 					stdout.println("/usr/local/bin");
 				}
 			} catch (IOException e) {
-				LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+				Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
 				System.exit(0);
 			}
 

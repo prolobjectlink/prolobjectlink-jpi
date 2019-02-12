@@ -37,8 +37,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.prolobjectlink.AbstractWrapper;
-import org.prolobjectlink.logging.LoggerConstants;
-import org.prolobjectlink.logging.LoggerUtils;
 
 /**
  * 
@@ -245,14 +243,9 @@ public abstract class AbstractConverter<T> extends AbstractWrapper implements Pr
 		if (generics.length == 1 && generics[0] instanceof ParameterizedType) {
 			ParameterizedType parameterized = (ParameterizedType) generics[0];
 			Type type = parameterized.getActualTypeArguments()[0];
-			if (!(type instanceof Class<?>)) {
-				try {
-					throw new ClassNotFoundException("" + type + "");
-				} catch (ClassNotFoundException e) {
-					LoggerUtils.error(getClass(), LoggerConstants.CLASS_NOT_FOUND, e);
-				}
+			if (type instanceof Class<?>) {
+				templateClass = (Class<T>) type;
 			}
-			templateClass = (Class<T>) type;
 		}
 		return templateClass;
 	}

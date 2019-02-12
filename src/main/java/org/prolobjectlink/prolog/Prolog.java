@@ -29,9 +29,8 @@
 package org.prolobjectlink.prolog;
 
 import java.lang.reflect.Constructor;
-
-import org.prolobjectlink.logging.LoggerConstants;
-import org.prolobjectlink.logging.LoggerUtils;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public final class Prolog {
 
@@ -43,7 +42,7 @@ public final class Prolog {
 		try {
 			provider = newProvider(Class.forName(providerClassName));
 		} catch (ClassNotFoundException e) {
-			LoggerUtils.error(Prolog.class, LoggerConstants.CLASS_NOT_FOUND, e);
+			Logger.getLogger(Prolog.class.getName()).log(Level.FINEST, null, e);
 		}
 		return provider;
 	}
@@ -56,13 +55,13 @@ public final class Prolog {
 			provider = (PrologProvider) providerClass.newInstance();
 			constructor.setAccessible(false);
 		} catch (InstantiationException e) {
-			LoggerUtils.error(Prolog.class, LoggerConstants.INSTANTIATION, e);
+			Logger.getLogger(Prolog.class.getName()).log(Level.FINEST, null, e);
 		} catch (IllegalAccessException e) {
-			LoggerUtils.error(Prolog.class, LoggerConstants.ILLEGAL_ACCESS, e);
+			Logger.getLogger(Prolog.class.getName()).log(Level.FINEST, null, e);
 		} catch (NoSuchMethodException e) {
-			LoggerUtils.error(Prolog.class, LoggerConstants.NO_SUCH_METHOD, e);
+			Logger.getLogger(Prolog.class.getName()).log(Level.FINEST, null, e);
 		} catch (SecurityException e) {
-			LoggerUtils.error(Prolog.class, LoggerConstants.SECURITY, e);
+			Logger.getLogger(Prolog.class.getName()).log(Level.FINEST, null, e);
 		}
 		return provider;
 	}
