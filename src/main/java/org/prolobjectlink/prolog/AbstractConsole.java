@@ -45,7 +45,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.prolobjectlink.AbstractPlatform;
-import org.prolobjectlink.ArrayIterator;
 import org.prolobjectlink.logging.LoggerConstants;
 import org.prolobjectlink.logging.LoggerUtils;
 

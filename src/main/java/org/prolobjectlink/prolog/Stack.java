@@ -28,16 +28,56 @@
  */
 package org.prolobjectlink.prolog;
 
-public class InstantiationError extends RuntimeError {
+import java.util.EmptyStackException;
+import java.util.List;
+import java.util.Vector;
 
-	private static final long serialVersionUID = -6469645531503868695L;
+/**
+ * Stack to replace {@link java.util.Stack} synchronized implementation but with
+ * the same logic. Extends from {@link List} like {@link java.util.Stack}
+ * extends from {@link Vector}.
+ * 
+ * @author Jose Zalacain
+ *
+ * @param <E> Generic Element Type
+ * @since 1.0
+ */
+public interface Stack<E> extends List<E> {
 
-	public InstantiationError(String name) {
-		super("The class name " + name + " don't have empty constructor.");
-	}
+	/**
+	 * Pushes an item onto the top of this stack.
+	 * 
+	 * @param item the item to be pushed onto this stack.
+	 * @return the item argument.
+	 * @since 1.0
+	 */
+	public E push(E item);
 
-	public InstantiationError(String name, Throwable throwable) {
-		super("The class name " + name + " don't have empty constructor. \n" + throwable);
-	}
+	/**
+	 * Removes the object at the top of this stack and returns that object as the
+	 * value of this function.
+	 * 
+	 * @return The object at the top of this stack and the last item of the list.
+	 * @since 1.0
+	 */
+	public E pop();
+
+	/**
+	 * Looks at the object at the top of this stack without removing it from the
+	 * stack.
+	 *
+	 * @return the object at the top of this stack and the last item of the list.
+	 * @throws EmptyStackException if this stack is empty.
+	 * @since 1.0
+	 */
+	public E peek();
+
+	/**
+	 * Check if this stack is empty.
+	 *
+	 * @return true if and only if this stack no contains any item; false otherwise.
+	 * @since 1.0
+	 */
+	public boolean empty();
 
 }

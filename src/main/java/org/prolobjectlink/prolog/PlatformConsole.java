@@ -1,4 +1,4 @@
-/*
+/*-
  * #%L
  * prolobjectlink-jpi
  * %%
@@ -28,16 +28,53 @@
  */
 package org.prolobjectlink.prolog;
 
-public class InstantiationError extends RuntimeError {
+import java.util.Map;
 
-	private static final long serialVersionUID = -6469645531503868695L;
+import org.prolobjectlink.Platform;
 
-	public InstantiationError(String name) {
-		super("The class name " + name + " don't have empty constructor.");
-	}
+/**
+ * Represent the platform of the running system.
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
+public interface PlatformConsole extends Platform {
 
-	public InstantiationError(String name, Throwable throwable) {
-		super("The class name " + name + " don't have empty constructor. \n" + throwable);
-	}
+	/**
+	 * Create a arguments map from a given string arguments array. Used for convert
+	 * command line interface program arguments array to argument map.
+	 * 
+	 * @param args string arguments array
+	 * @return arguments map
+	 * @since 1.0
+	 */
+	public Map<String, String> getArguments(String[] args);
+
+	/**
+	 * <p>
+	 * Command line interface program run method for this platform. Take the program
+	 * arguments from main entry point and execute the job. Used like:
+	 * </p>
+	 * 
+	 * <tt>
+	 * public class Main{
+	 * public static void main(String[] args) {
+	 *	new Main().run(args);
+	 *}
+	 *
+	 *}
+	 * </tt>
+	 * 
+	 * @param args command line interface program arguments array
+	 * @since 1.0
+	 */
+	public void run(String[] args);
+
+	/**
+	 * Used to print console usage.
+	 * 
+	 * @since 1.0
+	 */
+	public void printUsage();
 
 }

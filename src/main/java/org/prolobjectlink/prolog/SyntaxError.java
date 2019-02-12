@@ -28,8 +28,6 @@
  */
 package org.prolobjectlink.prolog;
 
-import org.prolobjectlink.RuntimeError;
-
 public final class SyntaxError extends RuntimeError {
 
 	private static final long serialVersionUID = 2828526751667597579L;

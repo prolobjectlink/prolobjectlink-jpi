@@ -28,8 +28,6 @@
  */
 package org.prolobjectlink.prolog;
 
-import org.prolobjectlink.PlatformConsole;
-
 /**
  * 
  * 

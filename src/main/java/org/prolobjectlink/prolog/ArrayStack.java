@@ -28,16 +28,52 @@
  */
 package org.prolobjectlink.prolog;
 
-public class InstantiationError extends RuntimeError {
+import java.util.ArrayList;
+import java.util.EmptyStackException;
 
-	private static final long serialVersionUID = -6469645531503868695L;
+/**
+ * Array implementation of {@link Stack} interface.
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
+public class ArrayStack<E> extends ArrayList<E> implements Stack<E> {
 
-	public InstantiationError(String name) {
-		super("The class name " + name + " don't have empty constructor.");
+	private static final long serialVersionUID = -6769914163671435871L;
+
+	public ArrayStack() {
+		super();
 	}
 
-	public InstantiationError(String name, Throwable throwable) {
-		super("The class name " + name + " don't have empty constructor. \n" + throwable);
+	public ArrayStack(int capacity) {
+		super(capacity);
+	}
+
+	public boolean empty() {
+		return isEmpty();
+	}
+
+	public E peek() {
+		int n = size();
+		if (n <= 0) {
+			throw new EmptyStackException();
+		} else {
+			return get(n - 1);
+		}
+	}
+
+	public E pop() {
+		int n = size();
+		if (n <= 0) {
+			throw new EmptyStackException();
+		} else {
+			return remove(n - 1);
+		}
+	}
+
+	public E push(E item) {
+		add(item);
+		return item;
 	}
 
 }

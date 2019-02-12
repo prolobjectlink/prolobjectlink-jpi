@@ -28,16 +28,45 @@
  */
 package org.prolobjectlink.prolog;
 
-public class InstantiationError extends RuntimeError {
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-	private static final long serialVersionUID = -6469645531503868695L;
+import org.prolobjectlink.AbstractIterator;
 
-	public InstantiationError(String name) {
-		super("The class name " + name + " don't have empty constructor.");
+/**
+ * Iterator implementation over array of elements.
+ * 
+ * @param <E> Generic Element Type
+ * @author Jose Zalacain
+ * @since 1.0
+ */
+public class ArrayIterator<E> extends AbstractIterator<E> implements Iterator<E> {
+
+	private int next = 0;
+	private final int size;
+	private final E[] elements;
+
+	/**
+	 * Create an instance of {@link ArrayIterator} to iterate over given array of
+	 * elements
+	 * 
+	 * @param elements
+	 * @since 1.0
+	 */
+	public ArrayIterator(E[] elements) {
+		this.size = elements.length;
+		this.elements = elements;
 	}
 
-	public InstantiationError(String name, Throwable throwable) {
-		super("The class name " + name + " don't have empty constructor. \n" + throwable);
+	public boolean hasNext() {
+		return next != size;
+	}
+
+	public E next() {
+		if (next >= size) {
+			throw new NoSuchElementException();
+		}
+		return elements[next++];
 	}
 
 }

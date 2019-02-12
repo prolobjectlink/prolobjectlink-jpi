@@ -28,16 +28,52 @@
  */
 package org.prolobjectlink.prolog;
 
-public class InstantiationError extends RuntimeError {
+import java.util.ArrayList;
+import java.util.NoSuchElementException;
+import java.util.Queue;
 
-	private static final long serialVersionUID = -6469645531503868695L;
+/**
+ * Array implementation of {@link Queue} interface.
+ * 
+ * @param <E> Generic Element Type
+ * @author Jose Zalacain
+ * @since 1.0
+ * 
+ */
+public class ArrayQueue<E> extends ArrayList<E> implements Queue<E> {
 
-	public InstantiationError(String name) {
-		super("The class name " + name + " don't have empty constructor.");
+	private static final long serialVersionUID = 8659174251748733801L;
+
+	public boolean offer(E e) {
+		return add(e);
 	}
 
-	public InstantiationError(String name, Throwable throwable) {
-		super("The class name " + name + " don't have empty constructor. \n" + throwable);
+	public E remove() {
+		if (isEmpty()) {
+			throw new NoSuchElementException();
+		}
+		return remove(0);
+	}
+
+	public E poll() {
+		if (!isEmpty()) {
+			return remove(0);
+		}
+		return null;
+	}
+
+	public E element() {
+		if (isEmpty()) {
+			throw new NoSuchElementException();
+		}
+		return get(0);
+	}
+
+	public E peek() {
+		if (!isEmpty()) {
+			return get(0);
+		}
+		return null;
 	}
 
 }

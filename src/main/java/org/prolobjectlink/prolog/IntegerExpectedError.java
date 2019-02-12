@@ -28,8 +28,6 @@
  */
 package org.prolobjectlink.prolog;
 
-import org.prolobjectlink.RuntimeError;
-
 public final class IntegerExpectedError extends RuntimeError {
 
 	private static final long serialVersionUID = -3064952286859633255L;

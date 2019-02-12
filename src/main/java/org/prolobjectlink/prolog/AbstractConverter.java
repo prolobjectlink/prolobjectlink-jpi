@@ -37,7 +37,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.prolobjectlink.AbstractWrapper;
-import org.prolobjectlink.RuntimeError;
 import org.prolobjectlink.logging.LoggerConstants;
 import org.prolobjectlink.logging.LoggerUtils;
 
