@@ -37,16 +37,6 @@ public final class Prolog {
 	private Prolog() {
 	}
 
-	public static PrologProvider newProvider(String providerClassName) {
-		PrologProvider provider = null;
-		try {
-			provider = newProvider(Class.forName(providerClassName));
-		} catch (ClassNotFoundException e) {
-			Logger.getLogger(Prolog.class.getName()).log(Level.FINEST, null, e);
-		}
-		return provider;
-	}
-
 	public static PrologProvider newProvider(Class<?> providerClass) {
 		PrologProvider provider = null;
 		try {
