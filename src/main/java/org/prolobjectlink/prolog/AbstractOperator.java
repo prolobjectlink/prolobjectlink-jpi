@@ -59,7 +59,7 @@ public abstract class AbstractOperator implements PrologOperator {
 
 	@Override
 	public final String toString() {
-		return "(" + priority + "," + specifier + "," + operator + ")";
+		return "op(" + priority + "," + specifier + "," + operator + ")";
 	}
 
 	@Override
