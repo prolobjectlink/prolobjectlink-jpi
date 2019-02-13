@@ -45,18 +45,6 @@ public abstract class AbstractDefaultBuilder implements PrologBuilder {
 		this.engine = engine;
 	}
 
-	public AbstractDefaultBuilder(PrologProvider provider) {
-		this.engine = provider.newEngine();
-		this.builder = new StringBuilder();
-		this.provider = provider;
-	}
-
-	public AbstractDefaultBuilder(PrologProvider provider, String file) {
-		this.engine = provider.newEngine(file);
-		this.builder = new StringBuilder();
-		this.provider = provider;
-	}
-
 	protected final void append(Object object) {
 		builder.append(object);
 	}

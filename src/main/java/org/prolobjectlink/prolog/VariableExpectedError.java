@@ -32,10 +32,6 @@ public final class VariableExpectedError extends RuntimeError {
 
 	private static final long serialVersionUID = -3064952286859633255L;
 
-	public VariableExpectedError(PrologTerm term) {
-		super("The expected term is not a variable : " + term);
-	}
-
 	public VariableExpectedError(Object term) {
 		super("The expected term is not a variable : " + term);
 	}

@@ -32,7 +32,7 @@ public final class IndicatorError extends RuntimeError {
 
 	private static final long serialVersionUID = 3634744000779459116L;
 
-	public IndicatorError(PrologTerm term) {
+	public IndicatorError(Object term) {
 		super("The term not have indicator: " + term);
 	}
 

@@ -182,12 +182,6 @@ public abstract class AbstractProvider extends AbstractWrapper implements Prolog
 		}
 	}
 
-	protected final void checkExpressionType(PrologTerm term) {
-		if (!term.isEvaluable()) {
-			throw new ExpressionExpectedError(term);
-		}
-	}
-
 	protected final void checkIndexOutOfBound(int index, int lenght) {
 		if (index < 0 || index > lenght) {
 			throw new ArrayIndexOutOfBoundsException(index);

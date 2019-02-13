@@ -32,7 +32,7 @@ public final class CompoundExpectedError extends RuntimeError {
 
 	private static final long serialVersionUID = -3064952286859633255L;
 
-	public CompoundExpectedError(PrologTerm term) {
+	public CompoundExpectedError(Object term) {
 		super("The expected term is not a compound term : " + term);
 	}
 

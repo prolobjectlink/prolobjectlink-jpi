@@ -32,7 +32,7 @@ public final class NumberExpectedError extends RuntimeError {
 
 	private static final long serialVersionUID = -3064952286859633255L;
 
-	public NumberExpectedError(PrologTerm term) {
+	public NumberExpectedError(Object term) {
 		super("The expected term is not a number : " + term);
 	}
 

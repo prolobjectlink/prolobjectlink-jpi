@@ -32,7 +32,7 @@ public final class AtomicExpectedError extends RuntimeError {
 
 	private static final long serialVersionUID = -3064952286859633255L;
 
-	public AtomicExpectedError(PrologTerm term) {
+	public AtomicExpectedError(Object term) {
 		super("The expected term is not a atomic term : " + term);
 	}
 
