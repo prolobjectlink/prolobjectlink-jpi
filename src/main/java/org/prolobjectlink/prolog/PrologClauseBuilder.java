@@ -45,35 +45,11 @@ public interface PrologClauseBuilder extends PrologBuilder {
 
 	PrologClauseBuilder semicolon(PrologTerm left, String operator, PrologTerm right);
 
-	PrologClauseBuilder semicolon(double left, String operator, PrologTerm right);
-
-	PrologClauseBuilder semicolon(PrologTerm left, String operator, double right);
-
-	PrologClauseBuilder semicolon(long left, String operator, PrologTerm right);
-
-	PrologClauseBuilder semicolon(PrologTerm left, String operator, long right);
-
-	PrologClauseBuilder semicolon(int left, String operator, PrologTerm right);
-
-	PrologClauseBuilder semicolon(PrologTerm left, String operator, int right);
-
 	PrologClauseBuilder semicolon(String functor, PrologTerm... arguments);
 
 	PrologClauseBuilder semicolon(PrologTerm term);
 
 	PrologClauseBuilder comma(PrologTerm left, String operator, PrologTerm right);
-
-	PrologClauseBuilder comma(double left, String operator, PrologTerm right);
-
-	PrologClauseBuilder comma(PrologTerm left, String operator, double right);
-
-	PrologClauseBuilder comma(long left, String operator, PrologTerm right);
-
-	PrologClauseBuilder comma(PrologTerm left, String operator, long right);
-
-	PrologClauseBuilder comma(int left, String operator, PrologTerm right);
-
-	PrologClauseBuilder comma(PrologTerm left, String operator, int right);
 
 	PrologClauseBuilder comma(String functor, PrologTerm... arguments);
 
@@ -82,18 +58,6 @@ public interface PrologClauseBuilder extends PrologBuilder {
 	PrologClauseBuilder begin(String functor, PrologTerm... arguments);
 
 	PrologClauseBuilder neck(PrologTerm left, String operator, PrologTerm right);
-
-	PrologClauseBuilder neck(double left, String operator, PrologTerm right);
-
-	PrologClauseBuilder neck(PrologTerm left, String operator, double right);
-
-	PrologClauseBuilder neck(long left, String operator, PrologTerm right);
-
-	PrologClauseBuilder neck(PrologTerm left, String operator, long right);
-
-	PrologClauseBuilder neck(int left, String operator, PrologTerm right);
-
-	PrologClauseBuilder neck(PrologTerm left, String operator, int right);
 
 	PrologClauseBuilder neck(String functor, PrologTerm... arguments);
 

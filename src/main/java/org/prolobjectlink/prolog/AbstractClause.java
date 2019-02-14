@@ -158,36 +158,12 @@ public abstract class AbstractClause implements PrologClause {
 		return dynamic;
 	}
 
-	public void markDynamic() {
-		dynamic = true;
-	}
-
-	public void unmarkDynamic() {
-		dynamic = false;
-	}
-
 	public final boolean isMultifile() {
 		return multifile;
 	}
 
-	public void markMultifile() {
-		multifile = true;
-	}
-
-	public void unmarkMultifile() {
-		multifile = false;
-	}
-
 	public final boolean isDiscontiguous() {
 		return discontiguous;
-	}
-
-	public void markDiscontiguous() {
-		discontiguous = true;
-	}
-
-	public void unmarkDiscontiguous() {
-		discontiguous = false;
 	}
 
 	public final PrologIndicator getPrologIndicator() {

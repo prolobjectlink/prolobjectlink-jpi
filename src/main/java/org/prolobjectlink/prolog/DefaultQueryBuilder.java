@@ -63,48 +63,6 @@ public final class DefaultQueryBuilder extends AbstractDefaultBuilder implements
 		return this;
 	}
 
-	public PrologQueryBuilder comma(PrologTerm left, String operator, int right) {
-		append(',');
-		append(' ');
-		append(left, operator, right);
-		return this;
-	}
-
-	public PrologQueryBuilder comma(int left, String operator, PrologTerm right) {
-		append(',');
-		append(' ');
-		append(left, operator, right);
-		return this;
-	}
-
-	public PrologQueryBuilder comma(PrologTerm left, String operator, long right) {
-		append(',');
-		append(' ');
-		append(left, operator, right);
-		return this;
-	}
-
-	public PrologQueryBuilder comma(long left, String operator, PrologTerm right) {
-		append(',');
-		append(' ');
-		append(left, operator, right);
-		return this;
-	}
-
-	public PrologQueryBuilder comma(PrologTerm left, String operator, double right) {
-		append(',');
-		append(' ');
-		append(left, operator, right);
-		return this;
-	}
-
-	public PrologQueryBuilder comma(double left, String operator, PrologTerm right) {
-		append(',');
-		append(' ');
-		append(left, operator, right);
-		return this;
-	}
-
 	public PrologQueryBuilder comma(PrologTerm left, String operator, PrologTerm right) {
 		append(',');
 		append(' ');
@@ -123,48 +81,6 @@ public final class DefaultQueryBuilder extends AbstractDefaultBuilder implements
 		append(';');
 		append(' ');
 		append(functor, arguments);
-		return this;
-	}
-
-	public PrologQueryBuilder semicolon(PrologTerm left, String operator, int right) {
-		append(';');
-		append(' ');
-		append(left, operator, right);
-		return this;
-	}
-
-	public PrologQueryBuilder semicolon(int left, String operator, PrologTerm right) {
-		append(';');
-		append(' ');
-		append(left, operator, right);
-		return this;
-	}
-
-	public PrologQueryBuilder semicolon(PrologTerm left, String operator, long right) {
-		append(';');
-		append(' ');
-		append(left, operator, right);
-		return this;
-	}
-
-	public PrologQueryBuilder semicolon(long left, String operator, PrologTerm right) {
-		append(';');
-		append(' ');
-		append(left, operator, right);
-		return this;
-	}
-
-	public PrologQueryBuilder semicolon(PrologTerm left, String operator, double right) {
-		append(';');
-		append(' ');
-		append(left, operator, right);
-		return this;
-	}
-
-	public PrologQueryBuilder semicolon(double left, String operator, PrologTerm right) {
-		append(';');
-		append(' ');
-		append(left, operator, right);
 		return this;
 	}
 

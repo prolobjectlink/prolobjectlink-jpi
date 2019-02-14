@@ -182,10 +182,4 @@ public abstract class AbstractProvider extends AbstractWrapper implements Prolog
 		}
 	}
 
-	protected final void checkIndexOutOfBound(int index, int lenght) {
-		if (index < 0 || index > lenght) {
-			throw new ArrayIndexOutOfBoundsException(index);
-		}
-	}
-
 }
