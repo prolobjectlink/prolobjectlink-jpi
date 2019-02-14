@@ -37,7 +37,7 @@ public final class Prolog {
 	private Prolog() {
 	}
 
-	public static PrologProvider newProvider(Class<?> providerClass) {
+	public static PrologProvider getProvider(Class<?> providerClass) {
 		PrologProvider provider = null;
 		try {
 			Constructor<?> constructor = providerClass.getDeclaredConstructor();
