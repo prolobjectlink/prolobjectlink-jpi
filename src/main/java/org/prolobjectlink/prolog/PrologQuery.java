@@ -33,14 +33,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.prolobjectlink.Wrapper;
-
 /**
  * 
  * @author Jose Zalacain
  * @since 1.0
  */
-public interface PrologQuery extends Wrapper, Iterator<Collection<PrologTerm>>, Iterable<Collection<PrologTerm>> {
+public interface PrologQuery extends Iterator<Collection<PrologTerm>>, Iterable<Collection<PrologTerm>> {
 
 	/**
 	 * Engine hold by the current query

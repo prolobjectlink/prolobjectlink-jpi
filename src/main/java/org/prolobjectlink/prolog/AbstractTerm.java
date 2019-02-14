@@ -30,14 +30,12 @@ package org.prolobjectlink.prolog;
 
 import java.util.Map;
 
-import org.prolobjectlink.AbstractWrapper;
-
 /**
  * 
  * @author Jose Zalacain
  * @since 1.0
  */
-public abstract class AbstractTerm extends AbstractWrapper implements PrologTerm {
+public abstract class AbstractTerm implements PrologTerm {
 
 	protected int type;
 	protected final PrologProvider provider;

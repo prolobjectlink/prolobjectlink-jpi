@@ -30,14 +30,12 @@ package org.prolobjectlink.prolog;
 
 import java.util.Map;
 
-import org.prolobjectlink.Wrapper;
-
 /**
  * 
  * @author Jose Zalacain
  * @since 1.0
  */
-public interface PrologWrapper extends Wrapper {
+public interface PrologWrapper {
 
 	public <K extends PrologTerm, V extends Object> Map<String, PrologTerm>[] toTermMapArray(Map<String, V>[] map,
 			Class<K> from);

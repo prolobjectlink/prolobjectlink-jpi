@@ -30,14 +30,12 @@ package org.prolobjectlink.prolog;
 
 import java.util.Map;
 
-import org.prolobjectlink.Wrapper;
-
 /**
  * 
  * @author Jose Zalacain
  * @since 1.0
  */
-public interface PrologTerm extends Wrapper, Comparable<PrologTerm> {
+public interface PrologTerm extends Comparable<PrologTerm> {
 
 	/**
 	 * Gets the term indicator represented by one string with the format

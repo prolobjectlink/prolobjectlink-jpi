@@ -32,8 +32,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.prolobjectlink.AbstractIterator;
-
 /**
  * Iterator class implementation for Prolog Query
  * 

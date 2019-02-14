@@ -29,42 +29,20 @@
 package org.prolobjectlink.prolog;
 
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 /**
- * Iterator implementation over array of elements.
+ * Partial implementation of {@link Iterator} interface. Override remove method
+ * raising {@link UnsupportedOperationException} like common behavior for there
+ * iterators that not support remove operations over your elements collections.
  * 
  * @param <E> Generic Element Type
  * @author Jose Zalacain
  * @since 1.0
  */
-public class ArrayIterator<E> extends AbstractIterator<E> implements Iterator<E> {
+public abstract class AbstractIterator<E> implements Iterator<E> {
 
-	private int next = 0;
-	private final int size;
-	private final E[] elements;
-
-	/**
-	 * Create an instance of {@link ArrayIterator} to iterate over given array of
-	 * elements
-	 * 
-	 * @param elements
-	 * @since 1.0
-	 */
-	public ArrayIterator(E[] elements) {
-		this.size = elements.length;
-		this.elements = elements;
-	}
-
-	public boolean hasNext() {
-		return next != size;
-	}
-
-	public E next() {
-		if (next >= size) {
-			throw new NoSuchElementException();
-		}
-		return elements[next++];
+	public void remove() {
+		throw new UnsupportedOperationException();
 	}
 
 }

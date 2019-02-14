@@ -36,14 +36,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.prolobjectlink.AbstractWrapper;
-
 /**
  * 
  * @author Jose Zalacain
  * @since 1.0
  */
-public abstract class AbstractConverter<T> extends AbstractWrapper implements PrologConverter<T> {
+public abstract class AbstractConverter<T> implements PrologConverter<T> {
 
 	public static final String SIMPLE_ATOM_REGEX = ".|[a-z][A-Za-z0-9_]*";
 	private static final String IMPOSIBLE_CONVERT = "Impossible convert '";
