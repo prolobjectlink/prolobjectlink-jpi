@@ -190,6 +190,7 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 							for (Entry<String, PrologTerm> e : s.entrySet()) {
 								stdout.println(e.getKey() + " = " + e.getValue());
 							}
+							stdout.println();
 							stdout.println("Yes.");
 						}
 
