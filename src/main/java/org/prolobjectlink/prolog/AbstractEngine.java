@@ -116,6 +116,10 @@ public abstract class AbstractEngine extends AbstractPlatform implements PrologE
 		return new DefaultClauseBuilder(this);
 	}
 
+	public final PrologLogger getLogger() {
+		return provider.getLogger();
+	}
+
 	protected final <K extends PrologTerm> K toTerm(Object o, Class<K> from) {
 		return provider.toTerm(o, from);
 	}

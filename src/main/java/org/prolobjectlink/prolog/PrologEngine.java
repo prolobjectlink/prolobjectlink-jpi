@@ -433,6 +433,8 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	public Set<PrologIndicator> getBuiltIns();
 
 	public PrologProvider getProvider();
+	
+	public PrologLogger getLogger();
 
 	/**
 	 * License of the wrapped engine.

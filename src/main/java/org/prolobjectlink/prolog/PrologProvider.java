@@ -179,4 +179,6 @@ public interface PrologProvider extends PrologParser {
 
 	public PrologParser getParser();
 
+	public PrologLogger getLogger();
+
 }
