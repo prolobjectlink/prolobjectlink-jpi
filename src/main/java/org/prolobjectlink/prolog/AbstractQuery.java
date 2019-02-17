@@ -117,6 +117,10 @@ public abstract class AbstractQuery extends AbstractIterator<Collection<PrologTe
 		return false;
 	}
 
+	protected final PrologLogger getLogger() {
+		return getProvider().getLogger();
+	}
+
 	public final Iterator<Collection<PrologTerm>> iterator() {
 		return new PrologQueryIterator(this);
 	}

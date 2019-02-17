@@ -108,6 +108,10 @@ public abstract class AbstractTerm implements PrologTerm {
 		return provider.fromTerm(head, body, to);
 	}
 
+	protected final PrologLogger getLogger() {
+		return provider.getLogger();
+	}
+
 	public PrologTerm getArgument(int index) {
 		PrologTerm[] array = getArguments();
 		checkIndex(index, array.length);
