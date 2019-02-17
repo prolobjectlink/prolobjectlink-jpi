@@ -58,6 +58,10 @@ public abstract class AbstractConverter<T> implements PrologConverter<T> {
 		provider = createProvider();
 	}
 
+	protected final PrologLogger getLogger() {
+		return provider.getLogger();
+	}
+
 	public final boolean isQuoted(String functor) {
 		if (!functor.isEmpty()) {
 			char beginChar = functor.charAt(0);
