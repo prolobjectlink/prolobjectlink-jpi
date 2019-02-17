@@ -106,6 +106,11 @@ public class Licenses {
 	 * MIT-License
 	 */
 	public static final String MIT = "MIT-License";
+	
+	/**
+	 * Mozilla Public License version 1.1
+	 */
+	public static final String MPL_V1_1 = "Mozilla Public License version 1.1";
 
 	/**
 	 * No specified
