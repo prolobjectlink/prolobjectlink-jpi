@@ -32,6 +32,58 @@ import java.util.logging.Level;
 
 public interface PrologLogger {
 
+	public static final String RUNTIME_ERROR = "Runtime error ";
+
+	public static final String FILE_NOT_FOUND = "File not found ";
+
+	public static final String CLASS_NOT_FOUND = "Class not found ";
+
+	public static final String UNKNOW_PREDICATE = "Unknow predicate";
+
+	public static final String SYNTAX_ERROR = "Syntax error in the file ";
+
+	public static final String NON_SOLUTION = "The query no have solution ";
+
+	public static final String INDICATOR_NOT_FOUND = "Predicate not found for";
+
+	public static final String IO = "Some error occurs opening the file";
+
+	public static final String ERROR_LOADING_BUILT_INS = "Error loading prolog built-ins ";
+
+	public static final String DONT_WORRY = "Don't worry about it, the file was create for you ";
+
+	public static final String INTERRUPTED_ERROR = "Thread interrupted error";
+
+	public static final String EXECUTION_ERROR = "Thread execution error";
+
+	public static final String FILE_NOT_DELETE = "File not delete ";
+
+	public static final String INSTANTIATION = "Instantiation error ";
+
+	public static final String ILLEGAL_ACCESS = "Illegal access error ";
+
+	public static final String NO_SUCH_METHOD = "No such method error";
+
+	public static final String SECURITY = "Security error ";
+
+	public static final String SQL_ERROR = "SQL error ";
+
+	public static final String UNKNOWN_HOST = "Unknow Host error";
+
+	public static final String ILLEGAL_ARGUMENT = "Illegal argument error";
+
+	public static final String INVOCATION_TARGET = "Invocation target error";
+
+	public static final String NO_SUCH_FIELD = "No such field error";
+
+	public static final String CLASS_CAST = "Class cast error";
+
+	public static final String URI = "URI Syntax error";
+
+	public static final String URL = "URL Syntax error";
+
+	public static final String LINK = "Link library error";
+
 	public void log(Object sender, Level level, Object message);
 
 	public void log(Object sender, Level level, Object message, Throwable throwable);
