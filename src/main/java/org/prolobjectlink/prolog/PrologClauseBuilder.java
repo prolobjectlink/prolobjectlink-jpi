@@ -35,36 +35,30 @@ package org.prolobjectlink.prolog;
  */
 public interface PrologClauseBuilder extends PrologBuilder {
 
-	void retract();
+	public PrologClauseBuilder comma(PrologTerm left, String operator, PrologTerm right);
 
-	boolean clause();
+	public PrologClauseBuilder comma(String functor, PrologTerm... arguments);
 
-	void assertz();
+	public PrologClauseBuilder comma(PrologTerm body);
 
-	void asserta();
+	public PrologClauseBuilder begin(String functor, PrologTerm... arguments);
 
-	PrologClauseBuilder semicolon(PrologTerm left, String operator, PrologTerm right);
+	public PrologClauseBuilder neck(PrologTerm left, String operator, PrologTerm right);
 
-	PrologClauseBuilder semicolon(String functor, PrologTerm... arguments);
+	public PrologClauseBuilder neck(String functor, PrologTerm... arguments);
 
-	PrologClauseBuilder semicolon(PrologTerm term);
+	public PrologClauseBuilder neck(PrologTerm body);
 
-	PrologClauseBuilder comma(PrologTerm left, String operator, PrologTerm right);
+	public PrologClauseBuilder begin(PrologTerm term);
 
-	PrologClauseBuilder comma(String functor, PrologTerm... arguments);
+	public String getClauseString();
 
-	PrologClauseBuilder comma(PrologTerm body);
+	public boolean clause();
 
-	PrologClauseBuilder begin(String functor, PrologTerm... arguments);
+	public void assertz();
 
-	PrologClauseBuilder neck(PrologTerm left, String operator, PrologTerm right);
+	public void asserta();
 
-	PrologClauseBuilder neck(String functor, PrologTerm... arguments);
-
-	PrologClauseBuilder neck(PrologTerm body);
-
-	PrologClauseBuilder begin(PrologTerm term);
-
-	String getClauseString();
+	public void retract();
 
 }

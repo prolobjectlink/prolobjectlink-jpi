@@ -103,29 +103,14 @@ public final class DefaultClauseBuilder extends AbstractDefaultBuilder implement
 		return this;
 	}
 
-	public PrologClauseBuilder semicolon(PrologTerm term) {
-		append(';');
-		append(' ');
-		append(term);
-		return this;
-	}
-
-	public PrologClauseBuilder semicolon(String functor, PrologTerm... arguments) {
-		append(';');
-		append(' ');
-		append(functor, arguments);
-		return this;
-	}
-
-	public PrologClauseBuilder semicolon(PrologTerm left, String operator, PrologTerm right) {
-		append(';');
-		append(' ');
-		append(left, operator, right);
-		return this;
-	}
-
 	public String getClauseString() {
 		return "" + builder + "";
+	}
+
+	public boolean clause() {
+		String c = getClauseString();
+		builder = new StringBuilder();
+		return engine.clause(c);
 	}
 
 	public void asserta() {
@@ -138,12 +123,6 @@ public final class DefaultClauseBuilder extends AbstractDefaultBuilder implement
 		String c = getClauseString();
 		builder = new StringBuilder();
 		engine.assertz(c);
-	}
-
-	public boolean clause() {
-		String c = getClauseString();
-		builder = new StringBuilder();
-		return engine.clause(c);
 	}
 
 	public void retract() {
