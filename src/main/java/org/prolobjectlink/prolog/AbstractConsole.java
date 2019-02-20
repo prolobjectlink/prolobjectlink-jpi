@@ -35,7 +35,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.ProtectionDomain;
@@ -63,7 +63,7 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 
 	// standard output stream
 	// private final PrintWriter stdout = System.console().writer()
-	private static final PrintStream stdout = System.out;
+	private static final PrintWriter stdout = new PrintWriter(System.out, true);
 
 	//
 	private final PrologEngine engine;
@@ -193,10 +193,6 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 							stdout.println();
 							stdout.println("Yes.");
 						}
-
-//						else if (engine.hasCause()) {
-//							stdout.println(engine.getCause());
-//						} 
 
 						else {
 							stdout.println("No.");
