@@ -32,14 +32,57 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.prolobjectlink.Platform;
-
 /**
  * 
  * @author Jose Zalacain
  * @since 1.0
  */
-public interface PrologEngine extends Platform, Iterable<PrologClause> {
+public interface PrologEngine extends Iterable<PrologClause> {
+
+	/**
+	 * Check if the host operating system name refer to Windows OS.
+	 * 
+	 * @return true if the host operating system name refer to Windows OS and false
+	 *         otherwise.
+	 * @since 1.0
+	 */
+	public boolean runOnWindows();
+
+	/**
+	 * Check if the host operating system name refer to Linux OS.
+	 * 
+	 * @return true if the host operating system name refer to Linux OS and false
+	 *         otherwise.
+	 * @since 1.0
+	 */
+	public boolean runOnLinux();
+
+	/**
+	 * Check if the host operating system name refer to OsX.
+	 * 
+	 * @return true if the host operating system name refer to OsX and false
+	 *         otherwise.
+	 * @since 1.0
+	 */
+	public boolean runOnOsX();
+
+	/**
+	 * Return the host operating system name. Is a shortcut to
+	 * {@code System.getProperty("os.name");}.
+	 * 
+	 * @return the host operating system name.
+	 * @since 1.0
+	 */
+	public String getOsName();
+
+	/**
+	 * Return the host operating system architecture. Is a shortcut to
+	 * {@code System.getProperty("os.arch");}.
+	 * 
+	 * @return the host operating system architecture.
+	 * @since 1.0
+	 */
+	public String getArch();
 
 	public void include(String path);
 
@@ -433,7 +476,7 @@ public interface PrologEngine extends Platform, Iterable<PrologClause> {
 	public Set<PrologIndicator> getBuiltIns();
 
 	public PrologProvider getProvider();
-	
+
 	public PrologLogger getLogger();
 
 	/**

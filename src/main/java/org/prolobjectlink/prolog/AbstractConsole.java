@@ -128,9 +128,9 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 				stdout.print(" v");
 				stdout.println(engine.getVersion());
 				stdout.println(engine.getLicense());
-				stdout.println(engine.getJavaName());
-				stdout.println(engine.getJavaVendor());
-				stdout.println(engine.getJavaVersion());
+				stdout.println(System.getProperty("java.vm.name"));
+				stdout.println(System.getProperty("java.vendor"));
+				stdout.println(System.getProperty("java.version"));
 				stdout.println();
 			} else if (m.containsKey("-w")) {
 				try {
@@ -144,9 +144,9 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 			} else if (m.containsKey("-e")) {
 				stdout.println("Enviroment");
 				stdout.println("Class path");
-				stdout.println(getClassPath());
+				stdout.println(System.getenv("java.class.path"));
 				stdout.println("System path");
-				stdout.println(getPath());
+				stdout.println(System.getenv("Path"));
 			} else if (m.containsKey("-a")) {
 				stdout.print(PROLOBJECTLINK);
 				stdout.print(COPYRIHT);

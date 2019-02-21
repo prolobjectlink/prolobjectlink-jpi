@@ -37,14 +37,12 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-import org.prolobjectlink.AbstractPlatform;
-
 /**
  * 
  * @author Jose Zalacain
  * @since 1.0
  */
-public abstract class AbstractEngine extends AbstractPlatform implements PrologEngine {
+public abstract class AbstractEngine implements PrologEngine {
 
 	protected final PrologProvider provider;
 	protected static final String UNKNOW_VERSION = "unknow";
@@ -114,6 +112,29 @@ public abstract class AbstractEngine extends AbstractPlatform implements PrologE
 
 	public final DefaultClauseBuilder newClauseBuilder() {
 		return new DefaultClauseBuilder(this);
+	}
+
+	public final boolean runOnOsX() {
+		return getOsName().indexOf("mac os x", 0) != -1;
+	}
+
+	public final boolean runOnWindows() {
+		return getOsName().indexOf("windows", 0) != -1;
+	}
+
+	public final boolean runOnLinux() {
+		return getOsName().indexOf("linux", 0) != -1;
+	}
+
+	public final String getOsName() {
+		String os = System.getProperty("os.name");
+		if (os == null)
+			return "unknow";
+		return os;
+	}
+
+	public final String getArch() {
+		return System.getProperty("os.arch");
 	}
 
 	public final PrologLogger getLogger() {

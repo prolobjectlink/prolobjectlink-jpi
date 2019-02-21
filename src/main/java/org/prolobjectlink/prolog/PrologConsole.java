@@ -28,6 +28,8 @@
  */
 package org.prolobjectlink.prolog;
 
+import java.util.Map;
+
 /**
  * 
  * 
@@ -35,5 +37,42 @@ package org.prolobjectlink.prolog;
  * @since 1.0
  */
 public interface PrologConsole extends PlatformConsole {
+
+	/**
+	 * Create a arguments map from a given string arguments array. Used for convert
+	 * command line interface program arguments array to argument map.
+	 * 
+	 * @param args string arguments array
+	 * @return arguments map
+	 * @since 1.0
+	 */
+	public Map<String, String> getArguments(String[] args);
+
+	/**
+	 * <p>
+	 * Command line interface program run method for this platform. Take the program
+	 * arguments from main entry point and execute the job. Used like:
+	 * </p>
+	 * 
+	 * <tt>
+	 * public class Main{
+	 * public static void main(String[] args) {
+	 *	new Main().run(args);
+	 *}
+	 *
+	 *}
+	 * </tt>
+	 * 
+	 * @param args command line interface program arguments array
+	 * @since 1.0
+	 */
+	public void run(String[] args);
+
+	/**
+	 * Used to print console usage.
+	 * 
+	 * @since 1.0
+	 */
+	public void printUsage();
 
 }
