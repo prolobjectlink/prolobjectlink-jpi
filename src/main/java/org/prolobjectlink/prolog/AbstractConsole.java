@@ -46,14 +46,12 @@ import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.prolobjectlink.AbstractPlatform;
-
 /**
  * 
  * @author Jose Zalacain
  * @since 1.0
  */
-public abstract class AbstractConsole extends AbstractPlatform implements PrologConsole {
+public abstract class AbstractConsole implements PrologConsole {
 
 	// default input stream
 	private final InputStreamReader reader = new InputStreamReader(System.in);
@@ -213,27 +211,31 @@ public abstract class AbstractConsole extends AbstractPlatform implements Prolog
 				}
 
 			} catch (UnsatisfiedLinkError e) {
-				checkJDKInstalation();
 				stdout.println("You need prolog native engine and set this routes in your system class path:");
-				if (runOnWindows()) {
-					stdout.println(getJavaHome().replace(File.separator + "jre", File.separator) + "/jdk"
-							+ getJavaVersion() + "/bin" + getPathSeparator());
-					stdout.println(getJavaHome().replace(File.separator + "jre", File.separator) + "/jdk"
-							+ getJavaVersion() + "/lib/tools.jar" + getPathSeparator());
-					stdout.println(getJavaHome().replace(File.separator + "jre", File.separator) + "/jdk"
-							+ getJavaVersion() + "/jre/lib/rt.jar;" + getPathSeparator());
-					stdout.println("C:/Program Files/swipl/lib/jpl.jar" + getPathSeparator());
+
+				String javaHome = System.getProperty("java.home");
+				String javaVersion = System.getProperty("java.version");
+				String pathSeparator = System.getProperty("path.separator");
+
+				if (engine.runOnWindows()) {
+					stdout.println(javaHome.replace(File.separator + "jre", File.separator) + "/jdk" + javaVersion
+							+ "/bin" + pathSeparator);
+					stdout.println(javaHome.replace(File.separator + "jre", File.separator) + "/jdk" + javaVersion
+							+ "/lib/tools.jar" + pathSeparator);
+					stdout.println(javaHome.replace(File.separator + "jre", File.separator) + "/jdk" + javaVersion
+							+ "/jre/lib/rt.jar;" + pathSeparator);
+					stdout.println("C:/Program Files/swipl/lib/jpl.jar" + pathSeparator);
 					stdout.println("C:/Program Files/swipl/bin");
-				} else if (runOnOsX()) {
+				} else if (engine.runOnOsX()) {
 					// TODO environment routes for MacOSX
-				} else if (runOnLinux()) {
-					stdout.println("/usr/lib/jvm/java-" + getJavaVersion() + "-openjdk-" + getArch() + "/bin"
-							+ getPathSeparator());
-					stdout.println("/usr/lib/jvm/java-" + getJavaVersion() + "-openjdk-" + getArch() + "/lib/tools.jar"
-							+ getPathSeparator());
-					stdout.println("/usr/lib/jvm/java-" + getJavaVersion() + "-openjdk-" + getArch() + "/jre/lib/rt.jar"
-							+ getPathSeparator());
-					stdout.println("/usr/local/bin/swipl/lib/jpl.jar" + getPathSeparator());
+				} else if (engine.runOnLinux()) {
+					stdout.println("/usr/lib/jvm/java-" + javaVersion + "-openjdk-" + engine.getArch() + "/bin"
+							+ pathSeparator);
+					stdout.println("/usr/lib/jvm/java-" + javaVersion + "-openjdk-" + engine.getArch()
+							+ "/lib/tools.jar" + pathSeparator);
+					stdout.println("/usr/lib/jvm/java-" + javaVersion + "-openjdk-" + engine.getArch()
+							+ "/jre/lib/rt.jar" + pathSeparator);
+					stdout.println("/usr/local/bin/swipl/lib/jpl.jar" + pathSeparator);
 					stdout.println("/usr/local/bin");
 				}
 			} catch (IOException e) {

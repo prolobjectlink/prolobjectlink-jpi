@@ -31,12 +31,12 @@ package org.prolobjectlink.prolog;
 import java.util.Map;
 
 /**
- * 
+ * Represent the prolog console of the system.
  * 
  * @author Jose Zalacain
  * @since 1.0
  */
-public interface PrologConsole extends PlatformConsole {
+public interface PrologConsole {
 
 	/**
 	 * Create a arguments map from a given string arguments array. Used for convert
