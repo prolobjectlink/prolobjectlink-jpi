@@ -28,8 +28,6 @@
  */
 package org.prolobjectlink.prolog;
 
-import static org.prolobjectlink.prolog.About.COPYRIHT;
-import static org.prolobjectlink.prolog.About.PROLOBJECTLINK;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -52,6 +50,9 @@ import java.util.logging.Logger;
  * @since 1.0
  */
 public abstract class AbstractConsole implements PrologConsole {
+
+	static final String PROLOBJECTLINK = "Prolobjectlink";
+	static final String COPYRIHT = " (C)";
 
 	// default input stream
 	private final InputStreamReader reader = new InputStreamReader(System.in);

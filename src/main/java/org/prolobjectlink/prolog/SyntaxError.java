@@ -28,7 +28,7 @@
  */
 package org.prolobjectlink.prolog;
 
-public final class SyntaxError extends RuntimeError {
+public final class SyntaxError extends PrologError {
 
 	private static final long serialVersionUID = 2828526751667597579L;
 

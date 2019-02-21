@@ -28,7 +28,7 @@
  */
 package org.prolobjectlink.prolog;
 
-public final class UnknownTermError extends RuntimeError {
+public final class UnknownTermError extends PrologError {
 
 	private static final long serialVersionUID = 3634055905766091444L;
 

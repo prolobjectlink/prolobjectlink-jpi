@@ -28,7 +28,7 @@
  */
 package org.prolobjectlink.prolog;
 
-public class RuntimeError extends Error {
+public class PrologError extends Error {
 
 	private static final long serialVersionUID = 4344277636991967495L;
 
@@ -93,11 +93,11 @@ public class RuntimeError extends Error {
 	static final String ILLEGAL_OPERATOR_PRIORITY = "Not valid operator prority";
 	static final String ILLEGAL_OPERATOR_SPECIFIER = "Not valid operator specifier";
 
-	public RuntimeError(String message) {
+	public PrologError(String message) {
 		super(message);
 	}
 
-	public RuntimeError(String message, Throwable t) {
+	public PrologError(String message, Throwable t) {
 		super(message + "\n Caused by: " + t);
 	}
 

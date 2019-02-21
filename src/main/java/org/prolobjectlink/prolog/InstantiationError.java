@@ -28,7 +28,7 @@
  */
 package org.prolobjectlink.prolog;
 
-public class InstantiationError extends RuntimeError {
+public class InstantiationError extends PrologError {
 
 	private static final long serialVersionUID = -6469645531503868695L;
 

@@ -130,7 +130,7 @@ public abstract class AbstractConverter<T> implements PrologConverter<T> {
 				return from.cast(term);
 			}
 		}
-		throw new RuntimeError(
+		throw new PrologError(
 
 				IMPOSIBLE_CONVERT + o + FROM + from + "'"
 
@@ -146,7 +146,7 @@ public abstract class AbstractConverter<T> implements PrologConverter<T> {
 				return from.cast(terms);
 			}
 		}
-		throw new RuntimeError(
+		throw new PrologError(
 
 				IMPOSIBLE_CONVERT +
 
@@ -167,7 +167,7 @@ public abstract class AbstractConverter<T> implements PrologConverter<T> {
 				return from.cast(terms);
 			}
 		}
-		throw new RuntimeError(
+		throw new PrologError(
 
 				IMPOSIBLE_CONVERT +
 
@@ -204,7 +204,7 @@ public abstract class AbstractConverter<T> implements PrologConverter<T> {
 		if (to.isAssignableFrom(t.getClass())) {
 			return to.cast(t);
 		}
-		throw new RuntimeError(
+		throw new PrologError(
 
 				IMPOSIBLE_CONVERT + term + TO + to + "'"
 
@@ -216,7 +216,7 @@ public abstract class AbstractConverter<T> implements PrologConverter<T> {
 		if (to.isAssignableFrom(ts.getClass())) {
 			return to.cast(ts);
 		}
-		throw new RuntimeError(
+		throw new PrologError(
 
 				IMPOSIBLE_CONVERT + terms + TO + to + "'"
 
@@ -228,7 +228,7 @@ public abstract class AbstractConverter<T> implements PrologConverter<T> {
 		if (to.isAssignableFrom(t.getClass())) {
 			return to.cast(t);
 		}
-		throw new RuntimeError(
+		throw new PrologError(
 
 				IMPOSIBLE_CONVERT +
 

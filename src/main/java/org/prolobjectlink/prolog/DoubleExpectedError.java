@@ -28,7 +28,7 @@
  */
 package org.prolobjectlink.prolog;
 
-public final class DoubleExpectedError extends RuntimeError {
+public final class DoubleExpectedError extends PrologError {
 
 	private static final long serialVersionUID = -1138262990138844046L;
 

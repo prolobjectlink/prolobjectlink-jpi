@@ -30,29 +30,48 @@ package org.prolobjectlink.prolog;
 
 import java.util.ArrayList;
 import java.util.EmptyStackException;
+import java.util.List;
+import java.util.Vector;
 
 /**
- * Array implementation of {@link Stack} interface.
+ * Array Stack implementation to replace {@link java.util.Stack} synchronized
+ * implementation but with the same logic. Extends from {@link List} like
+ * {@link java.util.Stack} extends from {@link Vector}.
  * 
  * @author Jose Zalacain
+ *
+ * @param <E> Generic Element Type
  * @since 1.0
  */
-public class ArrayStack<E> extends ArrayList<E> implements Stack<E> {
+public class ArrayStack<E> extends ArrayList<E> {
 
 	private static final long serialVersionUID = -6769914163671435871L;
 
+	/**
+	 * Create an empty stack
+	 */
 	public ArrayStack() {
 		super();
 	}
 
-	public ArrayStack(int capacity) {
-		super(capacity);
-	}
-
+	/**
+	 * Check if this stack is empty.
+	 *
+	 * @return true if and only if this stack no contains any item; false otherwise.
+	 * @since 1.0
+	 */
 	public boolean empty() {
 		return isEmpty();
 	}
 
+	/**
+	 * Looks at the object at the top of this stack without removing it from the
+	 * stack.
+	 *
+	 * @return the object at the top of this stack and the last item of the list.
+	 * @throws EmptyStackException if this stack is empty.
+	 * @since 1.0
+	 */
 	public E peek() {
 		int n = size();
 		if (n <= 0) {
@@ -62,6 +81,13 @@ public class ArrayStack<E> extends ArrayList<E> implements Stack<E> {
 		}
 	}
 
+	/**
+	 * Removes the object at the top of this stack and returns that object as the
+	 * value of this function.
+	 * 
+	 * @return The object at the top of this stack and the last item of the list.
+	 * @since 1.0
+	 */
 	public E pop() {
 		int n = size();
 		if (n <= 0) {
@@ -71,6 +97,13 @@ public class ArrayStack<E> extends ArrayList<E> implements Stack<E> {
 		}
 	}
 
+	/**
+	 * Pushes an item onto the top of this stack.
+	 * 
+	 * @param item the item to be pushed onto this stack.
+	 * @return the item argument.
+	 * @since 1.0
+	 */
 	public E push(E item) {
 		add(item);
 		return item;

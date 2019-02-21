@@ -34,7 +34,7 @@ import java.util.logging.Formatter;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
-public class LoggerFormatter extends Formatter {
+public class PrologFormatter extends Formatter {
 
 	private static final String ERROR = "ERROR";
 	private static final String WARN = "WARN";

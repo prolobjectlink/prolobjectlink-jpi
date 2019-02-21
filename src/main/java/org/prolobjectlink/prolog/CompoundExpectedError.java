@@ -28,7 +28,7 @@
  */
 package org.prolobjectlink.prolog;
 
-public final class CompoundExpectedError extends RuntimeError {
+public final class CompoundExpectedError extends PrologError {
 
 	private static final long serialVersionUID = -3064952286859633255L;
 

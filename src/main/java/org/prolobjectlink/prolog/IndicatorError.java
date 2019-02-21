@@ -28,7 +28,7 @@
  */
 package org.prolobjectlink.prolog;
 
-public final class IndicatorError extends RuntimeError {
+public final class IndicatorError extends PrologError {
 
 	private static final long serialVersionUID = 3634744000779459116L;
 
