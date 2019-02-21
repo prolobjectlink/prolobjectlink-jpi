@@ -17,11 +17,11 @@
 	</organization>
 
 	<licenses>
-	    <license>
-	      <name>Simplified BSD License</name>
-	      <url>https://github.com/prolobjectlink/${project.name}/blob/master/LICENSE</url>
-	    </license>
-    </licenses>
+		<license>
+			<name>Simplified BSD License</name>
+			<url>https://github.com/prolobjectlink/${project.name}/blob/master/LICENSE</url>
+		</license>
+	</licenses>
 
 	<developers>
 		<developer>
@@ -81,11 +81,6 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.prolobjectlink</groupId>
-			<artifactId>prolobjectlink-jpe</artifactId>
-			<version>[1.0.0, )</version>
-		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
