@@ -91,6 +91,10 @@ public abstract class AbstractProvider implements PrologProvider {
 		return newLong(0L);
 	}
 
+	public PrologList newList(PrologTerm head) {
+		return newList(new PrologTerm[] { head });
+	}
+
 	public final <K extends PrologTerm> K toTerm(Object o, Class<K> from) {
 		return converter.toTerm(o, from);
 	}

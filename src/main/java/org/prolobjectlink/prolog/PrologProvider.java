@@ -165,6 +165,8 @@ public interface PrologProvider extends PrologParser {
 
 	public PrologList newList();
 
+	public PrologList newList(PrologTerm head);
+
 	public PrologList newList(PrologTerm[] arguments);
 
 	public PrologList newList(PrologTerm head, PrologTerm tail);
