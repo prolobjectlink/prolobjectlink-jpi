@@ -28,9 +28,7 @@
  */
 package org.prolobjectlink.prolog;
 
-
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -39,6 +37,7 @@ import java.net.URISyntaxException;
 import java.security.ProtectionDomain;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Level;
@@ -51,8 +50,8 @@ import java.util.logging.Logger;
  */
 public abstract class AbstractConsole implements PrologConsole {
 
-	static final String PROLOBJECTLINK = "Prolobjectlink";
-	static final String COPYRIHT = " (C)";
+	private static final String PROLOBJECTLINK = "Prolobjectlink";
+	private static final String COPYRIHT = " (C)";
 
 	// default input stream
 	private final InputStreamReader reader = new InputStreamReader(System.in);
@@ -99,6 +98,7 @@ public abstract class AbstractConsole implements PrologConsole {
 		stdout.println("	-x	start the prolog engine execution");
 		stdout.println("	-w	print the current work directory ");
 		stdout.println("	-f	consult a prolog file and save formatted code");
+		stdout.println("	-t	test and report integration conditions");
 	}
 
 	public final void run(String[] args) {
@@ -108,6 +108,7 @@ public abstract class AbstractConsole implements PrologConsole {
 			@Override
 			public void run() {
 				engine.dispose();
+				System.exit(0);
 			}
 		});
 
@@ -162,6 +163,11 @@ public abstract class AbstractConsole implements PrologConsole {
 				stdout.println(file);
 				engine.consult(file);
 				engine.persist(file);
+			} else if (m.containsKey("-t")) {
+				List<String> status = engine.verify();
+				for (String string : status) {
+					stdout.println(string);
+				}
 			} else {
 				printUsage();
 				System.exit(1);
@@ -213,35 +219,13 @@ public abstract class AbstractConsole implements PrologConsole {
 
 			} catch (UnsatisfiedLinkError e) {
 				stdout.println("You need prolog native engine and set this routes in your system class path:");
-
-				String javaHome = System.getProperty("java.home");
-				String javaVersion = System.getProperty("java.version");
-				String pathSeparator = System.getProperty("path.separator");
-
-				if (engine.runOnWindows()) {
-					stdout.println(javaHome.replace(File.separator + "jre", File.separator) + "/jdk" + javaVersion
-							+ "/bin" + pathSeparator);
-					stdout.println(javaHome.replace(File.separator + "jre", File.separator) + "/jdk" + javaVersion
-							+ "/lib/tools.jar" + pathSeparator);
-					stdout.println(javaHome.replace(File.separator + "jre", File.separator) + "/jdk" + javaVersion
-							+ "/jre/lib/rt.jar;" + pathSeparator);
-					stdout.println("C:/Program Files/swipl/lib/jpl.jar" + pathSeparator);
-					stdout.println("C:/Program Files/swipl/bin");
-				} else if (engine.runOnOsX()) {
-					// TODO environment routes for MacOSX
-				} else if (engine.runOnLinux()) {
-					stdout.println("/usr/lib/jvm/java-" + javaVersion + "-openjdk-" + engine.getArch() + "/bin"
-							+ pathSeparator);
-					stdout.println("/usr/lib/jvm/java-" + javaVersion + "-openjdk-" + engine.getArch()
-							+ "/lib/tools.jar" + pathSeparator);
-					stdout.println("/usr/lib/jvm/java-" + javaVersion + "-openjdk-" + engine.getArch()
-							+ "/jre/lib/rt.jar" + pathSeparator);
-					stdout.println("/usr/local/bin/swipl/lib/jpl.jar" + pathSeparator);
-					stdout.println("/usr/local/bin");
+				List<String> status = engine.verify();
+				for (String string : status) {
+					stdout.println(string);
 				}
 			} catch (IOException e) {
 				Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
-				System.exit(0);
+				System.exit(1);
 			}
 
 		} else {

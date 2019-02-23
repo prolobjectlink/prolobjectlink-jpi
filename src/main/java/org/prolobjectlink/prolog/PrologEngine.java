@@ -84,6 +84,19 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 */
 	public String getArch();
 
+	/**
+	 * Test the correct integration between under-laying prolog engine and top level
+	 * interface. Return a string list with the needed conditions to link the
+	 * under-laying prolog engine. if the under-laying prolog engine is linked the
+	 * returned set only contain the "OK" string indicating a correct integration.
+	 * 
+	 * @return string list with only "OK" string if the prolog engine integration is
+	 *         correct or the conditions string list needed to link the prolog
+	 *         engine.
+	 * @since 1.0
+	 */
+	public List<String> verify();
+
 	public void include(String path);
 
 	public void consult(String path);

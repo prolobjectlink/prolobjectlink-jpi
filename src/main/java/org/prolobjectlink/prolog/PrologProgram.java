@@ -81,6 +81,8 @@ public interface PrologProgram extends Set<PrologClauses>, Iterable<PrologClause
 
 	public boolean isDiscontiguous(String functor, int arity);
 
+	public Map<String, PrologClauses> getClauses();
+
 	public Set<String> getIndicators();
 
 	public String toString();
@@ -88,6 +90,4 @@ public interface PrologProgram extends Set<PrologClauses>, Iterable<PrologClause
 	public int hashCode();
 
 	public boolean equals(Object obj);
-
-	public abstract Map<String, PrologClauses> getClauses();
 }
