@@ -218,7 +218,7 @@ public abstract class AbstractConsole implements PrologConsole {
 				}
 
 			} catch (UnsatisfiedLinkError e) {
-				stdout.println("You need prolog native engine and set this routes in your system class path:");
+				stdout.println("Prolog engine link conditions:");
 				List<String> status = engine.verify();
 				for (String string : status) {
 					stdout.println(string);
