@@ -166,12 +166,6 @@ public abstract class AbstractProvider implements PrologProvider {
 	@Override
 	public abstract String toString();
 
-	protected final void checkNumberType(PrologTerm term) {
-		if (!term.isNumber()) {
-			throw new NumberExpectedError(term);
-		}
-	}
-
 	protected final void checkListType(PrologTerm term) {
 		if (!term.isList()) {
 			throw new ListExpectedError(term);

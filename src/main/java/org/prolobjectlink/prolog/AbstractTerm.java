@@ -61,12 +61,6 @@ public abstract class AbstractTerm implements PrologTerm {
 		}
 	}
 
-	protected final void checkNumberType(PrologTerm term) {
-		if (!term.isNumber()) {
-			throw new NumberExpectedError(term);
-		}
-	}
-
 	protected final String removeQuoted(String functor) {
 		if (functor != null && functor.startsWith("\'") && functor.endsWith("\'")) {
 			return functor.substring(1, functor.length() - 1);
