@@ -29,6 +29,7 @@
 package org.prolobjectlink.prolog;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -40,6 +41,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -99,6 +101,7 @@ public abstract class AbstractConsole implements PrologConsole {
 		stdout.println("	-w	print the current work directory ");
 		stdout.println("	-f	consult a prolog file and save formatted code");
 		stdout.println("	-t	test and report integration conditions");
+		stdout.println("	-p	print in a file a snapshot of currents predicates");
 	}
 
 	public final void run(String[] args) {
@@ -156,7 +159,7 @@ public abstract class AbstractConsole implements PrologConsole {
 				stdout.println(file);
 				engine.consult(file);
 			} else if (m.containsKey("-x")) {
-				// do nothing
+				// do nothing silently execution
 			} else if (m.containsKey("-f")) {
 				String file = m.get("-r");
 				stdout.print("Format ");
@@ -167,6 +170,19 @@ public abstract class AbstractConsole implements PrologConsole {
 				List<String> status = engine.verify();
 				for (String string : status) {
 					stdout.println(string);
+				}
+			} else if (m.containsKey("-p")) {
+				String file = m.get("-p");
+				try {
+					PrintWriter writter = new PrintWriter(file);
+					Set<PrologIndicator> set = engine.currentPredicates();
+					for (PrologIndicator prologIndicator : set) {
+						writter.println(prologIndicator);
+					}
+					writter.close();
+				} catch (FileNotFoundException e) {
+					Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
+					System.exit(1);
 				}
 			} else {
 				printUsage();
