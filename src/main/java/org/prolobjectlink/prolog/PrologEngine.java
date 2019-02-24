@@ -82,7 +82,7 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * @return the host operating system architecture.
 	 * @since 1.0
 	 */
-	public String getArch();
+	public String getOsArch();
 
 	/**
 	 * Test the correct integration between under-laying prolog engine and top level
