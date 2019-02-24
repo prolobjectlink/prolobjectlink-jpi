@@ -45,7 +45,7 @@ import java.util.Set;
 public abstract class AbstractEngine implements PrologEngine {
 
 	protected final PrologProvider provider;
-	protected static final String UNKNOW_VERSION = "unknow";
+	protected static final String UNKNOW = "unknow";
 
 	protected AbstractEngine(PrologProvider provider) {
 		this.provider = provider;
@@ -129,7 +129,7 @@ public abstract class AbstractEngine implements PrologEngine {
 	public final String getOsName() {
 		String os = System.getProperty("os.name");
 		if (os == null)
-			return "unknow";
+			return UNKNOW;
 		return os;
 	}
 
