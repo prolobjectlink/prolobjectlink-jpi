@@ -33,7 +33,7 @@ package org.prolobjectlink.prolog;
  * @author Jose Zalacain
  * @since 1.0
  */
-public final class DefaultClauseBuilder extends AbstractDefaultBuilder implements PrologClauseBuilder {
+public final class DefaultClauseBuilder extends AbstractBuilder implements PrologClauseBuilder {
 
 	public DefaultClauseBuilder(PrologEngine engine) {
 		super(engine);
