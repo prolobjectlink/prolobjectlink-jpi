@@ -106,15 +106,6 @@ public abstract class AbstractConsole implements PrologConsole {
 
 	public final void run(String[] args) {
 
-		// CTRL+C termination
-		Runtime.getRuntime().addShutdownHook(new Thread() {
-			@Override
-			public void run() {
-				engine.dispose();
-				System.exit(0);
-			}
-		});
-
 		Map<String, String> m = getArguments(args);
 		if (!m.isEmpty()) {
 			if (m.containsKey("-v")) {
