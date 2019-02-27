@@ -48,7 +48,7 @@ public abstract class AbstractClause implements PrologClause {
 	private final PrologTerm body;
 
 	private final PrologProvider provider;
-	private final PrologIndicator indicator;
+//	private final PrologIndicator indicator;
 
 	/**
 	 * Create a new fact clause. A fatc clause is only represented by clause head
@@ -91,7 +91,7 @@ public abstract class AbstractClause implements PrologClause {
 		this.discontiguous = discontiguous;
 		int arity = head.getArity();
 		String functor = head.getFunctor();
-		indicator = new PredicateIndicator(functor, arity);
+//		indicator = new PredicateIndicator(functor, arity);
 	}
 
 	public final PrologTerm getTerm() {
@@ -164,9 +164,9 @@ public abstract class AbstractClause implements PrologClause {
 		return discontiguous;
 	}
 
-	public final PrologIndicator getPrologIndicator() {
-		return indicator;
-	}
+//	public final PrologIndicator getPrologIndicator() {
+//		return indicator;
+//	}
 
 	@Override
 	public int hashCode() {

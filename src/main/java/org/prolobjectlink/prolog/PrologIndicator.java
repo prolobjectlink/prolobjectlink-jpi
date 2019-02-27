@@ -28,14 +28,12 @@
  */
 package org.prolobjectlink.prolog;
 
-import java.io.Serializable;
-
 /**
  * 
  * @author Jose Zalacain
  * @since 1.0
  */
-public interface PrologIndicator extends Serializable {
+public interface PrologIndicator {
 
 	public int getArity();
 

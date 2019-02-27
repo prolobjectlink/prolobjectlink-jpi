@@ -28,10 +28,26 @@
  */
 package org.prolobjectlink.prolog;
 
+/**
+ * Runtime error raised when occurs one call to some method over no compound
+ * term like get arguments or get argument at some position. all atomics term no
+ * have arguments and optionally over related invocations of the mentioned
+ * methods this runtime error take place.
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public final class CompoundExpectedError extends PrologError {
 
 	private static final long serialVersionUID = -3064952286859633255L;
 
+	/**
+	 * Create an compound runtime error. This constructor give the term over runtime
+	 * error occurs.
+	 * 
+	 * @param term the term over runtime error occurs.
+	 * @since 1.0
+	 */
 	public CompoundExpectedError(Object term) {
 		super("The expected term is not a compound term : " + term);
 	}

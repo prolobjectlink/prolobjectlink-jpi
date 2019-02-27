@@ -28,11 +28,27 @@
  */
 package org.prolobjectlink.prolog;
 
+/**
+ * Runtime error raised when occurs one call to get arity method over a term
+ * that no have arity property. The arity is a compound term and atom property
+ * only. This runtime error is raised when we invoke
+ * {@link PrologTerm#getArity()} over terms like Numbers and Variables
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public final class ArityError extends PrologError {
 
 	private static final long serialVersionUID = 2828526751667597579L;
 
-	public ArityError(PrologTerm term) {
+	/**
+	 * Create an arity runtime error. This constructor give the term over runtime
+	 * error occurs.
+	 * 
+	 * @param term the term over runtime error occurs.
+	 * @since 1.0
+	 */
+	public ArityError(Object term) {
 		super("The term not have arity: " + term);
 	}
 

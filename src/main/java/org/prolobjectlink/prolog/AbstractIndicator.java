@@ -1,8 +1,8 @@
-/*
+/*-
  * #%L
  * prolobjectlink-jpi
  * %%
- * Copyright (C) 2019 Prolobjectlink Project
+ * Copyright (C) 2012 - 2019 Prolobjectlink Project
  * %%
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -28,36 +28,35 @@
  */
 package org.prolobjectlink.prolog;
 
-public final class PredicateIndicator implements PrologIndicator {
+public class AbstractIndicator implements PrologIndicator {
 
-	private static final long serialVersionUID = 4354260669799638894L;
 	private final String functor;
 	private final int arity;
 
-	public PredicateIndicator(String functor, int arity) {
+	protected AbstractIndicator(String functor, int arity) {
 		this.functor = functor;
 		this.arity = arity;
 	}
 
-	public String getIndicator() {
+	public final String getIndicator() {
 		return functor + "/" + arity;
 	}
 
-	public String getFunctor() {
+	public final String getFunctor() {
 		return functor;
 	}
 
-	public int getArity() {
+	public final int getArity() {
 		return arity;
 	}
 
 	@Override
-	public String toString() {
+	public final String toString() {
 		return getIndicator();
 	}
 
 	@Override
-	public int hashCode() {
+	public final int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + arity;
@@ -66,14 +65,14 @@ public final class PredicateIndicator implements PrologIndicator {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public final boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PredicateIndicator other = (PredicateIndicator) obj;
+		AbstractIndicator other = (AbstractIndicator) obj;
 		if (arity != other.arity)
 			return false;
 		if (functor == null) {

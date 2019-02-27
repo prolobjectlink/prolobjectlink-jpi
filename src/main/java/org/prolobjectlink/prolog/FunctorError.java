@@ -28,10 +28,26 @@
  */
 package org.prolobjectlink.prolog;
 
+/**
+ * Runtime error raised when occurs one call to get functor method over a term
+ * that no have functor property. The functor is a compound term and atom
+ * property only. This runtime error is raised when we invoke
+ * {@link PrologTerm#getFunctor()} over terms like Numbers and Variables
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public final class FunctorError extends PrologError {
 
 	private static final long serialVersionUID = -3324307242366044977L;
 
+	/**
+	 * Create an functor runtime error. This constructor give the term over runtime
+	 * error occurs.
+	 * 
+	 * @param term the term over runtime error occurs.
+	 * @since 1.0
+	 */
 	public FunctorError(Object term) {
 		super("The term not have functor: " + term);
 	}
