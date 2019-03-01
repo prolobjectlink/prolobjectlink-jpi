@@ -1,20 +1,29 @@
 ~~~
 ~~ #%L
-~~ prolobjectlink-jpi-jpl74-swi74-linux-x64
+~~ prolobjectlink-jpi
 ~~ %%
 ~~ Copyright (C) 2019 Prolobjectlink Project
 ~~ %%
-~~ Licensed under the Apache License, Version 2.0 (the "License");
-~~ you may not use this file except in compliance with the License.
-~~ You may obtain a copy of the License at
+~~ Redistribution and use in source and binary forms, with or without
+~~ modification, are permitted provided that the following conditions are met:
 ~~ 
-~~      http://www.apache.org/licenses/LICENSE-2.0
+~~ 1. Redistributions of source code must retain the above copyright notice,
+~~    this list of conditions and the following disclaimer.
+~~ 2. Redistributions in binary form must reproduce the above copyright notice,
+~~    this list of conditions and the following disclaimer in the documentation
+~~    and/or other materials provided with the distribution.
 ~~ 
-~~ Unless required by applicable law or agreed to in writing, software
-~~ distributed under the License is distributed on an "AS IS" BASIS,
-~~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-~~ See the License for the specific language governing permissions and
-~~ limitations under the License.
+~~ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+~~ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+~~ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+~~ ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE
+~~ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+~~ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+~~ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+~~ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+~~ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+~~ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+~~ POSSIBILITY OF SUCH DAMAGE.
 ~~ #L%
 ~~~
  ------
@@ -25,100 +34,77 @@
  2019-03-31
  ------
 
-  Paragraph 1, line 1.
-  Paragraph 1, line 2.
+What is
 
-  Paragraph 2, line 1.
-  Paragraph 2, line 2.
+* Introduction
 
-Section title
+	Java Prolog Interface (JPI) is an Application Provider Interface (API) 
+	for interaction between Java and Prolog programming languages. Is a 
+	bidirectional interface that communicate Java applications with Prolog
+	program or database and Prolog procedures with Java class and methods.
+	
+	JPI is an abstraction layer over concrete prolog drivers over Prolog 
+	Engines. This API define all mechanism to interact with any Prolog Engine
+	and maintain the application independent to a specific underlying engine.
+	JPI have several connectors to open source prolog engines like SWI, YAP,
+	XSB native engines and tuProlog, jTrolog, jLog Java based prolog engines.
+	
+	JPI study all related Java-Prolog integration libraries and take the 
+	betters features from each solution with the propose to achieve a common
+	integration interface. The last feature allows switch the under laying 
+	Prolog Engine driver and the application code still be the same.
+	
+	JPI run over any Java Virtual Machine that support Java SE 5 or above.
+	The project was tested over HotSpot, Open J9 and JRockit Virtual Machines
+	over Operating Systems like Windows (7,8,10), Linux (Debian, Ubuntu) and 
+	Mac OS X. Can be deployed on Servlets Containers like Jetty, Tomcat or 
+	Glassfish Application Server. JPI can be include in any Java Project using the commonest Java Integration
+	Development Enviroment (IDE) like Eclipse, Netbeans, IntellijIDEA and so on.
+	
+	JPI is developed and maintained by Prolobjectlink Project an open source 
+	initiative for build logic based applications using Prolog like fundamental
+	Logic Programming Language in the persistence layer and application programming.
 
-* Sub-section title
+* Copyright and License Information
+ 
+	JPI is release under Simplified BSD License:
+	
+	Copyright \251 2019 Prolobjectlink Project. All rights reserved. 
+	
+	Redistribution and use in source and binary forms, with or without modification,
+	are permitted provided that the following conditions are met:
+	
+	1.	Redistributions of source code must retain the above copyright notice,
+	 	this list of conditions and the following disclaimer.
+	 	
+	2.	Redistributions in binary form must reproduce the above copyright notice,
+		this list of conditions and the following disclaimer in the documentation 
+		and/or other materials provided with the distribution.
+		
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+	ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+	WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+	IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+	INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, 
+	BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+	OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+	WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+	OF SUCH DAMAGE.
+	
+	The selected license for JPI is a very permissive license allowing that the concrete 
+	implementations can use some possibilities like GPL, Apache 2.0 and others in the 
+	interface implementation. We suggest adopt the same license from prolog java driver
+	if it is possible. In this way the java prolog driver and your JPI implementation 
+	share the same license and can be combined with JPI interface that is less restrictive 
+	licensed. Finally, license is the most restrictive licensed, being in many occasions 
+	the java prolog driver licenses the most restrictive.
 
-** Sub-sub-section title
+ 
+* Release Notes
+ 
+	<<Version 1.0.0>>: Initial release. 
 
-*** Sub-sub-sub-section title
+* Acknowledgments
 
-**** Sub-sub-sub-sub-section title
-
-      * List item 1.
-
-      * List item 2.
-
-        Paragraph contained in list item 2.
-
-            * Sub-list item 1.
-
-            * Sub-list item 2.
-
-      * List item 3.
-        Force end of list:
-
-      []
-
-+------------------------------------------+
-Verbatim text not contained in list item 3
-+------------------------------------------+
-
-      [[1]] Numbered item 1.
-
-                [[A]] Numbered item A.
-
-                [[B]] Numbered item B.
-
-      [[2]] Numbered item 2.
-
-  List numbering schemes: [[1]], [[a]], [[A]], [[i]], [[I]].
-
-      [Defined term 1] of definition list.
-
-      [Defined term 2] of definition list.
-
-+-------------------------------+
-Verbatim text
-                        in a box
-+-------------------------------+
-
-  --- instead of +-- suppresses the box around verbatim text.
-
-[Figure name] Figure caption
-
-*----------*--------------+----------------:
-| Centered | Left-aligned | Right-aligned  |
-| cell 1,1 | cell 1,2     | cell 1,3       |
-*----------*--------------+----------------:
-| cell 2,1 | cell 2,2     | cell 2,3       |
-*----------*--------------+----------------:
-Table caption
-
-  No grid, no caption:
-
-*-----*------*
- cell | cell
-*-----*------*
- cell | cell
-*-----*------*
-
-  Horizontal line:
-
-=======================================================================
-
-^L
-  New page.
-
-  <Italic> font. <<Bold>> font. <<<Monospaced>>> font.
-
-  {Anchor}. Link to {{anchor}}. Link to {{http://www.pixware.fr}}.
-  Link to {{{anchor}showing alternate text}}.
-  Link to {{{http://www.pixware.fr}Pixware home page}}.
-
-  Force line\
-  break.
-
-  Non\ breaking\ space.
-
-  Escaped special characters: \~, \=, \-, \+, \*, \[, \], \<, \>, \{, \}, \\.
-
-  Copyright symbol: \251, \xA9, \u00a9.
-
-~~Commented out.
+	Blah, Blah, …

@@ -1,20 +1,29 @@
 ~~~
 ~~ #%L
-~~ prolobjectlink-jpi-jpl74-swi74-linux-x64
+~~ prolobjectlink-jpi
 ~~ %%
 ~~ Copyright (C) 2019 Prolobjectlink Project
 ~~ %%
-~~ Licensed under the Apache License, Version 2.0 (the "License");
-~~ you may not use this file except in compliance with the License.
-~~ You may obtain a copy of the License at
+~~ Redistribution and use in source and binary forms, with or without
+~~ modification, are permitted provided that the following conditions are met:
 ~~ 
-~~      http://www.apache.org/licenses/LICENSE-2.0
+~~ 1. Redistributions of source code must retain the above copyright notice,
+~~    this list of conditions and the following disclaimer.
+~~ 2. Redistributions in binary form must reproduce the above copyright notice,
+~~    this list of conditions and the following disclaimer in the documentation
+~~    and/or other materials provided with the distribution.
 ~~ 
-~~ Unless required by applicable law or agreed to in writing, software
-~~ distributed under the License is distributed on an "AS IS" BASIS,
-~~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-~~ See the License for the specific language governing permissions and
-~~ limitations under the License.
+~~ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+~~ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+~~ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+~~ ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE
+~~ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+~~ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+~~ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+~~ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+~~ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+~~ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+~~ POSSIBILITY OF SUCH DAMAGE.
 ~~ #L%
 ~~~
  ------
@@ -25,100 +34,124 @@
  2019-03-31
  ------
 
-  Paragraph 1, line 1.
-  Paragraph 1, line 2.
+Getting Started
 
-  Paragraph 2, line 1.
-  Paragraph 2, line 2.
+* Install
 
-Section title
+	Java Prolog Interface API is distributed with implementation adapter 
+	and concrete prolog driver library until it is possible according to 
+	related libraries licenses. The distributions are named normally such 
+	that <<prolobjectlink-jpi-jpl7-swi7-x.y.z-dist.zip>> meaning that this 
+	distribution is a JPI implementation over JPL version 7 or above and
+	SWI-Prolog version 7 or above. The x.y.z is the distribution version.
+	The distribution can be downloaded in zip or tar.gz compresses format.
+	To install you need perform the following steps:
+	
+	  * Install Java Runtime Environment (JRE) 1.8 or above.
+	  
+	  * Install Native Prolog Engine compatible to Operating
+        System and your architecture. If the Prolog Engine to
+        use is Java-based this step is omitted.
+      
+      * Configure System Path with Prolog Engine routes.
+        If the Prolog Engine to use is Java-based this step
+        is omitted.
+        
+      * Download Java Prolog Interface compatible to 
+        related prolog engine and unzip the distribution
+        over Operating File System.
+        
+      * Configure System Path with JPI unzip folder route.
+      
+      * Open a new System console and type pllink –i 
+        to see the product information.
+        
+	For the JPI beginners we recommended start with a Pure Java-Prolog
+	Engine because have less configuration aspects and native engine
+	are more difficult to link.
 
-* Sub-section title
+* Directories
 
-** Sub-sub-section title
+	After download and unzip JPI distribution in the final JPI folder 
+	you will see the following structure:
+	
+*----------------*---------------------------*
+ Folder/File     | Description
+*----------------*---------------------------*
+ bin             | Binaries scripts
+*----------------*---------------------------*
+ doc             | Documentation
+*----------------*---------------------------*
+ lang            | Prolog programs files
+*----------------*---------------------------*
+ lib             | Library jars files
+*----------------*---------------------------*
+ obj             | Programs to link native engine procedures
+*----------------*---------------------------*
+ src             | Adapter source folder
+*----------------*---------------------------*
+ CONTRIBUTING    | Binaries scripts
+*----------------*---------------------------*
+ LICENSE         | Binaries scripts
+*----------------*---------------------------*
+ NOTICE          | Binaries scripts
+*----------------*---------------------------*
+ README          | Binaries scripts
+*----------------*---------------------------*
 
-*** Sub-sub-sub-section title
+* Architecture
 
-**** Sub-sub-sub-sub-section title
+	In general way and in bottom-up order the JPI architecture is composed 
+	by the guest Operating System at low level. Over this level we find 
+	compatible with guest Operating System and Native Prolog Engines 
+	implementations. Over this level we find Pure Java Prolog Engine 
+	implementations and Java Driver libraries to Native Prolog Engine. 
+	Over this layer is the JPI interface adapter implementation for your 
+	correspondent Java Prolog Driver. In the top level we find a User 
+	Application that use the JPI interface.
+	
+*-----------------------------------------------------------------------------------------*
+                                              User Application  
+*-----------------------------------------------------------------------------------------*
+                                                   JPI
+*--------------------------------------------*------------*---------------*---------------*
+                     JPI-JPL                 | JPI-JLOG   | JPI-TUPROLOG  |JPI-INTERPROLOG
+*--------------------------------------------*------------*---------------*---------------*
+                      JPL                    | jLog       |   tuProlog    |  Interprolog    
+*-------*--------*---------------------------*------------*---------------*------*--------*
+   SWI  |  YAP   |                                   JVM                         |  XSB
+*-------*--------*---------------------------------------------------------------*--------*
+                                                      OS
+*-----------------------------------------------------------------------------------------*
 
-      * List item 1.
+* Getting started Java to Prolog
 
-      * List item 2.
+	After installation and architecture compression you can use the 
+	hello world sample for test the system integration. This hello 
+	world sample show how interacts with JPI from Java programming 
+	language with Abstracted Prolog Engine. For the first experience 
+	we suggesting use a Java-based Prolog engine like tuProlog because
+	have less configuration aspects.
+	
+	Create in your preferred development environment an empty project.
+	Set in the project build path the JPI downloaded libraries located
+	at lib folder. Create a Main Java class that look like below code:
+	
++------------------------------------------------------------+
+public class Main {
 
-        Paragraph contained in list item 2.
+	public static void main(String[] args) {
+		PrologProvider provider = Prolog.
+			getProvider(XsbProlog.class);
+		PrologEngine engine = provider.newEngine();
+		engine.asserta("sample('hello wolrd')");
+		PrologQuery query=engine.query("sample(X)");
+		System.out.println(query.one());
+	}
 
-            * Sub-list item 1.
+}
++------------------------------------------------------------+
 
-            * Sub-list item 2.
+* Getting started Prolog to Java
 
-      * List item 3.
-        Force end of list:
-
-      []
-
-+------------------------------------------+
-Verbatim text not contained in list item 3
-+------------------------------------------+
-
-      [[1]] Numbered item 1.
-
-                [[A]] Numbered item A.
-
-                [[B]] Numbered item B.
-
-      [[2]] Numbered item 2.
-
-  List numbering schemes: [[1]], [[a]], [[A]], [[i]], [[I]].
-
-      [Defined term 1] of definition list.
-
-      [Defined term 2] of definition list.
-
-+-------------------------------+
-Verbatim text
-                        in a box
-+-------------------------------+
-
-  --- instead of +-- suppresses the box around verbatim text.
-
-[Figure name] Figure caption
-
-*----------*--------------+----------------:
-| Centered | Left-aligned | Right-aligned  |
-| cell 1,1 | cell 1,2     | cell 1,3       |
-*----------*--------------+----------------:
-| cell 2,1 | cell 2,2     | cell 2,3       |
-*----------*--------------+----------------:
-Table caption
-
-  No grid, no caption:
-
-*-----*------*
- cell | cell
-*-----*------*
- cell | cell
-*-----*------*
-
-  Horizontal line:
-
-=======================================================================
-
-^L
-  New page.
-
-  <Italic> font. <<Bold>> font. <<<Monospaced>>> font.
-
-  {Anchor}. Link to {{anchor}}. Link to {{http://www.pixware.fr}}.
-  Link to {{{anchor}showing alternate text}}.
-  Link to {{{http://www.pixware.fr}Pixware home page}}.
-
-  Force line\
-  break.
-
-  Non\ breaking\ space.
-
-  Escaped special characters: \~, \=, \-, \+, \*, \[, \], \<, \>, \{, \}, \\.
-
-  Copyright symbol: \251, \xA9, \u00a9.
-
-~~Commented out.
+	Blah, Blah, …

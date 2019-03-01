@@ -48,7 +48,7 @@ public class ArrayIterator<E> extends AbstractIterator<E> implements Iterator<E>
 	 * Create an instance of {@link ArrayIterator} to iterate over given array of
 	 * elements
 	 * 
-	 * @param elements
+	 * @param elements array of elements to be iterated
 	 * @since 1.0
 	 */
 	public ArrayIterator(E[] elements) {
