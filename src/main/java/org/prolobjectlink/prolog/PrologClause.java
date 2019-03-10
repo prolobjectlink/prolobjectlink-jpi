@@ -37,30 +37,96 @@ import java.util.Iterator;
  */
 public interface PrologClause {
 
+	/**
+	 * Integer number that represent the arguments number in the clause head. The
+	 * arity for this clause can be implemented like {@code getHead().getArity()}.
+	 * 
+	 * @return the arguments number in the clause head.
+	 * @since 1.0
+	 */
 	public int getArity();
 
+	/**
+	 * String that represent the functor in the clause head. The functor for this
+	 * clause can be implemented like {@code getHead().getFunctor()}.
+	 * 
+	 * @return the functor in the clause head
+	 * @since 1.0
+	 */
 	public String getFunctor();
 
+	/**
+	 * Prolog term representation of the current clause. This prolog term is a
+	 * structure with functor/arity (:-/2) and the arguments head and body.
+	 * 
+	 * @return term representation of the current clause.
+	 * @since 1.0
+	 */
 	public PrologTerm getTerm();
 
+	/**
+	 * Prolog term that represent the clause head.
+	 * 
+	 * @return the clause head.
+	 * @since 1.0
+	 */
 	public PrologTerm getHead();
 
+	/**
+	 * Prolog term that represent the clause body. If the clause body representation
+	 * it's not the term itself, the prolog term should be created and returned.
+	 * 
+	 * @return the clause body.
+	 * @since 1.0
+	 */
 	public PrologTerm getBody();
 
 	public String getIndicator();
 
 	public boolean isDirective();
 
+	/**
+	 * True if this clause is a fact, false in other case. The implementation for
+	 * this method can be {@code getHead()!=null && getBody==null}.
+	 * 
+	 * @return whether this clause is a fact.
+	 * @since 1.0
+	 */
 	public boolean isFact();
 
+	/**
+	 * True if this clause is a rule, false in other case. The implementation for
+	 * this method can be {@code getHead()!=null && getBody==null}.
+	 * 
+	 * @return whether this clause is a rule.
+	 * @since 1.0
+	 */
 	public boolean isRule();
 
 	public boolean unify(PrologClause clause);
 
+	/**
+	 * True if this clause is a dynamic, false in other case
+	 * 
+	 * @return whether this clause is a dynamic
+	 * @since 1.0
+	 */
 	public boolean isDynamic();
 
+	/**
+	 * True if this clause is a multifile, false in other case
+	 * 
+	 * @return whether this clause is a multifile
+	 * @since 1.0
+	 */
 	public boolean isMultifile();
 
+	/**
+	 * True if this clause is a discontiguos, false in other case
+	 * 
+	 * @return whether this clause is a discontiguos.
+	 * @since 1.0
+	 */
 	public boolean isDiscontiguous();
 
 	public PrologIndicator getPrologIndicator();

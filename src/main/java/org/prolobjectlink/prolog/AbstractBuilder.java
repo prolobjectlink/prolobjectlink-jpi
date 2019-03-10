@@ -29,6 +29,9 @@
 package org.prolobjectlink.prolog;
 
 /**
+ * Partial implementation of Prolog Builder interface. Is an String Builder
+ * wrapper to append the term in string form that compound the final clause
+ * (Fact, Rule or Query).
  * 
  * @author Jose Zalacain
  * @since 1.0

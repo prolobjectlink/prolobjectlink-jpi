@@ -29,14 +29,39 @@
 package org.prolobjectlink.prolog;
 
 /**
+ * Represent the Prolog atom data type. Prolog atoms are can be of two kinds
+ * simple or complex. Simple atoms are defined like a single alpha numeric word
+ * that begin like initial lower case character. The complex atom are define
+ * like any character sequence that begin and end with simple quotes. The string
+ * passed to build a simple atoms should be match with [a-z][A-Za-z0-9_]*
+ * regular expression. If the string passed to build an atom don't match with
+ * the before mentioned regular expression the atom constructor can be capable
+ * of create a complex atom automatically. For complex atom the string value can
+ * have the quotes or just can be absent. The printed string representation of
+ * the complex atom implementation set the quotes if they are needed.
  * 
  * @author Jose Zalacain
  * @since 1.0
  */
 public interface PrologAtom extends PrologTerm {
 
+	/**
+	 * String value for atom term.
+	 * 
+	 * @return value for atom term.
+	 * @since 1.0
+	 */
 	public String getStringValue();
 
+	/**
+	 * Set the string value for this atom instance. The string value should be match
+	 * with [a-z][A-Za-z0-9_]* regular expression. If the string passed to build an
+	 * atom don't match with the before mentioned regular expression the atom
+	 * constructor can be capable of create a complex atom automatically.
+	 * 
+	 * @param value string value for this atom
+	 * @since 1.0
+	 */
 	public void setStringValue(String value);
 
 }

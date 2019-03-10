@@ -34,6 +34,25 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
+ * Partial implementation of Prolog Clause interface. This class is composed by
+ * two prolog terms that define a prolog clause, the head and the body. This
+ * representation consider the prolog clause body like a single term. If the
+ * body is a conjunctive set of terms, the body is an structure with
+ * functor/arity (,/2) and the first argument is the first element in the
+ * conjunction and the rest is a recursive functor/arity (,/2).
+ * 
+ * The functor and arity for the clause is given from head term functor and
+ * arity.
+ * 
+ * This class define some properties for commons prolog clause implementations.
+ * They are boolean flags that indicate if the prolog clause is dynamic
+ * multifile and discontiguos.
+ * 
+ * This class have several methods to access to the clause components and
+ * retrieve some clause properties and information about it.
+ * 
+ * Additionally this class contains a prolog provider reference for build terms
+ * in some operations.
  * 
  * @author Jose Zalacain
  * @since 1.0
@@ -48,7 +67,6 @@ public abstract class AbstractClause implements PrologClause {
 	private final PrologTerm body;
 
 	private final PrologProvider provider;
-//	private final PrologIndicator indicator;
 
 	/**
 	 * Create a new fact clause. A fatc clause is only represented by clause head
@@ -89,9 +107,6 @@ public abstract class AbstractClause implements PrologClause {
 		this.dynamic = dynamic;
 		this.multifile = multifile;
 		this.discontiguous = discontiguous;
-		int arity = head.getArity();
-		String functor = head.getFunctor();
-//		indicator = new PredicateIndicator(functor, arity);
 	}
 
 	public final PrologTerm getTerm() {
@@ -163,10 +178,6 @@ public abstract class AbstractClause implements PrologClause {
 	public final boolean isDiscontiguous() {
 		return discontiguous;
 	}
-
-//	public final PrologIndicator getPrologIndicator() {
-//		return indicator;
-//	}
 
 	@Override
 	public int hashCode() {
