@@ -1,8 +1,8 @@
-/*
+/*-
  * #%L
  * prolobjectlink-jpi
  * %%
- * Copyright (C) 2019 Prolobjectlink Project
+ * Copyright (C) 2012 - 2019 Prolobjectlink Project
  * %%
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -28,73 +28,25 @@
  */
 package org.prolobjectlink.prolog;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Formatter;
-import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
-public class PrologFormatter extends Formatter {
+/**
+ * Class that define the string format for prolog logger out put. have a format
+ * method that give some log record and return the string format for this record
+ * to be print in logger out put.
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
+public interface PrologFormatter {
 
-	private static final String ERROR = "ERROR";
-	private static final String WARN = "WARN";
-	private static final String INFO = "INFO";
-	private static final String DEBUG = "DEBUG";
-	private static final String TRACE = "TRACE";
-
-	@Override
-	public String format(LogRecord record) {
-		StringBuilder buffer = new StringBuilder();
-
-		// retrieve record data
-		String levelString = "";
-		Level level = record.getLevel();
-		if (level.intValue() == Level.SEVERE.intValue()) {
-			levelString = ERROR;
-		} else if (level.intValue() == Level.WARNING.intValue()) {
-			levelString = WARN;
-		} else if (level.intValue() == Level.INFO.intValue()) {
-			levelString = INFO;
-		} else if (level.intValue() == Level.CONFIG.intValue()) {
-			levelString = DEBUG;
-		} else if (level.intValue() == Level.FINE.intValue()) {
-			levelString = DEBUG;
-		} else if (level.intValue() == Level.FINER.intValue()) {
-			levelString = DEBUG;
-		} else if (level.intValue() == Level.FINEST.intValue()) {
-			levelString = TRACE;
-		}
-
-		long millisecs = record.getMillis();
-		String name = record.getLoggerName();
-		String message = record.getMessage();
-		Throwable throwable = record.getThrown();
-		SimpleDateFormat f = new SimpleDateFormat("MMM-dd-yyyy HH:mm");
-		Date resultdate = new Date(millisecs);
-		String date = f.format(resultdate);
-
-		// create log line
-		buffer.append('[');
-		buffer.append(name);
-		buffer.append(']');
-		buffer.append(' ');
-		buffer.append(levelString);
-		buffer.append(' ');
-		buffer.append(date);
-		buffer.append(' ');
-		buffer.append(message);
-		if (throwable != null) {
-			buffer.append('\n');
-			buffer.append(throwable);
-			buffer.append('\n');
-			StackTraceElement[] s = throwable.getStackTrace();
-			for (StackTraceElement stackTraceElement : s) {
-				buffer.append(stackTraceElement);
-				buffer.append('\n');
-			}
-		}
-		buffer.append('\n');
-		return "" + buffer + "";
-	}
+	/**
+	 * Return the string format for prolog log record.
+	 * 
+	 * @param record record to be formated.
+	 * @return the string format for prolog log record
+	 * @since 1.0
+	 */
+	public String format(LogRecord record);
 
 }

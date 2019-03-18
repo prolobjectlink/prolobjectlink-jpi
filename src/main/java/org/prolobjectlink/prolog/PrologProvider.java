@@ -29,6 +29,13 @@
 package org.prolobjectlink.prolog;
 
 /**
+ * Prolog Provider is the class to interact with all prolog components (data
+ * types, constants, logger, parser, converter and engine). Allow create data
+ * types like atoms, numbers, lists, structures and variable terms. Allow
+ * interact with the under-lying prolog engine to realize inferences operations.
+ * Other used components are the prolog parser to parse prolog terms in string
+ * from. The Prolog Provider offer a prolog system logger to report every errors
+ * or exceptions.
  * 
  * @author Jose Zalacain
  * @since 1.0
@@ -43,28 +50,83 @@ public interface PrologProvider extends PrologParser {
 	 */
 	public boolean isCompliant();
 
-	// prolog constants term
-
+	/**
+	 * Get the prolog nil term representing the null data type for prolog data type
+	 * system.
+	 * 
+	 * @return prolog nil term.
+	 * @since 1.0
+	 */
 	public PrologTerm prologNil();
 
+	/**
+	 * Get the prolog term that represent the prolog cut built-in.
+	 * 
+	 * @return prolog cut term
+	 * @since 1.0
+	 */
 	public PrologTerm prologCut();
 
+	/**
+	 * Get the prolog fail term that represent fail built-in.
+	 * 
+	 * @return prolog fail term
+	 * @since 1.0
+	 */
 	public PrologTerm prologFail();
 
+	/**
+	 * Get the prolog true term that represent true built-in.
+	 * 
+	 * @return prolog true term
+	 * @since 1.0
+	 */
 	public PrologTerm prologTrue();
 
+	/**
+	 * Get the prolog false term that represent false built-in.
+	 * 
+	 * @return prolog false term
+	 * @since 1.0
+	 */
 	public PrologTerm prologFalse();
 
+	/**
+	 * Get the prolog empty list term.
+	 * 
+	 * @return prolog empty list term.
+	 * @since 1.0
+	 */
 	public PrologTerm prologEmpty();
 
-	// engine
-
+	/**
+	 * Create a new prolog engine instance ready to be operate. The created engine
+	 * is clause empty and only have the defaults supported built-ins.
+	 * 
+	 * @return new prolog engine instance
+	 * @since 1.0
+	 */
 	public PrologEngine newEngine();
 
-	public PrologEngine newEngine(String path);
+	/**
+	 * Create a new prolog engine instance ready to be operate. The created engine
+	 * consult the given file loading the clauses present in this file and the
+	 * defaults supported built-ins. Is equivalent to
+	 * {@code newEngine().consult(file);}
+	 * 
+	 * @param file file path to be consulted
+	 * @return new prolog engine instance
+	 * @since 1.0
+	 */
+	public PrologEngine newEngine(String file);
 
-	// prolog term instantiation
-
+	/**
+	 * Create a prolog atom term setting like atom value the given string.
+	 * 
+	 * @param functor string value for the atom
+	 * @return a prolog atom term
+	 * @since 1.0
+	 */
 	public PrologAtom newAtom(String functor);
 
 	/**
@@ -163,6 +225,13 @@ public interface PrologProvider extends PrologParser {
 	 */
 	public PrologVariable newVariable(String name, int position);
 
+	/**
+	 * Create an empty prolog list term. The created prolog list is equivalent to
+	 * empty list term if the returned instance is not the prolog empty list itself.
+	 * 
+	 * @return an empty prolog list term
+	 * @since 1.0
+	 */
 	public PrologList newList();
 
 	public PrologList newList(PrologTerm head);
@@ -175,12 +244,46 @@ public interface PrologProvider extends PrologParser {
 
 	public PrologStructure newStructure(String functor, PrologTerm... arguments);
 
+	/**
+	 * Create a prolog structure that represent an expression defined by your left
+	 * and right operands separated by infix operator. The structure instance have
+	 * like functor the expression operator and have two operands arguments terms.
+	 * In other words the indicator for the resulting instance term is
+	 * <tt>operator/2</tt>. The term creation not check operator definition and for
+	 * this reason during inference process if the operator is not a supported
+	 * built-in or define by <tt>op/3</tt> the inference fail.
+	 * 
+	 * @param left     left hand operand
+	 * @param operator infix operand
+	 * @param right    right hand operand
+	 * @return a prolog structure that represent an expression
+	 * @since 1.0
+	 */
 	public PrologTerm newStructure(PrologTerm left, String operator, PrologTerm right);
 
+	/**
+	 * Get a prolog converter instance to map the abstract prolog data types to
+	 * under-laying prolog implementations data types.
+	 * 
+	 * @return prolog converter instance
+	 * @since 1.0
+	 */
 	public <K> PrologConverter<K> getConverter();
 
+	/**
+	 * Get a prolog parser instance to parser the strings with prolog syntax.
+	 * 
+	 * @return prolog parser instance
+	 * @since 1.0
+	 */
 	public PrologParser getParser();
 
+	/**
+	 * Get the prolog system logger instance to report any errors or exceptions
+	 * 
+	 * @return prolog system logger instance
+	 * @since 1.0
+	 */
 	public PrologLogger getLogger();
 
 }
