@@ -31,12 +31,12 @@ package org.prolobjectlink.prolog;
 import java.util.Map;
 
 /**
- * Converter for convert {@code PrologTerm} to the equivalent native {@code T}
+ * Converter for convert {@code PrologTerm} to the equivalent driver {@code T}
  * term representation.
  * 
  * @author Jose Zalacain
  * @since 1.0
- * @param <T> Native Term Representation
+ * @param <T> Driver Term Representation
  */
 public interface PrologConverter<T> extends PrologWrapper {
 

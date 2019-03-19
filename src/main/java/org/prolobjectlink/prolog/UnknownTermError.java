@@ -28,10 +28,27 @@
  */
 package org.prolobjectlink.prolog;
 
+/**
+ * Runtime error raised when {@link PrologConverter} don't have an equivalent
+ * term for some passed object. This error can be raised specifically when we
+ * try to convert from {@link PrologTerm} to driver term and when we try to
+ * convert from driver term to {@link PrologTerm}. In both cases if the given
+ * conversion term object don't have equivalent, this error is raised.
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public final class UnknownTermError extends PrologError {
 
 	private static final long serialVersionUID = 3634055905766091444L;
 
+	/**
+	 * Create an unknown term runtime error. This constructor give the term that
+	 * don't have equivalent.
+	 * 
+	 * @param unknow the term that don't have equivalent
+	 * @since 1.0
+	 */
 	public UnknownTermError(Object unknow) {
 		super("The object " + unknow + " is not a correct prolog term");
 	}

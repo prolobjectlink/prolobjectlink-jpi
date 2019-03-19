@@ -30,6 +30,11 @@ package org.prolobjectlink.prolog;
 
 import java.util.logging.Level;
 
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public abstract class AbstractLogger implements PrologLogger {
 
 	public final void log(Object sender, Level level, Object message) {

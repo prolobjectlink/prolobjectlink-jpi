@@ -28,6 +28,11 @@
  */
 package org.prolobjectlink.prolog;
 
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public final class ListExpectedError extends PrologError {
 
 	private static final long serialVersionUID = -3064952286859633255L;

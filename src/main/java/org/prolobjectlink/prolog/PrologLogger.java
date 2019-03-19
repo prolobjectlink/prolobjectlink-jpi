@@ -30,6 +30,11 @@ package org.prolobjectlink.prolog;
 
 import java.util.logging.Level;
 
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public interface PrologLogger {
 
 	public static final String RUNTIME_ERROR = "Runtime error ";

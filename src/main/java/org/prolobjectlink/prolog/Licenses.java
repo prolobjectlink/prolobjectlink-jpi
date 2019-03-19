@@ -29,8 +29,7 @@
 package org.prolobjectlink.prolog;
 
 /**
- * Class that contains some constants licenses names. The licenses names
- * contained in this class are compatible with the Apache License 2.0.
+ * Class that contains some constants licenses names.
  * 
  * @author Jose Zalacain
  * @since 1.0
@@ -106,7 +105,7 @@ public class Licenses {
 	 * MIT-License
 	 */
 	public static final String MIT = "MIT-License";
-	
+
 	/**
 	 * Mozilla Public License version 1.1
 	 */

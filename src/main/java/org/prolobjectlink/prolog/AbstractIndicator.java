@@ -28,6 +28,11 @@
  */
 package org.prolobjectlink.prolog;
 
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public class AbstractIndicator implements PrologIndicator {
 
 	private final String functor;
