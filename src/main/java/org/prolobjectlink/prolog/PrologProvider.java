@@ -100,6 +100,22 @@ public interface PrologProvider extends PrologParser {
 	public PrologTerm prologEmpty();
 
 	/**
+	 * Get the prolog term representing the directive use by under-laying prolog
+	 * implementation for file inclusion. This directive is implementation
+	 * depending. Prolog engines use at least one of
+	 * (<tt>include/1 or consult/1 or ensure_loaded/1</tt>). A string file path is
+	 * used to create the directive with the file to be include at runtime. In other
+	 * words invoke this method for <tt>foo.pl</tt> return
+	 * <tt>:-consult('foo.pl')</tt> prolog term if the under-laying prolog
+	 * implementation use consult/1 directive for file inclusion.
+	 * 
+	 * @param file file path to be include
+	 * @return prolog term representing include directive
+	 * @since 1.0
+	 */
+	public PrologTerm prologInclude(String file);
+
+	/**
 	 * Create a new prolog engine instance ready to be operate. The created engine
 	 * is clause empty and only have the defaults supported built-ins.
 	 * 
