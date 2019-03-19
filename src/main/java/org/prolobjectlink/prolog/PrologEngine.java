@@ -488,6 +488,8 @@ public interface PrologEngine extends Iterable<PrologClause> {
 
 	public Set<PrologIndicator> getBuiltIns();
 
+	public PrologProgrammer getProgrammer();
+
 	public PrologProvider getProvider();
 
 	public PrologLogger getLogger();

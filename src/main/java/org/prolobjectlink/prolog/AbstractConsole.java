@@ -88,7 +88,7 @@ public abstract class AbstractConsole implements PrologConsole {
 	}
 
 	public final void printUsage() {
-		stdout.println("Usage: prolog option [file] to consult a file");
+		stdout.println("Usage: pllink option [file] to consult a file");
 		stdout.println("options:");
 		stdout.println("	-r	consult/run a prolog file");
 		stdout.println("	-v	print the prolog engine version");
@@ -177,7 +177,7 @@ public abstract class AbstractConsole implements PrologConsole {
 					System.exit(1);
 				}
 			} else if (m.containsKey("-g")) {
-				new PrologGenerator(stdout, engine.getProvider()).generate();
+				engine.getProgrammer().codingRuntime(stdout);
 				System.exit(0);
 			} else {
 				printUsage();
