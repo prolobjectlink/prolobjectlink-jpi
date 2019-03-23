@@ -103,6 +103,7 @@ public abstract class AbstractConsole implements PrologConsole {
 		stdout.println("	-t	test and report integration conditions");
 		stdout.println("	-p	print in a file a snapshot of currents predicates");
 		stdout.println("	-g	generate all java class path wrapper procedures");
+		stdout.println("	-s	generate .project file for Prolog Development Tool");
 	}
 
 	public final void run(String[] args) {
@@ -179,7 +180,10 @@ public abstract class AbstractConsole implements PrologConsole {
 			} else if (m.containsKey("-g")) {
 				engine.getProgrammer().codingRuntime(stdout);
 				System.exit(0);
-			} else {
+			} else if (m.containsKey("-s")) {
+				stdout.println("	-s	generate .project file for Prolog Development Tool");
+				System.exit(0);
+			}else {
 				printUsage();
 				System.exit(1);
 			}

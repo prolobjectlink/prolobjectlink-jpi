@@ -41,16 +41,21 @@ import java.io.PrintWriter;
 public interface PrologProgrammer {
 
 	/**
+	 * Set the file inclusion directive used by Prolog implementation for include
+	 * Prolog file harness (e.g obj/prolobject.pl). The path in the inclusion
+	 * directive consider the folder levels from generated file to Prolog harness.
 	 * 
-	 * @param programmer
-	 * @param jarEntryName
+	 * @param out          writer to print generation messages
+	 * @param jarEntryName String that represent the full qualified jar entry name
+	 *                     inside jar file
+	 * @since 1.0
 	 */
 	public void codingInclusion(PrintWriter out, String jarEntryName);
 
 	/**
 	 * Generate the Prolog Runtime inside distribution folder
 	 * 
-	 * @param out writer to print generation messages
+	 * @param out    writer to print generation messages
 	 * @param folder folder to generate Prolog Runtime
 	 * @since 1.0
 	 */

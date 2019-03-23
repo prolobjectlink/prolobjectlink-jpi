@@ -875,23 +875,15 @@ public abstract class AbstractProgrammer implements PrologProgrammer {
 		for (Method method : methods) {
 			int arity = method.getParameters().length;
 			String functor = fromCamelCase(runtimeClass.getSimpleName()) + "_" + fromCamelCase(method.getName());
-			
-//			String indicator = functor + "/" + arity;
-//			List<Method> family = map.get(indicator);
-//			if (family == null) {
-//				family = new LinkedList<Method>();
-//			}
-//			family.add(method);
-//			map.put(indicator, family);
-			
-			
-			List<Method> family = map.get(functor);
+
+			String indicator = functor + "/" + arity;
+			List<Method> family = map.get(indicator);
 			if (family == null) {
 				family = new LinkedList<Method>();
 			}
 			family.add(method);
-			map.put(functor, family);
-			
+			map.put(indicator, family);
+
 		}
 
 		for (Entry<String, List<Method>> entry : map.entrySet()) {
