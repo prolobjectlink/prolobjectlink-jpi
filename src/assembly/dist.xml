@@ -15,7 +15,6 @@
 			<outputDirectory>/</outputDirectory>
 			<includes>
 				<include>CONTRIBUTING*</include>
-				<include>CHANGELOG*</include>
 				<include>LICENSE*</include>
 				<include>NOTICE*</include>
 				<include>README*</include>

@@ -281,6 +281,7 @@ public interface PrologProvider extends PrologParser {
 	 * Get a prolog converter instance to map the abstract prolog data types to
 	 * under-laying prolog implementations data types.
 	 * 
+	 * @param <K> under-laying prolog data types
 	 * @return prolog converter instance
 	 * @since 1.0
 	 */

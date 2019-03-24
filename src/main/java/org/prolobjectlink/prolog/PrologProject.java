@@ -43,7 +43,7 @@ import java.util.logging.Logger;
  * @author Jose Zalacain
  * @since 1.0
  */
-final class PrologProject {
+public final class PrologProject {
 
 	/**
 	 * Generate .project file at the given folder
@@ -51,7 +51,7 @@ final class PrologProject {
 	 * @param folder
 	 * @since 1.0
 	 */
-	static void dotProject(String folder) {
+	public static void dotProject(String folder) {
 		File plk = new File(folder);
 		File pdk = plk.getParentFile();
 		File projectFolder = pdk.getParentFile();
@@ -81,7 +81,7 @@ final class PrologProject {
 	 * 
 	 * @since 1.0
 	 */
-	static void dotProject() {
+	public static void dotProject() {
 		Class<?> c = PrologProject.class;
 		ProtectionDomain d = c.getProtectionDomain();
 		CodeSource s = d.getCodeSource();
