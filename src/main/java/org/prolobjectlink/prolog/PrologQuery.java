@@ -105,7 +105,8 @@ public interface PrologQuery extends Iterator<Collection<PrologTerm>>, Iterable<
 	 * name and variable instance value for the variables not anonymous involved in
 	 * the query.
 	 * 
-	 * @return
+	 * @return variable name - variable instance (key - value) map that conform the
+	 *         solution set for the current query.
 	 * @since 1.0
 	 */
 	public Map<String, PrologTerm> oneVariablesSolution();

@@ -181,9 +181,9 @@ public abstract class AbstractConsole implements PrologConsole {
 				engine.getProgrammer().codingRuntime(stdout);
 				System.exit(0);
 			} else if (m.containsKey("-s")) {
-				stdout.println("	-s	generate .project file for Prolog Development Tool");
+				PrologProject.dotProject();
 				System.exit(0);
-			}else {
+			} else {
 				printUsage();
 				System.exit(1);
 			}
