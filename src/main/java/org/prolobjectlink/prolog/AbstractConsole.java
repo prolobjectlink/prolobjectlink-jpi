@@ -31,7 +31,9 @@ package org.prolobjectlink.prolog;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -55,15 +57,18 @@ public abstract class AbstractConsole implements PrologConsole {
 	private static final String PROLOBJECTLINK = "Prolobjectlink";
 	private static final String COPYRIHT = " (C)";
 
+	public static final InputStream STDIN = System.in;
+	public static final OutputStream STDOUT = System.out;
+
 	// default input stream
-	private final InputStreamReader reader = new InputStreamReader(System.in);
+	private final InputStreamReader input = new InputStreamReader(STDIN);
 
 	// buffered reader for read from standard input stream
-	private final BufferedReader stdin = new BufferedReader(reader);
+	private final BufferedReader reader = new BufferedReader(input);
 
 	// standard output stream
-	// private final PrintWriter stdout = System.console().writer()
-	private static final PrintWriter stdout = new PrintWriter(System.out, true);
+	// private final PrintWriter STDOUT = System.console().writer()
+	private final PrintWriter output = new PrintWriter(STDOUT, true);
 
 	//
 	private final PrologEngine engine;
@@ -88,22 +93,22 @@ public abstract class AbstractConsole implements PrologConsole {
 	}
 
 	public final void printUsage() {
-		stdout.println("Usage: pllink option [file] to consult a file");
-		stdout.println("options:");
-		stdout.println("	-r	consult/run a prolog file");
-		stdout.println("	-v	print the prolog engine version");
-		stdout.println("	-n	print the prolog engine name");
-		stdout.println("	-l	print the prolog engine license");
-		stdout.println("	-i	print the prolog engine information");
-		stdout.println("	-a	print the prolog engine about");
-		stdout.println("	-e	print the prolog engine enviroment paths");
-		stdout.println("	-x	start the prolog engine execution");
-		stdout.println("	-w	print the current work directory ");
-		stdout.println("	-f	consult a prolog file and save formatted code");
-		stdout.println("	-t	test and report integration conditions");
-		stdout.println("	-p	print in a file a snapshot of currents predicates");
-		stdout.println("	-g	generate all java class path wrapper procedures");
-		stdout.println("	-s	generate .project file for Prolog Development Tool");
+		output.println("Usage: pllink option [file] to consult a file");
+		output.println("options:");
+		output.println("	-r	consult/run a prolog file");
+		output.println("	-v	print the prolog engine version");
+		output.println("	-n	print the prolog engine name");
+		output.println("	-l	print the prolog engine license");
+		output.println("	-i	print the prolog engine information");
+		output.println("	-a	print the prolog engine about");
+		output.println("	-e	print the prolog engine enviroment paths");
+		output.println("	-x	start the prolog engine execution");
+		output.println("	-w	print the current work directory ");
+		output.println("	-f	consult a prolog file and save formatted code");
+		output.println("	-t	test and report integration conditions");
+		output.println("	-p	print in a file a snapshot of currents predicates");
+		output.println("	-g	generate all java class path wrapper procedures");
+		output.println("	-s	generate .project file for Prolog Development Tool");
 	}
 
 	public final void run(String[] args) {
@@ -111,58 +116,58 @@ public abstract class AbstractConsole implements PrologConsole {
 		Map<String, String> m = getArguments(args);
 		if (!m.isEmpty()) {
 			if (m.containsKey("-v")) {
-				stdout.println(engine.getVersion());
+				output.println(engine.getVersion());
 			} else if (m.containsKey("-n")) {
-				stdout.println(engine.getName());
+				output.println(engine.getName());
 			} else if (m.containsKey("-l")) {
-				stdout.println(engine.getLicense());
+				output.println(engine.getLicense());
 			} else if (m.containsKey("-i")) {
-				stdout.print(PROLOBJECTLINK);
-				stdout.print(COPYRIHT);
-				stdout.print(" ");
-				stdout.print(engine.getName());
-				stdout.print(" v");
-				stdout.println(engine.getVersion());
-				stdout.println(engine.getLicense());
-				stdout.println(System.getProperty("java.vm.name"));
-				stdout.println(System.getProperty("java.vendor"));
-				stdout.println(System.getProperty("java.version"));
-				stdout.println();
+				output.print(PROLOBJECTLINK);
+				output.print(COPYRIHT);
+				output.print(" ");
+				output.print(engine.getName());
+				output.print(" v");
+				output.println(engine.getVersion());
+				output.println(engine.getLicense());
+				output.println(System.getProperty("java.vm.name"));
+				output.println(System.getProperty("java.vendor"));
+				output.println(System.getProperty("java.version"));
+				output.println();
 			} else if (m.containsKey("-w")) {
 				try {
-					stdout.println("Working directory");
+					output.println("Working directory");
 					ProtectionDomain p = getClass().getProtectionDomain();
 					URI d = p.getCodeSource().getLocation().toURI();
-					stdout.println(d);
+					output.println(d);
 				} catch (URISyntaxException e) {
 					Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
 				}
 			} else if (m.containsKey("-e")) {
-				stdout.println("Enviroment");
-				stdout.println("Class path");
-				stdout.println(System.getenv("java.class.path"));
-				stdout.println("System path");
-				stdout.println(System.getenv("Path"));
+				output.println("Enviroment");
+				output.println("Class path");
+				output.println(System.getenv("java.class.path"));
+				output.println("System path");
+				output.println(System.getenv("Path"));
 			} else if (m.containsKey("-a")) {
-				stdout.print(PROLOBJECTLINK);
-				stdout.print(COPYRIHT);
+				output.print(PROLOBJECTLINK);
+				output.print(COPYRIHT);
 			} else if (m.containsKey("-r")) {
 				String file = m.get("-r");
-				stdout.print("Consult ");
-				stdout.println(file);
+				output.print("Consult ");
+				output.println(file);
 				engine.consult(file);
 			} else if (m.containsKey("-x")) {
 				// do nothing silently execution
 			} else if (m.containsKey("-f")) {
 				String file = m.get("-r");
-				stdout.print("Format ");
-				stdout.println(file);
+				output.print("Format ");
+				output.println(file);
 				engine.consult(file);
 				engine.persist(file);
 			} else if (m.containsKey("-t")) {
 				List<String> status = engine.verify();
 				for (String string : status) {
-					stdout.println(string);
+					output.println(string);
 				}
 			} else if (m.containsKey("-p")) {
 				String file = m.get("-p");
@@ -178,7 +183,7 @@ public abstract class AbstractConsole implements PrologConsole {
 					System.exit(1);
 				}
 			} else if (m.containsKey("-g")) {
-				engine.getProgrammer().codingRuntime(stdout);
+				engine.getProgrammer().codingRuntime(output);
 				System.exit(0);
 			} else if (m.containsKey("-s")) {
 				PrologProject.dotProject();
@@ -191,14 +196,14 @@ public abstract class AbstractConsole implements PrologConsole {
 			try {
 
 				String input;
-				stdout.print("?- ");
-				stdout.flush();
-				input = stdin.readLine();
+				output.print("?- ");
+				output.flush();
+				input = reader.readLine();
 
 				while (true) {
 
 					if (!input.equals("")) {
-						stdout.println();
+						output.println();
 
 						if (input.lastIndexOf('.') == input.length() - 1) {
 							input = input.substring(0, input.length() - 1);
@@ -208,35 +213,35 @@ public abstract class AbstractConsole implements PrologConsole {
 						if (query.hasSolution()) {
 							Map<String, PrologTerm> s = query.oneVariablesSolution();
 							for (Entry<String, PrologTerm> e : s.entrySet()) {
-								stdout.println(e.getKey() + " = " + e.getValue());
+								output.println(e.getKey() + " = " + e.getValue());
 							}
-							stdout.println();
-							stdout.println("Yes.");
+							output.println();
+							output.println("Yes.");
 						}
 
 						else {
-							stdout.println("No.");
+							output.println("No.");
 						}
 
-						stdout.println();
-						stdout.println();
+						output.println();
+						output.println();
 
 					} else {
-						stdout.println("Emty query");
-						stdout.println();
+						output.println("Emty query");
+						output.println();
 					}
 
-					stdout.print("?- ");
-					stdout.flush();
-					input = stdin.readLine();
+					output.print("?- ");
+					output.flush();
+					input = reader.readLine();
 
 				}
 
 			} catch (UnsatisfiedLinkError e) {
-				stdout.println("Prolog engine link conditions:");
+				output.println("Prolog engine link conditions:");
 				List<String> status = engine.verify();
 				for (String string : status) {
-					stdout.println(string);
+					output.println(string);
 				}
 			} catch (IOException e) {
 				Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
