@@ -992,6 +992,10 @@ public abstract class AbstractProgrammer implements PrologProgrammer {
 							stdout.println("WARNING: No definition of the class could be found " + e);
 							warnings = true;
 							continue;
+						} catch (ClassNotFoundException e) {
+							stdout.println("WARNING: No definition of the class could be found " + e);
+							warnings = true;
+							continue;
 						}
 					}
 				}
@@ -999,8 +1003,6 @@ public abstract class AbstractProgrammer implements PrologProgrammer {
 			}
 
 		} catch (IOException e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
-		} catch (ClassNotFoundException e) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
 		} finally {
 			if (jarFile != null) {
