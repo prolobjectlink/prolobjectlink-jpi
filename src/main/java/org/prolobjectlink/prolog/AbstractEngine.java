@@ -37,6 +37,8 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
+import javax.script.ScriptEngine;
+
 /**
  * 
  * @author Jose Zalacain
@@ -139,6 +141,10 @@ public abstract class AbstractEngine implements PrologEngine {
 
 	public final PrologLogger getLogger() {
 		return provider.getLogger();
+	}
+
+	public final ScriptEngine getPrologScript() {
+		return new PrologScript(new PrologScriptFactory(this));
 	}
 
 	protected final <K extends PrologTerm> K toTerm(Object o, Class<K> from) {

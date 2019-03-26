@@ -32,6 +32,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.script.ScriptEngine;
+
 /**
  * 
  * @author Jose Zalacain
@@ -489,6 +491,8 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	public Set<PrologIndicator> getBuiltIns();
 
 	public PrologProgrammer getProgrammer();
+
+	public ScriptEngine getPrologScript();
 
 	public PrologProvider getProvider();
 
