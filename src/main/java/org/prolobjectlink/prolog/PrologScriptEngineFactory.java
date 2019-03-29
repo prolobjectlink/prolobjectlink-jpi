@@ -37,11 +37,11 @@ import java.util.Map;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineFactory;
 
-public abstract class PrologScriptFactory implements ScriptEngineFactory {
+public abstract class PrologScriptEngineFactory implements ScriptEngineFactory {
 
 	final PrologEngine engine;
 
-	public PrologScriptFactory(PrologEngine engine) {
+	public PrologScriptEngineFactory(PrologEngine engine) {
 		this.engine = engine;
 	}
 
@@ -103,7 +103,7 @@ public abstract class PrologScriptFactory implements ScriptEngineFactory {
 	}
 
 	public ScriptEngine getScriptEngine() {
-		return new PrologScript(this);
+		return new PrologScriptEngine(this);
 	}
 
 }
