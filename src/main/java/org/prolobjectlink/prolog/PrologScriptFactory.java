@@ -37,7 +37,7 @@ import java.util.Map;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineFactory;
 
-public class PrologScriptFactory implements ScriptEngineFactory {
+public abstract class PrologScriptFactory implements ScriptEngineFactory {
 
 	final PrologEngine engine;
 
@@ -81,11 +81,6 @@ public class PrologScriptFactory implements ScriptEngineFactory {
 		parameters.put("LANGUAGE", getLanguageName());
 		parameters.put("LANGUAGE_VERSION", getLanguageVersion());
 		return parameters.get(key);
-	}
-
-	public String getMethodCallSyntax(String obj, String m, String... args) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public String getOutputStatement(String toDisplay) {

@@ -41,10 +41,10 @@ import javax.script.SimpleBindings;
 
 public class PrologScript extends AbstractScriptEngine implements ScriptEngine, Invocable {
 
-	private final PrologScriptFactory factory;
+	private final ScriptEngineFactory factory;
 	private static final String CTX = "context";
 
-	public PrologScript(PrologScriptFactory factory) {
+	public PrologScript(ScriptEngineFactory factory) {
 		this.factory = factory;
 	}
 
