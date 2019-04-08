@@ -74,13 +74,18 @@ public abstract class PrologScriptEngineFactory implements ScriptEngineFactory {
 	}
 
 	public Object getParameter(String key) {
-		Map<String, String> parameters = new HashMap<String, String>();
-		parameters.put("ENGINE", getEngineName());
-		parameters.put("ENGINE_VERSION", getEngineVersion());
-		parameters.put("NAME", getNames().get(0));
-		parameters.put("LANGUAGE", getLanguageName());
-		parameters.put("LANGUAGE_VERSION", getLanguageVersion());
-		return parameters.get(key);
+		if (key.equals(ScriptEngine.ENGINE)) {
+			return getEngineName();
+		} else if (key.equals(ScriptEngine.ENGINE_VERSION)) {
+			return getEngineVersion();
+		} else if (key.equals(ScriptEngine.LANGUAGE)) {
+			return getLanguageName();
+		} else if (key.equals(ScriptEngine.LANGUAGE_VERSION)) {
+			return getLanguageVersion();
+		} else if (key.equals(ScriptEngine.NAME)) {
+			return getNames().get(0);
+		}
+		return null;
 	}
 
 	public String getOutputStatement(String toDisplay) {
