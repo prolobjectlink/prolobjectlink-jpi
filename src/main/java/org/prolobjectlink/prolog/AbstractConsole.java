@@ -107,7 +107,6 @@ public abstract class AbstractConsole implements PrologConsole {
 		output.println("	-f	consult a prolog file and save formatted code");
 		output.println("	-t	test and report integration conditions");
 		output.println("	-p	print in a file a snapshot of currents predicates");
-		output.println("	-g	generate all java class path wrapper procedures");
 		output.println("	-s	generate .project file for Prolog Development Tool");
 	}
 
@@ -182,9 +181,6 @@ public abstract class AbstractConsole implements PrologConsole {
 					Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
 					System.exit(1);
 				}
-			} else if (m.containsKey("-g")) {
-				engine.getProgrammer().codingRuntime(output);
-				System.exit(0);
 			} else if (m.containsKey("-s")) {
 				PrologProject.dotProject();
 				System.exit(0);
