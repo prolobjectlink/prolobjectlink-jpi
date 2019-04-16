@@ -69,7 +69,7 @@ public abstract class AbstractProvider implements PrologProvider {
 		return parseProgram(in.getAbsolutePath());
 	}
 
-	public final PrologEngine newEngine(String path) {
+	public PrologEngine newEngine(String path) {
 		PrologEngine engine = newEngine();
 		engine.consult(path);
 		return engine;
