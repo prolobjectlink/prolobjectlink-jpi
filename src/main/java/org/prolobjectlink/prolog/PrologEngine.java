@@ -271,8 +271,8 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * PrologVariable x = provider.newVariable(&quot;X&quot;);
 	 * PrologVariable y = provider.newVariable(&quot;Y&quot;);
 	 * PrologVariable z = provider.newVariable(&quot;Z&quot;);
-	 * boolean b = engine.clause(provider.newStructure(grandparent, x, z),
-	 * 		provider.newStructure(parent, x, y), provider.newStructure(parent, y, z));
+	 * boolean b = engine.clause(provider.newStructure(grandparent, x, z), provider.newStructure(parent, x, y),
+	 * 		provider.newStructure(parent, y, z));
 	 * </pre>
 	 * 
 	 * @param head head of rule
@@ -393,7 +393,9 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * 
 	 * {@code query(goal).hasSolution()}
 	 * 
-	 * @param goal goal array to be queried
+	 * @param goal  goal to be checked
+	 * @param goals goals array with the rest of conjunctive goals term (can be
+	 *              empty)
 	 * @return true if the given goal has solution
 	 * @since 1.0
 	 */

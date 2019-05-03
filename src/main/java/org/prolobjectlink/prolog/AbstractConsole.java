@@ -181,9 +181,6 @@ public abstract class AbstractConsole implements PrologConsole {
 					Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
 					System.exit(1);
 				}
-			} else if (m.containsKey("-s")) {
-				PrologProject.dotProject();
-				System.exit(0);
 			} else {
 				printUsage();
 				System.exit(1);
