@@ -29,6 +29,23 @@
 package org.prolobjectlink.prolog;
 
 /**
+ * Prolog term that represent variable data type. Prolog variables are created
+ * using {@link PrologProvider#newVariable(int)} for anonymous variables and
+ * {@link PrologProvider#newVariable(String, int)} for named variables. The
+ * Prolog variables can be used and reused because they remain in java heap. You
+ * can instantiate a prolog variable and used it any times in the same clause
+ * because refer to same variable every time.
+ * 
+ * <pre>
+ * 
+ * PrologVariable x = provider.newVariable(&quot;X&quot;);
+ * PrologVariable y = provider.newVariable(&quot;Y&quot;);
+ * PrologVariable z = provider.newVariable(&quot;Z&quot;);
+ * engine.assertz(provider.newStructure(grandparent, x, z), provider.newStructure(parent, x, y),
+ * 		provider.newStructure(parent, y, z));
+ * 
+ * </pre>
+ * 
  * 
  * @author Jose Zalacain
  * @since 1.0
@@ -52,6 +69,14 @@ public interface PrologVariable extends PrologTerm {
 	 */
 	public String getName();
 
+	/**
+	 * Set the name for current prolog variable term. If the under-laying prolog
+	 * variable term don't have rename option, a new under-laying variable is
+	 * created with the given name.
+	 * 
+	 * @param name name to be set to the current variable.
+	 * @since 1.0
+	 */
 	public void setName(String name);
 
 	/**

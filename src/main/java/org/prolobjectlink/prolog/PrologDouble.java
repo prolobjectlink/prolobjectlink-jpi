@@ -29,6 +29,12 @@
 package org.prolobjectlink.prolog;
 
 /**
+ * Prolog term that represent a double precision floating point number. Extends
+ * from {@link PrologNumber} who contains an immutable {@link java.lang.Double}
+ * instance. The Prolog Provider is the mechanism to create a new Prolog double
+ * invoking {@link PrologProvider#newDouble(Number)}. Two doubles numbers are
+ * equals if and only if are doubles and have equal value. Doubles numbers unify
+ * only with same value doubles or with free variable.
  * 
  * @author Jose Zalacain
  * @since 1.0

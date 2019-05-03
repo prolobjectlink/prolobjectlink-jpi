@@ -143,23 +143,23 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * String parent = &quot;parent&quot;;
 	 * String grandparent = &quot;grandparent&quot;;
 	 * 
-	 * PrologAtom pam = provider.newPrologAtom(&quot;pam&quot;);
-	 * PrologAtom bob = provider.newPrologAtom(&quot;bob&quot;);
-	 * PrologAtom ann = provider.newPrologAtom(&quot;ann&quot;);
-	 * PrologAtom pat = provider.newPrologAtom(&quot;pat&quot;);
+	 * PrologAtom pam = provider.newAtom(&quot;pam&quot;);
+	 * PrologAtom bob = provider.newAtom(&quot;bob&quot;);
+	 * PrologAtom ann = provider.newAtom(&quot;ann&quot;);
+	 * PrologAtom pat = provider.newAtom(&quot;pat&quot;);
 	 * 
-	 * PrologVariable x = provider.newPrologVariable(&quot;X&quot;);
-	 * PrologVariable y = provider.newPrologVariable(&quot;Y&quot;);
-	 * PrologVariable z = provider.newPrologVariable(&quot;Z&quot;);
+	 * PrologVariable x = provider.newVariable(&quot;X&quot;);
+	 * PrologVariable y = provider.newVariable(&quot;Y&quot;);
+	 * PrologVariable z = provider.newVariable(&quot;Z&quot;);
 	 * 
-	 * engine.asserta(provider.newPrologStructure(grandparent, x, z), provider.newPrologStructure(parent, x, y),
-	 * 		provider.newPrologStructure(parent, y, z));
-	 * engine.asserta(provider.newPrologStructure(parent, pat, jim));
-	 * engine.asserta(provider.newPrologStructure(parent, bob, pat));
-	 * engine.asserta(provider.newPrologStructure(parent, bob, ann));
-	 * engine.asserta(provider.newPrologStructure(parent, tom, liz));
-	 * engine.asserta(provider.newPrologStructure(parent, tom, bob));
-	 * engine.asserta(provider.newPrologStructure(parent, pam, bob));
+	 * engine.asserta(provider.newStructure(grandparent, x, z), provider.newStructure(parent, x, y),
+	 * 		provider.newStructure(parent, y, z));
+	 * engine.asserta(provider.newStructure(parent, pat, jim));
+	 * engine.asserta(provider.newStructure(parent, bob, pat));
+	 * engine.asserta(provider.newStructure(parent, bob, ann));
+	 * engine.asserta(provider.newStructure(parent, tom, liz));
+	 * engine.asserta(provider.newStructure(parent, tom, bob));
+	 * engine.asserta(provider.newStructure(parent, pam, bob));
 	 * </pre>
 	 * 
 	 * @param head head of rule
@@ -205,21 +205,21 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * <pre>
 	 * String parent = &quot;parent&quot;;
 	 * String grandparent = &quot;grandparent&quot;;
-	 * PrologAtom pam = provider.newPrologAtom(&quot;pam&quot;);
-	 * PrologAtom bob = provider.newPrologAtom(&quot;bob&quot;);
-	 * PrologAtom ann = provider.newPrologAtom(&quot;ann&quot;);
-	 * PrologAtom pat = provider.newPrologAtom(&quot;pat&quot;);
-	 * PrologVariable x = provider.newPrologVariable(&quot;X&quot;);
-	 * PrologVariable y = provider.newPrologVariable(&quot;Y&quot;);
-	 * PrologVariable z = provider.newPrologVariable(&quot;Z&quot;);
-	 * engine.assertz(provider.newPrologStructure(parent, pam, bob));
-	 * engine.assertz(provider.newPrologStructure(parent, tom, bob));
-	 * engine.assertz(provider.newPrologStructure(parent, tom, liz));
-	 * engine.assertz(provider.newPrologStructure(parent, bob, ann));
-	 * engine.assertz(provider.newPrologStructure(parent, bob, pat));
-	 * engine.assertz(provider.newPrologStructure(parent, pat, jim));
-	 * engine.assertz(provider.newPrologStructure(grandparent, x, z), provider.newPrologStructure(parent, x, y),
-	 * 		provider.newPrologStructure(parent, y, z));
+	 * PrologAtom pam = provider.newAtom(&quot;pam&quot;);
+	 * PrologAtom bob = provider.newAtom(&quot;bob&quot;);
+	 * PrologAtom ann = provider.newAtom(&quot;ann&quot;);
+	 * PrologAtom pat = provider.newAtom(&quot;pat&quot;);
+	 * PrologVariable x = provider.newVariable(&quot;X&quot;);
+	 * PrologVariable y = provider.newVariable(&quot;Y&quot;);
+	 * PrologVariable z = provider.newVariable(&quot;Z&quot;);
+	 * engine.assertz(provider.newStructure(parent, pam, bob));
+	 * engine.assertz(provider.newStructure(parent, tom, bob));
+	 * engine.assertz(provider.newStructure(parent, tom, liz));
+	 * engine.assertz(provider.newStructure(parent, bob, ann));
+	 * engine.assertz(provider.newStructure(parent, bob, pat));
+	 * engine.assertz(provider.newStructure(parent, pat, jim));
+	 * engine.assertz(provider.newStructure(grandparent, x, z), provider.newStructure(parent, x, y),
+	 * 		provider.newStructure(parent, y, z));
 	 * </pre>
 	 * 
 	 * @param head head of rule
@@ -261,18 +261,18 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * 
 	 * <pre>
 	 * String parent = &quot;parent&quot;;
-	 * PrologAtom pam = provider.newPrologAtom(&quot;pam&quot;);
-	 * PrologAtom bob = provider.newPrologAtom(&quot;bob&quot;);
-	 * boolean b = engine.clause(provider.newPrologStructure(parent, pam, bob));
+	 * PrologAtom pam = provider.newAtom(&quot;pam&quot;);
+	 * PrologAtom bob = provider.newAtom(&quot;bob&quot;);
+	 * boolean b = engine.clause(provider.newStructure(parent, pam, bob));
 	 * </pre>
 	 * 
 	 * <pre>
 	 * String grandparent = &quot;grandparent&quot;;
-	 * PrologVariable x = provider.newPrologVariable(&quot;X&quot;);
-	 * PrologVariable y = provider.newPrologVariable(&quot;Y&quot;);
-	 * PrologVariable z = provider.newPrologVariable(&quot;Z&quot;);
-	 * boolean b = engine.clause(provider.newPrologStructure(grandparent, x, z),
-	 * 		provider.newPrologStructure(parent, x, y), provider.newPrologStructure(parent, y, z));
+	 * PrologVariable x = provider.newVariable(&quot;X&quot;);
+	 * PrologVariable y = provider.newVariable(&quot;Y&quot;);
+	 * PrologVariable z = provider.newVariable(&quot;Z&quot;);
+	 * boolean b = engine.clause(provider.newStructure(grandparent, x, z),
+	 * 		provider.newStructure(parent, x, y), provider.newStructure(parent, y, z));
 	 * </pre>
 	 * 
 	 * @param head head of rule
@@ -314,21 +314,21 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * <pre>
 	 * String parent = &quot;parent&quot;;
 	 * String grandparent = &quot;grandparent&quot;;
-	 * PrologAtom pam = provider.newPrologAtom(&quot;pam&quot;);
-	 * PrologAtom bob = provider.newPrologAtom(&quot;bob&quot;);
-	 * PrologAtom ann = provider.newPrologAtom(&quot;ann&quot;);
-	 * PrologAtom pat = provider.newPrologAtom(&quot;pat&quot;);
-	 * PrologVariable x = provider.newPrologVariable(&quot;X&quot;);
-	 * PrologVariable y = provider.newPrologVariable(&quot;Y&quot;);
-	 * PrologVariable z = provider.newPrologVariable(&quot;Z&quot;);
-	 * engine.retract(provider.newPrologStructure(parent, pam, bob));
-	 * engine.retract(provider.newPrologStructure(parent, tom, bob));
-	 * engine.retract(provider.newPrologStructure(parent, tom, liz));
-	 * engine.retract(provider.newPrologStructure(parent, bob, ann));
-	 * engine.retract(provider.newPrologStructure(parent, bob, pat));
-	 * engine.retract(provider.newPrologStructure(parent, pat, jim));
-	 * engine.retract(provider.newPrologStructure(grandparent, x, z), provider.newPrologStructure(parent, x, y),
-	 * 		provider.newPrologStructure(parent, y, z));
+	 * PrologAtom pam = provider.newAtom(&quot;pam&quot;);
+	 * PrologAtom bob = provider.newAtom(&quot;bob&quot;);
+	 * PrologAtom ann = provider.newAtom(&quot;ann&quot;);
+	 * PrologAtom pat = provider.newAtom(&quot;pat&quot;);
+	 * PrologVariable x = provider.newVariable(&quot;X&quot;);
+	 * PrologVariable y = provider.newVariable(&quot;Y&quot;);
+	 * PrologVariable z = provider.newVariable(&quot;Z&quot;);
+	 * engine.retract(provider.newStructure(parent, pam, bob));
+	 * engine.retract(provider.newStructure(parent, tom, bob));
+	 * engine.retract(provider.newStructure(parent, tom, liz));
+	 * engine.retract(provider.newStructure(parent, bob, ann));
+	 * engine.retract(provider.newStructure(parent, bob, pat));
+	 * engine.retract(provider.newStructure(parent, pat, jim));
+	 * engine.retract(provider.newStructure(grandparent, x, z), provider.newStructure(parent, x, y),
+	 * 		provider.newStructure(parent, y, z));
 	 * </pre>
 	 * 
 	 * @param head head of rule
@@ -337,8 +337,41 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 */
 	public void retract(PrologTerm head, PrologTerm... body);
 
+	/**
+	 * Check that two terms (x and y) unify. Prolog unification algorithm is based
+	 * on three principals rules:
+	 * <ul>
+	 * <li>If x and y are atomics constants then x and y unify only if they are same
+	 * object.</li>
+	 * <li>If x is a variable and y is anything then they unify and x is
+	 * instantiated to y. Conversely, if y is a variable then this is instantiated
+	 * to x.</li>
+	 * <li>If x and y are structured terms then unify only if they match (equals
+	 * funtor and arity) and all their correspondents arguments unify.</li>
+	 * </ul>
+	 * 
+	 * 
+	 * @param t1 the term to unify.
+	 * @param t2 the term to unify.
+	 * @return true if the specified term unify whit the current term, false
+	 *         otherwise.
+	 * @since 1.0
+	 */
 	public boolean unify(PrologTerm t1, PrologTerm t2);
 
+	/**
+	 * Unify the terms returning a substitutions map with variable name as key and
+	 * instance variable term as value. In other words compute the Most General
+	 * Unifier (MGU) for the given terms. The substitution map for not unification
+	 * terms is an empty map. The substitutions instance terms depend of prolog
+	 * implementation data type such as for two different prolog engines the
+	 * resulting substitutions map are not equals necessary.
+	 * 
+	 * @param t1 - term to match check.
+	 * @param t2 - term to match check.
+	 * @return list of substitutions.
+	 * @since 1.0
+	 */
 	public Map<String, PrologTerm> match(PrologTerm t1, PrologTerm t2);
 
 	/**
