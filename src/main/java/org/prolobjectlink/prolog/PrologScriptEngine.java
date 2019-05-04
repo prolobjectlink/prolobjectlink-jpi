@@ -28,9 +28,15 @@
  */
 package org.prolobjectlink.prolog;
 
+import static org.prolobjectlink.prolog.PrologLogger.IO;
+
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.script.AbstractScriptEngine;
 import javax.script.Bindings;
@@ -42,11 +48,12 @@ import javax.script.SimpleBindings;
 
 public final class PrologScriptEngine extends AbstractScriptEngine implements ScriptEngine {
 
+	private final PrologEngine prolog;
 	private final ScriptEngineFactory factory;
-	private static final String CTX = "context";
 
-	public PrologScriptEngine(ScriptEngineFactory factory) {
+	public PrologScriptEngine(ScriptEngineFactory factory, PrologEngine prolog) {
 		this.factory = factory;
+		this.prolog = prolog;
 	}
 
 	public Bindings createBindings() {
@@ -58,12 +65,10 @@ public final class PrologScriptEngine extends AbstractScriptEngine implements Sc
 	}
 
 	public Object eval(String script, ScriptContext context) throws ScriptException {
-		context.getBindings(ScriptContext.ENGINE_SCOPE).put(CTX, context);
 		return eval(script, context.getBindings(ScriptContext.ENGINE_SCOPE));
 	}
 
 	public Object eval(Reader reader, ScriptContext context) throws ScriptException {
-		context.getBindings(ScriptContext.ENGINE_SCOPE).put(CTX, context);
 		return eval(reader, context.getBindings(ScriptContext.ENGINE_SCOPE));
 	}
 
@@ -85,9 +90,55 @@ public final class PrologScriptEngine extends AbstractScriptEngine implements Sc
 
 	@Override
 	public Object eval(String script, Bindings bindings) throws ScriptException {
-		// TODO Auto-generated method stub
-		// TODO this is the main eval
-		return super.eval(script, bindings);
+
+		String code = script;
+
+		// check code goal to query
+		if (script.startsWith("?-")) {
+
+			// replace all bindings
+			for (Entry<String, Object> entry : bindings.entrySet()) {
+				code = code.replace(entry.getKey(), "" + entry.getValue() + "");
+			}
+
+			code = code.substring(2).trim();
+
+			// remove dot at the end if needed
+			if (code.endsWith(".")) {
+				code = code.substring(0, code.length() - 1);
+			}
+
+			PrologQuery query = prolog.query(code);
+			if (!query.hasSolution()) {
+				return false;
+			}
+
+			// set variables result in the binding map
+			Map<String, PrologTerm> map = query.one();
+			for (Entry<String, PrologTerm> entry : map.entrySet()) {
+				put(entry.getKey(), entry.getValue());
+			}
+
+		}
+
+		// code is prolog program
+		// code need ensure_loaded
+		else {
+			try {
+				File f = File.createTempFile("prolobjectlink-javax-script-cache-", ".pl");
+				System.out.println(f);
+				prolog.consult(f.getCanonicalPath().replace(File.separatorChar, '/'));
+				Set<PrologIndicator> indicators = prolog.currentPredicates();
+				for (PrologIndicator prologIndicator : indicators) {
+					System.out.println(prologIndicator);
+				}
+			} catch (IOException e) {
+				prolog.getLogger().error(getClass(), IO, e);
+			}
+		}
+
+		return true;
+
 	}
 
 	@Override

@@ -253,10 +253,12 @@ public interface PrologTerm extends Comparable<PrologTerm> {
 	 * different prolog engines the resulting substitutions map are not equals
 	 * necessary.
 	 * 
+	 * @deprecated this method will be removed in the future.
 	 * @param term - term to match check
 	 * @return list of substitutions.
 	 * @since 1.0
 	 */
+	@Deprecated
 	public Map<String, PrologTerm> match(PrologTerm term);
 
 	public PrologProvider getProvider();

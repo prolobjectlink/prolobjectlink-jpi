@@ -304,7 +304,22 @@ public interface PrologProvider extends PrologParser {
 	 * @since 1.0
 	 */
 	public PrologLogger getLogger();
-	
+
 	public ScriptEngineFactory getScriptFactory();
 
+	/**
+	 * Version of the wrapped engine.
+	 * 
+	 * @return String version of the wrapped engine.
+	 * @since 1.0
+	 */
+	public String getVersion();
+
+	/**
+	 * Name of the wrapped engine.
+	 * 
+	 * @return String name of the wrapped engine.
+	 * @since 1.0
+	 */
+	public String getName();
 }

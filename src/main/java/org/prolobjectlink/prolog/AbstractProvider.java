@@ -133,8 +133,16 @@ public abstract class AbstractProvider implements PrologProvider {
 		return converter.fromTerm(head, body, to);
 	}
 
-	public PrologParser getParser() {
+	public final PrologParser getParser() {
 		return this;
+	}
+
+	public final String getVersion() {
+		return newEngine().getVersion();
+	}
+
+	public final String getName() {
+		return newEngine().getName();
 	}
 
 	@Override

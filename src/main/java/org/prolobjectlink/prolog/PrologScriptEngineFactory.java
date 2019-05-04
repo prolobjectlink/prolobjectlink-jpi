@@ -37,41 +37,41 @@ import javax.script.ScriptEngineFactory;
 
 public abstract class PrologScriptEngineFactory implements ScriptEngineFactory {
 
-	final PrologEngine engine;
+	private final PrologEngine engine;
 
 	public PrologScriptEngineFactory(PrologEngine engine) {
 		this.engine = engine;
 	}
 
-	public String getEngineName() {
+	public final String getEngineName() {
 		return engine.getName();
 	}
 
-	public String getEngineVersion() {
+	public final String getEngineVersion() {
 		return engine.getVersion();
 	}
 
-	public List<String> getExtensions() {
+	public final List<String> getExtensions() {
 		return Arrays.asList("pro", "pl");
 	}
 
-	public List<String> getMimeTypes() {
+	public final List<String> getMimeTypes() {
 		return Arrays.asList("text/plain");
 	}
 
-	public List<String> getNames() {
-		return Arrays.asList("Prolog", "prolog");
+	public final List<String> getNames() {
+		return Arrays.asList(getEngineName(), "Prolog", "prolog");
 	}
 
-	public String getLanguageName() {
+	public final String getLanguageName() {
 		return "Prolog";
 	}
 
-	public String getLanguageVersion() {
+	public final String getLanguageVersion() {
 		return engine.getVersion();
 	}
 
-	public Object getParameter(String key) {
+	public final Object getParameter(String key) {
 		if (key.equals(ScriptEngine.ENGINE)) {
 			return getEngineName();
 		} else if (key.equals(ScriptEngine.ENGINE_VERSION)) {
@@ -81,23 +81,23 @@ public abstract class PrologScriptEngineFactory implements ScriptEngineFactory {
 		} else if (key.equals(ScriptEngine.LANGUAGE_VERSION)) {
 			return getLanguageVersion();
 		} else if (key.equals(ScriptEngine.NAME)) {
-			return getNames().get(0);
+			return getEngineName();
 		}
 		return null;
 	}
 
-	public String getOutputStatement(String toDisplay) {
+	public final String getOutputStatement(String toDisplay) {
 		return "write('" + toDisplay + "')";
 	}
 
-	public String getProgram(String... statements) {
+	public final String getProgram(String... statements) {
 		StringBuilder b = new StringBuilder();
 		Iterator<String> i = new ArrayIterator<String>(statements);
 		if (i.hasNext()) {
 			while (i.hasNext()) {
 				b.append(i.next());
 				if (i.hasNext()) {
-					b.append(",\n\t");
+					b.append(".\n");
 				}
 			}
 			b.append('.');
@@ -105,8 +105,42 @@ public abstract class PrologScriptEngineFactory implements ScriptEngineFactory {
 		return "" + b + "";
 	}
 
-	public ScriptEngine getScriptEngine() {
-		return new PrologScriptEngine(this);
+	public final ScriptEngine getScriptEngine() {
+		return new PrologScriptEngine(this, engine);
+	}
+
+	@Override
+	public String toString() {
+		return "PrologScriptEngineFactory [engine=" + engine + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((engine == null) ? 0 : engine.getName().hashCode());
+		result = prime * result + ((engine == null) ? 0 : engine.getVersion().hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PrologScriptEngineFactory other = (PrologScriptEngineFactory) obj;
+		if (engine == null) {
+			if (other.engine != null)
+				return false;
+		} else if (!engine.getName().equals(other.engine.getName())) {
+			return false;
+		} else if (!engine.getVersion().equals(other.engine.getVersion())) {
+			return false;
+		}
+		return true;
 	}
 
 }

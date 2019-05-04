@@ -367,11 +367,13 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * implementation data type such as for two different prolog engines the
 	 * resulting substitutions map are not equals necessary.
 	 * 
+	 * @deprecated this method will be removed in the future.
 	 * @param t1 - term to match check.
 	 * @param t2 - term to match check.
 	 * @return list of substitutions.
 	 * @since 1.0
 	 */
+	@Deprecated
 	public Map<String, PrologTerm> match(PrologTerm t1, PrologTerm t2);
 
 	/**
