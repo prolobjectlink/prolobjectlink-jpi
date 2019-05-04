@@ -29,10 +29,8 @@
 package org.prolobjectlink.prolog;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineFactory;
@@ -62,7 +60,7 @@ public abstract class PrologScriptEngineFactory implements ScriptEngineFactory {
 	}
 
 	public List<String> getNames() {
-		return Arrays.asList("tuProlog", "Prolog", "prolog");
+		return Arrays.asList("Prolog", "prolog");
 	}
 
 	public String getLanguageName() {
