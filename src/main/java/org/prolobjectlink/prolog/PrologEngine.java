@@ -357,22 +357,6 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 */
 	public boolean unify(PrologTerm t1, PrologTerm t2);
 
-	/**
-	 * Unify the terms returning a substitutions map with variable name as key and
-	 * instance variable term as value. In other words compute the Most General
-	 * Unifier (MGU) for the given terms. The substitution map for not unification
-	 * terms is an empty map. The substitutions instance terms depend of prolog
-	 * implementation data type such as for two different prolog engines the
-	 * resulting substitutions map are not equals necessary.
-	 * 
-	 * @deprecated this method will be removed in the future.
-	 * @param t1 - term to match check.
-	 * @param t2 - term to match check.
-	 * @return list of substitutions.
-	 * @since 1.0
-	 */
-	@Deprecated
-	public Map<String, PrologTerm> match(PrologTerm t1, PrologTerm t2);
 
 	/**
 	 * Parse the string creating internal prolog clause and returning true if the

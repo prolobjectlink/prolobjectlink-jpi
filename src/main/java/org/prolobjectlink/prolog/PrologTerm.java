@@ -28,8 +28,6 @@
  */
 package org.prolobjectlink.prolog;
 
-import java.util.Map;
-
 /**
  * 
  * @author Jose Zalacain
@@ -243,23 +241,6 @@ public interface PrologTerm extends Comparable<PrologTerm> {
 	 * @since 1.0
 	 */
 	public boolean unify(PrologTerm term);
-
-	/**
-	 * Unify with other term returning a substitutions map with variable name as key
-	 * and instance variable term as value. In other words compute the Most General
-	 * Unifier (MGU) for the current term and the given parameter term. The
-	 * substitution map for not unification terms is an empty map. The substitutions
-	 * instance terms depend of prolog implementation data type such as for two
-	 * different prolog engines the resulting substitutions map are not equals
-	 * necessary.
-	 * 
-	 * @deprecated this method will be removed in the future.
-	 * @param term - term to match check
-	 * @return list of substitutions.
-	 * @since 1.0
-	 */
-	@Deprecated
-	public Map<String, PrologTerm> match(PrologTerm term);
 
 	public PrologProvider getProvider();
 
