@@ -28,8 +28,6 @@
  */
 package org.prolobjectlink.prolog;
 
-import javax.script.ScriptEngineFactory;
-
 /**
  * Prolog Provider is the class to interact with all prolog components (data
  * types, constants, logger, parser, converter and engine). Allow create data
@@ -304,8 +302,6 @@ public interface PrologProvider extends PrologParser {
 	 * @since 1.0
 	 */
 	public PrologLogger getLogger();
-
-	public ScriptEngineFactory getScriptFactory();
 
 	/**
 	 * Version of the wrapped engine.
