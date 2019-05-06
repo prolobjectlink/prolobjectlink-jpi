@@ -91,26 +91,26 @@ public interface PrologLogger {
 
 	public void log(Object sender, Level level, Object message);
 
-	public void log(Object sender, Level level, Object message, Throwable throwable);
+	public void log(Object sender, Level level, Object message, Throwable t);
 
 	public void trace(Object sender, Object message);
 
-	public void trace(Object sender, Object message, Throwable throwable);
+	public void trace(Object sender, Object message, Throwable t);
 
 	public void debug(Object sender, Object message);
 
-	public void debug(Object sender, Object message, Throwable throwable);
+	public void debug(Object sender, Object message, Throwable t);
 
 	public void info(Object sender, Object message);
 
-	public void info(Object sender, Object message, Throwable throwable);
+	public void info(Object sender, Object message, Throwable t);
 
 	public void warn(Object sender, Object message);
 
-	public void warn(Object sender, Object message, Throwable throwable);
+	public void warn(Object sender, Object message, Throwable t);
 
 	public void error(Object sender, Object message);
 
-	public void error(Object sender, Object message, Throwable throwable);
+	public void error(Object sender, Object message, Throwable t);
 
 }

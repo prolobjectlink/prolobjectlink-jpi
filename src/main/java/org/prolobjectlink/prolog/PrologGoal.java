@@ -52,7 +52,7 @@ public interface PrologGoal extends PrologClause, Iterable<PrologClause> {
 
 	public int hashCode();
 
-	public boolean equals(Object obj);
+	public boolean equals(Object object);
 
 	public String toString();
 

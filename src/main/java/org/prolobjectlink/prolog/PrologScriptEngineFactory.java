@@ -124,14 +124,14 @@ public abstract class PrologScriptEngineFactory implements ScriptEngineFactory {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean equals(Object object) {
+		if (this == object)
 			return true;
-		if (obj == null)
+		if (object == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (getClass() != object.getClass())
 			return false;
-		PrologScriptEngineFactory other = (PrologScriptEngineFactory) obj;
+		PrologScriptEngineFactory other = (PrologScriptEngineFactory) object;
 		if (engine == null) {
 			if (other.engine != null)
 				return false;

@@ -37,6 +37,6 @@ import java.util.Set;
  */
 public interface PrologOperatorSet extends Set<PrologOperator> {
 
-	public boolean currentOp(String opreator);
+	public boolean currentOp(String operator);
 
 }

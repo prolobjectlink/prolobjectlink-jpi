@@ -36,13 +36,13 @@ package org.prolobjectlink.prolog;
  * @author Jose Zalacain
  * @since 1.0
  */
-public abstract class AbstractBuilder implements PrologBuilder {
+abstract class AbstractBuilder implements PrologBuilder {
 
 	protected StringBuilder builder;
 	protected final PrologEngine engine;
-	protected final PrologProvider provider;
+	private final PrologProvider provider;
 
-	public AbstractBuilder(PrologEngine engine) {
+	AbstractBuilder(PrologEngine engine) {
 		this.provider = engine.getProvider();
 		this.builder = new StringBuilder();
 		this.engine = engine;
@@ -73,14 +73,14 @@ public abstract class AbstractBuilder implements PrologBuilder {
 	}
 
 	@Override
-	public final boolean equals(Object obj) {
-		if (this == obj)
+	public final boolean equals(Object object) {
+		if (this == object)
 			return true;
-		if (obj == null)
+		if (object == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (getClass() != object.getClass())
 			return false;
-		DefaultQueryBuilder other = (DefaultQueryBuilder) obj;
+		DefaultQueryBuilder other = (DefaultQueryBuilder) object;
 		if (engine == null) {
 			if (other.engine != null)
 				return false;

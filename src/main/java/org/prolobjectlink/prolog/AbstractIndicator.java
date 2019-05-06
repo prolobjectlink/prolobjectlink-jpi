@@ -70,14 +70,14 @@ public class AbstractIndicator implements PrologIndicator {
 	}
 
 	@Override
-	public final boolean equals(Object obj) {
-		if (this == obj)
+	public final boolean equals(Object object) {
+		if (this == object)
 			return true;
-		if (obj == null)
+		if (object == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (getClass() != object.getClass())
 			return false;
-		AbstractIndicator other = (AbstractIndicator) obj;
+		AbstractIndicator other = (AbstractIndicator) object;
 		if (arity != other.arity)
 			return false;
 		if (functor == null) {

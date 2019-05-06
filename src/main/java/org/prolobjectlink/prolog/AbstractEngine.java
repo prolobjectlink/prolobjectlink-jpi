@@ -141,12 +141,12 @@ public abstract class AbstractEngine implements PrologEngine {
 		return provider.toTerm(o, from);
 	}
 
-	protected final <K extends PrologTerm> K[] toTermArray(Object[] os, Class<K[]> from) {
-		return provider.toTermArray(os, from);
+	protected final <K extends PrologTerm> K[] toTermArray(Object[] objects, Class<K[]> from) {
+		return provider.toTermArray(objects, from);
 	}
 
-	protected final <K extends PrologTerm> K[][] toTermMatrix(Object[][] oss, Class<K[][]> from) {
-		return provider.toTermMatrix(oss, from);
+	protected final <K extends PrologTerm> K[][] toTermMatrix(Object[][] objects, Class<K[][]> from) {
+		return provider.toTermMatrix(objects, from);
 	}
 
 	protected final <K extends PrologTerm, V extends Object> Map<String, PrologTerm> toTermMap(Map<String, V> map,
@@ -192,14 +192,14 @@ public abstract class AbstractEngine implements PrologEngine {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean equals(Object object) {
+		if (this == object)
 			return true;
-		if (obj == null)
+		if (object == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (getClass() != object.getClass())
 			return false;
-		AbstractEngine other = (AbstractEngine) obj;
+		AbstractEngine other = (AbstractEngine) object;
 		if (provider == null) {
 			if (other.provider != null)
 				return false;

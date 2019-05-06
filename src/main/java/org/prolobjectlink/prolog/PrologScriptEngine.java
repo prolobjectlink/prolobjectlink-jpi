@@ -28,15 +28,13 @@
  */
 package org.prolobjectlink.prolog;
 
-import static org.prolobjectlink.prolog.PrologLogger.IO;
-
 import java.io.BufferedReader;
-import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.io.StringReader;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import javax.script.AbstractScriptEngine;
 import javax.script.Bindings;
@@ -74,18 +72,26 @@ public final class PrologScriptEngine extends AbstractScriptEngine implements Sc
 
 	@Override
 	public Object eval(Reader reader, Bindings bindings) throws ScriptException {
-		BufferedReader bfr = new BufferedReader(reader);
-		StringBuilder script = new StringBuilder();
-		try {
-			String line = bfr.readLine();
-			while (line != null) {
-				script.append(line);
-				line = bfr.readLine();
+		if (reader instanceof StringReader) {
+			StringReader stringReader = (StringReader) reader;
+			BufferedReader bfr = new BufferedReader(stringReader);
+			StringBuilder script = new StringBuilder();
+			try {
+				String line = bfr.readLine();
+				while (line != null) {
+					script.append(line);
+					line = bfr.readLine();
+				}
+			} catch (IOException ex) {
+				throw new ScriptException(ex);
 			}
-		} catch (IOException ex) {
-			throw new ScriptException(ex);
+			return eval("" + script + "", bindings);
+		} else if (reader instanceof FileReader) {
+			FileReader fileReader = (FileReader) reader;
+			prolog.include(fileReader);
+			return true;
 		}
-		return eval("" + script + "", bindings);
+		return false;
 	}
 
 	@Override
@@ -94,7 +100,7 @@ public final class PrologScriptEngine extends AbstractScriptEngine implements Sc
 		String code = script;
 
 		// check code goal to query
-		if (script.startsWith("?-")) {
+		if (code.startsWith("?-")) {
 
 			// replace all bindings
 			for (Entry<String, Object> entry : bindings.entrySet()) {
@@ -124,17 +130,8 @@ public final class PrologScriptEngine extends AbstractScriptEngine implements Sc
 		// code is prolog program
 		// code need ensure_loaded
 		else {
-			try {
-				File f = File.createTempFile("prolobjectlink-javax-script-cache-", ".pl");
-				System.out.println(f);
-				prolog.consult(f.getCanonicalPath().replace(File.separatorChar, '/'));
-				Set<PrologIndicator> indicators = prolog.currentPredicates();
-				for (PrologIndicator prologIndicator : indicators) {
-					System.out.println(prologIndicator);
-				}
-			} catch (IOException e) {
-				prolog.getLogger().error(getClass(), IO, e);
-			}
+			StringReader r = new StringReader(code);
+			prolog.include(r);
 		}
 
 		return true;

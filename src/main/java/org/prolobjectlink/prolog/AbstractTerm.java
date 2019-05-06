@@ -28,8 +28,6 @@
  */
 package org.prolobjectlink.prolog;
 
-import java.util.Map;
-
 /**
  * 
  * @author Jose Zalacain
@@ -39,10 +37,6 @@ public abstract class AbstractTerm implements PrologTerm {
 
 	protected int type;
 	protected final PrologProvider provider;
-
-	protected AbstractTerm(PrologProvider provider) {
-		this(0, provider);
-	}
 
 	protected AbstractTerm(int type, PrologProvider provider) {
 		this.type = type;
@@ -76,30 +70,12 @@ public abstract class AbstractTerm implements PrologTerm {
 		return provider.toTermArray(os, from);
 	}
 
-	protected final <K extends PrologTerm> K[][] toTermTable(Object[][] oss, Class<K[][]> from) {
-		return provider.toTermMatrix(oss, from);
-	}
-
-	protected final <K extends PrologTerm, V extends Object> Map<String, PrologTerm> toTermMap(Map<String, V> map,
-			Class<K> from) {
-		return provider.toTermMap(map, from);
-	}
-
-	protected final <K extends PrologTerm, V extends Object> Map<String, PrologTerm>[] toTermMapArray(
-			Map<String, V>[] map, Class<K> from) {
-		return provider.toTermMapArray(map, from);
-	}
-
 	protected final <K> K fromTerm(PrologTerm term, Class<K> to) {
 		return provider.fromTerm(term, to);
 	}
 
 	protected final <K> K[] fromTermArray(PrologTerm[] terms, Class<K[]> to) {
 		return provider.fromTermArray(terms, to);
-	}
-
-	protected final <K> K fromTerm(PrologTerm head, PrologTerm[] body, Class<K> to) {
-		return provider.fromTerm(head, body, to);
 	}
 
 	protected final PrologLogger getLogger() {

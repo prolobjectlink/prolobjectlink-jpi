@@ -35,7 +35,7 @@ import java.util.Map;
  * @author Jose Zalacain
  * @since 1.0
  */
-public interface PrologWrapper {
+interface PrologWrapper {
 
 	public <K extends PrologTerm, V extends Object> Map<String, PrologTerm>[] toTermMapArray(Map<String, V>[] map,
 			Class<K> from);
@@ -43,9 +43,9 @@ public interface PrologWrapper {
 	public <K extends PrologTerm, V extends Object> Map<String, PrologTerm> toTermMap(Map<String, V> map,
 			Class<K> from);
 
-	public <K extends PrologTerm> K[][] toTermMatrix(Object[][] oss, Class<K[][]> from);
+	public <K extends PrologTerm> K[][] toTermMatrix(Object[][] objects, Class<K[][]> from);
 
-	public <K extends PrologTerm> K[] toTermArray(Object[] os, Class<K[]> from);
+	public <K extends PrologTerm> K[] toTermArray(Object[] objects, Class<K[]> from);
 
 	public <K extends PrologTerm> K toTerm(Object o, Class<K> from);
 

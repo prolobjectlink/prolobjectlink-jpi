@@ -37,7 +37,7 @@ public interface PrologBuilder {
 
 	public PrologEngine getEngine();
 
-	public boolean equals(Object obj);
+	public boolean equals(Object object);
 
 	public String toString();
 

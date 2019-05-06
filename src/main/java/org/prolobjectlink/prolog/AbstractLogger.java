@@ -45,40 +45,40 @@ public abstract class AbstractLogger implements PrologLogger {
 		log(sender, Level.FINEST, message);
 	}
 
-	public final void trace(Object sender, Object message, Throwable throwable) {
-		log(sender, Level.FINEST, message, throwable);
+	public final void trace(Object sender, Object message, Throwable t) {
+		log(sender, Level.FINEST, message, t);
 	}
 
 	public final void debug(Object sender, Object message) {
 		log(sender, Level.FINE, message);
 	}
 
-	public final void debug(Object sender, Object message, Throwable throwable) {
-		log(sender, Level.FINE, message, throwable);
+	public final void debug(Object sender, Object message, Throwable t) {
+		log(sender, Level.FINE, message, t);
 	}
 
 	public final void info(Object sender, Object message) {
 		log(sender, Level.INFO, message);
 	}
 
-	public final void info(Object sender, Object message, Throwable throwable) {
-		log(sender, Level.INFO, message, throwable);
+	public final void info(Object sender, Object message, Throwable t) {
+		log(sender, Level.INFO, message, t);
 	}
 
 	public final void warn(Object sender, Object message) {
 		log(sender, Level.WARNING, message);
 	}
 
-	public final void warn(Object sender, Object message, Throwable throwable) {
-		log(sender, Level.WARNING, message, throwable);
+	public final void warn(Object sender, Object message, Throwable t) {
+		log(sender, Level.WARNING, message, t);
 	}
 
 	public final void error(Object sender, Object message) {
 		log(sender, Level.SEVERE, message);
 	}
 
-	public final void error(Object sender, Object message, Throwable throwable) {
-		log(sender, Level.SEVERE, message, throwable);
+	public final void error(Object sender, Object message, Throwable t) {
+		log(sender, Level.SEVERE, message, t);
 	}
 
 }

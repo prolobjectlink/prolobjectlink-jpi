@@ -43,6 +43,8 @@ public interface PrologClauseBuilder extends PrologBuilder {
 
 	public PrologClauseBuilder begin(String functor, PrologTerm... arguments);
 
+	public PrologClauseBuilder neck(PrologTerm left, String operator, int right);
+
 	public PrologClauseBuilder neck(PrologTerm left, String operator, PrologTerm right);
 
 	public PrologClauseBuilder neck(String functor, PrologTerm... arguments);

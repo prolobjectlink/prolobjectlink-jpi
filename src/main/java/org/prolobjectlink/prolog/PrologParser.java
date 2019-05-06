@@ -36,7 +36,7 @@ import java.util.Set;
  * @author Jose Zalacain
  * @since 1.0
  */
-public interface PrologParser extends PrologWrapper {
+interface PrologParser extends PrologWrapper {
 
 	public PrologTerm parseTerm(String term);
 

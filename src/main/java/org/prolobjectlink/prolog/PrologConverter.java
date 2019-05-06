@@ -62,7 +62,7 @@ public interface PrologConverter<T> extends PrologWrapper {
 
 	public int hashCode();
 
-	public boolean equals(Object obj);
+	public boolean equals(Object object);
 
 	public String toString();
 

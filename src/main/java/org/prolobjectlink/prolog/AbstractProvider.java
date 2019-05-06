@@ -154,14 +154,14 @@ public abstract class AbstractProvider implements PrologProvider {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean equals(Object object) {
+		if (this == object)
 			return true;
-		if (obj == null)
+		if (object == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (getClass() != object.getClass())
 			return false;
-		AbstractProvider other = (AbstractProvider) obj;
+		AbstractProvider other = (AbstractProvider) object;
 		if (converter == null) {
 			if (other.converter != null)
 				return false;

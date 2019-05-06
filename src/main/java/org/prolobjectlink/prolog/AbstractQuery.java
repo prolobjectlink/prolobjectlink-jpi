@@ -60,19 +60,6 @@ public abstract class AbstractQuery extends AbstractIterator<Collection<PrologTe
 		return engine.toTerm(o, from);
 	}
 
-	protected final <K extends PrologTerm> K[] toTermArray(Object[] os, Class<K[]> from) {
-		return engine.toTermArray(os, from);
-	}
-
-	protected final <K extends PrologTerm> K[][] toTermMatrix(Object[][] oss, Class<K[][]> from) {
-		return engine.toTermMatrix(oss, from);
-	}
-
-	protected final <K extends PrologTerm, V extends Object> Map<String, PrologTerm> toTermMap(Map<String, V> map,
-			Class<K> from) {
-		return engine.toTermMap(map, from);
-	}
-
 	protected final <K extends PrologTerm, V extends Object> Map<String, PrologTerm>[] toTermMapArray(
 			Map<String, V>[] map, Class<K> from) {
 		return engine.toTermMapArray(map, from);
@@ -82,24 +69,7 @@ public abstract class AbstractQuery extends AbstractIterator<Collection<PrologTe
 		return engine.fromTerm(term, to);
 	}
 
-	protected final <K> K[] fromTermArray(PrologTerm[] terms, Class<K[]> to) {
-		return engine.fromTermArray(terms, to);
-	}
-
-	protected final <K> K fromTerm(PrologTerm head, PrologTerm[] body, Class<K> to) {
-		return engine.fromTerm(head, body, to);
-	}
-
 	protected final boolean contains(List<Map<String, PrologTerm>> maps, Map<String, PrologTerm> map) {
-		for (Map<String, PrologTerm> m : maps) {
-			if (m.equals(map)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	protected final boolean contains(Map<String, PrologTerm>[] maps, Map<String, PrologTerm> map) {
 		for (Map<String, PrologTerm> m : maps) {
 			if (m.equals(map)) {
 				return true;

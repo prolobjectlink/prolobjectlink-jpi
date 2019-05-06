@@ -38,12 +38,12 @@ import java.util.NoSuchElementException;
  * @author Jose Zalacain
  * @since 1.0
  */
-public final class PrologQueryIterator extends AbstractIterator<Collection<PrologTerm>>
+final class PrologQueryIterator extends AbstractIterator<Collection<PrologTerm>>
 		implements Iterator<Collection<PrologTerm>> {
 
 	private final PrologQuery query;
 
-	public PrologQueryIterator(PrologQuery query) {
+	PrologQueryIterator(PrologQuery query) {
 		this.query = query;
 	}
 

@@ -73,14 +73,14 @@ public abstract class AbstractOperator implements PrologOperator {
 	}
 
 	@Override
-	public final boolean equals(Object obj) {
-		if (this == obj)
+	public final boolean equals(Object object) {
+		if (this == object)
 			return true;
-		if (obj == null)
+		if (object == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (getClass() != object.getClass())
 			return false;
-		AbstractOperator other = (AbstractOperator) obj;
+		AbstractOperator other = (AbstractOperator) object;
 		if (operator == null) {
 			if (other.operator != null)
 				return false;

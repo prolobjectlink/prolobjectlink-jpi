@@ -28,6 +28,7 @@
  */
 package org.prolobjectlink.prolog;
 
+import java.io.Reader;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -97,9 +98,11 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 */
 	public List<String> verify();
 
+	public void consult(String path);
+
 	public void include(String path);
 
-	public void consult(String path);
+	public void include(Reader reader);
 
 	public void persist(String path);
 

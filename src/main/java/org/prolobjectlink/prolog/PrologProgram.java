@@ -89,5 +89,5 @@ public interface PrologProgram extends Set<PrologClauses>, Iterable<PrologClause
 
 	public int hashCode();
 
-	public boolean equals(Object obj);
+	public boolean equals(Object object);
 }

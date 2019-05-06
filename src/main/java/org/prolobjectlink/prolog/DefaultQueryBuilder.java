@@ -33,9 +33,9 @@ package org.prolobjectlink.prolog;
  * @author Jose Zalacain
  * @since 1.0
  */
-public final class DefaultQueryBuilder extends AbstractBuilder implements PrologQueryBuilder {
+final class DefaultQueryBuilder extends AbstractBuilder implements PrologQueryBuilder {
 
-	public DefaultQueryBuilder(PrologEngine engine) {
+	DefaultQueryBuilder(PrologEngine engine) {
 		super(engine);
 	}
 
