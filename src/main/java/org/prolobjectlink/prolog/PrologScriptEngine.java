@@ -26,7 +26,6 @@
 package org.prolobjectlink.prolog;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
@@ -69,26 +68,19 @@ public final class PrologScriptEngine extends AbstractScriptEngine implements Sc
 
 	@Override
 	public Object eval(Reader reader, Bindings bindings) throws ScriptException {
-		if (reader instanceof StringReader) {
-			StringReader stringReader = (StringReader) reader;
-			BufferedReader bfr = new BufferedReader(stringReader);
-			StringBuilder script = new StringBuilder();
-			try {
-				String line = bfr.readLine();
-				while (line != null) {
-					script.append(line);
-					line = bfr.readLine();
-				}
-			} catch (IOException ex) {
-				throw new ScriptException(ex);
+		BufferedReader bfr = new BufferedReader(reader);
+		StringBuilder script = new StringBuilder();
+		try {
+			String line = bfr.readLine();
+			while (line != null) {
+				script.append(line);
+				script.append("\n");
+				line = bfr.readLine();
 			}
-			return eval("" + script + "", bindings);
-		} else if (reader instanceof FileReader) {
-			FileReader fileReader = (FileReader) reader;
-			prolog.include(fileReader);
-			return true;
+		} catch (IOException ex) {
+			throw new ScriptException(ex);
 		}
-		return false;
+		return eval("" + script + "", bindings);
 	}
 
 	@Override
@@ -127,8 +119,7 @@ public final class PrologScriptEngine extends AbstractScriptEngine implements Sc
 		// code is prolog program
 		// code need ensure_loaded
 		else {
-			StringReader r = new StringReader(code);
-			prolog.include(r);
+			prolog.include(new StringReader(code));
 		}
 
 		return true;
