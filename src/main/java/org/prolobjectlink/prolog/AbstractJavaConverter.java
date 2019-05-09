@@ -67,7 +67,7 @@ public abstract class AbstractJavaConverter implements PrologJavaConverter {
 		return functor;
 	}
 
-	public Object toObject(PrologTerm prologTerm) {
+	public final Object toObject(PrologTerm prologTerm) {
 		if (prologTerm == null) {
 			return null;
 		}
@@ -110,7 +110,7 @@ public abstract class AbstractJavaConverter implements PrologJavaConverter {
 		return (Object[]) array;
 	}
 
-	public PrologTerm toTerm(Object object) {
+	public final PrologTerm toTerm(Object object) {
 		// null pointer
 		if (object == null) {
 			return provider.prologNil();
@@ -143,7 +143,7 @@ public abstract class AbstractJavaConverter implements PrologJavaConverter {
 
 	}
 
-	public PrologTerm[] toTermsArray(Object[] objects) {
+	public final PrologTerm[] toTermsArray(Object[] objects) {
 		PrologTerm[] terms = new PrologTerm[objects.length];
 		for (int i = 0; i < objects.length; i++) {
 			terms[i] = toTerm(objects[i]);
@@ -151,7 +151,7 @@ public abstract class AbstractJavaConverter implements PrologJavaConverter {
 		return terms;
 	}
 
-	public List<Map<String, Object>> toObjectMaps(Map<String, PrologTerm>[] maps) {
+	public final List<Map<String, Object>> toObjectMaps(Map<String, PrologTerm>[] maps) {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>(maps.length);
 		for (Map<String, PrologTerm> map : maps) {
 			list.add(toObjectMap(map));
@@ -159,12 +159,28 @@ public abstract class AbstractJavaConverter implements PrologJavaConverter {
 		return list;
 	}
 
-	public Map<String, Object> toObjectMap(Map<String, PrologTerm> map) {
+	public final Map<String, Object> toObjectMap(Map<String, PrologTerm> map) {
 		Map<String, Object> objects = new HashMap<String, Object>(map.size());
 		for (Entry<String, PrologTerm> entry : map.entrySet()) {
 			objects.put(entry.getKey(), toObject(entry.getValue()));
 		}
 		return objects;
+	}
+
+	public final List<Object> toObjectList(PrologTerm[] terms) {
+		List<Object> list = new ArrayList<Object>(terms.length);
+		for (PrologTerm prologTerm : terms) {
+			list.add(toObject(prologTerm));
+		}
+		return list;
+	}
+
+	public final List<List<Object>> toObjectLists(PrologTerm[][] terms) {
+		List<List<Object>> list = new ArrayList<List<Object>>(terms.length);
+		for (PrologTerm[] prologTerms : terms) {
+			list.add(toObjectList(prologTerms));
+		}
+		return list;
 	}
 
 }

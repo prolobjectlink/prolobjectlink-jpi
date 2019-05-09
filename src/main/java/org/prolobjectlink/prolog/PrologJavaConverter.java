@@ -34,6 +34,10 @@ public interface PrologJavaConverter {
 
 	public Map<String, Object> toObjectMap(Map<String, PrologTerm> map);
 
+	public List<Object> toObjectList(PrologTerm[] terms);
+
+	public List<List<Object>> toObjectLists(PrologTerm[][] terms);
+
 	public Object[] toObjectsArray(PrologTerm[] terms);
 
 	public PrologTerm[] toTermsArray(Object[] objects);

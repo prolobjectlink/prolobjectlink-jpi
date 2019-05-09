@@ -120,9 +120,13 @@ public interface PrologQuery extends Iterator<Collection<PrologTerm>>, Iterable<
 
 	public Map<String, PrologTerm>[] allVariablesSolutions();
 
-	public Map<String, Object> oneResult();
+	public List<Object> oneResult();
 
-	public List<Map<String, Object>> allResult();
+	public Map<String, Object> oneVariablesResult();
+
+	public List<List<Object>> allResults();
+
+	public List<Map<String, Object>> allVariablesResults();
 
 	public Map<String, PrologTerm> one();
 

@@ -109,7 +109,7 @@ public final class PrologScriptEngine extends AbstractScriptEngine implements Sc
 			}
 
 			// set variables result in the binding map
-			Map<String, Object> map = query.oneResult();
+			Map<String, Object> map = query.oneVariablesResult();
 			for (Entry<String, Object> entry : map.entrySet()) {
 				put(entry.getKey(), entry.getValue());
 			}

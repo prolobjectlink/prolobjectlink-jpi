@@ -112,12 +112,22 @@ public abstract class AbstractQuery extends AbstractIterator<Collection<PrologTe
 		return oneVariablesSolution();
 	}
 
-	public final Map<String, Object> oneResult() {
+	public final List<Object> oneResult() {
+		PrologTerm[] terms = oneSolution();
+		return getProvider().getJavaConverter().toObjectList(terms);
+	}
+
+	public final List<List<Object>> allResults() {
+		PrologTerm[][] terms = allSolutions();
+		return getProvider().getJavaConverter().toObjectLists(terms);
+	}
+
+	public final Map<String, Object> oneVariablesResult() {
 		Map<String, PrologTerm> map = oneVariablesSolution();
 		return getProvider().getJavaConverter().toObjectMap(map);
 	}
 
-	public final List<Map<String, Object>> allResult() {
+	public final List<Map<String, Object>> allVariablesResults() {
 		Map<String, PrologTerm>[] maps = allVariablesSolutions();
 		return getProvider().getJavaConverter().toObjectMaps(maps);
 	}
