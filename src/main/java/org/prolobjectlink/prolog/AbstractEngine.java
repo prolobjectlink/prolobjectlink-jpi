@@ -107,26 +107,26 @@ public abstract class AbstractEngine implements PrologEngine {
 		return new DefaultClauseBuilder(this);
 	}
 
-	public final boolean runOnOsX() {
-		return getOsName().equals("Mac OS X") || getOsName().equals("Darwin");
+	public final boolean runOnOSX() {
+		return getOSName().equals("Mac OS X") || getOSName().equals("Darwin");
 	}
 
 	public final boolean runOnWindows() {
-		return getOsName().startsWith("Windows");
+		return getOSName().startsWith("Windows");
 	}
 
 	public final boolean runOnLinux() {
-		return getOsName().equals("Linux");
+		return getOSName().equals("Linux");
 	}
 
-	public final String getOsName() {
+	public final String getOSName() {
 		String os = System.getProperty("os.name");
 		if (os == null)
 			return UNKNOW;
 		return os;
 	}
 
-	public final String getOsArch() {
+	public final String getOSArch() {
 		return System.getProperty("os.arch");
 	}
 

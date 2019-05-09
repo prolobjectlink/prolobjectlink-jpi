@@ -48,8 +48,10 @@ public abstract class AbstractProvider implements PrologProvider {
 		return (PrologList) term;
 	}
 
-	public final PrologClause parseClause(String clause) {
-		return newEngine().iterator().next();
+	public final PrologClause parseClause(String stringClause) {
+		PrologEngine engine = newEngine();
+		engine.asserta(stringClause);
+		return engine.iterator().next();
 	}
 
 	public final PrologStructure parseStructure(String stringStructure) {

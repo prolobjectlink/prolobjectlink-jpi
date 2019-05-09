@@ -112,6 +112,16 @@ public abstract class AbstractQuery extends AbstractIterator<Collection<PrologTe
 		return oneVariablesSolution();
 	}
 
+	public final Map<String, Object> oneResult() {
+		Map<String, PrologTerm> map = oneVariablesSolution();
+		return getProvider().getJavaConverter().toObjectMap(map);
+	}
+
+	public final List<Map<String, Object>> allResult() {
+		Map<String, PrologTerm>[] maps = allVariablesSolutions();
+		return getProvider().getJavaConverter().toObjectMaps(maps);
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

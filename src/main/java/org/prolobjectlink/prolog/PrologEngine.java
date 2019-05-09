@@ -62,7 +62,7 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 *         otherwise.
 	 * @since 1.0
 	 */
-	public boolean runOnOsX();
+	public boolean runOnOSX();
 
 	/**
 	 * Return the host operating system name. Is a shortcut to
@@ -71,7 +71,7 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * @return the host operating system name.
 	 * @since 1.0
 	 */
-	public String getOsName();
+	public String getOSName();
 
 	/**
 	 * Return the host operating system architecture. Is a shortcut to
@@ -80,7 +80,7 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * @return the host operating system architecture.
 	 * @since 1.0
 	 */
-	public String getOsArch();
+	public String getOSArch();
 
 	/**
 	 * Test the correct integration between under-laying prolog engine and top level
@@ -96,6 +96,8 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	public List<String> verify();
 
 	public void consult(String path);
+
+	public void consult(Reader reader);
 
 	public void include(String path);
 
@@ -356,7 +358,6 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * @since 1.0
 	 */
 	public boolean unify(PrologTerm t1, PrologTerm t2);
-
 
 	/**
 	 * Parse the string creating internal prolog clause and returning true if the

@@ -31,7 +31,7 @@ package org.prolobjectlink.prolog;
  * types like atoms, numbers, lists, structures and variable terms. Allow
  * interact with the under-lying prolog engine to realize inferences operations.
  * Other used components are the prolog parser to parse prolog terms in string
- * from. The Prolog Provider offer a prolog system logger to report every errors
+ * form. The Prolog Provider offer a prolog system logger to report every errors
  * or exceptions.
  * 
  * @author Jose Zalacain
@@ -273,6 +273,8 @@ public interface PrologProvider extends PrologParser {
 	 * @since 1.0
 	 */
 	public PrologTerm newStructure(PrologTerm left, String operator, PrologTerm right);
+
+	public PrologJavaConverter getJavaConverter();
 
 	/**
 	 * Get a prolog converter instance to map the abstract prolog data types to
