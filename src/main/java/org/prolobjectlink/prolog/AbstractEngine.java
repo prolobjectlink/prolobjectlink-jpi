@@ -64,7 +64,13 @@ public abstract class AbstractEngine implements PrologEngine {
 		return query(goal, goals).hasSolution();
 	}
 
-	public final PrologQuery query(Object object, Object... objects) {
+	public final PrologQuery rpc(Object... objects) {
+		PrologJavaConverter converter = getProvider().getJavaConverter();
+		PrologTerm[] terms = converter.toTermsArray(objects);
+		return query(terms);
+	}
+
+	public final PrologQuery rpc(Object object, Object... objects) {
 		PrologJavaConverter converter = getProvider().getJavaConverter();
 		PrologTerm[] terms = converter.toTermsArray(objects);
 		PrologTerm term = converter.toTerm(object);
@@ -79,7 +85,7 @@ public abstract class AbstractEngine implements PrologEngine {
 		return query(goal, goals).oneVariablesSolution();
 	}
 
-	public final Map<String, Object> queryOne(Object object, Object... objects) {
+	public final Map<String, Object> rpcOne(Object object, Object... objects) {
 		PrologJavaConverter converter = getProvider().getJavaConverter();
 		PrologTerm[] terms = converter.toTermsArray(objects);
 		PrologTerm term = converter.toTerm(object);
@@ -94,7 +100,7 @@ public abstract class AbstractEngine implements PrologEngine {
 		return query(goal, goals).all();
 	}
 
-	public final List<Map<String, Object>> queryAll(Object object, Object... objects) {
+	public final List<Map<String, Object>> rpcAll(Object object, Object... objects) {
 		PrologJavaConverter converter = getProvider().getJavaConverter();
 		PrologTerm[] terms = converter.toTermsArray(objects);
 		PrologTerm term = converter.toTerm(object);
