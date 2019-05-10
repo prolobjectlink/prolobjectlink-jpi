@@ -25,11 +25,6 @@
  */
 package org.prolobjectlink.prolog;
 
-/**
- * 
- * @author Jose Zalacain
- * @since 1.0
- */
 public interface PrologTerm extends Comparable<PrologTerm> {
 
 	/**
@@ -189,8 +184,24 @@ public interface PrologTerm extends Comparable<PrologTerm> {
 	 */
 	public PrologTerm getTerm();
 
+	/**
+	 * Return the left operand of the current term if the current term is an
+	 * evalueble structure (expression).
+	 * 
+	 * @return return the left operand of the current term if the current term is an
+	 *         expression.
+	 * @since 1.0
+	 */
 	public PrologTerm getLeft();
 
+	/**
+	 * Return the right operand of the current term if the current term is an
+	 * evalueble structure (expression).
+	 * 
+	 * @return return the right operand of the current term if the current term is
+	 *         an expression.
+	 * @since 1.0
+	 */
 	public PrologTerm getRight();
 
 	/**
@@ -215,8 +226,27 @@ public interface PrologTerm extends Comparable<PrologTerm> {
 	 */
 	public String getFunctor();
 
+	/**
+	 * Term arguments if the current term is a compound term. Compound terms are
+	 * Structures and List data types. They are compoused by a PrologTerm[] array.
+	 * Atoms, Variables and Numbers return an empty term array.
+	 * 
+	 * @return Term arguments if the current term is a compound term.
+	 * @since 1.0
+	 */
 	public PrologTerm[] getArguments();
 
+	/**
+	 * Term located at some given index position in the current term arguments if
+	 * current term is a compound term. If the current term is not compound term an
+	 * {@link ArrayIndexOutOfBoundsException} exception is raised.
+	 * 
+	 * @param index position to retrieve the correspondent term.
+	 * @return Term located at some given index position.
+	 * @throws ArrayIndexOutOfBoundsException if the index value is out of term
+	 *                                        array bound.
+	 * @since 1.0
+	 */
 	public PrologTerm getArgument(int index);
 
 	/**
@@ -239,12 +269,12 @@ public interface PrologTerm extends Comparable<PrologTerm> {
 	 */
 	public boolean unify(PrologTerm term);
 
+	/**
+	 * Prolog provider associated to the current term.
+	 * 
+	 * @return Prolog provider associated to the current term.
+	 * @since 1.0
+	 */
 	public PrologProvider getProvider();
-
-	public int hashCode();
-
-	public boolean equals(Object object);
-
-	public String toString();
 
 }

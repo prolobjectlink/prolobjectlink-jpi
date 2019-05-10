@@ -28,24 +28,52 @@ package org.prolobjectlink.prolog;
 import java.util.List;
 
 /**
+ * Clause family list that join all clauses with same functor/arity based
+ * indicator. Support all {@link List} operations to manage clauses in the
+ * family list.
  * 
  * @author Jose Zalacain
  * @since 1.0
  */
 public interface PrologClauses extends List<PrologClause> {
 
+	/**
+	 * True if this clause family list is a dynamic, false in other case
+	 * 
+	 * @deprecated Natives engine don't offer information about that.
+	 * @return whether this clause family list is a dynamic
+	 * @since 1.0
+	 */
+	@Deprecated
 	public boolean isDynamic();
 
+	/**
+	 * True if this clause family list is a multifile, false in other case
+	 * 
+	 * @deprecated Natives engine don't offer information about that.
+	 * @return whether this clause family list is a multifile
+	 * @since 1.0
+	 */
+	@Deprecated
 	public boolean isMultifile();
 
+	/**
+	 * True if this clause family list is a discontiguos, false in other case
+	 * 
+	 * @deprecated Natives engine don't offer information about that.
+	 * @return whether this clause family list is a discontiguos.
+	 * @since 1.0
+	 */
+	@Deprecated
 	public boolean isDiscontiguous();
 
+	/**
+	 * Clause family functor/arity based indicator. The clause family indicator is
+	 * the same indicator for all clauses head in the clause family.
+	 * 
+	 * @return functor/arity based indicator of the current clause family.
+	 * @since 1.0
+	 */
 	public String getIndicator();
-
-	public String toString();
-
-	public int hashCode();
-
-	public boolean equals(Object object);
 
 }

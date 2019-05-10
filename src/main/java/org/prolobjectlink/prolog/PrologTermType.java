@@ -26,6 +26,7 @@
 package org.prolobjectlink.prolog;
 
 /**
+ * Contains all PrologTerm types constants
  * 
  * @author Jose Zalacain
  * @since 1.0
@@ -33,33 +34,96 @@ package org.prolobjectlink.prolog;
 public final class PrologTermType {
 
 	// constant for prolog variables
+
+	/**
+	 * Variable type constant
+	 */
 	public static final int VARIABLE_TYPE = 0x100;
 
 	// constants for prolog numbers
+
+	/**
+	 * Integer type constant
+	 */
 	public static final int INTEGER_TYPE = 0x200;
+
+	/**
+	 * Long type constant
+	 */
 	public static final int LONG_TYPE = 0x201;
+
+	/**
+	 * Float type constant
+	 */
 	public static final int FLOAT_TYPE = 0x202;
+
+	/**
+	 * Double type constant
+	 */
 	public static final int DOUBLE_TYPE = 0x203;
 
 	// constant for prolog atoms
+
+	/**
+	 * Atom type constant
+	 */
 	public static final int ATOM_TYPE = 0x300;
+
+	/**
+	 * Nil type constant
+	 */
 	public static final int NIL_TYPE = 0x301;
+
+	/**
+	 * False type constant
+	 */
 	public static final int FALSE_TYPE = 0x302;
+
+	/**
+	 * True type constant
+	 */
 	public static final int TRUE_TYPE = 0x303;
+
+	/**
+	 * Cut type constant
+	 */
 	public static final int CUT_TYPE = 0x304;
+
+	/**
+	 * Fail type constant
+	 */
 	public static final int FAIL_TYPE = 0x305;
 
 	// constant for special objects
+
+	/**
+	 * Object type constant
+	 */
 	public static final int OBJECT_TYPE = 0x400;
+
+	/**
+	 * Stream type constant
+	 */
 	public static final int STREAM_TYPE = 0x401;
 
 	// constants for prolog list and prolog structure
+
 	/**
+	 * Empty list type constant
+	 * 
 	 * @deprecated Empty list use list type
 	 */
 	@Deprecated
 	public static final int EMPTY_TYPE = 0x500;
+
+	/**
+	 * List type constant
+	 */
 	public static final int LIST_TYPE = 0x501;
+
+	/**
+	 * Structure type constant
+	 */
 	public static final int STRUCTURE_TYPE = 0x502;
 
 	private PrologTermType() {

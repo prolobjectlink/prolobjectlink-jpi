@@ -27,11 +27,6 @@ package org.prolobjectlink.prolog;
 
 import java.util.Iterator;
 
-/**
- * 
- * @author Jose Zalacain
- * @since 1.0
- */
 public interface PrologClause {
 
 	/**
@@ -78,13 +73,27 @@ public interface PrologClause {
 	 */
 	public PrologTerm getBody();
 
+	/**
+	 * Clause family functor/arity based indicator. The clause family indicator is
+	 * the same indicator for all clauses head in the clause family.
+	 * 
+	 * @return functor/arity based indicator of the current clause family.
+	 * @since 1.0
+	 */
 	public String getIndicator();
 
+	/**
+	 * True if this clause is a directive, false in other case. The implementation
+	 * for this method can be {@code getHead()==null && getBody()!=null}.
+	 * 
+	 * @return whether this clause is a directive.
+	 * @since 1.0
+	 */
 	public boolean isDirective();
 
 	/**
 	 * True if this clause is a fact, false in other case. The implementation for
-	 * this method can be {@code getHead()!=null && getBody==null}.
+	 * this method can be {@code getHead()!=null && getBody()==null}.
 	 * 
 	 * @return whether this clause is a fact.
 	 * @since 1.0
@@ -93,7 +102,7 @@ public interface PrologClause {
 
 	/**
 	 * True if this clause is a rule, false in other case. The implementation for
-	 * this method can be {@code getHead()!=null && getBody==null}.
+	 * this method can be {@code getHead()!=null && getBody()==null}.
 	 * 
 	 * @return whether this clause is a rule.
 	 * @since 1.0
@@ -105,37 +114,44 @@ public interface PrologClause {
 	/**
 	 * True if this clause is a dynamic, false in other case
 	 * 
+	 * @deprecated Natives engine don't offer information about that.
 	 * @return whether this clause is a dynamic
 	 * @since 1.0
 	 */
+	@Deprecated
 	public boolean isDynamic();
 
 	/**
 	 * True if this clause is a multifile, false in other case
 	 * 
+	 * @deprecated Natives engine don't offer information about that.
 	 * @return whether this clause is a multifile
 	 * @since 1.0
 	 */
+	@Deprecated
 	public boolean isMultifile();
 
 	/**
 	 * True if this clause is a discontiguos, false in other case
 	 * 
+	 * @deprecated Natives engine don't offer information about that.
 	 * @return whether this clause is a discontiguos.
 	 * @since 1.0
 	 */
+	@Deprecated
 	public boolean isDiscontiguous();
 
+	/**
+	 * Clause family PrologIndicator based indicator. The clause family indicator is
+	 * the same indicator for all clauses head in the clause family.
+	 * 
+	 * @return PrologIndicator based indicator of the current clause family.
+	 * @since 1.0
+	 */
 	public PrologIndicator getPrologIndicator();
 
 	public Iterator<PrologTerm> getBodyIterator();
 
 	public PrologTerm[] getBodyArray();
-
-	public int hashCode();
-
-	public boolean equals(Object object);
-
-	public String toString();
 
 }

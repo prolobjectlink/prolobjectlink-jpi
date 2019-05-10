@@ -32,14 +32,49 @@ package org.prolobjectlink.prolog;
  */
 public interface PrologList extends PrologTerm, Iterable<PrologTerm> {
 
-	public int size();
-
-	public void clear();
-
-	public boolean isEmpty();
-
+	/**
+	 * Return the head term of the current list if the current list have at least
+	 * one element. If the list is an instance of {@link Prolog} empty list term,
+	 * the result for invoke get head is the empty list term properly.
+	 * 
+	 * @return the head term of the current list if the current list have at least
+	 *         one element.
+	 * @since 1.0
+	 */
 	public PrologTerm getHead();
 
+	/**
+	 * Return the tail term of the current list if the current list have tail. If
+	 * the list is a sole term list, the result for invoke get tail is the empty
+	 * list term.
+	 * 
+	 * @return the tail term of the current list if the current list have tail.
+	 * @since 1.0
+	 */
 	public PrologTerm getTail();
+
+	/**
+	 * Return true if the current list don't have any elements, false in other case.
+	 * More formally {@code return #size()==0}
+	 * 
+	 * @return true if the current list don't have any elements, false in other
+	 *         case.
+	 */
+	public boolean isEmpty();
+
+	/**
+	 * Clear the current list removing all contained prolog term. After clear the
+	 * list the resulting list is equal and unify with empty list.
+	 * 
+	 * @since 1.0
+	 */
+	public void clear();
+
+	/**
+	 * Returns the number of elements in this list.
+	 *
+	 * @return the number of elements in this list.
+	 */
+	public int size();
 
 }

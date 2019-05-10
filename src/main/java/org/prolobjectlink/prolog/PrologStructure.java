@@ -26,12 +26,33 @@
 package org.prolobjectlink.prolog;
 
 /**
+ * Represent structured prolog compound term. Prolog structures consist in a
+ * relation the functor (structure name) and arguments enclosed between
+ * parenthesis.
+ * 
+ * The Prolog Provider is the mechanism to create a new Prolog structures
+ * invoking {@link PrologProvider#newStructure(String, PrologTerm...)}.
+ * 
+ * Two structures are equals if and only if are structure and have equals
+ * functor and arguments. Structures terms unify only with same functor and
+ * arguments structures, with free variable or with and structures with the same
+ * functor and positional unification for structure arguments.
+ * 
+ * Structures have and special property named arity that means the number of
+ * arguments present in the structure.
+ * 
+ * There are two special structures term. They are expressions (Two arguments
+ * structure term with operator functor) and atoms (functor with zero
+ * arguments). For the first special case must be used
+ * {@link PrologProvider#newStructure(PrologTerm, String, PrologTerm)}
+ * specifying operands like arguments and operator like functor. For the second
+ * special case must be used {@link PrologProvider#newAtom(String)} specifying
+ * functor only.
+ * 
  * 
  * @author Jose Zalacain
  * @since 1.0
  */
 public interface PrologStructure extends PrologTerm {
-
-	public PrologTerm getArgument(int index);
 
 }

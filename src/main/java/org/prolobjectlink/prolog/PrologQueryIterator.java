@@ -40,6 +40,11 @@ final class PrologQueryIterator extends AbstractIterator<Collection<PrologTerm>>
 
 	private final PrologQuery query;
 
+	/**
+	 * Create a new query iterator over given PrologQuery.
+	 * 
+	 * @param query PrologQuery to iterate
+	 */
 	PrologQueryIterator(PrologQuery query) {
 		this.query = query;
 	}
