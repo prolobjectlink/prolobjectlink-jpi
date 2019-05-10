@@ -64,7 +64,7 @@ public abstract class AbstractEngine implements PrologEngine {
 		return query(goal, goals).hasSolution();
 	}
 
-	public final PrologQuery query(Object... objects) {
+	public final PrologQuery query(Object[] objects) {
 		PrologJavaConverter converter = getProvider().getJavaConverter();
 		PrologTerm[] terms = converter.toTermsArray(objects);
 		return query(terms);
