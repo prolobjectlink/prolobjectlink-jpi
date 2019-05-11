@@ -122,7 +122,13 @@ public abstract class AbstractJavaConverter implements PrologJavaConverter {
 		}
 
 		// primitives and wrappers data types
-		else if (object.getClass() == boolean.class || object instanceof Boolean) {
+		else if (object.getClass() == char.class || object instanceof Character) {
+			return provider.newAtom("" + (String) object + "");
+		} else if (object.getClass() == byte.class || object instanceof Byte) {
+			return provider.newInteger((Integer) object);
+		} else if (object.getClass() == short.class || object instanceof Short) {
+			return provider.newInteger((Integer) object);
+		} else if (object.getClass() == boolean.class || object instanceof Boolean) {
 			return (Boolean) object ? provider.prologTrue() : provider.prologFalse();
 		} else if (object.getClass() == int.class || object instanceof Integer) {
 			return provider.newInteger((Integer) object);
