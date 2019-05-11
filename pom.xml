@@ -163,7 +163,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 					<failOnMissingHeader>true</failOnMissingHeader>
 					<acceptPomPackaging>true</acceptPomPackaging>
 					<licenseName>mit</licenseName>
-					<!-- <dryRun>true</dryRun> -->
+					<!-- <dryRun>true</dryRun> --><licenseFile>LICENSE.md</licenseFile>
 					<addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
 					<roots>
 						<root>src/main</root>
