@@ -42,7 +42,7 @@ import java.util.Set;
 public abstract class AbstractEngine implements PrologEngine {
 
 	protected final PrologProvider provider;
-	protected static final String UNKNOWN = "unknown";
+	private static final String UNKNOWN = "unknown";
 
 	protected AbstractEngine(PrologProvider provider) {
 		this.provider = provider;
@@ -165,19 +165,6 @@ public abstract class AbstractEngine implements PrologEngine {
 		return provider.toTerm(o, from);
 	}
 
-	protected final <K extends PrologTerm> K[] toTermArray(Object[] objects, Class<K[]> from) {
-		return provider.toTermArray(objects, from);
-	}
-
-	protected final <K extends PrologTerm> K[][] toTermMatrix(Object[][] objects, Class<K[][]> from) {
-		return provider.toTermMatrix(objects, from);
-	}
-
-	protected final <K extends PrologTerm, V extends Object> Map<String, PrologTerm> toTermMap(Map<String, V> map,
-			Class<K> from) {
-		return provider.toTermMap(map, from);
-	}
-
 	protected final <K extends PrologTerm, V extends Object> Map<String, PrologTerm>[] toTermMapArray(
 			Map<String, V>[] map, Class<K> from) {
 		return provider.toTermMapArray(map, from);
@@ -185,10 +172,6 @@ public abstract class AbstractEngine implements PrologEngine {
 
 	protected final <K> K fromTerm(PrologTerm term, Class<K> to) {
 		return provider.fromTerm(term, to);
-	}
-
-	protected final <K> K[] fromTermArray(PrologTerm[] terms, Class<K[]> to) {
-		return provider.fromTermArray(terms, to);
 	}
 
 	protected final <K> K fromTerm(PrologTerm head, PrologTerm[] body, Class<K> to) {

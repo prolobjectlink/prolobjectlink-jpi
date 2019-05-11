@@ -59,7 +59,7 @@ public abstract class AbstractConverter<T> implements PrologConverter<T> {
 		return provider.getLogger();
 	}
 
-	public final boolean isQuoted(String functor) {
+	private final boolean isQuoted(String functor) {
 		if (!functor.isEmpty()) {
 			char beginChar = functor.charAt(0);
 			char endChar = functor.charAt(functor.length() - 1);
@@ -68,7 +68,7 @@ public abstract class AbstractConverter<T> implements PrologConverter<T> {
 		return false;
 	}
 
-	public final String requireQuoted(String functor) {
+	private final String requireQuoted(String functor) {
 		if (!functor.matches(SIMPLE_ATOM_REGEX) && !isQuoted(functor)) {
 			return "'" + functor + "'";
 		}

@@ -40,7 +40,7 @@ public interface PrologLogger {
 
 	public static final String CLASS_NOT_FOUND = "Class not found ";
 
-	public static final String UNKNOW_PREDICATE = "Unknow predicate";
+	public static final String UNKNOWN_PREDICATE = "Unknow predicate";
 
 	public static final String SYNTAX_ERROR = "Syntax error in the file ";
 

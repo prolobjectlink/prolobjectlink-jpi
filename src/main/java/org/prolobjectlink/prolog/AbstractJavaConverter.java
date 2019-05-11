@@ -47,7 +47,7 @@ import java.util.Map.Entry;
 
 public abstract class AbstractJavaConverter implements PrologJavaConverter {
 
-	protected final PrologProvider provider;
+	private final PrologProvider provider;
 
 	protected AbstractJavaConverter(PrologProvider provider) {
 		this.provider = provider;

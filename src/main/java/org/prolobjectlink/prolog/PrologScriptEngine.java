@@ -40,12 +40,12 @@ import javax.script.ScriptEngineFactory;
 import javax.script.ScriptException;
 import javax.script.SimpleBindings;
 
-public final class PrologScriptEngine extends AbstractScriptEngine implements ScriptEngine {
+final class PrologScriptEngine extends AbstractScriptEngine implements ScriptEngine {
 
 	private final PrologEngine prolog;
 	private final ScriptEngineFactory factory;
 
-	public PrologScriptEngine(ScriptEngineFactory factory, PrologEngine prolog) {
+	PrologScriptEngine(ScriptEngineFactory factory, PrologEngine prolog) {
 		this.factory = factory;
 		this.prolog = prolog;
 	}

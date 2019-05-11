@@ -54,8 +54,8 @@ public abstract class AbstractConsole implements PrologConsole {
 	private static final String PROLOBJECTLINK = "Prolobjectlink";
 	private static final String COPYRIHT = " (C)";
 
-	public static final InputStream STDIN = System.in;
-	public static final OutputStream STDOUT = System.out;
+	private static final InputStream STDIN = System.in;
+	private static final OutputStream STDOUT = System.out;
 
 	// default input stream
 	private final InputStreamReader input = new InputStreamReader(STDIN);
@@ -64,8 +64,7 @@ public abstract class AbstractConsole implements PrologConsole {
 	private final BufferedReader reader = new BufferedReader(input);
 
 	// standard output stream
-	// private final PrintWriter STDOUT = System.console().writer()
-	private final PrintWriter output = new PrintWriter(STDOUT, true);
+	private final PrintWriter output = System.console().writer();
 
 	//
 	private final PrologEngine engine;
@@ -185,21 +184,21 @@ public abstract class AbstractConsole implements PrologConsole {
 
 			try {
 
-				String input;
+				String queryString;
 				output.print("?- ");
 				output.flush();
-				input = reader.readLine();
+				queryString = reader.readLine();
 
 				while (true) {
 
-					if (!input.equals("")) {
+					if (!queryString.equals("")) {
 						output.println();
 
-						if (input.lastIndexOf('.') == input.length() - 1) {
-							input = input.substring(0, input.length() - 1);
+						if (queryString.lastIndexOf('.') == queryString.length() - 1) {
+							queryString = queryString.substring(0, queryString.length() - 1);
 						}
 
-						PrologQuery query = engine.query(input);
+						PrologQuery query = engine.query(queryString);
 						if (query.hasSolution()) {
 							Map<String, PrologTerm> s = query.oneVariablesSolution();
 							for (Entry<String, PrologTerm> e : s.entrySet()) {
@@ -223,7 +222,7 @@ public abstract class AbstractConsole implements PrologConsole {
 
 					output.print("?- ");
 					output.flush();
-					input = reader.readLine();
+					queryString = reader.readLine();
 
 				}
 

@@ -30,7 +30,7 @@ package org.prolobjectlink.prolog;
  * @author Jose Zalacain
  * @since 1.0
  */
-public interface PrologBuilder {
+interface PrologBuilder {
 
 	public PrologEngine getEngine();
 

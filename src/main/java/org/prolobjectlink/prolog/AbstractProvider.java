@@ -173,13 +173,13 @@ public abstract class AbstractProvider implements PrologProvider {
 	@Override
 	public abstract String toString();
 
-	protected final void checkListType(PrologTerm term) {
+	private final void checkListType(PrologTerm term) {
 		if (!term.isList()) {
 			throw new ListExpectedError(term);
 		}
 	}
 
-	protected final void checkStructureType(PrologTerm term) {
+	private final void checkStructureType(PrologTerm term) {
 		if (!term.isStructure()) {
 			throw new StructureExpectedError(term);
 		}
