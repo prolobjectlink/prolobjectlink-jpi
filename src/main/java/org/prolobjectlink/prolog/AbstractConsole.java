@@ -30,7 +30,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -55,7 +54,7 @@ public abstract class AbstractConsole implements PrologConsole {
 	private static final String COPYRIHT = " (C)";
 
 	private static final InputStream STDIN = System.in;
-	private static final OutputStream STDOUT = System.out;
+//	private static final OutputStream STDOUT = System.out
 
 	// default input stream
 	private final InputStreamReader input = new InputStreamReader(STDIN);
@@ -64,7 +63,8 @@ public abstract class AbstractConsole implements PrologConsole {
 	private final BufferedReader reader = new BufferedReader(input);
 
 	// standard output stream
-	private final PrintWriter output = System.console().writer();
+//	private final PrintWriter output = System.console().writer()
+	private final PrintWriter output = new PrintWriter(System.out, true);
 
 	//
 	private final PrologEngine engine;
