@@ -40,7 +40,7 @@ public interface PrologQuery extends Iterator<Collection<PrologTerm>>, Iterable<
 	/**
 	 * Engine hold by the current query
 	 * 
-	 * @return wrapped engine
+	 * @return used by the current query
 	 * @since 1.0
 	 */
 	public PrologEngine getEngine();

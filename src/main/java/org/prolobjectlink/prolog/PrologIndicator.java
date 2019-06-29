@@ -26,16 +26,41 @@
 package org.prolobjectlink.prolog;
 
 /**
+ * Indicator to denote the signature for Prolog Terms using a functor/arity
+ * format. More formally the indicator is formed by the concatenation of the
+ * term functor and term arity separated by slash.
  * 
  * @author Jose Zalacain
  * @since 1.0
  */
 public interface PrologIndicator {
 
+	/**
+	 * Indicator arity that is the argument number for compound terms. If the
+	 * indicator is not associate to a compound term then the arity is zero.
+	 * 
+	 * @return indicator arity.
+	 * @since 1.0
+	 */
 	public int getArity();
 
+	/**
+	 * Indicator functor that is the name for compound terms.
+	 * 
+	 * @return indicator functor for compound terms.
+	 * @since 1.0
+	 */
 	public String getFunctor();
 
+	/**
+	 * Gets the term indicator represented by one string with the format
+	 * functor/arity. More formally the indicator string is formed by the
+	 * concatenation of {@link #getFunctor()} and {@link #getArity()} separated by
+	 * slash.
+	 * 
+	 * @return term indicator
+	 * @since 1.0
+	 */
 	public String getIndicator();
 
 }

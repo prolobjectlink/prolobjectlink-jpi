@@ -29,7 +29,9 @@ public interface PrologTerm extends Comparable<PrologTerm> {
 
 	/**
 	 * Gets the term indicator represented by one string with the format
-	 * functor/arity.
+	 * functor/arity. More formally the indicator string is formed by the
+	 * concatenation of {@link #getFunctor()} and {@link #getArity()} separated by
+	 * slash.
 	 * 
 	 * @return term indicator
 	 * @since 1.0
@@ -250,8 +252,8 @@ public interface PrologTerm extends Comparable<PrologTerm> {
 	public PrologTerm getArgument(int index);
 
 	/**
-	 * Check that two terms (x and y) unify. Prolog unification algorithm is based
-	 * on three principals rules:
+	 * Check that two terms unify. Prolog unification algorithm is based on three
+	 * principals rules:
 	 * <ul>
 	 * <li>If x and y are atomics constants then x and y unify only if they are same
 	 * object.</li>

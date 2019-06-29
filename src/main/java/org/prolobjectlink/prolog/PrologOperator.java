@@ -26,16 +26,39 @@
 package org.prolobjectlink.prolog;
 
 /**
+ * This class defines a Prolog operator. Prolog operators are composed by a
+ * string operator name, string operator specifier or type and a operator
+ * priority.
  * 
  * @author Jose Zalacain
  * @since 1.0
  */
 public interface PrologOperator extends Comparable<PrologOperator> {
 
+	/**
+	 * String symbol that represent the Prolog operator.
+	 * 
+	 * @return the Prolog operator symbol.
+	 * @since 1.0
+	 */
 	public String getOperator();
 
+	/**
+	 * String symbol that specify the associativity and position of the Prolog
+	 * operator.
+	 * 
+	 * @return symbol that specify associativity and position of the Prolog
+	 *         operator.
+	 * @since 1.0
+	 */
 	public String getSpecifier();
 
+	/**
+	 * Integer number between 0 and 1200 that represent the operator priority.
+	 * 
+	 * @return the operator priority.
+	 * @since 1.0
+	 */
 	public int getPriority();
 
 }

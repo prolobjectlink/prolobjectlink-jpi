@@ -27,6 +27,11 @@ package org.prolobjectlink.prolog;
 
 import java.util.Iterator;
 
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public interface PrologClause {
 
 	/**
@@ -109,6 +114,15 @@ public interface PrologClause {
 	 */
 	public boolean isRule();
 
+	/**
+	 * Check that two clauses unify. Prolog clauses unify if and only if the head
+	 * and the body for both clauses unify.
+	 * 
+	 * @param clause the clause to unify with the current clause
+	 * @return true if the given clause unify whit the current clause, false
+	 *         otherwise
+	 * @since 1.0
+	 */
 	public boolean unify(PrologClause clause);
 
 	/**
@@ -150,8 +164,20 @@ public interface PrologClause {
 	 */
 	public PrologIndicator getPrologIndicator();
 
+	/**
+	 * Iterator to iterate over all body terms.
+	 * 
+	 * @return Iterator to iterate over all body terms.
+	 * @since 1.0
+	 */
 	public Iterator<PrologTerm> getBodyIterator();
 
+	/**
+	 * Get the clause body as terms array.
+	 * 
+	 * @return clause terms body array.
+	 * @since 1.0
+	 */
 	public PrologTerm[] getBodyArray();
 
 }

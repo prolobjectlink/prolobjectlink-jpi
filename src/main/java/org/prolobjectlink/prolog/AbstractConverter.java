@@ -111,14 +111,6 @@ public abstract class AbstractConverter<T> implements PrologConverter<T> {
 		return solutionMap;
 	}
 
-	public final Map<String, PrologTerm>[] toTermMapArray(Map<String, T>[] map) {
-		Map<String, PrologTerm>[] solutions = new Map[map.length];
-		for (int i = 0; i < map.length; i++) {
-			solutions[i] = toTermMap(map[i]);
-		}
-		return solutions;
-	}
-
 	public final <K extends PrologTerm> K toTerm(Object o, Class<K> from) {
 		Class<T> clazz = getGenericClass();
 		if (clazz != null && clazz.isAssignableFrom(o.getClass())) {

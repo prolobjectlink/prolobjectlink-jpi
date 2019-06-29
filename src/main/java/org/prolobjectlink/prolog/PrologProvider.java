@@ -247,14 +247,45 @@ public interface PrologProvider extends PrologParser {
 	 */
 	public PrologList newList();
 
+	/**
+	 * Create a prolog list with one term item.
+	 * 
+	 * @param head term item to be include in the prolog list
+	 * @return prolog list with one term item.
+	 * @since 1.0
+	 */
 	public PrologList newList(PrologTerm head);
 
 	public PrologList newList(PrologTerm[] arguments);
 
+	/**
+	 * Create a prolog list with two terms items [head | tail].
+	 * 
+	 * @param head term item to be include like head in the prolog list.
+	 * @param tail term item to be include like tail in the prolog list.
+	 * @return prolog list with two terms items [head | tail].
+	 * @since 1.0
+	 */
 	public PrologList newList(PrologTerm head, PrologTerm tail);
 
 	public PrologList newList(PrologTerm[] arguments, PrologTerm tail);
 
+	/**
+	 * Create a prolog structure with the functor (structure name) and prolog terms
+	 * arguments array.
+	 * 
+	 * <pre>
+	 * PrologAtom bob = provider.newAtom("bob");
+	 * PrologAtom tom = provider.newAtom("tom");
+	 * PrologStructure parent = provider.newStructure("parent", tom, bob);
+	 * System.out.println(parent);
+	 * </pre>
+	 * 
+	 * @param functor   structure name.
+	 * @param arguments prolog terms arguments array.
+	 * @return prolog structure instance with the given functor and arguments.
+	 * @since 1.0
+	 */
 	public PrologStructure newStructure(String functor, PrologTerm... arguments);
 
 	/**
@@ -266,6 +297,13 @@ public interface PrologProvider extends PrologParser {
 	 * this reason during inference process if the operator is not a supported
 	 * built-in or define by <tt>op/3</tt> the inference fail.
 	 * 
+	 * <pre>
+	 * PrologVariable x = provider.newVariable("X", 0);
+	 * PrologDouble pi = provider.newDouble(Math.PI);
+	 * PrologStructure plusExp = provider.newStructure("+", x, pi);
+	 * System.out.println(plusExp);
+	 * </pre>
+	 * 
 	 * @param left     left hand operand
 	 * @param operator infix operand
 	 * @param right    right hand operand
@@ -274,6 +312,13 @@ public interface PrologProvider extends PrologParser {
 	 */
 	public PrologTerm newStructure(PrologTerm left, String operator, PrologTerm right);
 
+	/**
+	 * Get a Java to Prolog converter instance to map the abstract prolog data types
+	 * to Java types.
+	 * 
+	 * @return Java to Prolog converter instance.
+	 * @since 1.0
+	 */
 	public PrologJavaConverter getJavaConverter();
 
 	/**
@@ -317,4 +362,5 @@ public interface PrologProvider extends PrologParser {
 	 * @since 1.0
 	 */
 	public String getName();
+
 }

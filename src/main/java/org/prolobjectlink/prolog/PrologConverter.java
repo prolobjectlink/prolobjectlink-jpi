@@ -28,39 +28,100 @@ package org.prolobjectlink.prolog;
 import java.util.Map;
 
 /**
- * Converter for convert {@code PrologTerm} to the equivalent driver {@code T}
+ * Converter for convert {@code PrologTerm} to the equivalent native {@code T}
  * term representation.
  * 
  * @author Jose Zalacain
  * @since 1.0
- * @param <T> Driver Term Representation
+ * @param <T> native Term Representation
  */
-public interface PrologConverter<T> extends PrologWrapper {
+public interface PrologConverter<T> extends PrologMapper {
 
-	public Map<String, PrologTerm>[] toTermMapArray(Map<String, T>[] map);
-
+	/**
+	 * Create an equivalent Prolog terms map using the given native terms map
+	 * representation. The resulting map have the same string key and the value for
+	 * every key is a conversion from native term to Prolog term.
+	 * 
+	 * @param map native terms map representation to be converted
+	 * @return an equivalent Prolog terms map using the given native terms map
+	 *         representation.
+	 * @since 1.0
+	 */
 	public Map<String, PrologTerm> toTermMap(Map<String, T> map);
 
+	/**
+	 * Create an equivalent Prolog terms matrix using the given native terms matrix
+	 * representation.
+	 * 
+	 * @param terms native terms matrix representation to be converted
+	 * @return an equivalent Prolog terms matrix using the given native terms matrix
+	 *         representation.
+	 * @since 1.0
+	 */
 	public PrologTerm[][] toTermMatrix(T[][] terms);
 
+	/**
+	 * Create an equivalent Prolog terms array using the given native terms array
+	 * representation.
+	 * 
+	 * @param terms native terms array representation to be converted
+	 * @return an equivalent Prolog terms array using the given native terms array
+	 *         representation.
+	 * @since 1.0
+	 */
 	public PrologTerm[] toTermArray(T[] terms);
 
+	/**
+	 * Create an equivalent Prolog term using the given native term representation.
+	 * 
+	 * @param prologTerm native term representation to be converted
+	 * @return an equivalent Prolog term using the given native term representation.
+	 * @since 1.0
+	 */
 	public PrologTerm toTerm(T prologTerm);
 
+	/**
+	 * Create a native term representation from given Prolog term.
+	 * 
+	 * @param term Prolog term to be converted to native prolog term
+	 * @return native term from given Prolog term.
+	 * @since 1.0
+	 */
 	public T fromTerm(PrologTerm term);
 
+	/**
+	 * Create a native term array representation from given Prolog term array.
+	 * 
+	 * @param terms Prolog term array to be converted to native array.
+	 * @return native term array representation from given Prolog term array.
+	 * @since 1.0
+	 */
 	public T[] fromTermArray(PrologTerm[] terms);
 
+	/**
+	 * Create a native rule representation term from given head and body.
+	 * 
+	 * @param head rule head
+	 * @param body rule body
+	 * @return rule representation from given head and body.
+	 * @since 1.0
+	 */
 	public T fromTerm(PrologTerm head, PrologTerm[] body);
 
+	/**
+	 * Get the generic class for the current Prolog converter at runtime.
+	 * 
+	 * @return the converter generic class
+	 * @since 1.0
+	 */
 	public Class<T> getGenericClass();
 
+	/**
+	 * Create a Prolog provider instance.
+	 * 
+	 * @return a Prolog provider instance.
+	 * @since 1.0
+	 */
 	public PrologProvider createProvider();
-
-	public int hashCode();
-
-	public boolean equals(Object object);
-
-	public String toString();
 
 }

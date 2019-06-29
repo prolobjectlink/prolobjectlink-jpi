@@ -40,7 +40,7 @@ import java.util.Vector;
  * @param <E> Generic Element Type
  * @since 1.0
  */
-public class ArrayStack<E> extends ArrayList<E> {
+public class ArrayStack<E> extends ArrayList<E> implements List<E> {
 
 	private static final long serialVersionUID = -6769914163671435871L;
 

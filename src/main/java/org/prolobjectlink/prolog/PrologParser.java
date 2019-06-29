@@ -29,24 +29,81 @@ import java.io.File;
 import java.util.Set;
 
 /**
+ * Prolog parser interface used for build terms from string with Prolog syntax.
  * 
  * @author Jose Zalacain
  * @since 1.0
  */
-interface PrologParser extends PrologWrapper {
+interface PrologParser extends PrologMapper {
 
+	/**
+	 * Parse the string with Prolog syntax and create an equivalent Prolog term
+	 * instance.
+	 * 
+	 * @param term prolog term in string format.
+	 * @return a Prolog term from prolog text
+	 * @since 1.0
+	 */
 	public PrologTerm parseTerm(String term);
 
+	/**
+	 * Parse the comma separate terms in the given string with prolog syntax and
+	 * return an array of terms formed by the comma separate terms.
+	 * 
+	 * @param stringTerms comma separate terms with prolog syntax
+	 * @return an array of terms formed by the comma separate terms.
+	 * @since 1.0
+	 */
 	public PrologTerm[] parseTerms(String stringTerms);
 
+	/**
+	 * Parse the string with Prolog syntax and create an equivalent Prolog list term
+	 * instance.
+	 * 
+	 * @param stringList prolog term in string format.
+	 * @return a Prolog term from prolog text.
+	 * @since 1.0
+	 */
 	public PrologList parseList(String stringList);
 
+	/**
+	 * Parse the string with Prolog syntax and create an equivalent Prolog structure
+	 * term instance.
+	 * 
+	 * @param stringStructure prolog term in string format.
+	 * @return a Prolog term from prolog text.
+	 * @since 1.0
+	 */
 	public PrologStructure parseStructure(String stringStructure);
 
+	/**
+	 * Parse the string with Prolog syntax and create an equivalent Prolog clause
+	 * instance.
+	 * 
+	 * @param clause prolog clause in string format.
+	 * @return a Prolog clause from prolog text.
+	 * @since 1.0
+	 */
 	public PrologClause parseClause(String clause);
 
+	/**
+	 * Parse the Prolog text contained at specific file path and return a Prolog
+	 * clause set found in the file.
+	 * 
+	 * @param file file path to be parsed.
+	 * @return a Prolog clause set found in the file.
+	 * @since 1.0
+	 */
 	public Set<PrologClause> parseProgram(String file);
 
+	/**
+	 * Parse the Prolog text contained at specific file and return a Prolog clause
+	 * set found in the file.
+	 * 
+	 * @param in file to be parsed.
+	 * @return a Prolog clause set found in the file.
+	 * @since 1.0
+	 */
 	public Set<PrologClause> parseProgram(File in);
 
 }

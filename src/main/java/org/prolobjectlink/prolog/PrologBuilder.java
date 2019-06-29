@@ -32,12 +32,12 @@ package org.prolobjectlink.prolog;
  */
 interface PrologBuilder {
 
+	/**
+	 * Engine hold by the current builder
+	 * 
+	 * @return engine used by the current builder
+	 * @since 1.0
+	 */
 	public PrologEngine getEngine();
-
-	public boolean equals(Object object);
-
-	public String toString();
-
-	public int hashCode();
 
 }

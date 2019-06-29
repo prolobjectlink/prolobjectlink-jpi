@@ -413,9 +413,8 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	public PrologQueryBuilder newQueryBuilder();
 
 	/**
-	 * Define an operator in the wrapped prolog engine with priority priority
-	 * between 0 and 1200 and associativity determined by specifier according to the
-	 * table
+	 * Define an operator in the wrapped prolog engine with priority between 0 and
+	 * 1200 and associativity determined by specifier according to the table
 	 * 
 	 * <pre>
 	 * Specifier----Type----Associativity
@@ -455,7 +454,7 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	/**
 	 * Check if in the wrapped prolog engine is defined some particular operator
 	 * specified by your Priority, Specifier and Operator. If the operator is
-	 * defined by prolog engine built-in or by user definition return true and false
+	 * defined by prolog engine built-in or by user definition return true or false
 	 * in other case. If wrapped engine not support a dedicated method the
 	 * 
 	 * {@link #currentOperator(int, String, String)}

@@ -30,6 +30,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Bootstrap platform class. Contains {@link #getProvider(Class)} method that
+ * return an instance of Prolog Provider from the given class.
  * 
  * @author Jose Zalacain
  * @since 1.0
@@ -39,6 +41,13 @@ public final class Prolog {
 	private Prolog() {
 	}
 
+	/**
+	 * Create and return an instance of Prolog Provider from the given class.
+	 * 
+	 * @param providerClass Prolog Provider class used to create a new instance.
+	 * @return an instance of Prolog Provider from the given class.
+	 * @since 1.0
+	 */
 	public static PrologProvider getProvider(Class<?> providerClass) {
 		PrologProvider provider = null;
 		try {

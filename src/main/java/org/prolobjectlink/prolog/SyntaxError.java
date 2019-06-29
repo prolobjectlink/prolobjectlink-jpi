@@ -26,6 +26,9 @@
 package org.prolobjectlink.prolog;
 
 /**
+ * Runtime error raised when occurs one syntax error. Used when Prolog parser
+ * can't continue parsing the string entry because a syntax error is detected
+ * and need report this error to fix the prolog syntax error.
  * 
  * @author Jose Zalacain
  * @since 1.0
@@ -34,10 +37,27 @@ public final class SyntaxError extends PrologError {
 
 	private static final long serialVersionUID = 2828526751667597579L;
 
+	/**
+	 * Create a syntax error exception passing the prolog text where syntax error
+	 * take place.
+	 * 
+	 * @param string prolog text where syntax error take place.
+	 * @since 1.0
+	 */
 	public SyntaxError(String string) {
 		super("The string parsed have prolog syntax error: " + string);
 	}
 
+	/**
+	 * Create a syntax error exception passing the prolog text where syntax error
+	 * take place and the cause. The cause is used if the Prolog error was detected
+	 * by other exception type and we need more specific cause in the reported
+	 * error.
+	 * 
+	 * @param string prolog text where syntax error take place.
+	 * @param cause  cause of the prolog error.
+	 * @since 1.0
+	 */
 	public SyntaxError(String string, Throwable cause) {
 		super("The string parsed have prolog syntax error: " + string, cause);
 	}

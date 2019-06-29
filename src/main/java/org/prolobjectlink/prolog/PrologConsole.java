@@ -51,14 +51,14 @@ public interface PrologConsole {
 	 * arguments from main entry point and execute the job. Used like:
 	 * </p>
 	 * 
-	 * <tt>
-	 * public class Main{
-	 * public static void main(String[] args) {
-	 *	new Main().run(args);
-	 *}
+	 * <pre>
+	 * public class Main extends AbstractConsole implements PrologConsole {
+	 * 	public static void main(String[] args) {
+	 * 		new Main().run(args);
+	 * 	}
 	 *
-	 *}
-	 * </tt>
+	 * }
+	 * </pre>
 	 * 
 	 * @param args command line interface program arguments array
 	 * @since 1.0
