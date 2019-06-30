@@ -88,7 +88,7 @@ final class DefaultQueryBuilder extends AbstractBuilder implements PrologQueryBu
 		return this;
 	}
 
-	public PrologQuery dot() {
+	public PrologQuery query() {
 		String q = "" + builder + "";
 		builder = new StringBuilder();
 		return engine.query(q);

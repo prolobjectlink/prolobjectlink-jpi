@@ -51,7 +51,7 @@ public class PrologError extends Error {
 	static final String VAR_HAVE_NOT_ARITY = "Variables don't have arity value";
 	static final String VAR_HAVE_NOT_ARGUMENTS = "Variables don't have arguments";
 	static final String RANGE_NOT_VALID = "The specified range is not valid range";
-	public static final String INDEX_OUT_OF_BOUND = "The indexed position is out of bound.";
+	static final String INDEX_OUT_OF_BOUND = "The indexed position is out of bound.";
 	static final String CALLABLE_ERROR = "The term don't correspond with a predication";
 	static final String ILLEGAL_FUNCTOR = "The specified term's functor is empty string";
 	static final String INSTANTATION_ERROR = "The term is not instance sufficiently";
@@ -86,7 +86,7 @@ public class PrologError extends Error {
 	static final String ILLEGAL_NUMBER_REPRESENTATION = "Illegal number reresentation";
 	static final String NOT_PROLOG_TERM_INSTANCE = "The object is not prolog term instance";
 	static final String LEFT_TERM_EXPECTED = "The expression don't have defined most left term";
-	public static final String IMPOSSIBLE_UPDATE = "Impossible update for diferent clauses keys";
+	static final String IMPOSSIBLE_UPDATE = "Impossible update for diferent clauses keys";
 	static final String ILLEGAL_OPERATOR_PRIORITY = "Not valid operator prority";
 	static final String ILLEGAL_OPERATOR_SPECIFIER = "Not valid operator specifier";
 

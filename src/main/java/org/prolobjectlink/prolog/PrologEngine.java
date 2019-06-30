@@ -105,6 +105,21 @@ public interface PrologEngine extends Iterable<PrologClause> {
 
 	public void persist(String path);
 
+	/**
+	 * Remove all predicate that match with the predicate indicator (PI) formed by
+	 * the concatenation of the given string functor and integer arity separated by
+	 * slash (functor/arity).
+	 * 
+	 * <pre>
+	 * engine.abolish(&quot;parent&quot;, 2); // remove all parent/2 predicates
+	 * </pre>
+	 * 
+	 * @param functor string functor that identify the predicate family to be
+	 *                remove.
+	 * @param arity   argument number that identify the predicate family to be
+	 *                remove.
+	 * @since 1.0
+	 */
 	public void abolish(String functor, int arity);
 
 	/**
@@ -386,8 +401,40 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 */
 	public boolean contains(PrologTerm goal, PrologTerm... goals);
 
+	/**
+	 * Create a new query being the goal the given string with prolog syntax. The
+	 * query creation process call the wrapped prolog engine and after query
+	 * creation the query instance is ready to use. This particular query method can
+	 * raise an syntax exception if the string query have prolog errors.
+	 * 
+	 * <pre>
+	 * engine.query(&quot;parent(X, Y)&quot;);
+	 * </pre>
+	 * 
+	 * @param query string goal with prolog syntax.
+	 * @return a new query instance.
+	 * @since 1.0
+	 */
 	public PrologQuery query(String query);
 
+	/**
+	 * Create a new query being the goal the given prolog term array. The given
+	 * array is treated like a conjunctive goal and after success the first element
+	 * the next term will be resolved. The query creation process call the wrapped
+	 * prolog engine and after query creation the query instance is ready to use.
+	 * 
+	 * <pre>
+	 * PrologTerm x = provider.newVariable(&quot;X&quot;, 0);
+	 * PrologTerm dark = provider.newStructure(&quot;dark&quot;, x);
+	 * PrologTerm big = provider.newStructure(&quot;big&quot;, x);
+	 * PrologTerm[] goals = new PrologTerm[] { dark, big };
+	 * engine.query(goals);
+	 * </pre>
+	 * 
+	 * @param terms prolog term array to be query.
+	 * @return a new query instance.
+	 * @since 1.0
+	 */
 	public PrologQuery query(PrologTerm[] terms);
 
 	public PrologQuery query(Object[] objects);
@@ -395,6 +442,8 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	public PrologQuery query(PrologTerm term, PrologTerm... terms);
 
 	public PrologQuery query(Object object, Object... objects);
+
+	//
 
 	public Map<String, PrologTerm> queryOne(String goal);
 
@@ -408,24 +457,69 @@ public interface PrologEngine extends Iterable<PrologClause> {
 
 	public List<Map<String, Object>> queryAll(Object object, Object... objects);
 
+	/**
+	 * Create a new clause builder instance to build prolog clauses
+	 * programmatically.
+	 * 
+	 * @return a new clause builder instance
+	 * @since 1.0
+	 */
 	public PrologClauseBuilder newClauseBuilder();
 
+	/**
+	 * Create a new query builder instance to build prolog goal programmatically.
+	 * 
+	 * @return a new query builder instance
+	 * @since 1.0
+	 */
 	public PrologQueryBuilder newQueryBuilder();
 
 	/**
 	 * Define an operator in the wrapped prolog engine with priority between 0 and
-	 * 1200 and associativity determined by specifier according to the table
+	 * 1200 and associativity determined by specifier according to the table below
 	 * 
-	 * <pre>
-	 * Specifier----Type----Associativity
-	 * ----fx------prefix--------no
-	 * ----fy------prefix--------yes
-	 * ----xf------postfix-------no
-	 * ----yf------postfix-------yes
-	 * ----xfx------infix--------no
-	 * ----yfx------infix--------left
-	 * ----xfy------infix--------right
-	 * </pre>
+	 * <table BORDER > <caption>Specification table</caption>
+	 * <tr>
+	 * <td ALIGN=CENTER><b>Specifier</b></td>
+	 * <td ALIGN=CENTER><b>Type</b></td>
+	 * <td ALIGN=CENTER><b>Associativity</b></td>
+	 * </tr>
+	 * <tr>
+	 * <td>fx</td>
+	 * <td>prefix</td>
+	 * <td>no</td>
+	 * </tr>
+	 * <tr>
+	 * <td>fy</td>
+	 * <td>prefix</td>
+	 * <td>yes</td>
+	 * </tr>
+	 * <tr>
+	 * <td>xf</td>
+	 * <td>postfix</td>
+	 * <td>no</td>
+	 * </tr>
+	 * <tr>
+	 * <td>yf</td>
+	 * <td>postfix</td>
+	 * <td>yes</td>
+	 * </tr>
+	 * <tr>
+	 * <td>xfx</td>
+	 * <td>infix</td>
+	 * <td>no</td>
+	 * </tr>
+	 * <tr>
+	 * <td>yfx</td>
+	 * <td>infix</td>
+	 * <td>left</td>
+	 * </tr>
+	 * <tr>
+	 * <td>xfy</td>
+	 * <td>infix</td>
+	 * <td>right</td>
+	 * </tr>
+	 * </table>
 	 * 
 	 * @since 1.0
 	 * @param priority  operator priority between 0 and 1200
@@ -492,12 +586,18 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 */
 	public Set<PrologOperator> currentOperators();
 
+	/**
+	 * Make and return a copy of the clause set present in the current engine.
+	 * 
+	 * @return a clause set present in the current engine.
+	 * @since 1.0
+	 */
 	public Set<PrologClause> getProgramClauses();
 
 	/**
-	 * Number of clauses in main memory program.
+	 * Number of clauses in the current engine.
 	 * 
-	 * @return number of clauses in the program.
+	 * @return number of clauses in the engine.
 	 * @since 1.0
 	 */
 	public int getProgramSize();
@@ -506,7 +606,7 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * Check if the program in main memory is empty returning true if the clause
 	 * number in the program is 0 and false in otherwise. If wrapped engine not
 	 * support a dedicated method {@link #isProgramEmpty()} will be defined like
-	 * {@code IPrologEngine#getProgramSize()==0;}.
+	 * {@code PrologEngine#getProgramSize()==0;}.
 	 * 
 	 * @return true if the clause number in the program is 0 and false in otherwise.
 	 * @since 1.0
@@ -517,8 +617,20 @@ public interface PrologEngine extends Iterable<PrologClause> {
 
 	public Set<PrologIndicator> getBuiltIns();
 
+	/**
+	 * Get a Prolog provider instance hold in the current engine.
+	 * 
+	 * @return a Prolog provider instance.
+	 * @since 1.0
+	 */
 	public PrologProvider getProvider();
 
+	/**
+	 * Get the prolog system logger instance to report any errors or exceptions
+	 * 
+	 * @return prolog system logger instance
+	 * @since 1.0
+	 */
 	public PrologLogger getLogger();
 
 	/**
@@ -544,10 +656,6 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * @since 1.0
 	 */
 	public String getName();
-
-	public int hashCode();
-
-	public boolean equals(Object obj);
 
 	/**
 	 * Clear program in main memory. Release all resources used and prepare the

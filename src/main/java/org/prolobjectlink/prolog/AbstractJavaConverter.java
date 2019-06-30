@@ -45,6 +45,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+/**
+ * Partial implementation of {@link PrologJavaConverter} interface.
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public abstract class AbstractJavaConverter implements PrologJavaConverter {
 
 	private final PrologProvider provider;

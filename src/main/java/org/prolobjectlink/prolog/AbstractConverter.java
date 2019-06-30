@@ -34,6 +34,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * Partial implementation of Prolog converter interface.
  * 
  * @author Jose Zalacain
  * @since 1.0
@@ -66,13 +67,6 @@ public abstract class AbstractConverter<T> implements PrologConverter<T> {
 			return beginChar == '\'' && endChar == '\'';
 		}
 		return false;
-	}
-
-	private final String requireQuoted(String functor) {
-		if (!functor.matches(SIMPLE_ATOM_REGEX) && !isQuoted(functor)) {
-			return "'" + functor + "'";
-		}
-		return functor;
 	}
 
 	public final String removeQuoted(String functor) {
@@ -109,6 +103,14 @@ public abstract class AbstractConverter<T> implements PrologConverter<T> {
 			solutionMap.put(key, toTerm(map.get(key)));
 		}
 		return solutionMap;
+	}
+
+	public final Map<String, PrologTerm>[] toTermMapArray(Map<String, T>[] map) {
+		Map<String, PrologTerm>[] solutions = new Map[map.length];
+		for (int i = 0; i < map.length; i++) {
+			solutions[i] = toTermMap(map[i]);
+		}
+		return solutions;
 	}
 
 	public final <K extends PrologTerm> K toTerm(Object o, Class<K> from) {

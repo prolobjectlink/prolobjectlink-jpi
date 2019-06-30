@@ -37,13 +37,67 @@ import java.util.Map;
  */
 interface PrologMapper {
 
+	/**
+	 * Create an equivalent Prolog terms map array using the given native terms map
+	 * array representation and cast every Prolog term to some specific given class.
+	 * The resulting map array contains map that have the same string key and the
+	 * value for every key is a conversion from native term to Prolog term.
+	 * 
+	 * @param map  native terms map array to be converted in Prolog terms map array.
+	 * @param from class to be cast the result Prolog term
+	 * @param      <K> generic type that extends from {@link PrologTerm}
+	 * @param      <V> generic type that extends from {@link Object} representing a
+	 *             native prolog term.
+	 * @return an equivalent Prolog terms map array using the given native terms map
+	 *         array representation of given class type.
+	 * @since 1.0
+	 */
 	<K extends PrologTerm, V extends Object> Map<String, PrologTerm>[] toTermMapArray(Map<String, V>[] map,
 			Class<K> from);
 
+	/**
+	 * Create an equivalent Prolog terms map using the given native terms map
+	 * representation and cast every Prolog term to some specific given class. The
+	 * resulting map have the same string key and the value for every key is a
+	 * conversion from native term to Prolog term.
+	 * 
+	 * @param map  native terms map representation to be converted
+	 * @param from class to be cast the result Prolog term
+	 * @param      <K> generic type that extends from {@link PrologTerm}
+	 * @param      <V> generic type that extends from {@link Object} representing a
+	 *             native prolog term.
+	 * @return an equivalent Prolog terms map using the given native terms map
+	 *         representation of given class type.
+	 * @since 1.0
+	 */
 	<K extends PrologTerm, V extends Object> Map<String, PrologTerm> toTermMap(Map<String, V> map, Class<K> from);
 
+	/**
+	 * Create an equivalent Prolog terms matrix using the given native terms matrix
+	 * representation and cast every Prolog terms matrix to some specific matrix
+	 * component class.
+	 * 
+	 * @param objects native terms matrix representation to be converted
+	 * @param from    class to be cast the result Prolog term
+	 * @param         <K> generic type that extends from {@link PrologTerm}
+	 * @return an equivalent Prolog terms matrix using the given native terms matrix
+	 *         representation of array component class type.
+	 * @since 1.0
+	 */
 	<K extends PrologTerm> K[][] toTermMatrix(Object[][] objects, Class<K[][]> from);
 
+	/**
+	 * Create an equivalent Prolog terms array using the given native terms array
+	 * representation and cast this Prolog term array to some specific array
+	 * component class.
+	 * 
+	 * @param objects native terms array representation to be converted
+	 * @param from    class to be cast the result Prolog term
+	 * @param         <K> generic type that extends from {@link PrologTerm}
+	 * @return an equivalent Prolog terms array using the given native terms array
+	 *         representation of array component class type.
+	 * @since 1.0
+	 */
 	<K extends PrologTerm> K[] toTermArray(Object[] objects, Class<K[]> from);
 
 	/**

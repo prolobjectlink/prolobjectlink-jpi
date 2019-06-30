@@ -38,6 +38,19 @@ import java.util.Map;
 public interface PrologConverter<T> extends PrologMapper {
 
 	/**
+	 * Create an equivalent Prolog terms map array using the given native terms map
+	 * array representation. The resulting map array contains map that have the same
+	 * string key and the value for every key is a conversion from native term to
+	 * Prolog term.
+	 * 
+	 * @param map native terms map array to be converted in Prolog terms map array.
+	 * @return an equivalent Prolog terms map array using the given native terms map
+	 *         array representation.
+	 * @since 1.0
+	 */
+	public Map<String, PrologTerm>[] toTermMapArray(Map<String, T>[] map);
+
+	/**
 	 * Create an equivalent Prolog terms map using the given native terms map
 	 * representation. The resulting map have the same string key and the value for
 	 * every key is a conversion from native term to Prolog term.

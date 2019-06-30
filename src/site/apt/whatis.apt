@@ -52,7 +52,7 @@ What is
 	Prolog Engine driver and the application code still be the same.
 	
 	JPI run over any Java Virtual Machine that support Java SE 5 or above.
-	The project was tested over HotSpot, Open J9 and JRockit Virtual Machines
+	The project was tested over HotSpot and Open J9 Virtual Machines
 	over Operating Systems like Windows (7,8,10), Linux (Debian, Ubuntu) and 
 	Mac OS X. Can be deployed on Servlets Containers like Jetty, Tomcat or 
 	Glassfish Application Server. JPI can be include in any Java Project using the commonest Java Integration
@@ -61,14 +61,6 @@ What is
 	JPI is developed and maintained by Prolobjectlink Project an open source 
 	initiative for build logic based applications using Prolog like fundamental
 	Logic Programming Language in the persistence layer and application programming.
-
-	The selected license for JPI is Simplified BSD License a permissive license allowing to concrete 
-	implementations can use some possibilities like GPL, Apache 2.0 and others in the 
-	interface implementation. We suggest adopt the same license from prolog java driver
-	if it is possible. In this way the java prolog driver and your JPI implementation 
-	share the same license and can be combined with JPI interface that is less restrictive 
-	licensed. Finally, license is the most restrictive licensed, being in many occasions 
-	the java prolog driver licenses the most restrictive.
 
 * Copyright and License Information
  

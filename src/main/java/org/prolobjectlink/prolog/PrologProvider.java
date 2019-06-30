@@ -256,6 +256,14 @@ public interface PrologProvider extends PrologParser {
 	 */
 	public PrologList newList(PrologTerm head);
 
+	/**
+	 * Create a prolog list from prolog terms arguments array and the tail item is
+	 * an empty list.
+	 * 
+	 * @param arguments prolog terms arguments array.
+	 * @return a prolog list contained all terms in the prolog term array.
+	 * @since 1.0
+	 */
 	public PrologList newList(PrologTerm[] arguments);
 
 	/**
@@ -268,6 +276,16 @@ public interface PrologProvider extends PrologParser {
 	 */
 	public PrologList newList(PrologTerm head, PrologTerm tail);
 
+	/**
+	 * Create a prolog list from prolog terms arguments array and the tail item is
+	 * the given prolog term.
+	 * 
+	 * @param arguments prolog terms arguments array.
+	 * @param tail      prolog term to be the tail item.
+	 * @return a prolog list contained all terms in the prolog term array and tail
+	 *         item the specific term.
+	 * @since 1.0
+	 */
 	public PrologList newList(PrologTerm[] arguments, PrologTerm tail);
 
 	/**

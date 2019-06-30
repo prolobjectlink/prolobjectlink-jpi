@@ -28,6 +28,24 @@ package org.prolobjectlink.prolog;
 import java.util.Iterator;
 
 /**
+ * Prolog clause is composed by two prolog terms that define a prolog clause,
+ * the head and the body. This representation consider the prolog clause body
+ * like a single term. If the body is a conjunctive set of terms, the body is an
+ * structure with functor/arity (,/2) and the first argument is the first
+ * element in the conjunction and the rest is a recursive functor/arity (,/2).
+ * 
+ * The functor and arity for the clause is given from head term functor and
+ * arity.
+ * 
+ * This class define some properties for commons prolog clause implementations.
+ * They are boolean flags that indicate if the prolog clause is dynamic
+ * multifile and discontiguos.
+ * 
+ * This class have several methods to access to the clause components and
+ * retrieve some clause properties and information about it.
+ * 
+ * Additionally this class contains a prolog provider reference for build terms
+ * in some operations.
  * 
  * @author Jose Zalacain
  * @since 1.0

@@ -28,6 +28,7 @@ package org.prolobjectlink.prolog;
 import java.util.logging.Level;
 
 /**
+ * Partial implementation of {@link PrologLogger} interface.
  * 
  * @author Jose Zalacain
  * @since 1.0

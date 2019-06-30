@@ -26,8 +26,54 @@
 package org.prolobjectlink.prolog;
 
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
+ * Logger platform interface to log message at any level. Is an adapter for
+ * {@link Logger} adapting the Java logger mechanism for use with the most
+ * popular logger methods. This logger mechanism is accessible from
+ * {@link PrologProvider#getLogger()} or {@link PrologEngine#getLogger()} or
+ * {@link PrologQuery#getLogger()}. This logger interface have all traditional
+ * methods used to log messages at different levels (trace, debug,
+ * info,warn,error).
+ * 
+ * The levels used for this logger interface are {@link Level} constants present
+ * in the table.
+ * 
+ * <table BORDER > <caption>Level table</caption>
+ * <tr>
+ * <td ALIGN=CENTER><b>Method</b></td>
+ * <td ALIGN=CENTER><b>Level</b></td>
+ * </tr>
+ * <tr>
+ * <td>{@link #trace(Object, Object, Throwable)}</td>
+ * <td>{@link Level#FINEST}</td>
+ * </tr>
+ * <tr>
+ * <td>{@link #debug(Object, Object, Throwable)}</td>
+ * <td>{@link Level#FINE}</td>
+ * </tr>
+ * <tr>
+ * <td>{@link #info(Object, Object, Throwable)}</td>
+ * <td>{@link Level#INFO}</td>
+ * </tr>
+ * <tr>
+ * <td>{@link #warn(Object, Object, Throwable)}</td>
+ * <td>{@link Level#WARNING}</td>
+ * </tr>
+ * <tr>
+ * <td>{@link #error(Object, Object, Throwable)}</td>
+ * <td>{@link Level#SEVERE}</td>
+ * </tr>
+ * </table>
+ * 
+ * By default the platform implement a logger mechanism for drop log messages in
+ * Operating System temporal directory into files named
+ * prolobjectlink-YYYY.MM.DD.
+ * 
+ * In {@link AbstractLogger} class there are many implementations for this
+ * interface. Every final implementation class can extends from
+ * {@link AbstractLogger}.
  * 
  * @author Jose Zalacain
  * @since 1.0
@@ -86,28 +132,140 @@ public interface PrologLogger {
 
 	public static final String LINK = "Link library error";
 
+	/**
+	 * Log a message from a given object sender at the given level.
+	 * 
+	 * @param sender  object that invoke the logger service.
+	 * @param level   log level.
+	 * @param message message to be logged.
+	 * @since 1.0
+	 */
 	public void log(Object sender, Level level, Object message);
 
+	/**
+	 * Log a message from a given object sender at the given level. Append a
+	 * {@link Throwable} argument used for log exceptions if is needed.
+	 * 
+	 * @param sender  object that invoke the logger service.
+	 * @param level   log level.
+	 * @param message message to be logged.
+	 * @param t       argument used for log exceptions.
+	 * @since 1.0
+	 */
 	public void log(Object sender, Level level, Object message, Throwable t);
 
+	/**
+	 * Log a message from a given object sender at {@link Level#FINEST} level. Is a
+	 * shortcut to {@code log(sender, Level.FINEST, message);}
+	 * 
+	 * @param sender  object that invoke the logger service.
+	 * @param message message to be logged.
+	 * @since 1.0
+	 */
 	public void trace(Object sender, Object message);
 
+	/**
+	 * Log a message from a given object sender at {@link Level#FINEST} level.
+	 * Append a {@link Throwable} argument used for log exceptions if is needed. Is
+	 * a shortcut to {@code log(sender, Level.FINEST, message, t);}
+	 * 
+	 * @param sender  object that invoke the logger service.
+	 * @param message message to be logged.
+	 * @param t       argument used for log exceptions.
+	 * @since 1.0
+	 */
 	public void trace(Object sender, Object message, Throwable t);
 
+	/**
+	 * Log a message from a given object sender at {@link Level#FINE} level. Is a
+	 * shortcut to {@code log(sender, Level.FINE, message);}
+	 * 
+	 * @param sender  object that invoke the logger service.
+	 * @param message message to be logged.
+	 * @since 1.0
+	 */
 	public void debug(Object sender, Object message);
 
+	/**
+	 * Log a message from a given object sender at {@link Level#FINE} level. Append
+	 * a {@link Throwable} argument used for log exceptions if is needed. Is a
+	 * shortcut to {@code log(sender, Level.FINE, message, t);}
+	 * 
+	 * 
+	 * @param sender  object that invoke the logger service.
+	 * @param message message to be logged.
+	 * @param t       argument used for log exceptions.
+	 * @since 1.0
+	 */
 	public void debug(Object sender, Object message, Throwable t);
 
+	/**
+	 * Log a message from a given object sender at {@link Level#INFO} level. Is a
+	 * shortcut to {@code log(sender, Level.INFO, message);}
+	 * 
+	 * @param sender  object that invoke the logger service.
+	 * @param message message to be logged.
+	 * @since 1.0
+	 */
 	public void info(Object sender, Object message);
 
+	/**
+	 * Log a message from a given object sender at {@link Level#INFO} level. Append
+	 * a {@link Throwable} argument used for log exceptions if is needed. Is a
+	 * shortcut to {@code log(sender, Level.INFO, message, t);}
+	 * 
+	 * 
+	 * @param sender  object that invoke the logger service.
+	 * @param message message to be logged.
+	 * @param t       argument used for log exceptions.
+	 * @since 1.0
+	 */
 	public void info(Object sender, Object message, Throwable t);
 
+	/**
+	 * Log a message from a given object sender at {@link Level#WARNING} level. Is a
+	 * shortcut to {@code log(sender, Level.WARNING, message);}
+	 * 
+	 * @param sender  object that invoke the logger service.
+	 * @param message message to be logged.
+	 * @since 1.0
+	 */
 	public void warn(Object sender, Object message);
 
+	/**
+	 * Log a message from a given object sender at {@link Level#WARNING} level.
+	 * Append a {@link Throwable} argument used for log exceptions if is needed. Is
+	 * a shortcut to {@code log(sender, Level.WARNING, message, t);}
+	 * 
+	 * 
+	 * @param sender  object that invoke the logger service.
+	 * @param message message to be logged.
+	 * @param t       argument used for log exceptions.
+	 * @since 1.0
+	 */
 	public void warn(Object sender, Object message, Throwable t);
 
+	/**
+	 * Log a message from a given object sender at {@link Level#SEVERE} level. Is a
+	 * shortcut to {@code log(sender, Level.SEVERE, message);}
+	 * 
+	 * @param sender  object that invoke the logger service.
+	 * @param message message to be logged.
+	 * @since 1.0
+	 */
 	public void error(Object sender, Object message);
 
+	/**
+	 * Log a message from a given object sender at {@link Level#SEVERE} level.
+	 * Append a {@link Throwable} argument used for log exceptions if is needed. Is
+	 * a shortcut to {@code log(sender, Level.SEVERE, message, t);}
+	 * 
+	 * 
+	 * @param sender  object that invoke the logger service.
+	 * @param message message to be logged.
+	 * @param t       argument used for log exceptions.
+	 * @since 1.0
+	 */
 	public void error(Object sender, Object message, Throwable t);
 
 }

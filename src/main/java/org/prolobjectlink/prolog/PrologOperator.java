@@ -28,7 +28,8 @@ package org.prolobjectlink.prolog;
 /**
  * This class defines a Prolog operator. Prolog operators are composed by a
  * string operator name, string operator specifier or type and a operator
- * priority.
+ * priority. Extends from {@link Comparable} to compare with others operators
+ * instance over priority property.
  * 
  * @author Jose Zalacain
  * @since 1.0

@@ -25,6 +25,12 @@
  */
 package org.prolobjectlink.prolog;
 
+/**
+ * Ancestor prolog data type. All Prolog data types are derived from this class.
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public interface PrologTerm extends Comparable<PrologTerm> {
 
 	/**
@@ -252,8 +258,8 @@ public interface PrologTerm extends Comparable<PrologTerm> {
 	public PrologTerm getArgument(int index);
 
 	/**
-	 * Check that two terms unify. Prolog unification algorithm is based on three
-	 * principals rules:
+	 * Check that the current term unify with the given term. Prolog unification
+	 * algorithm is based on three principals rules:
 	 * <ul>
 	 * <li>If x and y are atomics constants then x and y unify only if they are same
 	 * object.</li>

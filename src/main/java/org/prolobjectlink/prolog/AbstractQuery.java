@@ -84,7 +84,7 @@ public abstract class AbstractQuery extends AbstractIterator<Collection<PrologTe
 		return false;
 	}
 
-	protected final PrologLogger getLogger() {
+	public final PrologLogger getLogger() {
 		return getProvider().getLogger();
 	}
 

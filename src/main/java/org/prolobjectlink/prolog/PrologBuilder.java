@@ -26,6 +26,8 @@
 package org.prolobjectlink.prolog;
 
 /**
+ * Prolog Builder interface that define all commons operations for derivatives
+ * builders.
  * 
  * @author Jose Zalacain
  * @since 1.0

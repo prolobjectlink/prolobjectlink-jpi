@@ -31,19 +31,20 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * <pre>
+ * PrologEngine engine = provider.newEngine();
+ * PrologVariable x = provider.newVariable("X", 0);
+ * PrologQuery query = engine.query(provider.newStructure("dark", x));
+ * while (query.hasNext()) {
+ * 	PrologTerm value = query.nextVariablesSolution().get(&quot;X&quot;);
+ * 	System.out.println(value);
+ * }
+ * </pre>
  * 
  * @author Jose Zalacain
  * @since 1.0
  */
 public interface PrologQuery extends Iterator<Collection<PrologTerm>>, Iterable<Collection<PrologTerm>> {
-
-	/**
-	 * Engine hold by the current query
-	 * 
-	 * @return used by the current query
-	 * @since 1.0
-	 */
-	public PrologEngine getEngine();
 
 	/**
 	 * Provider instance
@@ -54,11 +55,25 @@ public interface PrologQuery extends Iterator<Collection<PrologTerm>>, Iterable<
 	public PrologProvider getProvider();
 
 	/**
+	 * Engine hold by the current query
+	 * 
+	 * @return used by the current query
+	 * @since 1.0
+	 */
+	public PrologEngine getEngine();
+
+	/**
+	 * Get the prolog system logger instance to report any errors or exceptions
+	 * 
+	 * @return prolog system logger instance
+	 * @since 1.0
+	 */
+	public PrologLogger getLogger();
+
+	/**
 	 * <p>
 	 * Check that the current query has solution.
 	 * </p>
-	 * 
-	 * 
 	 * 
 	 * @return true if the current query has solution, false if not
 	 * @since 1.0
@@ -70,7 +85,6 @@ public interface PrologQuery extends Iterator<Collection<PrologTerm>>, Iterable<
 	 * Check if the current query has more solutions.
 	 * </p>
 	 * 
-	 * 
 	 * @return true if the current query has more solutions, false if not
 	 * @since 1.0
 	 */
@@ -81,7 +95,6 @@ public interface PrologQuery extends Iterator<Collection<PrologTerm>>, Iterable<
 	 * Return the prolog terms that conform the solution set for the current query.
 	 * The solution set is a prolog terms array and every term is an instance value
 	 * for the variables not anonymous involved in the query.
-	 * 
 	 * 
 	 * <pre>
 	 * PrologTerm[] solution = query.oneSolution();
@@ -120,8 +133,37 @@ public interface PrologQuery extends Iterator<Collection<PrologTerm>>, Iterable<
 
 	public Map<String, PrologTerm>[] allVariablesSolutions();
 
+	/**
+	 * 
+	 * Return the equivalent Java objects that conform the solution set for the
+	 * current query. The solution set is a Java objects list and every term is a
+	 * conversion of the instance value for the variables not anonymous involved in
+	 * the query.
+	 * 
+	 * 
+	 * <pre>
+	 * List&lt;Object&gt; solution = query.oneResult();
+	 * for (int i = 0; i &lt; solution.size(); i++) {
+	 * 	System.out.println(solution.get(i));
+	 * }
+	 * </pre>
+	 * 
+	 * @return Java objects solution list for the current query
+	 * @since 1.0
+	 */
 	public List<Object> oneResult();
 
+	/**
+	 * 
+	 * Return the equivalent Java objects that conform the solution set for the
+	 * current query. The solution set is a Java object map and every map entry is a
+	 * pair variable name and a Java object conversion of the variable instance
+	 * value for the variables not anonymous involved in the query.
+	 * 
+	 * @return variable name - Java object conversion of the variable instance (key
+	 *         - value) map that conform the solution set for the current query.
+	 * @since 1.0
+	 */
 	public Map<String, Object> oneVariablesResult();
 
 	public List<List<Object>> allResults();

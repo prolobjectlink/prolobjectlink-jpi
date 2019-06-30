@@ -35,8 +35,8 @@ package org.prolobjectlink.prolog;
  * 
  * Two structures are equals if and only if are structure and have equals
  * functor and arguments. Structures terms unify only with same functor and
- * arguments structures, with free variable or with and structures with the same
- * functor and positional unification for structure arguments.
+ * arguments structures, with free variable or with with structures where your
+ * arguments unify if they have the same functor and arity.
  * 
  * Structures have and special property named arity that means the number of
  * arguments present in the structure.
