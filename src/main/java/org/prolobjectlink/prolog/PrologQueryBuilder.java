@@ -32,7 +32,7 @@ package org.prolobjectlink.prolog;
  * terms with the {@link #begin(PrologTerm)} method, we specify the first term
  * in the query. If the query have more terms, they are created using
  * {@link #comma(PrologTerm)} for every one. Clause builder have a
- * {@link #getClauseString()} for string representation of the clause in
+ * {@link #getQueryString()} for string representation of the clause in
  * progress. After clause definition this builder have {@link #query()} method
  * that create the final query instance ready to be used.
  * 

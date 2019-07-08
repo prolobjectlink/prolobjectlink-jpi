@@ -18,38 +18,17 @@ install:
   -
 
 matrix:
-  fast_finish: true
-  include:
-    - jdk: oraclejdk8
+   fast_finish: true
+   include:
+   -  jdk: oraclejdk8
       env:
-        - DESC="acceptance tests"
-        - CMD="mvn install --projects acceptance-tests --also-make --activate-profiles all --batch-mode --show-version --errors"
-
-    - jdk: oraclejdk8
+      - DESC="Install Java 8"
+      - CMD="mvn clean install site"
+   -  jdk: oraclejdk9
       env:
-        - DESC="findbugs"
-        - CMD="mvn install findbugs:check --projects '!scala-unit-tests,!jmh-scala-tests,!jmh-tests,!p2-repository' --activate-profiles all -DskipTests=true --batch-mode --show-version --errors"
-
-    - jdk: oraclejdk8
-      env:
-        - DESC="checkstyle"
-        - CMD="mvn install checkstyle:check --activate-profiles all -DskipTests=true --batch-mode --show-version --errors"
-
-    - jdk: oraclejdk8
-      env:
-        - DESC="unit tests"
-        - CMD="mvn install --batch-mode --show-version --errors"
-
-    - jdk: oraclejdk8
-      env:
-        - DESC="compile jmh-tests and performance-tests"
-        - CMD="mvn install --projects jmh-tests,performance-tests --also-make --activate-profiles all -DskipTests=true --batch-mode --show-version --errors"
-
-    - jdk: oraclejdk9
-      env:
-        - DESC="unit tests Java 9"
-        - CMD="mvn install --projects '!scala-unit-tests,!jmh-scala-tests,!jmh-tests,!p2-repository' --batch-mode --show-version --errors"
-
+      - DESC="Install Java 9"
+      - CMD="mvn clean install site"
+      
 script: eval travis_wait 35 $CMD
 
 cache:
