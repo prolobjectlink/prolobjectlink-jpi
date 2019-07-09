@@ -28,11 +28,12 @@ package org.prolobjectlink.prolog;
 /**
  * Prolog Provider is the class to interact with all prolog components (data
  * types, constants, logger, parser, converter and engine). Allow create data
- * types like atoms, numbers, lists, structures and variable terms. Allow
- * interact with the under-lying prolog engine to realize inferences operations.
- * Other used components are the prolog parser to parse prolog terms in string
- * form. The Prolog Provider offer a prolog system logger to report every errors
- * or exceptions.
+ * types like atoms, numbers, lists, structures and variable terms.
+ * 
+ * Allow interact with the under-lying prolog engine to realize inferences
+ * operations. Other used components are the prolog parser to parse prolog terms
+ * in string form. The Prolog Provider offer a prolog system logger to report
+ * every errors or exceptions.
  * 
  * @author Jose Zalacain
  * @since 1.0
@@ -318,7 +319,7 @@ public interface PrologProvider extends PrologParser {
 	 * <pre>
 	 * PrologVariable x = provider.newVariable("X", 0);
 	 * PrologDouble pi = provider.newDouble(Math.PI);
-	 * PrologStructure plusExp = provider.newStructure("+", x, pi);
+	 * PrologStructure plusExp = provider.newStructure(x, "+", pi);
 	 * System.out.println(plusExp);
 	 * </pre>
 	 * 

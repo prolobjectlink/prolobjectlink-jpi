@@ -26,21 +26,25 @@
 package org.prolobjectlink.prolog;
 
 /**
+ * <p>
  * Represent prolog list compound term. List are an special compound term that
  * have like functor a dot (.) and arity equals 2. Prolog list are recursively
  * defined. The first item in the list is referred like list head and the second
  * item list tail. The list tail can be another list that contains head and
  * tail. An special list case is the empty list denoted by no items brackets
  * ([]). The arity for this empty list is zero.
- * 
+ * </p>
+ * <p>
  * The Prolog Provider is the mechanism to create a new Prolog structures
  * invoking {@link PrologProvider#newList()} for empty list or
  * {@link PrologProvider#newList(PrologTerm)} for one item list or
  * {@link PrologProvider#newList(PrologTerm[])} for many items.
- * 
+ * </p>
+ * <p>
  * Two list are equals if and only if are list and have equals arguments. List
  * terms unify only with the same arguments list, with free variable or with
  * lists where your arguments unify.
+ * </p>
  * 
  * <pre>
  * PrologList empty = provider.newList();

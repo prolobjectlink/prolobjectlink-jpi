@@ -35,6 +35,7 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 
 /**
+ * Partial implementation of {@link PrologEngine}.
  * 
  * @author Jose Zalacain
  * @since 1.0
@@ -64,19 +65,6 @@ public abstract class AbstractEngine implements PrologEngine {
 		return query(goal, goals).hasSolution();
 	}
 
-	public final PrologQuery query(Object[] objects) {
-		PrologJavaConverter converter = getProvider().getJavaConverter();
-		PrologTerm[] terms = converter.toTermsArray(objects);
-		return query(terms);
-	}
-
-	public final PrologQuery query(Object object, Object... objects) {
-		PrologJavaConverter converter = getProvider().getJavaConverter();
-		PrologTerm[] terms = converter.toTermsArray(objects);
-		PrologTerm term = converter.toTerm(object);
-		return query(term, terms);
-	}
-
 	public final Map<String, PrologTerm> queryOne(String goal) {
 		return query(goal).oneVariablesSolution();
 	}
@@ -85,26 +73,12 @@ public abstract class AbstractEngine implements PrologEngine {
 		return query(goal, goals).oneVariablesSolution();
 	}
 
-	public final Map<String, Object> queryOne(Object object, Object... objects) {
-		PrologJavaConverter converter = getProvider().getJavaConverter();
-		PrologTerm[] terms = converter.toTermsArray(objects);
-		PrologTerm term = converter.toTerm(object);
-		return query(term, terms).oneVariablesResult();
-	}
-
 	public final List<Map<String, PrologTerm>> queryAll(String goal) {
 		return query(goal).all();
 	}
 
 	public final List<Map<String, PrologTerm>> queryAll(PrologTerm goal, PrologTerm... goals) {
 		return query(goal, goals).all();
-	}
-
-	public final List<Map<String, Object>> queryAll(Object object, Object... objects) {
-		PrologJavaConverter converter = getProvider().getJavaConverter();
-		PrologTerm[] terms = converter.toTermsArray(objects);
-		PrologTerm term = converter.toTerm(object);
-		return query(term, terms).allVariablesResults();
 	}
 
 	public final Set<PrologClause> getProgramClauses() {

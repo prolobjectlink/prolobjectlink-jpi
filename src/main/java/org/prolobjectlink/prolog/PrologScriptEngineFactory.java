@@ -32,6 +32,12 @@ import java.util.List;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineFactory;
 
+/**
+ * Partial implementation of {@link ScriptEngineFactory}
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 public abstract class PrologScriptEngineFactory implements ScriptEngineFactory {
 
 	private final PrologEngine engine;

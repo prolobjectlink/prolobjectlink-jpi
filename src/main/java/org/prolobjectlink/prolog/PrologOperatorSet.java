@@ -29,7 +29,7 @@ import java.util.Set;
 
 /**
  * A collection that contains no duplicate Prolog operators. Extends from
- * {@link Set} and add {@link #currentOp(String)} method to Check if in the
+ * {@link Set} and add {@link #currentOp(String)} method to check if in the
  * operator set is defined some particular operator specified by your string
  * symbol.
  * 

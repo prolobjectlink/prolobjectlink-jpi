@@ -26,6 +26,7 @@
 package org.prolobjectlink.prolog;
 
 /**
+ * Partial implementation of {@link PrologTerm} interface.
  * 
  * @author Jose Zalacain
  * @since 1.0
@@ -91,14 +92,6 @@ public abstract class AbstractTerm implements PrologTerm {
 
 	public final int getType() {
 		return type;
-	}
-
-	public final PrologTerm getRight() {
-		return getArgument(1);
-	}
-
-	public final PrologTerm getLeft() {
-		return getArgument(0);
 	}
 
 	public final PrologProvider getProvider() {

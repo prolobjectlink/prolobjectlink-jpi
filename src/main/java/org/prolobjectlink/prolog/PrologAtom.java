@@ -26,16 +26,31 @@
 package org.prolobjectlink.prolog;
 
 /**
+ * <p>
  * Represent the Prolog atom data type. Prolog atoms are can be of two kinds
  * simple or complex. Simple atoms are defined like a single alpha numeric word
  * that begin like initial lower case character. The complex atom are define
- * like any character sequence that begin and end with simple quotes. The string
- * passed to build a simple atoms should be match with [a-z][A-Za-z0-9_]*
- * regular expression. If the string passed to build an atom don't match with
- * the before mentioned regular expression the atom constructor can be capable
- * of create a complex atom automatically. For complex atom the string value can
- * have the quotes or just can be absent. The printed string representation of
- * the complex atom implementation set the quotes if they are needed.
+ * like any character sequence that begin and end with simple quotes.
+ * </p>
+ * <p>
+ * The string passed to build a simple atoms should be match with
+ * [a-z][A-Za-z0-9_]* regular expression. If the string passed to build an atom
+ * don't match with the before mentioned regular expression the atom constructor
+ * can be capable of create a complex atom automatically.
+ * </p>
+ * <p>
+ * For complex atom the string value can have the quotes or just can be absent.
+ * The printed string representation of the complex atom implementation set the
+ * quotes if they are needed.
+ * </p>
+ * <p>
+ * The Prolog Provider is the mechanism to create a new Prolog structures
+ * invoking {@link PrologProvider#newAtom(String)}.
+ * </p>
+ * <p>
+ * Two atoms are equals if and only if are atoms and have equals functor
+ * (value). Atoms terms unify only with same atoms or with free variable.
+ * </p>
  * 
  * @author Jose Zalacain
  * @since 1.0

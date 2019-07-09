@@ -29,9 +29,10 @@ package org.prolobjectlink.prolog;
  * Prolog term that represent a single precision floating point number. Extends
  * from {@link PrologNumber} who contains an immutable {@link java.lang.Float}
  * instance. The Prolog Provider is the mechanism to create a new Prolog float
- * invoking {@link PrologProvider#newFloat(Number)}. Two floats numbers are
- * equals if and only if are floats and have equal value. Floats numbers unify
- * only with same value floats or with free variable.
+ * invoking {@link PrologProvider#newFloat(Number)}.
+ * 
+ * Two floats numbers are equals if and only if are floats and have equal value.
+ * Floats numbers unify only with same value floats or with free variable.
  * 
  * @author Jose Zalacain
  * @since 1.0

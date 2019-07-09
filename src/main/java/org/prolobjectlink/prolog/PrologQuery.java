@@ -63,14 +63,6 @@ public interface PrologQuery extends Iterator<Collection<PrologTerm>>, Iterable<
 	public PrologEngine getEngine();
 
 	/**
-	 * Get the prolog system logger instance to report any errors or exceptions
-	 * 
-	 * @return prolog system logger instance
-	 * @since 1.0
-	 */
-	public PrologLogger getLogger();
-
-	/**
 	 * <p>
 	 * Check that the current query has solution.
 	 * </p>

@@ -44,6 +44,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Partial implementation of {@link PrologConsole} interface.
  * 
  * @author Jose Zalacain
  * @since 1.0
@@ -89,7 +90,7 @@ public abstract class AbstractConsole implements PrologConsole {
 	}
 
 	public final void printUsage() {
-		output.println("Usage: pllink option [file] to consult a file");
+		output.println("Usage: pllink option [file]");
 		output.println("options:");
 		output.println("	-r	consult/run a prolog file");
 		output.println("	-v	print the prolog engine version");

@@ -26,6 +26,7 @@
 package org.prolobjectlink.prolog;
 
 /**
+ * Partial implementation of {@link PrologIndicator} interface.
  * 
  * @author Jose Zalacain
  * @since 1.0

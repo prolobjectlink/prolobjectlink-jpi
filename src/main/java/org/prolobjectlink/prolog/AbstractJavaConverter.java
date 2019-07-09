@@ -27,7 +27,6 @@ package org.prolobjectlink.prolog;
 
 import static org.prolobjectlink.prolog.PrologTermType.ATOM_TYPE;
 import static org.prolobjectlink.prolog.PrologTermType.DOUBLE_TYPE;
-import static org.prolobjectlink.prolog.PrologTermType.EMPTY_TYPE;
 import static org.prolobjectlink.prolog.PrologTermType.FALSE_TYPE;
 import static org.prolobjectlink.prolog.PrologTermType.FLOAT_TYPE;
 import static org.prolobjectlink.prolog.PrologTermType.INTEGER_TYPE;
@@ -85,8 +84,6 @@ public abstract class AbstractJavaConverter implements PrologJavaConverter {
 			return true;
 		case FALSE_TYPE:
 			return false;
-		case EMPTY_TYPE:
-			return new Object[0];
 		case ATOM_TYPE:
 			return removeQuotes(prologTerm.getFunctor());
 		case INTEGER_TYPE:

@@ -26,7 +26,61 @@
 package org.prolobjectlink.prolog;
 
 /**
- * Ancestor prolog data type. All Prolog data types are derived from this class.
+ * <p>
+ * Ancestor prolog data type. All Prolog data types {@link PrologAtom},
+ * {@link PrologNumber}, {@link PrologList}, {@link PrologStructure} and
+ * {@link PrologVariable} are derived from this class. All before mentioned
+ * classes extends from this class the commons responsibilities. Extends from
+ * {@link Comparable} to compare the current term with another term based on
+ * Standard Order.
+ * </p>
+ * 
+ * <p>
+ * The Prolog Provider is the mechanism to create a new Prolog terms invoking
+ * the correspondent methods. {@link PrologProvider#newAtom(String)} for atoms,
+ * {@link PrologProvider#newStructure(String, PrologTerm...)} for structures,
+ * {@link PrologProvider#newVariable(String, int)} for variables and so on.
+ * </p>
+ * 
+ * <p>
+ * With {@link #getType()} the term type can be retrieve. Every term have a type
+ * defined in {@link PrologTermType}. The prolog type have by definition one
+ * order (Standard Order) where Variables &lt; Atoms &lt; Numbers &lt;
+ * Compounds. This order is usable to compare two terms.
+ * </p>
+ * 
+ * <p>
+ * Prolog terms have two specials properties, the functor and the arity. Functor
+ * is the compound term or atom name and arity is the number of arguments
+ * present in the compound terms. Variable and Number don't have this
+ * properties. This properties are accessible from {@link #getArity()} and
+ * {@link #getFunctor()} methods. Variable and Number raise an
+ * {@link ArityError} and {@link FunctorError} respectively. Based on functor
+ * and arity atoms and compound terms have a predicate indicator that is the
+ * signature for the term. The term indicator is an string formed by the
+ * concatenation of {@link #getFunctor()} and {@link #getArity()} separated by
+ * slash.
+ * </p>
+ * 
+ * <p>
+ * The methods {@link #getArguments()} and {@link #getArgument(int)} allow
+ * retrieve the arguments and the some specific arguments for compounds terms
+ * respectively. For atomics terms {@link #getArguments()} return an empty term
+ * array and {@link #getArgument(int)} raise a
+ * {@link ArrayIndexOutOfBoundsException} because don't have arguments. For this
+ * cases is a good practice check compound terms before invoke this methods.
+ * </p>
+ * 
+ * <pre>
+ * if (t.isCompound()) {
+ * 	PrologTerm x = t.getArgument(i);
+ * 	System.out.println(x);
+ * }
+ * </pre>
+ * 
+ * <p>
+ * Talk about {@link #unify(PrologTerm)}
+ * </p>
  * 
  * @author Jose Zalacain
  * @since 1.0
@@ -191,26 +245,6 @@ public interface PrologTerm extends Comparable<PrologTerm> {
 	 * @since 1.0
 	 */
 	public PrologTerm getTerm();
-
-	/**
-	 * Return the left operand of the current term if the current term is an
-	 * evalueble structure (expression).
-	 * 
-	 * @return return the left operand of the current term if the current term is an
-	 *         expression.
-	 * @since 1.0
-	 */
-	public PrologTerm getLeft();
-
-	/**
-	 * Return the right operand of the current term if the current term is an
-	 * evalueble structure (expression).
-	 * 
-	 * @return return the right operand of the current term if the current term is
-	 *         an expression.
-	 * @since 1.0
-	 */
-	public PrologTerm getRight();
 
 	/**
 	 * Term arity. The arity of a term is a argument number for compound terms. If a

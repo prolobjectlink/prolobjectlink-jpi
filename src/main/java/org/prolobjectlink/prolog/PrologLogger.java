@@ -32,10 +32,9 @@ import java.util.logging.Logger;
  * Logger platform interface to log message at any level. Is an adapter for
  * {@link Logger} adapting the Java logger mechanism for use with the most
  * popular logger methods. This logger mechanism is accessible from
- * {@link PrologProvider#getLogger()} or {@link PrologEngine#getLogger()} or
- * {@link PrologQuery#getLogger()}. This logger interface have all traditional
- * methods used to log messages at different levels (trace, debug,
- * info,warn,error).
+ * {@link PrologProvider#getLogger()} or {@link PrologEngine#getLogger()} This
+ * logger interface have all traditional methods used to log messages at
+ * different levels (trace, debug, info,warn,error).
  * 
  * The levels used for this logger interface are {@link Level} constants present
  * in the table.

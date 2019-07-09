@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Partial implementation of {@link PrologQuery} interface.
  * 
  * @author Jose Zalacain
  * @since 1.0
@@ -84,7 +85,7 @@ public abstract class AbstractQuery extends AbstractIterator<Collection<PrologTe
 		return false;
 	}
 
-	public final PrologLogger getLogger() {
+	protected final PrologLogger getLogger() {
 		return getProvider().getLogger();
 	}
 

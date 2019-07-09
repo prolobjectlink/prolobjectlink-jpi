@@ -52,9 +52,9 @@ public interface PrologConsole {
 	 * </p>
 	 * 
 	 * <pre>
-	 * public class Main extends AbstractConsole implements PrologConsole {
+	 * public class ANYPrologConsole extends AbstractConsole implements PrologConsole {
 	 * 	public static void main(String[] args) {
-	 * 		new Main().run(args);
+	 * 		new ANYPrologConsole().run(args);
 	 * 	}
 	 *
 	 * }

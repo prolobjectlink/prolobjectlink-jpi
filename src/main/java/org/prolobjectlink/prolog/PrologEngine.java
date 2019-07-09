@@ -437,11 +437,7 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 */
 	public PrologQuery query(PrologTerm[] terms);
 
-	public PrologQuery query(Object[] objects);
-
 	public PrologQuery query(PrologTerm term, PrologTerm... terms);
-
-	public PrologQuery query(Object object, Object... objects);
 
 	//
 
@@ -449,13 +445,9 @@ public interface PrologEngine extends Iterable<PrologClause> {
 
 	public Map<String, PrologTerm> queryOne(PrologTerm term, PrologTerm... goal);
 
-	public Map<String, Object> queryOne(Object object, Object... objects);
-
 	public List<Map<String, PrologTerm>> queryAll(String goal);
 
 	public List<Map<String, PrologTerm>> queryAll(PrologTerm term, PrologTerm... goal);
-
-	public List<Map<String, Object>> queryAll(Object object, Object... objects);
 
 	/**
 	 * Create a new clause builder instance to build prolog clauses

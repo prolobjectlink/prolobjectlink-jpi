@@ -34,7 +34,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Partial implementation of Prolog converter interface.
+ * Partial implementation of {@link PrologConverter} interface.
  * 
  * @author Jose Zalacain
  * @since 1.0

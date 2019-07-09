@@ -30,6 +30,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * Partial implementation of {@link PrologProvider}
  * 
  * @author Jose Zalacain
  * @since 1.0
@@ -68,12 +69,6 @@ public abstract class AbstractProvider implements PrologProvider {
 		return parseProgram(in.getAbsolutePath());
 	}
 
-	public PrologEngine newEngine(String path) {
-		PrologEngine engine = newEngine();
-		engine.consult(path);
-		return engine;
-	}
-
 	public final PrologFloat newFloat() {
 		return newFloat(0F);
 	}
@@ -90,7 +85,7 @@ public abstract class AbstractProvider implements PrologProvider {
 		return newLong(0L);
 	}
 
-	public PrologList newList(PrologTerm head) {
+	public final PrologList newList(PrologTerm head) {
 		return newList(new PrologTerm[] { head });
 	}
 

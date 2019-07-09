@@ -26,6 +26,7 @@
 package org.prolobjectlink.prolog;
 
 /**
+ * Partial implementation of {@link PrologOperator}.
  * 
  * @author Jose Zalacain
  * @since 1.0

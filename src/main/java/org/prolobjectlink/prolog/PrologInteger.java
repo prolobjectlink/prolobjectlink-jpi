@@ -29,9 +29,11 @@ package org.prolobjectlink.prolog;
  * Prolog term that represent a integer number. Extends from
  * {@link PrologNumber} who contains an immutable {@link java.lang.Integer}
  * instance. The Prolog Provider is the mechanism to create a new Prolog integer
- * invoking {@link PrologProvider#newInteger(Number)}. Two integers numbers are
- * equals if and only if are integers and have equal value. Integers numbers
- * unify only with same value integers or with free variable.
+ * invoking {@link PrologProvider#newInteger(Number)}.
+ * 
+ * Two integers numbers are equals if and only if are integers and have equal
+ * value. Integers numbers unify only with same value integers or with free
+ * variable.
  * 
  * @author Jose Zalacain
  * @since 1.0

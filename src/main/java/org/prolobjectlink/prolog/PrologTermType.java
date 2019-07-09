@@ -109,14 +109,6 @@ public final class PrologTermType {
 	// constants for prolog list and prolog structure
 
 	/**
-	 * Empty list type constant
-	 * 
-	 * @deprecated Empty list use list type
-	 */
-	@Deprecated
-	public static final int EMPTY_TYPE = 0x500;
-
-	/**
 	 * List type constant
 	 */
 	public static final int LIST_TYPE = 0x501;

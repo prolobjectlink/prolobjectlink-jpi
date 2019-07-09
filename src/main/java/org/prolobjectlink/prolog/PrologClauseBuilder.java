@@ -26,20 +26,26 @@
 package org.prolobjectlink.prolog;
 
 /**
+ * <p>
  * Prolog clause builder to create prolog clauses. The mechanism to create a new
  * clause builder is using {@link PrologEngine#newClauseBuilder()}. The clause
  * builder emulate the clause creation process. After define all participant
  * terms with the {@link #begin(PrologTerm)} method, we specify the head of the
- * clause. If the clause is a rule, after head definition, the clause body is
- * created with {@link #neck(PrologTerm)} for the first term in the clause body.
- * If the clause body have more terms, they are created using
- * {@link #comma(PrologTerm)} for every one. Clause builder have a
- * {@link #getClauseString()} for string representation of the clause in
- * progress. After clause definition this builder have
+ * clause.
+ * </p>
+ * <p>
+ * If the clause is a rule, after head definition, the clause body is created
+ * with {@link #neck(PrologTerm)} for the first term in the clause body. If the
+ * clause body have more terms, they are created using
+ * {@link #comma(PrologTerm)} for every one.
+ * </p>
+ * <p>
+ * Clause builder have a {@link #getClauseString()} for string representation of
+ * the clause in progress. After clause definition this builder have
  * {@link #asserta()},{@link #assertz()},{@link #clause()},{@link #retract()}
  * that use the wrapped engine invoking the correspondent methods for check,
  * insert or remove clause respectively.
- * 
+ * </p>
  * 
  * <pre>
  * PrologStructure blackZ = provider.newStructure("black", z);

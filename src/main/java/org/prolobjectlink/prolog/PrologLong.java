@@ -29,10 +29,11 @@ package org.prolobjectlink.prolog;
  * Prolog term that represent a long integer number. Extends from
  * {@link PrologNumber} who contains an immutable {@link java.lang.Long}
  * instance. The Prolog Provider is the mechanism to create a new Prolog long
- * integer invoking {@link PrologProvider#newLong(Number)}. Two long integers
- * numbers are equals if and only if are long integers and have equal value.
- * Long integers numbers unify only with same value long integers or with free
- * variable.
+ * integer invoking {@link PrologProvider#newLong(Number)}.
+ * 
+ * Two long integers numbers are equals if and only if are long integers and
+ * have equal value. Long integers numbers unify only with same value long
+ * integers or with free variable.
  * 
  * @author Jose Zalacain
  * @since 1.0

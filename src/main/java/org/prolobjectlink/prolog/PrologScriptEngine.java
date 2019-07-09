@@ -40,6 +40,12 @@ import javax.script.ScriptEngineFactory;
 import javax.script.ScriptException;
 import javax.script.SimpleBindings;
 
+/**
+ * Partial implementation of {@link ScriptEngine}
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
 final class PrologScriptEngine extends AbstractScriptEngine implements ScriptEngine {
 
 	private final PrologEngine prolog;

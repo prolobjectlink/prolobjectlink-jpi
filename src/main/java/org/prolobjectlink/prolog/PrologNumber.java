@@ -26,6 +26,7 @@
 package org.prolobjectlink.prolog;
 
 /**
+ * <p>
  * Represent all Prolog number data type. Is an abstract class that contains all
  * commons method related to number data types. In Prolog the number data types
  * are Integer and Float. Some Prolog implementations have and extension for
@@ -33,27 +34,27 @@ package org.prolobjectlink.prolog;
  * (Double precision Floating Point Number). For Prolog implementations that no
  * have support for Long and Double data types, they are implement this classes
  * holding a Prolog integer for Long case and Prolog float for Double case.
- * 
+ * </p>
+ * <p>
  * Two Prolog integers numbers are equals if and only if they are integers
  * number and have the same value.Two Prolog integers numbers unify if are
- * equals or at least one PrologTerm is a free variable
- * Two Prolog floats numbers are equals if and only if they are floats
- * number and have the same value.Two Prolog floats numbers unify if are equals
- * or at least one PrologTerm is a free variable
- * Two Prolog longs numbers are equals if and only if they are longs number
- * and have the same value.Two Prolog longs numbers unify if are equals or at
- * least one PrologTerm is a free variable
- * Two Prolog doubles numbers are equals if and only if they are doubles
- * number and have the same value.Two Prolog doubles numbers unify if are equals
- * or at least one PrologTerm is a free variable
- * 
- * Some Prolog implementations consider that integers and longs are equals
- * if they have the same value and unify if have the same value or at least one
- * PrologTerm is a free variable.
- * Some Prolog implementations consider that floats and double are equals if
+ * equals or at least one PrologTerm is a free variable Two Prolog floats
+ * numbers are equals if and only if they are floats number and have the same
+ * value.Two Prolog floats numbers unify if are equals or at least one
+ * PrologTerm is a free variable Two Prolog longs numbers are equals if and only
+ * if they are longs number and have the same value.Two Prolog longs numbers
+ * unify if are equals or at least one PrologTerm is a free variable Two Prolog
+ * doubles numbers are equals if and only if they are doubles number and have
+ * the same value.Two Prolog doubles numbers unify if are equals or at least one
+ * PrologTerm is a free variable
+ * </p>
+ * <p>
+ * Some Prolog implementations consider that integers and longs are equals if
  * they have the same value and unify if have the same value or at least one
- * PrologTerm is a free variable.
- * 
+ * PrologTerm is a free variable. Some Prolog implementations consider that
+ * floats and double are equals if they have the same value and unify if have
+ * the same value or at least one PrologTerm is a free variable.
+ * </p>
  * 
  * @author Jose Zalacain
  * @since 1.0
