@@ -31,6 +31,19 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * <p>
+ * Prolog query is the mechanism to query the prolog database loaded in prolog
+ * engine. The way to create a new prolog query is invoking
+ * {@link PrologEngine#query(String)},{@link PrologEngine#query(PrologTerm, PrologTerm...)}
+ * or {@link PrologEngine#query(PrologTerm[])}. When this methods are called the
+ * prolog query is open an only with {@link #dispose()} close the current query
+ * and release all internal resources explicitly.
+ * </p>
+ * 
+ * <p>
+ * Talk about {@link Iterable} and {@link Iterator}.
+ * </p>
+ * 
  * <pre>
  * PrologEngine engine = provider.newEngine();
  * PrologVariable x = provider.newVariable("X", 0);
@@ -39,6 +52,7 @@ import java.util.Map;
  * 	PrologTerm value = query.nextVariablesSolution().get(&quot;X&quot;);
  * 	System.out.println(value);
  * }
+ * query.dispose();
  * </pre>
  * 
  * @author Jose Zalacain
