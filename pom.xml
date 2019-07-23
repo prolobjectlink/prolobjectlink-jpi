@@ -6,7 +6,7 @@
 	<artifactId>prolobjectlink-jpi</artifactId>
 	<version>1.0.0</version>
 	<name>prolobjectlink-jpi</name>
-	
+
 	<description>Java Prolog Interface (JPI) is an Application Provider Interface (API) for interaction between Java and Prolog programming languages. Is a bidirectional interface that communicate Java applications with Prolog program or database and Prolog procedures with Java class and methods.
 
 JPI is an abstraction layer over concrete prolog drivers over Prolog Engines. This API define all mechanism to interact with any Prolog Engine and maintain the application independent to a specific underlying engine. JPI have several connectors to open source prolog engines like SWI, YAP, XSB native engines and tuProlog, jTrolog, jLog Java based prolog engines.
@@ -67,16 +67,16 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 	</issueManagement>
 
 	<distributionManagement>
-		<snapshotRepository>
-			<id>snapshots</id>
-			<name>Internal Snapshot Repository</name>
-			<url>http://maven.delnet.cu/repository/snapshots/</url>
-		</snapshotRepository>
 		<repository>
-			<id>internal</id>
-			<name>Internal Release Repository</name>
-			<url>http://maven.delnet.cu/repository/internal/</url>
+			<id>sonatype-nexus-staging</id>
+			<name>Sonatype Nexus Staging</name>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
 		</repository>
+		<snapshotRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
 		<site>
 			<id>website</id>
 			<url>dav:http://deploy.delnet.cu/webdav/sites/${project.name}</url>
@@ -163,7 +163,8 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 					<failOnMissingHeader>true</failOnMissingHeader>
 					<acceptPomPackaging>true</acceptPomPackaging>
 					<licenseName>mit</licenseName>
-					<!-- <dryRun>true</dryRun> --><licenseFile>LICENSE.md</licenseFile>
+					<!-- <dryRun>true</dryRun> -->
+					<licenseFile>LICENSE.md</licenseFile>
 					<addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
 					<roots>
 						<root>src/main</root>
@@ -421,5 +422,5 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 		</plugins>
 	</reporting>
 
-	
+
 </project>
