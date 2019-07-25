@@ -71,10 +71,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
       <id>ossrh</id>
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
-		<repository>
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </repository>
+		
 		<site>
 			<id>website</id>
 			<url>dav:http://deploy.delnet.cu/webdav/sites/${project.name}</url>
