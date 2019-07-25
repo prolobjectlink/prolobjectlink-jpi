@@ -128,7 +128,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 			<plugin>
 <groupId>org.apache.maven.plugins</groupId>
 <artifactId>maven-gpg-plugin</artifactId>
-    <version>1.5</version>
+    <version>1.6</version>
     <executions>
         <execution>
             <id>sign-artifacts</id>
@@ -137,7 +137,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
                  <goal>sign</goal>
              </goals>
 		<configuration>
-              <keyname>prolobjectlink-jpi</keyname>
+              <keyname>gpg2</keyname>
               <passphraseServerId>prolobjectlink-jpi</passphraseServerId>
             </configuration>
         </execution>
