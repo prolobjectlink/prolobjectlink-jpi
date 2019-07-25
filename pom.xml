@@ -136,6 +136,10 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
              <goals>
                  <goal>sign</goal>
              </goals>
+		<configuration>
+              <keyname>prolobjectlink-jpi</keyname>
+              <passphraseServerId>prolobjectlink-jpi</passphraseServerId>
+            </configuration>
         </execution>
     </executions>
  </plugin>
