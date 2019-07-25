@@ -126,7 +126,6 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
         <configuration>
           <serverId>ossrh</serverId>
           <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-          <autoReleaseAfterClose>true</autoReleaseAfterClose>
         </configuration>
       </plugin>
 			<plugin>
