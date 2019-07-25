@@ -28,7 +28,11 @@ matrix:
       env:
       - DESC="Install Java 9"
       - CMD="mvn clean install site"
-      
+
+after_success:
+  - echo "<settings><servers><server><id>ossrh</id><username>\${env.OSSRH_USER}</username><password>\${env.OSSRH_PASS}</password></server></servers></settings>" > ~/settings.xml
+  - mvn deploy --settings ~/settings.xml
+
 script: eval travis_wait 35 $CMD
 
 cache:
