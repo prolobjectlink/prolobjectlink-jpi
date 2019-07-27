@@ -78,7 +78,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
         </repository>
 		<site>
 			<id>website</id>
-			<url>dav:http://deploy.delnet.cu/webdav/sites/${project.name}</url>
+			<url>dav:https://webdav.opendrive.com/Public%20Folder/${project.name}</url>
 		</site>
 	</distributionManagement>
 
