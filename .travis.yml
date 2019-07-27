@@ -23,11 +23,11 @@ matrix:
    -  jdk: oraclejdk8
       env:
       - DESC="Install Java 8"
-      - CMD="mvn clean install"
+      - CMD="mvn clean install site"
 
 after_success:
   - echo "<settings><servers><server><id>ossrh</id><username>\${env.OSSRH_USER}</username><password>\${env.OSSRH_PASS}</password></server><server><id>website</id><username>\${env.WEBSITE_USER}</username><password>\${env.WEBSITE_PASS}</password></server></servers></settings>" > ~/settings.xml
-  - mvn site site-deploy --settings ~/settings.xml
+  - mvn site-deploy --settings ~/settings.xml
 
 cache:
   directories:
