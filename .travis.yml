@@ -24,14 +24,10 @@ matrix:
       env:
       - DESC="Install Java 8"
       - CMD="mvn clean install site"
-   -  jdk: oraclejdk9
-      env:
-      - DESC="Install Java 9"
-      - CMD="mvn clean install site"
 
 after_success:
-  - echo "<settings><servers><server><id>ossrh</id><username>\${env.OSSRH_USER}</username><password>\${env.OSSRH_PASS}</password></server></servers></settings>" > ~/settings.xml
-  - mvn deploy --settings ~/settings.xml
+  - echo "<settings><servers><server><id>ossrh</id><username>\${env.OSSRH_USER}</username><password>\${env.OSSRH_PASS}</password></server><server><id>website</id><username>\${env.WEBSITE_USER}</username><password>\${env.WEBSITE_PASS}</password></server></servers></settings>" > ~/settings.xml
+  - mvn deploy site-deploy --settings ~/settings.xml
 
 script: eval travis_wait 35 $CMD
 
