@@ -23,7 +23,11 @@ matrix:
    -  jdk: oraclejdk8
       env:
       - DESC="Install Java 8"
-      - CMD="mvn clean install site"
+      - CMD="mvn clean install"
+      
+after_success:
+  - echo "<settings><servers><server><id>github</id><username>\${env.GITHUB_USER}</username><password>\${env.GITHUB_PASS}</password></server><server><id>website</id><username>\${env.WEBSITE_USER}</username><password>\${env.WEBSITE_PASS}</password></server></servers></settings>" > ~/settings.xml
+  - mvn site --settings ~/settings.xml
 
 cache:
   directories:
