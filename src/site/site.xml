@@ -57,4 +57,23 @@
 		<menu ref="reports" />
 
 	</body>
+	<skin>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>1.5</version>
+    </skin>
+    <custom>
+        <fluidoSkin>
+            <topBarEnabled>true</topBarEnabled>
+            <sideBarEnabled>true</sideBarEnabled>
+            <googleSearch>
+                <sitesearch>${project.url}</sitesearch>
+            </googleSearch>
+            <gitHub>
+                <projectId>${project.name}</projectId>
+                <ribbonOrientation>right</ribbonOrientation>
+                <ribbonColor>gray</ribbonColor>
+            </gitHub>
+        </fluidoSkin>
+    </custom>
 </project>
