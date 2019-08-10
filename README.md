@@ -41,9 +41,8 @@ After installation and architecture compression you can use the hello world samp
 
 Create in your preferred development environment an empty project. Set in the project build path the JPI downloaded libraries located at lib folder. Create a Main Java class that look like below code:
 
-public class Main {
-
-        public static void main(String[] args) {
+       public class Main {
+                public static void main(String[] args) {
                 PrologProvider provider = Prolog.getProvider(XsbProlog.class);
                 PrologEngine engine = provider.newEngine();
                 engine.asserta("sample('hello wolrd')");
