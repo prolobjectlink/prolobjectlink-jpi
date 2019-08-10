@@ -43,7 +43,7 @@ Create in your preferred development environment an empty project. Set in the pr
 
        public class Main {
                 public static void main(String[] args) {
-                PrologProvider provider = Prolog.getProvider(SwiProlog.class);
+                PrologProvider provider = Prolog.getProvider(SwiProlog7.class);
                 PrologEngine engine = provider.newEngine();
                 engine.asserta("sample('hello wolrd')");
                 PrologQuery query=engine.query("sample(X)");
