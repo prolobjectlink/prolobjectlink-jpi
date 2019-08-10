@@ -48,6 +48,5 @@ Create in your preferred development environment an empty project. Set in the pr
                 engine.asserta("sample('hello wolrd')");
                 PrologQuery query=engine.query("sample(X)");
                 System.out.println(query.one());
+                }
         }
-
-}
