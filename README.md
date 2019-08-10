@@ -20,3 +20,35 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Getting Started
+
+
+Install
+
+Java Prolog Interface API is distributed with implementation adapter and concrete prolog driver library until it is possible according to related libraries licenses. The distributions are named normally such that prolobjectlink-jpi-jpl7-swi7-x.y.z-dist.zip meaning that this distribution is a JPI implementation over JPL version 7 or above and SWI-Prolog version 7 or above. The x.y.z is the distribution version. The distribution can be downloaded in zip or tar.gz compresses format. To install you need perform the following steps:
+•Install Java Runtime Environment (JRE) 1.8 or above.
+•Install Native Prolog Engine compatible to Operating System and your architecture. If the Prolog Engine to use is Java-based this step is omitted.
+•Configure System Path with Prolog Engine routes. If the Prolog Engine to use is Java-based this step is omitted.
+•Download Java Prolog Interface compatible to related prolog engine and unzip the distribution over Operating File System.
+•Configure System Path with JPI unzip folder route.
+•Open a new System console and type pllink –i to see the product information. 
+For the JPI beginners we recommended start with a Pure Java-Prolog Engine because have less configuration aspects and native engine are more difficult to link.
+
+Getting started Java to Prolog
+
+After installation and architecture compression you can use the hello world sample for test the system integration. This hello world sample show how interacts with JPI from Java programming language with Abstracted Prolog Engine. For the first experience we suggesting use a Java-based Prolog engine like tuProlog because have less configuration aspects.
+
+Create in your preferred development environment an empty project. Set in the project build path the JPI downloaded libraries located at lib folder. Create a Main Java class that look like below code:
+
+public class Main {
+
+        public static void main(String[] args) {
+                PrologProvider provider = Prolog.getProvider(XsbProlog.class);
+                PrologEngine engine = provider.newEngine();
+                engine.asserta("sample('hello wolrd')");
+                PrologQuery query=engine.query("sample(X)");
+                System.out.println(query.one());
+        }
+
+}
