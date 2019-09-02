@@ -126,6 +126,14 @@ public abstract class AbstractClause implements PrologClause {
 		return head.getArity();
 	}
 
+	public PrologTerm[] getArguments() {
+		return head.getArguments();
+	}
+
+	public PrologTerm getArgument(int index) {
+		return head.getArgument(index);
+	}
+
 	public final String getIndicator() {
 		return head.getIndicator();
 	}

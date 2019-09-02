@@ -77,6 +77,25 @@ public interface PrologClause {
 	public String getFunctor();
 
 	/**
+	 * Term arguments present in the clause head.
+	 * 
+	 * @return Term arguments present in the clause head.
+	 * @since 1.0
+	 */
+	public PrologTerm[] getArguments();
+
+	/**
+	 * Term located at some given index position in the clause head arguments.
+	 * 
+	 * @param index position to retrieve the correspondent term.
+	 * @return Term located at some given index position.
+	 * @throws ArrayIndexOutOfBoundsException if the index value is out of term
+	 *                                        array bound.
+	 * @since 1.0
+	 */
+	public PrologTerm getArgument(int index);
+
+	/**
 	 * Prolog term representation of the current clause. This prolog term is a
 	 * structure with functor/arity (:-/2) and the arguments head and body.
 	 * 
