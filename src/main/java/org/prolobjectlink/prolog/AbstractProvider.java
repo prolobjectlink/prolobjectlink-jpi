@@ -89,6 +89,41 @@ public abstract class AbstractProvider implements PrologProvider {
 		return newList(new PrologTerm[] { head });
 	}
 
+	public final PrologList newList(Object head) {
+		return newList(getJavaConverter().toTerm(head));
+	}
+
+	public final PrologList newList(Object[] arguments) {
+		return newList(getJavaConverter().toTermsArray(arguments));
+	}
+
+	public final PrologList newList(Object head, Object tail) {
+		PrologJavaConverter transformer = getJavaConverter();
+		PrologTerm headTerm = transformer.toTerm(head);
+		PrologTerm tailTerm = transformer.toTerm(tail);
+		return newList(headTerm, tailTerm);
+	}
+
+	public final PrologList newList(Object[] arguments, Object tail) {
+		PrologJavaConverter transformer = getJavaConverter();
+		PrologTerm[] array = transformer.toTermsArray(arguments);
+		PrologTerm tailTerm = transformer.toTerm(tail);
+		return newList(array, tailTerm);
+	}
+
+	public final PrologTerm newStructure(String functor, Object... arguments) {
+		PrologJavaConverter transformer = getJavaConverter();
+		PrologTerm[] parameters = transformer.toTermsArray(arguments);
+		return newStructure(functor, parameters);
+	}
+
+	public final PrologTerm newStructure(Object left, String operator, Object right) {
+		PrologJavaConverter transformer = getJavaConverter();
+		PrologTerm leftTerm = transformer.toTerm(left);
+		PrologTerm rightTerm = transformer.toTerm(right);
+		return newStructure(leftTerm, operator, rightTerm);
+	}
+
 	public final <K extends PrologTerm> K toTerm(Object o, Class<K> from) {
 		return converter.toTerm(o, from);
 	}
@@ -139,7 +174,6 @@ public abstract class AbstractProvider implements PrologProvider {
 		return newEngine().getName();
 	}
 
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -147,7 +181,6 @@ public abstract class AbstractProvider implements PrologProvider {
 		return result;
 	}
 
-	@Override
 	public boolean equals(Object object) {
 		if (this == object)
 			return true;
@@ -165,7 +198,6 @@ public abstract class AbstractProvider implements PrologProvider {
 		return true;
 	}
 
-	@Override
 	public abstract String toString();
 
 	private final void checkListType(PrologTerm term) {

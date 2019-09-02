@@ -25,7 +25,9 @@
  */
 package org.prolobjectlink.prolog;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -79,6 +81,23 @@ public abstract class AbstractEngine implements PrologEngine {
 
 	public final List<Map<String, PrologTerm>> queryAll(PrologTerm goal, PrologTerm... goals) {
 		return query(goal, goals).all();
+	}
+
+	@Override
+	public Map<String, List<PrologClause>> getProgramMap() {
+		Map<String, List<PrologClause>> m = new HashMap<String, List<PrologClause>>();
+		for (PrologClause clause : this) {
+			String key = clause.getIndicator();
+			List<PrologClause> l = m.get(key);
+			if (l == null) {
+				l = new ArrayList<PrologClause>();
+				l.add(clause);
+				m.put(key, l);
+			} else {
+				l.add(clause);
+			}
+		}
+		return m;
 	}
 
 	public final Set<PrologClause> getProgramClauses() {

@@ -290,6 +290,47 @@ public interface PrologProvider extends PrologParser {
 	public PrologList newList(PrologTerm[] arguments, PrologTerm tail);
 
 	/**
+	 * Create a prolog list with one object item.
+	 * 
+	 * @param head object item to be include in the prolog list
+	 * @return prolog list with one term item.
+	 * @since 1.0
+	 */
+	public PrologList newList(Object head);
+
+	/**
+	 * Create a prolog list from java objects arguments array and the tail item is
+	 * an empty list.
+	 * 
+	 * @param arguments java objects arguments array.
+	 * @return a prolog list contained all terms in the prolog term array.
+	 * @since 1.0
+	 */
+	public PrologList newList(Object[] arguments);
+
+	/**
+	 * Create a prolog list with two java objects items [head | tail].
+	 * 
+	 * @param head object item to be include like head in the prolog list.
+	 * @param tail object item to be include like tail in the prolog list.
+	 * @return prolog list with two terms items [head | tail].
+	 * @since 1.0
+	 */
+	public PrologList newList(Object head, Object tail);
+
+	/**
+	 * Create a prolog list from java objects arguments array and the tail item is
+	 * the given java object.
+	 * 
+	 * @param arguments java objects arguments array.
+	 * @param tail      java object to be the tail item.
+	 * @return a prolog list contained all terms in the prolog term array and tail
+	 *         item the specific term.
+	 * @since 1.0
+	 */
+	public PrologList newList(Object[] arguments, Object tail);
+
+	/**
 	 * Create a prolog structure with the functor (structure name) and prolog terms
 	 * arguments array.
 	 * 
@@ -306,6 +347,23 @@ public interface PrologProvider extends PrologParser {
 	 * @since 1.0
 	 */
 	public PrologStructure newStructure(String functor, PrologTerm... arguments);
+
+	/**
+	 * Create a prolog structure with the functor (structure name) and java objects
+	 * arguments array. The java objects arguments array is converter to prolog
+	 * terms arguments array.
+	 * 
+	 * <pre>
+	 * PrologStructure parent = provider.newStructure("parent", "tom", "bob");
+	 * System.out.println(parent);
+	 * </pre>
+	 * 
+	 * @param functor   structure name.
+	 * @param arguments java objects arguments array.
+	 * @return prolog structure instance with the given functor and arguments.
+	 * @since 1.0
+	 */
+	public PrologTerm newStructure(String functor, Object... arguments);
 
 	/**
 	 * Create a prolog structure that represent an expression defined by your left
@@ -330,6 +388,30 @@ public interface PrologProvider extends PrologParser {
 	 * @since 1.0
 	 */
 	public PrologTerm newStructure(PrologTerm left, String operator, PrologTerm right);
+
+	/**
+	 * Create a prolog structure that represent an expression defined by your left
+	 * and right operands separated by infix operator. The structure instance have
+	 * like functor the expression operator and have two operands arguments terms.
+	 * In other words the indicator for the resulting instance term is
+	 * <tt>operator/2</tt>. The term creation not check operator definition and for
+	 * this reason during inference process if the operator is not a supported
+	 * built-in or define by <tt>op/3</tt> the inference fail.
+	 * 
+	 * <pre>
+	 * PrologVariable x = provider.newVariable("X", 0);
+	 * PrologDouble pi = provider.newDouble(Math.PI);
+	 * PrologStructure plusExp = provider.newStructure(x, "+", pi);
+	 * System.out.println(plusExp);
+	 * </pre>
+	 * 
+	 * @param left     left hand operand
+	 * @param operator infix operand
+	 * @param right    right hand operand
+	 * @return a prolog structure that represent an expression
+	 * @since 1.0
+	 */
+	public PrologTerm newStructure(Object left, String operator, Object right);
 
 	/**
 	 * Get a Java to Prolog converter instance to map the abstract prolog data types

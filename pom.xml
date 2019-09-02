@@ -120,36 +120,8 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 		</pluginManagement>
 
 		<plugins>
-			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>1.6.8</version>
-				<extensions>true</extensions>
-				<configuration>
-					<serverId>ossrh</serverId>
-					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-					<autoReleaseAfterClose>true</autoReleaseAfterClose>
-					<skipStaging>true</skipStaging>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>com.github.github</groupId>
-				<artifactId>site-maven-plugin</artifactId>
-				<version>0.11</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>site</goal>
-						</goals>
-						<phase>site</phase>
-						<configuration>
-							<server>github</server>
-							<message>Building site</message>
-							<merge>true</merge>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+			
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -184,41 +156,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>license-maven-plugin</artifactId>
-				<version>1.16</version>
-				<configuration>
-					<canUpdateDescription>true</canUpdateDescription>
-					<failOnMissingHeader>true</failOnMissingHeader>
-					<acceptPomPackaging>true</acceptPomPackaging>
-					<licenseName>mit</licenseName>
-					<!-- <dryRun>true</dryRun> -->
-					<licenseFile>LICENSE.md</licenseFile>
-					<addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
-					<roots>
-						<root>src/main</root>
-						<root>src/test</root>
-						<root>src/site</root>
-					</roots>
-				</configuration>
-				<executions>
-					<execution>
-						<id>update-file-header</id>
-						<phase>process-sources</phase>
-						<goals>
-							<goal>update-file-header</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>add-license</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>update-project-license</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pdf-plugin</artifactId>
@@ -256,33 +194,37 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.7.5.201505241946</version>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>1.16</version>
+				<configuration>
+					<canUpdateDescription>true</canUpdateDescription>
+					<failOnMissingHeader>true</failOnMissingHeader>
+					<acceptPomPackaging>true</acceptPomPackaging>
+					<licenseName>mit</licenseName>
+					<!-- <dryRun>true</dryRun> -->
+					<licenseFile>LICENSE.md</licenseFile>
+					<addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
+					<roots>
+						<root>src/main</root>
+						<root>src/test</root>
+						<root>src/site</root>
+					</roots>
+				</configuration>
 				<executions>
 					<execution>
-						<id>prepare-agent</id>
+						<id>update-file-header</id>
+						<phase>process-sources</phase>
 						<goals>
-							<goal>prepare-agent</goal>
+							<goal>update-file-header</goal>
 						</goals>
 					</execution>
 					<execution>
-						<id>report</id>
-						<phase>prepare-package</phase>
+						<id>add-license</id>
+						<phase>generate-sources</phase>
 						<goals>
-							<goal>report</goal>
+							<goal>update-project-license</goal>
 						</goals>
-					</execution>
-					<execution>
-						<id>post-unit-test</id>
-						<phase>test</phase>
-						<goals>
-							<goal>report</goal>
-						</goals>
-						<configuration>
-							<dataFile>target/jacoco.exec</dataFile>
-							<outputDirectory>target/jacoco-ut</outputDirectory>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
@@ -326,6 +268,65 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 					</comparisonArtifacts>
 					<minSeverity>info</minSeverity>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.7.5.201505241946</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>post-unit-test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<dataFile>target/jacoco.exec</dataFile>
+							<outputDirectory>target/jacoco-ut</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin><plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.8</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+					<skipStaging>true</skipStaging>
+				</configuration>
+			</plugin><plugin>
+				<groupId>com.github.github</groupId>
+				<artifactId>site-maven-plugin</artifactId>
+				<version>0.11</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>site</goal>
+						</goals>
+						<phase>site</phase>
+						<configuration>
+							<server>github</server>
+							<message>Building site</message>
+							<merge>true</merge>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

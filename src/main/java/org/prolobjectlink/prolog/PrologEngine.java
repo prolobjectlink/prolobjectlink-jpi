@@ -579,6 +579,16 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	public Set<PrologOperator> currentOperators();
 
 	/**
+	 * Make and return a copy of the clause map present in the current engine. The
+	 * map key is a functor/arity string and the value is a prolog clause family
+	 * list.
+	 * 
+	 * @return a clause map present in the current engine.
+	 * @since 1.0
+	 */
+	public Map<String, List<PrologClause>> getProgramMap();
+
+	/**
 	 * Make and return a copy of the clause set present in the current engine.
 	 * 
 	 * @return a clause set present in the current engine.
