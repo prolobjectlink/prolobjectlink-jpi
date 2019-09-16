@@ -29,8 +29,8 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 
 	<licenses>
 		<license>
-			<name>Simplified BSD License</name>
-			<url>https://github.com/prolobjectlink/${project.name}/blob/master/LICENSE</url>
+			<name>MIT</name>
+			<url></url>
 		</license>
 	</licenses>
 
@@ -91,15 +91,6 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 		<github.global.server>github</github.global.server>
 	</properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-			<version>[4.10, )</version>
-		</dependency>
-	</dependencies>
-
 	<build>
 
 		<pluginManagement>
@@ -120,8 +111,8 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 		</pluginManagement>
 
 		<plugins>
-			
-			
+
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -156,7 +147,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pdf-plugin</artifactId>
@@ -299,7 +290,8 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 						</configuration>
 					</execution>
 				</executions>
-			</plugin><plugin>
+			</plugin>
+			<plugin>
 				<groupId>org.sonatype.plugins</groupId>
 				<artifactId>nexus-staging-maven-plugin</artifactId>
 				<version>1.6.8</version>
@@ -310,23 +302,6 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 					<autoReleaseAfterClose>true</autoReleaseAfterClose>
 					<skipStaging>true</skipStaging>
 				</configuration>
-			</plugin><plugin>
-				<groupId>com.github.github</groupId>
-				<artifactId>site-maven-plugin</artifactId>
-				<version>0.11</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>site</goal>
-						</goals>
-						<phase>site</phase>
-						<configuration>
-							<server>github</server>
-							<message>Building site</message>
-							<merge>true</merge>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>

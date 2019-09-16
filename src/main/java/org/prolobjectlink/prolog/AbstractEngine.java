@@ -25,6 +25,10 @@
  */
 package org.prolobjectlink.prolog;
 
+import static org.prolobjectlink.prolog.PrologLogger.IO;
+
+import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -55,6 +59,17 @@ public abstract class AbstractEngine implements PrologEngine {
 		return provider;
 	}
 
+	public final void persist(Writer writer) {
+		PrologEngine thisEngine = this;
+		for (PrologClause prologClause : thisEngine) {
+			try {
+				writer.write("" + prologClause + "");
+			} catch (IOException e) {
+				getLogger().error(getClass(), IO, e);
+			}
+		}
+	}
+
 	public final boolean unify(PrologTerm t1, PrologTerm t2) {
 		return t1.unify(t2);
 	}
@@ -83,8 +98,7 @@ public abstract class AbstractEngine implements PrologEngine {
 		return query(goal, goals).all();
 	}
 
-	@Override
-	public Map<String, List<PrologClause>> getProgramMap() {
+	public final Map<String, List<PrologClause>> getProgramMap() {
 		Map<String, List<PrologClause>> m = new HashMap<String, List<PrologClause>>();
 		for (PrologClause clause : this) {
 			String key = clause.getIndicator();

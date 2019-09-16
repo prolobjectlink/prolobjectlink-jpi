@@ -37,20 +37,33 @@ import java.util.Map;
  * {@link PrologEngine#query(String)},{@link PrologEngine#query(PrologTerm, PrologTerm...)}
  * or {@link PrologEngine#query(PrologTerm[])}. When this methods are called the
  * prolog query is open an only with {@link #dispose()} close the current query
- * and release all internal resources explicitly.
+ * and release all internal resources.
  * </p>
  * 
  * <p>
- * Talk about {@link Iterable} and {@link Iterator}.
+ * Prolog query implement {@link Iterable} and {@link Iterator}. This
+ * implementation help to obtain successive solutions present in the query.
  * </p>
  * 
  * <pre>
- * PrologEngine engine = provider.newEngine();
+ * PrologEngine engine = provider.newEngine("zoo.pl");
  * PrologVariable x = provider.newVariable("X", 0);
  * PrologQuery query = engine.query(provider.newStructure("dark", x));
  * while (query.hasNext()) {
  * 	PrologTerm value = query.nextVariablesSolution().get(&quot;X&quot;);
  * 	System.out.println(value);
+ * }
+ * query.dispose();
+ * </pre>
+ * 
+ * <pre>
+ * PrologEngine engine = provider.newEngine("zoo.pl");
+ * PrologVariable x = provider.newVariable("X", 0);
+ * PrologQuery query = engine.query(provider.newStructure("dark", x));
+ * for (Collection&lt;PrologTerm&gt; col : query) {
+ * 	for (PrologTerm prologTerm : col) {
+ * 		System.out.println(prologTerm);
+ * 	}
  * }
  * query.dispose();
  * </pre>
@@ -97,25 +110,16 @@ public interface PrologQuery extends Iterator<Collection<PrologTerm>>, Iterable<
 	public boolean hasMoreSolutions();
 
 	/**
-	 * 
 	 * Return the prolog terms that conform the solution set for the current query.
-	 * The solution set is a prolog terms array and every term is an instance value
-	 * for the variables not anonymous involved in the query.
+	 * The solution is a prolog terms array and every term is an instance value for
+	 * the variables not anonymous involved in the query.
 	 * 
-	 * <pre>
-	 * PrologTerm[] solution = query.oneSolution();
-	 * for (int i = 0; i &lt; solution.length; i++) {
-	 * 	System.out.println(solution[i]);
-	 * }
-	 * </pre>
-	 * 
-	 * @return prolog terms solution set for the current query
+	 * @return prolog terms solution array for the current query
 	 * @since 1.0
 	 */
 	public PrologTerm[] oneSolution();
 
 	/**
-	 * 
 	 * Return the prolog terms that conform the solution set for the current query.
 	 * The solution set is a prolog terms map and every map entry is a pair variable
 	 * name and variable instance value for the variables not anonymous involved in
@@ -127,8 +131,26 @@ public interface PrologQuery extends Iterator<Collection<PrologTerm>>, Iterable<
 	 */
 	public Map<String, PrologTerm> oneVariablesSolution();
 
+	/**
+	 * Return the next prolog terms solution array for the current query. The
+	 * solution is a prolog terms array and every term is an instance value for the
+	 * variables not anonymous involved in the query.
+	 * 
+	 * @return prolog terms solution array for the current query
+	 * @since 1.0
+	 */
 	public PrologTerm[] nextSolution();
 
+	/**
+	 * Return the next prolog terms that conform the solution set for the current
+	 * query. The solution set is a prolog terms map and every map entry is a pair
+	 * variable name and variable instance value for the variables not anonymous
+	 * involved in the query.
+	 * 
+	 * @return variable name - variable instance (key - value) map that conform the
+	 *         solution set for the current query.
+	 * @since 1.0
+	 */
 	public Map<String, PrologTerm> nextVariablesSolution();
 
 	public PrologTerm[][] nSolutions(int n);

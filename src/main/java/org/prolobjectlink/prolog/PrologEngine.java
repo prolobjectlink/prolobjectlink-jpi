@@ -26,6 +26,7 @@
 package org.prolobjectlink.prolog;
 
 import java.io.Reader;
+import java.io.Writer;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -95,15 +96,63 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 */
 	public List<String> verify();
 
+	/**
+	 * Consult a file specified by the string path loading an parsing the prolog
+	 * program. If the prolog program contains syntax error a syntax exception
+	 * should be raised.
+	 * 
+	 * @param path location of the file to be consulted
+	 * @since 1.0
+	 */
 	public void consult(String path);
 
+	/**
+	 * Consult a prolog program from specified reader parsing the prolog program and
+	 * put this program into prolog engine. If the prolog program contains syntax
+	 * error a syntax exception should be raised.
+	 * 
+	 * @param reader The reader to read the prolog program from character streams
+	 * @since 1.0
+	 */
 	public void consult(Reader reader);
 
+	/**
+	 * Consult a file specified by the string path loading an parsing the prolog
+	 * program and include the loaded program into current engine. If the prolog
+	 * program contains syntax error a syntax exception should be raised.
+	 * 
+	 * @param path location of the file to be included
+	 * @since 1.0
+	 */
 	public void include(String path);
 
+	/**
+	 * Consult a prolog program from specified reader parsing the prolog program and
+	 * include this program into current prolog engine. If the prolog program
+	 * contains syntax error a syntax exception should be raised.
+	 * 
+	 * @param reader The reader to read the prolog program from character streams
+	 * @since 1.0
+	 */
 	public void include(Reader reader);
 
+	/**
+	 * Save the prolog program present in the current engine to some specific file
+	 * specified by string path.
+	 * 
+	 * @param path location of the file.
+	 * @since 1.0
+	 */
 	public void persist(String path);
+
+	/**
+	 * Write the prolog clauses in program present in the current engine using the
+	 * given driver.
+	 * 
+	 * @param writer writer for write prolog clauses in the program.
+	 * @since 1.0
+	 */
+	public void persist(Writer writer);
 
 	/**
 	 * Remove all predicate that match with the predicate indicator (PI) formed by
@@ -437,12 +486,51 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 */
 	public PrologQuery query(PrologTerm[] terms);
 
+	/**
+	 * Create a new query with at least one prolog term goal. The rest terms are
+	 * treated like a conjunctive goal and after success the first element the next
+	 * term will be resolved. The query creation process call the wrapped prolog
+	 * engine and after query creation the query instance is ready to use.
+	 * 
+	 * <pre>
+	 * PrologTerm x = provider.newVariable(&quot;X&quot;, 0);
+	 * PrologTerm dark = provider.newStructure(&quot;dark&quot;, x);
+	 * PrologTerm big = provider.newStructure(&quot;big&quot;, x);
+	 * engine.query(dark, big);
+	 * </pre>
+	 * 
+	 * @param term  prolog term to be query
+	 * @param terms prolog term array to be query.
+	 * @return a new query instance.
+	 * @since 1.0
+	 */
 	public PrologQuery query(PrologTerm term, PrologTerm... terms);
 
-	//
-
+	/**
+	 * Create a new prolog query and return the prolog terms that conform the
+	 * solution set for the current query. The solution set is a prolog terms map
+	 * and every map entry is a pair variable name and variable instance value for
+	 * the variables not anonymous involved in the query.
+	 * 
+	 * @param goal string query with prolog format.
+	 * @return variable name - variable instance (key - value) map that conform the
+	 *         solution set for the current query.
+	 * @since 1.0
+	 */
 	public Map<String, PrologTerm> queryOne(String goal);
 
+	/**
+	 * Create a new prolog query and return the prolog terms that conform the
+	 * solution set for the current query. The solution set is a prolog terms map
+	 * and every map entry is a pair variable name and variable instance value for
+	 * the variables not anonymous involved in the query.
+	 * 
+	 * @param term  prolog term to be query
+	 * @param terms prolog term array to be query.
+	 * @return variable name - variable instance (key - value) map that conform the
+	 *         solution set for the current query.
+	 * @since 1.0
+	 */
 	public Map<String, PrologTerm> queryOne(PrologTerm term, PrologTerm... goal);
 
 	public List<Map<String, PrologTerm>> queryAll(String goal);
