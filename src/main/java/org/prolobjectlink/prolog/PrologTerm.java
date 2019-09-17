@@ -236,6 +236,77 @@ public interface PrologTerm extends Comparable<PrologTerm> {
 	public boolean isEvaluable();
 
 	/**
+	 * Check if the current term is a reference term and the referenced object is an
+	 * instance of java true value. Most formally check if the reference term
+	 * is @(true) structure.
+	 * 
+	 * @return true if current term have like referenced object an instance of java
+	 *         true value.
+	 * @since 1.0
+	 */
+	public boolean isTrueType();
+
+	/**
+	 * Check if the current term is a reference term and the referenced object is an
+	 * instance of java false value. Most formally check if the reference term
+	 * is @(false) structure.
+	 * 
+	 * @return true if current term have like referenced object an instance of java
+	 *         false value.
+	 * @since 1.0
+	 */
+	public boolean isFalseType();
+
+	/**
+	 * Check if the current term is a reference term and the referenced object is a
+	 * java null value. Most formally check if the reference term is @(null)
+	 * structure.
+	 * 
+	 * @return true if current term have like referenced object a java null value.
+	 * @since 1.0
+	 */
+	public boolean isNullType();
+
+	/**
+	 * Check if the current term is a reference term for java void type. Most
+	 * formally check if the reference term is @(void) structure.
+	 * 
+	 * @return true if current term is a referenced to java void type.
+	 * @since 1.0
+	 */
+	public boolean isVoidType();
+
+	/**
+	 * Check if the current term is a reference term for some java object instance.
+	 * Most formally check if the reference term is an structure
+	 * like @(J#00000000000000000425).
+	 * 
+	 * 
+	 * 
+	 * @return true if current term is a referenced for some java object instance.
+	 * @since 1.0
+	 */
+	public boolean isObjectType();
+
+	/**
+	 * Check if the current term is a reference term for some java object instance
+	 * or is a reference term and the referenced object is a java null value.
+	 * 
+	 * @return true if current term is a reference term for object instance or java
+	 *         null value.
+	 * @since 1.0
+	 */
+	public boolean isReference();
+
+	/**
+	 * For references terms return the referenced object.
+	 * 
+	 * @return the referenced object if the current term is a reference prolog term
+	 * @since 1.0
+	 */
+	public Object getObject();
+
+	/**
 	 * Return current term instance if current term is not a variable or is a free
 	 * variable term. If current term is a variable bound term then return the
 	 * linked term hold by this variable after dereferencing.

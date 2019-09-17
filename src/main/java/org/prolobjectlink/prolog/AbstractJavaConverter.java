@@ -33,6 +33,7 @@ import static org.prolobjectlink.prolog.PrologTermType.INTEGER_TYPE;
 import static org.prolobjectlink.prolog.PrologTermType.LIST_TYPE;
 import static org.prolobjectlink.prolog.PrologTermType.LONG_TYPE;
 import static org.prolobjectlink.prolog.PrologTermType.NIL_TYPE;
+import static org.prolobjectlink.prolog.PrologTermType.OBJECT_TYPE;
 import static org.prolobjectlink.prolog.PrologTermType.STRUCTURE_TYPE;
 import static org.prolobjectlink.prolog.PrologTermType.TRUE_TYPE;
 import static org.prolobjectlink.prolog.PrologTermType.VARIABLE_TYPE;
@@ -100,6 +101,8 @@ public abstract class AbstractJavaConverter implements PrologJavaConverter {
 			return toObjectsArray(prologTerm.getArguments());
 		case STRUCTURE_TYPE:
 			return prologTerm;
+		case OBJECT_TYPE:
+			return prologTerm.getObject();
 		default:
 			throw new UnknownTermError(prologTerm);
 		}

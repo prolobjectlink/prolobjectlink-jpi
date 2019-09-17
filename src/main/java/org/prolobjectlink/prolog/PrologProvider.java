@@ -414,6 +414,20 @@ public interface PrologProvider extends PrologParser {
 	public PrologTerm newStructure(Object left, String operator, Object right);
 
 	/**
+	 * Create a prolog object reference term that hold the given object. This
+	 * reference term is inspired on JPL JRef. This term is like a structure
+	 * compound term that have like argument the object identification atom. The
+	 * functor is the <tt>@</tt> character and the arity is 1. An example of this
+	 * prolog term is e.g <tt>@(J#00000000000000425)</tt>. To access to the
+	 * referenced object we need use {@link PrologTerm#getObject()}.
+	 * 
+	 * @param object object to be referenced
+	 * @return a prolog object reference term
+	 * @since 1.0
+	 */
+	public PrologTerm newReference(Object object);
+
+	/**
 	 * Get a Java to Prolog converter instance to map the abstract prolog data types
 	 * to Java types.
 	 * 

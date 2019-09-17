@@ -531,11 +531,11 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 *         solution set for the current query.
 	 * @since 1.0
 	 */
-	public Map<String, PrologTerm> queryOne(PrologTerm term, PrologTerm... goal);
+	public Map<String, PrologTerm> queryOne(PrologTerm term, PrologTerm... terms);
 
 	public List<Map<String, PrologTerm>> queryAll(String goal);
 
-	public List<Map<String, PrologTerm>> queryAll(PrologTerm term, PrologTerm... goal);
+	public List<Map<String, PrologTerm>> queryAll(PrologTerm term, PrologTerm... terms);
 
 	/**
 	 * Create a new clause builder instance to build prolog clauses
