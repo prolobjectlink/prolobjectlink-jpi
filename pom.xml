@@ -65,6 +65,20 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 		<system>GitHub</system>
 		<url>https://github.com/prolobjectlink/${project.name}/issues</url>
 	</issueManagement>
+	
+	 <repositories>
+        <repository>
+            <id>ossrh</id>
+            <name>Sonatype Nexus Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
 	<distributionManagement>
 		<snapshotRepository>
@@ -308,7 +322,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 
 	<reporting>
 		<excludeDefaults>true</excludeDefaults>
-		<outputDirectory>${project.build.directory}/site</outputDirectory>
+		<outputDirectory>${project.basedir}/doc</outputDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

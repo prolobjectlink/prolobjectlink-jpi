@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.2.5" timestamp="2019-09-22T08:40:33.494">
+<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\org\prolobjectlink\prolog\AbstractConsole.java">
+<violation beginline="155" endline="157" begincolumn="57" endcolumn="25" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.prolobjectlink.prolog" class="AbstractConsole" method="run" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+</file>
+<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\org\prolobjectlink\prolog\AbstractJavaConverter.java">
+<violation beginline="26" endline="198" begincolumn="1" endcolumn="3" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="org.prolobjectlink.prolog" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
+Too many static imports may lead to messy code
+</violation>
+</file>
+</pmd>
