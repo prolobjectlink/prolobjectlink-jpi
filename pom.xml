@@ -191,7 +191,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 				<executions>
 					<execution>
 						<id>create-archive</id>
-						<phase>package</phase>
+						<phase>site</phase>
 						<goals>
 							<goal>single</goal>
 						</goals>
