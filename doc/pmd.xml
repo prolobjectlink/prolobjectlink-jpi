@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.2.5" timestamp="2019-09-23T09:58:12.823">
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\org\prolobjectlink\prolog\AbstractConsole.java">
+<pmd version="4.2.5" timestamp="2020-03-26T20:40:13.166">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\org\prolobjectlink\prolog\AbstractConsole.java">
 <violation beginline="155" endline="157" begincolumn="57" endcolumn="25" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.prolobjectlink.prolog" class="AbstractConsole" method="run" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\org\prolobjectlink\prolog\AbstractJavaConverter.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\org\prolobjectlink\prolog\AbstractJavaConverter.java">
 <violation beginline="26" endline="198" begincolumn="1" endcolumn="3" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="org.prolobjectlink.prolog" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
 Too many static imports may lead to messy code
 </violation>
