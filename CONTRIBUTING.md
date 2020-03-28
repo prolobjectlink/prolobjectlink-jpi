@@ -61,7 +61,7 @@ Add your dependecies indluding Java Prolog Interface API
 <dependencies>
 	...
 	<dependency>
-		<groupId>org.prolobjectlink</groupId>
+		<groupId>io.github.prolobjectlink</groupId>
 		<artifactId>prolobjectlink-jpi</artifactId>
 		<version>[1.0-SNAPSHOT, )</version>
 	</dependency>
