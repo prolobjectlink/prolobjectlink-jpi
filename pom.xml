@@ -174,7 +174,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 							<goal>pdf</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.basedir}/doc</outputDirectory>
+							<outputDirectory>${project.basedir}/docs</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>
@@ -346,7 +346,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 
 	<reporting>
 		<excludeDefaults>true</excludeDefaults>
-		<outputDirectory>${project.basedir}/doc</outputDirectory>
+		<outputDirectory>${project.basedir}/docs</outputDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

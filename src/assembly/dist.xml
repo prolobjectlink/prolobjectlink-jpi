@@ -24,13 +24,13 @@
 		<!-- api documentation -->
 		<fileSet>
 			<directory>${project.build.directory}/apidocs</directory>
-			<outputDirectory>doc/apidocs</outputDirectory>
+			<outputDirectory>docs/apidocs</outputDirectory>
 		</fileSet>
 		
 		<!-- documentation pdf -->
 		<fileSet>
 			<directory>${project.build.directory}/site</directory>
-			<outputDirectory>doc</outputDirectory>
+			<outputDirectory>docs</outputDirectory>
 			<includes>
 				<include>${project.name}.pdf</include>
 			</includes>
