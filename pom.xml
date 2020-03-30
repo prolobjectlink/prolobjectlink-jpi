@@ -19,12 +19,12 @@ JPI can be include in any Java Project using the commonest Java Integration Deve
 
 JPI is developed and maintained by Prolobjectlink Project an open source initiative for build logic based applications using Prolog like fundamental Logic Programming Language in the persistence layer and application programming.</description>
 
-	<url>https://github.com/prolobjectlink/${project.name}</url>
+	<url>https://prolobjectlink.github.io/${project.name}</url>
 	<inceptionYear>2012</inceptionYear>
 
 	<organization>
 		<name>Prolobjectlink Project</name>
-		<url>https://github.com/prolobjectlink/${project.name}</url>
+		<url>https://prolobjectlink.github.io/${project.name}</url>
 	</organization>
 
 	<licenses>
@@ -40,7 +40,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 			<name>Jose Zalacain</name>
 			<email>jzalacainllanes@gmail.com</email>
 			<organization>Prolobjectlink Project</organization>
-			<organizationUrl>http://www.logicware.org</organizationUrl>
+			<organizationUrl>https://prolobjectlink.github.io/${project.name}</organizationUrl>
 			<roles>
 				<role>architect</role>
 				<role>developer</role>
@@ -53,7 +53,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 	<scm>
 		<developerConnection>scm:git:https://github.com/prolobjectlink/${project.name}.git</developerConnection>
 		<connection>scm:git:https://github.com/prolobjectlink/${project.name}.git</connection>
-		<url>https://github.com/prolobjectlink/${project.name}</url>
+		<url>https://prolobjectlink.github.io/${project.name}</url>
 	</scm>
 
 	<ciManagement>
@@ -92,7 +92,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 		</repository>
 		<site>
 			<id>website</id>
-			<url>dav:https://webdav.opendrive.com/Public%20Folder/${project.name}</url>
+			<url>https://prolobjectlink.github.io/${project.name}</url>
 		</site>
 	</distributionManagement>
 
