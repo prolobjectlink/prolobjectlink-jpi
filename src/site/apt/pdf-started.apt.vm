@@ -80,9 +80,9 @@ Getting Started
 *----------------*---------------------------*
  bin             | Binaries scripts
 *----------------*---------------------------*
- doc             | Documentation
+ docs             | Documentation
 *----------------*---------------------------*
- lang            | Prolog programs files
+ prt            | Prolog programs files
 *----------------*---------------------------*
  lib             | Library jars files
 *----------------*---------------------------*

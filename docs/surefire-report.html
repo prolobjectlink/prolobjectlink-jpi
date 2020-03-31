@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="Date-Revision-yyyymmdd" content="20200401" />
     <meta http-equiv="Content-Language" content="en" />
-    <title>prolobjectlink-jpi &#x2013; Tag List report</title>
+    <title>prolobjectlink-jpi &#x2013; Surefire Report</title>
     <link rel="stylesheet" href="./css/apache-maven-fluido-1.5.min.css" />
     <link rel="stylesheet" href="./css/site.css" />
     <link rel="stylesheet" href="./css/print.css" media="print" />
@@ -319,10 +319,12 @@
         Changes</a>
             </li>
                     
-      <li class="active">
+      <li>
   
-            <a href="#"><span class="none"></span>Tag List</a>
-          </li>
+                          <a href="taglist.html" title="Tag List">
+          <span class="none"></span>
+        Tag List</a>
+            </li>
                     
       <li>
   
@@ -338,12 +340,10 @@
         Clirr</a>
             </li>
                     
-      <li>
+      <li class="active">
   
-                          <a href="surefire-report.html" title="Surefire Report">
-          <span class="none"></span>
-        Surefire Report</a>
-            </li>
+            <a href="#"><span class="none"></span>Surefire Report</a>
+          </li>
               </ul>
         </li>
             </ul>
@@ -372,42 +372,43 @@
                 
         <div id="bodyColumn"  class="span10" >
                                   
-            <div class="section">
-<h2><a name="Tag_List_Report"></a>Tag List Report</h2>
-<p>The following document contains the listing of user tags found in the code. Below is the summary of the occurrences per tag.</p>
-<table border="0" class="table table-striped">
-<tr class="a">
-<th>Tag Class</th>
-<th>Total number of occurrences</th>
-<th>Tag strings used by tag class</th></tr>
-<tr class="b">
-<td>FIXME</td>
-<td>0</td>
-<td>FIXME</td></tr>
-<tr class="a">
-<td><a href="#tag_class_1">TODO</a></td>
-<td>4</td>
-<td>TODO</td></tr></table>
-<p>Each tag is detailed below:</p>
+            <script type="text/javascript">
+//<![CDATA[
+function toggleDisplay(elementId) {
+ var elm = document.getElementById(elementId + 'error');
+ if (elm && typeof elm.style != "undefined") {
+ if (elm.style.display == "none") {
+ elm.style.display = "";
+ document.getElementById(elementId + 'off').style.display = "none";
+ document.getElementById(elementId + 'on').style.display = "inline";
+ } else if (elm.style.display == "") { elm.style.display = "none";
+ document.getElementById(elementId + 'off').style.display = "inline";
+ document.getElementById(elementId + 'on').style.display = "none";
+ } 
+ } 
+ }
+//]]>
+</script>
 <div class="section">
-<h3><a name="TODO"></a><a name="tag_class_1">TODO</a></h3>
-<p><b>Number of occurrences found in the code: 4</b></p>
-<table border="0" class="table table-striped">
-<tr class="b">
-<th>io.github.prolobjectlink.prolog.AbstractReference</th>
-<th>Line</th></tr>
+<h2><a name="Surefire_Report"></a>Surefire Report</h2></div>
+<div class="section">
+<h2><a name="Summary"></a>Summary</h2><a name="Summary"></a><br />
+<table border="1" class="table table-striped">
 <tr class="a">
-<td>Auto-generated method stub</td>
-<td><a href="./xref/io/github/prolobjectlink/prolog/AbstractReference.html#141">141</a></td></tr>
+<th>Tests</th>
+<th>Errors </th>
+<th>Failures</th>
+<th>Skipped</th>
+<th>Success Rate</th>
+<th>Time</th></tr>
 <tr class="b">
-<td>Auto-generated method stub</td>
-<td><a href="./xref/io/github/prolobjectlink/prolog/AbstractReference.html#167">167</a></td></tr>
-<tr class="a">
-<td>Auto-generated method stub</td>
-<td><a href="./xref/io/github/prolobjectlink/prolog/AbstractReference.html#173">173</a></td></tr>
-<tr class="b">
-<td>Auto-generated method stub</td>
-<td><a href="./xref/io/github/prolobjectlink/prolog/AbstractReference.html#179">179</a></td></tr></table></div></div>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+<td>0</td></tr></table><br />
+<p>Note: failures are anticipated and checked for with assertions while errors are unanticipated.</p><br /></div>
                   </div>
             </div>
           </div>
