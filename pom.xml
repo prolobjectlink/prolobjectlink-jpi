@@ -6,7 +6,7 @@
 	<artifactId>prolobjectlink-jpi</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<name>prolobjectlink-jpi</name>
-
+	<packaging>bundle</packaging>
 	<description>Java Prolog Interface (JPI) is an Application Provider Interface (API) for interaction between Java and Prolog programming languages. Is a bidirectional interface that communicate Java applications with Prolog program or database and Prolog procedures with Java class and methods.
 
 JPI is an abstraction layer over concrete prolog drivers over Prolog Engines. This API define all mechanism to interact with any Prolog Engine and maintain the application independent to a specific underlying engine. JPI have several connectors to open source prolog engines like SWI, YAP, XSB native engines and tuProlog, jTrolog, jLog Java based prolog engines.
@@ -102,8 +102,15 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.source>1.6</maven.compiler.source>
 		<maven.compiler.target>1.6</maven.compiler.target>
-		<github.global.server>github</github.global.server>
 	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 
@@ -121,6 +128,28 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 						</dependency>
 					</dependencies>
 				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.5.3</version>
+					<configuration>
+						<tag>v${releaseVersion}</tag>
+						<tagNameFormat>v@{project.version}</tagNameFormat>
+						<autoVersionSubmodules>true</autoVersionSubmodules>
+						<useReleaseProfile>false</useReleaseProfile>
+						<releaseProfiles>releases</releaseProfiles>
+						<goals>deploy nexus-staging:release</goals>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-scm-plugin</artifactId>
+							<version>1.8.1</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
 			</plugins>
 		</pluginManagement>
 
@@ -346,6 +375,33 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.18.1</version>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<version>2.3.7</version>
+				<configuration>
+					<instructions>
+						<Bundle-Name>Java Prolog Interface</Bundle-Name>
+						<Export-Package>${project.groupId}.prolog</Export-Package>
+						<Import-Package>javax.script;${project.groupId}.*;provide:=true</Import-Package>
+						<Bundle-SymbolicName>${project.groupId}.prolog.plugin;singleton:=true</Bundle-SymbolicName>
+						<Bundle-RequiredExecutionEnvironment>JavaSE-1.6</Bundle-RequiredExecutionEnvironment>
+					</instructions>
+				</configuration>
+				<executions>
+					<execution>
+						<id>bundle-manifest</id>
+						<!-- <phase>process-classes</phase> -->
+						<phase>install</phase>
+						<goals>
+							<goal>manifest</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 
@@ -476,5 +532,50 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 		</plugins>
 	</reporting>
 
+	<profiles>
+		<profile>
+			<id>releases</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
+						<version>1.6.8</version>
+						<extensions>true</extensions>
+						<configuration>
+							<serverId>ossrh</serverId>
+							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+							<autoReleaseAfterClose>true</autoReleaseAfterClose>
+							<skipStaging>true</skipStaging>
+						</configuration>
+						<executions>
+							<execution>
+								<id>deploy-to-sonatype</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>deploy</goal>
+									<goal>release</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.5</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>
