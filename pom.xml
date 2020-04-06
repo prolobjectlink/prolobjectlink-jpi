@@ -104,14 +104,6 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 		<maven.compiler.target>1.6</maven.compiler.target>
 	</properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.apache.felix</groupId>
-			<artifactId>org.osgi.core</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-	</dependencies>
-
 	<build>
 
 		<pluginManagement>
@@ -190,7 +182,33 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 					</execution>
 				</executions>
 			</plugin>
-
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<id>project-logo</id>
+						<phase>site</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/docs/images</outputDirectory>
+							<overwrite>true</overwrite>
+							<resources>
+								<resource>
+									<filtering>true</filtering>
+									<directory>${project.basedir}/src/main/resources/</directory>
+									<includes>
+										<include>*.png</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pdf-plugin</artifactId>
@@ -265,7 +283,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
-				<version>2.3.1</version>
+				<version>3.0.3</version>
 				<configuration>
 					<threshold>Normal</threshold>
 					<effort>Default</effort>
@@ -388,12 +406,15 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 						<Import-Package>javax.script;${project.groupId}.*;provide:=true</Import-Package>
 						<Bundle-SymbolicName>${project.groupId}.prolog.plugin;singleton:=true</Bundle-SymbolicName>
 						<Bundle-RequiredExecutionEnvironment>JavaSE-1.6</Bundle-RequiredExecutionEnvironment>
+						<Embed-Dependency>*;scope=compile|runtime;inline=false</Embed-Dependency>
+						<Embed-Directory>target/dependency</Embed-Directory>
+						<Embed-StripGroup>true</Embed-StripGroup>
+						<Embed-Transitive>true</Embed-Transitive>
 					</instructions>
 				</configuration>
 				<executions>
 					<execution>
 						<id>bundle-manifest</id>
-						<!-- <phase>process-classes</phase> -->
 						<phase>install</phase>
 						<goals>
 							<goal>manifest</goal>
@@ -401,7 +422,20 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 					</execution>
 				</executions>
 			</plugin>
-
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.1</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -455,11 +489,11 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 					<outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
 				</configuration>
 			</plugin>
-			<!-- <plugin> -->
-			<!-- <groupId>org.codehaus.mojo</groupId> -->
-			<!-- <artifactId>findbugs-maven-plugin</artifactId> -->
-			<!-- <version>2.3.1</version> -->
-			<!-- </plugin> -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>3.0.3</version>
+			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jdepend-maven-plugin</artifactId>

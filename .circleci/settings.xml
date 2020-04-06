@@ -1,0 +1,24 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+	<servers>
+		<server>
+			<id>ossrh</id>
+			<username>OSSRH_PASS</username>
+			<password>OSSRH_USER</password>
+		</server>
+	</servers>
+
+	<profiles>
+		<profile>
+			<id>Prolobjectlink</id>
+			<properties>
+				<gpg.homedir>gpg</gpg.homedir>
+				<gpg.keyname>F74AE47E1B7635EB7F7FE6C6F45AB086861F1FA6</gpg.keyname>
+				<gpg.passphrase>GPG_PASS</gpg.passphrase>
+			</properties>
+		</profile>
+	</profiles>
+
+</settings>
