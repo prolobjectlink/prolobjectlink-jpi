@@ -31,100 +31,22 @@
  2019-03-31
  ------
 
-  Paragraph 1, line 1.
-  Paragraph 1, line 2.
-
-  Paragraph 2, line 1.
-  Paragraph 2, line 2.
-
-Section title
-
-* Sub-section title
-
-** Sub-sub-section title
-
-*** Sub-sub-sub-section title
-
-**** Sub-sub-sub-sub-section title
-
-      * List item 1.
-
-      * List item 2.
-
-        Paragraph contained in list item 2.
-
-            * Sub-list item 1.
-
-            * Sub-list item 2.
-
-      * List item 3.
-        Force end of list:
-
-      []
-
-+------------------------------------------+
-Verbatim text not contained in list item 3
-+------------------------------------------+
-
-      [[1]] Numbered item 1.
-
-                [[A]] Numbered item A.
-
-                [[B]] Numbered item B.
-
-      [[2]] Numbered item 2.
-
-  List numbering schemes: [[1]], [[a]], [[A]], [[i]], [[I]].
-
-      [Defined term 1] of definition list.
-
-      [Defined term 2] of definition list.
-
-+-------------------------------+
-Verbatim text
-                        in a box
-+-------------------------------+
-
-  --- instead of +-- suppresses the box around verbatim text.
-
-[Figure name] Figure caption
-
-*----------*--------------+----------------:
-| Centered | Left-aligned | Right-aligned  |
-| cell 1,1 | cell 1,2     | cell 1,3       |
-*----------*--------------+----------------:
-| cell 2,1 | cell 2,2     | cell 2,3       |
-*----------*--------------+----------------:
-Table caption
-
-  No grid, no caption:
-
-*-----*------*
- cell | cell
-*-----*------*
- cell | cell
-*-----*------*
-
-  Horizontal line:
-
-=======================================================================
-
-^L
-  New page.
-
-  <Italic> font. <<Bold>> font. <<<Monospaced>>> font.
-
-  {Anchor}. Link to {{anchor}}. Link to {{http://www.pixware.fr}}.
-  Link to {{{anchor}showing alternate text}}.
-  Link to {{{http://www.pixware.fr}Pixware home page}}.
-
-  Force line\
-  break.
-
-  Non\ breaking\ space.
-
-  Escaped special characters: \~, \=, \-, \+, \*, \[, \], \<, \>, \{, \}, \\.
-
-  Copyright symbol: \251, \xA9, \u00a9.
-
-~~Commented out.
+Prolog Programming
+ 
+* Prolog Language
+ 
+ 	The Prolog belongs to the declarative programming languages paradigm. the Prolog
+ 	programs are based on valid conclusion over facts. Prolog is a LP 
+ 	language specially indicated to modeling problems that imply objects and relations
+ 	among objects. Prolog have simple syntax, is weakness typed, have simples data 
+ 	structures, support recursion and is extensible. One Prolog program have two basic
+ 	components or clause, facts and rules.
+ 	
+ 	All Prolog programs are a succession of clauses where every clause end with dot 
+ 	character. They are two kind of clauses, Facts and Rules. Every Prolog clause have
+ 	two components, one head and one body. Facts are the case where the clause only have
+ 	head component but don't have body and they are used to indicate things unconditionally
+ 	true about some domain. Rule have head and body and both are separate by neck operator
+ 	(:-). Rules are used to indicate things conditionally true about some domain. Neck
+ 	operator semantic denote that one condition should be satisfy by the clause head to be
+ 	true. The clause body specify the condition order to verify for the conclusion or head.
