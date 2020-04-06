@@ -22,6 +22,10 @@ jobs: # a collection of steps
             - ~/.m2
           key: circleci-prolobjectlink-jpi-{{ checksum "pom.xml" }}
       
+      - run: sudo apt-get install gnupg2
+      - run: echo $GPG_KEY | base64 --decode > build.gpg
+      - run: gpg --import build.gpg
+      
       #- run: mvn package # run the actual tests
       - run: mvn -s .circleci/settings.xml deploy
       
