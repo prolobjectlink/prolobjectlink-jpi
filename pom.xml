@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.github.prolobjectlink</groupId>
 	<artifactId>prolobjectlink-jpi</artifactId>
@@ -28,7 +30,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 	<licenses>
 		<license>
 			<name>MIT</name>
-			<url />
+			<url>http://www.opensource.org/licenses/mit-license.php</url>
 		</license>
 	</licenses>
 
@@ -52,7 +54,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 		<developerConnection>scm:git:https://github.com/prolobjectlink/${project.name}.git</developerConnection>
 		<connection>scm:git:https://github.com/prolobjectlink/${project.name}.git</connection>
 		<url>https://prolobjectlink.github.io/${project.name}</url>
-		<tag>v${releaseVersion}</tag>
+		<tag>v@{project.version}</tag>
 	</scm>
 
 	<ciManagement>
@@ -64,6 +66,23 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 		<system>GitHub</system>
 		<url>https://github.com/prolobjectlink/${project.name}/issues</url>
 	</issueManagement>
+
+	<mailingLists>
+		<mailingList>
+			<name>Developer List</name>
+			<subscribe>prolobjectlink+subscribe@googlegroups.com</subscribe>
+			<unsubscribe>prolobjectlink+unsubscribe@googlegroups.com</unsubscribe>
+			<post>prolobjectlink@googlegroups.com</post>
+			<archive>http://groups.google.com/group/prolobjectlink</archive>
+		</mailingList>
+		<mailingList>
+			<name>Users List</name>
+			<subscribe>prolobjectlink+subscribe@googlegroups.com</subscribe>
+			<unsubscribe>prolobjectlink+unsubscribe@googlegroups.com</unsubscribe>
+			<post>prolobjectlink@googlegroups.com</post>
+			<archive>http://groups.google.com/group/prolobjectlink</archive>
+		</mailingList>
+	</mailingLists>
 
 	<repositories>
 		<repository>
@@ -87,7 +106,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 		<repository>
 			<id>ossrh</id>
 			<name>Nexus Release Repository</name>
-			<url>https://oss.sonatype.org/content/repositories/release/</url>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 		<site>
 			<id>website</id>
@@ -119,45 +138,10 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 						</dependency>
 					</dependencies>
 				</plugin>
-
-
-
 			</plugins>
 		</pluginManagement>
 
 		<plugins>
-
-
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.5.3</version>
-				<configuration>
-					<mavenHome>C:/Program Files/apache-maven-3.2.1</mavenHome>
-					<tag>v${releaseVersion}</tag>
-					<tagNameFormat>v@{project.version}</tagNameFormat>
-					<autoVersionSubmodules>true</autoVersionSubmodules>
-					<useReleaseProfile>false</useReleaseProfile>
-					<releaseProfiles>releases</releaseProfiles>
-					<goals>deploy nexus-staging:release</goals>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.maven.shared</groupId>
-						<artifactId>maven-invoker</artifactId>
-						<version>2.2</version>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-scm-plugin</artifactId>
-						<version>1.8.1</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-
-
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -422,6 +406,9 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 				<configuration>
 					<instructions>
 						<Bundle-Name>Java Prolog Interface</Bundle-Name>
+						<Implementation-Title>${project.name}</Implementation-Title>
+						<Implementation-Version>${project.version}</Implementation-Version>
+						<Bundle-DocURL>${project.url}</Bundle-DocURL>
 						<Export-Package>${project.groupId}.prolog</Export-Package>
 						<Import-Package>javax.script;${project.groupId}.*;provide:=true</Import-Package>
 						<Bundle-SymbolicName>${project.groupId}.prolog.plugin;singleton:=true</Bundle-SymbolicName>
@@ -501,6 +488,31 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 						<include>**/src/**/*.xml</include>
 					</includes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.3</version>
+				<configuration>
+					<mavenHome>C:/Program Files/apache-maven-3.2.1</mavenHome>
+					<tag>v${releaseVersion}</tag>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<useReleaseProfile>false</useReleaseProfile>
+					<releaseProfiles>releases</releaseProfiles>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.shared</groupId>
+						<artifactId>maven-invoker</artifactId>
+						<version>2.2</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-scm-plugin</artifactId>
+						<version>1.8.1</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
