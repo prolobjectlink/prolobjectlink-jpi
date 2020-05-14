@@ -32,6 +32,146 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * A PrologEngine instance is used in order to interact with the concrete prolog
+ * engine. Is used for interact with the Prolog database or to invoke a built-in
+ * predicate. It is initialized using a provider instance and calling new engine
+ * {@link PrologProvider#newEngine()}
+ * 
+ * <pre>
+ * PrologProvider provider = Prolog.getProvider(Some_PrologProvider_Impl.class);
+ * PrologEngine engine = provider.newEngine();
+ * </pre>
+ * 
+ * The {@link PrologProvider#newEngine(String)} method is used if the specified
+ * file to consult is provided.
+ * 
+ * The prolog engine have a life cycle on the user application. After create an
+ * instance we can consult any file with prolog programs using
+ * {@link #consult(Reader)} or {@link #consult(String)}. If another prolog file
+ * need to be include in main memory we can use {@link #include(Reader)} or
+ * {@link #include(String)}. We can include so much files as we needed.
+ * 
+ * <pre>
+ * engine.consult("family.pl");
+ * engine.include("company.pl");
+ * engine.include("zoo.pl");
+ * </pre>
+ * 
+ * To check if the given goal have solution using the resolution engine
+ * mechanism we can use {@link #contains(String)} or
+ * {@link #contains(PrologTerm, PrologTerm...)}. Both methods returning true if
+ * the given goal have solution or false in other case.
+ * 
+ * <pre>
+ * boolean b = engine.clause("parent( pam, bob)");
+ * </pre>
+ * 
+ * To check if there are a clause in the prolog engine we can use
+ * {@link #clause(String)} or {@link #clause(PrologTerm, PrologTerm...)}. This
+ * methods is based on the prolog engine built-in clause/2 that check if in the
+ * currents predicates exist a clause definition that match with the given
+ * clause. This methods return true if the given clause is defined in the prolog
+ * engine or false in other case. The following cases return true.
+ * 
+ * <pre>
+ * engine.assertz("parent( pam, bob)");
+ * boolean b = engine.clause("parent( X, Y);
+ * boolean t = engine.clause("parent( pam, bob)")
+ * </pre>
+ * 
+ * Java Prolog Interface have an special interface to query to prolog engine
+ * about some specific clauses an operate over solution set. {@link PrologQuery}
+ * is the mechanism to query the prolog database loaded in prolog engine. The
+ * way to create a new prolog query is invoking
+ * {@link PrologEngine#query(String)},
+ * {@link PrologEngine#query(PrologTerm, PrologTerm...)} or
+ * {@link PrologEngine#query(PrologTerm[])}. This interface have several methods
+ * to obtain one, at least N or all query results.
+ * 
+ * <pre>
+ * PrologEngine engine = provider.newEngine("zoo.pl");
+ * PrologVariable x = provider.newVariable("X", 0);
+ * PrologQuery query = engine.query(provider.newStructure("dark", x));
+ * List&lt;Object&gt; solution = query.oneResult();
+ * for (int i = 0; i &lt; solution.size(); i++) {
+ * 	System.out.println(solution.get(i));
+ * }
+ * </pre>
+ * 
+ * queryOne queryN queryAll
+ * 
+ * After create an empty prolog engine and load any prolog program, we can
+ * modify the program/database. For this propose we have the methods
+ * {@link #asserta(String)}, {@link #asserta(PrologTerm,PrologTerm...)} or
+ * {@link #assertz(String)}, {@link #assertz(PrologTerm,PrologTerm...)}. The
+ * asserta methods are used when we need store a prolog clause term on top in
+ * the clause family and assertz by other hand, are when we need store a prolog
+ * clause term on the tail in the clause family.
+ * 
+ * <pre>
+ * engine.asserta("grandparent(X,Z):-parent(X,Y),parent(Y,Z)");
+ * engine.asserta("parent( pat, jim)");
+ * </pre>
+ * 
+ * <pre>
+ * engine.assertz("parent( pat, jim)");
+ * engine.assertz("grandparent(X,Z):-parent(X,Y),parent(Y,Z)");
+ * </pre>
+ * 
+ * For remove clauses in the main memory program if the clause exist can be used
+ * {@link #retract(String)} or {@link #retract(PrologTerm, PrologTerm...)}. Both
+ * methods after build internal clause representation find the specific clause
+ * and if this exist remove it. By other hand if we need remove all clause
+ * family we can use {@link #abolish(String, int)}. This method remove all
+ * predicates that match with the predicate indicator (PI) formed by the
+ * concatenation of the given string functor and integer arity separated by
+ * slash (functor/arity).
+ * 
+ * <pre>
+ * engine.retract("parent( tom, bob)");
+ * </pre>
+ * 
+ * <pre>
+ * engine.abolish("parent", 2);
+ * </pre>
+ * 
+ * All change that take place in the current engine can save to some specific
+ * file using {@link #persist(String)} or {@link #persist(Writer)}.
+ * 
+ * <pre>
+ * engine.assertz(provider.newStructure("parent", pam, bob));
+ * engine.assertz(provider.newStructure("parent", tom, bob));
+ * engine.assertz(provider.newStructure("parent", tom, liz));
+ * engine.assertz(provider.newStructure("parent", bob, ann));
+ * engine.assertz(provider.newStructure("parent", bob, pat));
+ * engine.assertz(provider.newStructure("parent", pat, jim));
+ * 
+ * engine.persist("family.pl");
+ * </pre>
+ * 
+ * By the last {@link #dispose()} clear program in main memory. Release all
+ * resources used and prepare the current engine for realize some new task.
+ * 
+ * <pre>
+ * engine.dispose();
+ * </pre>
+ * 
+ * An additional capability of the prolog engine is the {@link Iterable}
+ * implementation. This allow to prolog engine iterate over all user defined
+ * clauses using a for-each loop or iterator loop.
+ * 
+ * <pre>
+ * for (PrologClause c : engine) {
+ * 	// do something
+ * }
+ * </pre>
+ * 
+ * <pre>
+ * Iterator<?> i = engine.iterator();
+ * while (i.hasNext()) {
+ * 	// do something
+ * }
+ * </pre>
  * 
  * @author Jose Zalacain
  * @since 1.0
@@ -155,7 +295,7 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	public void persist(Writer writer);
 
 	/**
-	 * Remove all predicate that match with the predicate indicator (PI) formed by
+	 * Remove all predicates that match with the predicate indicator (PI) formed by
 	 * the concatenation of the given string functor and integer arity separated by
 	 * slash (functor/arity).
 	 * 
@@ -426,7 +566,7 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	/**
 	 * Parse the string creating internal prolog clause and returning true if the
 	 * given goal have solution using the resolution engine mechanism. If wrapped
-	 * engine not support a dedicated method the
+	 * engine not support a dedicated method then contains can be defined like
 	 * 
 	 * {@code query(goal).hasSolution()}
 	 * 
@@ -438,7 +578,8 @@ public interface PrologEngine extends Iterable<PrologClause> {
 
 	/**
 	 * Check if the given goal array have solution using the resolution engine
-	 * mechanism. If wrapped engine not support a dedicated method the
+	 * mechanism. If wrapped engine not support a dedicated method then contains can
+	 * be defined like
 	 * 
 	 * {@code query(goal).hasSolution()}
 	 * 
@@ -457,7 +598,7 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * raise an syntax exception if the string query have prolog errors.
 	 * 
 	 * <pre>
-	 * engine.query(&quot;parent(X, Y)&quot;);
+	 * PrologQuery query = engine.query(&quot;parent(X, Y)&quot;);
 	 * </pre>
 	 * 
 	 * @param query string goal with prolog syntax.
@@ -477,7 +618,7 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * PrologTerm dark = provider.newStructure(&quot;dark&quot;, x);
 	 * PrologTerm big = provider.newStructure(&quot;big&quot;, x);
 	 * PrologTerm[] goals = new PrologTerm[] { dark, big };
-	 * engine.query(goals);
+	 * PrologQuery query = engine.query(goals);
 	 * </pre>
 	 * 
 	 * @param terms prolog term array to be query.
@@ -496,7 +637,7 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * PrologTerm x = provider.newVariable(&quot;X&quot;, 0);
 	 * PrologTerm dark = provider.newStructure(&quot;dark&quot;, x);
 	 * PrologTerm big = provider.newStructure(&quot;big&quot;, x);
-	 * engine.query(dark, big);
+	 * PrologQuery query = engine.query(dark, big);
 	 * </pre>
 	 * 
 	 * @param term  prolog term to be query
@@ -512,6 +653,10 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * and every map entry is a pair variable name and variable instance value for
 	 * the variables not anonymous involved in the query.
 	 * 
+	 * <pre>
+	 * List&ltMap&ltString, PrologTerm>> m = engine.queryAll("parent(X, Y)");
+	 * </pre>
+	 * 
 	 * @param goal string query with prolog format.
 	 * @return variable name - variable instance (key - value) map that conform the
 	 *         solution set for the current query.
@@ -525,6 +670,12 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * and every map entry is a pair variable name and variable instance value for
 	 * the variables not anonymous involved in the query.
 	 * 
+	 * <pre>
+	 * PrologVariable x = provider.newVariable("X", 0);
+	 * PrologVariable y = provider.newVariable("Y", 1);
+	 * Map&ltString, PrologTerm>> m = engine.queryOne(provider.newStructure("parent", x, y));
+	 * </pre>
+	 * 
 	 * @param term  prolog term to be query
 	 * @param terms prolog term array to be query.
 	 * @return variable name - variable instance (key - value) map that conform the
@@ -533,8 +684,70 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 */
 	public Map<String, PrologTerm> queryOne(PrologTerm term, PrologTerm... terms);
 
+	/**
+	 * Create a new prolog query and return the list of (N) prolog terms that
+	 * conform the solution set for the current query. Each list item is a prolog
+	 * terms map and every map entry is a pair variable name and variable instance
+	 * value for the variables not anonymous involved in the query.
+	 * 
+	 * @param goal string with prolog syntax to be query
+	 * @return the list of prolog terms that conform the solution set for the
+	 *         current query.
+	 * @since 1.0
+	 */
+	public List<Map<String, PrologTerm>> queryN(int n, String goal);
+
+	/**
+	 * Create a new prolog query and return the list of (N) prolog terms that
+	 * conform the solution set for the current query. Each list item is a prolog
+	 * terms map and every map entry is a pair variable name and variable instance
+	 * value for the variables not anonymous involved in the query.
+	 * 
+	 * <pre>
+	 * PrologVariable x = provider.newVariable("X", 0);
+	 * PrologVariable y = provider.newVariable("Y", 1);
+	 * List&ltMap&ltString, PrologTerm>> m = engine.queryN(5,provider.newStructure("parent", x, y));
+	 * </pre>
+	 * 
+	 * @param term  prolog term to be query
+	 * @param terms prolog term array to be query.
+	 * @return the list of prolog terms that conform the solution set for the
+	 *         current query.
+	 * @since 1.0
+	 */
+	public List<Map<String, PrologTerm>> queryN(int n, PrologTerm term, PrologTerm... terms);
+
+	/**
+	 * Create a new prolog query and return the list of prolog terms that conform
+	 * the solution set for the current query. Each list item is a prolog terms map
+	 * and every map entry is a pair variable name and variable instance value for
+	 * the variables not anonymous involved in the query.
+	 * 
+	 * @param goal string with prolog syntax to be query
+	 * @return the list of prolog terms that conform the solution set for the
+	 *         current query.
+	 * @since 1.0
+	 */
 	public List<Map<String, PrologTerm>> queryAll(String goal);
 
+	/**
+	 * Create a new prolog query and return the list of prolog terms that conform
+	 * the solution set for the current query. Each list item is a prolog terms map
+	 * and every map entry is a pair variable name and variable instance value for
+	 * the variables not anonymous involved in the query.
+	 * 
+	 * <pre>
+	 * PrologVariable x = provider.newVariable("X", 0);
+	 * PrologVariable y = provider.newVariable("Y", 1);
+	 * List&ltMap&ltString, PrologTerm>> m = engine.queryAll(provider.newStructure("parent", x, y));
+	 * </pre>
+	 * 
+	 * @param term  prolog term to be query
+	 * @param terms prolog term array to be query.
+	 * @return the list of prolog terms that conform the solution set for the
+	 *         current query.
+	 * @since 1.0
+	 */
 	public List<Map<String, PrologTerm>> queryAll(PrologTerm term, PrologTerm... terms);
 
 	/**
@@ -649,7 +862,15 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	/**
 	 * Predicate set defined in the wrapped prolog engine. The predicate set will be
 	 * constituted by the supported built-ins predicate in the wrapped prolog engine
-	 * and user defined predicates present in the prolog program/database.
+	 * and user defined predicates present in the prolog program/database. More
+	 * formally current predicate set is defined by the union between user defined
+	 * predicates and prolog engine built-ins.
+	 * 
+	 * <pre>
+	 * Set&ltPrologIndicator> cp = new HashSet&ltPrologIndicator>();
+	 * cp.addAll(getPredicates());
+	 * cp.addAll(getBuiltIns());
+	 * </pre>
 	 * 
 	 * @return Defined Predicate Set.
 	 * @since 1.0
@@ -703,8 +924,25 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 */
 	public boolean isProgramEmpty();
 
+	/**
+	 * User defined predicate set defined in the wrapped prolog engine. The
+	 * predicate set will be constituted by user defined predicates present in the
+	 * prolog program/database. The supported built-ins predicate in the wrapped
+	 * prolog engine not be include in this set.
+	 * 
+	 * @return User Defined Predicate Set.
+	 * @since 1.0
+	 */
 	public Set<PrologIndicator> getPredicates();
 
+	/**
+	 * Predicate set defined by the supported built-ins predicate in the wrapped
+	 * prolog engine. The user defined predicates in the wrapped prolog engine not
+	 * be include in this set.
+	 * 
+	 * @return built-ins predicates set.
+	 * @since 1.0
+	 */
 	public Set<PrologIndicator> getBuiltIns();
 
 	/**

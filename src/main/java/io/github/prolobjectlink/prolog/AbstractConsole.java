@@ -105,6 +105,7 @@ public abstract class AbstractConsole implements PrologConsole {
 		output.println("	-t	test and report integration conditions");
 		output.println("	-p	print in a file a snapshot of currents predicates");
 		output.println("	-s	generate .project file for Prolog Development Tool");
+
 	}
 
 	public final void run(String[] args) {
@@ -178,6 +179,9 @@ public abstract class AbstractConsole implements PrologConsole {
 					Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
 					System.exit(1);
 				}
+			} else if (m.containsKey("-h")) {
+				System.exit(1);
+				printUsage();
 			} else {
 				printUsage();
 				System.exit(1);

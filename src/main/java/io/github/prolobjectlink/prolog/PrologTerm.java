@@ -78,9 +78,33 @@ package io.github.prolobjectlink.prolog;
  * }
  * </pre>
  * 
- * <p>
- * Talk about {@link #unify(PrologTerm)}
- * </p>
+ * Prolog unification is the process that involves one or more variables such
+ * that they are instantiated with the necessary terms in order to make two
+ * terms are identical. The prolog term interface provide
+ * {@link #unify(PrologTerm)} method to check that the current term unify with
+ * the given term. Prolog unification algorithm is based on three principals
+ * rules:
+ * <ul>
+ * <li>If x and y are atomics constants then x and y unify only if they are same
+ * object.</li>
+ * <li>If x is a variable and y is anything then they unify and x is
+ * instantiated to y. Conversely, if y is a variable then this is instantiated
+ * to x.</li>
+ * <li>If x and y are structured terms then unify only if they match (equals
+ * funtor and arity) and all their correspondents arguments unify.</li>
+ * </ul>
+ * 
+ * <pre>
+ * PrologAtom atom = provider.newAtom("smith");
+ * PrologAtom atom1 = provider.newAtom("doe");
+ * // true because the atoms are equals
+ * assertTrue(atom.unify(atom));
+ * // false because the atoms are different
+ * assertFalse(atom.unify(atom1));
+ * PrologVariable variable = provider.newVariable("X", 0);
+ * // true because atom and variable unify
+ * assertTrue(atom.unify(variable));
+ * </pre>
  * 
  * @author Jose Zalacain
  * @since 1.0

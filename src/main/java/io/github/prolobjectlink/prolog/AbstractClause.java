@@ -134,6 +134,10 @@ public abstract class AbstractClause implements PrologClause {
 		return head.getArgument(index);
 	}
 
+	public final boolean hasIndicator(String functor, int arity) {
+		return getHead().hasIndicator(functor, arity);
+	}
+
 	public final String getIndicator() {
 		return head.getIndicator();
 	}

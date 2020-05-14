@@ -30,6 +30,7 @@ import static io.github.prolobjectlink.prolog.PrologLogger.IO;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -88,6 +89,14 @@ public abstract class AbstractEngine implements PrologEngine {
 
 	public final Map<String, PrologTerm> queryOne(PrologTerm goal, PrologTerm... goals) {
 		return query(goal, goals).oneVariablesSolution();
+	}
+
+	public List<Map<String, PrologTerm>> queryN(int n, String goal) {
+		return Arrays.asList(query(goal).nVariablesSolutions(n));
+	}
+
+	public List<Map<String, PrologTerm>> queryN(int n, PrologTerm term, PrologTerm... terms) {
+		return Arrays.asList(query(term, terms).nVariablesSolutions(n));
 	}
 
 	public final List<Map<String, PrologTerm>> queryAll(String goal) {

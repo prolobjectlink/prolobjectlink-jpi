@@ -34,8 +34,9 @@ import java.util.Map;
  * <p>
  * Prolog query is the mechanism to query the prolog database loaded in prolog
  * engine. The way to create a new prolog query is invoking
- * {@link PrologEngine#query(String)},{@link PrologEngine#query(PrologTerm, PrologTerm...)}
- * or {@link PrologEngine#query(PrologTerm[])}. When this methods are called the
+ * {@link PrologEngine#query(String)},
+ * {@link PrologEngine#query(PrologTerm, PrologTerm...)} or
+ * {@link PrologEngine#query(PrologTerm[])}. When this methods are called the
  * prolog query is open an only with {@link #dispose()} close the current query
  * and release all internal resources.
  * </p>

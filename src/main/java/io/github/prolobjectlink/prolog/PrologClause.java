@@ -131,6 +131,18 @@ public interface PrologClause {
 	public String getIndicator();
 
 	/**
+	 * Check if the current clause have functor/arity based indicator specified by
+	 * arguments, false in otherwise.
+	 * 
+	 * @param functor clause functor to be checked
+	 * @param arity   clause arity to be checked
+	 * @return true if the current clause have functor/arity based indicator
+	 *         specified by arguments, false in otherwise.
+	 * @since 1.0
+	 */
+	public boolean hasIndicator(String functor, int arity);
+
+	/**
 	 * True if this clause is a directive, false in other case. The implementation
 	 * for this method can be {@code getHead()==null && getBody()!=null}.
 	 * 
