@@ -167,7 +167,7 @@ import java.util.Set;
  * </pre>
  * 
  * <pre>
- * Iterator<?> i = engine.iterator();
+ * Iterator&lt;?&gt; i = engine.iterator();
  * while (i.hasNext()) {
  * 	// do something
  * }
@@ -654,7 +654,7 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * the variables not anonymous involved in the query.
 	 * 
 	 * <pre>
-	 * List&ltMap&ltString, PrologTerm>> m = engine.queryAll("parent(X, Y)");
+	 * List&lt;Map&lt;String, PrologTerm&gt;&gt; m = engine.queryAll("parent(X, Y)");
 	 * </pre>
 	 * 
 	 * @param goal string query with prolog format.
@@ -673,7 +673,7 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * <pre>
 	 * PrologVariable x = provider.newVariable("X", 0);
 	 * PrologVariable y = provider.newVariable("Y", 1);
-	 * Map&ltString, PrologTerm>> m = engine.queryOne(provider.newStructure("parent", x, y));
+	 * Map&lt;String, PrologTerm&gt; m = engine.queryOne(provider.newStructure("parent", x, y));
 	 * </pre>
 	 * 
 	 * @param term  prolog term to be query
@@ -690,6 +690,7 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * terms map and every map entry is a pair variable name and variable instance
 	 * value for the variables not anonymous involved in the query.
 	 * 
+	 * @param n query result instance number
 	 * @param goal string with prolog syntax to be query
 	 * @return the list of prolog terms that conform the solution set for the
 	 *         current query.
@@ -706,9 +707,10 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * <pre>
 	 * PrologVariable x = provider.newVariable("X", 0);
 	 * PrologVariable y = provider.newVariable("Y", 1);
-	 * List&ltMap&ltString, PrologTerm>> m = engine.queryN(5,provider.newStructure("parent", x, y));
+	 * List&lt;Map&lt;String, PrologTerm&gt;&gt; m = engine.queryN(5,provider.newStructure("parent", x, y));
 	 * </pre>
 	 * 
+	 * @param n query result instance number
 	 * @param term  prolog term to be query
 	 * @param terms prolog term array to be query.
 	 * @return the list of prolog terms that conform the solution set for the
@@ -739,7 +741,7 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * <pre>
 	 * PrologVariable x = provider.newVariable("X", 0);
 	 * PrologVariable y = provider.newVariable("Y", 1);
-	 * List&ltMap&ltString, PrologTerm>> m = engine.queryAll(provider.newStructure("parent", x, y));
+	 * List&lt;Map&lt;String, PrologTerm&gt;&gt; m = engine.queryAll(provider.newStructure("parent", x, y));
 	 * </pre>
 	 * 
 	 * @param term  prolog term to be query
@@ -867,7 +869,7 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * predicates and prolog engine built-ins.
 	 * 
 	 * <pre>
-	 * Set&ltPrologIndicator> cp = new HashSet&ltPrologIndicator>();
+	 * Set&lt;PrologIndicator&gt; cp = new HashSet&lt;PrologIndicator&gt;();
 	 * cp.addAll(getPredicates());
 	 * cp.addAll(getBuiltIns());
 	 * </pre>
