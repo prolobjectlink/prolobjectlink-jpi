@@ -125,6 +125,37 @@ public abstract class AbstractProvider implements PrologProvider {
 		return newStructure(leftTerm, operator, rightTerm);
 	}
 
+	public final PrologTerm newEntry(PrologTerm key, PrologTerm value) {
+		return new PrologEntry(this, key, value);
+	}
+
+	public final PrologTerm newEntry(Object key, Object value) {
+		PrologJavaConverter transformer = getJavaConverter();
+		PrologTerm keyTerm = transformer.toTerm(key);
+		PrologTerm valueTerm = transformer.toTerm(value);
+		return new PrologEntry(this, keyTerm, valueTerm);
+	}
+
+	public final PrologTerm newMap(Map<PrologTerm, PrologTerm> map) {
+		return new PrologMap(this, map);
+	}
+
+	public final PrologTerm newMap(int initialCapacity) {
+		return new PrologMap(this, initialCapacity);
+	}
+
+	public final PrologTerm newMap() {
+		return new PrologMap(this);
+	}
+
+	public final <T extends PrologTerm> T cast(PrologTerm term, Class<T> type) {
+		return type.cast(term);
+	}
+
+	public final <T extends PrologTerm> T cast(PrologTerm term) {
+		return (T) term;
+	}
+
 	public final <K extends PrologTerm> K toTerm(Object o, Class<K> from) {
 		return converter.toTerm(o, from);
 	}
@@ -213,62 +244,50 @@ public abstract class AbstractProvider implements PrologProvider {
 		}
 	}
 
-	@Override
 	public final int size() {
 		return getJavaConverter().size();
 	}
 
-	@Override
 	public final boolean isEmpty() {
 		return getJavaConverter().isEmpty();
 	}
 
-	@Override
 	public final boolean containsKey(Object key) {
 		return getJavaConverter().containsKey(key);
 	}
 
-	@Override
 	public final boolean containsValue(Object value) {
 		return getJavaConverter().containsValue(value);
 	}
 
-	@Override
 	public final PrologMapping<?> get(Object key) {
 		return getJavaConverter().get(key);
 	}
 
-	@Override
 	public final PrologMapping<?> put(Class<?> key, PrologMapping<?> value) {
 		return getJavaConverter().put(key, value);
 	}
 
-	@Override
 	public final PrologMapping<?> remove(Object key) {
 		return getJavaConverter().remove(key);
 	}
 
-	@Override
 	public final void putAll(Map<? extends Class<?>, ? extends PrologMapping<?>> m) {
 		getJavaConverter().putAll(m);
 	}
 
-	@Override
 	public final void clear() {
 		getJavaConverter().clear();
 	}
 
-	@Override
 	public final Set<Class<?>> keySet() {
 		return getJavaConverter().keySet();
 	}
 
-	@Override
 	public final Collection<PrologMapping<?>> values() {
 		return getJavaConverter().values();
 	}
 
-	@Override
 	public final Set<Entry<Class<?>, PrologMapping<?>>> entrySet() {
 		return getJavaConverter().entrySet();
 	}

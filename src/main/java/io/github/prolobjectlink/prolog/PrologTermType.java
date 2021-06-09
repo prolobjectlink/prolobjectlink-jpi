@@ -118,6 +118,16 @@ public final class PrologTermType {
 	 */
 	public static final int STRUCTURE_TYPE = 0x502;
 
+	/**
+	 * Map Entry type constant
+	 */
+	public static final int MAP_ENTRY_TYPE = 0x503;
+
+	/**
+	 * Map type constant
+	 */
+	public static final int MAP_TYPE = 0x504;
+
 	private PrologTermType() {
 	}
 
