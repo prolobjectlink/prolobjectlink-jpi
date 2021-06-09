@@ -176,7 +176,43 @@ import java.util.Set;
  * @author Jose Zalacain
  * @since 1.0
  */
-public interface PrologEngine extends Iterable<PrologClause> {
+public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, PrologMapping<?>> {
+
+	/**
+	 * Register a PrologMapping to be used in object conversions
+	 * 
+	 * @param mapping PrologMapping to be used in object conversions.
+	 * @since 1.1
+	 */
+	public void register(PrologMapping<?> mapping);
+
+	/**
+	 * Return a the most general form PrologTerm implicit in the PrologMapping
+	 * 
+	 * @param mapping PrologMapping to resolve PrologTerm
+	 * @return the most general form PrologTerm implicit in the PrologMapping
+	 * @since 1.1
+	 */
+	public PrologTerm getTerm(PrologMapping<?> mapping);
+
+	/**
+	 * Return the PrologTerm equivalent to Java object using the correspondent
+	 * PrologMapping
+	 * 
+	 * @param mapping mapping PrologMapping to resolve PrologTerm
+	 * @param o       Java object to convert in PrologTerm
+	 * @return the PrologTerm equivalent to Java object
+	 * @since 1.1
+	 */
+	public <O> PrologTerm getTerm(PrologMapping<?> mapping, O o);
+
+	/**
+	 * Remove a PrologMapping to be used in object conversions
+	 * 
+	 * @param mapping PrologMapping to be removed.
+	 * @since 1.1
+	 */
+	public void unregister(PrologMapping<?> mapping);
 
 	/**
 	 * Check if the host operating system name refer to Windows OS.
@@ -312,6 +348,13 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	public void abolish(String functor, int arity);
 
 	/**
+	 * 
+	 * @param cls
+	 * @since 1.1
+	 */
+	public void abolish(Class<?> cls);
+
+	/**
 	 * Parse the string creating internal prolog clause and add the clause in the
 	 * main memory program if the clause non exist. If the clause exist, will not
 	 * overwritten and the clause will not added. The string have prolog fact or
@@ -332,6 +375,27 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * @since 1.0
 	 */
 	public void asserta(String stringClause);
+
+	/**
+	 * 
+	 * @param o
+	 * @since 1.1
+	 */
+	public <O> void asserta(O o);
+
+	/**
+	 * 
+	 * @param cls
+	 * @since 1.1
+	 */
+	public void asserta(Class<?> cls);
+
+	/**
+	 * 
+	 * @param term
+	 * @since 1.1
+	 */
+	public void asserta(PrologTerm term);
 
 	/**
 	 * Add a rule specified by the rule head and rule body if the specified rule
@@ -373,6 +437,22 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	public void asserta(PrologTerm head, PrologTerm... body);
 
 	/**
+	 * 
+	 * @param head
+	 * @param body
+	 * @since 1.1
+	 */
+	public <O> void asserta(O head, O... body);
+
+	/**
+	 * 
+	 * @param head
+	 * @param body
+	 * @since 1.1
+	 */
+	public void asserta(Class<?> head, Class<?>... body);
+
+	/**
 	 * Parse the string creating internal prolog clause and add the clause in the
 	 * main memory program if the clause non exist. If the clause exist, will not
 	 * overwritten and the clause will not added. The string have prolog fact or
@@ -393,6 +473,27 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * @since 1.0
 	 */
 	public void assertz(String stringClause);
+
+	/**
+	 * 
+	 * @param o
+	 * @since 1.1
+	 */
+	public <O> void assertz(O o);
+
+	/**
+	 * 
+	 * @param cls
+	 * @since 1.1
+	 */
+	public void assertz(Class<?> cls);
+
+	/**
+	 * 
+	 * @param term
+	 * @since 1.1
+	 */
+	public void assertz(PrologTerm term);
 
 	/**
 	 * <p>
@@ -433,6 +534,22 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	public void assertz(PrologTerm head, PrologTerm... body);
 
 	/**
+	 * 
+	 * @param head
+	 * @param body
+	 * @since 1.1
+	 */
+	public <O> void assertz(O head, O... body);
+
+	/**
+	 * 
+	 * @param head
+	 * @param body
+	 * @since 1.1
+	 */
+	public void assertz(Class<?> head, Class<?>... body);
+
+	/**
 	 * Parse the string creating internal prolog clause and returning true if the
 	 * clause in the main memory program unify with the given clause. If the clause
 	 * not exist in main memory program or exist but not unify with the given clause
@@ -452,6 +569,30 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * @since 1.0
 	 */
 	public boolean clause(String stringClause);
+
+	/**
+	 * 
+	 * @param o
+	 * @return
+	 * @since 1.1
+	 */
+	public <O> boolean clause(O o);
+
+	/**
+	 * 
+	 * @param cls
+	 * @return
+	 * @since 1.1
+	 */
+	public boolean clause(Class<?> cls);
+
+	/**
+	 * 
+	 * @param term
+	 * @return
+	 * @since 1.1
+	 */
+	public boolean clause(PrologTerm term);
 
 	/**
 	 * Find a rule specified by the rule head and rule body in main memory program
@@ -488,6 +629,24 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	public boolean clause(PrologTerm head, PrologTerm... body);
 
 	/**
+	 * 
+	 * @param head
+	 * @param body
+	 * @return
+	 * @since 1.1
+	 */
+	public <O> boolean clause(O head, O... body);
+
+	/**
+	 * 
+	 * @param head
+	 * @param body
+	 * @return
+	 * @since 1.1
+	 */
+	public boolean clause(Class<?> head, Class<?>... body);
+
+	/**
 	 * Parse the string creating internal prolog clause and remove the clause in the
 	 * main memory program if the clause exist. The string have prolog fact or rule
 	 * syntax.
@@ -506,6 +665,27 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * @since 1.0
 	 */
 	public void retract(String stringClause);
+
+	/**
+	 * 
+	 * @param o
+	 * @since 1.1
+	 */
+	public <O> void retract(O o);
+
+	/**
+	 * 
+	 * @param cls
+	 * @since 1.1
+	 */
+	public void retract(Class<?> cls);
+
+	/**
+	 * 
+	 * @param term
+	 * @since 1.1
+	 */
+	public void retract(PrologTerm term);
 
 	/**
 	 * Remove a rule specified by the rule head and rule body if the specified rule
@@ -542,6 +722,22 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	public void retract(PrologTerm head, PrologTerm... body);
 
 	/**
+	 * 
+	 * @param head
+	 * @param body
+	 * @since 1.1
+	 */
+	public <O> void retract(O head, O... body);
+
+	/**
+	 * 
+	 * @param head
+	 * @param body
+	 * @since 1.1
+	 */
+	public void retract(Class<?> head, Class<?>... body);
+
+	/**
 	 * Check that two terms (x and y) unify. Prolog unification algorithm is based
 	 * on three principals rules:
 	 * <ul>
@@ -564,6 +760,28 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	public boolean unify(PrologTerm t1, PrologTerm t2);
 
 	/**
+	 * Check that two class (cls1 and cls2) unify. Two classes unify if are equals
+	 * (==) or your equivalents PrologTerm unify.
+	 * 
+	 * @param cls1 the class to unify.
+	 * @param cls2 the class to unify.
+	 * @return true if cls1 and cls2 unify, false otherwise.
+	 * @since 1.1
+	 */
+	public boolean unify(Class<?> cls1, Class<?> cls2);
+
+	/**
+	 * Check that two objects (o1 and o2) unify. Two objects unify if are equals or
+	 * your equivalents PrologTerm unify.
+	 * 
+	 * @param o1 the object to unify
+	 * @param o2 the object to unify
+	 * @return true if o1 and o2 unify, false otherwise.
+	 * @since 1.1
+	 */
+	public <O> boolean unify(O o1, O o2);
+
+	/**
 	 * Parse the string creating internal prolog clause and returning true if the
 	 * given goal have solution using the resolution engine mechanism. If wrapped
 	 * engine not support a dedicated method then contains can be defined like
@@ -575,6 +793,30 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * @since 1.0
 	 */
 	public boolean contains(String goal);
+
+	/**
+	 * 
+	 * @param goal
+	 * @return
+	 * @since 1.1
+	 */
+	public <O> boolean contains(O goal);
+
+	/**
+	 * 
+	 * @param goal
+	 * @return
+	 * @since 1.1
+	 */
+	public boolean contains(Class<?> goal);
+
+	/**
+	 * 
+	 * @param goal
+	 * @return
+	 * @since 1.1
+	 */
+	public boolean contains(PrologTerm goal);
 
 	/**
 	 * Check if the given goal array have solution using the resolution engine
@@ -592,6 +834,24 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	public boolean contains(PrologTerm goal, PrologTerm... goals);
 
 	/**
+	 * 
+	 * @param goal
+	 * @param goals
+	 * @return
+	 * @since 1.1
+	 */
+	public <O> boolean contains(O goal, O... goals);
+
+	/**
+	 * 
+	 * @param goal
+	 * @param goals
+	 * @return
+	 * @since 1.1
+	 */
+	public boolean contains(Class<?> goal, Class<?>... goals);
+
+	/**
 	 * Create a new query being the goal the given string with prolog syntax. The
 	 * query creation process call the wrapped prolog engine and after query
 	 * creation the query instance is ready to use. This particular query method can
@@ -606,6 +866,30 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * @since 1.0
 	 */
 	public PrologQuery query(String query);
+
+	/**
+	 * 
+	 * @param goal
+	 * @return
+	 * @since 1.1
+	 */
+	public <O> PrologQuery query(O goal);
+
+	/**
+	 * 
+	 * @param goal
+	 * @return
+	 * @since 1.1
+	 */
+	public PrologQuery query(PrologTerm goal);
+
+	/**
+	 * 
+	 * @param goal
+	 * @return
+	 * @since 1.1
+	 */
+	public PrologQuery query(Class<?> goal);
 
 	/**
 	 * Create a new query being the goal the given prolog term array. The given
@@ -648,6 +932,24 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	public PrologQuery query(PrologTerm term, PrologTerm... terms);
 
 	/**
+	 * 
+	 * @param goal
+	 * @param goals
+	 * @return
+	 * @since 1.1
+	 */
+	public <O> PrologQuery query(O goal, O... goals);
+
+	/**
+	 * 
+	 * @param goal
+	 * @param goals
+	 * @return
+	 * @since 1.1
+	 */
+	public PrologQuery query(Class<?> goal, Class<?>... goals);
+
+	/**
 	 * Create a new prolog query and return the prolog terms that conform the
 	 * solution set for the current query. The solution set is a prolog terms map
 	 * and every map entry is a pair variable name and variable instance value for
@@ -663,6 +965,30 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * @since 1.0
 	 */
 	public Map<String, PrologTerm> queryOne(String goal);
+
+	/**
+	 * 
+	 * @param goal
+	 * @return
+	 * @since 1.1
+	 */
+	public <O> Map<String, PrologTerm> queryOne(O goal);
+
+	/**
+	 * 
+	 * @param goal
+	 * @return
+	 * @since 1.1
+	 */
+	public Map<String, PrologTerm> queryOne(PrologTerm goal);
+
+	/**
+	 * 
+	 * @param goal
+	 * @return
+	 * @since 1.1
+	 */
+	public Map<String, PrologTerm> queryOne(Class<?> goal);
 
 	/**
 	 * Create a new prolog query and return the prolog terms that conform the
@@ -685,18 +1011,63 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	public Map<String, PrologTerm> queryOne(PrologTerm term, PrologTerm... terms);
 
 	/**
+	 * 
+	 * @param goal
+	 * @param goals
+	 * @return
+	 * @since 1.1
+	 */
+	public <O> Map<String, PrologTerm> queryOne(O goal, O... goals);
+
+	/**
+	 * 
+	 * @param goal
+	 * @param goals
+	 * @return
+	 * @since 1.1
+	 */
+	public Map<String, PrologTerm> queryOne(Class<?> goal, Class<?>... goals);
+
+	/**
 	 * Create a new prolog query and return the list of (N) prolog terms that
 	 * conform the solution set for the current query. Each list item is a prolog
 	 * terms map and every map entry is a pair variable name and variable instance
 	 * value for the variables not anonymous involved in the query.
 	 * 
-	 * @param n query result instance number
+	 * @param n    query result instance number
 	 * @param goal string with prolog syntax to be query
 	 * @return the list of prolog terms that conform the solution set for the
 	 *         current query.
 	 * @since 1.0
 	 */
 	public List<Map<String, PrologTerm>> queryN(int n, String goal);
+
+	/**
+	 * 
+	 * @param n
+	 * @param goal
+	 * @return
+	 * @since 1.1
+	 */
+	public <O> List<Map<String, PrologTerm>> queryN(int n, O goal);
+
+	/**
+	 * 
+	 * @param n
+	 * @param goal
+	 * @return
+	 * @since 1.1
+	 */
+	public List<Map<String, PrologTerm>> queryN(int n, PrologTerm goal);
+
+	/**
+	 * 
+	 * @param n
+	 * @param goal
+	 * @return
+	 * @since 1.1
+	 */
+	public List<Map<String, PrologTerm>> queryN(int n, Class<?> goal);
 
 	/**
 	 * Create a new prolog query and return the list of (N) prolog terms that
@@ -707,10 +1078,10 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * <pre>
 	 * PrologVariable x = provider.newVariable("X", 0);
 	 * PrologVariable y = provider.newVariable("Y", 1);
-	 * List&lt;Map&lt;String, PrologTerm&gt;&gt; m = engine.queryN(5,provider.newStructure("parent", x, y));
+	 * List&lt;Map&lt;String, PrologTerm&gt;&gt; m = engine.queryN(5, provider.newStructure("parent", x, y));
 	 * </pre>
 	 * 
-	 * @param n query result instance number
+	 * @param n     query result instance number
 	 * @param term  prolog term to be query
 	 * @param terms prolog term array to be query.
 	 * @return the list of prolog terms that conform the solution set for the
@@ -718,6 +1089,26 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * @since 1.0
 	 */
 	public List<Map<String, PrologTerm>> queryN(int n, PrologTerm term, PrologTerm... terms);
+
+	/**
+	 * 
+	 * @param n
+	 * @param goal
+	 * @param goals
+	 * @return
+	 * @since 1.1
+	 */
+	public <O> List<Map<String, PrologTerm>> queryN(int n, O goal, O... goals);
+
+	/**
+	 * 
+	 * @param n
+	 * @param goal
+	 * @param goals
+	 * @return
+	 * @since 1.1
+	 */
+	public List<Map<String, PrologTerm>> queryN(int n, Class<?> goal, Class<?>... goals);
 
 	/**
 	 * Create a new prolog query and return the list of prolog terms that conform
@@ -731,6 +1122,30 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * @since 1.0
 	 */
 	public List<Map<String, PrologTerm>> queryAll(String goal);
+
+	/**
+	 * 
+	 * @param goal
+	 * @return
+	 * @since 1.1
+	 */
+	public <O> List<Map<String, PrologTerm>> queryAll(O goal);
+
+	/**
+	 * 
+	 * @param goal
+	 * @return
+	 * @since 1.1
+	 */
+	public List<Map<String, PrologTerm>> queryAll(PrologTerm goal);
+
+	/**
+	 * 
+	 * @param goal
+	 * @return
+	 * @since 1.1
+	 */
+	public List<Map<String, PrologTerm>> queryAll(Class<?> goal);
 
 	/**
 	 * Create a new prolog query and return the list of prolog terms that conform
@@ -751,6 +1166,24 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	 * @since 1.0
 	 */
 	public List<Map<String, PrologTerm>> queryAll(PrologTerm term, PrologTerm... terms);
+
+	/**
+	 * 
+	 * @param goal
+	 * @param goals
+	 * @return
+	 * @since 1.1
+	 */
+	public <O> List<Map<String, PrologTerm>> queryAll(O goal, O... goals);
+
+	/**
+	 * 
+	 * @param goal
+	 * @param goals
+	 * @return
+	 * @since 1.1
+	 */
+	public List<Map<String, PrologTerm>> queryAll(Class<?> goal, Class<?>... goals);
 
 	/**
 	 * Create a new clause builder instance to build prolog clauses

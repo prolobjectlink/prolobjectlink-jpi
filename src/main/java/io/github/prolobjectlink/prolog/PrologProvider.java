@@ -25,6 +25,8 @@
  */
 package io.github.prolobjectlink.prolog;
 
+import java.util.Map;
+
 /**
  * Prolog Provider is the class to interact with all prolog components (data
  * types, constants, logger, parser, converter and engine). Allow create data
@@ -38,7 +40,7 @@ package io.github.prolobjectlink.prolog;
  * @author Jose Zalacain
  * @since 1.0
  */
-public interface PrologProvider extends PrologParser {
+public interface PrologProvider extends PrologParser, Map<Class<?>, PrologMapping<?>> {
 
 	/**
 	 * True if wrapped engine implement ISO Prolog and false in other case
@@ -426,6 +428,42 @@ public interface PrologProvider extends PrologParser {
 	 * @since 1.0
 	 */
 	public PrologTerm newReference(Object object);
+
+	/**
+	 * Register a PrologMapping to be used in object conversions
+	 * 
+	 * @param mapping PrologMapping to be used in object conversions.
+	 * @since 1.1
+	 */
+	public void register(PrologMapping<?> mapping);
+
+	/**
+	 * Return a the most general form PrologTerm implicit in the PrologMapping
+	 * 
+	 * @param mapping PrologMapping to resolve PrologTerm
+	 * @return the most general form PrologTerm implicit in the PrologMapping
+	 * @since 1.1
+	 */
+	public PrologTerm getTerm(PrologMapping<?> mapping);
+
+	/**
+	 * Return the PrologTerm equivalent to Java object using the correspondent
+	 * PrologMapping
+	 * 
+	 * @param mapping mapping PrologMapping to resolve PrologTerm
+	 * @param o       Java object to convert in PrologTerm
+	 * @return the PrologTerm equivalent to Java object
+	 * @since 1.1
+	 */
+	public <O> PrologTerm getTerm(PrologMapping<?> mapping, O o);
+
+	/**
+	 * Remove a PrologMapping to be used in object conversions
+	 * 
+	 * @param mapping PrologMapping to be removed.
+	 * @since 1.1
+	 */
+	public void unregister(PrologMapping<?> mapping);
 
 	/**
 	 * Get a Java to Prolog converter instance to map the abstract prolog data types

@@ -154,12 +154,32 @@ public interface PrologQuery extends Iterator<Collection<PrologTerm>>, Iterable<
 	 */
 	public Map<String, PrologTerm> nextVariablesSolution();
 
+	/**
+	 * 
+	 * @return
+	 * @since 1.0
+	 */
 	public PrologTerm[][] nSolutions(int n);
 
+	/**
+	 * 
+	 * @return
+	 * @since 1.0
+	 */
 	public Map<String, PrologTerm>[] nVariablesSolutions(int n);
 
+	/**
+	 * 
+	 * @return
+	 * @since 1.0
+	 */
 	public PrologTerm[][] allSolutions();
 
+	/**
+	 * 
+	 * @return
+	 * @since 1.0
+	 */
 	public Map<String, PrologTerm>[] allVariablesSolutions();
 
 	/**
@@ -195,12 +215,77 @@ public interface PrologQuery extends Iterator<Collection<PrologTerm>>, Iterable<
 	 */
 	public Map<String, Object> oneVariablesResult();
 
+	/**
+	 * 
+	 * @return
+	 * @since 1.1
+	 */
+	public List<Object> nextResult();
+
+	/**
+	 * 
+	 * @return
+	 * @since 1.1
+	 */
+	public Map<String, Object> nextVariablesResult();
+
+	/**
+	 * 
+	 * @param n
+	 * @return
+	 * @since 1.1
+	 */
+	public List<List<Object>> nResult(int n);
+
+	/**
+	 * 
+	 * @param n
+	 * @return
+	 * @since 1.1
+	 */
+	public List<Map<String, Object>> nVariablesResults(int n);
+
+	/**
+	 * 
+	 * @return
+	 * @since 1.0
+	 */
 	public List<List<Object>> allResults();
 
+	/**
+	 * 
+	 * @return
+	 * @since 1.0
+	 */
 	public List<Map<String, Object>> allVariablesResults();
 
+	/**
+	 * 
+	 * @return
+	 * @since 1.0
+	 */
 	public Map<String, PrologTerm> one();
 
+	/**
+	 * 
+	 * @return
+	 * @since 1.1
+	 */
+	public Map<String, PrologTerm> more();
+
+	/**
+	 * 
+	 * @param n
+	 * @return
+	 * @since 1.1
+	 */
+	public List<Map<String, PrologTerm>> nths(int n);
+
+	/**
+	 * 
+	 * @return
+	 * @since 1.0
+	 */
 	public List<Map<String, PrologTerm>> all();
 
 	/**

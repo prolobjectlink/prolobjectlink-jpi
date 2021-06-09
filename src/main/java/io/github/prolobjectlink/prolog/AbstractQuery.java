@@ -113,9 +113,28 @@ public abstract class AbstractQuery extends AbstractIterator<Collection<PrologTe
 		return oneVariablesSolution();
 	}
 
+	public final List<Map<String, PrologTerm>> nths(int n) {
+		Map<String, PrologTerm>[] maps = nVariablesSolutions(n);
+		return Arrays.asList(maps);
+	}
+
+	public final Map<String, PrologTerm> more() {
+		return nextVariablesSolution();
+	}
+
 	public final List<Object> oneResult() {
 		PrologTerm[] terms = oneSolution();
 		return getProvider().getJavaConverter().toObjectList(terms);
+	}
+
+	public final List<Object> nextResult() {
+		PrologTerm[] terms = nextSolution();
+		return getProvider().getJavaConverter().toObjectList(terms);
+	}
+
+	public final List<List<Object>> nResult(int n) {
+		PrologTerm[][] terms = allSolutions();
+		return getProvider().getJavaConverter().toObjectLists(terms);
 	}
 
 	public final List<List<Object>> allResults() {
@@ -126,6 +145,18 @@ public abstract class AbstractQuery extends AbstractIterator<Collection<PrologTe
 	public final Map<String, Object> oneVariablesResult() {
 		Map<String, PrologTerm> map = oneVariablesSolution();
 		return getProvider().getJavaConverter().toObjectMap(map);
+	}
+
+	@Override
+	public final Map<String, Object> nextVariablesResult() {
+		Map<String, PrologTerm> map = nextVariablesSolution();
+		return getProvider().getJavaConverter().toObjectMap(map);
+	}
+
+	@Override
+	public final List<Map<String, Object>> nVariablesResults(int n) {
+		Map<String, PrologTerm>[] maps = nVariablesSolutions(n);
+		return getProvider().getJavaConverter().toObjectMaps(maps);
 	}
 
 	public final List<Map<String, Object>> allVariablesResults() {

@@ -6,10 +6,10 @@
     <link>https://prolobjectlink.github.io/prolobjectlink-jpi</link>
     <description>prolobjectlink-jpi - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2020 Prolobjectlink Project</copyright>
+    <copyright>&#169;2020 - 2021 Prolobjectlink Project</copyright>
     <item>
-      <title>File: 61,
-             Errors: 7396,
+      <title>File: 62,
+             Errors: 8887,
              Warnings: 0,
              Infos: 0
       </title>
@@ -38,7 +38,7 @@
                   0
                 </td>
                 <td>
-                  1090
+                  1708
                 </td>
               </tr>
                           <tr>
@@ -80,7 +80,7 @@
                   0
                 </td>
                 <td>
-                  194
+                  304
                 </td>
               </tr>
                           <tr>
@@ -122,7 +122,7 @@
                   0
                 </td>
                 <td>
-                  137
+                  185
                 </td>
               </tr>
                           <tr>
@@ -136,7 +136,7 @@
                   0
                 </td>
                 <td>
-                  171
+                  291
                 </td>
               </tr>
                           <tr>
@@ -262,7 +262,7 @@
                   0
                 </td>
                 <td>
-                  540
+                  589
                 </td>
               </tr>
                           <tr>
@@ -276,7 +276,7 @@
                   0
                 </td>
                 <td>
-                  270
+                  660
                 </td>
               </tr>
                           <tr>
@@ -542,7 +542,7 @@
                   0
                 </td>
                 <td>
-                  147
+                  179
                 </td>
               </tr>
                           <tr>
@@ -571,6 +571,20 @@
                 </td>
                 <td>
                   404
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologMapping.java">io/github/prolobjectlink/prolog/PrologMapping.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  45
                 </td>
               </tr>
                           <tr>
@@ -682,7 +696,7 @@
                   0
                 </td>
                 <td>
-                  237
+                  316
                 </td>
               </tr>
                           <tr>

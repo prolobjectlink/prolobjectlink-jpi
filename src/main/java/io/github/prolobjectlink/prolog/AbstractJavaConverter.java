@@ -39,11 +39,14 @@ import static io.github.prolobjectlink.prolog.PrologTermType.TRUE_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.VARIABLE_TYPE;
 
 import java.lang.reflect.Array;
+import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Set;
 
 /**
  * Partial implementation of {@link PrologJavaConverter} interface.
@@ -51,9 +54,15 @@ import java.util.Map.Entry;
  * @author Jose Zalacain
  * @since 1.0
  */
-public abstract class AbstractJavaConverter implements PrologJavaConverter {
+public abstract class AbstractJavaConverter extends AbstractMap<Class<?>, PrologMapping<?>>
+		implements PrologJavaConverter {
 
 	private final PrologProvider provider;
+	private static final Map<Class<?>, PrologMapping<?>> converters;
+
+	static {
+		converters = new IdentityHashMap<Class<?>, PrologMapping<?>>();
+	}
 
 	protected AbstractJavaConverter(PrologProvider provider) {
 		this.provider = provider;
@@ -193,6 +202,108 @@ public abstract class AbstractJavaConverter implements PrologJavaConverter {
 			list.add(toObjectList(prologTerms));
 		}
 		return list;
+	}
+
+	@Override
+	public final int size() {
+		return converters.size();
+	}
+
+	@Override
+	public final boolean isEmpty() {
+		return converters.isEmpty();
+	}
+
+	@Override
+	public final boolean containsKey(Object key) {
+		return converters.containsKey(key);
+	}
+
+	@Override
+	public final boolean containsValue(Object value) {
+		return converters.containsValue(value);
+	}
+
+	@Override
+	public final PrologMapping<?> get(Object key) {
+		return converters.get(key);
+	}
+
+	@Override
+	public final PrologMapping<?> put(Class<?> key, PrologMapping<?> value) {
+		return converters.put(key, value);
+	}
+
+	@Override
+	public final PrologMapping<?> remove(Object key) {
+		return converters.remove(key);
+	}
+
+	@Override
+	public final void putAll(Map<? extends Class<?>, ? extends PrologMapping<?>> m) {
+		converters.putAll(m);
+	}
+
+	@Override
+	public final void clear() {
+		converters.clear();
+	}
+
+	@Override
+	public final Set<Class<?>> keySet() {
+		return converters.keySet();
+	}
+
+	@Override
+	public final Collection<PrologMapping<?>> values() {
+		return converters.values();
+	}
+
+	@Override
+	public final Set<Entry<Class<?>, PrologMapping<?>>> entrySet() {
+		return converters.entrySet();
+	}
+
+	public final void register(PrologMapping<?> mapping) {
+		put(mapping.getType(), mapping);
+	}
+
+	public final PrologTerm getTerm(PrologMapping<?> mapping) {
+		return mapping.toTerm(provider);
+	}
+
+	public final <O> PrologTerm getTerm(PrologMapping<?> mapping, O o) {
+		return mapping.toTerm(provider, o);
+	}
+
+	public void unregister(PrologMapping<?> mapping) {
+		remove(mapping.getType());
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((provider == null) ? 0 : provider.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AbstractJavaConverter other = (AbstractJavaConverter) obj;
+		if (provider == null) {
+			if (other.provider != null)
+				return false;
+		} else if (!provider.equals(other.provider)) {
+			return false;
+		}
+		return true;
 	}
 
 }

@@ -26,6 +26,7 @@
 package io.github.prolobjectlink.prolog;
 
 import java.io.File;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
@@ -210,6 +211,82 @@ public abstract class AbstractProvider implements PrologProvider {
 		if (!term.isStructure()) {
 			throw new StructureExpectedError(term);
 		}
+	}
+
+	@Override
+	public final int size() {
+		return getJavaConverter().size();
+	}
+
+	@Override
+	public final boolean isEmpty() {
+		return getJavaConverter().isEmpty();
+	}
+
+	@Override
+	public final boolean containsKey(Object key) {
+		return getJavaConverter().containsKey(key);
+	}
+
+	@Override
+	public final boolean containsValue(Object value) {
+		return getJavaConverter().containsValue(value);
+	}
+
+	@Override
+	public final PrologMapping<?> get(Object key) {
+		return getJavaConverter().get(key);
+	}
+
+	@Override
+	public final PrologMapping<?> put(Class<?> key, PrologMapping<?> value) {
+		return getJavaConverter().put(key, value);
+	}
+
+	@Override
+	public final PrologMapping<?> remove(Object key) {
+		return getJavaConverter().remove(key);
+	}
+
+	@Override
+	public final void putAll(Map<? extends Class<?>, ? extends PrologMapping<?>> m) {
+		getJavaConverter().putAll(m);
+	}
+
+	@Override
+	public final void clear() {
+		getJavaConverter().clear();
+	}
+
+	@Override
+	public final Set<Class<?>> keySet() {
+		return getJavaConverter().keySet();
+	}
+
+	@Override
+	public final Collection<PrologMapping<?>> values() {
+		return getJavaConverter().values();
+	}
+
+	@Override
+	public final Set<Entry<Class<?>, PrologMapping<?>>> entrySet() {
+		return getJavaConverter().entrySet();
+	}
+
+	public final void register(PrologMapping<?> mapping) {
+		put(mapping.getType(), mapping);
+	}
+
+	public final PrologTerm getTerm(PrologMapping<?> mapping) {
+		return mapping.toTerm(this);
+	}
+
+	public final <O> PrologTerm getTerm(PrologMapping<?> mapping, O o) {
+		return mapping.toTerm(this, o);
+	}
+
+	public void unregister(PrologMapping<?> mapping) {
+		remove(mapping.getType());
 	}
 
 }
