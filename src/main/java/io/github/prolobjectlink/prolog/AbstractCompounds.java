@@ -25,9 +25,9 @@
  */
 package io.github.prolobjectlink.prolog;
 
-public abstract class AbstractMaps extends AbstractTerm implements PrologTerm {
+public abstract class AbstractCompounds extends AbstractTerm implements PrologTerm {
 
-	public AbstractMaps(int type, PrologProvider provider) {
+	public AbstractCompounds(int type, PrologProvider provider) {
 		super(type, provider);
 	}
 
@@ -75,41 +75,45 @@ public abstract class AbstractMaps extends AbstractTerm implements PrologTerm {
 		return false;
 	}
 
-	public final boolean isTrueType() {
+	public boolean isTrueType() {
 		return false;
 	}
 
-	public final boolean isFalseType() {
+	public boolean isFalseType() {
 		return false;
 	}
 
-	public final boolean isNullType() {
+	public boolean isNullType() {
 		return false;
 	}
 
-	public final boolean isVoidType() {
+	public boolean isVoidType() {
 		return false;
 	}
 
-	public final boolean isObjectType() {
+	public boolean isObjectType() {
 		return false;
 	}
 
-	public final boolean isReference() {
+	public boolean isReference() {
 		return false;
 	}
 
-	public final Object getObject() {
+	public Object getObject() {
 		return null;
 	}
 
-	public final int getArity() {
+	public int getArity() {
 		return 2;
 	}
 
 	public final int compareTo(PrologTerm term) {
 		PrologTerm thisCompound = this;
 		PrologTerm otherCompound = term;
+
+		if (!otherCompound.isCompound()) {
+			return -1;
+		}
 
 		// comparison by arity
 		if (thisCompound.getArity() < otherCompound.getArity()) {
@@ -147,25 +151,39 @@ public abstract class AbstractMaps extends AbstractTerm implements PrologTerm {
 	public final boolean unify(PrologTerm term) {
 		PrologTerm thisTerm = this;
 		PrologTerm otherTerm = term;
-		int thisArity = thisTerm.getArity();
-		int otherArity = otherTerm.getArity();
-		String thisFunctor = thisTerm.getFunctor();
-		String otherFunctor = otherTerm.getFunctor();
-		if (thisFunctor.equals(otherFunctor) && thisArity == otherArity) {
-			PrologTerm[] thisArguments = thisTerm.getArguments();
-			PrologTerm[] otherArguments = otherTerm.getArguments();
-			if (thisArguments.length == otherArguments.length) {
-				for (int i = 0; i < thisArguments.length; i++) {
-					if (thisArguments[i] != null && otherArguments[i] != null) {
-						PrologTerm thisArgument = thisArguments[i];
-						PrologTerm otherArgument = otherArguments[i];
-						if (!thisArgument.unify(otherArgument)) {
-							return false;
+		if (thisTerm == otherTerm) {
+			return true;
+		} else if (thisTerm.isVariable()) {
+			if (thisTerm == thisTerm.getTerm()) {
+				return true;
+			}
+			return thisTerm.getTerm().unify(otherTerm);
+		} else if (otherTerm.isVariable()) {
+			if (otherTerm == otherTerm.getTerm()) {
+				return true;
+			}
+			return otherTerm.getTerm().unify(thisTerm);
+		} else if (otherTerm.isCompound()) {
+			int thisArity = thisTerm.getArity();
+			int otherArity = otherTerm.getArity();
+			String thisFunctor = thisTerm.getFunctor();
+			String otherFunctor = otherTerm.getFunctor();
+			if (thisFunctor.equals(otherFunctor) && thisArity == otherArity) {
+				PrologTerm[] thisArguments = thisTerm.getArguments();
+				PrologTerm[] otherArguments = otherTerm.getArguments();
+				if (thisArguments.length == otherArguments.length) {
+					for (int i = 0; i < thisArguments.length; i++) {
+						if (thisArguments[i] != null && otherArguments[i] != null) {
+							PrologTerm thisArgument = thisArguments[i];
+							PrologTerm otherArgument = otherArguments[i];
+							if (!thisArgument.unify(otherArgument)) {
+								return false;
+							}
 						}
 					}
 				}
+				return true;
 			}
-			return true;
 		}
 		return false;
 	}

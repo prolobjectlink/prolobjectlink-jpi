@@ -27,51 +27,15 @@ package io.github.prolobjectlink.prolog;
 
 import static io.github.prolobjectlink.prolog.PrologTermType.OBJECT_TYPE;
 
-public class AbstractReference extends AbstractTerm implements PrologReference {
+public class AbstractReference extends AbstractCompounds implements PrologReference {
 
 	protected final Object reference;
 
-	public AbstractReference(PrologProvider provider, Object reference) {
+	protected AbstractReference(PrologProvider provider, Object reference) {
 		super(OBJECT_TYPE, provider);
 		this.reference = reference;
 	}
 
-	@Override
-	public boolean isAtom() {
-		return false;
-	}
-
-	@Override
-	public boolean isNumber() {
-		return false;
-	}
-
-	@Override
-	public boolean isFloat() {
-		return false;
-	}
-
-	@Override
-	public boolean isInteger() {
-		return false;
-	}
-
-	@Override
-	public boolean isDouble() {
-		return false;
-	}
-
-	@Override
-	public boolean isLong() {
-		return false;
-	}
-
-	@Override
-	public boolean isVariable() {
-		return false;
-	}
-
-	@Override
 	public boolean isList() {
 		return false;
 	}
@@ -82,27 +46,7 @@ public class AbstractReference extends AbstractTerm implements PrologReference {
 	}
 
 	@Override
-	public boolean isNil() {
-		return false;
-	}
-
-	@Override
 	public boolean isEmptyList() {
-		return false;
-	}
-
-	@Override
-	public boolean isAtomic() {
-		return false;
-	}
-
-	@Override
-	public boolean isCompound() {
-		return true;
-	}
-
-	@Override
-	public boolean isEvaluable() {
 		return false;
 	}
 
@@ -123,13 +67,12 @@ public class AbstractReference extends AbstractTerm implements PrologReference {
 
 	@Override
 	public boolean isVoidType() {
-		return reference == Void.class;
+		return reference == void.class;
 	}
 
 	@Override
 	public boolean isObjectType() {
-		// TODO Auto-generated method stub
-		return false;
+		return getType() == OBJECT_TYPE;
 	}
 
 	@Override
@@ -154,20 +97,47 @@ public class AbstractReference extends AbstractTerm implements PrologReference {
 
 	@Override
 	public PrologTerm[] getArguments() {
-		// TODO Auto-generated method stub
-		return null;
+		String string = reference.toString();
+		PrologTerm tag = provider.newAtom(string);
+		return new PrologTerm[] { tag };
 	}
 
 	@Override
-	public boolean unify(PrologTerm term) {
-		// TODO Auto-generated method stub
-		return false;
+	public PrologTerm getTerm() {
+		String string = reference.toString();
+		PrologTerm tag = provider.newAtom(string);
+		return provider.newStructure(getFunctor(), tag);
 	}
 
 	@Override
-	public int compareTo(PrologTerm o) {
-		// TODO Auto-generated method stub
-		return 0;
+	public String toString() {
+		return "" + getTerm() + "";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((reference == null) ? 0 : reference.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AbstractReference other = (AbstractReference) obj;
+		if (reference == null) {
+			if (other.reference != null)
+				return false;
+		} else if (!reference.equals(other.reference)) {
+			return false;
+		}
+		return true;
 	}
 
 }

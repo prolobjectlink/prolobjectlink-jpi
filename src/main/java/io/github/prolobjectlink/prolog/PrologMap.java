@@ -38,7 +38,7 @@ import java.util.Set;
  * @author Jose Zalacain
  * @since 1.1
  */
-public final class PrologMap extends AbstractMaps implements PrologList, Map<PrologTerm, PrologTerm> {
+public final class PrologMap extends AbstractCompounds implements PrologList, Map<PrologTerm, PrologTerm> {
 
 	private Map<PrologTerm, PrologTerm> map;
 

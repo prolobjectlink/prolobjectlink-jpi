@@ -416,20 +416,6 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, PrologMappin
 	public PrologTerm newStructure(Object left, String operator, Object right);
 
 	/**
-	 * Create a prolog object reference term that hold the given object. This
-	 * reference term is inspired on JPL JRef. This term is like a structure
-	 * compound term that have like argument the object identification atom. The
-	 * functor is the <tt>@</tt> character and the arity is 1. An example of this
-	 * prolog term is e.g <tt>@(J#00000000000000425)</tt>. To access to the
-	 * referenced object we need use {@link PrologTerm#getObject()}.
-	 * 
-	 * @param object object to be referenced
-	 * @return a prolog object reference term
-	 * @since 1.0
-	 */
-	public PrologTerm newReference(Object object);
-
-	/**
 	 * Create a new PrologEntry using key-value pair of PrologTerm type. The
 	 * resulting term is an implementation of {@link Entry} and {@link PrologTerm}.
 	 * 
@@ -485,6 +471,56 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, PrologMappin
 	 * @since 1.1
 	 */
 	public PrologTerm newMap();
+
+	/**
+	 * Create a prolog object reference term that hold the given object. This
+	 * reference term is equivalent on JPL JRef. This term is like a structure
+	 * compound term that have like argument the object identification atom. The
+	 * functor is the <tt>@</tt> character and the arity is 1. An example of this
+	 * prolog term is e.g <tt>@(J#00000000000000425)</tt>. To access to the
+	 * referenced object we need use {@link PrologTerm#getObject()}.
+	 * 
+	 * @param object object to be referenced
+	 * @return a prolog object reference term
+	 * @since 1.0
+	 */
+	public PrologTerm newReference(Object object);
+
+	/**
+	 * Create a prolog object reference term that hold the Java false object
+	 * i.e. @(false). This reference term is equivalent on JPL JFALSE.
+	 * 
+	 * @return a prolog object reference term that hold the Java false object.
+	 * @since 1.1
+	 */
+	public PrologTerm falseReference();
+
+	/**
+	 * Create a prolog object reference term that hold the Java true object
+	 * i.e. @(true). This reference term is equivalent on JPL JTRUE.
+	 * 
+	 * @return a prolog object reference term that hold the Java true object.
+	 * @since 1.1
+	 */
+	public PrologTerm trueReference();
+
+	/**
+	 * Create a prolog object reference term that hold the Java null object
+	 * i.e. @(null). This reference term is equivalent on JPL JNULL.
+	 * 
+	 * @return a prolog object reference term that hold the Java null object.
+	 * @since 1.1
+	 */
+	public PrologTerm nullReference();
+
+	/**
+	 * Create a prolog object reference term that hold the Java void object
+	 * i.e. @(void). This reference term is equivalent on JPL JVOID.
+	 * 
+	 * @return a prolog object reference term that hold the Java void object.
+	 * @since 1.1
+	 */
+	public PrologTerm voidReference();
 
 	/**
 	 * Casts a PrologTerm to the class or interface represented by this

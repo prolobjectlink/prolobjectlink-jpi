@@ -34,7 +34,7 @@ import java.util.Map.Entry;
  * @author Jose Zalacain
  * @since 1.1
  */
-public final class PrologEntry extends AbstractMaps implements PrologTerm, Entry<PrologTerm, PrologTerm> {
+public final class PrologEntry extends AbstractCompounds implements PrologTerm, Entry<PrologTerm, PrologTerm> {
 
 	private final PrologTerm key;
 	private PrologTerm value;
