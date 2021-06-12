@@ -36,6 +36,11 @@ public class PrologFunction extends PrologMethod implements PrologClause {
 
 	private final PrologTerm result;
 
+	private static final char SEPARATOR = '=';
+	
+	@Deprecated
+	private static final String SEPARE = "-->";
+
 	PrologFunction(PrologProvider provider, PrologTerm head, PrologTerm result) {
 		super(provider, head);
 		this.result = result;
