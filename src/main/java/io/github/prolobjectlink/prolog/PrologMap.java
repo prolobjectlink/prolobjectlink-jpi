@@ -28,6 +28,7 @@ package io.github.prolobjectlink.prolog;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -73,7 +74,22 @@ public final class PrologMap extends AbstractCompounds implements PrologList, Ma
 	}
 
 	public PrologTerm[] getArguments() {
-		return map.entrySet().toArray(new PrologTerm[map.size()]);
+		PrologProvider p = getProvider();
+		PrologTerm[] args = new PrologTerm[map.size()];
+		Set<Entry<PrologTerm, PrologTerm>> s = entrySet();
+		Iterator<Entry<PrologTerm, PrologTerm>> i = s.iterator();
+		for (int j = 0; j < args.length && i.hasNext(); j++) {
+			Entry<PrologTerm, PrologTerm> e = i.next();
+			args[j] = new PrologEntry(p, e.getKey(), e.getValue());
+		}
+		return args;
+	}
+
+	public PrologTerm getArgument(int index) {
+		// TODO Optimize
+		PrologTerm[] array = getArguments();
+		checkIndex(index, array.length);
+		return array[index];
 	}
 
 	public int hashCode() {
@@ -101,6 +117,26 @@ public final class PrologMap extends AbstractCompounds implements PrologList, Ma
 	}
 
 	@Override
+	public String toString() {
+		StringBuilder b = new StringBuilder();
+		Set<Entry<PrologTerm, PrologTerm>> set = entrySet();
+		Iterator<Entry<PrologTerm, PrologTerm>> i = set.iterator();
+		b.append('[');
+		while (i.hasNext()) {
+			Entry<PrologTerm, PrologTerm> entry = i.next();
+			b.append(entry.getKey());
+			b.append('-');
+			b.append(entry.getValue());
+			if (i.hasNext()) {
+				b.append(',');
+				b.append(' ');
+			}
+		}
+		b.append(']');
+		return "" + b + "";
+	}
+
+	@Override
 	public Iterator<PrologTerm> iterator() {
 		return new PrologMapIterator();
 	}
@@ -119,20 +155,27 @@ public final class PrologMap extends AbstractCompounds implements PrologList, Ma
 
 	private class PrologMapIterator extends AbstractIterator<PrologTerm> implements Iterator<PrologTerm> {
 
-		private final Iterator<Entry<PrologTerm, PrologTerm>> i;
+		private final Set<PrologTerm> set;
+		private final Iterator<PrologTerm> itr;
 
 		private PrologMapIterator() {
-			i = map.entrySet().iterator();
+			set = new LinkedHashSet<PrologTerm>(map.size());
+			for (Iterator<Entry<PrologTerm, PrologTerm>> i = map.entrySet().iterator(); i.hasNext();) {
+				Entry<PrologTerm, PrologTerm> e = i.next();
+				PrologTerm t = new PrologEntry(provider, e.getKey(), e.getValue());
+				set.add(t);
+			}
+			itr = set.iterator();
 		}
 
 		@Override
 		public boolean hasNext() {
-			return i.hasNext();
+			return itr.hasNext();
 		}
 
 		@Override
 		public PrologTerm next() {
-			return (PrologTerm) i.next();
+			return itr.next();
 		}
 
 	}
