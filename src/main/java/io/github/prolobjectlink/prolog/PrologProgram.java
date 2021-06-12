@@ -40,17 +40,15 @@ import java.util.Set;
  * @author Jose Zalacain
  * @since 1.0
  */
-public interface PrologProgram extends Set<PrologClauses>, Iterable<PrologClauses> {
+public interface PrologProgram extends Map<String, PrologClauses>, Iterable<PrologClauses> {
 
-	public PrologClauses get(String key);
+	public PrologClauses get(String functor, int arity);
 
 	public void add(PrologClause clause);
 
 	public void add(PrologProgram program);
 
 	public void push(PrologClause clause);
-
-	public void removeAll(String key);
 
 	public void removeAll(String functor, int arity);
 
@@ -72,13 +70,24 @@ public interface PrologProgram extends Set<PrologClauses>, Iterable<PrologClause
 
 	public boolean isDiscontiguous(String functor, int arity);
 
+	public PrologClauses newClauses(String functor, int arity);
+
+	public boolean removeAll(PrologProgram program);
+
+	public boolean removeAll(PrologClauses clauses);
+
 	public Map<String, PrologClauses> getClauses();
 
 	public Set<String> getIndicators();
 
-	public String toString();
+	public void add(PrologClauses clauses);
 
-	public int hashCode();
+	public void addAll(PrologProgram program);
 
-	public boolean equals(Object object);
+	public boolean retainAll(PrologClauses parents);
+
+	public Object[] toArray(PrologClauses[] prologClauses);
+
+	public Object[] toArray();
+
 }

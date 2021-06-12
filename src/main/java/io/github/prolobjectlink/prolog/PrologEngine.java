@@ -411,11 +411,11 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public void asserta(String stringClause);
 
 	/**
-	 * Resolve the prolog equivalent term using user defined {@link Prologable}
-	 * and create internal prolog clause and add the clause in the main memory
-	 * program if the clause non exist. If the clause exist, will not overwritten
-	 * and the clause will not added. The added clause will be the first clause for
-	 * a clause lot with the same predicate indicator (PI).
+	 * Resolve the prolog equivalent term using user defined {@link Prologable} and
+	 * create internal prolog clause and add the clause in the main memory program
+	 * if the clause non exist. If the clause exist, will not overwritten and the
+	 * clause will not added. The added clause will be the first clause for a clause
+	 * lot with the same predicate indicator (PI).
 	 * 
 	 * @param o object to be added after resolve the prolog equivalent term
 	 * @since 1.1
@@ -423,12 +423,12 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public <O> void asserta(O o);
 
 	/**
-	 * Resolve the prolog equivalent term using user defined {@link Prologable}
-	 * and create internal prolog clause and add the clause in the main memory
-	 * program if the clause non exist. If the clause exist, will not overwritten
-	 * and the clause will not added. The added clause will be the first clause for
-	 * a clause lot with the same predicate indicator (PI). The given class will be
-	 * mapping to the most general predicate.
+	 * Resolve the prolog equivalent term using user defined {@link Prologable} and
+	 * create internal prolog clause and add the clause in the main memory program
+	 * if the clause non exist. If the clause exist, will not overwritten and the
+	 * clause will not added. The added clause will be the first clause for a clause
+	 * lot with the same predicate indicator (PI). The given class will be mapping
+	 * to the most general predicate.
 	 * 
 	 * @param cls object to be added after resolve the prolog equivalent term
 	 * @since 1.1
@@ -524,11 +524,11 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public void assertz(String stringClause);
 
 	/**
-	 * Resolve the prolog equivalent term using user defined {@link Prologable}
-	 * and create internal prolog clause and add the clause in the main memory
-	 * program if the clause non exist. If the clause exist, will not overwritten
-	 * and the clause will not added. The added clause will be the last clause for a
-	 * clause lot with the same predicate indicator (PI).
+	 * Resolve the prolog equivalent term using user defined {@link Prologable} and
+	 * create internal prolog clause and add the clause in the main memory program
+	 * if the clause non exist. If the clause exist, will not overwritten and the
+	 * clause will not added. The added clause will be the last clause for a clause
+	 * lot with the same predicate indicator (PI).
 	 * 
 	 * @param o object to be added after resolve the prolog equivalent term
 	 * @since 1.1
@@ -536,12 +536,12 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public <O> void assertz(O o);
 
 	/**
-	 * Resolve the prolog equivalent term using user defined {@link Prologable}
-	 * and create internal prolog clause and add the clause in the main memory
-	 * program if the clause non exist. If the clause exist, will not overwritten
-	 * and the clause will not added. The added clause will be the last clause for a
-	 * clause lot with the same predicate indicator (PI).The given class will be
-	 * mapping to the most general predicate.
+	 * Resolve the prolog equivalent term using user defined {@link Prologable} and
+	 * create internal prolog clause and add the clause in the main memory program
+	 * if the clause non exist. If the clause exist, will not overwritten and the
+	 * clause will not added. The added clause will be the last clause for a clause
+	 * lot with the same predicate indicator (PI).The given class will be mapping to
+	 * the most general predicate.
 	 * 
 	 * @param cls object to be added after resolve the prolog equivalent term
 	 * @since 1.1
@@ -635,11 +635,11 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public boolean clause(String stringClause);
 
 	/**
-	 * Resolve the prolog equivalent term using user defined {@link Prologable}
-	 * and create internal prolog clause and returning true if the clause in the
-	 * main memory program unify with the given clause. If the clause not exist in
-	 * main memory program or exist but not unify with the given clause false value
-	 * is returned.
+	 * Resolve the prolog equivalent term using user defined {@link Prologable} and
+	 * create internal prolog clause and returning true if the clause in the main
+	 * memory program unify with the given clause. If the clause not exist in main
+	 * memory program or exist but not unify with the given clause false value is
+	 * returned.
 	 * 
 	 * @param o object to be match with some clause in main memory program
 	 * @return true if the clause in the main memory program unify with the clause
@@ -649,11 +649,11 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public <O> boolean clause(O o);
 
 	/**
-	 * Resolve the prolog equivalent term using user defined {@link Prologable}
-	 * and create internal prolog clause and returning true if the clause in the
-	 * main memory program unify with the given clause. If the clause not exist in
-	 * main memory program or exist but not unify with the given clause false value
-	 * is returned. The given class will be mapping to the most general predicate.
+	 * Resolve the prolog equivalent term using user defined {@link Prologable} and
+	 * create internal prolog clause and returning true if the clause in the main
+	 * memory program unify with the given clause. If the clause not exist in main
+	 * memory program or exist but not unify with the given clause false value is
+	 * returned. The given class will be mapping to the most general predicate.
 	 * 
 	 * @param cls class to be match with some clause in main memory program
 	 * @return true if the clause in the main memory program unify with the clause
@@ -749,10 +749,10 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public void retract(String stringClause);
 
 	/**
-	 * Resolve the prolog equivalent term using user defined {@link Prologable}
-	 * and remove a fact specified by the head if the specified fact clause exist.
-	 * The shared variables in the clause are declared once and use for build the
-	 * terms that conform the clause to be removed.
+	 * Resolve the prolog equivalent term using user defined {@link Prologable} and
+	 * remove a fact specified by the head if the specified fact clause exist. The
+	 * shared variables in the clause are declared once and use for build the terms
+	 * that conform the clause to be removed.
 	 * 
 	 * @param o class mapped to fact to be removed
 	 * @since 1.1
@@ -760,11 +760,11 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public <O> void retract(O o);
 
 	/**
-	 * Resolve the prolog equivalent term using user defined {@link Prologable}
-	 * and remove a fact specified by the head if the specified fact clause exist.
-	 * The shared variables in the clause are declared once and use for build the
-	 * terms that conform the clause to be removed. The given class will be mapping
-	 * to the most general predicate.
+	 * Resolve the prolog equivalent term using user defined {@link Prologable} and
+	 * remove a fact specified by the head if the specified fact clause exist. The
+	 * shared variables in the clause are declared once and use for build the terms
+	 * that conform the clause to be removed. The given class will be mapping to the
+	 * most general predicate.
 	 * 
 	 * @param cls class mapped to fact to be removed
 	 * @since 1.1
@@ -889,8 +889,8 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public boolean contains(String goal);
 
 	/**
-	 * Resolve the prolog equivalent term using user defined {@link Prologable}
-	 * and check if the resolved goal have solution using the resolution engine
+	 * Resolve the prolog equivalent term using user defined {@link Prologable} and
+	 * check if the resolved goal have solution using the resolution engine
 	 * mechanism. If wrapped engine not support a dedicated method then contains can
 	 * be defined like:
 	 * 
@@ -903,8 +903,8 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public <O> boolean contains(O goal);
 
 	/**
-	 * Resolve the prolog equivalent term using user defined {@link Prologable}
-	 * and check if the resolved goal have solution using the resolution engine
+	 * Resolve the prolog equivalent term using user defined {@link Prologable} and
+	 * check if the resolved goal have solution using the resolution engine
 	 * mechanism. If wrapped engine not support a dedicated method then contains can
 	 * be defined like:
 	 * 
@@ -1452,6 +1452,14 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	 * @since 1.0
 	 */
 	public Set<PrologClause> getProgramClauses();
+
+	/**
+	 * Make and return a copy of the program.
+	 * 
+	 * @return a program in the current engine.
+	 * @since 1.1
+	 */
+	public PrologProgram getProgram();
 
 	/**
 	 * Number of clauses in the current engine.
