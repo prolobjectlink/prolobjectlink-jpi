@@ -183,6 +183,18 @@ public class PrologInternalMap extends PrologLinkedMap<PrologTerm, PrologTerm> i
 		return true;
 	}
 
+	public boolean isField() {
+		return false;
+	}
+
+	public boolean isMixin() {
+		return false;
+	}
+
+	public boolean isClass() {
+		return false;
+	}
+
 	public Object getObject() {
 		// can be returned the current instance ???
 		return new LinkedHashMap<PrologTerm, PrologTerm>(this);
@@ -504,6 +516,18 @@ public class PrologInternalMap extends PrologLinkedMap<PrologTerm, PrologTerm> i
 		}
 
 		public boolean isMap() {
+			return false;
+		}
+
+		public boolean isField() {
+			return false;
+		}
+
+		public boolean isMixin() {
+			return false;
+		}
+
+		public boolean isClass() {
 			return false;
 		}
 

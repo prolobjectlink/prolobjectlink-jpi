@@ -41,7 +41,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-class PrologHashMap<K, V> extends AbstractMap<K, V> {
+public class PrologHashMap<K, V> extends AbstractMap<K, V> {
 
 	protected int size;
 	protected HashEntry<K, V>[] table;

@@ -2,7 +2,7 @@
 <pmd-cpd>
 <duplication lines="41" tokens="258">
 <file line="161" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\AbstractCompounds.java"/>
-<file line="535" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologInternalMap.java"/>
+<file line="559" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologInternalMap.java"/>
 <codefragment>
 <![CDATA[
 		public boolean unify(PrologTerm term) {
@@ -51,7 +51,7 @@
 </duplication>
 <duplication lines="47" tokens="224">
 <file line="113" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\AbstractCompounds.java"/>
-<file line="590" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologInternalMap.java"/>
+<file line="614" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologInternalMap.java"/>
 <codefragment>
 <![CDATA[
 		public int compareTo(PrologTerm term) {
@@ -104,9 +104,45 @@
 ]]>
 </codefragment>
 </duplication>
+<duplication lines="28" tokens="176">
+<file line="304" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologClass.java"/>
+<file line="404" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologMixin.java"/>
+<codefragment>
+<![CDATA[
+		builder.append('\n');
+		builder.append('\t');
+		for (PrologClause method : methods) {
+			builder.append(method.getHead());
+			if (method.isMethod()) {
+				if (method.isFunction()) {
+					builder.append(' ');
+					builder.append('=');
+					builder.append(' ');
+					PrologFunction f = method.cast();
+					builder.append(f.getResult());
+					builder.append(' ');
+				}
+				builder.append(":-\n\t\t");
+				Iterator<PrologTerm> j = method.getBodyIterator();
+				while (j.hasNext()) {
+					builder.append(j.next());
+					if (j.hasNext()) {
+						builder.append(",\n\t\t");
+					}
+				}
+			}
+			builder.append('.');
+			builder.append('\n');
+			builder.append('\n');
+			builder.append('\t');
+		}
+		builder.append('\n');
+]]>
+</codefragment>
+</duplication>
 <duplication lines="24" tokens="161">
 <file line="159" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\AbstractCompounds.java"/>
-<file line="216" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologInternalMap.java"/>
+<file line="228" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologInternalMap.java"/>
 <codefragment>
 <![CDATA[
 	}
@@ -137,8 +173,8 @@
 </codefragment>
 </duplication>
 <duplication lines="22" tokens="158">
-<file line="218" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologInternalMap.java"/>
-<file line="535" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologInternalMap.java"/>
+<file line="230" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologInternalMap.java"/>
+<file line="559" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologInternalMap.java"/>
 <codefragment>
 <![CDATA[
 		public boolean unify(PrologTerm term) {
@@ -168,7 +204,7 @@
 </duplication>
 <duplication lines="34" tokens="149">
 <file line="111" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\AbstractCompounds.java"/>
-<file line="283" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologInternalMap.java"/>
+<file line="295" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologInternalMap.java"/>
 <codefragment>
 <![CDATA[
 	}
@@ -209,8 +245,8 @@
 </codefragment>
 </duplication>
 <duplication lines="32" tokens="146">
-<file line="285" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologInternalMap.java"/>
-<file line="590" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologInternalMap.java"/>
+<file line="297" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologInternalMap.java"/>
+<file line="614" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologInternalMap.java"/>
 <codefragment>
 <![CDATA[
 		public int compareTo(PrologTerm term) {
@@ -288,8 +324,8 @@
 </codefragment>
 </duplication>
 <duplication lines="33" tokens="128">
-<file line="253" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologInternalMap.java"/>
-<file line="558" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologInternalMap.java"/>
+<file line="265" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologInternalMap.java"/>
+<file line="582" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologInternalMap.java"/>
 <codefragment>
 <![CDATA[
 					if (thisArguments.length == otherArguments.length) {
@@ -325,31 +361,6 @@
 		}
 
 		public int compareTo(PrologTerm term) {
-]]>
-</codefragment>
-</duplication>
-<duplication lines="17" tokens="106">
-<file line="242" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologClass.java"/>
-<file line="332" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologMixin.java"/>
-<codefragment>
-<![CDATA[
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append(":-namespace(" + namesapce + ").");
-		builder.append('\n');
-		for (PrologTerm prologTerm : directives) {
-			builder.append(":-" + prologTerm);
-			builder.append('\n');
-		}
-		builder.append('\n');
-		for (PrologMixin ancestor : ancestors) {
-			builder.append(":-" + ancestor);
-			builder.append('\n');
-		}
-		builder.append('\n');
-		builder.append(name);
-		builder.append(getLeftencloser());
-		builder.append('\n');
 ]]>
 </codefragment>
 </duplication>

@@ -169,12 +169,30 @@ public interface PrologClause {
 
 	/**
 	 * True if this clause is a rule, false in other case. The implementation for
-	 * this method can be {@code getHead()!=null && getBody()==null}.
+	 * this method can be {@code getHead()!=null && getBody()!=null}.
 	 * 
 	 * @return whether this clause is a rule.
 	 * @since 1.0
 	 */
 	public boolean isRule();
+
+	/**
+	 * True if this clause is a rule, false in other case. The implementation for
+	 * this method can be {@code getHead()!=null && getBody()!=null}.
+	 * 
+	 * @return whether this clause is a rule.
+	 * @since 1.1
+	 */
+	public boolean isMethod();
+
+	/**
+	 * True if this clause is a function, false in other case. The implementation
+	 * for this method can be {@code getHead()!=null && getBody()!=null}.
+	 * 
+	 * @return whether this clause is a rule.
+	 * @since 1.1
+	 */
+	public boolean isFunction();
 
 	/**
 	 * Check that two clauses unify. Prolog clauses unify if and only if the head
@@ -241,5 +259,17 @@ public interface PrologClause {
 	 * @since 1.0
 	 */
 	public PrologTerm[] getBodyArray();
+
+	/**
+	 * Casts the current PrologClause to the class or interface represented by this
+	 * {@code Class} object.
+	 *
+	 * @return the PrologTerm after casting, or null if term is null
+	 *
+	 * @throws ClassCastException if the object is not null and is not assignable to
+	 *                            the type T.
+	 * @since 1.1
+	 */
+	public <T extends PrologClause> T cast();
 
 }

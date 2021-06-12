@@ -413,15 +413,15 @@ public abstract class AbstractProvider implements PrologProvider {
 		return new PrologThreadPool(parallelismLevel);
 	}
 
-	public PrologTerm newNamespace() {
+	protected PrologTerm newNamespace() {
 		return new PrologNamespace(this);
 	}
 
-	public PrologTerm newNamespace(String path) {
+	protected PrologTerm newNamespace(String path) {
 		return new PrologNamespace(this, path);
 	}
 
-	public PrologTerm newNamespace(String parent, PrologNamespace chields) {
+	protected PrologTerm newNamespace(String parent, PrologNamespace chields) {
 		return new PrologNamespace(this, parent, chields);
 	}
 
@@ -435,28 +435,53 @@ public abstract class AbstractProvider implements PrologProvider {
 		return new PrologField(this, oname, otype);
 	}
 
+	public PrologTerm newMixin(String name) {
+		return new PrologMixin(this, name);
+	}
+
+	protected PrologTerm newMixin(String namespace, String name) {
+		return new PrologMixin(this, namespace, name);
+	}
+
+	protected PrologTerm newMixin(PrologTerm namespace, String name) {
+		return new PrologMixin(this, namespace.getFunctor(), name);
+	}
+
 	public PrologTerm newMixin(String name, PrologTerm... declarations) {
 		PrologMixin pi = new PrologMixin(this, name);
 		for (int i = 0; i < declarations.length; i++) {
-//			pi.add FIXME
+			pi.addMethod(declarations[i], false, false, false);
 		}
 		return pi;
 	}
 
-	public PrologTerm newMixin(String namespace, String name, PrologTerm... declarations) {
+	protected PrologTerm newMixin(String namespace, String name, PrologTerm... declarations) {
 		PrologMixin pi = new PrologMixin(this, namespace, name);
 		for (int i = 0; i < declarations.length; i++) {
-//			pi.add FIXME
+			pi.addMethod(declarations[i], false, false, false);
 		}
 		return pi;
 	}
 
-	public PrologTerm newMixin(PrologTerm namespace, String name, PrologTerm... declarations) {
+	protected PrologTerm newMixin(PrologTerm namespace, String name, PrologTerm... declarations) {
 		PrologMixin pi = new PrologMixin(this, namespace.getFunctor(), name);
 		for (int i = 0; i < declarations.length; i++) {
-//			pi.add FIXME
+			pi.addMethod(declarations[i], false, false, false);
 		}
 		return pi;
+	}
+
+	public PrologClause newMethod(PrologTerm head) {
+		return new PrologMethod(this, head);
+	}
+
+	public PrologClause newMethod(PrologTerm head, PrologTerm body) {
+		return new PrologMethod(this, head, body);
+	}
+
+	public PrologClause newMethod(PrologTerm head, PrologTerm... body) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public PrologClause newMethod(PrologTerm head, boolean dynamic, boolean multifile, boolean discontiguous) {
@@ -466,6 +491,32 @@ public abstract class AbstractProvider implements PrologProvider {
 	public PrologClause newMethod(PrologTerm head, PrologTerm body, boolean dynamic, boolean multifile,
 			boolean discontiguous) {
 		return new PrologMethod(this, head, body, dynamic, multifile, discontiguous);
+	}
+
+	public PrologClause newFunction(PrologTerm head, PrologTerm result) {
+		return new PrologFunction(this, head, result);
+	}
+
+	public PrologClause newFunction(PrologTerm head, PrologTerm result, PrologTerm body) {
+		return new PrologFunction(this, head, result, body);
+	}
+
+	public PrologClause newFunction(PrologTerm head, PrologTerm result, PrologTerm... body) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public PrologClause newFunction(PrologTerm head, Object result) {
+		return new PrologFunction(this, head, result);
+	}
+
+	public PrologClause newFunction(PrologTerm head, Object result, PrologTerm body) {
+		return new PrologFunction(this, head, result, body);
+	}
+
+	public PrologClause newFunction(PrologTerm head, Object result, PrologTerm... body) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public PrologClause newFunction(PrologTerm head, PrologTerm result, boolean dynamic, boolean multifile,

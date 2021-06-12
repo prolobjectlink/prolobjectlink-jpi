@@ -36,20 +36,52 @@ public class PrologFunction extends PrologMethod implements PrologClause {
 
 	private final PrologTerm result;
 
-	public PrologFunction(PrologProvider provider, PrologTerm head, PrologTerm result, boolean dynamic,
-			boolean multifile, boolean discontiguous) {
+	PrologFunction(PrologProvider provider, PrologTerm head, PrologTerm result) {
+		super(provider, head);
+		this.result = result;
+	}
+
+	PrologFunction(PrologProvider provider, PrologTerm head, PrologTerm result, PrologTerm body) {
+		super(provider, head, body);
+		this.result = result;
+	}
+
+	PrologFunction(PrologProvider provider, PrologTerm head, Object result) {
+		this(provider, head, provider.toTerm(result, PrologTerm.class));
+	}
+
+	PrologFunction(PrologProvider provider, PrologTerm head, Object result, PrologTerm body) {
+		this(provider, head, body, provider.toTerm(result, PrologTerm.class));
+	}
+
+	@Deprecated
+	PrologFunction(PrologProvider provider, PrologTerm head, PrologTerm result, boolean dynamic, boolean multifile,
+			boolean discontiguous) {
 		super(provider, head, dynamic, multifile, discontiguous);
 		this.result = result;
 	}
 
-	public PrologFunction(PrologProvider provider, PrologTerm head, PrologTerm body, PrologTerm result, boolean dynamic,
+	@Deprecated
+	PrologFunction(PrologProvider provider, PrologTerm head, PrologTerm result, PrologTerm body, boolean dynamic,
 			boolean multifile, boolean discontiguous) {
 		super(provider, head, body, dynamic, multifile, discontiguous);
 		this.result = result;
 	}
 
-	public PrologTerm getResult() {
+	public final PrologTerm getResult() {
 		return result;
+	}
+
+	public final boolean isFunction() {
+		return true;
+	}
+
+	public final PrologTerm getTerm() {
+		String neck = ":-";
+		PrologTerm h = getHead();
+		PrologTerm b = getBody();
+		PrologTerm f = provider.newStructure("=", h, result);
+		return provider.newStructure(neck, f, b);
 	}
 
 	@Override

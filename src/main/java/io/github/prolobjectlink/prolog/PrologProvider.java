@@ -35,7 +35,6 @@ package io.github.prolobjectlink.prolog;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.Map;
-import java.util.Map.Entry;
 
 /**
  * Prolog Provider is the class to interact with all prolog components (data
@@ -815,27 +814,6 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 	public PrologThreadPool newThreadPool(int parallelismLevel);
 
 	/**
-	 * 
-	 * @return
-	 * @since 1.1
-	 */
-	public PrologTerm newNamespace();
-
-	/**
-	 * 
-	 * @return
-	 * @since 1.1
-	 */
-	public PrologTerm newNamespace(String path);
-
-	/**
-	 * 
-	 * @return
-	 * @since 1.1
-	 */
-	public PrologTerm newNamespace(String parent, PrologNamespace chields);
-
-	/**
 	 * Create a new PrologField using name-type pair of PrologTerm type. The
 	 * resulting term is an implementation of {@link Entry} and {@link PrologTerm}.
 	 * 
@@ -858,11 +836,55 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 	 */
 	public PrologTerm newField(String name, String type);
 
+	/**
+	 * Create a PrologMixin with the given name. This mixin use is for declare
+	 * extensible prolog methods. More formally this constructor method is used for
+	 * define Prolog abstract classes. The given name is a combination of namespace
+	 * and class name. e.g <tt>"'com.acme.Mixin'"</tt>.
+	 * 
+	 * @param name name of the mixin
+	 * @return PrologMixin
+	 * @since 1.1
+	 */
+	public PrologTerm newMixin(String name);
+
+	/**
+	 * Create a PrologMixin with the given name. This mixin use is for declare
+	 * virtual prolog methods. More formally this constructor method is used for
+	 * define Prolog interfaces. The given name is a combination of namespace and
+	 * class name. e.g <tt>"'com.acme.Mixin'"</tt>.
+	 * 
+	 * @param name         name of the mixin
+	 * @param declarations prolog facts that define the interface.
+	 * @return PrologMixin
+	 * @since 1.1
+	 */
 	public PrologTerm newMixin(String name, PrologTerm... declarations);
 
-	public PrologTerm newMixin(String namespace, String name, PrologTerm... declarations);
+	/**
+	 * Create a new rule clause. A rule clause is represented by clause head and
+	 * body. The other parameters are boolean clause properties. If a clause have
+	 * any of this properties specify with true value.
+	 * 
+	 * 
+	 * @param head clause head
+	 * @since 1.1
+	 */
+	public PrologClause newMethod(PrologTerm head);
 
-	public PrologTerm newMixin(PrologTerm namespace, String name, PrologTerm... declarations);
+	/**
+	 * Create a new rule clause. A rule clause is represented by clause head and
+	 * body. The other parameters are boolean clause properties. If a clause have
+	 * any of this properties specify with true value.
+	 * 
+	 * 
+	 * @param head clause head
+	 * @param body clause body
+	 * @since 1.1
+	 */
+	public PrologClause newMethod(PrologTerm head, PrologTerm body);
+
+	public PrologClause newMethod(PrologTerm head, PrologTerm... body);
 
 	/**
 	 * Create a new fact clause. A fatc clause is only represented by clause head
@@ -894,6 +916,84 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 	 */
 	public PrologClause newMethod(PrologTerm head, PrologTerm body, boolean dynamic, boolean multifile,
 			boolean discontiguous);
+
+	/**
+	 * Create a new fact clause. A fatc clause is only represented by clause head
+	 * and no have clause body. The body for this clause type is null. The other
+	 * parameters are boolean clause properties. If a clause have any of this
+	 * properties specify with true value.
+	 * 
+	 * 
+	 * @param head   clause head
+	 * @param result function result
+	 * @since 1.1
+	 */
+	public PrologClause newFunction(PrologTerm head, PrologTerm result);
+
+	/**
+	 * Create a new rule clause. A rule clause is represented by clause head and
+	 * body. The other parameters are boolean clause properties. If a clause have
+	 * any of this properties specify with true value.
+	 * 
+	 * 
+	 * @param head   clause head
+	 * @param body   clause body
+	 * @param result function result
+	 * @since 1.1
+	 */
+	public PrologClause newFunction(PrologTerm head, PrologTerm result, PrologTerm body);
+
+	/**
+	 * Create a new rule clause. A rule clause is represented by clause head and
+	 * body. The other parameters are boolean clause properties. If a clause have
+	 * any of this properties specify with true value.
+	 * 
+	 * 
+	 * @param head   clause head
+	 * @param body   clause body
+	 * @param result function result
+	 * @since 1.1
+	 */
+	public PrologClause newFunction(PrologTerm head, PrologTerm result, PrologTerm... body);
+
+	/**
+	 * Create a new fact clause. A fatc clause is only represented by clause head
+	 * and no have clause body. The body for this clause type is null. The other
+	 * parameters are boolean clause properties. If a clause have any of this
+	 * properties specify with true value.
+	 * 
+	 * 
+	 * @param head   clause head
+	 * @param result function result
+	 * @since 1.1
+	 */
+	public PrologClause newFunction(PrologTerm head, Object result);
+
+	/**
+	 * Create a new rule clause. A rule clause is represented by clause head and
+	 * body. The other parameters are boolean clause properties. If a clause have
+	 * any of this properties specify with true value.
+	 * 
+	 * 
+	 * @param head   clause head
+	 * @param body   clause body
+	 * @param result function result
+	 * @since 1.1
+	 */
+	public PrologClause newFunction(PrologTerm head, Object result, PrologTerm body);
+
+	/**
+	 * Create a new rule clause. A rule clause is represented by clause head and
+	 * body. The other parameters are boolean clause properties. If a clause have
+	 * any of this properties specify with true value.
+	 * 
+	 * 
+	 * @param head   clause head
+	 * @param body   clause body
+	 * @param result function result
+	 * @since 1.1
+	 */
+	public PrologClause newFunction(PrologTerm head, Object result, PrologTerm... body);
 
 	/**
 	 * Create a new fact clause. A fatc clause is only represented by clause head

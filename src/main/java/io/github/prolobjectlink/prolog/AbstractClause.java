@@ -95,7 +95,7 @@ public abstract class AbstractClause implements PrologClause {
 		this.discontiguous = discontiguous;
 	}
 
-	public final PrologTerm getTerm() {
+	public PrologTerm getTerm() {
 		String neck = ":-";
 		PrologTerm h = getHead();
 		PrologTerm b = getBody();
@@ -161,6 +161,14 @@ public abstract class AbstractClause implements PrologClause {
 		return head != null && body != null;
 	}
 
+	public final boolean isMethod() {
+		return head != null && body != null;
+	}
+
+	public boolean isFunction() {
+		return false;
+	}
+
 	public final boolean unify(PrologClause clause) {
 		return head.unify(clause.getHead()) && body.unify(clause.getBody());
 	}
@@ -175,6 +183,14 @@ public abstract class AbstractClause implements PrologClause {
 
 	public final boolean isDiscontiguous() {
 		return discontiguous;
+	}
+
+	public PrologIndicator getPrologIndicator() {
+		return new DefaultPrologIndicator(getFunctor(), getArity());
+	}
+
+	public final <T extends PrologClause> T cast() {
+		return (T) this;
 	}
 
 	@Override

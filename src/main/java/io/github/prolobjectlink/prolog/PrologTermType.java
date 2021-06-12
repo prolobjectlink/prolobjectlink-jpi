@@ -138,7 +138,7 @@ public final class PrologTermType {
 	/**
 	 * Interface type constant
 	 */
-	public static final int INTERFACE_TYPE = 0x505;
+	public static final int MIXIN_TYPE = 0x505;
 
 	/**
 	 * Class type constant

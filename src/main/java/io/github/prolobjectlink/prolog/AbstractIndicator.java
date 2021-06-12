@@ -80,8 +80,8 @@ public class AbstractIndicator implements PrologIndicator {
 			return true;
 		if (object == null)
 			return false;
-		if (getClass() != object.getClass())
-			return false;
+//		if (getClass() != object.getClass())
+//			return false;
 		AbstractIndicator other = (AbstractIndicator) object;
 		if (arity != other.arity)
 			return false;

@@ -34,19 +34,32 @@ package io.github.prolobjectlink.prolog;
 
 public class PrologField extends AbstractCompounds implements PrologEntry {
 
-	private final String name;
-	private final String kind;
+	private final PrologTerm name;
+	private final PrologTerm kind;
 
+	@Deprecated
 	PrologField(PrologProvider provider, String name, String kind) {
+		super(PrologTermType.FIELD_TYPE, provider);
+		this.name = provider.newVariable(name, 0);
+		this.kind = provider.newAtom(kind);
+	}
+
+	PrologField(PrologProvider provider, PrologTerm name, PrologTerm kind) {
 		super(PrologTermType.FIELD_TYPE, provider);
 		this.name = name;
 		this.kind = kind;
 	}
 
-	PrologField(PrologProvider provider, PrologTerm name, PrologTerm kind) {
+	PrologField(PrologProvider provider, String kind, int position) {
 		super(PrologTermType.FIELD_TYPE, provider);
-		this.name = name.getFunctor();
-		this.kind = kind.getFunctor();
+		this.name = provider.newVariable(position);
+		this.kind = provider.newAtom(kind);
+	}
+
+	PrologField(PrologProvider provider, String name, String kind, int position) {
+		super(PrologTermType.FIELD_TYPE, provider);
+		this.name = provider.newVariable(name, position);
+		this.kind = provider.newAtom(kind);
 	}
 
 	@Override
@@ -71,7 +84,7 @@ public class PrologField extends AbstractCompounds implements PrologEntry {
 
 	@Override
 	public String getFunctor() {
-		return name + "-" + kind;
+		return "-";
 	}
 
 	@Override
@@ -81,19 +94,19 @@ public class PrologField extends AbstractCompounds implements PrologEntry {
 
 	@Override
 	public PrologTerm getKey() {
-		return provider.newAtom(name);
+		return name;
 	}
 
 	@Override
 	public PrologTerm getValue() {
-		return provider.newAtom(kind);
+		return kind;
 	}
 
 	@Override
 	public PrologTerm setValue(PrologTerm value) {
 		// this.type = value.getFunctor()
 		getLogger().debug(getClass(), "No value setting allow");
-		return provider.newAtom(kind);
+		return kind;
 	}
 
 	public PrologTerm getNameTerm() {
@@ -105,11 +118,11 @@ public class PrologField extends AbstractCompounds implements PrologEntry {
 	}
 
 	public String getName() {
-		return name;
+		return ((PrologVariable) name).getName();
 	}
 
 	public String getKind() {
-		return kind;
+		return kind.getFunctor();
 	}
 
 	@Override
@@ -147,7 +160,7 @@ public class PrologField extends AbstractCompounds implements PrologEntry {
 
 	@Override
 	public String toString() {
-		return getFunctor();
+		return name + "-" + kind;
 	}
 
 }

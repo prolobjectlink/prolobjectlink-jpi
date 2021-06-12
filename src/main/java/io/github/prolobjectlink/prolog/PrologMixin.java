@@ -32,40 +32,64 @@
  */
 package io.github.prolobjectlink.prolog;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class PrologMixin extends AbstractCompounds implements PrologTerm {
 
 	protected String namesapce;
 	protected final String name;
-	protected final List<PrologTerm> directives = new ArrayList<PrologTerm>();
-	protected final List<PrologClause> methods = new ArrayList<PrologClause>();
-	protected final List<PrologMixin> ancestors = new ArrayList<PrologMixin>();
+	protected final Set<PrologTerm> directives = new LinkedHashSet<PrologTerm>();
+	protected final Set<PrologClause> methods = new LinkedHashSet<PrologClause>();
+	protected final Set<PrologMixin> ancestors = new LinkedHashSet<PrologMixin>();
+	protected final Set<PrologMixin> nested = new LinkedHashSet<PrologMixin>();
 
 	private static final char SEPARATOR = '/';
-	private static final char LEFT_ENCLOSER = '{';
-	private static final char RIGHT_ENCLOSER = '}';
+	private static final char LEFT_ENCLOSER = '(';
+	private static final char RIGHT_ENCLOSER = ')';
 
 	PrologMixin(PrologProvider provider, String name) {
-		super(PrologTermType.INTERFACE_TYPE, provider);
+		super(PrologTermType.MIXIN_TYPE, provider);
 		this.name = name;
 	}
 
+	@Deprecated
 	PrologMixin(PrologProvider provider, String namespace, String name) {
-		super(PrologTermType.INTERFACE_TYPE, provider);
+		super(PrologTermType.MIXIN_TYPE, provider);
 		this.namesapce = namespace;
 		this.name = name;
 	}
 
+	@Deprecated
 	PrologMixin(PrologProvider provider, PrologNamespace namespace, String name) {
-		super(PrologTermType.INTERFACE_TYPE, provider);
+		super(PrologTermType.MIXIN_TYPE, provider);
+		this.namesapce = namespace.getFunctor();
+		this.name = name;
+	}
+
+	protected PrologMixin(int type, PrologProvider provider, String name) {
+		super(type, provider);
+		this.name = name;
+	}
+
+	@Deprecated
+	protected PrologMixin(int type, PrologProvider provider, String namespace, String name) {
+		super(type, provider);
+		this.namesapce = namespace;
+		this.name = name;
+	}
+
+	@Deprecated
+	protected PrologMixin(int type, PrologProvider provider, PrologNamespace namespace, String name) {
+		super(type, provider);
 		this.namesapce = namespace.getFunctor();
 		this.name = name;
 	}
 
 	public final boolean isList() {
-		return true;
+		return false;
 	}
 
 	public final boolean isStructure() {
@@ -73,39 +97,53 @@ public class PrologMixin extends AbstractCompounds implements PrologTerm {
 	}
 
 	public final boolean isEmptyList() {
-		return methods.isEmpty();
+		return false;
 	}
 
-	public final int getArity() {
-		return methods.size();
+	public int getArity() {
+		return methods.size() + nested.size();
 	}
 
 	public final String getFunctor() {
-		return namesapce + SEPARATOR + name;
+		return /* namesapce + SEPARATOR + */ name;
 	}
 
-	public final PrologTerm[] getArguments() {
-		return methods.toArray(new PrologTerm[0]);
+	public PrologTerm[] getArguments() {
+		int i = 0;
+		Iterator<PrologMixin> nitr = nested.iterator();
+		Iterator<PrologClause> mitr = methods.iterator();
+		PrologTerm[] array = new PrologTerm[getArity()];
+		for (; mitr.hasNext(); i++) {
+			array[i] = mitr.next().getTerm();
+		}
+		for (; nitr.hasNext(); i++) {
+			array[i] = mitr.next().getTerm();
+		}
+		return array;
 	}
 
-	public final String getNamesapce() {
+	private final String getNamesapce() {
 		return namesapce;
 	}
 
-	public final void setNamesapce(String namesapce) {
+	private final void setNamesapce(String namesapce) {
 		this.namesapce = namesapce;
 	}
 
-	public final List<PrologClause> getMethods() {
+	public final Collection<PrologClause> getMethods() {
 		return methods;
 	}
 
-	public final List<PrologMixin> getAncestors() {
+	public final Collection<PrologTerm> getDirectives() {
+		return directives;
+	}
+
+	public final Collection<PrologMixin> getAncestors() {
 		return ancestors;
 	}
 
-	public final List<PrologTerm> getDirectives() {
-		return directives;
+	public final Collection<PrologMixin> getNesteds() {
+		return nested;
 	}
 
 	public final String getName() {
@@ -262,7 +300,7 @@ public class PrologMixin extends AbstractCompounds implements PrologTerm {
 	 * @return prolog structure instance with the given functor and arguments.
 	 * @since 1.1
 	 */
-	public final PrologTerm newStructure(String functor, Object... arguments) {
+	public final PrologTerm addDirective(String functor, Object... arguments) {
 		PrologTerm directive = provider.newStructure(functor, arguments);
 		addDirective(directive);
 		return directive;
@@ -280,12 +318,25 @@ public class PrologMixin extends AbstractCompounds implements PrologTerm {
 		ancestors.remove(ancestor);
 	}
 
+	public final void addNestedClass(PrologMixin mixin) {
+		nested.add(mixin);
+	}
+
+	protected final void removeNestedClass(PrologMixin mixin) {
+		nested.remove(mixin);
+	}
+
+	public final String toPath() {
+		return getName().replace('.', '/');
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ancestors.hashCode();
 		result = prime * result + methods.hashCode();
+		result = prime * result + nested.hashCode();
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((namesapce == null) ? 0 : namesapce.hashCode());
 		return result;
@@ -313,6 +364,12 @@ public class PrologMixin extends AbstractCompounds implements PrologTerm {
 			return false;
 		}
 
+		if (other.nested != null)
+			return false;
+		else if (!nested.equals(other.nested)) {
+			return false;
+		}
+
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -331,24 +388,45 @@ public class PrologMixin extends AbstractCompounds implements PrologTerm {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append(":-namespace(" + namesapce + ").");
-		builder.append('\n');
 		for (PrologTerm prologTerm : directives) {
 			builder.append(":-" + prologTerm);
 			builder.append('\n');
 		}
 		builder.append('\n');
 		for (PrologMixin ancestor : ancestors) {
-			builder.append(":-" + ancestor);
+			builder.append(":-include(" + ancestor.toPath() + ").");
 			builder.append('\n');
 		}
 		builder.append('\n');
 		builder.append(name);
 		builder.append(getLeftencloser());
 		builder.append('\n');
+		builder.append('\n');
+		builder.append('\t');
 		for (PrologClause method : methods) {
-			builder.append(method);
+			builder.append(method.getHead());
+			if (method.isMethod()) {
+				if (method.isFunction()) {
+					builder.append(' ');
+					builder.append('=');
+					builder.append(' ');
+					PrologFunction f = method.cast();
+					builder.append(f.getResult());
+					builder.append(' ');
+				}
+				builder.append(":-\n\t\t");
+				Iterator<PrologTerm> j = method.getBodyIterator();
+				while (j.hasNext()) {
+					builder.append(j.next());
+					if (j.hasNext()) {
+						builder.append(",\n\t\t");
+					}
+				}
+			}
+			builder.append('.');
 			builder.append('\n');
+			builder.append('\n');
+			builder.append('\t');
 		}
 		builder.append('\n');
 		builder.append(getRightencloser());

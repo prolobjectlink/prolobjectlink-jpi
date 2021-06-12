@@ -33,6 +33,7 @@
 package io.github.prolobjectlink.prolog;
 
 import static io.github.prolobjectlink.prolog.PrologTermType.ATOM_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.CLASS_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.CUT_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.DOUBLE_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.FAIL_TYPE;
@@ -41,20 +42,21 @@ import static io.github.prolobjectlink.prolog.PrologTermType.FLOAT_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.INTEGER_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.LIST_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.LONG_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.MAP_ENTRY_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.MAP_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.MIXIN_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.NIL_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.OBJECT_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.STRUCTURE_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.TRUE_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.VARIABLE_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.FIELD_TYPE;
 
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Queue;
-import java.util.Stack;
 
 /**
  * Partial implementation of {@link PrologTerm} interface.
@@ -214,17 +216,38 @@ public abstract class AbstractTerm implements PrologTerm {
 			return object;
 		case OBJECT_TYPE:
 			return term.getObject();
+		case FIELD_TYPE:
+			PrologField field = term.cast();
+			return "field " + field.getName();
+		case CLASS_TYPE:
+		case MIXIN_TYPE:
+			// NOTE if structure no have mapping
+			// the term itself will be returned ???
+			// Object object = term
+			return "class " + term.getFunctor();
 		default:
 			return null;
 		}
 	}
 
 	public final boolean isEntry() {
-		return this instanceof Entry;
+		return getType() == MAP_ENTRY_TYPE;
 	}
 
 	public final boolean isMap() {
-		return this instanceof Map;
+		return getType() == MAP_TYPE;
+	}
+
+	public boolean isField() {
+		return getType() == FIELD_TYPE;
+	}
+
+	public final boolean isMixin() {
+		return getType() == MIXIN_TYPE;
+	}
+
+	public final boolean isClass() {
+		return getType() == CLASS_TYPE;
 	}
 
 	public boolean isVariableBound() {

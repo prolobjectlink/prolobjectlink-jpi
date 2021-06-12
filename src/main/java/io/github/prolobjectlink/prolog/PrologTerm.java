@@ -362,6 +362,30 @@ public interface PrologTerm extends Comparable<PrologTerm> {
 	 * @since 1.1
 	 */
 	public boolean isMap();
+	
+	/**
+	 * True if this Term is a Field, false in other case
+	 * 
+	 * @return whether this Term is a field
+	 * @since 1.1
+	 */
+	public boolean isField();
+	
+	/**
+	 * True if this Term is a Mixin, false in other case
+	 * 
+	 * @return whether this Term is a mixin
+	 * @since 1.1
+	 */
+	public boolean isMixin();
+	
+	/**
+	 * True if this Term is a Class, false in other case
+	 * 
+	 * @return whether this Term is a class
+	 * @since 1.1
+	 */
+	public boolean isClass();
 
 	/**
 	 * For references terms return the referenced object.

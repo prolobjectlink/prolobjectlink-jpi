@@ -32,58 +32,83 @@
  */
 package io.github.prolobjectlink.prolog;
 
-import java.util.ArrayList;
-import java.util.List;
+import static io.github.prolobjectlink.prolog.PrologTermType.CLASS_TYPE;
+
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Map.Entry;
+import java.util.Set;
 
-final class PrologClass extends PrologMixin implements PrologTerm {
+public final class PrologClass extends PrologMixin implements PrologTerm {
 
-	private PrologClass superclass;
-	private final List<PrologField> fields = new ArrayList<PrologField>();
-	private final List<PrologClass> nested = new ArrayList<PrologClass>();
-	private final List<PrologMethod> constructors = new ArrayList<PrologMethod>();
+	private PrologMixin superclass;
+	private final Set<PrologTerm> fields = new LinkedHashSet<PrologTerm>();
+	private final Set<PrologClause> constructors = new LinkedHashSet<PrologClause>();
 
 	PrologClass(PrologProvider provider, String name) {
-		super(provider, name);
+		super(CLASS_TYPE, provider, name);
 	}
 
+	@Deprecated
 	PrologClass(PrologProvider provider, String namespace, String name) {
-		super(provider, namespace, name);
+		super(CLASS_TYPE, provider, namespace, name);
 	}
 
+	@Deprecated
 	PrologClass(PrologProvider provider, PrologTerm namespace, String name) {
-		super(provider, namespace.getFunctor(), name);
+		super(CLASS_TYPE, provider, namespace.getFunctor(), name);
 	}
 
-	protected final void checkClassFunctor(PrologMethod constructor) {
-		if (!constructor.getFunctor().equals(getFunctor())) {
+	protected final void checkClassFunctor(PrologClause emptyConstructor) {
+		if (!emptyConstructor.getFunctor().equals(removeQuoted(getFunctor()))) {
 			throw new IllegalArgumentException(
 					"The given constructor name is not a valid constructor for " + getFunctor());
 		}
 	}
 
-	public final PrologClass getSuperclass() {
+	public final int getArity() {
+		return 1 + constructors.size() + methods.size() + nested.size();
+	}
+
+	public final PrologTerm[] getArguments() {
+		int i = 0;
+		Iterator<PrologMixin> nitr = nested.iterator();
+		Iterator<PrologClause> mitr = methods.iterator();
+		Iterator<PrologClause> citr = constructors.iterator();
+		PrologTerm[] array = new PrologTerm[getArity()];
+		PrologTerm[] arguments = fields.toArray(new PrologTerm[0]);
+		array[i++] = provider.newList(arguments);
+		for (; citr.hasNext(); i++) {
+			array[i] = mitr.next().getTerm();
+		}
+		for (; mitr.hasNext(); i++) {
+			array[i] = mitr.next().getTerm();
+		}
+		for (; nitr.hasNext(); i++) {
+			array[i] = mitr.next().getTerm();
+		}
+		return array;
+	}
+
+	public final PrologMixin getSuperclass() {
 		return superclass;
 	}
 
-	public final void setSuperclass(PrologClass superclass) {
-		this.superclass = superclass;
+	public final void setSuperclass(PrologMixin interfacce) {
+		this.superclass = interfacce;
 	}
 
-	public final List<PrologField> getFields() {
+	public final Collection<PrologTerm> getFields() {
 		return fields;
 	}
 
-	public final List<PrologClass> getNested() {
-		return nested;
-	}
-
-	public final List<PrologMethod> getConstructors() {
+	public final Collection<PrologClause> getConstructors() {
 		return constructors;
 	}
 
-	public final void addFields(PrologField field) {
-		fields.add(field);
+	public final void addField(PrologTerm prologTerm) {
+		fields.add(prologTerm);
 	}
 
 	/**
@@ -96,7 +121,9 @@ final class PrologClass extends PrologMixin implements PrologTerm {
 	 * @since 1.1
 	 */
 	public final PrologField addField(PrologTerm name, PrologTerm type) {
-		return addField(name.getFunctor(), type.getFunctor());
+		PrologField field = new PrologField(provider, name, type);
+		fields.add(field);
+		return field;
 	}
 
 	/**
@@ -119,10 +146,6 @@ final class PrologClass extends PrologMixin implements PrologTerm {
 		fields.remove(field);
 	}
 
-	public final void addNestedClass(PrologClass cls) {
-		nested.add(cls);
-	}
-
 	public final PrologClass addNestedClass(String name) {
 		PrologClass cls = new PrologClass(provider, name);
 		addNestedClass(cls);
@@ -141,13 +164,9 @@ final class PrologClass extends PrologMixin implements PrologTerm {
 		return cls;
 	}
 
-	protected final void removeNestedClass(PrologClass cls) {
-		nested.remove(cls);
-	}
-
-	public final void addConstructor(PrologMethod constructor) {
-		checkClassFunctor(constructor);
-		constructors.add(constructor);
+	public final void addConstructor(PrologClause emptyConstructor) {
+		checkClassFunctor(emptyConstructor);
+		constructors.add(emptyConstructor);
 	}
 
 	/**
@@ -201,7 +220,6 @@ final class PrologClass extends PrologMixin implements PrologTerm {
 		result = prime * result + constructors.hashCode();
 		result = prime * result + fields.hashCode();
 		result = prime * result + methods.hashCode();
-		result = prime * result + nested.hashCode();
 		return result;
 	}
 
@@ -230,50 +248,88 @@ final class PrologClass extends PrologMixin implements PrologTerm {
 		} else if (!methods.equals(other.methods)) {
 			return false;
 		}
-		if (other.nested != null)
-			return false;
-		else if (!nested.equals(other.nested)) {
-			return false;
-		}
 		return true;
 	}
 
 	@Override
 	public final String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append(":-namespace(" + namesapce + ").");
-		builder.append('\n');
 		for (PrologTerm prologTerm : directives) {
 			builder.append(":-" + prologTerm);
 			builder.append('\n');
 		}
 		builder.append('\n');
 		for (PrologMixin ancestor : ancestors) {
-			builder.append(":-" + ancestor);
+			builder.append(":-include(" + ancestor.toPath() + ").");
 			builder.append('\n');
 		}
 		builder.append('\n');
 		builder.append(name);
 		builder.append(getLeftencloser());
 		builder.append('\n');
+		builder.append('\n');
+		builder.append('\t');
 		builder.append('[');
-		for (PrologField field : fields) {
+		Iterator<?> i = fields.iterator();
+		while (i.hasNext()) {
+			Object field = i.next();
 			builder.append(field);
-			builder.append(',');
+			if (i.hasNext()) {
+				builder.append(',');
+				builder.append(' ');
+			}
 		}
 		builder.append(']');
+		builder.append('.');
 		builder.append('\n');
+		builder.append('\n');
+		builder.append('\t');
 		for (PrologClause constructor : constructors) {
-			builder.append(constructor);
+			builder.append(constructor.getHead());
+			if (constructor.isMethod()) {
+				builder.append(":-\n\t\t");
+				Iterator<PrologTerm> j = constructor.getBodyIterator();
+				while (j.hasNext()) {
+					builder.append(j.next());
+					if (j.hasNext()) {
+						builder.append(",\n\t\t");
+					}
+				}
+			}
+			builder.append('.');
 			builder.append('\n');
+			builder.append('\n');
+			builder.append('\t');
 		}
 		builder.append('\n');
+		builder.append('\t');
 		for (PrologClause method : methods) {
-			builder.append(method);
+			builder.append(method.getHead());
+			if (method.isMethod()) {
+				if (method.isFunction()) {
+					builder.append(' ');
+					builder.append('=');
+					builder.append(' ');
+					PrologFunction f = method.cast();
+					builder.append(f.getResult());
+					builder.append(' ');
+				}
+				builder.append(":-\n\t\t");
+				Iterator<PrologTerm> j = method.getBodyIterator();
+				while (j.hasNext()) {
+					builder.append(j.next());
+					if (j.hasNext()) {
+						builder.append(",\n\t\t");
+					}
+				}
+			}
+			builder.append('.');
 			builder.append('\n');
+			builder.append('\n');
+			builder.append('\t');
 		}
 		builder.append('\n');
-		for (PrologClass cls : nested) {
+		for (PrologMixin cls : nested) {
 			builder.append(cls);
 			builder.append('\n');
 		}
