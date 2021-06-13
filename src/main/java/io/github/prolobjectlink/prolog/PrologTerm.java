@@ -430,4 +430,17 @@ public interface PrologTerm extends Comparable<PrologTerm> {
 	 */
 	public PrologProvider getProvider();
 
+
+	/**
+	 * Casts the current PrologTerm to the class or interface represented by this
+	 * {@code Class} object.
+	 *
+	 * @return the PrologTerm after casting, or null if term is null
+	 *
+	 * @throws ClassCastException if the object is not null and is not assignable to
+	 *                            the type T.
+	 * @since 1.1
+	 */
+	public <T extends PrologTerm> T cast();
+
 }

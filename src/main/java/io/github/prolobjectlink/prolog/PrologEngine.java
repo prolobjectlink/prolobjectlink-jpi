@@ -98,7 +98,32 @@ import java.util.Set;
  * }
  * </pre>
  * 
- * queryOne queryN queryAll
+ * Java Prolog Interface have shortcuts methods to obtain queries result from
+ * the engine. The shortcuts methods to obtain one result are
+ * {@link PrologEngine#queryOne(Class)}, {@link PrologEngine#queryOne(Object)},
+ * {@link PrologEngine#queryOne(PrologTerm)},
+ * {@link PrologEngine#queryOne(String)},
+ * {@link PrologEngine#queryOne(Class, Class...)},
+ * {@link PrologEngine#queryOne(Object, Object...)},
+ * {@link PrologEngine#queryOne(PrologTerm, PrologTerm...)}. This methods are
+ * equivalent to call {@code PrologEngine.query(...).oneVariablesResult()}.
+ * 
+ * The shortcuts methods to obtain N results are
+ * {@link PrologEngine#queryN(Class)}, {@link PrologEngine#queryN(Object)},
+ * {@link PrologEngine#queryN(PrologTerm)}, {@link PrologEngine#queryN(String)},
+ * {@link PrologEngine#queryN(Class, Class...)},
+ * {@link PrologEngine#queryN(Object, Object...)},
+ * {@link PrologEngine#queryN(PrologTerm, PrologTerm...)}. This methods are
+ * equivalent to call {@code PrologEngine.query(...).nVariablesResult()}.
+ * 
+ * The shortcuts methods to obtain all results are
+ * {@link PrologEngine#queryAll(Class)}, {@link PrologEngine#queryAll(Object)},
+ * {@link PrologEngine#queryAll(PrologTerm)},
+ * {@link PrologEngine#queryAll(String)},
+ * {@link PrologEngine#queryAll(Class, Class...)},
+ * {@link PrologEngine#queryAll(Object, Object...)},
+ * {@link PrologEngine#queryAll(PrologTerm, PrologTerm...)}. This methods are
+ * equivalent to call {@code PrologEngine.query(...).allVariablesResult()}.
  * 
  * After create an empty prolog engine and load any prolog program, we can
  * modify the program/database. For this propose we have the methods
@@ -348,8 +373,16 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public void abolish(String functor, int arity);
 
 	/**
+	 * Remove all predicates that match with the predicate indicator (PI) formed by
+	 * the concatenation of the given string functor and integer arity separated by
+	 * slash (functor/arity). The predicate indicator is formed after resolve the
+	 * class mapping {@link PrologMapping} correspondent to the given class. For
+	 * example if the class have two fields and have a prolog mapping to a predicate
+	 * with "parent" functor two arguments, call this method will be equivalent to
+	 * call {@link #abolish(String, int)} with "parent" string functor and arity
+	 * equals to 2.
 	 * 
-	 * @param cls
+	 * @param cls class to determine the predicate indicator after mapping resolve.
 	 * @since 1.1
 	 */
 	public void abolish(Class<?> cls);
@@ -377,22 +410,37 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public void asserta(String stringClause);
 
 	/**
+	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}
+	 * and create internal prolog clause and add the clause in the main memory
+	 * program if the clause non exist. If the clause exist, will not overwritten
+	 * and the clause will not added. The added clause will be the first clause for
+	 * a clause lot with the same predicate indicator (PI).
 	 * 
-	 * @param o
+	 * @param o object to be added after resolve the prolog equivalent term
 	 * @since 1.1
 	 */
 	public <O> void asserta(O o);
 
 	/**
+	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}
+	 * and create internal prolog clause and add the clause in the main memory
+	 * program if the clause non exist. If the clause exist, will not overwritten
+	 * and the clause will not added. The added clause will be the first clause for
+	 * a clause lot with the same predicate indicator (PI). The given class will be
+	 * mapping to the most general predicate.
 	 * 
-	 * @param cls
+	 * @param cls object to be added after resolve the prolog equivalent term
 	 * @since 1.1
 	 */
 	public void asserta(Class<?> cls);
 
 	/**
+	 * Create internal prolog clause and add the clause in the main memory program
+	 * if the clause non exist. If the clause exist, will not overwritten and the
+	 * clause will not added. The added clause will be the first clause for a clause
+	 * lot with the same predicate indicator (PI).
 	 * 
-	 * @param term
+	 * @param term term to be added
 	 * @since 1.1
 	 */
 	public void asserta(PrologTerm term);
@@ -475,22 +523,37 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public void assertz(String stringClause);
 
 	/**
+	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}
+	 * and create internal prolog clause and add the clause in the main memory
+	 * program if the clause non exist. If the clause exist, will not overwritten
+	 * and the clause will not added. The added clause will be the last clause for a
+	 * clause lot with the same predicate indicator (PI).
 	 * 
-	 * @param o
+	 * @param o object to be added after resolve the prolog equivalent term
 	 * @since 1.1
 	 */
 	public <O> void assertz(O o);
 
 	/**
+	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}
+	 * and create internal prolog clause and add the clause in the main memory
+	 * program if the clause non exist. If the clause exist, will not overwritten
+	 * and the clause will not added. The added clause will be the last clause for a
+	 * clause lot with the same predicate indicator (PI).The given class will be
+	 * mapping to the most general predicate.
 	 * 
-	 * @param cls
+	 * @param cls object to be added after resolve the prolog equivalent term
 	 * @since 1.1
 	 */
 	public void assertz(Class<?> cls);
 
 	/**
+	 * Create internal prolog clause and add the clause in the main memory program
+	 * if the clause non exist. If the clause exist, will not overwritten and the
+	 * clause will not added. The added clause will be the last clause for a clause
+	 * lot with the same predicate indicator (PI).
 	 * 
-	 * @param term
+	 * @param term term to be added
 	 * @since 1.1
 	 */
 	public void assertz(PrologTerm term);
@@ -571,25 +634,43 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public boolean clause(String stringClause);
 
 	/**
+	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}
+	 * and create internal prolog clause and returning true if the clause in the
+	 * main memory program unify with the given clause. If the clause not exist in
+	 * main memory program or exist but not unify with the given clause false value
+	 * is returned.
 	 * 
-	 * @param o
-	 * @return
+	 * @param o object to be match with some clause in main memory program
+	 * @return true if the clause in the main memory program unify with the clause
+	 *         equivalent to the given object, false otherwise
 	 * @since 1.1
 	 */
 	public <O> boolean clause(O o);
 
 	/**
+	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}
+	 * and create internal prolog clause and returning true if the clause in the
+	 * main memory program unify with the given clause. If the clause not exist in
+	 * main memory program or exist but not unify with the given clause false value
+	 * is returned. The given class will be mapping to the most general predicate.
 	 * 
-	 * @param cls
-	 * @return
+	 * @param cls class to be match with some clause in main memory program
+	 * @return true if the clause in the main memory program unify with the clause
+	 *         equivalent to the given class, false otherwise
 	 * @since 1.1
 	 */
 	public boolean clause(Class<?> cls);
 
 	/**
+	 * Find a rule specified by the rule head and rule body in main memory program
+	 * that unify with the given clause returning true in this case.If the clause
+	 * not exist in main memory program or exist but not unify with the given clause
+	 * false value is returned. The shared variables in the clause are declared once
+	 * and use for build the terms that conform the clause to be found.
 	 * 
-	 * @param term
-	 * @return
+	 * @param term term to be match with some clause in main memory program
+	 * @return true if the clause in the main memory program unify with the clause
+	 *         equivalent to the given term, false otherwise
 	 * @since 1.1
 	 */
 	public boolean clause(PrologTerm term);
@@ -667,22 +748,34 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public void retract(String stringClause);
 
 	/**
+	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}
+	 * and remove a fact specified by the head if the specified fact clause exist.
+	 * The shared variables in the clause are declared once and use for build the
+	 * terms that conform the clause to be removed.
 	 * 
-	 * @param o
+	 * @param o class mapped to fact to be removed
 	 * @since 1.1
 	 */
 	public <O> void retract(O o);
 
 	/**
+	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}
+	 * and remove a fact specified by the head if the specified fact clause exist.
+	 * The shared variables in the clause are declared once and use for build the
+	 * terms that conform the clause to be removed. The given class will be mapping
+	 * to the most general predicate.
 	 * 
-	 * @param cls
+	 * @param cls class mapped to fact to be removed
 	 * @since 1.1
 	 */
 	public void retract(Class<?> cls);
 
 	/**
+	 * Remove a fact specified by the head if the specified fact clause exist. The
+	 * shared variables in the clause are declared once and use for build the terms
+	 * that conform the clause to be removed.
 	 * 
-	 * @param term
+	 * @param term fact to be removed
 	 * @since 1.1
 	 */
 	public void retract(PrologTerm term);
@@ -795,25 +888,44 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public boolean contains(String goal);
 
 	/**
+	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}
+	 * and check if the resolved goal have solution using the resolution engine
+	 * mechanism. If wrapped engine not support a dedicated method then contains can
+	 * be defined like:
 	 * 
-	 * @param goal
-	 * @return
+	 * {@code query(goal).hasSolution()}
+	 * 
+	 * @param goal goal to be checked
+	 * @return true if the given goal has solution
 	 * @since 1.1
 	 */
 	public <O> boolean contains(O goal);
 
 	/**
+	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}
+	 * and check if the resolved goal have solution using the resolution engine
+	 * mechanism. If wrapped engine not support a dedicated method then contains can
+	 * be defined like:
 	 * 
-	 * @param goal
-	 * @return
+	 * {@code query(goal).hasSolution()}
+	 * 
+	 * The given class will be mapping to the most general predicate.
+	 * 
+	 * @param goal goal to be checked
+	 * @return true if the given goal has solution
 	 * @since 1.1
 	 */
 	public boolean contains(Class<?> goal);
 
 	/**
+	 * Check if the given goal array have solution using the resolution engine
+	 * mechanism. If wrapped engine not support a dedicated method then contains can
+	 * be defined like:
 	 * 
-	 * @param goal
-	 * @return
+	 * {@code query(goal).hasSolution()}
+	 * 
+	 * @param goal goal to be checked
+	 * @return true if the given goal has solution
 	 * @since 1.1
 	 */
 	public boolean contains(PrologTerm goal);
@@ -821,7 +933,7 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	/**
 	 * Check if the given goal array have solution using the resolution engine
 	 * mechanism. If wrapped engine not support a dedicated method then contains can
-	 * be defined like
+	 * be defined like:
 	 * 
 	 * {@code query(goal).hasSolution()}
 	 * 
@@ -881,7 +993,7 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	 * @return
 	 * @since 1.1
 	 */
-	public PrologQuery query(PrologTerm goal);
+	public PrologQuery query(Class<?> goal);
 
 	/**
 	 * 
@@ -889,7 +1001,7 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	 * @return
 	 * @since 1.1
 	 */
-	public PrologQuery query(Class<?> goal);
+	public PrologQuery query(PrologTerm goal);
 
 	/**
 	 * Create a new query being the goal the given prolog term array. The given

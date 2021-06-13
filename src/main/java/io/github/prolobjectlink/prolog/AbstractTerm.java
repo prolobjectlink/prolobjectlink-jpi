@@ -109,6 +109,41 @@ public abstract class AbstractTerm implements PrologTerm {
 		return provider;
 	}
 
+	/**
+	 * Casts a PrologTerm to the class or interface represented by this
+	 * {@code Class} object.
+	 *
+	 * @param term the object to be cast
+	 * @param type the class or interface to be casted
+	 * @return the PrologTerm after casting, or null if term is null
+	 *
+	 * @throws ClassCastException if the object is not null and is not assignable to
+	 *                            the type T.
+	 * @since 1.1
+	 */
+	protected final <T extends PrologTerm> T cast(PrologTerm term, Class<T> type) {
+		return type.cast(term);
+	}
+
+	/**
+	 * Casts a PrologTerm to the class or interface represented by this
+	 * {@code Class} object.
+	 *
+	 * @param term the object to be cast
+	 * @return the PrologTerm after casting, or null if term is null
+	 *
+	 * @throws ClassCastException if the object is not null and is not assignable to
+	 *                            the type T.
+	 * @since 1.1
+	 */
+	protected final <T extends PrologTerm> T cast(PrologTerm term) {
+		return (T) term;
+	}
+
+	public final <T extends PrologTerm> T cast() {
+		return cast(this);
+	}
+
 	public final boolean isEntry() {
 		return this instanceof Entry;
 	}

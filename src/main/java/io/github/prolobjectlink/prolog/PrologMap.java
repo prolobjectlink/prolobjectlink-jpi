@@ -73,6 +73,13 @@ public final class PrologMap extends AbstractCompounds implements PrologList, Ma
 		return ".";
 	}
 
+	public int getArity() {
+		if (map.size() > 0) {
+			return 2;
+		}
+		return 0;
+	}
+
 	public PrologTerm[] getArguments() {
 		PrologProvider p = getProvider();
 		PrologTerm[] args = new PrologTerm[map.size()];
@@ -93,8 +100,8 @@ public final class PrologMap extends AbstractCompounds implements PrologList, Ma
 	}
 
 	public int hashCode() {
+		int result = 0;
 		final int prime = 31;
-		int result = super.hashCode();
 		result = prime * result + ((map == null) ? 0 : map.hashCode());
 		return result;
 	}
@@ -102,7 +109,7 @@ public final class PrologMap extends AbstractCompounds implements PrologList, Ma
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (!super.equals(obj))
+		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;

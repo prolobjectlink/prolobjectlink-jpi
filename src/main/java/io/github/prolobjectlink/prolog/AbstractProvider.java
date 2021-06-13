@@ -125,30 +125,42 @@ public abstract class AbstractProvider implements PrologProvider {
 		return newStructure(leftTerm, operator, rightTerm);
 	}
 
-	public final PrologTerm newEntry(PrologTerm key, PrologTerm value) {
+	public PrologTerm newEntry(PrologTerm key, PrologTerm value) {
 		return new PrologEntry(this, key, value);
 	}
 
-	public final PrologTerm newEntry(Object key, Object value) {
+	public PrologTerm newEntry(Object key, Object value) {
 		PrologJavaConverter transformer = getJavaConverter();
 		PrologTerm keyTerm = transformer.toTerm(key);
 		PrologTerm valueTerm = transformer.toTerm(value);
 		return new PrologEntry(this, keyTerm, valueTerm);
 	}
 
-	public final PrologTerm newMap(Map<PrologTerm, PrologTerm> map) {
+	public PrologTerm newMap(Map<PrologTerm, PrologTerm> map) {
 		return new PrologMap(this, map);
 	}
 
-	public final PrologTerm newMap(int initialCapacity) {
+	public PrologTerm newMap(int initialCapacity) {
 		return new PrologMap(this, initialCapacity);
 	}
 
-	public final PrologTerm newMap() {
+	public PrologTerm newMap() {
 		return new PrologMap(this);
 	}
 
-	public final <T extends PrologTerm> T cast(PrologTerm term, Class<T> type) {
+	/**
+	 * Casts a PrologTerm to the class or interface represented by this
+	 * {@code Class} object.
+	 *
+	 * @param term the object to be cast
+	 * @param type the class or interface to be casted
+	 * @return the PrologTerm after casting, or null if term is null
+	 *
+	 * @throws ClassCastException if the object is not null and is not assignable to
+	 *                            the type T.
+	 * @since 1.1
+	 */
+	protected final <T extends PrologTerm> T cast(PrologTerm term, Class<T> type) {
 		return type.cast(term);
 	}
 

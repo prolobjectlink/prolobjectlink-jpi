@@ -103,16 +103,12 @@ public abstract class AbstractCompounds extends AbstractTerm implements PrologTe
 		return null;
 	}
 
-	public int getArity() {
-		return 2;
-	}
-
 	public final int compareTo(PrologTerm term) {
 		PrologTerm thisCompound = this;
 		PrologTerm otherCompound = term;
 
 		if (!otherCompound.isCompound()) {
-			return -1;
+			return 1;
 		}
 
 		// comparison by arity
@@ -181,9 +177,11 @@ public abstract class AbstractCompounds extends AbstractTerm implements PrologTe
 							}
 						}
 					}
+					return true;
 				}
-				return true;
+				return false;
 			}
+			return false;
 		}
 		return false;
 	}

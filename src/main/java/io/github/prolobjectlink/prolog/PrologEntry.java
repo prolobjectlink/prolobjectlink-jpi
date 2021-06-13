@@ -74,14 +74,18 @@ public final class PrologEntry extends AbstractCompounds implements PrologTerm, 
 		return "-";
 	}
 
+	public int getArity() {
+		return 2;
+	}
+
 	public PrologTerm[] getArguments() {
 		return new PrologTerm[] { key, value };
 	}
 
 	@Override
 	public int hashCode() {
+		int result = 0;
 		final int prime = 31;
-		int result = super.hashCode();
 		result = prime * result + ((key == null) ? 0 : key.hashCode());
 		result = prime * result + ((value == null) ? 0 : value.hashCode());
 		return result;
@@ -91,7 +95,7 @@ public final class PrologEntry extends AbstractCompounds implements PrologTerm, 
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (!super.equals(obj))
+		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
