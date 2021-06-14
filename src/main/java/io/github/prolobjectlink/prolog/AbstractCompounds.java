@@ -108,6 +108,9 @@ public abstract class AbstractCompounds extends AbstractTerm implements PrologTe
 		PrologTerm otherCompound = term;
 
 		if (!otherCompound.isCompound()) {
+			if (otherCompound.isEmptyList() && thisCompound.isEmptyList()) {
+				return 0;
+			}
 			return 1;
 		}
 

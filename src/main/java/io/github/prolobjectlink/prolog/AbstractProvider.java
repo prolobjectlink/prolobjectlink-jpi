@@ -125,29 +125,6 @@ public abstract class AbstractProvider implements PrologProvider {
 		return newStructure(leftTerm, operator, rightTerm);
 	}
 
-	public PrologTerm newEntry(PrologTerm key, PrologTerm value) {
-		return new PrologEntry(this, key, value);
-	}
-
-	public PrologTerm newEntry(Object key, Object value) {
-		PrologJavaConverter transformer = getJavaConverter();
-		PrologTerm keyTerm = transformer.toTerm(key);
-		PrologTerm valueTerm = transformer.toTerm(value);
-		return new PrologEntry(this, keyTerm, valueTerm);
-	}
-
-	public PrologTerm newMap(Map<PrologTerm, PrologTerm> map) {
-		return new PrologMap(this, map);
-	}
-
-	public PrologTerm newMap(int initialCapacity) {
-		return new PrologMap(this, initialCapacity);
-	}
-
-	public PrologTerm newMap() {
-		return new PrologMap(this);
-	}
-
 	/**
 	 * Casts a PrologTerm to the class or interface represented by this
 	 * {@code Class} object.
