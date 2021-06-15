@@ -108,13 +108,7 @@ import java.util.Set;
  * {@link PrologEngine#queryOne(PrologTerm, PrologTerm...)}. This methods are
  * equivalent to call {@code PrologEngine.query(...).oneVariablesResult()}.
  * 
- * The shortcuts methods to obtain N results are
- * {@link PrologEngine#queryN(Class)}, {@link PrologEngine#queryN(Object)},
- * {@link PrologEngine#queryN(PrologTerm)}, {@link PrologEngine#queryN(String)},
- * {@link PrologEngine#queryN(Class, Class...)},
- * {@link PrologEngine#queryN(Object, Object...)},
- * {@link PrologEngine#queryN(PrologTerm, PrologTerm...)}. This methods are
- * equivalent to call {@code PrologEngine.query(...).nVariablesResult()}.
+ * queryN
  * 
  * The shortcuts methods to obtain all results are
  * {@link PrologEngine#queryAll(Class)}, {@link PrologEngine#queryAll(Object)},

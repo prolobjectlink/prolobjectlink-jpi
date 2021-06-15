@@ -62,7 +62,7 @@ public class AbstractReference extends AbstractCompounds implements PrologRefere
 
 	@Override
 	public boolean isNullType() {
-		return reference == null;
+		return isObjectType() && reference == null;
 	}
 
 	@Override
@@ -77,7 +77,7 @@ public class AbstractReference extends AbstractCompounds implements PrologRefere
 
 	@Override
 	public boolean isReference() {
-		return isObjectType() || isNullType();
+		return isObjectType();
 	}
 
 	@Override

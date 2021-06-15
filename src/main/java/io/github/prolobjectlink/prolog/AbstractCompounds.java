@@ -114,6 +114,10 @@ public abstract class AbstractCompounds extends AbstractTerm implements PrologTe
 			return 1;
 		}
 
+		if (otherCompound.isEmptyList() && thisCompound.isEmptyList()) {
+			return 0;
+		}
+
 		// comparison by arity
 		if (thisCompound.getArity() < otherCompound.getArity()) {
 			return -1;
