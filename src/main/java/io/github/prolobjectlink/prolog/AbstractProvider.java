@@ -426,13 +426,13 @@ public abstract class AbstractProvider implements PrologProvider {
 	}
 
 	public PrologTerm newField(PrologTerm name, PrologTerm type) {
-		return new PrologField(this, name, type);
+		return new PrologTypedField(this, name, type);
 	}
 
 	public PrologTerm newField(String name, String type) {
 		PrologTerm oname = toTerm(name, PrologTerm.class);
 		PrologTerm otype = toTerm(type, PrologTerm.class);
-		return new PrologField(this, oname, otype);
+		return new PrologTypedField(this, oname, otype);
 	}
 
 	public PrologTerm newMixin(String name) {

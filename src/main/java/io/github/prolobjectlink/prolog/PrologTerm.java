@@ -118,7 +118,7 @@ import java.util.Map;
  * @author Jose Zalacain
  * @since 1.0
  */
-public interface PrologTerm extends Comparable<PrologTerm> {
+public interface PrologTerm extends Comparable<PrologTerm>, PrologElement {
 
 	/**
 	 * Gets the term indicator represented by one string with the format
@@ -362,7 +362,7 @@ public interface PrologTerm extends Comparable<PrologTerm> {
 	 * @since 1.1
 	 */
 	public boolean isMap();
-	
+
 	/**
 	 * True if this Term is a Field, false in other case
 	 * 
@@ -370,7 +370,7 @@ public interface PrologTerm extends Comparable<PrologTerm> {
 	 * @since 1.1
 	 */
 	public boolean isField();
-	
+
 	/**
 	 * True if this Term is a Mixin, false in other case
 	 * 
@@ -378,7 +378,7 @@ public interface PrologTerm extends Comparable<PrologTerm> {
 	 * @since 1.1
 	 */
 	public boolean isMixin();
-	
+
 	/**
 	 * True if this Term is a Class, false in other case
 	 * 

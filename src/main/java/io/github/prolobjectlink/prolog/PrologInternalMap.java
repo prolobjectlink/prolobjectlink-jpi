@@ -399,6 +399,14 @@ public class PrologInternalMap extends PrologLinkedMap<PrologTerm, PrologTerm> i
 		put(entry.getKey(), entry.getValue());
 	}
 
+	public final boolean isClause() {
+		return false;
+	}
+
+	public final boolean isTerm() {
+		return true;
+	}
+
 	class PrologHashEntry extends HashLinkedEntry<PrologTerm, PrologTerm> implements PrologEntry {
 
 		PrologHashEntry(PrologTerm key, PrologTerm value) {
@@ -657,6 +665,14 @@ public class PrologInternalMap extends PrologLinkedMap<PrologTerm, PrologTerm> i
 			}
 
 			return 0;
+		}
+
+		public final boolean isClause() {
+			return false;
+		}
+
+		public final boolean isTerm() {
+			return true;
 		}
 
 	}

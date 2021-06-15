@@ -436,13 +436,13 @@
 <a class="jxr_linenumber" name="426" href="#426">426</a> 	}
 <a class="jxr_linenumber" name="427" href="#427">427</a> 
 <a class="jxr_linenumber" name="428" href="#428">428</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> newField(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> name, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> type) {
-<a class="jxr_linenumber" name="429" href="#429">429</a> 		<strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologField.html">PrologField</a>(<strong class="jxr_keyword">this</strong>, name, type);
+<a class="jxr_linenumber" name="429" href="#429">429</a> 		<strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTypedField.html">PrologTypedField</a>(<strong class="jxr_keyword">this</strong>, name, type);
 <a class="jxr_linenumber" name="430" href="#430">430</a> 	}
 <a class="jxr_linenumber" name="431" href="#431">431</a> 
 <a class="jxr_linenumber" name="432" href="#432">432</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> newField(String name, String type) {
 <a class="jxr_linenumber" name="433" href="#433">433</a> 		PrologTerm oname = toTerm(name, PrologTerm.<strong class="jxr_keyword">class</strong>);
 <a class="jxr_linenumber" name="434" href="#434">434</a> 		PrologTerm otype = toTerm(type, PrologTerm.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="435" href="#435">435</a> 		<strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologField.html">PrologField</a>(<strong class="jxr_keyword">this</strong>, oname, otype);
+<a class="jxr_linenumber" name="435" href="#435">435</a> 		<strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTypedField.html">PrologTypedField</a>(<strong class="jxr_keyword">this</strong>, oname, otype);
 <a class="jxr_linenumber" name="436" href="#436">436</a> 	}
 <a class="jxr_linenumber" name="437" href="#437">437</a> 
 <a class="jxr_linenumber" name="438" href="#438">438</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> newMixin(String name) {

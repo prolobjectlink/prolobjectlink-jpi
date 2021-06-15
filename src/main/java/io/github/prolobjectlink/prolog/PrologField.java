@@ -32,109 +32,70 @@
  */
 package io.github.prolobjectlink.prolog;
 
-public class PrologField extends AbstractCompounds implements PrologEntry {
+public class PrologField extends AbstractCompounds implements PrologVariable {
 
 	private final PrologTerm name;
-	private final PrologTerm kind;
 
 	@Deprecated
-	PrologField(PrologProvider provider, String name, String kind) {
+	PrologField(PrologProvider provider, String name) {
 		super(PrologTermType.FIELD_TYPE, provider);
 		this.name = provider.newVariable(name, 0);
-		this.kind = provider.newAtom(kind);
 	}
 
-	PrologField(PrologProvider provider, PrologTerm name, PrologTerm kind) {
+	PrologField(PrologProvider provider, PrologTerm name) {
 		super(PrologTermType.FIELD_TYPE, provider);
 		this.name = name;
-		this.kind = kind;
 	}
 
-	PrologField(PrologProvider provider, String kind, int position) {
+	PrologField(PrologProvider provider, int position) {
 		super(PrologTermType.FIELD_TYPE, provider);
 		this.name = provider.newVariable(position);
-		this.kind = provider.newAtom(kind);
 	}
 
-	PrologField(PrologProvider provider, String name, String kind, int position) {
+	PrologField(PrologProvider provider, String name, int position) {
 		super(PrologTermType.FIELD_TYPE, provider);
 		this.name = provider.newVariable(name, position);
-		this.kind = provider.newAtom(kind);
 	}
 
-	@Override
-	public boolean isList() {
+	public final boolean isList() {
 		return false;
 	}
 
-	@Override
-	public boolean isStructure() {
+	public final boolean isStructure() {
 		return true;
 	}
 
-	@Override
-	public boolean isEmptyList() {
+	public final boolean isEmptyList() {
 		return false;
 	}
 
-	@Override
-	public int getArity() {
+	public final int getArity() {
 		return 2;
 	}
 
-	@Override
-	public String getFunctor() {
+	public final String getFunctor() {
 		return "-";
 	}
 
-	@Override
 	public PrologTerm[] getArguments() {
-		return new PrologTerm[] { getKey(), getValue() };
+		return new PrologTerm[] { name };
 	}
 
-	@Override
-	public PrologTerm getKey() {
+	public final PrologTerm getNameTerm() {
 		return name;
 	}
 
-	@Override
-	public PrologTerm getValue() {
-		return kind;
-	}
-
-	@Override
-	public PrologTerm setValue(PrologTerm value) {
-		// this.type = value.getFunctor()
-		getLogger().debug(getClass(), "No value setting allow");
-		return kind;
-	}
-
-	public PrologTerm getNameTerm() {
-		return getKey();
-	}
-
-	public PrologTerm getKindTerm() {
-		return getValue();
-	}
-
-	public String getName() {
+	public final String getName() {
 		return ((PrologVariable) name).getName();
 	}
 
-	public String getKind() {
-		return kind.getFunctor();
-	}
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((kind == null) ? 0 : kind.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
 
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -143,12 +104,6 @@ public class PrologField extends AbstractCompounds implements PrologEntry {
 		if (getClass() != obj.getClass())
 			return false;
 		PrologField other = (PrologField) obj;
-		if (kind == null) {
-			if (other.kind != null)
-				return false;
-		} else if (!kind.equals(other.kind)) {
-			return false;
-		}
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -158,9 +113,27 @@ public class PrologField extends AbstractCompounds implements PrologEntry {
 		return true;
 	}
 
-	@Override
 	public String toString() {
-		return name + "-" + kind;
+		return "" + name + "";
+	}
+
+	public final boolean isAnonymous() {
+		PrologVariable v = (PrologVariable) name;
+		return v.isAnonymous();
+	}
+
+	public final void setName(String name) {
+		PrologVariable v = (PrologVariable) this.name;
+		v.setName(name);
+	}
+
+	public final int getPosition() {
+		PrologVariable v = (PrologVariable) name;
+		return v.getPosition();
+	}
+
+	public final boolean isVariable() {
+		return true;
 	}
 
 }

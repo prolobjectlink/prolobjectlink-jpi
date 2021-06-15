@@ -169,6 +169,14 @@ public abstract class AbstractClause implements PrologClause {
 		return false;
 	}
 
+	public final boolean isClause() {
+		return true;
+	}
+
+	public final boolean isTerm() {
+		return false;
+	}
+
 	public final boolean unify(PrologClause clause) {
 		return head.unify(clause.getHead()) && body.unify(clause.getBody());
 	}

@@ -64,7 +64,7 @@ public abstract class AbstractCompounds extends AbstractTerm implements PrologTe
 		return false;
 	}
 
-	public final boolean isVariable() {
+	public boolean isVariable() {
 		return false;
 	}
 

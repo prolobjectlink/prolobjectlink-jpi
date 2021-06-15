@@ -8,8 +8,8 @@
     <language>en-us</language>
     <copyright>&#169;2020 - 2021 Prolobjectlink Project</copyright>
     <item>
-      <title>File: 85,
-             Errors: 16456,
+      <title>File: 93,
+             Errors: 17488,
              Warnings: 0,
              Infos: 0
       </title>
@@ -136,7 +136,7 @@
                   0
                 </td>
                 <td>
-                  395
+                  399
                 </td>
               </tr>
                           <tr>
@@ -151,6 +151,20 @@
                 </td>
                 <td>
                   32
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologType.java">io/github/prolobjectlink/prolog/PrologType.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  153
                 </td>
               </tr>
                           <tr>
@@ -262,7 +276,7 @@
                   0
                 </td>
                 <td>
-                  761
+                  777
                 </td>
               </tr>
                           <tr>
@@ -318,7 +332,21 @@
                   0
                 </td>
                 <td>
-                  183
+                  144
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologParameter.java">io/github/prolobjectlink/prolog/PrologParameter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  145
                 </td>
               </tr>
                           <tr>
@@ -645,6 +673,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologResult.java">io/github/prolobjectlink/prolog/PrologResult.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  144
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.AbstractCompounds.java">io/github/prolobjectlink/prolog/AbstractCompounds.java</a>
                 </td>
                 <td>
@@ -654,7 +696,7 @@
                   0
                 </td>
                 <td>
-                  189
+                  190
                 </td>
               </tr>
                           <tr>
@@ -682,7 +724,7 @@
                   0
                 </td>
                 <td>
-                  145
+                  152
                 </td>
               </tr>
                           <tr>
@@ -696,7 +738,7 @@
                   0
                 </td>
                 <td>
-                  312
+                  320
                 </td>
               </tr>
                           <tr>
@@ -715,6 +757,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologId.java">io/github/prolobjectlink/prolog/PrologId.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  160
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.AbstractConsole.java">io/github/prolobjectlink/prolog/AbstractConsole.java</a>
                 </td>
                 <td>
@@ -725,6 +781,20 @@
                 </td>
                 <td>
                   234
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologTypedParameter.java">io/github/prolobjectlink/prolog/PrologTypedParameter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  133
                 </td>
               </tr>
                           <tr>
@@ -808,7 +878,21 @@
                   0
                 </td>
                 <td>
-                  519
+                  513
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologTypedField.java">io/github/prolobjectlink/prolog/PrologTypedField.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  131
                 </td>
               </tr>
                           <tr>
@@ -995,6 +1079,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologElement.java">io/github/prolobjectlink/prolog/PrologElement.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  36
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologNamespace.java">io/github/prolobjectlink/prolog/PrologNamespace.java</a>
                 </td>
                 <td>
@@ -1116,7 +1214,7 @@
                   0
                 </td>
                 <td>
-                  364
+                  372
                 </td>
               </tr>
                           <tr>
@@ -1159,6 +1257,20 @@
                 </td>
                 <td>
                   138
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologTypedResult.java">io/github/prolobjectlink/prolog/PrologTypedResult.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  131
                 </td>
               </tr>
                           <tr>

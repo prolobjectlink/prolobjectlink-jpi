@@ -63,7 +63,7 @@ import java.util.Iterator;
  * @author Jose Zalacain
  * @since 1.0
  */
-public interface PrologClause {
+public interface PrologClause extends PrologElement {
 
 	/**
 	 * Integer number that represent the arguments number in the clause head. The

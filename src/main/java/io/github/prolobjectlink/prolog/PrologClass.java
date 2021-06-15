@@ -120,8 +120,8 @@ public final class PrologClass extends PrologMixin implements PrologTerm {
 	 * @return new PrologEntry term
 	 * @since 1.1
 	 */
-	public final PrologField addField(PrologTerm name, PrologTerm type) {
-		PrologField field = new PrologField(provider, name, type);
+	public final PrologTypedField addField(PrologTerm name, PrologTerm type) {
+		PrologTypedField field = new PrologTypedField(provider, name, type);
 		fields.add(field);
 		return field;
 	}
@@ -136,13 +136,13 @@ public final class PrologClass extends PrologMixin implements PrologTerm {
 	 * @return new PrologEntry term
 	 * @since 1.1
 	 */
-	public final PrologField addField(String name, String type) {
-		PrologField field = new PrologField(provider, name, type);
+	public final PrologTypedField addField(String name, String type) {
+		PrologTypedField field = new PrologTypedField(provider, name, type);
 		fields.add(field);
 		return field;
 	}
 
-	protected final void removeFields(PrologField field) {
+	protected final void removeFields(PrologTypedField field) {
 		fields.remove(field);
 	}
 
@@ -256,6 +256,7 @@ public final class PrologClass extends PrologMixin implements PrologTerm {
 		StringBuilder builder = new StringBuilder();
 		for (PrologTerm prologTerm : directives) {
 			builder.append(":-" + prologTerm);
+			builder.append('.');
 			builder.append('\n');
 		}
 		builder.append('\n');

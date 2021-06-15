@@ -38,6 +38,7 @@ import static io.github.prolobjectlink.prolog.PrologTermType.CUT_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.DOUBLE_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.FAIL_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.FALSE_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.FIELD_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.FLOAT_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.INTEGER_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.LIST_TYPE;
@@ -50,7 +51,6 @@ import static io.github.prolobjectlink.prolog.PrologTermType.OBJECT_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.STRUCTURE_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.TRUE_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.VARIABLE_TYPE;
-import static io.github.prolobjectlink.prolog.PrologTermType.FIELD_TYPE;
 
 import java.util.ArrayDeque;
 import java.util.Collection;
@@ -217,7 +217,7 @@ public abstract class AbstractTerm implements PrologTerm {
 		case OBJECT_TYPE:
 			return term.getObject();
 		case FIELD_TYPE:
-			PrologField field = term.cast();
+			PrologTypedField field = term.cast();
 			return "field " + field.getName();
 		case CLASS_TYPE:
 		case MIXIN_TYPE:
@@ -256,6 +256,14 @@ public abstract class AbstractTerm implements PrologTerm {
 
 	public boolean isVariableNotBound() {
 		return isVariable() && getTerm() == this;
+	}
+
+	public final boolean isClause() {
+		return false;
+	}
+
+	public final boolean isTerm() {
+		return true;
 	}
 
 	/**
