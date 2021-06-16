@@ -142,4 +142,8 @@ final class PrologScriptEngine extends AbstractScriptEngine implements ScriptEng
 		return eval(reader, getContext());
 	}
 
+	PrologProvider getProvider() {
+		return prolog.getProvider();
+	}
+
 }
