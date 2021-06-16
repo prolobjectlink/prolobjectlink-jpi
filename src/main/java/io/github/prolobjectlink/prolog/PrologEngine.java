@@ -1519,6 +1519,14 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public String getVersion();
 
 	/**
+	 * Under-laying engine vendor
+	 * 
+	 * @return engine vendor
+	 * @since 1.1
+	 */
+	public String getVendor();
+
+	/**
 	 * Name of the wrapped engine.
 	 * 
 	 * @return String name of the wrapped engine.
