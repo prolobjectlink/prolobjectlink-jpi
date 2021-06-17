@@ -182,7 +182,7 @@ public abstract class AbstractEngine implements PrologEngine {
 		retract(term, terms);
 	}
 
-	public <O> boolean unify(O o1, O o2) {
+	public boolean unify(Object o1, Object o2) {
 		if (o1.equals(o2)) {
 			return true;
 		}

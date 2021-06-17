@@ -25,6 +25,21 @@
  */
 package io.github.prolobjectlink.prolog;
 
+import static io.github.prolobjectlink.prolog.PrologTermType.ATOM_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.CUT_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.DOUBLE_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.FAIL_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.FALSE_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.FLOAT_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.INTEGER_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.LIST_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.LONG_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.NIL_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.OBJECT_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.STRUCTURE_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.TRUE_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.VARIABLE_TYPE;
+
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -142,6 +157,42 @@ public abstract class AbstractTerm implements PrologTerm {
 
 	public final <T extends PrologTerm> T cast() {
 		return cast(this);
+	}
+
+	public Object getObject() {
+		PrologTerm term = this;
+		switch (term.getType()) {
+		case NIL_TYPE:
+			return null;
+		case CUT_TYPE:
+			return "!";
+		case FAIL_TYPE:
+			return "fail";
+		case TRUE_TYPE:
+			return true;
+		case FALSE_TYPE:
+			return false;
+		case ATOM_TYPE:
+			return term.getFunctor();
+		case FLOAT_TYPE:
+			return ((PrologNumber) term).getFloatValue();
+		case INTEGER_TYPE:
+			return ((PrologNumber) term).getIntegerValue();
+		case DOUBLE_TYPE:
+			return ((PrologNumber) term).getDoubleValue();
+		case LONG_TYPE:
+			return ((PrologNumber) term).getLongValue();
+		case VARIABLE_TYPE:
+			return ((PrologVariable) term).getName();
+		case LIST_TYPE:
+			return fromTermArray(term.getArguments(), Object[].class);
+		case STRUCTURE_TYPE:
+			// FIXME Use mappings here;
+		case OBJECT_TYPE:
+			return term.getObject();
+		default:
+			return null;
+		}
 	}
 
 	public final boolean isEntry() {

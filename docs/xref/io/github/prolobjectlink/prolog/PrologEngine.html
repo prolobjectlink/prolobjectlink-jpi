@@ -876,7 +876,7 @@
 <a class="jxr_linenumber" name="866" href="#866">866</a> <em class="jxr_javadoccomment">	 * @return true if o1 and o2 unify, false otherwise.</em>
 <a class="jxr_linenumber" name="867" href="#867">867</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
 <a class="jxr_linenumber" name="868" href="#868">868</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="869" href="#869">869</a> 	<strong class="jxr_keyword">public</strong> &lt;O&gt; <strong class="jxr_keyword">boolean</strong> unify(O o1, O o2);
+<a class="jxr_linenumber" name="869" href="#869">869</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> unify(Object o1, Object o2);
 <a class="jxr_linenumber" name="870" href="#870">870</a> 
 <a class="jxr_linenumber" name="871" href="#871">871</a> 	<em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="872" href="#872">872</a> <em class="jxr_javadoccomment">	 * Parse the string creating internal prolog clause and returning true if the</em>
@@ -1529,22 +1529,30 @@
 <a class="jxr_linenumber" name="1519" href="#1519">1519</a> 	<strong class="jxr_keyword">public</strong> String getVersion();
 <a class="jxr_linenumber" name="1520" href="#1520">1520</a> 
 <a class="jxr_linenumber" name="1521" href="#1521">1521</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1522" href="#1522">1522</a> <em class="jxr_javadoccomment">	 * Name of the wrapped engine.</em>
+<a class="jxr_linenumber" name="1522" href="#1522">1522</a> <em class="jxr_javadoccomment">	 * Under-laying engine vendor</em>
 <a class="jxr_linenumber" name="1523" href="#1523">1523</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1524" href="#1524">1524</a> <em class="jxr_javadoccomment">	 * @return String name of the wrapped engine.</em>
-<a class="jxr_linenumber" name="1525" href="#1525">1525</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="1524" href="#1524">1524</a> <em class="jxr_javadoccomment">	 * @return engine vendor</em>
+<a class="jxr_linenumber" name="1525" href="#1525">1525</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
 <a class="jxr_linenumber" name="1526" href="#1526">1526</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1527" href="#1527">1527</a> 	<strong class="jxr_keyword">public</strong> String getName();
+<a class="jxr_linenumber" name="1527" href="#1527">1527</a> 	<strong class="jxr_keyword">public</strong> String getVendor();
 <a class="jxr_linenumber" name="1528" href="#1528">1528</a> 
 <a class="jxr_linenumber" name="1529" href="#1529">1529</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1530" href="#1530">1530</a> <em class="jxr_javadoccomment">	 * Clear program in main memory. Release all resources used and prepare the</em>
-<a class="jxr_linenumber" name="1531" href="#1531">1531</a> <em class="jxr_javadoccomment">	 * current engine for realize some new task.</em>
-<a class="jxr_linenumber" name="1532" href="#1532">1532</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1530" href="#1530">1530</a> <em class="jxr_javadoccomment">	 * Name of the wrapped engine.</em>
+<a class="jxr_linenumber" name="1531" href="#1531">1531</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1532" href="#1532">1532</a> <em class="jxr_javadoccomment">	 * @return String name of the wrapped engine.</em>
 <a class="jxr_linenumber" name="1533" href="#1533">1533</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
 <a class="jxr_linenumber" name="1534" href="#1534">1534</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1535" href="#1535">1535</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> dispose();
+<a class="jxr_linenumber" name="1535" href="#1535">1535</a> 	<strong class="jxr_keyword">public</strong> String getName();
 <a class="jxr_linenumber" name="1536" href="#1536">1536</a> 
-<a class="jxr_linenumber" name="1537" href="#1537">1537</a> }
+<a class="jxr_linenumber" name="1537" href="#1537">1537</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1538" href="#1538">1538</a> <em class="jxr_javadoccomment">	 * Clear program in main memory. Release all resources used and prepare the</em>
+<a class="jxr_linenumber" name="1539" href="#1539">1539</a> <em class="jxr_javadoccomment">	 * current engine for realize some new task.</em>
+<a class="jxr_linenumber" name="1540" href="#1540">1540</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1541" href="#1541">1541</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="1542" href="#1542">1542</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1543" href="#1543">1543</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> dispose();
+<a class="jxr_linenumber" name="1544" href="#1544">1544</a> 
+<a class="jxr_linenumber" name="1545" href="#1545">1545</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

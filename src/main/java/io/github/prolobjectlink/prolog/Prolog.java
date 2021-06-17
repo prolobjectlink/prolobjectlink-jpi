@@ -35,7 +35,7 @@ import javax.script.ScriptEngineManager;
 /**
  * Bootstrap platform class. Contains {@link #getProvider(Class)} method that
  * return an instance of Prolog Provider from the given class. Alternatively can
- * be used {@link #getInstance()} for create and return a {@link PrologProvider}
+ * be used {@link #getProvider()} for create and return a {@link PrologProvider}
  * using Java Platform discovery pattern.
  * 
  * @author Jose Zalacain
@@ -53,10 +53,27 @@ public final class Prolog {
 	 * @return an instance of Prolog Provider from the given class.
 	 * @since 1.1
 	 */
-	public static PrologProvider getInstance() {
+	public static PrologProvider getProvider() {
 		ScriptEngineManager manager = new ScriptEngineManager();
 		ScriptEngine engine = manager.getEngineByName("prolog");
 		return ((PrologScriptEngine) engine).getProvider();
+	}
+
+	/**
+	 * Create and return an instance of Prolog Provider using the Prolog Provider
+	 * class name.
+	 * 
+	 * @return an instance of Prolog Provider from the given class.
+	 * @since 1.1
+	 */
+	public static PrologProvider getProvider(String className) {
+		PrologProvider provider = null;
+		try {
+			return getProvider(Class.forName(className));
+		} catch (ClassNotFoundException e) {
+			Logger.getLogger(Prolog.class.getName()).log(Level.FINEST, null, e);
+		}
+		return provider;
 	}
 
 	/**

@@ -866,7 +866,7 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	 * @return true if o1 and o2 unify, false otherwise.
 	 * @since 1.1
 	 */
-	public <O> boolean unify(O o1, O o2);
+	public boolean unify(Object o1, Object o2);
 
 	/**
 	 * Parse the string creating internal prolog clause and returning true if the

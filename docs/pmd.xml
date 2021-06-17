@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.2.5" timestamp="2021-06-16T06:47:11.731">
+<pmd version="4.2.5" timestamp="2021-06-20T09:46:23.494">
 <file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\AbstractConsole.java">
 <violation beginline="156" endline="158" begincolumn="57" endcolumn="25" rule="EmptyIfStmt" ruleset="Basic Rules" package="io.github.prolobjectlink.prolog" class="AbstractConsole" method="run" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
@@ -8,6 +8,16 @@ Avoid empty if statements
 <file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\AbstractJavaConverter.java">
 <violation beginline="26" endline="309" begincolumn="1" endcolumn="3" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="io.github.prolobjectlink.prolog" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
 Too many static imports may lead to messy code
+</violation>
+</file>
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\AbstractTerm.java">
+<violation beginline="26" endline="206" begincolumn="1" endcolumn="3" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="io.github.prolobjectlink.prolog" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
+Too many static imports may lead to messy code
+</violation>
+</file>
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\ReflectionUtil.java">
+<violation beginline="162" endline="167" begincolumn="27" endcolumn="25" rule="EmptyCatchBlock" ruleset="Basic Rules" package="io.github.prolobjectlink.prolog" class="ReflectionUtil" method="newInstance" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
 </violation>
 </file>
 </pmd>

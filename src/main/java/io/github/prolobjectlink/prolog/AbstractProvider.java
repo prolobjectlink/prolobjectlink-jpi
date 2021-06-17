@@ -26,7 +26,10 @@
 package io.github.prolobjectlink.prolog;
 
 import java.io.File;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -39,9 +42,179 @@ import java.util.Set;
 public abstract class AbstractProvider implements PrologProvider {
 
 	protected final PrologConverter<?> converter;
+	private static final Set<String> ISO_IEC_BUILT_INS;
+
+	static {
+
+		ISO_IEC_BUILT_INS = new HashSet<String>();
+
+		// 7.4 directives
+		ISO_IEC_BUILT_INS.add("dynamic");
+		ISO_IEC_BUILT_INS.add("include");
+		ISO_IEC_BUILT_INS.add("multifile");
+		ISO_IEC_BUILT_INS.add("set_prolog_flag");
+		ISO_IEC_BUILT_INS.add("ensure_loaded");
+		ISO_IEC_BUILT_INS.add("discontiguous");
+		ISO_IEC_BUILT_INS.add("current_prolog_flag");
+		ISO_IEC_BUILT_INS.add("initialization");
+
+		// built-ins predicates
+		ISO_IEC_BUILT_INS.add("nil");
+		ISO_IEC_BUILT_INS.add("fail");
+		ISO_IEC_BUILT_INS.add("true");
+		ISO_IEC_BUILT_INS.add("false");
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.THROW);
+
+		// 8.2 term unification
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.UNIFY_WITH_OCCURS_CHECK);
+
+		// 8.3 type testing
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.VAR);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.ATOM);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.FLOAT);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.NUMBER);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.NONVAR);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.OBJECT);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.GROUND);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.ATOMIC);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.INTEGER);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.COMPOUND);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.CALLABLE);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.CYCLIC_TERM);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.ACYCLIC_TERM);
+
+		// 8.4 term comparison
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.SORT);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.COMPARE);
+
+		// 8.5 term creation and decomposition
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.ARG);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.FUNCTOR);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.COPY_TERM);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.TERM_VARIABLES);
+
+		// 8.6 arithmetics evaluation (operator)
+		// 8.7 arithmetic comparison (operator)
+
+		// 8.8 clause retrieval and information
+		ISO_IEC_BUILT_INS.add("clause");
+		ISO_IEC_BUILT_INS.add("current_predicate");
+
+		// 8.9 clause creation and destruction
+		ISO_IEC_BUILT_INS.add("abolish");
+		ISO_IEC_BUILT_INS.add("asserta");
+		ISO_IEC_BUILT_INS.add("assertz");
+		ISO_IEC_BUILT_INS.add("retract");
+
+		// 8.10 All solutions
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.BAGOF);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.SETOF);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.FINDALL);
+
+		// 8.11 Stream Selection and Control
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.OPEN);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.CLOSE);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.SET_INPUT);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.SET_OUTPUT);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.CURRENT_INPUT);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.CURRENT_OUTPUT);
+
+		// 8.12 character input/output
+		// 8.13 byte input/output
+
+		// 8.14 Term input/output
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.NL);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.READ);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.WRITE);
+
+		// 8.15 logic and control
+		ISO_IEC_BUILT_INS.add("call");
+		ISO_IEC_BUILT_INS.add("once");
+		ISO_IEC_BUILT_INS.add("repeat");
+
+		// 8.16 atomic term processing
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.SUB_ATOM);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.CHAR_CODE);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.ATOM_CHARS);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.ATOM_CODES);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.ATOM_LENGTH);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.ATOM_CONCAT);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.NUMBER_CHARS);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.NUMBER_CODES);
+
+		// 8.17 Implementation defined hooks
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.OP);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.HALT);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.CURRENT_OP);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.CHAR_CONVERSION);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.CURRENT_CHAR_CONVERSION);
+
+		// 9.X Valuable functors
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.E);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.PI);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.ABS);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.EXP);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.LOG);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.SIN);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.COS);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.MAX);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.MIN);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.GCD);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.LCM);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.TAN);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.ASIN);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.ACOS);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.ATAN);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.SIGN);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.SQRT);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.CBRT);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.FLOOR);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.ROUND);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.EPSILON);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.CEILING);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.TRUNCATE);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.FLOAT_INTEGER_PART);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.FLOAT_FRACTIONAL_PART);
+
+		// non ISO
+
+		// java foreign language
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.GET);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.SET);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.CAST);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.INVOKE);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.INSTANCE_OF);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.NEW_INSTANCE);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.LOAD_LIBRARY);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.OBJECT_CONVERSION);
+
+		// java runtime reflection
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.CLASS_OF);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.FIELDS_OF);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.METHODS_OF);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.SUPER_CLASS_OF);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.CONSTRUCTORS_OF);
+
+		// runtime statistics
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.STATISTICS);
+		ISO_IEC_BUILT_INS.add(PrologBuiltin.CURRENT_TIME);
+
+	}
 
 	public AbstractProvider(PrologConverter<?> converter) {
 		this.converter = converter;
+	}
+
+	public final boolean isCompliant() {
+		PrologEngine engine = newEngine();
+		Set<PrologIndicator> implemented = engine.getBuiltIns();
+		for (String prologIndicator : ISO_IEC_BUILT_INS) {
+			if (implemented.contains(prologIndicator)) {
+				// TODO Change to check using prolog indicator
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public final PrologList parseList(String stringList) {
@@ -123,6 +296,69 @@ public abstract class AbstractProvider implements PrologProvider {
 		PrologTerm leftTerm = transformer.toTerm(left);
 		PrologTerm rightTerm = transformer.toTerm(right);
 		return newStructure(leftTerm, operator, rightTerm);
+	}
+
+	public final Object newObject(String className) {
+		Class<?> cls = ReflectionUtil.classForName(className);
+		return ReflectionUtil.newInstance(cls);
+	}
+
+	public final Object newObject(String className, Object... arguments) {
+		Class<?>[] parameterTypes = new Class<?>[arguments.length];
+		for (int i = 0; i < parameterTypes.length; i++) {
+			parameterTypes[i] = arguments[i].getClass();
+		}
+		Class<?> cls = ReflectionUtil.classForName(className);
+		return ReflectionUtil.newInstance(cls, parameterTypes, arguments);
+	}
+
+	public final Object newObject(PrologAtom className) {
+		return newObject(className.getFunctor());
+	}
+
+	public final Object newObject(PrologAtom className, PrologTerm[] arguments) {
+		Object[] args = getJavaConverter().toObjectsArray(arguments);
+		return newObject(className.getFunctor(), args);
+	}
+
+	public final Object getObject(Object reference, String fieldName) {
+		Field field = ReflectionUtil.getDeclaredField(reference.getClass(), fieldName);
+		return ReflectionUtil.readValue(field, reference);
+	}
+
+	public final Object getObject(Object reference, PrologAtom fieldName) {
+		return getObject(reference, fieldName.getFunctor());
+	}
+
+	public final void setObject(Object reference, String fieldName, Object value) {
+		Field field = ReflectionUtil.getDeclaredField(reference.getClass(), fieldName);
+		ReflectionUtil.writeValue(field, reference, value);
+	}
+
+	public final void setObject(Object reference, PrologAtom fieldName, PrologTerm value) {
+		setObject(reference, fieldName.getFunctor(), value);
+	}
+
+	public final Object callObject(Object reference, String methodName, Object... arguments) {
+		Class<?>[] parameterTypes = new Class<?>[arguments.length];
+		for (int i = 0; i < parameterTypes.length; i++) {
+			parameterTypes[i] = arguments[i].getClass();
+		}
+		Method method = ReflectionUtil.getDeclaredMethod(reference.getClass(), methodName, parameterTypes);
+		return ReflectionUtil.invoke(reference, method, arguments);
+	}
+
+	public final Object callObject(Object reference, PrologAtom methodName, PrologTerm... arguments) {
+		Object[] args = getJavaConverter().toObjectsArray(arguments);
+		return callObject(reference, methodName.getFunctor(), args);
+	}
+
+	public final Object callObject(Object reference, String methodName) {
+		return callObject(reference, methodName, new Object[0]);
+	}
+
+	public final Object callObject(Object reference, PrologAtom methodName) {
+		return callObject(reference, methodName.getFunctor());
 	}
 
 	/**

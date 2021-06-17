@@ -25,6 +25,8 @@
  */
 package io.github.prolobjectlink.prolog;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 import java.util.Map;
 
 /**
@@ -570,6 +572,159 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, PrologMappin
 	 * @since 1.1
 	 */
 	public void unregister(PrologMapping<?> mapping);
+
+	/**
+	 * Create an object instance using the class name for instantiation to the
+	 * resulting object. More formally this method call
+	 * {@link Class#forName(String)} using the class name. This method is called
+	 * when the class have non arguments constructor.
+	 * 
+	 * @param className class name for instantiation
+	 * @return an object instance of class name type
+	 * @since 1.1
+	 */
+	public Object newObject(String className);
+
+	/**
+	 * Create an object instance using the class name for instantiation and object
+	 * arguments array to initialize the resulting object. More formally this method
+	 * call {@link Class#forName(String)} using the class name and
+	 * {@link Constructor#newInstance(Object...)}.
+	 * 
+	 * @param className class name for instantiation
+	 * @param arguments object arguments array
+	 * @return an object instance of class name type
+	 * @since 1.1
+	 */
+	public Object newObject(String className, Object... arguments);
+
+	/**
+	 * Create an object instance using the class name for instantiation to the
+	 * resulting object. More formally this method call
+	 * {@link Class#forName(String)} using the class name. This method is called
+	 * when the class have non arguments constructor. To resolve the {@link String}
+	 * class name this method call {@link PrologAtom#getFunctor()}.
+	 * 
+	 * @param className class name for instantiation
+	 * @return an object instance of class name type
+	 * @since 1.1
+	 */
+	public Object newObject(PrologAtom className);
+
+	/**
+	 * Create an object instance using the class name for instantiation and object
+	 * arguments array to initialize the resulting object. More formally this method
+	 * call {@link Class#forName(String)} using the class name and
+	 * {@link Constructor#newInstance(Object...)}. To resolve the {@link String}
+	 * class name this method call {@link PrologAtom#getFunctor()} and convert every
+	 * {@link PrologTerm} in arguments array to equivalent object array.
+	 * 
+	 * @param className class name for instantiation
+	 * @param arguments object arguments array
+	 * @return an object instance of class name type
+	 * @since 1.1
+	 */
+	public Object newObject(PrologAtom className, PrologTerm[] arguments);
+
+	/**
+	 * Access to some object field using the given field name.
+	 * 
+	 * @param reference object reference
+	 * @param fieldName field name to access
+	 * @return the value of specified field.
+	 * @since 1.1
+	 */
+	public Object getObject(Object reference, String fieldName);
+
+	/**
+	 * Access to some object field using the given field name. To resolve the
+	 * {@link String} field name this method call {@link PrologAtom#getFunctor()}
+	 * 
+	 * @param reference object reference
+	 * @param fieldName field name to access
+	 * @return the value of specified field.
+	 * @since 1.1
+	 */
+	public Object getObject(Object reference, PrologAtom fieldName);
+
+	/**
+	 * Write in the given object reference in the specified field an object value
+	 * using the given field name.
+	 * 
+	 * @param reference object reference
+	 * @param fieldName field name to access
+	 * @param value     object value to be write in the specified field
+	 * @since 1.1
+	 */
+	public void setObject(Object reference, String fieldName, Object value);
+
+	/**
+	 * Write in the given object reference in the specified field an object value
+	 * using the given field name. To resolve the {@link String} field name this
+	 * method call {@link PrologAtom#getFunctor()}
+	 * 
+	 * @param reference object reference
+	 * @param fieldName field name to access
+	 * @param value     object value to be write in the specified field
+	 * @since 1.1
+	 */
+	public void setObject(Object reference, PrologAtom fieldName, PrologTerm value);
+
+	/**
+	 * Call an object method specifying the string method name and the object array
+	 * arguments. More formally this method determine the object {@link Method} and
+	 * over this class call {@link Method#invoke(Object, Object...)}.
+	 * 
+	 * @param reference  object reference to invoke some method
+	 * @param methodName string method name
+	 * @param arguments  object array arguments
+	 * @return the resulting object after invoke the given method name
+	 * @since 1.1
+	 */
+	public Object callObject(Object reference, String methodName, Object... arguments);
+
+	/**
+	 * Call an object method specifying the string method name and the object array
+	 * arguments. More formally this method determine the object {@link Method} and
+	 * over this class call {@link Method#invoke(Object, Object...)}. To resolve the
+	 * {@link String} class name this method call {@link PrologAtom#getFunctor()}
+	 * and convert every {@link PrologTerm} in arguments array to equivalent object
+	 * array.
+	 * 
+	 * @param reference  object reference to invoke some method
+	 * @param methodName string method name
+	 * @param arguments  object array arguments
+	 * @return the resulting object after invoke the given method name
+	 * @since 1.1
+	 */
+	public Object callObject(Object reference, PrologAtom methodName, PrologTerm... arguments);
+
+	/**
+	 * Call an object method specifying the string method name and the object array
+	 * arguments. More formally this method determine the object {@link Method} and
+	 * over this class call {@link Method#invoke(Object, Object...)}.
+	 * 
+	 * @param reference  object reference to invoke some method
+	 * @param methodName string method name
+	 * @return the resulting object after invoke the given method name
+	 * @since 1.1
+	 */
+	public Object callObject(Object reference, String methodName);
+
+	/**
+	 * Call an object method specifying the string method name and the object array
+	 * arguments. More formally this method determine the object {@link Method} and
+	 * over this class call {@link Method#invoke(Object, Object...)}. To resolve the
+	 * {@link String} class name this method call {@link PrologAtom#getFunctor()}
+	 * and convert every {@link PrologTerm} in arguments array to equivalent object
+	 * array.
+	 * 
+	 * @param reference  object reference to invoke some method
+	 * @param methodName string method name
+	 * @return the resulting object after invoke the given method name
+	 * @since 1.1
+	 */
+	public Object callObject(Object reference, PrologAtom methodName);
 
 	/**
 	 * Get a Java to Prolog converter instance to map the abstract prolog data types
