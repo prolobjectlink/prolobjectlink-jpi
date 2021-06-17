@@ -34,7 +34,7 @@ import java.util.Map.Entry;
  * @author Jose Zalacain
  * @since 1.1
  */
-public final class PrologEntry extends AbstractTerm implements PrologTerm, Entry<PrologTerm, PrologTerm> {
+public final class PrologEntry extends AbstractMaps implements PrologTerm, Entry<PrologTerm, PrologTerm> {
 
 	private final PrologTerm key;
 	private PrologTerm value;
@@ -58,97 +58,16 @@ public final class PrologEntry extends AbstractTerm implements PrologTerm, Entry
 		return value;
 	}
 
-	public int compareTo(PrologTerm o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public boolean isAtom() {
-		return false;
-	}
-
-	public boolean isNumber() {
-		return false;
-	}
-
-	public boolean isFloat() {
-		return false;
-	}
-
-	public boolean isInteger() {
-		return false;
-	}
-
-	public boolean isDouble() {
-		return false;
-	}
-
-	public boolean isLong() {
-		return false;
-	}
-
-	public boolean isVariable() {
-		return false;
-	}
-
 	public boolean isList() {
 		return false;
 	}
 
 	public boolean isStructure() {
-		return false;
-	}
-
-	public boolean isNil() {
-		return false;
+		return true;
 	}
 
 	public boolean isEmptyList() {
 		return false;
-	}
-
-	public boolean isAtomic() {
-		return false;
-	}
-
-	public boolean isCompound() {
-		return true;
-	}
-
-	public boolean isEvaluable() {
-		return false;
-	}
-
-	public boolean isTrueType() {
-		return false;
-	}
-
-	public boolean isFalseType() {
-		return false;
-	}
-
-	public boolean isNullType() {
-		return false;
-	}
-
-	public boolean isVoidType() {
-		return false;
-	}
-
-	public boolean isObjectType() {
-		return false;
-	}
-
-	public boolean isReference() {
-		return false;
-	}
-
-	public Object getObject() {
-		return null;
-	}
-
-	public int getArity() {
-		return 2;
 	}
 
 	public String getFunctor() {
@@ -157,11 +76,6 @@ public final class PrologEntry extends AbstractTerm implements PrologTerm, Entry
 
 	public PrologTerm[] getArguments() {
 		return new PrologTerm[] { key, value };
-	}
-
-	public boolean unify(PrologTerm term) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override

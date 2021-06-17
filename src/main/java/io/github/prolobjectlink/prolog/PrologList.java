@@ -113,6 +113,7 @@ public interface PrologList extends PrologTerm, Iterable<PrologTerm> {
 	 * 
 	 * @return true if the current list don't have any elements, false in other
 	 *         case.
+	 * @since 1.0
 	 */
 	public boolean isEmpty();
 
@@ -128,6 +129,7 @@ public interface PrologList extends PrologTerm, Iterable<PrologTerm> {
 	 * Returns the number of elements in this list.
 	 *
 	 * @return the number of elements in this list.
+	 * @since 1.0
 	 */
 	public int size();
 

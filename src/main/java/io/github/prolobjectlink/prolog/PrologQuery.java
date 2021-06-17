@@ -155,29 +155,44 @@ public interface PrologQuery extends Iterator<Collection<PrologTerm>>, Iterable<
 	public Map<String, PrologTerm> nextVariablesSolution();
 
 	/**
+	 * Return a Prolog terms matrix of n x m order that conform the solution set for
+	 * the current query where n is the solution number and m is a free variable
+	 * number in the query.
 	 * 
-	 * @return
+	 * @param n array order or Prolog term rows number
+	 * @return a Prolog terms matrix of n x m order that conform the solution set
 	 * @since 1.0
 	 */
 	public PrologTerm[][] nSolutions(int n);
 
 	/**
+	 * Return an array of n size with maps of variables name key and Prolog terms as
+	 * value that conform the solution set for the current query where n is the
+	 * solution number.
 	 * 
-	 * @return
+	 * @param n array order or Prolog term items number
+	 * @return an array of n size with maps of variables name key and Prolog terms
+	 *         as value that conform the solution set
 	 * @since 1.0
 	 */
 	public Map<String, PrologTerm>[] nVariablesSolutions(int n);
 
 	/**
+	 * Return a Prolog terms matrix of n x m order that conform the solution set for
+	 * the current query where n is the solution number and m is a free variable
+	 * number in the query.
 	 * 
-	 * @return
+	 * @return a Prolog terms matrix of n x m order that conform the solution set
 	 * @since 1.0
 	 */
 	public PrologTerm[][] allSolutions();
 
 	/**
+	 * Return an array of map of variables name key and Prolog terms as value that
+	 * conform the solution set for the current query.
 	 * 
-	 * @return
+	 * @return an array of map of variables name key and Prolog terms as value that
+	 *         conform the solution set
 	 * @since 1.0
 	 */
 	public Map<String, PrologTerm>[] allVariablesSolutions();
@@ -216,74 +231,110 @@ public interface PrologQuery extends Iterator<Collection<PrologTerm>>, Iterable<
 	public Map<String, Object> oneVariablesResult();
 
 	/**
+	 * Return the next Java objects solution list for the current query. The
+	 * solution is a Java objects list and every object is an instance value for the
+	 * variables not anonymous involved in the query.
 	 * 
-	 * @return
+	 * @return Java objects solution list for the current query
 	 * @since 1.1
 	 */
 	public List<Object> nextResult();
 
 	/**
+	 * Return the next Java objects that conform the solution set for the current
+	 * query. The solution set is an objects map and every map entry is a pair
+	 * variable name and variable instance value for the variables not anonymous
+	 * involved in the query.
 	 * 
-	 * @return
+	 * @return variable name - variable instance (key - value) map that conform the
+	 *         solution set for the current query.
 	 * @since 1.1
 	 */
 	public Map<String, Object> nextVariablesResult();
 
 	/**
+	 * Return a list of list of Java Objects that conform the solution set for the
+	 * current query where n is the solution number and m is a free variable number
+	 * in the query.
 	 * 
-	 * @param n
-	 * @return
+	 * @param n list order or Java objects rows number
+	 * @return a list of list of Java Objects that conform the solution set
 	 * @since 1.1
 	 */
 	public List<List<Object>> nResult(int n);
 
 	/**
+	 * Return a list of n size with maps of variables name key and Java objects as
+	 * value that conform the solution set for the current query where n is the
+	 * solution number.
 	 * 
-	 * @param n
-	 * @return
+	 * @param n list order or Java objects items number
+	 * @return a list of n size with maps of variables name key and Java objects as
+	 *         value that conform the solution set
 	 * @since 1.1
 	 */
 	public List<Map<String, Object>> nVariablesResults(int n);
 
 	/**
+	 * Return a list of list of Java Objects that conform the solution set for the
+	 * current query.
 	 * 
-	 * @return
+	 * @return a list of list of Java Objects that conform the solution set for the
+	 *         current query.
 	 * @since 1.0
 	 */
 	public List<List<Object>> allResults();
 
 	/**
+	 * Return a list of map of variables name key and Java objects as value that
+	 * conform the solution set for the current query.
 	 * 
-	 * @return
+	 * @return a list of map of variables name key and Java objects as value that
+	 *         conform the solution set
 	 * @since 1.0
 	 */
 	public List<Map<String, Object>> allVariablesResults();
 
 	/**
+	 * Return a map of variables name key and Prolog terms as value that conform the
+	 * solution set for the current query.
 	 * 
-	 * @return
+	 * @return a map of variables name key and Prolog terms as value that conform
+	 *         the solution set
 	 * @since 1.0
 	 */
 	public Map<String, PrologTerm> one();
 
 	/**
+	 * Return the next prolog terms that conform the solution set for the current
+	 * query. The solution set is a prolog terms map and every map entry is a pair
+	 * variable name and variable instance value for the variables not anonymous
+	 * involved in the query.
 	 * 
-	 * @return
+	 * @return variable name - variable instance (key - value) map that conform the
+	 *         solution set for the current query.
 	 * @since 1.1
 	 */
 	public Map<String, PrologTerm> more();
 
 	/**
+	 * Return a list of n size with maps of variables name key and Prolog terms as
+	 * value that conform the solution set for the current query where n is the
+	 * solution number.
 	 * 
-	 * @param n
-	 * @return
+	 * @return an list of n size with maps of variables name key and Prolog terms as
+	 *         value that conform the solution set
+	 * @param n list order or Prolog term items number
 	 * @since 1.1
 	 */
 	public List<Map<String, PrologTerm>> nths(int n);
 
 	/**
+	 * Return a list of map of variables name key and Prolog terms as value that
+	 * conform the solution set for the current query.
 	 * 
-	 * @return
+	 * @return a list of map of variables name key and Prolog terms as value that
+	 *         conform the solution set
 	 * @since 1.0
 	 */
 	public List<Map<String, PrologTerm>> all();

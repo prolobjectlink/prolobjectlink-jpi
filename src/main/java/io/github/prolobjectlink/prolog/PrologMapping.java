@@ -32,6 +32,75 @@ package io.github.prolobjectlink.prolog;
  * into a conversion context, a converter adds to the defined conversions a new
  * mapping.
  * 
+ * <pre>
+ * public class Parent {
+ * 
+ * 	private String parent;
+ * 	private String child;
+ * 
+ * 	public Parent() {
+ * 	}
+ * 
+ * 	public Parent(String parent, String child) {
+ * 		this.parent = parent;
+ * 		this.child = child;
+ * 	}
+ * 
+ * 	public String getParent() {
+ * 		return parent;
+ * 	}
+ * 
+ * 	public void setParent(String parent) {
+ * 		this.parent = parent;
+ * 	}
+ * 
+ * 	public String getChild() {
+ * 		return child;
+ * 	}
+ * 
+ * 	public void setChild(String child) {
+ * 		this.child = child;
+ * 	}
+ * 
+ * }
+ * </pre>
+ * 
+ * The mapping class
+ * 
+ * <pre>
+ * public class ParentMapping implements PrologMapping&lt;Parent&gt; {
+ * 
+ * 	public Parent fromTerm(PrologProvider provider, PrologTerm t) {
+ * 		String name = t.getArgument(0).getFunctor();
+ * 		String child = t.getArgument(1).getFunctor();
+ * 		Parent parent = new Parent(name, child);
+ * 		return parent;
+ * 	}
+ * 
+ * 	public PrologTerm toTerm(PrologProvider provider, Object o) {
+ * 		if (o instanceof Parent) {
+ * 			Parent p = (Parent) o;
+ * 			String name = p.getParent();
+ * 			String child = p.getChild();
+ * 			return provider.newStructure("parent", name, child);
+ * 		}
+ * 		return provider.prologNil();
+ * 	}
+ * 
+ * 	public PrologTerm toTerm(PrologProvider provider) {
+ * 		PrologTerm name = provider.newVariable("Name", 0);
+ * 		PrologTerm child = provider.newVariable("Child", 1);
+ * 		PrologTerm[] arguments = new PrologTerm[] { name, child };
+ * 		return provider.newStructure("parent", arguments);
+ * 	}
+ * 
+ * 	public Class&gt;Parent&gt; getType() {
+ * 		return Parent.class;
+ * 	}
+ * 
+ * }
+ * </pre>
+ * 
  * @author Jose Zalacain
  * @param <O> Java Object implicit in the conversion.
  * @since 1.1

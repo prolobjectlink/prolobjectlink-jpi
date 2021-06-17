@@ -37,16 +37,6 @@ public class AbstractReference extends AbstractTerm implements PrologReference {
 	}
 
 	@Override
-	public String getIndicator() {
-		return getFunctor() + "/" + getArity();
-	}
-
-	@Override
-	public boolean hasIndicator(String functor, int arity) {
-		return functor != null && functor.equals("@") && arity == 1;
-	}
-
-	@Override
 	public boolean isAtom() {
 		return false;
 	}

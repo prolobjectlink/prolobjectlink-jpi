@@ -25,9 +25,6 @@
  */
 package io.github.prolobjectlink.prolog;
 
-import java.util.Map;
-import java.util.Map.Entry;
-
 /**
  * <p>
  * Ancestor prolog data type. All Prolog data types {@link PrologAtom},
@@ -112,7 +109,7 @@ import java.util.Map.Entry;
  * @author Jose Zalacain
  * @since 1.0
  */
-public interface PrologTerm extends Comparable<PrologTerm>, Entry<PrologTerm, PrologTerm>, Map<PrologTerm, PrologTerm> {
+public interface PrologTerm extends Comparable<PrologTerm> {
 
 	/**
 	 * Gets the term indicator represented by one string with the format
@@ -324,6 +321,22 @@ public interface PrologTerm extends Comparable<PrologTerm>, Entry<PrologTerm, Pr
 	 * @since 1.0
 	 */
 	public boolean isReference();
+
+	/**
+	 * True if this Term is a Entry, false in other case
+	 * 
+	 * @return whether this Term is a entry
+	 * @since 1.1
+	 */
+	public boolean isEntry();
+
+	/**
+	 * True if this Term is a Map, false in other case
+	 * 
+	 * @return whether this Term is a map
+	 * @since 1.1
+	 */
+	public boolean isMap();
 
 	/**
 	 * For references terms return the referenced object.

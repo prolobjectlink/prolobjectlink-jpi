@@ -25,22 +25,26 @@
  */
 package io.github.prolobjectlink.prolog;
 
-import java.util.HashMap;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
 /**
+ * A PrologTerm that maps PrologTerm keys to PrologTerm values. A map cannot
+ * contain duplicate keys. Each key can map to at most one value.
  * 
  * @author Jose Zalacain
  * @since 1.1
  */
-public final class PrologMap extends AbstractTerm implements PrologTerm, Map<PrologTerm, PrologTerm> {
+public final class PrologMap extends AbstractMaps implements PrologList, Map<PrologTerm, PrologTerm> {
 
 	private Map<PrologTerm, PrologTerm> map;
 
 	PrologMap(PrologProvider provider, int size) {
 		super(PrologTermType.MAP_TYPE, provider);
-		map = new HashMap<PrologTerm, PrologTerm>(size);
+		map = new LinkedHashMap<PrologTerm, PrologTerm>(size);
 	}
 
 	PrologMap(PrologProvider provider, Map<? extends PrologTerm, ? extends PrologTerm> m) {
@@ -52,34 +56,6 @@ public final class PrologMap extends AbstractTerm implements PrologTerm, Map<Pro
 		this(provider, 16);
 	}
 
-	public boolean isAtom() {
-		return false;
-	}
-
-	public boolean isNumber() {
-		return false;
-	}
-
-	public boolean isFloat() {
-		return false;
-	}
-
-	public boolean isInteger() {
-		return false;
-	}
-
-	public boolean isDouble() {
-		return false;
-	}
-
-	public boolean isLong() {
-		return false;
-	}
-
-	public boolean isVariable() {
-		return false;
-	}
-
 	public boolean isList() {
 		return true;
 	}
@@ -88,56 +64,8 @@ public final class PrologMap extends AbstractTerm implements PrologTerm, Map<Pro
 		return false;
 	}
 
-	public boolean isNil() {
-		return false;
-	}
-
 	public boolean isEmptyList() {
 		return map.size() == 0;
-	}
-
-	public boolean isAtomic() {
-		return false;
-	}
-
-	public boolean isCompound() {
-		return true;
-	}
-
-	public boolean isEvaluable() {
-		return false;
-	}
-
-	public boolean isTrueType() {
-		return false;
-	}
-
-	public boolean isFalseType() {
-		return false;
-	}
-
-	public boolean isNullType() {
-		return false;
-	}
-
-	public boolean isVoidType() {
-		return false;
-	}
-
-	public boolean isObjectType() {
-		return false;
-	}
-
-	public boolean isReference() {
-		return false;
-	}
-
-	public Object getObject() {
-		return null;
-	}
-
-	public int getArity() {
-		return 2;
 	}
 
 	public String getFunctor() {
@@ -146,24 +74,6 @@ public final class PrologMap extends AbstractTerm implements PrologTerm, Map<Pro
 
 	public PrologTerm[] getArguments() {
 		return map.entrySet().toArray(new PrologTerm[map.size()]);
-	}
-
-	public boolean unify(PrologTerm term) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public int compareTo(PrologTerm o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public PrologTerm put(PrologTerm key, PrologTerm value) {
-		return map.put(key, value);
-	}
-
-	public Set<Entry<PrologTerm, PrologTerm>> entrySet() {
-		return map.entrySet();
 	}
 
 	public int hashCode() {
@@ -188,6 +98,101 @@ public final class PrologMap extends AbstractTerm implements PrologTerm, Map<Pro
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public Iterator<PrologTerm> iterator() {
+		return new PrologMapIterator();
+	}
+
+	@Override
+	public PrologTerm getHead() {
+		return iterator().next();
+	}
+
+	@Override
+	public PrologTerm getTail() {
+		PrologMap m = new PrologMap(provider, map);
+		m.remove(((Entry<?, ?>) getHead()).getKey());
+		return m;
+	}
+
+	private class PrologMapIterator extends AbstractIterator<PrologTerm> implements Iterator<PrologTerm> {
+
+		private final Iterator<Entry<PrologTerm, PrologTerm>> i;
+
+		private PrologMapIterator() {
+			i = map.entrySet().iterator();
+		}
+
+		@Override
+		public boolean hasNext() {
+			return i.hasNext();
+		}
+
+		@Override
+		public PrologTerm next() {
+			return (PrologTerm) i.next();
+		}
+
+	}
+
+	public PrologTerm put(PrologTerm key, PrologTerm value) {
+		return map.put(key, value);
+	}
+
+	public Set<Entry<PrologTerm, PrologTerm>> entrySet() {
+		return map.entrySet();
+	}
+
+	@Override
+	public boolean containsKey(Object key) {
+		return map.containsKey(key);
+	}
+
+	@Override
+	public boolean containsValue(Object value) {
+		return map.containsValue(value);
+	}
+
+	@Override
+	public PrologTerm get(Object key) {
+		return map.get(key);
+	}
+
+	@Override
+	public PrologTerm remove(Object key) {
+		return map.remove(key);
+	}
+
+	@Override
+	public void putAll(Map<? extends PrologTerm, ? extends PrologTerm> m) {
+		map.putAll(m);
+	}
+
+	@Override
+	public Set<PrologTerm> keySet() {
+		return map.keySet();
+	}
+
+	@Override
+	public Collection<PrologTerm> values() {
+		return map.values();
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return map.isEmpty();
+	}
+
+	@Override
+	public void clear() {
+		map.clear();
+	}
+
+	@Override
+	public int size() {
+		return map.size();
 	}
 
 }

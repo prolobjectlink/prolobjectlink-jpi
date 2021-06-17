@@ -25,9 +25,8 @@
  */
 package io.github.prolobjectlink.prolog;
 
-import java.util.AbstractMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  * Partial implementation of {@link PrologTerm} interface.
@@ -35,7 +34,7 @@ import java.util.Set;
  * @author Jose Zalacain
  * @since 1.0
  */
-public abstract class AbstractTerm extends AbstractMap<PrologTerm, PrologTerm> implements PrologTerm {
+public abstract class AbstractTerm implements PrologTerm {
 
 	protected int type;
 	protected final PrologProvider provider;
@@ -90,11 +89,11 @@ public abstract class AbstractTerm extends AbstractMap<PrologTerm, PrologTerm> i
 		return array[index];
 	}
 
-	public String getIndicator() {
+	public final String getIndicator() {
 		return getFunctor() + "/" + getArity();
 	}
 
-	public boolean hasIndicator(String functor, int arity) {
+	public final boolean hasIndicator(String functor, int arity) {
 		return getFunctor().equals(functor) && getArity() == arity;
 	}
 
@@ -110,24 +109,12 @@ public abstract class AbstractTerm extends AbstractMap<PrologTerm, PrologTerm> i
 		return provider;
 	}
 
-	public PrologTerm getKey() {
-		throw new UnsupportedOperationException();
+	public final boolean isEntry() {
+		return this instanceof Entry;
 	}
 
-	public PrologTerm getValue() {
-		throw new UnsupportedOperationException();
-	}
-
-	public PrologTerm setValue(PrologTerm value) {
-		throw new UnsupportedOperationException();
-	}
-
-	public PrologTerm put(PrologTerm key, PrologTerm value) {
-		throw new UnsupportedOperationException();
-	}
-
-	public Set<Entry<PrologTerm, PrologTerm>> entrySet() {
-		return new HashSet<Entry<PrologTerm, PrologTerm>>();
+	public final boolean isMap() {
+		return this instanceof Map;
 	}
 
 }
