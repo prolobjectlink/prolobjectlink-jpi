@@ -40,6 +40,7 @@ import static io.github.prolobjectlink.prolog.PrologTermType.STRUCTURE_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.TRUE_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.VARIABLE_TYPE;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -187,7 +188,18 @@ public abstract class AbstractTerm implements PrologTerm {
 		case LIST_TYPE:
 			return fromTermArray(term.getArguments(), Object[].class);
 		case STRUCTURE_TYPE:
-			// FIXME Use mappings here;
+			// NOTE if structure no have mapping
+			// the term itself will be returned ???
+			// Object object = term
+			Object object = null;
+			Collection<PrologMapping<?>> c = provider.values();
+			for (PrologMapping<?> prologMapping : c) {
+				PrologTerm mgu = prologMapping.toTerm(provider);
+				if (mgu.unify(term)) {
+					object = prologMapping.fromTerm(provider, term);
+				}
+			}
+			return object;
 		case OBJECT_TYPE:
 			return term.getObject();
 		default:

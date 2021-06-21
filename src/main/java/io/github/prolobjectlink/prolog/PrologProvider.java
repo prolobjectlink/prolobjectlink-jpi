@@ -727,6 +727,207 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, PrologMappin
 	public Object callObject(Object reference, PrologAtom methodName);
 
 	/**
+	 * Prolog thread is a thread of execution in a program. The Java Virtual Machine
+	 * allows an application to have multiple threads of execution running
+	 * concurrently.
+	 * 
+	 * Every thread has a priority. Threads with higher priority are executed in
+	 * preference to threads with lower priority. Each thread may or may not also be
+	 * marked as a daemon. When code running in some thread creates a new Thread
+	 * object, the new thread has its priority initially set equal to the priority
+	 * of the creating thread, and is a daemon thread if and only if the creating
+	 * thread is a daemon.
+	 * 
+	 * @param goals targets goals to be executed
+	 * @return new prolog thread
+	 * @since 1.1
+	 */
+	public PrologThread newThread(PrologTerm... goals);
+
+	/**
+	 * Prolog thread is a thread of execution in a program. The Java Virtual Machine
+	 * allows an application to have multiple threads of execution running
+	 * concurrently.
+	 * 
+	 * Every thread has a priority. Threads with higher priority are executed in
+	 * preference to threads with lower priority. Each thread may or may not also be
+	 * marked as a daemon. When code running in some thread creates a new Thread
+	 * object, the new thread has its priority initially set equal to the priority
+	 * of the creating thread, and is a daemon thread if and only if the creating
+	 * thread is a daemon.
+	 * 
+	 * @param name  name of the thread
+	 * @param goals targets goals to be executed
+	 * @return new prolog thread
+	 * @since 1.1
+	 */
+	public PrologThread newThread(String name, PrologTerm... goals);
+
+	/**
+	 * Get the current prolog thread. More formally wrap the current runtime thread
+	 * into prolog thread class and return an instance.
+	 * 
+	 * @param goals targets goals to be executed in the current thread
+	 * @return current prolog thread
+	 * @since 1.1
+	 */
+	public PrologThread currentThread(PrologTerm... goals);
+
+	/**
+	 * Return a single thread that is the union of all given threads
+	 * 
+	 * @param threads thread array to be joined
+	 * @return a single thread that is the union of all given threads
+	 * @since 1.1
+	 */
+	public PrologThread joinThreads(PrologThread... threads);
+
+	/**
+	 * Return a single thread that is the union of all given threads
+	 * 
+	 * @param name    resulting thread name
+	 * @param threads thread array to be joined
+	 * @return a single thread that is the union of all given threads
+	 * @since 1.1
+	 */
+	public PrologThread joinThreads(String name, PrologThread... threads);
+
+	/**
+	 * 
+	 * @return
+	 * @since 1.1
+	 */
+	public PrologThreadPool newThreadPool();
+
+	/**
+	 * 
+	 * @return
+	 * @since 1.1
+	 */
+	public PrologThreadPool newThreadPool(int parallelismLevel);
+
+	/**
+	 * 
+	 * @return
+	 * @since 1.1
+	 */
+	public PrologTerm newNamespace();
+
+	/**
+	 * 
+	 * @return
+	 * @since 1.1
+	 */
+	public PrologTerm newNamespace(String path);
+
+	/**
+	 * 
+	 * @return
+	 * @since 1.1
+	 */
+	public PrologTerm newNamespace(String parent, PrologNamespace chields);
+
+	/**
+	 * Create a new PrologField using name-type pair of PrologTerm type. The
+	 * resulting term is an implementation of {@link Entry} and {@link PrologTerm}.
+	 * 
+	 * @param name key of the entry
+	 * @param type value of the entry
+	 * @return new PrologEntry term
+	 * @since 1.1
+	 */
+	public PrologTerm newField(PrologTerm name, PrologTerm type);
+
+	/**
+	 * Create a new PrologField using name-type pair of Java object type.The given
+	 * objects are converted to PrologTerm before entry creation. The resulting term
+	 * is an implementation of {@link Entry} and {@link PrologTerm}.
+	 * 
+	 * @param name key of the entry
+	 * @param type value of the entry
+	 * @return new PrologEntry term
+	 * @since 1.1
+	 */
+	public PrologTerm newField(Object name, Object type);
+
+	public PrologTerm newInterface(String name, PrologTerm... declarations);
+
+	public PrologTerm newInterface(String namespace, String name, PrologTerm... declarations);
+
+	public PrologTerm newInterface(PrologTerm namespace, String name, PrologTerm... declarations);
+
+	/**
+	 * Create a new fact clause. A fatc clause is only represented by clause head
+	 * and no have clause body. The body for this clause type is null. The other
+	 * parameters are boolean clause properties. If a clause have any of this
+	 * properties specify with true value.
+	 * 
+	 * 
+	 * @param head          clause head
+	 * @param dynamic       true if clause is dynamic, false otherwise
+	 * @param multifile     true if clause is multifile, false otherwise
+	 * @param discontiguous true if clause is discontiguous, false otherwise
+	 * @since 1.1
+	 */
+	public PrologClause newMethod(PrologTerm head, boolean dynamic, boolean multifile, boolean discontiguous);
+
+	/**
+	 * Create a new rule clause. A rule clause is represented by clause head and
+	 * body. The other parameters are boolean clause properties. If a clause have
+	 * any of this properties specify with true value.
+	 * 
+	 * 
+	 * @param head          clause head
+	 * @param body          clause body
+	 * @param dynamic       true if clause is dynamic, false otherwise
+	 * @param multifile     true if clause is multifile, false otherwise
+	 * @param discontiguous true if clause is discontiguous, false otherwise
+	 * @since 1.1
+	 */
+	public PrologClause newMethod(PrologTerm head, PrologTerm body, boolean dynamic, boolean multifile,
+			boolean discontiguous);
+
+	/**
+	 * Create a new fact clause. A fatc clause is only represented by clause head
+	 * and no have clause body. The body for this clause type is null. The other
+	 * parameters are boolean clause properties. If a clause have any of this
+	 * properties specify with true value.
+	 * 
+	 * 
+	 * @param head          clause head
+	 * @param result        function result
+	 * @param dynamic       true if clause is dynamic, false otherwise
+	 * @param multifile     true if clause is multifile, false otherwise
+	 * @param discontiguous true if clause is discontiguous, false otherwise
+	 * @since 1.1
+	 */
+	public PrologClause newFunction(PrologTerm head, PrologTerm result, boolean dynamic, boolean multifile,
+			boolean discontiguous);
+
+	/**
+	 * Create a new rule clause. A rule clause is represented by clause head and
+	 * body. The other parameters are boolean clause properties. If a clause have
+	 * any of this properties specify with true value.
+	 * 
+	 * 
+	 * @param head          clause head
+	 * @param body          clause body
+	 * @param result        function result
+	 * @param dynamic       true if clause is dynamic, false otherwise
+	 * @param multifile     true if clause is multifile, false otherwise
+	 * @param discontiguous true if clause is discontiguous, false otherwise
+	 * @since 1.1
+	 */
+	public PrologClause newFunction(PrologTerm head, PrologTerm body, PrologTerm result, boolean dynamic,
+			boolean multifile, boolean discontiguous);
+
+	public PrologTerm newClass(String name);
+
+	public PrologTerm newClass(String namespace, String name);
+
+	public PrologTerm newClass(PrologTerm namespace, String name);
+
+	/**
 	 * Get a Java to Prolog converter instance to map the abstract prolog data types
 	 * to Java types.
 	 * 

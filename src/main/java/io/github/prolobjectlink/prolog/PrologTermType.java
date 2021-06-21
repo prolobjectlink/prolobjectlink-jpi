@@ -128,6 +128,31 @@ public final class PrologTermType {
 	 */
 	public static final int MAP_TYPE = 0x504;
 
+	/**
+	 * Interface type constant
+	 */
+	public static final int INTERFACE_TYPE = 0x505;
+
+	/**
+	 * Class type constant
+	 */
+	public static final int CLASS_TYPE = 0x506;
+
+	/**
+	 * Namespace type constant
+	 */
+	public static final int NAMESPACE_TYPE = 0x507;
+
+	/**
+	 * Field type constant
+	 */
+	public static final int FIELD_TYPE = 0x508;
+
+	/**
+	 * Namespace type constant
+	 */
+	public static final int METHOD_TYPE = 0x509;
+
 	private PrologTermType() {
 	}
 

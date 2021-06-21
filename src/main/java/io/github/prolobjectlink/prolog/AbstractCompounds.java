@@ -25,6 +25,8 @@
  */
 package io.github.prolobjectlink.prolog;
 
+import static io.github.prolobjectlink.prolog.PrologTermType.OBJECT_TYPE;
+
 public abstract class AbstractCompounds extends AbstractTerm implements PrologTerm {
 
 	public AbstractCompounds(int type, PrologProvider provider) {
@@ -75,32 +77,30 @@ public abstract class AbstractCompounds extends AbstractTerm implements PrologTe
 		return false;
 	}
 
-	public boolean isTrueType() {
-		return false;
+	public final boolean isTrueType() {
+		Object object = getObject();
+		return object != null && object.equals(true);
 	}
 
-	public boolean isFalseType() {
-		return false;
+	public final boolean isFalseType() {
+		Object object = getObject();
+		return object != null && object.equals(false);
 	}
 
-	public boolean isNullType() {
-		return false;
+	public final boolean isNullType() {
+		return isObjectType() && getObject() == null;
 	}
 
-	public boolean isVoidType() {
-		return false;
+	public final boolean isVoidType() {
+		return getObject() == void.class;
 	}
 
-	public boolean isObjectType() {
-		return false;
+	public final boolean isObjectType() {
+		return getType() == OBJECT_TYPE;
 	}
 
-	public boolean isReference() {
-		return false;
-	}
-
-	public Object getObject() {
-		return null;
+	public final boolean isReference() {
+		return isObjectType();
 	}
 
 	public final int compareTo(PrologTerm term) {

@@ -51,36 +51,6 @@ public class AbstractReference extends AbstractCompounds implements PrologRefere
 	}
 
 	@Override
-	public boolean isTrueType() {
-		return reference.equals(Boolean.TRUE);
-	}
-
-	@Override
-	public boolean isFalseType() {
-		return reference.equals(Boolean.FALSE);
-	}
-
-	@Override
-	public boolean isNullType() {
-		return isObjectType() && reference == null;
-	}
-
-	@Override
-	public boolean isVoidType() {
-		return reference == void.class;
-	}
-
-	@Override
-	public boolean isObjectType() {
-		return getType() == OBJECT_TYPE;
-	}
-
-	@Override
-	public boolean isReference() {
-		return isObjectType();
-	}
-
-	@Override
 	public Object getObject() {
 		return reference;
 	}

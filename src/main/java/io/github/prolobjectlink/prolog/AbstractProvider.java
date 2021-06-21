@@ -42,162 +42,181 @@ import java.util.Set;
 public abstract class AbstractProvider implements PrologProvider {
 
 	protected final PrologConverter<?> converter;
-	private static final Set<String> ISO_IEC_BUILT_INS;
+	private static final Set<PrologIndicator> ISO_IEC_BUILT_INS;
 
 	static {
 
-		ISO_IEC_BUILT_INS = new HashSet<String>();
+		ISO_IEC_BUILT_INS = new HashSet<PrologIndicator>();
 
 		// 7.4 directives
-		ISO_IEC_BUILT_INS.add("dynamic");
-		ISO_IEC_BUILT_INS.add("include");
-		ISO_IEC_BUILT_INS.add("multifile");
-		ISO_IEC_BUILT_INS.add("set_prolog_flag");
-		ISO_IEC_BUILT_INS.add("ensure_loaded");
-		ISO_IEC_BUILT_INS.add("discontiguous");
-		ISO_IEC_BUILT_INS.add("current_prolog_flag");
-		ISO_IEC_BUILT_INS.add("initialization");
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("dynamic", 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("include", 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("multifile", 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("set_prolog_flag", 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("ensure_loaded", 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("discontiguous", 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("current_prolog_flag", 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("initialization", 1));
 
-		// built-ins predicates
-		ISO_IEC_BUILT_INS.add("nil");
-		ISO_IEC_BUILT_INS.add("fail");
-		ISO_IEC_BUILT_INS.add("true");
-		ISO_IEC_BUILT_INS.add("false");
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.THROW);
+		// 7.8 control constructs
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("nil", 0));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("fail", 0));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("true", 0));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("false", 0));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.THROW, 1));
+//		clauseFactory.createAndRegisterCatchBuiltin();
 
 		// 8.2 term unification
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.UNIFY_WITH_OCCURS_CHECK);
+		// (subsume/2)
+//		builtins.put("=/2", new PrologClause(new PrologUnify()));
+//		builtins.put("\\=/2", new PrologClause(new PrologNotUnify()));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.UNIFY_WITH_OCCURS_CHECK, 2));
 
 		// 8.3 type testing
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.VAR);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.ATOM);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.FLOAT);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.NUMBER);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.NONVAR);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.OBJECT);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.GROUND);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.ATOMIC);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.INTEGER);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.COMPOUND);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.CALLABLE);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.CYCLIC_TERM);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.ACYCLIC_TERM);
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.VAR, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.ATOM, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.FLOAT, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.NUMBER, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.NONVAR, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.OBJECT, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.GROUND, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.ATOMIC, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.INTEGER, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.COMPOUND, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.CALLABLE, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.CYCLIC_TERM, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.ACYCLIC_TERM, 1));
 
 		// 8.4 term comparison
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.SORT);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.COMPARE);
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.SORT, 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.COMPARE, 3));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.KEYSORT, 2));
+//				builtins.put("@>/2", new PrologClause(new PrologAfter()));
+//				builtins.put("@</2", new PrologClause(new PrologBefore()));
+//				builtins.put("sort/2", new PrologClause(new PrologSort()));
+//				builtins.put("==/2", new PrologClause(new PrologEquivalent()));
+//				builtins.put("@>=/2", new PrologClause(new PrologAfterEquals()));
+//				builtins.put("compare/3", new PrologClause(new PrologCompare()));
+//				builtins.put("@=</2", new PrologClause(new PrologBeforeEquals()));
+//				builtins.put("\\==/2", new PrologClause(new PrologNotEquivalent()));
 
 		// 8.5 term creation and decomposition
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.ARG);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.FUNCTOR);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.COPY_TERM);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.TERM_VARIABLES);
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.ARG, 3));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.FUNCTOR, 3));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.COPY_TERM, 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.TERM_VARIABLES, 2));
 
 		// 8.6 arithmetics evaluation (operator)
+//		builtins.put("is/2", new PrologClause(new PrologIs()));
+		
 		// 8.7 arithmetic comparison (operator)
+//		builtins.put(">/2", new PrologClause(new PrologGreater()));
+//		builtins.put("</2", new PrologClause(new PrologLess()));
+//		builtins.put("=</2", new PrologClause(new PrologLessEqual()));
+//		builtins.put(">=/2", new PrologClause(new PrologGreaterEqual()));
+//		builtins.put("=:=/2", new PrologClause(new PrologEqual()));
+//		builtins.put("=\\=/2", new PrologClause(new PrologNotEqual()));
 
-		// 8.8 clause retrieval and information
-		ISO_IEC_BUILT_INS.add("clause");
-		ISO_IEC_BUILT_INS.add("current_predicate");
+		// 8.8 clause retrieval and information ( missing predicate_property/2)
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("clause", 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("current_predicate", 2));
 
 		// 8.9 clause creation and destruction
-		ISO_IEC_BUILT_INS.add("abolish");
-		ISO_IEC_BUILT_INS.add("asserta");
-		ISO_IEC_BUILT_INS.add("assertz");
-		ISO_IEC_BUILT_INS.add("retract");
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("abolish", 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("asserta", 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("assertz", 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("retract", 1));
 
 		// 8.10 All solutions
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.BAGOF);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.SETOF);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.FINDALL);
+		// ( forall/2 )
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.BAGOF, 3));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.SETOF, 3));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.FINDALL, 3));
 
 		// 8.11 Stream Selection and Control
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.OPEN);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.CLOSE);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.SET_INPUT);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.SET_OUTPUT);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.CURRENT_INPUT);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.CURRENT_OUTPUT);
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.OPEN, 3));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.CLOSE, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.OPEN, 4));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.CLOSE, 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.SET_INPUT, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.SET_OUTPUT, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.CURRENT_INPUT, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.CURRENT_OUTPUT, 1));
 
 		// 8.12 character input/output
 		// 8.13 byte input/output
 
 		// 8.14 Term input/output
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.NL);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.READ);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.WRITE);
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.NL, 0));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.READ, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.WRITE, 1));
 
 		// 8.15 logic and control
-		ISO_IEC_BUILT_INS.add("call");
-		ISO_IEC_BUILT_INS.add("once");
-		ISO_IEC_BUILT_INS.add("repeat");
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("call", 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("once", 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("repeat", 0));
 
 		// 8.16 atomic term processing
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.SUB_ATOM);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.CHAR_CODE);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.ATOM_CHARS);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.ATOM_CODES);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.ATOM_LENGTH);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.ATOM_CONCAT);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.NUMBER_CHARS);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.NUMBER_CODES);
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.SUB_ATOM, 5));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.CHAR_CODE, 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.ATOM_CHARS, 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.ATOM_CODES, 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.ATOM_LENGTH, 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.ATOM_CONCAT, 3));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.NUMBER_CHARS, 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.NUMBER_CODES, 2));
 
 		// 8.17 Implementation defined hooks
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.OP);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.HALT);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.CURRENT_OP);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.CHAR_CONVERSION);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.CURRENT_CHAR_CONVERSION);
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.OP, 3));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.HALT, 0));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.HALT, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.CURRENT_OP, 3));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.CHAR_CONVERSION, 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.CURRENT_CHAR_CONVERSION, 2));
 
-		// 9.X Valuable functors
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.E);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.PI);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.ABS);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.EXP);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.LOG);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.SIN);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.COS);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.MAX);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.MIN);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.GCD);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.LCM);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.TAN);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.ASIN);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.ACOS);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.ATAN);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.SIGN);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.SQRT);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.CBRT);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.FLOOR);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.ROUND);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.EPSILON);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.CEILING);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.TRUNCATE);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.FLOAT_INTEGER_PART);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.FLOAT_FRACTIONAL_PART);
+		// 9.1 simple arithmetic functors
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.ABS, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.EXP, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.LOG, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.SQRT, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.CBRT, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.FLOOR, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.ROUND, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.CEILING, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.TRUNCATE, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.FLOAT_INTEGER_PART, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.FLOAT_FRACTIONAL_PART, 1));
 
-		// non ISO
+		// 9.2 ???
 
-		// java foreign language
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.GET);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.SET);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.CAST);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.INVOKE);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.INSTANCE_OF);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.NEW_INSTANCE);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.LOAD_LIBRARY);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.OBJECT_CONVERSION);
+		// 9.3 other arithmetic functors
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.MAX, 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.MIN, 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.GCD, 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.LCM, 2));
 
-		// java runtime reflection
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.CLASS_OF);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.FIELDS_OF);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.METHODS_OF);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.SUPER_CLASS_OF);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.CONSTRUCTORS_OF);
+		// 9.4 bitwise functors
+//				builtins.put("\\//2", new PrologClause(new PrologBitwiseOr()));
+//				builtins.put("></2", new PrologClause(new PrologBitwiseXor()));
+//				builtins.put("/\\/2", new PrologClause(new PrologBitwiseAnd()));
+//				builtins.put("<</2", new PrologClause(new PrologBitwiseShiftLeft()));
+//				builtins.put(">>/2", new PrologClause(new PrologBitwiseShiftRight()));
+//				builtins.put("\\/1", new PrologClause(new PrologBitwiseComplement()));
+//				builtins.put("///2", new PrologClause(new PrologIntegerDivision()));
 
-		// runtime statistics
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.STATISTICS);
-		ISO_IEC_BUILT_INS.add(PrologBuiltin.CURRENT_TIME);
+		// 9.5 trigonometric functors
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.SIN, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.COS, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.TAN, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.ASIN, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.ACOS, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.ATAN, 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.SIGN, 1));
+
+		// 9.6 mathematical constants
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.E, 0));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.PI, 0));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.EPSILON, 0));
 
 	}
 
@@ -208,9 +227,8 @@ public abstract class AbstractProvider implements PrologProvider {
 	public final boolean isCompliant() {
 		PrologEngine engine = newEngine();
 		Set<PrologIndicator> implemented = engine.getBuiltIns();
-		for (String prologIndicator : ISO_IEC_BUILT_INS) {
+		for (PrologIndicator prologIndicator : ISO_IEC_BUILT_INS) {
 			if (implemented.contains(prologIndicator)) {
-				// TODO Change to check using prolog indicator
 				return true;
 			}
 		}
@@ -359,6 +377,112 @@ public abstract class AbstractProvider implements PrologProvider {
 
 	public final Object callObject(Object reference, PrologAtom methodName) {
 		return callObject(reference, methodName.getFunctor());
+	}
+
+	public final PrologThread newThread(PrologTerm... goals) {
+		return new PrologThread(this, goals);
+	}
+
+	public final PrologThread newThread(String name, PrologTerm... goals) {
+		return new PrologThread(this, name, goals);
+	}
+
+	public PrologThread currentThread(PrologTerm... goals) {
+		Thread thread = Thread.currentThread();
+		return new PrologThread(this, thread, goals);
+	}
+
+	public PrologThread joinThreads(PrologThread... threads) {
+		throw new UnsupportedOperationException();
+	}
+
+	public PrologThread joinThreads(String name, PrologThread... threads) {
+		throw new UnsupportedOperationException();
+	}
+
+	public PrologThreadPool newThreadPool() {
+		return new PrologThreadPool();
+	}
+
+	public PrologThreadPool newThreadPool(int parallelismLevel) {
+		return new PrologThreadPool(parallelismLevel);
+	}
+
+	public PrologTerm newNamespace() {
+		return new PrologNamespace(this);
+	}
+
+	public PrologTerm newNamespace(String path) {
+		return new PrologNamespace(this, path);
+	}
+
+	public PrologTerm newNamespace(String parent, PrologNamespace chields) {
+		return new PrologNamespace(this, parent, chields);
+	}
+
+	public PrologTerm newField(PrologTerm name, PrologTerm type) {
+		return new PrologField(this, name, type);
+	}
+
+	public PrologTerm newField(Object name, Object type) {
+		PrologTerm oname = toTerm(name, PrologTerm.class);
+		PrologTerm otype = toTerm(name, PrologTerm.class);
+		return new PrologField(this, oname, otype);
+	}
+
+	public PrologTerm newInterface(String name, PrologTerm... declarations) {
+		PrologInterface pi = new PrologInterface(this, name);
+		for (int i = 0; i < declarations.length; i++) {
+//			pi.add FIXME
+		}
+		return pi;
+	}
+
+	public PrologTerm newInterface(String namespace, String name, PrologTerm... declarations) {
+		PrologInterface pi = new PrologInterface(this, namespace, name);
+		for (int i = 0; i < declarations.length; i++) {
+//			pi.add FIXME
+		}
+		return pi;
+	}
+
+	public PrologTerm newInterface(PrologTerm namespace, String name, PrologTerm... declarations) {
+		PrologInterface pi = new PrologInterface(this, namespace.getFunctor(), name);
+		for (int i = 0; i < declarations.length; i++) {
+//			pi.add FIXME
+		}
+		return pi;
+	}
+
+	public PrologClause newMethod(PrologTerm head, boolean dynamic, boolean multifile, boolean discontiguous) {
+		return new PrologMethod(this, head, dynamic, multifile, discontiguous);
+	}
+
+	public PrologClause newMethod(PrologTerm head, PrologTerm body, boolean dynamic, boolean multifile,
+			boolean discontiguous) {
+		return new PrologMethod(this, head, body, dynamic, multifile, discontiguous);
+	}
+
+	public PrologClause newFunction(PrologTerm head, PrologTerm result, boolean dynamic, boolean multifile,
+			boolean discontiguous) {
+		return new PrologFunction(this, head, result, dynamic, multifile, discontiguous);
+	}
+
+	public PrologClause newFunction(PrologTerm head, PrologTerm body, PrologTerm result, boolean dynamic,
+			boolean multifile, boolean discontiguous) {
+		return new PrologFunction(this, head, body, result, dynamic, multifile, discontiguous);
+	}
+
+	public PrologTerm newClass(String name) {
+		return new PrologClass(this, name);
+	}
+
+	public PrologTerm newClass(String namespace, String name) {
+		return new PrologClass(this, namespace, name);
+	}
+
+	public PrologTerm newClass(PrologTerm namespace, String name) {
+		return new PrologClass(this, namespace, name);
 	}
 
 	/**

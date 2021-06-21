@@ -64,6 +64,7 @@ public abstract class PrologBuiltin implements PrologStructure {
 
 	// 8.4 term comparison
 	static final String SORT = "sort";
+	static final String KEYSORT = "keysort";
 	static final String COMPARE = "compare";
 
 	// 8.5 term creation and decomposition
