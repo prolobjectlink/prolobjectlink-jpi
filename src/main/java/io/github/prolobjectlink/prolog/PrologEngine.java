@@ -195,7 +195,7 @@ import java.util.Set;
  * @author Jose Zalacain
  * @since 1.0
  */
-public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, PrologMapping<?>> {
+public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prologable<?>> {
 
 	/**
 	 * Register a PrologMapping to be used in object conversions
@@ -203,7 +203,7 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	 * @param mapping PrologMapping to be used in object conversions.
 	 * @since 1.1
 	 */
-	public void register(PrologMapping<?> mapping);
+	public void register(Prologable<?> mapping);
 
 	/**
 	 * Return a the most general form PrologTerm implicit in the PrologMapping
@@ -212,7 +212,7 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	 * @return the most general form PrologTerm implicit in the PrologMapping
 	 * @since 1.1
 	 */
-	public PrologTerm getTerm(PrologMapping<?> mapping);
+	public PrologTerm getTerm(Prologable<?> mapping);
 
 	/**
 	 * Return the PrologTerm equivalent to Java object using the correspondent
@@ -223,7 +223,7 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	 * @return the PrologTerm equivalent to Java object
 	 * @since 1.1
 	 */
-	public <O> PrologTerm getTerm(PrologMapping<?> mapping, O o);
+	public <O> PrologTerm getTerm(Prologable<?> mapping, O o);
 
 	/**
 	 * Remove a PrologMapping to be used in object conversions
@@ -231,7 +231,7 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	 * @param mapping PrologMapping to be removed.
 	 * @since 1.1
 	 */
-	public void unregister(PrologMapping<?> mapping);
+	public void unregister(Prologable<?> mapping);
 
 	/**
 	 * Check if the host operating system name refer to Windows OS.
@@ -370,7 +370,7 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	 * Remove all predicates that match with the predicate indicator (PI) formed by
 	 * the concatenation of the given string functor and integer arity separated by
 	 * slash (functor/arity). The predicate indicator is formed after resolve the
-	 * class mapping {@link PrologMapping} correspondent to the given class. For
+	 * class mapping {@link Prologable} correspondent to the given class. For
 	 * example if the class have two fields and have a prolog mapping to a predicate
 	 * with "parent" functor two arguments, call this method will be equivalent to
 	 * call {@link #abolish(String, int)} with "parent" string functor and arity
@@ -404,7 +404,7 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public void asserta(String stringClause);
 
 	/**
-	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}
+	 * Resolve the prolog equivalent term using user defined {@link Prologable}
 	 * and create internal prolog clause and add the clause in the main memory
 	 * program if the clause non exist. If the clause exist, will not overwritten
 	 * and the clause will not added. The added clause will be the first clause for
@@ -416,7 +416,7 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public <O> void asserta(O o);
 
 	/**
-	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}
+	 * Resolve the prolog equivalent term using user defined {@link Prologable}
 	 * and create internal prolog clause and add the clause in the main memory
 	 * program if the clause non exist. If the clause exist, will not overwritten
 	 * and the clause will not added. The added clause will be the first clause for
@@ -517,7 +517,7 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public void assertz(String stringClause);
 
 	/**
-	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}
+	 * Resolve the prolog equivalent term using user defined {@link Prologable}
 	 * and create internal prolog clause and add the clause in the main memory
 	 * program if the clause non exist. If the clause exist, will not overwritten
 	 * and the clause will not added. The added clause will be the last clause for a
@@ -529,7 +529,7 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public <O> void assertz(O o);
 
 	/**
-	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}
+	 * Resolve the prolog equivalent term using user defined {@link Prologable}
 	 * and create internal prolog clause and add the clause in the main memory
 	 * program if the clause non exist. If the clause exist, will not overwritten
 	 * and the clause will not added. The added clause will be the last clause for a
@@ -628,7 +628,7 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public boolean clause(String stringClause);
 
 	/**
-	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}
+	 * Resolve the prolog equivalent term using user defined {@link Prologable}
 	 * and create internal prolog clause and returning true if the clause in the
 	 * main memory program unify with the given clause. If the clause not exist in
 	 * main memory program or exist but not unify with the given clause false value
@@ -642,7 +642,7 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public <O> boolean clause(O o);
 
 	/**
-	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}
+	 * Resolve the prolog equivalent term using user defined {@link Prologable}
 	 * and create internal prolog clause and returning true if the clause in the
 	 * main memory program unify with the given clause. If the clause not exist in
 	 * main memory program or exist but not unify with the given clause false value
@@ -742,7 +742,7 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public void retract(String stringClause);
 
 	/**
-	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}
+	 * Resolve the prolog equivalent term using user defined {@link Prologable}
 	 * and remove a fact specified by the head if the specified fact clause exist.
 	 * The shared variables in the clause are declared once and use for build the
 	 * terms that conform the clause to be removed.
@@ -753,7 +753,7 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public <O> void retract(O o);
 
 	/**
-	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}
+	 * Resolve the prolog equivalent term using user defined {@link Prologable}
 	 * and remove a fact specified by the head if the specified fact clause exist.
 	 * The shared variables in the clause are declared once and use for build the
 	 * terms that conform the clause to be removed. The given class will be mapping
@@ -882,7 +882,7 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public boolean contains(String goal);
 
 	/**
-	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}
+	 * Resolve the prolog equivalent term using user defined {@link Prologable}
 	 * and check if the resolved goal have solution using the resolution engine
 	 * mechanism. If wrapped engine not support a dedicated method then contains can
 	 * be defined like:
@@ -896,7 +896,7 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public <O> boolean contains(O goal);
 
 	/**
-	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}
+	 * Resolve the prolog equivalent term using user defined {@link Prologable}
 	 * and check if the resolved goal have solution using the resolution engine
 	 * mechanism. If wrapped engine not support a dedicated method then contains can
 	 * be defined like:

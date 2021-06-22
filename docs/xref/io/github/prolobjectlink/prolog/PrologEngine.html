@@ -205,7 +205,7 @@
 <a class="jxr_linenumber" name="195" href="#195">195</a> <em class="jxr_javadoccomment"> * @author Jose Zalacain</em>
 <a class="jxr_linenumber" name="196" href="#196">196</a> <em class="jxr_javadoccomment"> * @since 1.0</em>
 <a class="jxr_linenumber" name="197" href="#197">197</a> <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="198" href="#198">198</a> <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">interface</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologEngine.html">PrologEngine</a> <strong class="jxr_keyword">extends</strong> Iterable&lt;PrologClause&gt;, Map&lt;Class&lt;?&gt;, PrologMapping&lt;?&gt;&gt; {
+<a class="jxr_linenumber" name="198" href="#198">198</a> <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">interface</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologEngine.html">PrologEngine</a> <strong class="jxr_keyword">extends</strong> Iterable&lt;PrologClause&gt;, Map&lt;Class&lt;?&gt;, Prologable&lt;?&gt;&gt; {
 <a class="jxr_linenumber" name="199" href="#199">199</a> 
 <a class="jxr_linenumber" name="200" href="#200">200</a> 	<em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="201" href="#201">201</a> <em class="jxr_javadoccomment">	 * Register a PrologMapping to be used in object conversions</em>
@@ -213,7 +213,7 @@
 <a class="jxr_linenumber" name="203" href="#203">203</a> <em class="jxr_javadoccomment">	 * @param mapping PrologMapping to be used in object conversions.</em>
 <a class="jxr_linenumber" name="204" href="#204">204</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
 <a class="jxr_linenumber" name="205" href="#205">205</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="206" href="#206">206</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> register(PrologMapping&lt;?&gt; mapping);
+<a class="jxr_linenumber" name="206" href="#206">206</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> register(Prologable&lt;?&gt; mapping);
 <a class="jxr_linenumber" name="207" href="#207">207</a> 
 <a class="jxr_linenumber" name="208" href="#208">208</a> 	<em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="209" href="#209">209</a> <em class="jxr_javadoccomment">	 * Return a the most general form PrologTerm implicit in the PrologMapping</em>
@@ -222,7 +222,7 @@
 <a class="jxr_linenumber" name="212" href="#212">212</a> <em class="jxr_javadoccomment">	 * @return the most general form PrologTerm implicit in the PrologMapping</em>
 <a class="jxr_linenumber" name="213" href="#213">213</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
 <a class="jxr_linenumber" name="214" href="#214">214</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="215" href="#215">215</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> getTerm(PrologMapping&lt;?&gt; mapping);
+<a class="jxr_linenumber" name="215" href="#215">215</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> getTerm(Prologable&lt;?&gt; mapping);
 <a class="jxr_linenumber" name="216" href="#216">216</a> 
 <a class="jxr_linenumber" name="217" href="#217">217</a> 	<em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="218" href="#218">218</a> <em class="jxr_javadoccomment">	 * Return the PrologTerm equivalent to Java object using the correspondent</em>
@@ -233,7 +233,7 @@
 <a class="jxr_linenumber" name="223" href="#223">223</a> <em class="jxr_javadoccomment">	 * @return the PrologTerm equivalent to Java object</em>
 <a class="jxr_linenumber" name="224" href="#224">224</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
 <a class="jxr_linenumber" name="225" href="#225">225</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="226" href="#226">226</a> 	<strong class="jxr_keyword">public</strong> &lt;O&gt; <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> getTerm(PrologMapping&lt;?&gt; mapping, O o);
+<a class="jxr_linenumber" name="226" href="#226">226</a> 	<strong class="jxr_keyword">public</strong> &lt;O&gt; <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> getTerm(Prologable&lt;?&gt; mapping, O o);
 <a class="jxr_linenumber" name="227" href="#227">227</a> 
 <a class="jxr_linenumber" name="228" href="#228">228</a> 	<em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="229" href="#229">229</a> <em class="jxr_javadoccomment">	 * Remove a PrologMapping to be used in object conversions</em>
@@ -241,7 +241,7 @@
 <a class="jxr_linenumber" name="231" href="#231">231</a> <em class="jxr_javadoccomment">	 * @param mapping PrologMapping to be removed.</em>
 <a class="jxr_linenumber" name="232" href="#232">232</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
 <a class="jxr_linenumber" name="233" href="#233">233</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="234" href="#234">234</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> unregister(PrologMapping&lt;?&gt; mapping);
+<a class="jxr_linenumber" name="234" href="#234">234</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> unregister(Prologable&lt;?&gt; mapping);
 <a class="jxr_linenumber" name="235" href="#235">235</a> 
 <a class="jxr_linenumber" name="236" href="#236">236</a> 	<em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="237" href="#237">237</a> <em class="jxr_javadoccomment">	 * Check if the host operating system name refer to Windows OS.</em>
@@ -380,7 +380,7 @@
 <a class="jxr_linenumber" name="370" href="#370">370</a> <em class="jxr_javadoccomment">	 * Remove all predicates that match with the predicate indicator (PI) formed by</em>
 <a class="jxr_linenumber" name="371" href="#371">371</a> <em class="jxr_javadoccomment">	 * the concatenation of the given string functor and integer arity separated by</em>
 <a class="jxr_linenumber" name="372" href="#372">372</a> <em class="jxr_javadoccomment">	 * slash (functor/arity). The predicate indicator is formed after resolve the</em>
-<a class="jxr_linenumber" name="373" href="#373">373</a> <em class="jxr_javadoccomment">	 * class mapping {@link PrologMapping} correspondent to the given class. For</em>
+<a class="jxr_linenumber" name="373" href="#373">373</a> <em class="jxr_javadoccomment">	 * class mapping {@link Prologable} correspondent to the given class. For</em>
 <a class="jxr_linenumber" name="374" href="#374">374</a> <em class="jxr_javadoccomment">	 * example if the class have two fields and have a prolog mapping to a predicate</em>
 <a class="jxr_linenumber" name="375" href="#375">375</a> <em class="jxr_javadoccomment">	 * with "parent" functor two arguments, call this method will be equivalent to</em>
 <a class="jxr_linenumber" name="376" href="#376">376</a> <em class="jxr_javadoccomment">	 * call {@link #abolish(String, int)} with "parent" string functor and arity</em>
@@ -414,7 +414,7 @@
 <a class="jxr_linenumber" name="404" href="#404">404</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> asserta(String stringClause);
 <a class="jxr_linenumber" name="405" href="#405">405</a> 
 <a class="jxr_linenumber" name="406" href="#406">406</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="407" href="#407">407</a> <em class="jxr_javadoccomment">	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}</em>
+<a class="jxr_linenumber" name="407" href="#407">407</a> <em class="jxr_javadoccomment">	 * Resolve the prolog equivalent term using user defined {@link Prologable}</em>
 <a class="jxr_linenumber" name="408" href="#408">408</a> <em class="jxr_javadoccomment">	 * and create internal prolog clause and add the clause in the main memory</em>
 <a class="jxr_linenumber" name="409" href="#409">409</a> <em class="jxr_javadoccomment">	 * program if the clause non exist. If the clause exist, will not overwritten</em>
 <a class="jxr_linenumber" name="410" href="#410">410</a> <em class="jxr_javadoccomment">	 * and the clause will not added. The added clause will be the first clause for</em>
@@ -426,7 +426,7 @@
 <a class="jxr_linenumber" name="416" href="#416">416</a> 	<strong class="jxr_keyword">public</strong> &lt;O&gt; <strong class="jxr_keyword">void</strong> asserta(O o);
 <a class="jxr_linenumber" name="417" href="#417">417</a> 
 <a class="jxr_linenumber" name="418" href="#418">418</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="419" href="#419">419</a> <em class="jxr_javadoccomment">	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}</em>
+<a class="jxr_linenumber" name="419" href="#419">419</a> <em class="jxr_javadoccomment">	 * Resolve the prolog equivalent term using user defined {@link Prologable}</em>
 <a class="jxr_linenumber" name="420" href="#420">420</a> <em class="jxr_javadoccomment">	 * and create internal prolog clause and add the clause in the main memory</em>
 <a class="jxr_linenumber" name="421" href="#421">421</a> <em class="jxr_javadoccomment">	 * program if the clause non exist. If the clause exist, will not overwritten</em>
 <a class="jxr_linenumber" name="422" href="#422">422</a> <em class="jxr_javadoccomment">	 * and the clause will not added. The added clause will be the first clause for</em>
@@ -527,7 +527,7 @@
 <a class="jxr_linenumber" name="517" href="#517">517</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> assertz(String stringClause);
 <a class="jxr_linenumber" name="518" href="#518">518</a> 
 <a class="jxr_linenumber" name="519" href="#519">519</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="520" href="#520">520</a> <em class="jxr_javadoccomment">	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}</em>
+<a class="jxr_linenumber" name="520" href="#520">520</a> <em class="jxr_javadoccomment">	 * Resolve the prolog equivalent term using user defined {@link Prologable}</em>
 <a class="jxr_linenumber" name="521" href="#521">521</a> <em class="jxr_javadoccomment">	 * and create internal prolog clause and add the clause in the main memory</em>
 <a class="jxr_linenumber" name="522" href="#522">522</a> <em class="jxr_javadoccomment">	 * program if the clause non exist. If the clause exist, will not overwritten</em>
 <a class="jxr_linenumber" name="523" href="#523">523</a> <em class="jxr_javadoccomment">	 * and the clause will not added. The added clause will be the last clause for a</em>
@@ -539,7 +539,7 @@
 <a class="jxr_linenumber" name="529" href="#529">529</a> 	<strong class="jxr_keyword">public</strong> &lt;O&gt; <strong class="jxr_keyword">void</strong> assertz(O o);
 <a class="jxr_linenumber" name="530" href="#530">530</a> 
 <a class="jxr_linenumber" name="531" href="#531">531</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="532" href="#532">532</a> <em class="jxr_javadoccomment">	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}</em>
+<a class="jxr_linenumber" name="532" href="#532">532</a> <em class="jxr_javadoccomment">	 * Resolve the prolog equivalent term using user defined {@link Prologable}</em>
 <a class="jxr_linenumber" name="533" href="#533">533</a> <em class="jxr_javadoccomment">	 * and create internal prolog clause and add the clause in the main memory</em>
 <a class="jxr_linenumber" name="534" href="#534">534</a> <em class="jxr_javadoccomment">	 * program if the clause non exist. If the clause exist, will not overwritten</em>
 <a class="jxr_linenumber" name="535" href="#535">535</a> <em class="jxr_javadoccomment">	 * and the clause will not added. The added clause will be the last clause for a</em>
@@ -638,7 +638,7 @@
 <a class="jxr_linenumber" name="628" href="#628">628</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> clause(String stringClause);
 <a class="jxr_linenumber" name="629" href="#629">629</a> 
 <a class="jxr_linenumber" name="630" href="#630">630</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="631" href="#631">631</a> <em class="jxr_javadoccomment">	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}</em>
+<a class="jxr_linenumber" name="631" href="#631">631</a> <em class="jxr_javadoccomment">	 * Resolve the prolog equivalent term using user defined {@link Prologable}</em>
 <a class="jxr_linenumber" name="632" href="#632">632</a> <em class="jxr_javadoccomment">	 * and create internal prolog clause and returning true if the clause in the</em>
 <a class="jxr_linenumber" name="633" href="#633">633</a> <em class="jxr_javadoccomment">	 * main memory program unify with the given clause. If the clause not exist in</em>
 <a class="jxr_linenumber" name="634" href="#634">634</a> <em class="jxr_javadoccomment">	 * main memory program or exist but not unify with the given clause false value</em>
@@ -652,7 +652,7 @@
 <a class="jxr_linenumber" name="642" href="#642">642</a> 	<strong class="jxr_keyword">public</strong> &lt;O&gt; <strong class="jxr_keyword">boolean</strong> clause(O o);
 <a class="jxr_linenumber" name="643" href="#643">643</a> 
 <a class="jxr_linenumber" name="644" href="#644">644</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="645" href="#645">645</a> <em class="jxr_javadoccomment">	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}</em>
+<a class="jxr_linenumber" name="645" href="#645">645</a> <em class="jxr_javadoccomment">	 * Resolve the prolog equivalent term using user defined {@link Prologable}</em>
 <a class="jxr_linenumber" name="646" href="#646">646</a> <em class="jxr_javadoccomment">	 * and create internal prolog clause and returning true if the clause in the</em>
 <a class="jxr_linenumber" name="647" href="#647">647</a> <em class="jxr_javadoccomment">	 * main memory program unify with the given clause. If the clause not exist in</em>
 <a class="jxr_linenumber" name="648" href="#648">648</a> <em class="jxr_javadoccomment">	 * main memory program or exist but not unify with the given clause false value</em>
@@ -752,7 +752,7 @@
 <a class="jxr_linenumber" name="742" href="#742">742</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> retract(String stringClause);
 <a class="jxr_linenumber" name="743" href="#743">743</a> 
 <a class="jxr_linenumber" name="744" href="#744">744</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="745" href="#745">745</a> <em class="jxr_javadoccomment">	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}</em>
+<a class="jxr_linenumber" name="745" href="#745">745</a> <em class="jxr_javadoccomment">	 * Resolve the prolog equivalent term using user defined {@link Prologable}</em>
 <a class="jxr_linenumber" name="746" href="#746">746</a> <em class="jxr_javadoccomment">	 * and remove a fact specified by the head if the specified fact clause exist.</em>
 <a class="jxr_linenumber" name="747" href="#747">747</a> <em class="jxr_javadoccomment">	 * The shared variables in the clause are declared once and use for build the</em>
 <a class="jxr_linenumber" name="748" href="#748">748</a> <em class="jxr_javadoccomment">	 * terms that conform the clause to be removed.</em>
@@ -763,7 +763,7 @@
 <a class="jxr_linenumber" name="753" href="#753">753</a> 	<strong class="jxr_keyword">public</strong> &lt;O&gt; <strong class="jxr_keyword">void</strong> retract(O o);
 <a class="jxr_linenumber" name="754" href="#754">754</a> 
 <a class="jxr_linenumber" name="755" href="#755">755</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="756" href="#756">756</a> <em class="jxr_javadoccomment">	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}</em>
+<a class="jxr_linenumber" name="756" href="#756">756</a> <em class="jxr_javadoccomment">	 * Resolve the prolog equivalent term using user defined {@link Prologable}</em>
 <a class="jxr_linenumber" name="757" href="#757">757</a> <em class="jxr_javadoccomment">	 * and remove a fact specified by the head if the specified fact clause exist.</em>
 <a class="jxr_linenumber" name="758" href="#758">758</a> <em class="jxr_javadoccomment">	 * The shared variables in the clause are declared once and use for build the</em>
 <a class="jxr_linenumber" name="759" href="#759">759</a> <em class="jxr_javadoccomment">	 * terms that conform the clause to be removed. The given class will be mapping</em>
@@ -892,7 +892,7 @@
 <a class="jxr_linenumber" name="882" href="#882">882</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> contains(String goal);
 <a class="jxr_linenumber" name="883" href="#883">883</a> 
 <a class="jxr_linenumber" name="884" href="#884">884</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="885" href="#885">885</a> <em class="jxr_javadoccomment">	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}</em>
+<a class="jxr_linenumber" name="885" href="#885">885</a> <em class="jxr_javadoccomment">	 * Resolve the prolog equivalent term using user defined {@link Prologable}</em>
 <a class="jxr_linenumber" name="886" href="#886">886</a> <em class="jxr_javadoccomment">	 * and check if the resolved goal have solution using the resolution engine</em>
 <a class="jxr_linenumber" name="887" href="#887">887</a> <em class="jxr_javadoccomment">	 * mechanism. If wrapped engine not support a dedicated method then contains can</em>
 <a class="jxr_linenumber" name="888" href="#888">888</a> <em class="jxr_javadoccomment">	 * be defined like:</em>
@@ -906,7 +906,7 @@
 <a class="jxr_linenumber" name="896" href="#896">896</a> 	<strong class="jxr_keyword">public</strong> &lt;O&gt; <strong class="jxr_keyword">boolean</strong> contains(O goal);
 <a class="jxr_linenumber" name="897" href="#897">897</a> 
 <a class="jxr_linenumber" name="898" href="#898">898</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="899" href="#899">899</a> <em class="jxr_javadoccomment">	 * Resolve the prolog equivalent term using user defined {@link PrologMapping}</em>
+<a class="jxr_linenumber" name="899" href="#899">899</a> <em class="jxr_javadoccomment">	 * Resolve the prolog equivalent term using user defined {@link Prologable}</em>
 <a class="jxr_linenumber" name="900" href="#900">900</a> <em class="jxr_javadoccomment">	 * and check if the resolved goal have solution using the resolution engine</em>
 <a class="jxr_linenumber" name="901" href="#901">901</a> <em class="jxr_javadoccomment">	 * mechanism. If wrapped engine not support a dedicated method then contains can</em>
 <a class="jxr_linenumber" name="902" href="#902">902</a> <em class="jxr_javadoccomment">	 * be defined like:</em>

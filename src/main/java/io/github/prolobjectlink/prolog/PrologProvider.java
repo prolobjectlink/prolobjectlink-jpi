@@ -42,7 +42,7 @@ import java.util.Map;
  * @author Jose Zalacain
  * @since 1.0
  */
-public interface PrologProvider extends PrologParser, Map<Class<?>, PrologMapping<?>> {
+public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?>> {
 
 	/**
 	 * True if wrapped engine implement ISO Prolog and false in other case
@@ -543,7 +543,7 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, PrologMappin
 	 * @param mapping PrologMapping to be used in object conversions.
 	 * @since 1.1
 	 */
-	public void register(PrologMapping<?> mapping);
+	public void register(Prologable<?> mapping);
 
 	/**
 	 * Return a the most general form PrologTerm implicit in the PrologMapping
@@ -552,7 +552,7 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, PrologMappin
 	 * @return the most general form PrologTerm implicit in the PrologMapping
 	 * @since 1.1
 	 */
-	public PrologTerm getTerm(PrologMapping<?> mapping);
+	public PrologTerm getTerm(Prologable<?> mapping);
 
 	/**
 	 * Return the PrologTerm equivalent to Java object using the correspondent
@@ -563,7 +563,7 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, PrologMappin
 	 * @return the PrologTerm equivalent to Java object
 	 * @since 1.1
 	 */
-	public <O> PrologTerm getTerm(PrologMapping<?> mapping, O o);
+	public <O> PrologTerm getTerm(Prologable<?> mapping, O o);
 
 	/**
 	 * Remove a PrologMapping to be used in object conversions
@@ -571,7 +571,7 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, PrologMappin
 	 * @param mapping PrologMapping to be removed.
 	 * @since 1.1
 	 */
-	public void unregister(PrologMapping<?> mapping);
+	public void unregister(Prologable<?> mapping);
 
 	/**
 	 * Create an object instance using the class name for instantiation to the

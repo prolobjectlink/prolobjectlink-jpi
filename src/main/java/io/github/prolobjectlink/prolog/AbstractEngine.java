@@ -442,22 +442,22 @@ public abstract class AbstractEngine implements PrologEngine {
 	}
 
 	@Override
-	public final PrologMapping<?> get(Object key) {
+	public final Prologable<?> get(Object key) {
 		return provider.get(key);
 	}
 
 	@Override
-	public final PrologMapping<?> put(Class<?> key, PrologMapping<?> value) {
+	public final Prologable<?> put(Class<?> key, Prologable<?> value) {
 		return provider.put(key, value);
 	}
 
 	@Override
-	public final PrologMapping<?> remove(Object key) {
+	public final Prologable<?> remove(Object key) {
 		return provider.remove(key);
 	}
 
 	@Override
-	public final void putAll(Map<? extends Class<?>, ? extends PrologMapping<?>> m) {
+	public final void putAll(Map<? extends Class<?>, ? extends Prologable<?>> m) {
 		provider.putAll(m);
 	}
 
@@ -472,29 +472,29 @@ public abstract class AbstractEngine implements PrologEngine {
 	}
 
 	@Override
-	public final Collection<PrologMapping<?>> values() {
+	public final Collection<Prologable<?>> values() {
 		return provider.values();
 	}
 
 	@Override
-	public final Set<Entry<Class<?>, PrologMapping<?>>> entrySet() {
+	public final Set<Entry<Class<?>, Prologable<?>>> entrySet() {
 		return provider.entrySet();
 	}
 
 	@Override
-	public final void register(PrologMapping<?> mapping) {
+	public final void register(Prologable<?> mapping) {
 		put(mapping.getType(), mapping);
 	}
 
-	public final PrologTerm getTerm(PrologMapping<?> mapping) {
+	public final PrologTerm getTerm(Prologable<?> mapping) {
 		return mapping.toTerm(provider);
 	}
 
-	public final <O> PrologTerm getTerm(PrologMapping<?> mapping, O o) {
+	public final <O> PrologTerm getTerm(Prologable<?> mapping, O o) {
 		return mapping.toTerm(provider, o);
 	}
 
-	public final void unregister(PrologMapping<?> mapping) {
+	public final void unregister(Prologable<?> mapping) {
 		remove(mapping.getType());
 	}
 

@@ -52,7 +52,7 @@
 <a class="jxr_linenumber" name="42" href="#42">42</a>  <em class="jxr_javadoccomment"> * @author Jose Zalacain</em>
 <a class="jxr_linenumber" name="43" href="#43">43</a>  <em class="jxr_javadoccomment"> * @since 1.0</em>
 <a class="jxr_linenumber" name="44" href="#44">44</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="45" href="#45">45</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">interface</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologProvider.html">PrologProvider</a> <strong class="jxr_keyword">extends</strong> PrologParser, Map&lt;Class&lt;?&gt;, PrologMapping&lt;?&gt;&gt; {
+<a class="jxr_linenumber" name="45" href="#45">45</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">interface</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologProvider.html">PrologProvider</a> <strong class="jxr_keyword">extends</strong> PrologParser, Map&lt;Class&lt;?&gt;, Prologable&lt;?&gt;&gt; {
 <a class="jxr_linenumber" name="46" href="#46">46</a>  
 <a class="jxr_linenumber" name="47" href="#47">47</a>  	<em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="48" href="#48">48</a>  <em class="jxr_javadoccomment">	 * True if wrapped engine implement ISO Prolog and false in other case</em>
@@ -553,7 +553,7 @@
 <a class="jxr_linenumber" name="543" href="#543">543</a> <em class="jxr_javadoccomment">	 * @param mapping PrologMapping to be used in object conversions.</em>
 <a class="jxr_linenumber" name="544" href="#544">544</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
 <a class="jxr_linenumber" name="545" href="#545">545</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="546" href="#546">546</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> register(PrologMapping&lt;?&gt; mapping);
+<a class="jxr_linenumber" name="546" href="#546">546</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> register(Prologable&lt;?&gt; mapping);
 <a class="jxr_linenumber" name="547" href="#547">547</a> 
 <a class="jxr_linenumber" name="548" href="#548">548</a> 	<em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="549" href="#549">549</a> <em class="jxr_javadoccomment">	 * Return a the most general form PrologTerm implicit in the PrologMapping</em>
@@ -562,7 +562,7 @@
 <a class="jxr_linenumber" name="552" href="#552">552</a> <em class="jxr_javadoccomment">	 * @return the most general form PrologTerm implicit in the PrologMapping</em>
 <a class="jxr_linenumber" name="553" href="#553">553</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
 <a class="jxr_linenumber" name="554" href="#554">554</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="555" href="#555">555</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> getTerm(PrologMapping&lt;?&gt; mapping);
+<a class="jxr_linenumber" name="555" href="#555">555</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> getTerm(Prologable&lt;?&gt; mapping);
 <a class="jxr_linenumber" name="556" href="#556">556</a> 
 <a class="jxr_linenumber" name="557" href="#557">557</a> 	<em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="558" href="#558">558</a> <em class="jxr_javadoccomment">	 * Return the PrologTerm equivalent to Java object using the correspondent</em>
@@ -573,7 +573,7 @@
 <a class="jxr_linenumber" name="563" href="#563">563</a> <em class="jxr_javadoccomment">	 * @return the PrologTerm equivalent to Java object</em>
 <a class="jxr_linenumber" name="564" href="#564">564</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
 <a class="jxr_linenumber" name="565" href="#565">565</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="566" href="#566">566</a> 	<strong class="jxr_keyword">public</strong> &lt;O&gt; <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> getTerm(PrologMapping&lt;?&gt; mapping, O o);
+<a class="jxr_linenumber" name="566" href="#566">566</a> 	<strong class="jxr_keyword">public</strong> &lt;O&gt; <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> getTerm(Prologable&lt;?&gt; mapping, O o);
 <a class="jxr_linenumber" name="567" href="#567">567</a> 
 <a class="jxr_linenumber" name="568" href="#568">568</a> 	<em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="569" href="#569">569</a> <em class="jxr_javadoccomment">	 * Remove a PrologMapping to be used in object conversions</em>
@@ -581,7 +581,7 @@
 <a class="jxr_linenumber" name="571" href="#571">571</a> <em class="jxr_javadoccomment">	 * @param mapping PrologMapping to be removed.</em>
 <a class="jxr_linenumber" name="572" href="#572">572</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
 <a class="jxr_linenumber" name="573" href="#573">573</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="574" href="#574">574</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> unregister(PrologMapping&lt;?&gt; mapping);
+<a class="jxr_linenumber" name="574" href="#574">574</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> unregister(Prologable&lt;?&gt; mapping);
 <a class="jxr_linenumber" name="575" href="#575">575</a> 
 <a class="jxr_linenumber" name="576" href="#576">576</a> 	<em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="577" href="#577">577</a> <em class="jxr_javadoccomment">	 * Create an object instance using the class name for instantiation to the</em>

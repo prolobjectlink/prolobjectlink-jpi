@@ -192,8 +192,8 @@ public abstract class AbstractTerm implements PrologTerm {
 			// the term itself will be returned ???
 			// Object object = term
 			Object object = null;
-			Collection<PrologMapping<?>> c = provider.values();
-			for (PrologMapping<?> prologMapping : c) {
+			Collection<Prologable<?>> c = provider.values();
+			for (Prologable<?> prologMapping : c) {
 				PrologTerm mgu = prologMapping.toTerm(provider);
 				if (mgu.unify(term)) {
 					object = prologMapping.fromTerm(provider, term);

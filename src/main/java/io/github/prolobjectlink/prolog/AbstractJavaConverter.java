@@ -54,14 +54,14 @@ import java.util.Set;
  * @author Jose Zalacain
  * @since 1.0
  */
-public abstract class AbstractJavaConverter extends AbstractMap<Class<?>, PrologMapping<?>>
+public abstract class AbstractJavaConverter extends AbstractMap<Class<?>, Prologable<?>>
 		implements PrologJavaConverter {
 
 	private final PrologProvider provider;
-	private static final Map<Class<?>, PrologMapping<?>> converters;
+	private static final Map<Class<?>, Prologable<?>> converters;
 
 	static {
-		converters = new IdentityHashMap<Class<?>, PrologMapping<?>>();
+		converters = new IdentityHashMap<Class<?>, Prologable<?>>();
 	}
 
 	protected AbstractJavaConverter(PrologProvider provider) {
@@ -225,22 +225,22 @@ public abstract class AbstractJavaConverter extends AbstractMap<Class<?>, Prolog
 	}
 
 	@Override
-	public final PrologMapping<?> get(Object key) {
+	public final Prologable<?> get(Object key) {
 		return converters.get(key);
 	}
 
 	@Override
-	public final PrologMapping<?> put(Class<?> key, PrologMapping<?> value) {
+	public final Prologable<?> put(Class<?> key, Prologable<?> value) {
 		return converters.put(key, value);
 	}
 
 	@Override
-	public final PrologMapping<?> remove(Object key) {
+	public final Prologable<?> remove(Object key) {
 		return converters.remove(key);
 	}
 
 	@Override
-	public final void putAll(Map<? extends Class<?>, ? extends PrologMapping<?>> m) {
+	public final void putAll(Map<? extends Class<?>, ? extends Prologable<?>> m) {
 		converters.putAll(m);
 	}
 
@@ -255,28 +255,28 @@ public abstract class AbstractJavaConverter extends AbstractMap<Class<?>, Prolog
 	}
 
 	@Override
-	public final Collection<PrologMapping<?>> values() {
+	public final Collection<Prologable<?>> values() {
 		return converters.values();
 	}
 
 	@Override
-	public final Set<Entry<Class<?>, PrologMapping<?>>> entrySet() {
+	public final Set<Entry<Class<?>, Prologable<?>>> entrySet() {
 		return converters.entrySet();
 	}
 
-	public final void register(PrologMapping<?> mapping) {
+	public final void register(Prologable<?> mapping) {
 		put(mapping.getType(), mapping);
 	}
 
-	public final PrologTerm getTerm(PrologMapping<?> mapping) {
+	public final PrologTerm getTerm(Prologable<?> mapping) {
 		return mapping.toTerm(provider);
 	}
 
-	public final <O> PrologTerm getTerm(PrologMapping<?> mapping, O o) {
+	public final <O> PrologTerm getTerm(Prologable<?> mapping, O o) {
 		return mapping.toTerm(provider, o);
 	}
 
-	public void unregister(PrologMapping<?> mapping) {
+	public void unregister(Prologable<?> mapping) {
 		remove(mapping.getType());
 	}
 

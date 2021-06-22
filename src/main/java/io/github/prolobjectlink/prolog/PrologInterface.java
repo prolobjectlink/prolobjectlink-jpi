@@ -25,17 +25,20 @@
  */
 package io.github.prolobjectlink.prolog;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PrologInterface extends AbstractCompounds implements PrologTerm {
 
-	private String namesapce;
-	private final String name;
-	private List<PrologTerm> methods;
+	protected String namesapce;
+	protected final String name;
+	protected final List<PrologTerm> directives = new ArrayList<PrologTerm>();
+	protected final List<PrologClause> methods = new ArrayList<PrologClause>();
+	protected final List<PrologInterface> ancestors = new ArrayList<PrologInterface>();
 
-	private static final String SEPARATOR = "/";
-	private static final String LEFT_ENCLOSER = "{";
-	private static final String RIGHT_ENCLOSER = "}";
+	private static final char SEPARATOR = '/';
+	private static final char LEFT_ENCLOSER = '{';
+	private static final char RIGHT_ENCLOSER = '}';
 
 	PrologInterface(PrologProvider provider, String name) {
 		super(PrologTermType.INTERFACE_TYPE, provider);
@@ -86,35 +89,64 @@ public class PrologInterface extends AbstractCompounds implements PrologTerm {
 		this.namesapce = namesapce;
 	}
 
-	public final List<PrologTerm> getMethods() {
+	public final List<PrologClause> getMethods() {
 		return methods;
 	}
 
-	public final void setMethods(List<PrologTerm> methods) {
-		this.methods = methods;
+	public final List<PrologInterface> getAncestors() {
+		return ancestors;
+	}
+
+	public final List<PrologTerm> getDirectives() {
+		return directives;
 	}
 
 	public final String getName() {
 		return name;
 	}
 
-	public final String getSeparator() {
+	public final char getSeparator() {
 		return SEPARATOR;
 	}
 
-	public final String getLeftencloser() {
+	public final char getLeftencloser() {
 		return LEFT_ENCLOSER;
 	}
 
-	public final String getRightencloser() {
+	public final char getRightencloser() {
 		return RIGHT_ENCLOSER;
+	}
+
+	public final void addMethod(PrologClause method) {
+		methods.add(method);
+	}
+
+	protected final void removeMethod(PrologClause method) {
+		methods.remove(method);
+	}
+
+	public final void addDirective(PrologTerm directive) {
+		directives.add(directive);
+	}
+
+	protected final void removeDirective(PrologTerm directive) {
+		directives.remove(directive);
+	}
+
+	public final void addAncestor(PrologInterface ancestor) {
+		ancestors.add(ancestor);
+	}
+
+	protected final void removeAncestor(PrologInterface ancestor) {
+		ancestors.remove(ancestor);
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((methods == null) ? 0 : methods.hashCode());
+		result = prime * result + ancestors.hashCode();
+		result = prime * result + methods.hashCode();
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((namesapce == null) ? 0 : namesapce.hashCode());
 		return result;
@@ -129,12 +161,19 @@ public class PrologInterface extends AbstractCompounds implements PrologTerm {
 		if (getClass() != obj.getClass())
 			return false;
 		PrologInterface other = (PrologInterface) obj;
-		if (methods == null) {
-			if (other.methods != null)
-				return false;
-		} else if (!methods.equals(other.methods)) {
+
+		if (other.ancestors != null)
+			return false;
+		else if (!ancestors.equals(other.ancestors)) {
 			return false;
 		}
+
+		if (other.methods != null)
+			return false;
+		else if (!methods.equals(other.methods)) {
+			return false;
+		}
+
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -152,7 +191,29 @@ public class PrologInterface extends AbstractCompounds implements PrologTerm {
 
 	@Override
 	public String toString() {
-		return "PrologInterface [namesapce=" + namesapce + ", name=" + name + ", methods=" + methods + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append(":-namespace(" + namesapce + ").");
+		builder.append('\n');
+		for (PrologTerm prologTerm : directives) {
+			builder.append(":-" + prologTerm);
+			builder.append('\n');
+		}
+		builder.append('\n');
+		for (PrologInterface ancestor : ancestors) {
+			builder.append(":-" + ancestor);
+			builder.append('\n');
+		}
+		builder.append('\n');
+		builder.append(name);
+		builder.append(getLeftencloser());
+		builder.append('\n');
+		for (PrologClause method : methods) {
+			builder.append(method);
+			builder.append('\n');
+		}
+		builder.append('\n');
+		builder.append(getRightencloser());
+		return builder.toString();
 	}
 
 }

@@ -202,8 +202,8 @@
 <a class="jxr_linenumber" name="192" href="#192">192</a> 			<em class="jxr_comment">// the term itself will be returned ???</em>
 <a class="jxr_linenumber" name="193" href="#193">193</a> 			<em class="jxr_comment">// Object object = term</em>
 <a class="jxr_linenumber" name="194" href="#194">194</a> 			Object object = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="195" href="#195">195</a> 			Collection&lt;PrologMapping&lt;?&gt;&gt; c = provider.values();
-<a class="jxr_linenumber" name="196" href="#196">196</a> 			<strong class="jxr_keyword">for</strong> (PrologMapping&lt;?&gt; prologMapping : c) {
+<a class="jxr_linenumber" name="195" href="#195">195</a> 			Collection&lt;Prologable&lt;?&gt;&gt; c = provider.values();
+<a class="jxr_linenumber" name="196" href="#196">196</a> 			<strong class="jxr_keyword">for</strong> (Prologable&lt;?&gt; prologMapping : c) {
 <a class="jxr_linenumber" name="197" href="#197">197</a> 				PrologTerm mgu = prologMapping.toTerm(provider);
 <a class="jxr_linenumber" name="198" href="#198">198</a> 				<strong class="jxr_keyword">if</strong> (mgu.unify(term)) {
 <a class="jxr_linenumber" name="199" href="#199">199</a> 					object = prologMapping.fromTerm(provider, term);

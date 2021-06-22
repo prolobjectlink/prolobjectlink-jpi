@@ -452,22 +452,22 @@
 <a class="jxr_linenumber" name="442" href="#442">442</a> 	}
 <a class="jxr_linenumber" name="443" href="#443">443</a> 
 <a class="jxr_linenumber" name="444" href="#444">444</a> 	@Override
-<a class="jxr_linenumber" name="445" href="#445">445</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> PrologMapping&lt;?&gt; get(Object key) {
+<a class="jxr_linenumber" name="445" href="#445">445</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> Prologable&lt;?&gt; get(Object key) {
 <a class="jxr_linenumber" name="446" href="#446">446</a> 		<strong class="jxr_keyword">return</strong> provider.get(key);
 <a class="jxr_linenumber" name="447" href="#447">447</a> 	}
 <a class="jxr_linenumber" name="448" href="#448">448</a> 
 <a class="jxr_linenumber" name="449" href="#449">449</a> 	@Override
-<a class="jxr_linenumber" name="450" href="#450">450</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> PrologMapping&lt;?&gt; put(Class&lt;?&gt; key, PrologMapping&lt;?&gt; value) {
+<a class="jxr_linenumber" name="450" href="#450">450</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> Prologable&lt;?&gt; put(Class&lt;?&gt; key, Prologable&lt;?&gt; value) {
 <a class="jxr_linenumber" name="451" href="#451">451</a> 		<strong class="jxr_keyword">return</strong> provider.put(key, value);
 <a class="jxr_linenumber" name="452" href="#452">452</a> 	}
 <a class="jxr_linenumber" name="453" href="#453">453</a> 
 <a class="jxr_linenumber" name="454" href="#454">454</a> 	@Override
-<a class="jxr_linenumber" name="455" href="#455">455</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> PrologMapping&lt;?&gt; remove(Object key) {
+<a class="jxr_linenumber" name="455" href="#455">455</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> Prologable&lt;?&gt; remove(Object key) {
 <a class="jxr_linenumber" name="456" href="#456">456</a> 		<strong class="jxr_keyword">return</strong> provider.remove(key);
 <a class="jxr_linenumber" name="457" href="#457">457</a> 	}
 <a class="jxr_linenumber" name="458" href="#458">458</a> 
 <a class="jxr_linenumber" name="459" href="#459">459</a> 	@Override
-<a class="jxr_linenumber" name="460" href="#460">460</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">void</strong> putAll(Map&lt;? <strong class="jxr_keyword">extends</strong> Class&lt;?&gt;, ? <strong class="jxr_keyword">extends</strong> PrologMapping&lt;?&gt;&gt; m) {
+<a class="jxr_linenumber" name="460" href="#460">460</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">void</strong> putAll(Map&lt;? <strong class="jxr_keyword">extends</strong> Class&lt;?&gt;, ? <strong class="jxr_keyword">extends</strong> Prologable&lt;?&gt;&gt; m) {
 <a class="jxr_linenumber" name="461" href="#461">461</a> 		provider.putAll(m);
 <a class="jxr_linenumber" name="462" href="#462">462</a> 	}
 <a class="jxr_linenumber" name="463" href="#463">463</a> 
@@ -482,29 +482,29 @@
 <a class="jxr_linenumber" name="472" href="#472">472</a> 	}
 <a class="jxr_linenumber" name="473" href="#473">473</a> 
 <a class="jxr_linenumber" name="474" href="#474">474</a> 	@Override
-<a class="jxr_linenumber" name="475" href="#475">475</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> Collection&lt;PrologMapping&lt;?&gt;&gt; values() {
+<a class="jxr_linenumber" name="475" href="#475">475</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> Collection&lt;Prologable&lt;?&gt;&gt; values() {
 <a class="jxr_linenumber" name="476" href="#476">476</a> 		<strong class="jxr_keyword">return</strong> provider.values();
 <a class="jxr_linenumber" name="477" href="#477">477</a> 	}
 <a class="jxr_linenumber" name="478" href="#478">478</a> 
 <a class="jxr_linenumber" name="479" href="#479">479</a> 	@Override
-<a class="jxr_linenumber" name="480" href="#480">480</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> Set&lt;Entry&lt;Class&lt;?&gt;, PrologMapping&lt;?&gt;&gt;&gt; entrySet() {
+<a class="jxr_linenumber" name="480" href="#480">480</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> Set&lt;Entry&lt;Class&lt;?&gt;, Prologable&lt;?&gt;&gt;&gt; entrySet() {
 <a class="jxr_linenumber" name="481" href="#481">481</a> 		<strong class="jxr_keyword">return</strong> provider.entrySet();
 <a class="jxr_linenumber" name="482" href="#482">482</a> 	}
 <a class="jxr_linenumber" name="483" href="#483">483</a> 
 <a class="jxr_linenumber" name="484" href="#484">484</a> 	@Override
-<a class="jxr_linenumber" name="485" href="#485">485</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">void</strong> register(PrologMapping&lt;?&gt; mapping) {
+<a class="jxr_linenumber" name="485" href="#485">485</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">void</strong> register(Prologable&lt;?&gt; mapping) {
 <a class="jxr_linenumber" name="486" href="#486">486</a> 		put(mapping.getType(), mapping);
 <a class="jxr_linenumber" name="487" href="#487">487</a> 	}
 <a class="jxr_linenumber" name="488" href="#488">488</a> 
-<a class="jxr_linenumber" name="489" href="#489">489</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> getTerm(PrologMapping&lt;?&gt; mapping) {
+<a class="jxr_linenumber" name="489" href="#489">489</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> getTerm(Prologable&lt;?&gt; mapping) {
 <a class="jxr_linenumber" name="490" href="#490">490</a> 		<strong class="jxr_keyword">return</strong> mapping.toTerm(provider);
 <a class="jxr_linenumber" name="491" href="#491">491</a> 	}
 <a class="jxr_linenumber" name="492" href="#492">492</a> 
-<a class="jxr_linenumber" name="493" href="#493">493</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> &lt;O&gt; <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> getTerm(PrologMapping&lt;?&gt; mapping, O o) {
+<a class="jxr_linenumber" name="493" href="#493">493</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> &lt;O&gt; <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> getTerm(Prologable&lt;?&gt; mapping, O o) {
 <a class="jxr_linenumber" name="494" href="#494">494</a> 		<strong class="jxr_keyword">return</strong> mapping.toTerm(provider, o);
 <a class="jxr_linenumber" name="495" href="#495">495</a> 	}
 <a class="jxr_linenumber" name="496" href="#496">496</a> 
-<a class="jxr_linenumber" name="497" href="#497">497</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">void</strong> unregister(PrologMapping&lt;?&gt; mapping) {
+<a class="jxr_linenumber" name="497" href="#497">497</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">void</strong> unregister(Prologable&lt;?&gt; mapping) {
 <a class="jxr_linenumber" name="498" href="#498">498</a> 		remove(mapping.getType());
 <a class="jxr_linenumber" name="499" href="#499">499</a> 	}
 <a class="jxr_linenumber" name="500" href="#500">500</a> 

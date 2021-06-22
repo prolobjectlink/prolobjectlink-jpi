@@ -40,6 +40,7 @@ public abstract class PrologBuiltin implements PrologStructure {
 	static final String CUT = "!";
 	static final String NIL = "nil";
 	static final String THROW = "throw";
+	static final String CATCH = "catch";
 	static final String EMPTY_FUNCTOR = "[]";
 	static final String FAIL_FUNCTOR = "fail";
 	static final String TRUE_FUNCTOR = "true";

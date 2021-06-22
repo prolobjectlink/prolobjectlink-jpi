@@ -64,12 +64,12 @@ public abstract class AbstractProvider implements PrologProvider {
 		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("true", 0));
 		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("false", 0));
 		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.THROW, 1));
-//		clauseFactory.createAndRegisterCatchBuiltin();
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.CATCH, 3));
 
 		// 8.2 term unification
-		// (subsume/2)
-//		builtins.put("=/2", new PrologClause(new PrologUnify()));
-//		builtins.put("\\=/2", new PrologClause(new PrologNotUnify()));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("=", 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("\\=", 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("subsume", 2));
 		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.UNIFY_WITH_OCCURS_CHECK, 2));
 
 		// 8.3 type testing
@@ -88,17 +88,15 @@ public abstract class AbstractProvider implements PrologProvider {
 		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.ACYCLIC_TERM, 1));
 
 		// 8.4 term comparison
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("@>", 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("@<", 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("==", 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("@>=", 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("@=<", 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("\\==", 2));
 		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.SORT, 2));
 		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.COMPARE, 3));
 		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.KEYSORT, 2));
-//				builtins.put("@>/2", new PrologClause(new PrologAfter()));
-//				builtins.put("@</2", new PrologClause(new PrologBefore()));
-//				builtins.put("sort/2", new PrologClause(new PrologSort()));
-//				builtins.put("==/2", new PrologClause(new PrologEquivalent()));
-//				builtins.put("@>=/2", new PrologClause(new PrologAfterEquals()));
-//				builtins.put("compare/3", new PrologClause(new PrologCompare()));
-//				builtins.put("@=</2", new PrologClause(new PrologBeforeEquals()));
-//				builtins.put("\\==/2", new PrologClause(new PrologNotEquivalent()));
 
 		// 8.5 term creation and decomposition
 		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.ARG, 3));
@@ -107,15 +105,15 @@ public abstract class AbstractProvider implements PrologProvider {
 		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.TERM_VARIABLES, 2));
 
 		// 8.6 arithmetics evaluation (operator)
-//		builtins.put("is/2", new PrologClause(new PrologIs()));
-		
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("is", 2));
+
 		// 8.7 arithmetic comparison (operator)
-//		builtins.put(">/2", new PrologClause(new PrologGreater()));
-//		builtins.put("</2", new PrologClause(new PrologLess()));
-//		builtins.put("=</2", new PrologClause(new PrologLessEqual()));
-//		builtins.put(">=/2", new PrologClause(new PrologGreaterEqual()));
-//		builtins.put("=:=/2", new PrologClause(new PrologEqual()));
-//		builtins.put("=\\=/2", new PrologClause(new PrologNotEqual()));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(">", 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("<", 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("=<", 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(">=", 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("=:=", 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("=\\=", 2));
 
 		// 8.8 clause retrieval and information ( missing predicate_property/2)
 		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("clause", 2));
@@ -128,7 +126,7 @@ public abstract class AbstractProvider implements PrologProvider {
 		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("retract", 1));
 
 		// 8.10 All solutions
-		// ( forall/2 )
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("forall", 2));
 		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.BAGOF, 3));
 		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.SETOF, 3));
 		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.FINDALL, 3));
@@ -196,13 +194,13 @@ public abstract class AbstractProvider implements PrologProvider {
 		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.LCM, 2));
 
 		// 9.4 bitwise functors
-//				builtins.put("\\//2", new PrologClause(new PrologBitwiseOr()));
-//				builtins.put("></2", new PrologClause(new PrologBitwiseXor()));
-//				builtins.put("/\\/2", new PrologClause(new PrologBitwiseAnd()));
-//				builtins.put("<</2", new PrologClause(new PrologBitwiseShiftLeft()));
-//				builtins.put(">>/2", new PrologClause(new PrologBitwiseShiftRight()));
-//				builtins.put("\\/1", new PrologClause(new PrologBitwiseComplement()));
-//				builtins.put("///2", new PrologClause(new PrologIntegerDivision()));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("\\//", 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("><", 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("/\\", 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("<<", 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(">>", 2));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("\\/", 1));
+		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator("//", 2));
 
 		// 9.5 trigonometric functors
 		ISO_IEC_BUILT_INS.add(new DefaultPrologIndicator(PrologBuiltin.SIN, 1));
@@ -609,19 +607,19 @@ public abstract class AbstractProvider implements PrologProvider {
 		return getJavaConverter().containsValue(value);
 	}
 
-	public final PrologMapping<?> get(Object key) {
+	public final Prologable<?> get(Object key) {
 		return getJavaConverter().get(key);
 	}
 
-	public final PrologMapping<?> put(Class<?> key, PrologMapping<?> value) {
+	public final Prologable<?> put(Class<?> key, Prologable<?> value) {
 		return getJavaConverter().put(key, value);
 	}
 
-	public final PrologMapping<?> remove(Object key) {
+	public final Prologable<?> remove(Object key) {
 		return getJavaConverter().remove(key);
 	}
 
-	public final void putAll(Map<? extends Class<?>, ? extends PrologMapping<?>> m) {
+	public final void putAll(Map<? extends Class<?>, ? extends Prologable<?>> m) {
 		getJavaConverter().putAll(m);
 	}
 
@@ -633,27 +631,27 @@ public abstract class AbstractProvider implements PrologProvider {
 		return getJavaConverter().keySet();
 	}
 
-	public final Collection<PrologMapping<?>> values() {
+	public final Collection<Prologable<?>> values() {
 		return getJavaConverter().values();
 	}
 
-	public final Set<Entry<Class<?>, PrologMapping<?>>> entrySet() {
+	public final Set<Entry<Class<?>, Prologable<?>>> entrySet() {
 		return getJavaConverter().entrySet();
 	}
 
-	public final void register(PrologMapping<?> mapping) {
+	public final void register(Prologable<?> mapping) {
 		put(mapping.getType(), mapping);
 	}
 
-	public final PrologTerm getTerm(PrologMapping<?> mapping) {
+	public final PrologTerm getTerm(Prologable<?> mapping) {
 		return mapping.toTerm(this);
 	}
 
-	public final <O> PrologTerm getTerm(PrologMapping<?> mapping, O o) {
+	public final <O> PrologTerm getTerm(Prologable<?> mapping, O o) {
 		return mapping.toTerm(this, o);
 	}
 
-	public void unregister(PrologMapping<?> mapping) {
+	public void unregister(Prologable<?> mapping) {
 		remove(mapping.getType());
 	}
 

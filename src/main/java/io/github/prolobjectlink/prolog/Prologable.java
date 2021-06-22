@@ -105,7 +105,7 @@ package io.github.prolobjectlink.prolog;
  * @param <O> Java Object implicit in the conversion.
  * @since 1.1
  */
-public interface PrologMapping<O> {
+public interface Prologable<O> {
 
 	/**
 	 * Create a Java Object representation from given PrologTerm.

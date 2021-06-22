@@ -46,7 +46,7 @@
 		<projectName>${project.name}</projectName>
 		<projectLogo>${project.basedir}/src/main/resources/prolobjectlink.png</projectLogo>
 		<companyName>${project.organization.name}</companyName>
-		<companyLogo>${project.basedir}/src/main/resources/java-prolog.png</companyLogo>
+		<!-- <companyLogo>images/logo_myorg.png</companyLogo> -->
 	</cover>
 
 </document>
