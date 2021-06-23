@@ -29,6 +29,7 @@ import static io.github.prolobjectlink.prolog.PrologTermType.MAP_ENTRY_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.MAP_TYPE;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -116,6 +117,14 @@ public class PrologInternalMap extends PrologLinkedMap<PrologTerm, PrologTerm> i
 	}
 
 	public boolean isVariable() {
+		return false;
+	}
+
+	public final boolean isVariableBound() {
+		return false;
+	}
+
+	public final boolean isVariableNotBound() {
 		return false;
 	}
 
@@ -253,6 +262,11 @@ public class PrologInternalMap extends PrologLinkedMap<PrologTerm, PrologTerm> i
 		return false;
 	}
 
+	public Map<String, PrologTerm> match(PrologTerm term) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public PrologProvider getProvider() {
 		return provider;
 	}
@@ -347,7 +361,26 @@ public class PrologInternalMap extends PrologLinkedMap<PrologTerm, PrologTerm> i
 		return 0;
 	}
 
-	public class PrologHashEntry extends HashLinkedEntry<PrologTerm, PrologTerm> implements PrologEntry {
+	public void putAll(Collection<Entry<PrologTerm, PrologTerm>> entries) {
+		for (Entry<PrologTerm, PrologTerm> entry : entries) {
+			put(entry);
+		}
+	}
+
+	public boolean contains(Entry<PrologTerm, PrologTerm> entry) {
+		PrologTerm value = get(entry.getKey());
+		return value != null ? value.equals(entry.getValue()) : false;
+	}
+
+	public void remove(Entry<PrologTerm, PrologTerm> entry) {
+		remove(entry.getKey());
+	}
+
+	public void put(Entry<PrologTerm, PrologTerm> entry) {
+		put(entry.getKey(), entry.getValue());
+	}
+
+	class PrologHashEntry extends HashLinkedEntry<PrologTerm, PrologTerm> implements PrologEntry {
 
 		PrologHashEntry(PrologTerm key, PrologTerm value) {
 			super(key, value);
@@ -396,6 +429,14 @@ public class PrologInternalMap extends PrologLinkedMap<PrologTerm, PrologTerm> i
 		}
 
 		public boolean isVariable() {
+			return false;
+		}
+
+		public final boolean isVariableBound() {
+			return false;
+		}
+
+		public final boolean isVariableNotBound() {
 			return false;
 		}
 
@@ -526,6 +567,11 @@ public class PrologInternalMap extends PrologLinkedMap<PrologTerm, PrologTerm> i
 			return false;
 		}
 
+		public Map<String, PrologTerm> match(PrologTerm term) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 		public PrologProvider getProvider() {
 			return provider;
 		}
@@ -534,7 +580,7 @@ public class PrologInternalMap extends PrologLinkedMap<PrologTerm, PrologTerm> i
 			return (T) this;
 		}
 
-		public final int compareTo(PrologTerm term) {
+		public int compareTo(PrologTerm term) {
 			PrologTerm thisCompound = this;
 			PrologTerm otherCompound = term;
 

@@ -28,6 +28,7 @@ package io.github.prolobjectlink.prolog;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  * Prolog Provider is the class to interact with all prolog components (data
@@ -418,29 +419,6 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 	public PrologTerm newStructure(Object left, String operator, Object right);
 
 	/**
-	 * Create a new PrologEntry using key-value pair of PrologTerm type. The
-	 * resulting term is an implementation of {@link Entry} and {@link PrologTerm}.
-	 * 
-	 * @param key   key of the entry
-	 * @param value value of the entry
-	 * @return new PrologEntry term
-	 * @since 1.1
-	 */
-	public PrologTerm newEntry(PrologTerm key, PrologTerm value);
-
-	/**
-	 * Create a new PrologEntry using key-value pair of Java object type.The given
-	 * objects are converted to PrologTerm before entry creation. The resulting term
-	 * is an implementation of {@link Entry} and {@link PrologTerm}.
-	 * 
-	 * @param key   key of the entry
-	 * @param value value of the entry
-	 * @return new PrologEntry term
-	 * @since 1.1
-	 */
-	public PrologTerm newEntry(Object key, Object value);
-
-	/**
 	 * Constructs a new {@link PrologMap} with the same mappings as the specified
 	 * {@link Map} of {@link PrologTerm} keys and values. The {@link PrologMap} is
 	 * created with an initial capacity sufficient to hold the mappings in the
@@ -452,6 +430,29 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 	 * @since 1.1
 	 */
 	public PrologTerm newMap(Map<PrologTerm, PrologTerm> map);
+
+	/**
+	 * Create a new PrologEntry using key-value pair of PrologTerm type. The
+	 * resulting term is an implementation of {@link Entry} and {@link PrologTerm}.
+	 * 
+	 * @param key   key of the entry
+	 * @param value value of the entry
+	 * @return new PrologEntry term
+	 * @since 1.1
+	 */
+	abstract PrologTerm newEntry(PrologTerm key, PrologTerm value);
+
+	/**
+	 * Create a new PrologEntry using key-value pair of Java object type.The given
+	 * objects are converted to PrologTerm before entry creation. The resulting term
+	 * is an implementation of {@link Entry} and {@link PrologTerm}.
+	 * 
+	 * @param key   key of the entry
+	 * @param value value of the entry
+	 * @return new PrologEntry term
+	 * @since 1.1
+	 */
+	abstract PrologTerm newEntry(Object key, Object value);
 
 	/**
 	 * Constructs an empty {@link PrologMap} with the specified initial capacity.
@@ -848,13 +849,13 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 	 * @return new PrologEntry term
 	 * @since 1.1
 	 */
-	public PrologTerm newField(Object name, Object type);
+	public PrologTerm newField(String name, String type);
 
-	public PrologTerm newInterface(String name, PrologTerm... declarations);
+	public PrologTerm newMixin(String name, PrologTerm... declarations);
 
-	public PrologTerm newInterface(String namespace, String name, PrologTerm... declarations);
+	public PrologTerm newMixin(String namespace, String name, PrologTerm... declarations);
 
-	public PrologTerm newInterface(PrologTerm namespace, String name, PrologTerm... declarations);
+	public PrologTerm newMixin(PrologTerm namespace, String name, PrologTerm... declarations);
 
 	/**
 	 * Create a new fact clause. A fatc clause is only represented by clause head

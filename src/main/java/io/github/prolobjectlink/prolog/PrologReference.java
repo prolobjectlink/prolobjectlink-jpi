@@ -25,6 +25,22 @@
  */
 package io.github.prolobjectlink.prolog;
 
+/**
+ * PrologReference is a specialized Term with an Object field, representing
+ * Prolog references to Java objects (or to null).
+ * 
+ * @author Jose Zalacain
+ * @since 1.1
+ */
 public interface PrologReference extends PrologTerm {
+
+	/**
+	 * Return the Java reference type. Reference type is a Java class of referenced
+	 * Java object.
+	 * 
+	 * @return the Java reference type.
+	 * @since 1.1
+	 */
+	public Class<?> getReferenceType();
 
 }

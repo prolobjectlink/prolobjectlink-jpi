@@ -110,4 +110,8 @@ public class AbstractReference extends AbstractCompounds implements PrologRefere
 		return true;
 	}
 
+	public Class<?> getReferenceType() {
+		return reference.getClass();
+	}
+
 }

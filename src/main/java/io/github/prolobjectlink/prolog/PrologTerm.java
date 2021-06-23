@@ -25,6 +25,8 @@
  */
 package io.github.prolobjectlink.prolog;
 
+import java.util.Map;
+
 /**
  * <p>
  * Ancestor prolog data type. All Prolog data types {@link PrologAtom},
@@ -201,6 +203,22 @@ public interface PrologTerm extends Comparable<PrologTerm> {
 	 * @since 1.0
 	 */
 	public boolean isVariable();
+
+	/**
+	 * True if this Term is a instanced variable, false in other case
+	 * 
+	 * @return whether this Term is a instanced variable
+	 * @since 1.1
+	 */
+	public boolean isVariableBound();
+
+	/**
+	 * True if this Term is a not instanced variable, false in other case
+	 * 
+	 * @return whether this Term is a not instanced variable
+	 * @since 1.1
+	 */
+	public boolean isVariableNotBound();
 
 	/**
 	 * True if this Term is a list, false in other case
@@ -423,13 +441,21 @@ public interface PrologTerm extends Comparable<PrologTerm> {
 	public boolean unify(PrologTerm term);
 
 	/**
+	 * Match to other term returning list of substitutions.
+	 * 
+	 * @param term - term to match check
+	 * @return list of substitutions.
+	 * @since 1.1
+	 */
+	public Map<String, PrologTerm> match(PrologTerm term);
+
+	/**
 	 * Prolog provider associated to the current term.
 	 * 
 	 * @return Prolog provider associated to the current term.
 	 * @since 1.0
 	 */
 	public PrologProvider getProvider();
-
 
 	/**
 	 * Casts the current PrologTerm to the class or interface represented by this

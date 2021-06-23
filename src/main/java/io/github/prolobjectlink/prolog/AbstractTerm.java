@@ -40,9 +40,14 @@ import static io.github.prolobjectlink.prolog.PrologTermType.STRUCTURE_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.TRUE_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.VARIABLE_TYPE;
 
+import java.util.ArrayDeque;
 import java.util.Collection;
+import java.util.Deque;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Queue;
+import java.util.Stack;
 
 /**
  * Partial implementation of {@link PrologTerm} interface.
@@ -213,6 +218,108 @@ public abstract class AbstractTerm implements PrologTerm {
 
 	public final boolean isMap() {
 		return this instanceof Map;
+	}
+
+	public boolean isVariableBound() {
+		return isVariable() && getTerm() != this;
+	}
+
+	public boolean isVariableNotBound() {
+		return isVariable() && getTerm() == this;
+	}
+
+	/**
+	 * Match to other term returning list of substitutions.
+	 * 
+	 * @param term - term to match check
+	 * @return list of substitutions.
+	 */
+	public final Map<String, PrologTerm> match(PrologTerm term) {
+		Deque<PrologTerm> stack = new ArrayDeque<PrologTerm>();
+		if (unify(term, stack)) {
+			int size = stack.size();
+			HashMap<String, PrologTerm> substitution = new HashMap<String, PrologTerm>(size);
+			while (size > 0) {
+				PrologVariable variable = (PrologVariable) stack.pop();
+				substitution.put(variable.getName(), variable.getTerm());
+				// variable.unbind();
+				size--;
+			}
+			return substitution;
+		}
+		return new HashMap<String, PrologTerm>();
+	}
+
+	/**
+	 * Unification is the basic primitive operation in logic programming. Check that
+	 * two terms (x and y) unify. Prolog unification algorithm is based on three
+	 * principals rules:
+	 * <ul>
+	 * <li>If x and y are atomics constants then x and y unify only if they are same
+	 * object.</li>
+	 * <li>If x is a variable and y is anything then they unify and x is
+	 * instantiated to y. Conversely, if y is a variable then this is instantiated
+	 * to x.</li>
+	 * <li>If x and y are structured terms then unify only if they match (equals
+	 * funtor and arity) and all their correspondents arguments unify.</li>
+	 * </ul>
+	 * 
+	 * 
+	 * @param term  - the term to unify with the current term
+	 * @param stack - the stack is used to store the addresses of variables which
+	 *              are bound by the unification. This is needed when backtracking.
+	 * @return true if the specified term unify whit the current term, false if not
+	 */
+	private boolean unify(PrologTerm term, Deque<PrologTerm> stack) throws PrologError {
+
+		PrologTerm thisTerm = this;
+		PrologTerm otherTerm = term;
+
+		if (thisTerm.isVariableBound()) {
+			return ((AbstractTerm) thisTerm.getTerm()).unify(otherTerm, stack);
+		}
+
+		else if (otherTerm.isVariableBound()) {
+			return ((AbstractTerm) otherTerm.getTerm()).unify(thisTerm, stack);
+		}
+
+		// current term is a free variable
+		else if (thisTerm.isVariableNotBound()) {
+			// if (!thisTerm.occurs(otherTerm)) {
+			// thisTerm.bind(otherTerm);
+			stack.push(thisTerm);
+			return true;
+			// }
+		}
+
+		// the other term is a free variable
+		else if (otherTerm.isVariableNotBound()) {
+			// if (!otherTerm.occurs(thisTerm)) {
+			// otherTerm.bind(thisTerm);
+			stack.push(otherTerm);
+			return true;
+			// }
+		}
+
+		else {
+
+			int thisArity = thisTerm.getArity();
+			int otherArity = otherTerm.getArity();
+			String thisFunctor = thisTerm.getFunctor();
+			String otherFunctor = otherTerm.getFunctor();
+
+			if (thisFunctor.equals(otherFunctor) && thisArity == otherArity) {
+				for (int i = 0; i < thisArity; i++) {
+					if (thisTerm.getArgument(i) != null && otherTerm.getArgument(i) != null) {
+						if (!((AbstractTerm) thisTerm.getArgument(i)).unify(otherTerm.getArgument(i), stack)) {
+							return false;
+						}
+					}
+				}
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

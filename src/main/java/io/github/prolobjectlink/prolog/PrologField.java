@@ -36,7 +36,7 @@ public class PrologField extends AbstractCompounds implements PrologEntry {
 		this.kind = kind;
 	}
 
-	PrologField(AbstractProvider provider, PrologTerm name, PrologTerm kind) {
+	PrologField(PrologProvider provider, PrologTerm name, PrologTerm kind) {
 		super(PrologTermType.FIELD_TYPE, provider);
 		this.name = name.getFunctor();
 		this.kind = kind.getFunctor();

@@ -422,30 +422,30 @@ public abstract class AbstractProvider implements PrologProvider {
 		return new PrologField(this, name, type);
 	}
 
-	public PrologTerm newField(Object name, Object type) {
+	public PrologTerm newField(String name, String type) {
 		PrologTerm oname = toTerm(name, PrologTerm.class);
-		PrologTerm otype = toTerm(name, PrologTerm.class);
+		PrologTerm otype = toTerm(type, PrologTerm.class);
 		return new PrologField(this, oname, otype);
 	}
 
-	public PrologTerm newInterface(String name, PrologTerm... declarations) {
-		PrologInterface pi = new PrologInterface(this, name);
+	public PrologTerm newMixin(String name, PrologTerm... declarations) {
+		PrologMixin pi = new PrologMixin(this, name);
 		for (int i = 0; i < declarations.length; i++) {
 //			pi.add FIXME
 		}
 		return pi;
 	}
 
-	public PrologTerm newInterface(String namespace, String name, PrologTerm... declarations) {
-		PrologInterface pi = new PrologInterface(this, namespace, name);
+	public PrologTerm newMixin(String namespace, String name, PrologTerm... declarations) {
+		PrologMixin pi = new PrologMixin(this, namespace, name);
 		for (int i = 0; i < declarations.length; i++) {
 //			pi.add FIXME
 		}
 		return pi;
 	}
 
-	public PrologTerm newInterface(PrologTerm namespace, String name, PrologTerm... declarations) {
-		PrologInterface pi = new PrologInterface(this, namespace.getFunctor(), name);
+	public PrologTerm newMixin(PrologTerm namespace, String name, PrologTerm... declarations) {
+		PrologMixin pi = new PrologMixin(this, namespace.getFunctor(), name);
 		for (int i = 0; i < declarations.length; i++) {
 //			pi.add FIXME
 		}

@@ -25,6 +25,7 @@
  */
 package io.github.prolobjectlink.prolog;
 
+import java.util.Collection;
 import java.util.Map;
 
 /**
@@ -35,5 +36,37 @@ import java.util.Map;
  * @since 1.1
  */
 public interface PrologMap extends PrologList, Map<PrologTerm, PrologTerm> {
+
+	/**
+	 * Put all collections of entries in the map.
+	 * 
+	 * @param entries entries to be put in the map.
+	 * @since 1.1
+	 */
+	public void putAll(Collection<Entry<PrologTerm, PrologTerm>> entries);
+
+	/**
+	 * True if this map contains an entry previously created
+	 * 
+	 * @return whether this map contains an entry previously created
+	 * @since 1.1
+	 */
+	public boolean contains(Entry<PrologTerm, PrologTerm> entry);
+
+	/**
+	 * Remove in the map an entry previously created
+	 * 
+	 * @param entry entry to be removed from this map
+	 * @since 1.1
+	 */
+	public void remove(Entry<PrologTerm, PrologTerm> entry);
+
+	/**
+	 * Put in the map an entry previously created
+	 * 
+	 * @param entry entry to be put in this map
+	 * @since 1.1
+	 */
+	public void put(Entry<PrologTerm, PrologTerm> entry);
 
 }
