@@ -29,8 +29,8 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 
 	<licenses>
 		<license>
-			<name>MIT</name>
-			<url>http://www.opensource.org/licenses/mit-license.php</url>
+			<name>BSD License</name>
+			<url>http://www.opensource.org/licenses/bsd-license.php</url>
 		</license>
 	</licenses>
 
@@ -156,7 +156,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 					<windowtitle>Java Prolog Interface - ${project.version}</windowtitle>
 					<show>public</show>
 					<links>
-						<link>https://docs.oracle.com/javase/8/docs/api/</link>
+						<link>https://docs.oracle.com/javase/6/docs/api/</link>
 						<link>http://junit.sourceforge.net/javadoc/</link>
 					</links>
 					<nohelp>true</nohelp>
@@ -254,14 +254,14 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 					<canUpdateDescription>true</canUpdateDescription>
 					<failOnMissingHeader>true</failOnMissingHeader>
 					<acceptPomPackaging>true</acceptPomPackaging>
-					<licenseName>mit</licenseName>
+					<licenseName>bsd_3</licenseName>
 					<!-- <dryRun>true</dryRun> -->
 					<licenseFile>LICENSE.md</licenseFile>
 					<addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
+					<excludes>
+						<exclude>src/main/javax</exclude>
+					</excludes>
 					<roots>
-						<root>src/assembly</root>
-						<root>src/build</root>
-						<root>src/changes</root>
 						<root>src/main</root>
 						<root>src/test</root>
 						<root>src/site</root>
@@ -467,6 +467,23 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 				<configuration>
 					<excludeSubProjects>false</excludeSubProjects>
 					<numUnapprovedLicenses>0</numUnapprovedLicenses>
+					<licenses>
+						<license
+							implementation="org.apache.rat.analysis.license.SimplePatternBasedLicense">
+							<licenseFamilyCategory>BSD</licenseFamilyCategory>
+							<licenseFamilyName>Berkeley Software Distribution</licenseFamilyName>
+							<notes></notes>
+							<patterns>
+								<pattern>Redistribution and use in source and binary forms,</pattern>
+							</patterns>
+						</license>
+					</licenses>
+					<licenseFamilies>
+						<licenseFamily
+							implementation="org.apache.rat.license.SimpleLicenseFamily">
+							<familyName>Berkeley Software Distribution</familyName>
+						</licenseFamily>
+					</licenseFamilies>
 					<excludes>
 						generated content
 						<exclude>**/.*/**</exclude>
