@@ -38,6 +38,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class ReflectionUtil {
 
@@ -245,7 +246,17 @@ public class ReflectionUtil {
 			Class<?>... parameterTypes) {
 		Method method = null;
 		try {
-			method = class1.getDeclaredMethod(methodName, parameterTypes);
+			Method[] methods = class1.getDeclaredMethods();
+			for (Method method2 : methods) {
+				if (method2.getName().equals(methodName)) {
+					Class<?>[] types = method2.getParameterTypes();
+					if (Arrays.equals(types, parameterTypes)) {
+						method = class1.getDeclaredMethod(methodName, parameterTypes);
+					} else {
+						method = method2;
+					}
+				}
+			}
 		} catch (NoSuchMethodException e) {
 			Prolog.getProvider().getLogger().error(ReflectionUtil.class, e.getMessage(), e);
 		} catch (SecurityException e) {

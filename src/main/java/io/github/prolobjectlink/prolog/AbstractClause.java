@@ -96,10 +96,12 @@ public abstract class AbstractClause implements PrologClause {
 	}
 
 	public PrologTerm getTerm() {
-		String neck = ":-";
 		PrologTerm h = getHead();
-		PrologTerm b = getBody();
-		return provider.newStructure(neck, h, b);
+		if (isRule()) {
+			PrologTerm b = getBody();
+			return provider.newStructure(":-", h, b);
+		}
+		return h;
 	}
 
 	public final PrologTerm getHead() {
@@ -161,8 +163,8 @@ public abstract class AbstractClause implements PrologClause {
 		return head != null && body != null;
 	}
 
-	public final boolean isMethod() {
-		return head != null && body != null;
+	public boolean isMethod() {
+		return false;
 	}
 
 	public boolean isFunction() {

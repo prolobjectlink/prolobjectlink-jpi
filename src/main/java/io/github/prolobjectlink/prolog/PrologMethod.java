@@ -50,7 +50,7 @@ public class PrologMethod extends AbstractClause implements PrologClause {
 	 * @since 1.1
 	 */
 	protected PrologMethod(PrologProvider provider, PrologTerm head) {
-		this(provider, head, null, false, false, false);
+		super(provider, head, false, false, false);
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class PrologMethod extends AbstractClause implements PrologClause {
 	 */
 	protected PrologMethod(PrologProvider provider, PrologTerm head, boolean dynamic, boolean multifile,
 			boolean discontiguous) {
-		this(provider, head, null, dynamic, multifile, discontiguous);
+		super(provider, head, dynamic, multifile, discontiguous);
 	}
 
 	/**
@@ -245,6 +245,10 @@ public class PrologMethod extends AbstractClause implements PrologClause {
 
 	protected final void removeFunction(PrologClause function) {
 		subrutines.remove(function);
+	}
+
+	public boolean isMethod() {
+		return true;
 	}
 
 	public boolean isFunction() {

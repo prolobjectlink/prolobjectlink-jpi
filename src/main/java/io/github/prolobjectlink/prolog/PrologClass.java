@@ -80,13 +80,13 @@ public final class PrologClass extends PrologMixin implements PrologTerm {
 		PrologTerm[] arguments = fields.toArray(new PrologTerm[0]);
 		array[i++] = provider.newList(arguments);
 		for (; citr.hasNext(); i++) {
-			array[i] = mitr.next().getTerm();
+			array[i] = citr.next().getTerm();
 		}
 		for (; mitr.hasNext(); i++) {
 			array[i] = mitr.next().getTerm();
 		}
 		for (; nitr.hasNext(); i++) {
-			array[i] = mitr.next().getTerm();
+			array[i] = nitr.next().getTerm();
 		}
 		return array;
 	}
@@ -121,7 +121,7 @@ public final class PrologClass extends PrologMixin implements PrologTerm {
 	 * @since 1.1
 	 */
 	public final PrologTypedField addField(PrologTerm name, PrologTerm type) {
-		PrologTypedField field = new PrologTypedField(provider, name, type);
+		PrologTypedField field = provider.newField(name, type).cast();
 		fields.add(field);
 		return field;
 	}
@@ -137,7 +137,7 @@ public final class PrologClass extends PrologMixin implements PrologTerm {
 	 * @since 1.1
 	 */
 	public final PrologTypedField addField(String name, String type) {
-		PrologTypedField field = new PrologTypedField(provider, name, type);
+		PrologTypedField field = provider.newField(name, type).cast();
 		fields.add(field);
 		return field;
 	}
@@ -152,13 +152,15 @@ public final class PrologClass extends PrologMixin implements PrologTerm {
 		return cls;
 	}
 
-	public final PrologClass addNestedClass(String namespace, String name) {
+	@Deprecated
+	private final PrologClass addNestedClass(String namespace, String name) {
 		PrologClass cls = new PrologClass(provider, namespace, name);
 		addNestedClass(cls);
 		return cls;
 	}
 
-	public final PrologClass addNestedClass(PrologTerm namespace, String name) {
+	@Deprecated
+	private final PrologClass addNestedClass(PrologTerm namespace, String name) {
 		PrologClass cls = new PrologClass(provider, namespace, name);
 		addNestedClass(cls);
 		return cls;
@@ -214,17 +216,17 @@ public final class PrologClass extends PrologMixin implements PrologTerm {
 	}
 
 	@Override
-	public final int hashCode() {
+	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + constructors.hashCode();
-		result = prime * result + fields.hashCode();
-		result = prime * result + methods.hashCode();
+		result = prime * result + ((constructors == null) ? 0 : constructors.hashCode());
+		result = prime * result + ((fields == null) ? 0 : fields.hashCode());
+		result = prime * result + ((superclass == null) ? 0 : superclass.hashCode());
 		return result;
 	}
 
 	@Override
-	public final boolean equals(Object obj) {
+	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!super.equals(obj))
@@ -232,22 +234,21 @@ public final class PrologClass extends PrologMixin implements PrologTerm {
 		if (getClass() != obj.getClass())
 			return false;
 		PrologClass other = (PrologClass) obj;
-		if (other.constructors != null)
-			return false;
-		else if (!constructors.equals(other.constructors)) {
-			return false;
-		}
-		if (other.fields != null)
-			return false;
-		else if (!fields.equals(other.fields)) {
-			return false;
-		}
-		if (methods == null) {
-			if (other.methods != null)
+		if (constructors == null) {
+			if (other.constructors != null)
 				return false;
-		} else if (!methods.equals(other.methods)) {
+		} else if (!constructors.equals(other.constructors))
 			return false;
-		}
+		if (fields == null) {
+			if (other.fields != null)
+				return false;
+		} else if (!fields.equals(other.fields))
+			return false;
+		if (superclass == null) {
+			if (other.superclass != null)
+				return false;
+		} else if (!superclass.equals(other.superclass))
+			return false;
 		return true;
 	}
 

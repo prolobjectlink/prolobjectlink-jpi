@@ -334,11 +334,12 @@ public class PrologMixin extends AbstractCompounds implements PrologTerm {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ancestors.hashCode();
-		result = prime * result + methods.hashCode();
-		result = prime * result + nested.hashCode();
+		result = prime * result + ((ancestors == null) ? 0 : ancestors.hashCode());
+		result = prime * result + ((directives == null) ? 0 : directives.hashCode());
+		result = prime * result + ((methods == null) ? 0 : methods.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((namesapce == null) ? 0 : namesapce.hashCode());
+		result = prime * result + ((nested == null) ? 0 : nested.hashCode());
 		return result;
 	}
 
@@ -351,37 +352,36 @@ public class PrologMixin extends AbstractCompounds implements PrologTerm {
 		if (getClass() != obj.getClass())
 			return false;
 		PrologMixin other = (PrologMixin) obj;
-
-		if (other.ancestors != null)
+		if (ancestors == null) {
+			if (other.ancestors != null)
+				return false;
+		} else if (!ancestors.equals(other.ancestors))
 			return false;
-		else if (!ancestors.equals(other.ancestors)) {
+		if (directives == null) {
+			if (other.directives != null)
+				return false;
+		} else if (!directives.equals(other.directives))
 			return false;
-		}
-
-		if (other.methods != null)
+		if (methods == null) {
+			if (other.methods != null)
+				return false;
+		} else if (!methods.equals(other.methods))
 			return false;
-		else if (!methods.equals(other.methods)) {
-			return false;
-		}
-
-		if (other.nested != null)
-			return false;
-		else if (!nested.equals(other.nested)) {
-			return false;
-		}
-
 		if (name == null) {
 			if (other.name != null)
 				return false;
-		} else if (!name.equals(other.name)) {
+		} else if (!name.equals(other.name))
 			return false;
-		}
 		if (namesapce == null) {
 			if (other.namesapce != null)
 				return false;
-		} else if (!namesapce.equals(other.namesapce)) {
+		} else if (!namesapce.equals(other.namesapce))
 			return false;
-		}
+		if (nested == null) {
+			if (other.nested != null)
+				return false;
+		} else if (!nested.equals(other.nested))
+			return false;
 		return true;
 	}
 
@@ -414,12 +414,14 @@ public class PrologMixin extends AbstractCompounds implements PrologTerm {
 					builder.append(f.getResult());
 					builder.append(' ');
 				}
-				builder.append(":-\n\t\t");
-				Iterator<PrologTerm> j = method.getBodyIterator();
-				while (j.hasNext()) {
-					builder.append(j.next());
-					if (j.hasNext()) {
-						builder.append(",\n\t\t");
+				if (method.isRule()) {
+					builder.append(":-\n\t\t");
+					Iterator<PrologTerm> j = method.getBodyIterator();
+					while (j.hasNext()) {
+						builder.append(j.next());
+						if (j.hasNext()) {
+							builder.append(",\n\t\t");
+						}
 					}
 				}
 			}

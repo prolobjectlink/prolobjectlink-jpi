@@ -32,89 +32,10 @@
  */
 package io.github.prolobjectlink.prolog;
 
-public class PrologTypedParameter extends PrologParameter implements PrologEntry, PrologVariable {
+public interface PrologTypedParameter extends PrologParameter, PrologEntry, PrologVariable {
 
-	private final PrologTerm kind;
+	public PrologTerm getKindTerm();
 
-	@Deprecated
-	PrologTypedParameter(PrologProvider provider, String name, String kind) {
-		super(provider, name);
-		this.kind = provider.newAtom(kind);
-	}
-
-	PrologTypedParameter(PrologProvider provider, PrologTerm name, PrologTerm kind) {
-		super(provider, name);
-		this.kind = kind;
-	}
-
-	PrologTypedParameter(PrologProvider provider, String kind, int position) {
-		super(provider, provider.newVariable(position));
-		this.kind = provider.newAtom(kind);
-	}
-
-	PrologTypedParameter(PrologProvider provider, String name, String kind, int position) {
-		super(provider, provider.newVariable(name, position));
-		this.kind = provider.newAtom(kind);
-	}
-
-	@Override
-	public PrologTerm[] getArguments() {
-		return new PrologTerm[] { getKey(), getValue() };
-	}
-
-	@Override
-	public PrologTerm getKey() {
-		return getNameTerm();
-	}
-
-	@Override
-	public PrologTerm getValue() {
-		return kind;
-	}
-
-	@Override
-	public PrologTerm setValue(PrologTerm value) {
-		// this.type = value.getFunctor()
-		getLogger().debug(getClass(), "No value setting allow");
-		return kind;
-	}
-
-	public PrologTerm getKindTerm() {
-		return getValue();
-	}
-
-	public String getKind() {
-		return kind.getFunctor();
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + ((kind == null) ? 0 : kind.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		PrologTypedParameter other = (PrologTypedParameter) obj;
-		if (kind == null) {
-			if (other.kind != null)
-				return false;
-		} else if (!kind.equals(other.kind))
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return getName() + "-" + kind;
-	}
+	public String getKind();
 
 }

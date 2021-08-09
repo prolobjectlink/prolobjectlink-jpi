@@ -48,6 +48,8 @@ import static io.github.prolobjectlink.prolog.PrologTermType.MAP_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.MIXIN_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.NIL_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.OBJECT_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.PARAMETER_TYPE;
+import static io.github.prolobjectlink.prolog.PrologTermType.RESULT_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.STRUCTURE_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.TRUE_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.VARIABLE_TYPE;
@@ -217,8 +219,14 @@ public abstract class AbstractTerm implements PrologTerm {
 		case OBJECT_TYPE:
 			return term.getObject();
 		case FIELD_TYPE:
-			PrologTypedField field = term.cast();
+			PrologField field = term.cast();
 			return "field " + field.getName();
+		case RESULT_TYPE:
+			PrologResult result = term.cast();
+			return "result " + result.getName();
+		case PARAMETER_TYPE:
+			PrologParameter parameter = term.cast();
+			return "parameter " + parameter.getName();
 		case CLASS_TYPE:
 		case MIXIN_TYPE:
 			// NOTE if structure no have mapping
@@ -240,6 +248,14 @@ public abstract class AbstractTerm implements PrologTerm {
 
 	public boolean isField() {
 		return getType() == FIELD_TYPE;
+	}
+
+	public boolean isResult() {
+		return getType() == RESULT_TYPE;
+	}
+
+	public boolean isParameter() {
+		return getType() == PARAMETER_TYPE;
 	}
 
 	public final boolean isMixin() {

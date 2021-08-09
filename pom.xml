@@ -249,7 +249,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>license-maven-plugin</artifactId>
-				<version>1.16</version>
+				<version>1.17</version>
 				<configuration>
 					<canUpdateDescription>true</canUpdateDescription>
 					<failOnMissingHeader>true</failOnMissingHeader>
@@ -543,6 +543,37 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 					</dependency>
 				</dependencies>
 			</plugin>
+			<plugin>
+				<groupId>com.github.siom79.japicmp</groupId>
+				<artifactId>japicmp-maven-plugin</artifactId>
+				<version>0.15.3</version>
+				<configuration>
+					<oldVersion>
+						<dependency>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>${project.artifactId}</artifactId>
+							<version>1.0</version>
+							<type>jar</type>
+						</dependency>
+					</oldVersion>
+					<newVersion>
+						<file>
+							<path>${project.build.directory}/${project.artifactId}-${project.version}.jar</path>
+						</file>
+					</newVersion>
+					<parameter>
+						<htmlTitle>Changelog API</htmlTitle>
+					</parameter>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>verify</phase>
+						<goals>
+							<goal>cmp</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -702,6 +733,36 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 			<!-- </reportSet> -->
 			<!-- </reportSets> -->
 			<!-- </plugin> -->
+			<plugin>
+				<groupId>com.github.siom79.japicmp</groupId>
+				<artifactId>japicmp-maven-plugin</artifactId>
+				<version>0.15.3</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>cmp-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+				<configuration>
+					<oldVersion>
+						<dependency>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>${project.artifactId}</artifactId>
+							<version>1.0</version>
+							<type>jar</type>
+						</dependency>
+					</oldVersion>
+					<newVersion>
+						<file>
+							<path>${project.build.directory}/${project.artifactId}-${project.version}.jar</path>
+						</file>
+					</newVersion>
+					<parameter>
+						<htmlTitle>Changelog API</htmlTitle>
+					</parameter>
+				</configuration>
+			</plugin>
 		</plugins>
 	</reporting>
 

@@ -187,6 +187,14 @@ public class PrologInternalMap extends PrologLinkedMap<PrologTerm, PrologTerm> i
 		return false;
 	}
 
+	public boolean isResult() {
+		return false;
+	}
+
+	public boolean isParameter() {
+		return false;
+	}
+
 	public boolean isMixin() {
 		return false;
 	}
@@ -528,6 +536,14 @@ public class PrologInternalMap extends PrologLinkedMap<PrologTerm, PrologTerm> i
 		}
 
 		public boolean isField() {
+			return false;
+		}
+
+		public boolean isResult() {
+			return false;
+		}
+
+		public boolean isParameter() {
 			return false;
 		}
 

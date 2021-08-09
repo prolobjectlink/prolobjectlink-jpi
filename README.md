@@ -9,7 +9,7 @@ JPI run over any Java Virtual Machine that support Java SE 5 or above. The proje
 JPI is developed and maintained by Prolobjectlink Project an open source initiative for build logic based applications using Prolog like fundamental Logic Programming Language in the persistence layer and application programming.
 
 
-Copyright and License Information
+#Copyright and License Information
 
 JPI is release under BSD License:
 
@@ -41,10 +41,10 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISE
 OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-Getting Started
+#Getting Started
 
 
-Install
+##Install
 
 Java Prolog Interface API is distributed with implementation adapter and concrete prolog driver library until it is possible according to related libraries licenses. The distributions are named normally such that prolobjectlink-jpi-jpl7-swi7-x.y.z-dist.zip meaning that this distribution is a JPI implementation over JPL version 7 or above and SWI-Prolog version 7 or above. The x.y.z is the distribution version. The distribution can be downloaded in zip or tar.gz compresses format. To install you need perform the following steps:
 •Install Java Runtime Environment (JRE) 1.8 or above.
@@ -55,7 +55,7 @@ Java Prolog Interface API is distributed with implementation adapter and concret
 •Open a new System console and type pllink –i to see the product information. 
 For the JPI beginners we recommended start with a Pure Java-Prolog Engine because have less configuration aspects and native engine are more difficult to link.
 
-Getting started Java to Prolog
+#Getting started Java to Prolog
 
 After installation and architecture compression you can use the hello world sample for test the system integration. This hello world sample show how interacts with JPI from Java programming language with Abstracted Prolog Engine. For the first experience we suggesting use a Java-based Prolog engine like tuProlog because have less configuration aspects.
 
@@ -72,7 +72,7 @@ Create in your preferred development environment an empty project. Set in the pr
         }
 
         
-Architecture
+#Architecture
 
 JPI use a layered architecture pattern where every layer represents a component. The multi-engine Java Prolog connectors provide different levels of abstraction to simplify the implementations of common inter-operability task JPC. Java Prolog Connectors architectures describe three fundamentals layers, High-level API layer, Engine Adapter layer and Concrete Engine layer. High-level API layer define all services to be used by the users in the Java Prolog Application that is the final architecture layer on the architecture stack. High-level API provide the common implementation of Engine Abstraction, Data Type and Inter-Language conversion. The adapter layer adapts before mentioned features to communicate with the concrete Engine Layer, being the last responsible of execute the request services.
 
@@ -80,11 +80,11 @@ All existing Java Prolog Connectors implementation only bring support for Native
 
 In JPI architecture stack in the bottom layer we have the Operating System. The Operating System can be Windows, Linux or Mac OS. Over Operating System, we have the native implementation of JVM and Prolog Engines like SWI, SWI7 and others. Over JVM and Prolog Engines we have Java Based Prolog Engines implementations and JVM bindings driver that share the runtime environment with JVM and native Prolog Engines. Over Java Based Prolog Engines implementations and JVM bindings drivers we have the JPI correspondent adapters. The adapters artifacts are the JPI implementations for each Prolog Engines. Over each adapter we have the JPI application provider interface and at the top stack we the final user application. The user application only interacts with the JPI providing single sourcing and transparency.
 
-Prolog Provider
+#Prolog Provider
 
-Prolog Provider is the mechanism to interact with all Prolog components. Provider classes implementations allow create Prolog Terms, Prolog Engine, Java Prolog Converter, Prolog Parsers and system logger. Using org.prolobjectlink.prolog.Prolog bootstrap class the Prolog Providers are created specifying the provider class in getProvider(Class<?>)  method. This is the workflow start for JPI. When the Prolog Provider is created the next workflow step is the Prolog Terms creation using Java primitive types or using string with Prolog syntax. Provider allow create/parsing all Prolog Terms (Atoms, Numbers, Variables and Compounds). After term creation/parsing the next step is create an engine instance with newEngine() method. Using previous term creation and engine instance Prolog Queries can be formulated. This is possible because the engine class have multiples queries creation methods like a query factory. After query creation the Query interface present many methods to retrieve the query results. The result methods are based on result quantities, result terms, result object types, etc… This is the final step in the workflow. In the table 10 is resumed all Prolog Provider Interface methods.
+Prolog Provider is the mechanism to interact with all Prolog components. Provider classes implementations allow create Prolog Terms, Prolog Engine, Java Prolog Converter, Prolog Parsers and system logger. Using io.github.prolobjectlink.prolog.Prolog bootstrap class the Prolog Providers are created specifying the provider class in getProvider(Class<?>)  method. This is the workflow start for JPI. When the Prolog Provider is created the next workflow step is the Prolog Terms creation using Java primitive types or using string with Prolog syntax. Provider allow create/parsing all Prolog Terms (Atoms, Numbers, Variables and Compounds). After term creation/parsing the next step is create an engine instance with newEngine() method. Using previous term creation and engine instance Prolog Queries can be formulated. This is possible because the engine class have multiples queries creation methods like a query factory. After query creation the Query interface present many methods to retrieve the query results. The result methods are based on result quantities, result terms, result object types, etc… This is the final step in the workflow. In the table 10 is resumed all Prolog Provider Interface methods.
 
-Prolog Terms
+#Prolog Terms
 
 All Java Prolog connector libraries provide data type abstraction. Prolog data type abstraction have like ancestor the Term class. Prolog term is coding like abstract class and other Prolog terms are derived classes. In PrologTerm is defined the common term operation for all term hierarchy (functor, arity, compare, unify, arguments). The derived classes implement the correct behavior for each before mentioned operations. All Prolog data types PrologAtom, PrologNumber, PrologList, PrologStructure and PrologVariable are derived from this class. All before mentioned classes extends from this class the commons responsibilities. PrologTerm extends from Comparable interface to compare the current term with another term based on Standard Order.
 
@@ -147,11 +147,11 @@ Prolog structures consist in a relation the functor (structure name) and argumen
 	PrologTerm bob = provider.newAtom("bob");
 	PrologTerm parent = provider.newStructure("parent", pam, bob);
 
-Prolog Engine
+#Prolog Engine
 
 Prolog Engine provide a general propose application interface to interact with Prolog Programing Language. Is a convenient abstraction for interacting with Prolog Virtual Machine from Java. In Java Prolog Engine connectors libraries, the abstract engine is able to answer queries using the abstract term representation before mentioned. There are several implementation engines and in this project we try connect from top level engine to more concrete or specific Prolog Engine. Based on JPC we have a top level engine that communicate with more concretes engines. Over this concretes engines we offer several services to interact with the concrete engines with low coupling and platform independency.
 
-Prolog Query
+#Prolog Query
 
 Prolog query is the mechanism to query the prolog database loaded in prolog engine. The way to create a new prolog query is invoking query() method in the Prolog Engine. When this method is called the prolog query is open an only dispose() in PrologQuery object close the current query and release all internal resources. Prolog query have several methods to manipulate the result objects. The main difference is in return types and result quantities. The result types enough depending of desire data type.  Maps of variables name key and Prolog terms as value, Maps of variables name key and Java objects as value, List of before mentioned maps, Prolog terms array, Prolog terms matrix, list of Java Objects and list of list of Java Objects. Respect to result quantities Prolog query offer one, n-th or all possible solutions. This is an important feature because the Prolog engine is forced to retrieve the necessary solution quantities. Prolog query implement Iterable and Iterator. This implementation helps to obtain successive solutions present in the query.
 
@@ -201,7 +201,7 @@ Prolog query is the mechanism to query the prolog database loaded in prolog engi
 		}
 	}
 
-Prolog Query Builder
+#Prolog Query Builder
 
 Prolog query builder to create prolog queries. The mechanism to create a new query builder is using PrologEngine.newQueryBuilder(). The query builder emulates the query creation process. After define all participant terms with the begin(PrologTerm) method, we specify the first term in the query. If the query has more terms, they are created using comma(PrologTerm) for everyone. Clause builder have a getQueryString() for string representation of the clause in progress. After clause definition this builder have query() method that create the final query instance ready to be used.  The follow code show how create a Prolog query ?- big(X), dark(X). using PrologQueryBuilder interface.
 
@@ -211,11 +211,11 @@ Prolog query builder to create prolog queries. The mechanism to create a new que
 	PrologQueryBuilder builder = engine.newQueryBuilder();
 	PrologQuery query = builder.begin(dark).comma(big).query();
 	
-Prolog Clause
+#Prolog Clause
 
 Prolog clause is composed by two prolog terms that define a prolog clause, the head and the body. This representation considers the prolog clause body like a single term. If the body is a conjunctive set of terms, the body is a structure with functor/arity (, /2) and the first argument is the first element in the conjunction and the rest is a recursive functor/arity (, /2). The functor and arity for the clause is given from head term functor and arity. This class define some properties for commons prolog clause implementations. They are boolean flags that indicate if the prolog clause is dynamic multi-file and discontiguos. This class have several methods to access to the clause components and retrieve some clause properties and information about it. Additionally, this class contains a prolog provider reference for build terms in some operations.
 
-Prolog Clause Builder
+#Prolog Clause Builder
 
 Prolog clause builder to create prolog clauses. The mechanism to create a new clause builder is using PrologEngine.newClauseBuilder(). The clause builder emulates the clause creation process. After define all participant terms with the begin(PrologTerm) method, we specify the head of the clause. If the clause is a rule, after head definition, the clause body is created with neck(PrologTerm) for the first term in the clause body. If the clause body have more terms, they are created using comma(PrologTerm) for everyone. Clause builder have a getClauseString() for string representation of the clause in progress. After clause definition this builder have asserta(), assertz(),clause(),retract() that use the wrapped engine invoking the correspondent methods for check, insert or remove clause respectively.
 
@@ -234,7 +234,7 @@ The Prolog result in database is showed in the follow code.  The table 19 show t
 	 dark(Z): - 
 	        brown(Z).
 	 
-Prolog Scripting in Java
+#Prolog Scripting in Java
 
 Java 6 added scripting support to the Java platform that lets a Java application execute scripts written in scripting languages such as Rhino JavaScript, Groovy, Jython, JRuby, Nashorn JavaScript, etc. All classes and interfaces in the Java Scripting API are in the javax.script package. Using a scripting language in a Java application provides several advantages, dynamic type, simple way to write programs, user customization, easy way to develop and provide domain-specific features that are not available in Java. For achieve this propose Java Scripting API introduce a scripting engine component. A script engine is a software component that executes programs written in a particular scripting language. Typically, but not necessarily, a script engine is an implementation of an interpreter for a scripting language. To run a script in Java is necessary perform the following three steps, create a script engine manager, get an instance of a script engine from the script engine manager and Call the eval() method of the script engine to execute a script.
 	

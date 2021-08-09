@@ -372,6 +372,22 @@ public interface PrologTerm extends Comparable<PrologTerm>, PrologElement {
 	public boolean isField();
 
 	/**
+	 * True if this Term is a Result, false in other case
+	 * 
+	 * @return whether this Term is a result
+	 * @since 1.1
+	 */
+	public boolean isResult();
+
+	/**
+	 * True if this Term is a Parameter, false in other case
+	 * 
+	 * @return whether this Term is a parameter
+	 * @since 1.1
+	 */
+	public boolean isParameter();
+
+	/**
 	 * True if this Term is a Mixin, false in other case
 	 * 
 	 * @return whether this Term is a mixin

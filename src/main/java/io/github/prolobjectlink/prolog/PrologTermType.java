@@ -156,9 +156,19 @@ public final class PrologTermType {
 	public static final int FIELD_TYPE = 0x508;
 
 	/**
-	 * Namespace type constant
+	 * Method type constant
 	 */
 	public static final int METHOD_TYPE = 0x509;
+
+	/**
+	 * Result type constant
+	 */
+	public static final int RESULT_TYPE = 0x50A;
+
+	/**
+	 * Parameter type constant
+	 */
+	public static final int PARAMETER_TYPE = 0x50B;
 
 	private PrologTermType() {
 	}

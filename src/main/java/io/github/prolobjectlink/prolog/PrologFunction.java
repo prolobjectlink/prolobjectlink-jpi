@@ -36,11 +36,6 @@ public class PrologFunction extends PrologMethod implements PrologClause {
 
 	private final PrologTerm result;
 
-	private static final char SEPARATOR = '=';
-	
-	@Deprecated
-	private static final String SEPARE = "-->";
-
 	PrologFunction(PrologProvider provider, PrologTerm head, PrologTerm result) {
 		super(provider, head);
 		this.result = result;
@@ -52,11 +47,11 @@ public class PrologFunction extends PrologMethod implements PrologClause {
 	}
 
 	PrologFunction(PrologProvider provider, PrologTerm head, Object result) {
-		this(provider, head, provider.toTerm(result, PrologTerm.class));
+		this(provider, head, provider.getJavaConverter().toTerm(result));
 	}
 
 	PrologFunction(PrologProvider provider, PrologTerm head, Object result, PrologTerm body) {
-		this(provider, head, body, provider.toTerm(result, PrologTerm.class));
+		this(provider, head, body, provider.getJavaConverter().toTerm(result));
 	}
 
 	@Deprecated

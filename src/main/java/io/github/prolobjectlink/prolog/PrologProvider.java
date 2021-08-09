@@ -814,8 +814,29 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 	public PrologThreadPool newThreadPool(int parallelismLevel);
 
 	/**
-	 * Create a new PrologField using name-type pair of PrologTerm type. The
-	 * resulting term is an implementation of {@link Entry} and {@link PrologTerm}.
+	 * Create a new PrologField using name of PrologTerm type. The resulting term is
+	 * an implementation of {@link Entry} and {@link PrologTerm}.
+	 * 
+	 * @param name key of the entry
+	 * @return new PrologEntry term
+	 * @since 1.1
+	 */
+	public PrologTerm newField(PrologTerm name);
+
+	/**
+	 * Create a new PrologField using name of String type.The given objects are
+	 * converted to PrologTerm before entry creation. The resulting term is an
+	 * implementation of {@link Entry} and {@link PrologTerm}.
+	 * 
+	 * @param name key of the entry
+	 * @return new PrologEntry term
+	 * @since 1.1
+	 */
+	public PrologTerm newField(String name);
+
+	/**
+	 * Create a new PrologField using name-type pair of PrologTerm. The resulting
+	 * term is an implementation of {@link Entry} and {@link PrologTerm}.
 	 * 
 	 * @param name key of the entry
 	 * @param type value of the entry
@@ -825,9 +846,9 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 	public PrologTerm newField(PrologTerm name, PrologTerm type);
 
 	/**
-	 * Create a new PrologField using name-type pair of Java object type.The given
-	 * objects are converted to PrologTerm before entry creation. The resulting term
-	 * is an implementation of {@link Entry} and {@link PrologTerm}.
+	 * Create a new PrologField using name-type pair of String.The given objects are
+	 * converted to PrologTerm before entry creation. The resulting term is an
+	 * implementation of {@link Entry} and {@link PrologTerm}.
 	 * 
 	 * @param name key of the entry
 	 * @param type value of the entry
@@ -835,6 +856,94 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 	 * @since 1.1
 	 */
 	public PrologTerm newField(String name, String type);
+
+	/**
+	 * Create a new PrologResult using name of PrologTerm type. The resulting term
+	 * is an implementation of {@link Entry} and {@link PrologTerm}.
+	 * 
+	 * @param name key of the entry
+	 * @return new PrologEntry term
+	 * @since 1.1
+	 */
+	public PrologTerm newResult(PrologTerm name);
+
+	/**
+	 * Create a new PrologResult using name of String type.The given objects are
+	 * converted to PrologTerm before entry creation. The resulting term is an
+	 * implementation of {@link Entry} and {@link PrologTerm}.
+	 * 
+	 * @param name key of the entry
+	 * @return new PrologEntry term
+	 * @since 1.1
+	 */
+	public PrologTerm newResult(String name);
+
+	/**
+	 * Create a new PrologResult using name-type pair of PrologTerm. The resulting
+	 * term is an implementation of {@link Entry} and {@link PrologTerm}.
+	 * 
+	 * @param name key of the entry
+	 * @param type value of the entry
+	 * @return new PrologEntry term
+	 * @since 1.1
+	 */
+	public PrologTerm newResult(PrologTerm name, PrologTerm type);
+
+	/**
+	 * Create a new PrologResult using name-type pair of String.The given objects
+	 * are converted to PrologTerm before entry creation. The resulting term is an
+	 * implementation of {@link Entry} and {@link PrologTerm}.
+	 * 
+	 * @param name key of the entry
+	 * @param type value of the entry
+	 * @return new PrologEntry term
+	 * @since 1.1
+	 */
+	public PrologTerm newResult(String name, String type);
+
+	/**
+	 * Create a new PrologParameter using name of PrologTerm type. The resulting
+	 * term is an implementation of {@link Entry} and {@link PrologTerm}.
+	 * 
+	 * @param name key of the entry
+	 * @return new PrologEntry term
+	 * @since 1.1
+	 */
+	public PrologTerm newParameter(PrologTerm name);
+
+	/**
+	 * Create a new PrologParameter using name of String type.The given objects are
+	 * converted to PrologTerm before entry creation. The resulting term is an
+	 * implementation of {@link Entry} and {@link PrologTerm}.
+	 * 
+	 * @param name key of the entry
+	 * @return new PrologEntry term
+	 * @since 1.1
+	 */
+	public PrologTerm newParameter(String name);
+
+	/**
+	 * Create a new PrologParameter using name-type pair of PrologTerm. The
+	 * resulting term is an implementation of {@link Entry} and {@link PrologTerm}.
+	 * 
+	 * @param name key of the entry
+	 * @param type value of the entry
+	 * @return new PrologEntry term
+	 * @since 1.1
+	 */
+	public PrologTerm newParameter(PrologTerm name, PrologTerm type);
+
+	/**
+	 * Create a new PrologParameter using name-type pair of String.The given objects
+	 * are converted to PrologTerm before entry creation. The resulting term is an
+	 * implementation of {@link Entry} and {@link PrologTerm}.
+	 * 
+	 * @param name key of the entry
+	 * @param type value of the entry
+	 * @return new PrologEntry term
+	 * @since 1.1
+	 */
+	public PrologTerm newParameter(String name, String type);
 
 	/**
 	 * Create a PrologMixin with the given name. This mixin use is for declare

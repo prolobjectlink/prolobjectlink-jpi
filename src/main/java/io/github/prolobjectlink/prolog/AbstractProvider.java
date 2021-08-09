@@ -229,6 +229,13 @@ public abstract class AbstractProvider implements PrologProvider {
 		this.converter = converter;
 	}
 
+	protected final String removeQuoted(String functor) {
+		if (functor != null && functor.startsWith("\'") && functor.endsWith("\'")) {
+			return functor.substring(1, functor.length() - 1);
+		}
+		return functor;
+	}
+
 	public final boolean isCompliant() {
 		PrologEngine engine = newEngine();
 		Set<PrologIndicator> implemented = engine.getBuiltIns();
@@ -336,12 +343,12 @@ public abstract class AbstractProvider implements PrologProvider {
 	}
 
 	public final Object newObject(PrologAtom className) {
-		return newObject(className.getFunctor());
+		return newObject(removeQuoted(className.getFunctor()));
 	}
 
 	public final Object newObject(PrologAtom className, PrologTerm[] arguments) {
 		Object[] args = getJavaConverter().toObjectsArray(arguments);
-		return newObject(className.getFunctor(), args);
+		return newObject(removeQuoted(className.getFunctor()), args);
 	}
 
 	public final Object getObject(Object reference, String fieldName) {
@@ -359,7 +366,7 @@ public abstract class AbstractProvider implements PrologProvider {
 	}
 
 	public final void setObject(Object reference, PrologAtom fieldName, PrologTerm value) {
-		setObject(reference, fieldName.getFunctor(), value);
+		setObject(reference, fieldName.getFunctor(), value.getObject());
 	}
 
 	public final Object callObject(Object reference, String methodName, Object... arguments) {
@@ -425,16 +432,6 @@ public abstract class AbstractProvider implements PrologProvider {
 		return new PrologNamespace(this, parent, chields);
 	}
 
-	public PrologTerm newField(PrologTerm name, PrologTerm type) {
-		return new PrologTypedField(this, name, type);
-	}
-
-	public PrologTerm newField(String name, String type) {
-		PrologTerm oname = toTerm(name, PrologTerm.class);
-		PrologTerm otype = toTerm(type, PrologTerm.class);
-		return new PrologTypedField(this, oname, otype);
-	}
-
 	public PrologTerm newMixin(String name) {
 		return new PrologMixin(this, name);
 	}
@@ -480,8 +477,11 @@ public abstract class AbstractProvider implements PrologProvider {
 	}
 
 	public PrologClause newMethod(PrologTerm head, PrologTerm... body) {
-		// TODO Auto-generated method stub
-		return null;
+		PrologTerm bodyTerm = body[body.length - 1];
+		for (int i = body.length - 1; i >= 0; --i) {
+			bodyTerm = newStructure(",", body[i], bodyTerm);
+		}
+		return new PrologMethod(this, head, bodyTerm);
 	}
 
 	public PrologClause newMethod(PrologTerm head, boolean dynamic, boolean multifile, boolean discontiguous) {
@@ -502,8 +502,11 @@ public abstract class AbstractProvider implements PrologProvider {
 	}
 
 	public PrologClause newFunction(PrologTerm head, PrologTerm result, PrologTerm... body) {
-		// TODO Auto-generated method stub
-		return null;
+		PrologTerm bodyTerm = body[body.length - 1];
+		for (int i = body.length - 1; i >= 0; --i) {
+			bodyTerm = newStructure(",", body[i], bodyTerm);
+		}
+		return new PrologFunction(this, head, result, bodyTerm);
 	}
 
 	public PrologClause newFunction(PrologTerm head, Object result) {
@@ -515,8 +518,11 @@ public abstract class AbstractProvider implements PrologProvider {
 	}
 
 	public PrologClause newFunction(PrologTerm head, Object result, PrologTerm... body) {
-		// TODO Auto-generated method stub
-		return null;
+		PrologTerm bodyTerm = body[body.length - 1];
+		for (int i = body.length - 1; i >= 0; --i) {
+			bodyTerm = newStructure(",", body[i], bodyTerm);
+		}
+		return new PrologFunction(this, head, result, bodyTerm);
 	}
 
 	public PrologClause newFunction(PrologTerm head, PrologTerm result, boolean dynamic, boolean multifile,
