@@ -512,25 +512,14 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.5.3</version>
 				<configuration>
-					<mavenHome>C:/Program Files/apache-maven-3.2.1</mavenHome>
-					<tag>v${releaseVersion}</tag>
-					<tagNameFormat>v@{project.version}</tagNameFormat>
-					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<mavenHome>../apache-maven</mavenHome>
+					<goals>deploy -P release</goals>
+					<preparationGoals>clean install site</preparationGoals>
+					<allowTimestampedSnapshots>true</allowTimestampedSnapshots>
+					<tagNameFormat>v-@{project.version}</tagNameFormat>
 					<useReleaseProfile>false</useReleaseProfile>
-					<releaseProfiles>releases</releaseProfiles>
+					<remoteTagging>false</remoteTagging>
 				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.maven.shared</groupId>
-						<artifactId>maven-invoker</artifactId>
-						<version>2.2</version>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-scm-plugin</artifactId>
-						<version>1.8.1</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>

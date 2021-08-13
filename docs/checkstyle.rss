@@ -8,8 +8,8 @@
     <language>en-us</language>
     <copyright>&#169;2020 - 2021 Prolobjectlink Project</copyright>
     <item>
-      <title>File: 92,
-             Errors: 16780,
+      <title>File: 86,
+             Errors: 15217,
              Warnings: 0,
              Infos: 0
       </title>
@@ -136,7 +136,7 @@
                   0
                 </td>
                 <td>
-                  367
+                  411
                 </td>
               </tr>
                           <tr>
@@ -263,20 +263,6 @@
                 </td>
                 <td>
                   60
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologInternalMap.java">io/github/prolobjectlink/prolog/PrologInternalMap.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  795
                 </td>
               </tr>
                           <tr>
@@ -416,7 +402,7 @@
                   0
                 </td>
                 <td>
-                  358
+                  365
                 </td>
               </tr>
                           <tr>
@@ -445,20 +431,6 @@
                 </td>
                 <td>
                   23
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.AbstractMap.java">io/github/prolobjectlink/prolog/AbstractMap.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  76
                 </td>
               </tr>
                           <tr>
@@ -542,7 +514,7 @@
                   0
                 </td>
                 <td>
-                  491
+                  549
                 </td>
               </tr>
                           <tr>
@@ -724,7 +696,7 @@
                   0
                 </td>
                 <td>
-                  146
+                  149
                 </td>
               </tr>
                           <tr>
@@ -753,20 +725,6 @@
                 </td>
                 <td>
                   110
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologId.java">io/github/prolobjectlink/prolog/PrologId.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  160
                 </td>
               </tr>
                           <tr>
@@ -990,7 +948,7 @@
                   0
                 </td>
                 <td>
-                  335
+                  334
                 </td>
               </tr>
                           <tr>
@@ -1037,20 +995,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologLinkedMap.java">io/github/prolobjectlink/prolog/PrologLinkedMap.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  171
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologQueryIterator.java">io/github/prolobjectlink/prolog/PrologQueryIterator.java</a>
                 </td>
                 <td>
@@ -1089,20 +1033,6 @@
                 </td>
                 <td>
                   36
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologHashMap.java">io/github/prolobjectlink/prolog/PrologHashMap.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  356
                 </td>
               </tr>
                           <tr>
@@ -1299,20 +1229,6 @@
                 </td>
                 <td>
                   31
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.AbstractReference.java">io/github/prolobjectlink/prolog/AbstractReference.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  116
                 </td>
               </tr>
                       </tbody>
