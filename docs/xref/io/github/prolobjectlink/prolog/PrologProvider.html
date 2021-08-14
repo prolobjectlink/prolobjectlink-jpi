@@ -1150,62 +1150,58 @@
 <a class="jxr_linenumber" name="1140" href="#1140">1140</a> 
 <a class="jxr_linenumber" name="1141" href="#1141">1141</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> newClass(String name);
 <a class="jxr_linenumber" name="1142" href="#1142">1142</a> 
-<a class="jxr_linenumber" name="1143" href="#1143">1143</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> newClass(String namespace, String name);
-<a class="jxr_linenumber" name="1144" href="#1144">1144</a> 
-<a class="jxr_linenumber" name="1145" href="#1145">1145</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> newClass(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> namespace, String name);
-<a class="jxr_linenumber" name="1146" href="#1146">1146</a> 
-<a class="jxr_linenumber" name="1147" href="#1147">1147</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1148" href="#1148">1148</a> <em class="jxr_javadoccomment">	 * Get a Java to Prolog converter instance to map the abstract prolog data types</em>
-<a class="jxr_linenumber" name="1149" href="#1149">1149</a> <em class="jxr_javadoccomment">	 * to Java types.</em>
-<a class="jxr_linenumber" name="1150" href="#1150">1150</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1151" href="#1151">1151</a> <em class="jxr_javadoccomment">	 * @return Java to Prolog converter instance.</em>
-<a class="jxr_linenumber" name="1152" href="#1152">1152</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="1153" href="#1153">1153</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1154" href="#1154">1154</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologJavaConverter.html">PrologJavaConverter</a> getJavaConverter();
-<a class="jxr_linenumber" name="1155" href="#1155">1155</a> 
-<a class="jxr_linenumber" name="1156" href="#1156">1156</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1157" href="#1157">1157</a> <em class="jxr_javadoccomment">	 * Get a prolog converter instance to map the abstract prolog data types to</em>
-<a class="jxr_linenumber" name="1158" href="#1158">1158</a> <em class="jxr_javadoccomment">	 * under-laying prolog implementations data types.</em>
-<a class="jxr_linenumber" name="1159" href="#1159">1159</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1160" href="#1160">1160</a> <em class="jxr_javadoccomment">	 * @param &lt;K&gt; under-laying prolog data types</em>
-<a class="jxr_linenumber" name="1161" href="#1161">1161</a> <em class="jxr_javadoccomment">	 * @return prolog converter instance</em>
-<a class="jxr_linenumber" name="1162" href="#1162">1162</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="1163" href="#1163">1163</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1164" href="#1164">1164</a> 	<strong class="jxr_keyword">public</strong> &lt;K&gt; PrologConverter&lt;K&gt; getConverter();
-<a class="jxr_linenumber" name="1165" href="#1165">1165</a> 
-<a class="jxr_linenumber" name="1166" href="#1166">1166</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1167" href="#1167">1167</a> <em class="jxr_javadoccomment">	 * Get a prolog parser instance to parser the strings with prolog syntax.</em>
-<a class="jxr_linenumber" name="1168" href="#1168">1168</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1169" href="#1169">1169</a> <em class="jxr_javadoccomment">	 * @return prolog parser instance</em>
-<a class="jxr_linenumber" name="1170" href="#1170">1170</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="1171" href="#1171">1171</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1172" href="#1172">1172</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologParser.html">PrologParser</a> getParser();
-<a class="jxr_linenumber" name="1173" href="#1173">1173</a> 
-<a class="jxr_linenumber" name="1174" href="#1174">1174</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1175" href="#1175">1175</a> <em class="jxr_javadoccomment">	 * Get the prolog system logger instance to report any errors or exceptions</em>
-<a class="jxr_linenumber" name="1176" href="#1176">1176</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1177" href="#1177">1177</a> <em class="jxr_javadoccomment">	 * @return prolog system logger instance</em>
-<a class="jxr_linenumber" name="1178" href="#1178">1178</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="1179" href="#1179">1179</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1180" href="#1180">1180</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologLogger.html">PrologLogger</a> getLogger();
-<a class="jxr_linenumber" name="1181" href="#1181">1181</a> 
-<a class="jxr_linenumber" name="1182" href="#1182">1182</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1183" href="#1183">1183</a> <em class="jxr_javadoccomment">	 * Version of the wrapped engine.</em>
-<a class="jxr_linenumber" name="1184" href="#1184">1184</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1185" href="#1185">1185</a> <em class="jxr_javadoccomment">	 * @return String version of the wrapped engine.</em>
-<a class="jxr_linenumber" name="1186" href="#1186">1186</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="1187" href="#1187">1187</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1188" href="#1188">1188</a> 	<strong class="jxr_keyword">public</strong> String getVersion();
-<a class="jxr_linenumber" name="1189" href="#1189">1189</a> 
-<a class="jxr_linenumber" name="1190" href="#1190">1190</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1191" href="#1191">1191</a> <em class="jxr_javadoccomment">	 * Name of the wrapped engine.</em>
-<a class="jxr_linenumber" name="1192" href="#1192">1192</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1193" href="#1193">1193</a> <em class="jxr_javadoccomment">	 * @return String name of the wrapped engine.</em>
-<a class="jxr_linenumber" name="1194" href="#1194">1194</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="1195" href="#1195">1195</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1196" href="#1196">1196</a> 	<strong class="jxr_keyword">public</strong> String getName();
-<a class="jxr_linenumber" name="1197" href="#1197">1197</a> 
-<a class="jxr_linenumber" name="1198" href="#1198">1198</a> }
+<a class="jxr_linenumber" name="1143" href="#1143">1143</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1144" href="#1144">1144</a> <em class="jxr_javadoccomment">	 * Get a Java to Prolog converter instance to map the abstract prolog data types</em>
+<a class="jxr_linenumber" name="1145" href="#1145">1145</a> <em class="jxr_javadoccomment">	 * to Java types.</em>
+<a class="jxr_linenumber" name="1146" href="#1146">1146</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1147" href="#1147">1147</a> <em class="jxr_javadoccomment">	 * @return Java to Prolog converter instance.</em>
+<a class="jxr_linenumber" name="1148" href="#1148">1148</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="1149" href="#1149">1149</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1150" href="#1150">1150</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologJavaConverter.html">PrologJavaConverter</a> getJavaConverter();
+<a class="jxr_linenumber" name="1151" href="#1151">1151</a> 
+<a class="jxr_linenumber" name="1152" href="#1152">1152</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1153" href="#1153">1153</a> <em class="jxr_javadoccomment">	 * Get a prolog converter instance to map the abstract prolog data types to</em>
+<a class="jxr_linenumber" name="1154" href="#1154">1154</a> <em class="jxr_javadoccomment">	 * under-laying prolog implementations data types.</em>
+<a class="jxr_linenumber" name="1155" href="#1155">1155</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1156" href="#1156">1156</a> <em class="jxr_javadoccomment">	 * @param &lt;K&gt; under-laying prolog data types</em>
+<a class="jxr_linenumber" name="1157" href="#1157">1157</a> <em class="jxr_javadoccomment">	 * @return prolog converter instance</em>
+<a class="jxr_linenumber" name="1158" href="#1158">1158</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="1159" href="#1159">1159</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1160" href="#1160">1160</a> 	<strong class="jxr_keyword">public</strong> &lt;K&gt; PrologConverter&lt;K&gt; getConverter();
+<a class="jxr_linenumber" name="1161" href="#1161">1161</a> 
+<a class="jxr_linenumber" name="1162" href="#1162">1162</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1163" href="#1163">1163</a> <em class="jxr_javadoccomment">	 * Get a prolog parser instance to parser the strings with prolog syntax.</em>
+<a class="jxr_linenumber" name="1164" href="#1164">1164</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1165" href="#1165">1165</a> <em class="jxr_javadoccomment">	 * @return prolog parser instance</em>
+<a class="jxr_linenumber" name="1166" href="#1166">1166</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="1167" href="#1167">1167</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1168" href="#1168">1168</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologParser.html">PrologParser</a> getParser();
+<a class="jxr_linenumber" name="1169" href="#1169">1169</a> 
+<a class="jxr_linenumber" name="1170" href="#1170">1170</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1171" href="#1171">1171</a> <em class="jxr_javadoccomment">	 * Get the prolog system logger instance to report any errors or exceptions</em>
+<a class="jxr_linenumber" name="1172" href="#1172">1172</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1173" href="#1173">1173</a> <em class="jxr_javadoccomment">	 * @return prolog system logger instance</em>
+<a class="jxr_linenumber" name="1174" href="#1174">1174</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="1175" href="#1175">1175</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1176" href="#1176">1176</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologLogger.html">PrologLogger</a> getLogger();
+<a class="jxr_linenumber" name="1177" href="#1177">1177</a> 
+<a class="jxr_linenumber" name="1178" href="#1178">1178</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1179" href="#1179">1179</a> <em class="jxr_javadoccomment">	 * Version of the wrapped engine.</em>
+<a class="jxr_linenumber" name="1180" href="#1180">1180</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1181" href="#1181">1181</a> <em class="jxr_javadoccomment">	 * @return String version of the wrapped engine.</em>
+<a class="jxr_linenumber" name="1182" href="#1182">1182</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="1183" href="#1183">1183</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1184" href="#1184">1184</a> 	<strong class="jxr_keyword">public</strong> String getVersion();
+<a class="jxr_linenumber" name="1185" href="#1185">1185</a> 
+<a class="jxr_linenumber" name="1186" href="#1186">1186</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1187" href="#1187">1187</a> <em class="jxr_javadoccomment">	 * Name of the wrapped engine.</em>
+<a class="jxr_linenumber" name="1188" href="#1188">1188</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1189" href="#1189">1189</a> <em class="jxr_javadoccomment">	 * @return String name of the wrapped engine.</em>
+<a class="jxr_linenumber" name="1190" href="#1190">1190</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="1191" href="#1191">1191</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1192" href="#1192">1192</a> 	<strong class="jxr_keyword">public</strong> String getName();
+<a class="jxr_linenumber" name="1193" href="#1193">1193</a> 
+<a class="jxr_linenumber" name="1194" href="#1194">1194</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

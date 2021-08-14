@@ -365,28 +365,38 @@
 <a class="jxr_linenumber" name="355" href="#355">355</a> 			<em class="jxr_comment">// }</em>
 <a class="jxr_linenumber" name="356" href="#356">356</a> 		}
 <a class="jxr_linenumber" name="357" href="#357">357</a> 
-<a class="jxr_linenumber" name="358" href="#358">358</a> 		<strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="359" href="#359">359</a> 
-<a class="jxr_linenumber" name="360" href="#360">360</a> 			<strong class="jxr_keyword">int</strong> thisArity = thisTerm.getArity();
-<a class="jxr_linenumber" name="361" href="#361">361</a> 			<strong class="jxr_keyword">int</strong> otherArity = otherTerm.getArity();
-<a class="jxr_linenumber" name="362" href="#362">362</a> 			String thisFunctor = thisTerm.getFunctor();
-<a class="jxr_linenumber" name="363" href="#363">363</a> 			String otherFunctor = otherTerm.getFunctor();
-<a class="jxr_linenumber" name="364" href="#364">364</a> 
-<a class="jxr_linenumber" name="365" href="#365">365</a> 			<strong class="jxr_keyword">if</strong> (thisFunctor.equals(otherFunctor) &amp;&amp; thisArity == otherArity) {
-<a class="jxr_linenumber" name="366" href="#366">366</a> 				<strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; thisArity; i++) {
-<a class="jxr_linenumber" name="367" href="#367">367</a> 					<strong class="jxr_keyword">if</strong> (thisTerm.getArgument(i) != <strong class="jxr_keyword">null</strong> &amp;&amp; otherTerm.getArgument(i) != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="368" href="#368">368</a> 						<strong class="jxr_keyword">if</strong> (!((AbstractTerm) thisTerm.getArgument(i)).unify(otherTerm.getArgument(i), stack)) {
-<a class="jxr_linenumber" name="369" href="#369">369</a> 							<strong class="jxr_keyword">return</strong> false;
-<a class="jxr_linenumber" name="370" href="#370">370</a> 						}
-<a class="jxr_linenumber" name="371" href="#371">371</a> 					}
-<a class="jxr_linenumber" name="372" href="#372">372</a> 				}
-<a class="jxr_linenumber" name="373" href="#373">373</a> 				<strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
-<a class="jxr_linenumber" name="374" href="#374">374</a> 			}
-<a class="jxr_linenumber" name="375" href="#375">375</a> 		}
-<a class="jxr_linenumber" name="376" href="#376">376</a> 		<strong class="jxr_keyword">return</strong> false;
-<a class="jxr_linenumber" name="377" href="#377">377</a> 	}
-<a class="jxr_linenumber" name="378" href="#378">378</a> 
-<a class="jxr_linenumber" name="379" href="#379">379</a> }
+<a class="jxr_linenumber" name="358" href="#358">358</a> 		<em class="jxr_comment">// if at least term is a number then check equivalence</em>
+<a class="jxr_linenumber" name="359" href="#359">359</a> 		<strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (thisTerm.isNumber() || otherTerm.isNumber()) {
+<a class="jxr_linenumber" name="360" href="#360">360</a> 			<strong class="jxr_keyword">if</strong> ((thisTerm.isInteger() || thisTerm.isLong()) &amp;&amp; (otherTerm.isInteger() || otherTerm.isLong())) {
+<a class="jxr_linenumber" name="361" href="#361">361</a> 				<strong class="jxr_keyword">int</strong> thisInt = ((PrologNumber) thisTerm).getIntegerValue();
+<a class="jxr_linenumber" name="362" href="#362">362</a> 				<strong class="jxr_keyword">int</strong> otherInt = ((PrologNumber) otherTerm).getIntegerValue();
+<a class="jxr_linenumber" name="363" href="#363">363</a> 				<strong class="jxr_keyword">return</strong> thisInt == otherInt;
+<a class="jxr_linenumber" name="364" href="#364">364</a> 			}
+<a class="jxr_linenumber" name="365" href="#365">365</a> 			<strong class="jxr_keyword">return</strong> thisTerm.equals(otherTerm);
+<a class="jxr_linenumber" name="366" href="#366">366</a> 		}
+<a class="jxr_linenumber" name="367" href="#367">367</a> 
+<a class="jxr_linenumber" name="368" href="#368">368</a> 		<strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="369" href="#369">369</a> 
+<a class="jxr_linenumber" name="370" href="#370">370</a> 			<strong class="jxr_keyword">int</strong> thisArity = thisTerm.getArity();
+<a class="jxr_linenumber" name="371" href="#371">371</a> 			<strong class="jxr_keyword">int</strong> otherArity = otherTerm.getArity();
+<a class="jxr_linenumber" name="372" href="#372">372</a> 			String thisFunctor = thisTerm.getFunctor();
+<a class="jxr_linenumber" name="373" href="#373">373</a> 			String otherFunctor = otherTerm.getFunctor();
+<a class="jxr_linenumber" name="374" href="#374">374</a> 
+<a class="jxr_linenumber" name="375" href="#375">375</a> 			<strong class="jxr_keyword">if</strong> (thisFunctor.equals(otherFunctor) &amp;&amp; thisArity == otherArity) {
+<a class="jxr_linenumber" name="376" href="#376">376</a> 				<strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; thisArity; i++) {
+<a class="jxr_linenumber" name="377" href="#377">377</a> 					<strong class="jxr_keyword">if</strong> (thisTerm.getArgument(i) != <strong class="jxr_keyword">null</strong> &amp;&amp; otherTerm.getArgument(i) != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="378" href="#378">378</a> 						<strong class="jxr_keyword">if</strong> (!((AbstractTerm) thisTerm.getArgument(i)).unify(otherTerm.getArgument(i), stack)) {
+<a class="jxr_linenumber" name="379" href="#379">379</a> 							<strong class="jxr_keyword">return</strong> false;
+<a class="jxr_linenumber" name="380" href="#380">380</a> 						}
+<a class="jxr_linenumber" name="381" href="#381">381</a> 					}
+<a class="jxr_linenumber" name="382" href="#382">382</a> 				}
+<a class="jxr_linenumber" name="383" href="#383">383</a> 				<strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="384" href="#384">384</a> 			}
+<a class="jxr_linenumber" name="385" href="#385">385</a> 		}
+<a class="jxr_linenumber" name="386" href="#386">386</a> 		<strong class="jxr_keyword">return</strong> false;
+<a class="jxr_linenumber" name="387" href="#387">387</a> 	}
+<a class="jxr_linenumber" name="388" href="#388">388</a> 
+<a class="jxr_linenumber" name="389" href="#389">389</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

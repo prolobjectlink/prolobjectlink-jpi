@@ -8,8 +8,8 @@
     <language>en-us</language>
     <copyright>&#169;2020 - 2021 Prolobjectlink Project</copyright>
     <item>
-      <title>File: 93,
-             Errors: 17035,
+      <title>File: 92,
+             Errors: 16780,
              Warnings: 0,
              Infos: 0
       </title>
@@ -136,7 +136,7 @@
                   0
                 </td>
                 <td>
-                  406
+                  367
                 </td>
               </tr>
                           <tr>
@@ -402,7 +402,7 @@
                   0
                 </td>
                 <td>
-                  1484
+                  1478
                 </td>
               </tr>
                           <tr>
@@ -542,7 +542,7 @@
                   0
                 </td>
                 <td>
-                  565
+                  491
                 </td>
               </tr>
                           <tr>
@@ -1032,7 +1032,7 @@
                   0
                 </td>
                 <td>
-                  992
+                  918
                 </td>
               </tr>
                           <tr>
@@ -1089,20 +1089,6 @@
                 </td>
                 <td>
                   36
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologNamespace.java">io/github/prolobjectlink/prolog/PrologNamespace.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  75
                 </td>
               </tr>
                           <tr>
@@ -1214,7 +1200,7 @@
                   0
                 </td>
                 <td>
-                  388
+                  401
                 </td>
               </tr>
                           <tr>
