@@ -1140,10 +1140,6 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 
 	public PrologTerm newClass(String name);
 
-	public PrologTerm newClass(String namespace, String name);
-
-	public PrologTerm newClass(PrologTerm namespace, String name);
-
 	/**
 	 * Get a Java to Prolog converter instance to map the abstract prolog data types
 	 * to Java types.

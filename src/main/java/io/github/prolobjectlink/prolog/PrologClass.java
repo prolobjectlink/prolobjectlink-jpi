@@ -50,16 +50,6 @@ public final class PrologClass extends PrologMixin implements PrologTerm {
 		super(CLASS_TYPE, provider, name);
 	}
 
-	@Deprecated
-	PrologClass(PrologProvider provider, String namespace, String name) {
-		super(CLASS_TYPE, provider, namespace, name);
-	}
-
-	@Deprecated
-	PrologClass(PrologProvider provider, PrologTerm namespace, String name) {
-		super(CLASS_TYPE, provider, namespace.getFunctor(), name);
-	}
-
 	protected final void checkClassFunctor(PrologClause emptyConstructor) {
 		if (!emptyConstructor.getFunctor().equals(removeQuoted(getFunctor()))) {
 			throw new IllegalArgumentException(
@@ -148,20 +138,6 @@ public final class PrologClass extends PrologMixin implements PrologTerm {
 
 	public final PrologClass addNestedClass(String name) {
 		PrologClass cls = new PrologClass(provider, name);
-		addNestedClass(cls);
-		return cls;
-	}
-
-	@Deprecated
-	private final PrologClass addNestedClass(String namespace, String name) {
-		PrologClass cls = new PrologClass(provider, namespace, name);
-		addNestedClass(cls);
-		return cls;
-	}
-
-	@Deprecated
-	private final PrologClass addNestedClass(PrologTerm namespace, String name) {
-		PrologClass cls = new PrologClass(provider, namespace, name);
 		addNestedClass(cls);
 		return cls;
 	}

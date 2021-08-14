@@ -420,48 +420,12 @@ public abstract class AbstractProvider implements PrologProvider {
 		return new PrologThreadPool(parallelismLevel);
 	}
 
-	protected PrologTerm newNamespace() {
-		return new PrologNamespace(this);
-	}
-
-	protected PrologTerm newNamespace(String path) {
-		return new PrologNamespace(this, path);
-	}
-
-	protected PrologTerm newNamespace(String parent, PrologNamespace chields) {
-		return new PrologNamespace(this, parent, chields);
-	}
-
 	public PrologTerm newMixin(String name) {
 		return new PrologMixin(this, name);
 	}
 
-	protected PrologTerm newMixin(String namespace, String name) {
-		return new PrologMixin(this, namespace, name);
-	}
-
-	protected PrologTerm newMixin(PrologTerm namespace, String name) {
-		return new PrologMixin(this, namespace.getFunctor(), name);
-	}
-
 	public PrologTerm newMixin(String name, PrologTerm... declarations) {
 		PrologMixin pi = new PrologMixin(this, name);
-		for (int i = 0; i < declarations.length; i++) {
-			pi.addMethod(declarations[i], false, false, false);
-		}
-		return pi;
-	}
-
-	protected PrologTerm newMixin(String namespace, String name, PrologTerm... declarations) {
-		PrologMixin pi = new PrologMixin(this, namespace, name);
-		for (int i = 0; i < declarations.length; i++) {
-			pi.addMethod(declarations[i], false, false, false);
-		}
-		return pi;
-	}
-
-	protected PrologTerm newMixin(PrologTerm namespace, String name, PrologTerm... declarations) {
-		PrologMixin pi = new PrologMixin(this, namespace.getFunctor(), name);
 		for (int i = 0; i < declarations.length; i++) {
 			pi.addMethod(declarations[i], false, false, false);
 		}
@@ -537,14 +501,6 @@ public abstract class AbstractProvider implements PrologProvider {
 
 	public PrologTerm newClass(String name) {
 		return new PrologClass(this, name);
-	}
-
-	public PrologTerm newClass(String namespace, String name) {
-		return new PrologClass(this, namespace, name);
-	}
-
-	public PrologTerm newClass(PrologTerm namespace, String name) {
-		return new PrologClass(this, namespace, name);
 	}
 
 	/**

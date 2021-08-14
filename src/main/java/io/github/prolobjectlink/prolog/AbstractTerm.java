@@ -355,6 +355,16 @@ public abstract class AbstractTerm implements PrologTerm {
 			// }
 		}
 
+		// if at least term is a number then check equivalence
+		else if (thisTerm.isNumber() || otherTerm.isNumber()) {
+			if ((thisTerm.isInteger() || thisTerm.isLong()) && (otherTerm.isInteger() || otherTerm.isLong())) {
+				int thisInt = ((PrologNumber) thisTerm).getIntegerValue();
+				int otherInt = ((PrologNumber) otherTerm).getIntegerValue();
+				return thisInt == otherInt;
+			}
+			return thisTerm.equals(otherTerm);
+		}
+
 		else {
 
 			int thisArity = thisTerm.getArity();

@@ -39,7 +39,6 @@ import java.util.Set;
 
 public class PrologMixin extends AbstractCompounds implements PrologTerm {
 
-	protected String namesapce;
 	protected final String name;
 	protected final Set<PrologTerm> directives = new LinkedHashSet<PrologTerm>();
 	protected final Set<PrologClause> methods = new LinkedHashSet<PrologClause>();
@@ -55,36 +54,8 @@ public class PrologMixin extends AbstractCompounds implements PrologTerm {
 		this.name = name;
 	}
 
-	@Deprecated
-	PrologMixin(PrologProvider provider, String namespace, String name) {
-		super(PrologTermType.MIXIN_TYPE, provider);
-		this.namesapce = namespace;
-		this.name = name;
-	}
-
-	@Deprecated
-	PrologMixin(PrologProvider provider, PrologNamespace namespace, String name) {
-		super(PrologTermType.MIXIN_TYPE, provider);
-		this.namesapce = namespace.getFunctor();
-		this.name = name;
-	}
-
 	protected PrologMixin(int type, PrologProvider provider, String name) {
 		super(type, provider);
-		this.name = name;
-	}
-
-	@Deprecated
-	protected PrologMixin(int type, PrologProvider provider, String namespace, String name) {
-		super(type, provider);
-		this.namesapce = namespace;
-		this.name = name;
-	}
-
-	@Deprecated
-	protected PrologMixin(int type, PrologProvider provider, PrologNamespace namespace, String name) {
-		super(type, provider);
-		this.namesapce = namespace.getFunctor();
 		this.name = name;
 	}
 
@@ -120,14 +91,6 @@ public class PrologMixin extends AbstractCompounds implements PrologTerm {
 			array[i] = mitr.next().getTerm();
 		}
 		return array;
-	}
-
-	private final String getNamesapce() {
-		return namesapce;
-	}
-
-	private final void setNamesapce(String namesapce) {
-		this.namesapce = namesapce;
 	}
 
 	public final Collection<PrologClause> getMethods() {
@@ -338,7 +301,6 @@ public class PrologMixin extends AbstractCompounds implements PrologTerm {
 		result = prime * result + ((directives == null) ? 0 : directives.hashCode());
 		result = prime * result + ((methods == null) ? 0 : methods.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((namesapce == null) ? 0 : namesapce.hashCode());
 		result = prime * result + ((nested == null) ? 0 : nested.hashCode());
 		return result;
 	}
@@ -371,11 +333,6 @@ public class PrologMixin extends AbstractCompounds implements PrologTerm {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
-			return false;
-		if (namesapce == null) {
-			if (other.namesapce != null)
-				return false;
-		} else if (!namesapce.equals(other.namesapce))
 			return false;
 		if (nested == null) {
 			if (other.nested != null)
