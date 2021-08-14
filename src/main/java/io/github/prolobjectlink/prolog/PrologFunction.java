@@ -54,14 +54,12 @@ public class PrologFunction extends PrologMethod implements PrologClause {
 		this(provider, head, body, provider.getJavaConverter().toTerm(result));
 	}
 
-	@Deprecated
 	PrologFunction(PrologProvider provider, PrologTerm head, PrologTerm result, boolean dynamic, boolean multifile,
 			boolean discontiguous) {
 		super(provider, head, dynamic, multifile, discontiguous);
 		this.result = result;
 	}
 
-	@Deprecated
 	PrologFunction(PrologProvider provider, PrologTerm head, PrologTerm result, PrologTerm body, boolean dynamic,
 			boolean multifile, boolean discontiguous) {
 		super(provider, head, body, dynamic, multifile, discontiguous);
@@ -112,7 +110,13 @@ public class PrologFunction extends PrologMethod implements PrologClause {
 
 	@Override
 	public String toString() {
-		return getHead() + " = " + result + " :- \n\t" + getBody() + ".";
+		StringBuilder builder = new StringBuilder();
+		builder.append(getHead() + " = " + result);
+		if (getBody() != null) {
+			builder.append(" :- \n\t" + getBody());
+		}
+		builder.append(".");
+		return "" + builder + "";
 	}
 
 }
