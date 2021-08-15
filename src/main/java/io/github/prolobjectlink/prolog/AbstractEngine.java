@@ -191,8 +191,15 @@ public abstract class AbstractEngine implements PrologEngine {
 
 	public boolean unify(Object o1, Object o2) {
 		if (!o1.equals(o2)) {
-			PrologTerm t1 = get(o1.getClass()).toTerm(provider);
-			PrologTerm t2 = get(o2.getClass()).toTerm(provider);
+			PrologTerm t1 = null;
+			PrologTerm t2 = null;
+			try {
+				t1 = provider.getJavaConverter().toTerm(o1);
+				t2 = provider.getJavaConverter().toTerm(o2);
+			} catch (UnknownTermError e) {
+				t1 = get(o1.getClass()).toTerm(provider, o1);
+				t2 = get(o2.getClass()).toTerm(provider, o2);
+			}
 			return unify(t1, t2);
 		}
 		return true;
@@ -200,8 +207,13 @@ public abstract class AbstractEngine implements PrologEngine {
 
 	public boolean unify(Class<?> cls1, Class<?> cls2) {
 		if (cls1 != cls2) {
-			PrologTerm t1 = get(cls1).toTerm(provider);
-			PrologTerm t2 = get(cls2).toTerm(provider);
+			Prologable<?> p1 = get(cls1);
+			Prologable<?> p2 = get(cls2);
+			if (p1 == null || p2 == null) {
+				return false;
+			}
+			PrologTerm t1 = p1.toTerm(provider);
+			PrologTerm t2 = p2.toTerm(provider);
 			return unify(t1, t2);
 		}
 		return true;
