@@ -32,9 +32,12 @@
  */
 package io.github.prolobjectlink.prolog;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 public class PrologMixin extends AbstractCompounds implements PrologTerm {
@@ -43,7 +46,7 @@ public class PrologMixin extends AbstractCompounds implements PrologTerm {
 	protected final Set<PrologTerm> directives = new LinkedHashSet<PrologTerm>();
 	protected final Set<PrologClause> methods = new LinkedHashSet<PrologClause>();
 	protected final Set<PrologMixin> ancestors = new LinkedHashSet<PrologMixin>();
-	protected final Set<PrologMixin> nested = new LinkedHashSet<PrologMixin>();
+	protected final Set<PrologMixin> nesteds = new LinkedHashSet<PrologMixin>();
 
 	private static final char SEPARATOR = '/';
 	private static final char LEFT_ENCLOSER = '(';
@@ -72,7 +75,7 @@ public class PrologMixin extends AbstractCompounds implements PrologTerm {
 	}
 
 	public int getArity() {
-		return methods.size() + nested.size();
+		return methods.size() + nesteds.size();
 	}
 
 	public final String getFunctor() {
@@ -81,7 +84,7 @@ public class PrologMixin extends AbstractCompounds implements PrologTerm {
 
 	public PrologTerm[] getArguments() {
 		int i = 0;
-		Iterator<PrologMixin> nitr = nested.iterator();
+		Iterator<PrologMixin> nitr = nesteds.iterator();
 		Iterator<PrologClause> mitr = methods.iterator();
 		PrologTerm[] array = new PrologTerm[getArity()];
 		for (; mitr.hasNext(); i++) {
@@ -106,7 +109,7 @@ public class PrologMixin extends AbstractCompounds implements PrologTerm {
 	}
 
 	public final Collection<PrologMixin> getNesteds() {
-		return nested;
+		return nesteds;
 	}
 
 	public final String getName() {
@@ -282,26 +285,79 @@ public class PrologMixin extends AbstractCompounds implements PrologTerm {
 	}
 
 	public final void addNestedClass(PrologMixin mixin) {
-		nested.add(mixin);
+		nesteds.add(mixin);
 	}
 
 	protected final void removeNestedClass(PrologMixin mixin) {
-		nested.remove(mixin);
+		nesteds.remove(mixin);
+	}
+
+	public final PrologClause[] findMethod(String name, PrologTerm... parameters) {
+		PrologClause[] clauses = new PrologClause[0];
+		List<PrologClause> list = new ArrayList<PrologClause>();
+		for (PrologClause clause : methods) {
+			PrologMethod method = clause.cast();
+			PrologTerm[] arguments = method.getArguments();
+			String functor = method.getHead().getFunctor();
+			if (functor.equals(name) && Arrays.equals(arguments, parameters)) {
+				list.add(method);
+			}
+		}
+		return list.toArray(clauses);
+	}
+
+	public final PrologClause[] findMethod(String name, PrologTerm result, PrologTerm... parameters) {
+		PrologClause[] clauses = new PrologClause[0];
+		List<PrologClause> list = new ArrayList<PrologClause>();
+		for (PrologClause clause : methods) {
+			if (clause.isFunction()) {
+				PrologFunction f = clause.cast();
+				PrologTerm[] arguments = f.getArguments();
+				String functor = f.getHead().getFunctor();
+				if (functor.equals(name) && f.getResult().equals(result) && Arrays.equals(arguments, parameters)) {
+					list.add(f);
+				}
+			}
+		}
+		return list.toArray(clauses);
+	}
+
+	public final PrologMixin findAncestor(String name) {
+		String s = getName() + " no exxtends from " + name + " class";
+		for (PrologMixin prologMixin : ancestors) {
+			if (prologMixin.getName().equals(name)) {
+				return prologMixin;
+			}
+		}
+		throw new NoClassDefFoundError(s);
+	}
+
+	public final PrologMixin findNestedClass(String name) {
+		String s = getName() + " no declare " + name + " class";
+		for (PrologMixin prologMixin : nesteds) {
+			if (prologMixin.getName().equals(name)) {
+				return prologMixin;
+			}
+		}
+		throw new NoClassDefFoundError(s);
 	}
 
 	public final String toPath() {
-		return getName().replace('.', '/');
+		String path = getName().replace('.', '/');
+		path = path.replace('\'', ' ');
+		path = path.trim();
+		return path;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((ancestors == null) ? 0 : ancestors.hashCode());
-		result = prime * result + ((directives == null) ? 0 : directives.hashCode());
-		result = prime * result + ((methods == null) ? 0 : methods.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((nested == null) ? 0 : nested.hashCode());
+		result = prime * result + ancestors.hashCode();
+		result = prime * result + directives.hashCode();
+		result = prime * result + methods.hashCode();
+		result = prime * result + name.hashCode();
+		result = prime * result + nesteds.hashCode();
 		return result;
 	}
 
@@ -334,10 +390,10 @@ public class PrologMixin extends AbstractCompounds implements PrologTerm {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (nested == null) {
-			if (other.nested != null)
+		if (nesteds == null) {
+			if (other.nesteds != null)
 				return false;
-		} else if (!nested.equals(other.nested))
+		} else if (!nesteds.equals(other.nesteds))
 			return false;
 		return true;
 	}

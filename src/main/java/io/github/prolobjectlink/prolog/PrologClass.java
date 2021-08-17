@@ -34,9 +34,12 @@ package io.github.prolobjectlink.prolog;
 
 import static io.github.prolobjectlink.prolog.PrologTermType.CLASS_TYPE;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
@@ -58,12 +61,12 @@ public final class PrologClass extends PrologMixin implements PrologTerm {
 	}
 
 	public final int getArity() {
-		return 1 + constructors.size() + methods.size() + nested.size();
+		return 1 + constructors.size() + methods.size() + nesteds.size();
 	}
 
 	public final PrologTerm[] getArguments() {
 		int i = 0;
-		Iterator<PrologMixin> nitr = nested.iterator();
+		Iterator<PrologMixin> nitr = nesteds.iterator();
 		Iterator<PrologClause> mitr = methods.iterator();
 		Iterator<PrologClause> citr = constructors.iterator();
 		PrologTerm[] array = new PrologTerm[getArity()];
@@ -191,12 +194,48 @@ public final class PrologClass extends PrologMixin implements PrologTerm {
 		constructors.remove(constructor);
 	}
 
+	public final PrologTerm findField(String name) {
+		String s = getName() + " no declare " + name + " field";
+		for (PrologTerm term : fields) {
+			PrologField field = term.cast();
+			if (field.getName().equals(name)) {
+				return field;
+			}
+		}
+		throw new NoSuchFieldError(s);
+	}
+
+	public final PrologClause[] findConstructor(String name, PrologTerm... parameters) {
+		PrologClause[] clauses = new PrologClause[0];
+		List<PrologClause> list = new ArrayList<PrologClause>();
+		for (PrologClause clause : constructors) {
+			PrologMethod constructor = clause.cast();
+			PrologTerm[] arguments = constructor.getArguments();
+			String functor = "'" + constructor.getHead().getFunctor() + "'";
+			if (functor.equals(name) && Arrays.equals(arguments, parameters)) {
+				list.add(constructor);
+			}
+		}
+		return list.toArray(clauses);
+	}
+
+	public final PrologTerm newInstance() {
+		PrologTerm[] args = new PrologTerm[fields.size()];
+		Arrays.fill(args, provider.prologNil());
+		return provider.newStructure(getName(), args);
+	}
+
+	public final boolean isInstance(PrologTerm term) {
+		String functor = "'" + term.getFunctor() + "'";
+		return getName().equals(functor);
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + ((constructors == null) ? 0 : constructors.hashCode());
-		result = prime * result + ((fields == null) ? 0 : fields.hashCode());
+		result = prime * result + constructors.hashCode();
+		result = prime * result + fields.hashCode();
 		result = prime * result + ((superclass == null) ? 0 : superclass.hashCode());
 		return result;
 	}
@@ -264,7 +303,7 @@ public final class PrologClass extends PrologMixin implements PrologTerm {
 		builder.append('\t');
 		for (PrologClause constructor : constructors) {
 			builder.append(constructor.getHead());
-			if (constructor.isMethod()) {
+			if (constructor.isRule()) {
 				builder.append(":-\n\t\t");
 				Iterator<PrologTerm> j = constructor.getBodyIterator();
 				while (j.hasNext()) {
@@ -307,7 +346,7 @@ public final class PrologClass extends PrologMixin implements PrologTerm {
 			builder.append('\t');
 		}
 		builder.append('\n');
-		for (PrologMixin cls : nested) {
+		for (PrologMixin cls : nesteds) {
 			builder.append(cls);
 			builder.append('\n');
 		}
