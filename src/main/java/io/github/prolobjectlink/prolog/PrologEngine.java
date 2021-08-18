@@ -1316,6 +1316,42 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public PrologQueryBuilder newQueryBuilder();
 
 	/**
+	 * Create a PrologMixin with the given name. This mixin use is for declare
+	 * virtual prolog methods. More formally this constructor method is used for
+	 * define Prolog interfaces. The given name is a combination of namespace and
+	 * class name. e.g <tt>"'com.acme.Mixin'"</tt>.
+	 * 
+	 * @param name         name of the mixin
+	 * @param declarations prolog facts that define the interface.
+	 * @return PrologMixin
+	 * @since 1.1
+	 */
+	public PrologTerm newMixin(String name, PrologTerm... declarations);
+
+	/**
+	 * Create a PrologMixin with the given name. This mixin use is for declare
+	 * extensible prolog methods. More formally this constructor method is used for
+	 * define Prolog abstract classes. The given name is a combination of namespace
+	 * and class name. e.g <tt>"'com.acme.Mixin'"</tt>.
+	 * 
+	 * @param name name of the mixin
+	 * @return PrologMixin
+	 * @since 1.1
+	 */
+	public PrologTerm newMixin(String name);
+
+	/**
+	 * Create a PrologClass with the given name. More formally this constructor
+	 * method is used for define Prolog concrete classes. The given name is a
+	 * combination of namespace and class name. e.g <tt>"'com.acme.Mixin'"</tt>.
+	 * 
+	 * @param name name of the class
+	 * @return PrologMixin
+	 * @since 1.1
+	 */
+	public PrologTerm newClass(String name);
+
+	/**
 	 * Define an operator in the wrapped prolog engine with priority between 0 and
 	 * 1200 and associativity determined by specifier according to the table below
 	 * 

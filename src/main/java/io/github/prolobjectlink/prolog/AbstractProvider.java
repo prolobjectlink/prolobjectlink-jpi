@@ -420,18 +420,6 @@ public abstract class AbstractProvider implements PrologProvider {
 		return new PrologThreadPool(parallelismLevel);
 	}
 
-	public PrologTerm newMixin(String name) {
-		return new PrologMixin(this, name);
-	}
-
-	public PrologTerm newMixin(String name, PrologTerm... declarations) {
-		PrologMixin pi = new PrologMixin(this, name);
-		for (int i = 0; i < declarations.length; i++) {
-			pi.addMethod(declarations[i], false, false, false);
-		}
-		return pi;
-	}
-
 	public PrologClause newMethod(PrologTerm head) {
 		return new PrologMethod(this, head);
 	}
@@ -497,10 +485,6 @@ public abstract class AbstractProvider implements PrologProvider {
 	public PrologClause newFunction(PrologTerm head, PrologTerm body, PrologTerm result, boolean dynamic,
 			boolean multifile, boolean discontiguous) {
 		return new PrologFunction(this, head, body, result, dynamic, multifile, discontiguous);
-	}
-
-	public PrologTerm newClass(String name) {
-		return new PrologClass(this, name);
 	}
 
 	/**

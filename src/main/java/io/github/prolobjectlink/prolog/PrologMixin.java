@@ -43,6 +43,7 @@ import java.util.Set;
 public class PrologMixin extends AbstractCompounds implements PrologTerm {
 
 	protected final String name;
+	protected final PrologEngine engine;
 	protected final Set<PrologTerm> directives = new LinkedHashSet<PrologTerm>();
 	protected final Set<PrologClause> methods = new LinkedHashSet<PrologClause>();
 	protected final Set<PrologMixin> ancestors = new LinkedHashSet<PrologMixin>();
@@ -52,13 +53,15 @@ public class PrologMixin extends AbstractCompounds implements PrologTerm {
 	private static final char LEFT_ENCLOSER = '(';
 	private static final char RIGHT_ENCLOSER = ')';
 
-	PrologMixin(PrologProvider provider, String name) {
-		super(PrologTermType.MIXIN_TYPE, provider);
+	PrologMixin(PrologEngine engine, String name) {
+		super(PrologTermType.MIXIN_TYPE, engine.getProvider());
+		this.engine = engine;
 		this.name = name;
 	}
 
-	protected PrologMixin(int type, PrologProvider provider, String name) {
-		super(type, provider);
+	protected PrologMixin(int type, PrologEngine engine, String name) {
+		super(type, engine.getProvider());
+		this.engine = engine;
 		this.name = name;
 	}
 

@@ -49,8 +49,8 @@ public final class PrologClass extends PrologMixin implements PrologTerm {
 	private final Set<PrologTerm> fields = new LinkedHashSet<PrologTerm>();
 	private final Set<PrologClause> constructors = new LinkedHashSet<PrologClause>();
 
-	PrologClass(PrologProvider provider, String name) {
-		super(CLASS_TYPE, provider, name);
+	PrologClass(PrologEngine engine, String name) {
+		super(CLASS_TYPE, engine, name);
 	}
 
 	protected final void checkClassFunctor(PrologClause emptyConstructor) {
@@ -140,7 +140,7 @@ public final class PrologClass extends PrologMixin implements PrologTerm {
 	}
 
 	public final PrologClass addNestedClass(String name) {
-		PrologClass cls = new PrologClass(provider, name);
+		PrologClass cls = new PrologClass(engine, name);
 		addNestedClass(cls);
 		return cls;
 	}

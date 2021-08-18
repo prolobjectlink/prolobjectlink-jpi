@@ -413,6 +413,22 @@ public abstract class AbstractEngine implements PrologEngine {
 		return new DefaultClauseBuilder(this);
 	}
 
+	public PrologTerm newMixin(String name) {
+		return new PrologMixin(this, name);
+	}
+
+	public PrologTerm newMixin(String name, PrologTerm... declarations) {
+		PrologMixin pi = new PrologMixin(this, name);
+		for (int i = 0; i < declarations.length; i++) {
+			pi.addMethod(declarations[i], false, false, false);
+		}
+		return pi;
+	}
+
+	public PrologTerm newClass(String name) {
+		return new PrologClass(this, name);
+	}
+
 	public final boolean runOnOSX() {
 		return getOSName().equals("Mac OS X") || getOSName().equals("Darwin");
 	}

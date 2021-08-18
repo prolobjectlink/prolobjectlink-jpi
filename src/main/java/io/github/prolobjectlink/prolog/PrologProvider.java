@@ -946,31 +946,6 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 	public PrologTerm newParameter(String name, String type);
 
 	/**
-	 * Create a PrologMixin with the given name. This mixin use is for declare
-	 * extensible prolog methods. More formally this constructor method is used for
-	 * define Prolog abstract classes. The given name is a combination of namespace
-	 * and class name. e.g <tt>"'com.acme.Mixin'"</tt>.
-	 * 
-	 * @param name name of the mixin
-	 * @return PrologMixin
-	 * @since 1.1
-	 */
-	public PrologTerm newMixin(String name);
-
-	/**
-	 * Create a PrologMixin with the given name. This mixin use is for declare
-	 * virtual prolog methods. More formally this constructor method is used for
-	 * define Prolog interfaces. The given name is a combination of namespace and
-	 * class name. e.g <tt>"'com.acme.Mixin'"</tt>.
-	 * 
-	 * @param name         name of the mixin
-	 * @param declarations prolog facts that define the interface.
-	 * @return PrologMixin
-	 * @since 1.1
-	 */
-	public PrologTerm newMixin(String name, PrologTerm... declarations);
-
-	/**
 	 * Create a new rule clause. A rule clause is represented by clause head and
 	 * body. The other parameters are boolean clause properties. If a clause have
 	 * any of this properties specify with true value.
@@ -1137,8 +1112,6 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 	 */
 	public PrologClause newFunction(PrologTerm head, PrologTerm body, PrologTerm result, boolean dynamic,
 			boolean multifile, boolean discontiguous);
-
-	public PrologTerm newClass(String name);
 
 	/**
 	 * Get a Java to Prolog converter instance to map the abstract prolog data types
