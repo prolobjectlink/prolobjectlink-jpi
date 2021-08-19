@@ -247,6 +247,10 @@ public class PrologMethod extends AbstractClause implements PrologClause {
 		subrutines.remove(function);
 	}
 
+	public PrologTerm invoke(PrologTerm obj, PrologTerm... args) {
+		throw new UnsupportedOperationException();
+	}
+
 	public boolean isMethod() {
 		return true;
 	}
