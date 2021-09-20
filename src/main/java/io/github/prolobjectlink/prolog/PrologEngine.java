@@ -277,6 +277,15 @@ public interface PrologEngine extends Iterable<PrologClause>, Map<Class<?>, Prol
 	public String getOSName();
 
 	/**
+	 * Return the host operating system version. Is a shortcut to
+	 * {@code System.getProperty("os.version");}.
+	 * 
+	 * @return the host operating system version.
+	 * @since 1.1
+	 */
+	public String getOSVersion();
+
+	/**
 	 * Return the host operating system architecture. Is a shortcut to
 	 * {@code System.getProperty("os.arch");}.
 	 * 

@@ -448,6 +448,10 @@ public abstract class AbstractEngine implements PrologEngine {
 		return os;
 	}
 
+	public final String getOSVersion() {
+		return System.getProperty("os.version");
+	}
+
 	public final String getOSArch() {
 		return System.getProperty("os.arch");
 	}
