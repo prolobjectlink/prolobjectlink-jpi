@@ -956,252 +956,225 @@
 <a class="jxr_linenumber" name="946" href="#946">946</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> newParameter(String name, String type);
 <a class="jxr_linenumber" name="947" href="#947">947</a> 
 <a class="jxr_linenumber" name="948" href="#948">948</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="949" href="#949">949</a> <em class="jxr_javadoccomment">	 * Create a PrologMixin with the given name. This mixin use is for declare</em>
-<a class="jxr_linenumber" name="950" href="#950">950</a> <em class="jxr_javadoccomment">	 * extensible prolog methods. More formally this constructor method is used for</em>
-<a class="jxr_linenumber" name="951" href="#951">951</a> <em class="jxr_javadoccomment">	 * define Prolog abstract classes. The given name is a combination of namespace</em>
-<a class="jxr_linenumber" name="952" href="#952">952</a> <em class="jxr_javadoccomment">	 * and class name. e.g &lt;tt&gt;"'com.acme.Mixin'"&lt;/tt&gt;.</em>
+<a class="jxr_linenumber" name="949" href="#949">949</a> <em class="jxr_javadoccomment">	 * Create a new rule clause. A rule clause is represented by clause head and</em>
+<a class="jxr_linenumber" name="950" href="#950">950</a> <em class="jxr_javadoccomment">	 * body. The other parameters are boolean clause properties. If a clause have</em>
+<a class="jxr_linenumber" name="951" href="#951">951</a> <em class="jxr_javadoccomment">	 * any of this properties specify with true value.</em>
+<a class="jxr_linenumber" name="952" href="#952">952</a> <em class="jxr_javadoccomment">	 * </em>
 <a class="jxr_linenumber" name="953" href="#953">953</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="954" href="#954">954</a> <em class="jxr_javadoccomment">	 * @param name name of the mixin</em>
-<a class="jxr_linenumber" name="955" href="#955">955</a> <em class="jxr_javadoccomment">	 * @return PrologMixin</em>
-<a class="jxr_linenumber" name="956" href="#956">956</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="957" href="#957">957</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="958" href="#958">958</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> newMixin(String name);
-<a class="jxr_linenumber" name="959" href="#959">959</a> 
-<a class="jxr_linenumber" name="960" href="#960">960</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="961" href="#961">961</a> <em class="jxr_javadoccomment">	 * Create a PrologMixin with the given name. This mixin use is for declare</em>
-<a class="jxr_linenumber" name="962" href="#962">962</a> <em class="jxr_javadoccomment">	 * virtual prolog methods. More formally this constructor method is used for</em>
-<a class="jxr_linenumber" name="963" href="#963">963</a> <em class="jxr_javadoccomment">	 * define Prolog interfaces. The given name is a combination of namespace and</em>
-<a class="jxr_linenumber" name="964" href="#964">964</a> <em class="jxr_javadoccomment">	 * class name. e.g &lt;tt&gt;"'com.acme.Mixin'"&lt;/tt&gt;.</em>
-<a class="jxr_linenumber" name="965" href="#965">965</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="966" href="#966">966</a> <em class="jxr_javadoccomment">	 * @param name         name of the mixin</em>
-<a class="jxr_linenumber" name="967" href="#967">967</a> <em class="jxr_javadoccomment">	 * @param declarations prolog facts that define the interface.</em>
-<a class="jxr_linenumber" name="968" href="#968">968</a> <em class="jxr_javadoccomment">	 * @return PrologMixin</em>
-<a class="jxr_linenumber" name="969" href="#969">969</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="970" href="#970">970</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="971" href="#971">971</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> newMixin(String name, PrologTerm... declarations);
+<a class="jxr_linenumber" name="954" href="#954">954</a> <em class="jxr_javadoccomment">	 * @param head clause head</em>
+<a class="jxr_linenumber" name="955" href="#955">955</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
+<a class="jxr_linenumber" name="956" href="#956">956</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="957" href="#957">957</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newMethod(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head);
+<a class="jxr_linenumber" name="958" href="#958">958</a> 
+<a class="jxr_linenumber" name="959" href="#959">959</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="960" href="#960">960</a> <em class="jxr_javadoccomment">	 * Create a new rule clause. A rule clause is represented by clause head and</em>
+<a class="jxr_linenumber" name="961" href="#961">961</a> <em class="jxr_javadoccomment">	 * body. The other parameters are boolean clause properties. If a clause have</em>
+<a class="jxr_linenumber" name="962" href="#962">962</a> <em class="jxr_javadoccomment">	 * any of this properties specify with true value.</em>
+<a class="jxr_linenumber" name="963" href="#963">963</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="964" href="#964">964</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="965" href="#965">965</a> <em class="jxr_javadoccomment">	 * @param head clause head</em>
+<a class="jxr_linenumber" name="966" href="#966">966</a> <em class="jxr_javadoccomment">	 * @param body clause body</em>
+<a class="jxr_linenumber" name="967" href="#967">967</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
+<a class="jxr_linenumber" name="968" href="#968">968</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="969" href="#969">969</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newMethod(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> body);
+<a class="jxr_linenumber" name="970" href="#970">970</a> 
+<a class="jxr_linenumber" name="971" href="#971">971</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newMethod(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, PrologTerm... body);
 <a class="jxr_linenumber" name="972" href="#972">972</a> 
 <a class="jxr_linenumber" name="973" href="#973">973</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="974" href="#974">974</a> <em class="jxr_javadoccomment">	 * Create a new rule clause. A rule clause is represented by clause head and</em>
-<a class="jxr_linenumber" name="975" href="#975">975</a> <em class="jxr_javadoccomment">	 * body. The other parameters are boolean clause properties. If a clause have</em>
-<a class="jxr_linenumber" name="976" href="#976">976</a> <em class="jxr_javadoccomment">	 * any of this properties specify with true value.</em>
-<a class="jxr_linenumber" name="977" href="#977">977</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="974" href="#974">974</a> <em class="jxr_javadoccomment">	 * Create a new fact clause. A fatc clause is only represented by clause head</em>
+<a class="jxr_linenumber" name="975" href="#975">975</a> <em class="jxr_javadoccomment">	 * and no have clause body. The body for this clause type is null. The other</em>
+<a class="jxr_linenumber" name="976" href="#976">976</a> <em class="jxr_javadoccomment">	 * parameters are boolean clause properties. If a clause have any of this</em>
+<a class="jxr_linenumber" name="977" href="#977">977</a> <em class="jxr_javadoccomment">	 * properties specify with true value.</em>
 <a class="jxr_linenumber" name="978" href="#978">978</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="979" href="#979">979</a> <em class="jxr_javadoccomment">	 * @param head clause head</em>
-<a class="jxr_linenumber" name="980" href="#980">980</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="981" href="#981">981</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="982" href="#982">982</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newMethod(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head);
-<a class="jxr_linenumber" name="983" href="#983">983</a> 
-<a class="jxr_linenumber" name="984" href="#984">984</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="985" href="#985">985</a> <em class="jxr_javadoccomment">	 * Create a new rule clause. A rule clause is represented by clause head and</em>
-<a class="jxr_linenumber" name="986" href="#986">986</a> <em class="jxr_javadoccomment">	 * body. The other parameters are boolean clause properties. If a clause have</em>
-<a class="jxr_linenumber" name="987" href="#987">987</a> <em class="jxr_javadoccomment">	 * any of this properties specify with true value.</em>
-<a class="jxr_linenumber" name="988" href="#988">988</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="989" href="#989">989</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="990" href="#990">990</a> <em class="jxr_javadoccomment">	 * @param head clause head</em>
-<a class="jxr_linenumber" name="991" href="#991">991</a> <em class="jxr_javadoccomment">	 * @param body clause body</em>
-<a class="jxr_linenumber" name="992" href="#992">992</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="993" href="#993">993</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="994" href="#994">994</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newMethod(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> body);
-<a class="jxr_linenumber" name="995" href="#995">995</a> 
-<a class="jxr_linenumber" name="996" href="#996">996</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newMethod(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, PrologTerm... body);
-<a class="jxr_linenumber" name="997" href="#997">997</a> 
-<a class="jxr_linenumber" name="998" href="#998">998</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="999" href="#999">999</a> <em class="jxr_javadoccomment">	 * Create a new fact clause. A fatc clause is only represented by clause head</em>
-<a class="jxr_linenumber" name="1000" href="#1000">1000</a> <em class="jxr_javadoccomment">	 * and no have clause body. The body for this clause type is null. The other</em>
-<a class="jxr_linenumber" name="1001" href="#1001">1001</a> <em class="jxr_javadoccomment">	 * parameters are boolean clause properties. If a clause have any of this</em>
-<a class="jxr_linenumber" name="1002" href="#1002">1002</a> <em class="jxr_javadoccomment">	 * properties specify with true value.</em>
-<a class="jxr_linenumber" name="1003" href="#1003">1003</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1004" href="#1004">1004</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1005" href="#1005">1005</a> <em class="jxr_javadoccomment">	 * @param head          clause head</em>
-<a class="jxr_linenumber" name="1006" href="#1006">1006</a> <em class="jxr_javadoccomment">	 * @param dynamic       true if clause is dynamic, false otherwise</em>
-<a class="jxr_linenumber" name="1007" href="#1007">1007</a> <em class="jxr_javadoccomment">	 * @param multifile     true if clause is multifile, false otherwise</em>
-<a class="jxr_linenumber" name="1008" href="#1008">1008</a> <em class="jxr_javadoccomment">	 * @param discontiguous true if clause is discontiguous, false otherwise</em>
-<a class="jxr_linenumber" name="1009" href="#1009">1009</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="1010" href="#1010">1010</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1011" href="#1011">1011</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newMethod(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, <strong class="jxr_keyword">boolean</strong> dynamic, <strong class="jxr_keyword">boolean</strong> multifile, <strong class="jxr_keyword">boolean</strong> discontiguous);
-<a class="jxr_linenumber" name="1012" href="#1012">1012</a> 
-<a class="jxr_linenumber" name="1013" href="#1013">1013</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1014" href="#1014">1014</a> <em class="jxr_javadoccomment">	 * Create a new rule clause. A rule clause is represented by clause head and</em>
-<a class="jxr_linenumber" name="1015" href="#1015">1015</a> <em class="jxr_javadoccomment">	 * body. The other parameters are boolean clause properties. If a clause have</em>
-<a class="jxr_linenumber" name="1016" href="#1016">1016</a> <em class="jxr_javadoccomment">	 * any of this properties specify with true value.</em>
-<a class="jxr_linenumber" name="1017" href="#1017">1017</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1018" href="#1018">1018</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1019" href="#1019">1019</a> <em class="jxr_javadoccomment">	 * @param head          clause head</em>
-<a class="jxr_linenumber" name="1020" href="#1020">1020</a> <em class="jxr_javadoccomment">	 * @param body          clause body</em>
-<a class="jxr_linenumber" name="1021" href="#1021">1021</a> <em class="jxr_javadoccomment">	 * @param dynamic       true if clause is dynamic, false otherwise</em>
-<a class="jxr_linenumber" name="1022" href="#1022">1022</a> <em class="jxr_javadoccomment">	 * @param multifile     true if clause is multifile, false otherwise</em>
-<a class="jxr_linenumber" name="1023" href="#1023">1023</a> <em class="jxr_javadoccomment">	 * @param discontiguous true if clause is discontiguous, false otherwise</em>
-<a class="jxr_linenumber" name="1024" href="#1024">1024</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="1025" href="#1025">1025</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1026" href="#1026">1026</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newMethod(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> body, <strong class="jxr_keyword">boolean</strong> dynamic, <strong class="jxr_keyword">boolean</strong> multifile,
-<a class="jxr_linenumber" name="1027" href="#1027">1027</a> 			<strong class="jxr_keyword">boolean</strong> discontiguous);
-<a class="jxr_linenumber" name="1028" href="#1028">1028</a> 
-<a class="jxr_linenumber" name="1029" href="#1029">1029</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1030" href="#1030">1030</a> <em class="jxr_javadoccomment">	 * Create a new fact clause. A fatc clause is only represented by clause head</em>
-<a class="jxr_linenumber" name="1031" href="#1031">1031</a> <em class="jxr_javadoccomment">	 * and no have clause body. The body for this clause type is null. The other</em>
-<a class="jxr_linenumber" name="1032" href="#1032">1032</a> <em class="jxr_javadoccomment">	 * parameters are boolean clause properties. If a clause have any of this</em>
-<a class="jxr_linenumber" name="1033" href="#1033">1033</a> <em class="jxr_javadoccomment">	 * properties specify with true value.</em>
+<a class="jxr_linenumber" name="979" href="#979">979</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="980" href="#980">980</a> <em class="jxr_javadoccomment">	 * @param head          clause head</em>
+<a class="jxr_linenumber" name="981" href="#981">981</a> <em class="jxr_javadoccomment">	 * @param dynamic       true if clause is dynamic, false otherwise</em>
+<a class="jxr_linenumber" name="982" href="#982">982</a> <em class="jxr_javadoccomment">	 * @param multifile     true if clause is multifile, false otherwise</em>
+<a class="jxr_linenumber" name="983" href="#983">983</a> <em class="jxr_javadoccomment">	 * @param discontiguous true if clause is discontiguous, false otherwise</em>
+<a class="jxr_linenumber" name="984" href="#984">984</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
+<a class="jxr_linenumber" name="985" href="#985">985</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="986" href="#986">986</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newMethod(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, <strong class="jxr_keyword">boolean</strong> dynamic, <strong class="jxr_keyword">boolean</strong> multifile, <strong class="jxr_keyword">boolean</strong> discontiguous);
+<a class="jxr_linenumber" name="987" href="#987">987</a> 
+<a class="jxr_linenumber" name="988" href="#988">988</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="989" href="#989">989</a> <em class="jxr_javadoccomment">	 * Create a new rule clause. A rule clause is represented by clause head and</em>
+<a class="jxr_linenumber" name="990" href="#990">990</a> <em class="jxr_javadoccomment">	 * body. The other parameters are boolean clause properties. If a clause have</em>
+<a class="jxr_linenumber" name="991" href="#991">991</a> <em class="jxr_javadoccomment">	 * any of this properties specify with true value.</em>
+<a class="jxr_linenumber" name="992" href="#992">992</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="993" href="#993">993</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="994" href="#994">994</a> <em class="jxr_javadoccomment">	 * @param head          clause head</em>
+<a class="jxr_linenumber" name="995" href="#995">995</a> <em class="jxr_javadoccomment">	 * @param body          clause body</em>
+<a class="jxr_linenumber" name="996" href="#996">996</a> <em class="jxr_javadoccomment">	 * @param dynamic       true if clause is dynamic, false otherwise</em>
+<a class="jxr_linenumber" name="997" href="#997">997</a> <em class="jxr_javadoccomment">	 * @param multifile     true if clause is multifile, false otherwise</em>
+<a class="jxr_linenumber" name="998" href="#998">998</a> <em class="jxr_javadoccomment">	 * @param discontiguous true if clause is discontiguous, false otherwise</em>
+<a class="jxr_linenumber" name="999" href="#999">999</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
+<a class="jxr_linenumber" name="1000" href="#1000">1000</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1001" href="#1001">1001</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newMethod(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> body, <strong class="jxr_keyword">boolean</strong> dynamic, <strong class="jxr_keyword">boolean</strong> multifile,
+<a class="jxr_linenumber" name="1002" href="#1002">1002</a> 			<strong class="jxr_keyword">boolean</strong> discontiguous);
+<a class="jxr_linenumber" name="1003" href="#1003">1003</a> 
+<a class="jxr_linenumber" name="1004" href="#1004">1004</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1005" href="#1005">1005</a> <em class="jxr_javadoccomment">	 * Create a new fact clause. A fatc clause is only represented by clause head</em>
+<a class="jxr_linenumber" name="1006" href="#1006">1006</a> <em class="jxr_javadoccomment">	 * and no have clause body. The body for this clause type is null. The other</em>
+<a class="jxr_linenumber" name="1007" href="#1007">1007</a> <em class="jxr_javadoccomment">	 * parameters are boolean clause properties. If a clause have any of this</em>
+<a class="jxr_linenumber" name="1008" href="#1008">1008</a> <em class="jxr_javadoccomment">	 * properties specify with true value.</em>
+<a class="jxr_linenumber" name="1009" href="#1009">1009</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1010" href="#1010">1010</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1011" href="#1011">1011</a> <em class="jxr_javadoccomment">	 * @param head   clause head</em>
+<a class="jxr_linenumber" name="1012" href="#1012">1012</a> <em class="jxr_javadoccomment">	 * @param result function result</em>
+<a class="jxr_linenumber" name="1013" href="#1013">1013</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
+<a class="jxr_linenumber" name="1014" href="#1014">1014</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1015" href="#1015">1015</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newFunction(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> result);
+<a class="jxr_linenumber" name="1016" href="#1016">1016</a> 
+<a class="jxr_linenumber" name="1017" href="#1017">1017</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1018" href="#1018">1018</a> <em class="jxr_javadoccomment">	 * Create a new rule clause. A rule clause is represented by clause head and</em>
+<a class="jxr_linenumber" name="1019" href="#1019">1019</a> <em class="jxr_javadoccomment">	 * body. The other parameters are boolean clause properties. If a clause have</em>
+<a class="jxr_linenumber" name="1020" href="#1020">1020</a> <em class="jxr_javadoccomment">	 * any of this properties specify with true value.</em>
+<a class="jxr_linenumber" name="1021" href="#1021">1021</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1022" href="#1022">1022</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1023" href="#1023">1023</a> <em class="jxr_javadoccomment">	 * @param head   clause head</em>
+<a class="jxr_linenumber" name="1024" href="#1024">1024</a> <em class="jxr_javadoccomment">	 * @param body   clause body</em>
+<a class="jxr_linenumber" name="1025" href="#1025">1025</a> <em class="jxr_javadoccomment">	 * @param result function result</em>
+<a class="jxr_linenumber" name="1026" href="#1026">1026</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
+<a class="jxr_linenumber" name="1027" href="#1027">1027</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1028" href="#1028">1028</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newFunction(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> result, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> body);
+<a class="jxr_linenumber" name="1029" href="#1029">1029</a> 
+<a class="jxr_linenumber" name="1030" href="#1030">1030</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1031" href="#1031">1031</a> <em class="jxr_javadoccomment">	 * Create a new rule clause. A rule clause is represented by clause head and</em>
+<a class="jxr_linenumber" name="1032" href="#1032">1032</a> <em class="jxr_javadoccomment">	 * body. The other parameters are boolean clause properties. If a clause have</em>
+<a class="jxr_linenumber" name="1033" href="#1033">1033</a> <em class="jxr_javadoccomment">	 * any of this properties specify with true value.</em>
 <a class="jxr_linenumber" name="1034" href="#1034">1034</a> <em class="jxr_javadoccomment">	 * </em>
 <a class="jxr_linenumber" name="1035" href="#1035">1035</a> <em class="jxr_javadoccomment">	 * </em>
 <a class="jxr_linenumber" name="1036" href="#1036">1036</a> <em class="jxr_javadoccomment">	 * @param head   clause head</em>
-<a class="jxr_linenumber" name="1037" href="#1037">1037</a> <em class="jxr_javadoccomment">	 * @param result function result</em>
-<a class="jxr_linenumber" name="1038" href="#1038">1038</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="1039" href="#1039">1039</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1040" href="#1040">1040</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newFunction(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> result);
-<a class="jxr_linenumber" name="1041" href="#1041">1041</a> 
-<a class="jxr_linenumber" name="1042" href="#1042">1042</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1043" href="#1043">1043</a> <em class="jxr_javadoccomment">	 * Create a new rule clause. A rule clause is represented by clause head and</em>
-<a class="jxr_linenumber" name="1044" href="#1044">1044</a> <em class="jxr_javadoccomment">	 * body. The other parameters are boolean clause properties. If a clause have</em>
-<a class="jxr_linenumber" name="1045" href="#1045">1045</a> <em class="jxr_javadoccomment">	 * any of this properties specify with true value.</em>
-<a class="jxr_linenumber" name="1046" href="#1046">1046</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1047" href="#1047">1047</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1048" href="#1048">1048</a> <em class="jxr_javadoccomment">	 * @param head   clause head</em>
-<a class="jxr_linenumber" name="1049" href="#1049">1049</a> <em class="jxr_javadoccomment">	 * @param body   clause body</em>
-<a class="jxr_linenumber" name="1050" href="#1050">1050</a> <em class="jxr_javadoccomment">	 * @param result function result</em>
-<a class="jxr_linenumber" name="1051" href="#1051">1051</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="1052" href="#1052">1052</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1053" href="#1053">1053</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newFunction(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> result, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> body);
-<a class="jxr_linenumber" name="1054" href="#1054">1054</a> 
-<a class="jxr_linenumber" name="1055" href="#1055">1055</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1056" href="#1056">1056</a> <em class="jxr_javadoccomment">	 * Create a new rule clause. A rule clause is represented by clause head and</em>
-<a class="jxr_linenumber" name="1057" href="#1057">1057</a> <em class="jxr_javadoccomment">	 * body. The other parameters are boolean clause properties. If a clause have</em>
-<a class="jxr_linenumber" name="1058" href="#1058">1058</a> <em class="jxr_javadoccomment">	 * any of this properties specify with true value.</em>
-<a class="jxr_linenumber" name="1059" href="#1059">1059</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1037" href="#1037">1037</a> <em class="jxr_javadoccomment">	 * @param body   clause body</em>
+<a class="jxr_linenumber" name="1038" href="#1038">1038</a> <em class="jxr_javadoccomment">	 * @param result function result</em>
+<a class="jxr_linenumber" name="1039" href="#1039">1039</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
+<a class="jxr_linenumber" name="1040" href="#1040">1040</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1041" href="#1041">1041</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newFunction(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> result, PrologTerm... body);
+<a class="jxr_linenumber" name="1042" href="#1042">1042</a> 
+<a class="jxr_linenumber" name="1043" href="#1043">1043</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1044" href="#1044">1044</a> <em class="jxr_javadoccomment">	 * Create a new fact clause. A fatc clause is only represented by clause head</em>
+<a class="jxr_linenumber" name="1045" href="#1045">1045</a> <em class="jxr_javadoccomment">	 * and no have clause body. The body for this clause type is null. The other</em>
+<a class="jxr_linenumber" name="1046" href="#1046">1046</a> <em class="jxr_javadoccomment">	 * parameters are boolean clause properties. If a clause have any of this</em>
+<a class="jxr_linenumber" name="1047" href="#1047">1047</a> <em class="jxr_javadoccomment">	 * properties specify with true value.</em>
+<a class="jxr_linenumber" name="1048" href="#1048">1048</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1049" href="#1049">1049</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1050" href="#1050">1050</a> <em class="jxr_javadoccomment">	 * @param head   clause head</em>
+<a class="jxr_linenumber" name="1051" href="#1051">1051</a> <em class="jxr_javadoccomment">	 * @param result function result</em>
+<a class="jxr_linenumber" name="1052" href="#1052">1052</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
+<a class="jxr_linenumber" name="1053" href="#1053">1053</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1054" href="#1054">1054</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newFunction(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, Object result);
+<a class="jxr_linenumber" name="1055" href="#1055">1055</a> 
+<a class="jxr_linenumber" name="1056" href="#1056">1056</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1057" href="#1057">1057</a> <em class="jxr_javadoccomment">	 * Create a new rule clause. A rule clause is represented by clause head and</em>
+<a class="jxr_linenumber" name="1058" href="#1058">1058</a> <em class="jxr_javadoccomment">	 * body. The other parameters are boolean clause properties. If a clause have</em>
+<a class="jxr_linenumber" name="1059" href="#1059">1059</a> <em class="jxr_javadoccomment">	 * any of this properties specify with true value.</em>
 <a class="jxr_linenumber" name="1060" href="#1060">1060</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1061" href="#1061">1061</a> <em class="jxr_javadoccomment">	 * @param head   clause head</em>
-<a class="jxr_linenumber" name="1062" href="#1062">1062</a> <em class="jxr_javadoccomment">	 * @param body   clause body</em>
-<a class="jxr_linenumber" name="1063" href="#1063">1063</a> <em class="jxr_javadoccomment">	 * @param result function result</em>
-<a class="jxr_linenumber" name="1064" href="#1064">1064</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="1065" href="#1065">1065</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1066" href="#1066">1066</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newFunction(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> result, PrologTerm... body);
-<a class="jxr_linenumber" name="1067" href="#1067">1067</a> 
-<a class="jxr_linenumber" name="1068" href="#1068">1068</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1069" href="#1069">1069</a> <em class="jxr_javadoccomment">	 * Create a new fact clause. A fatc clause is only represented by clause head</em>
-<a class="jxr_linenumber" name="1070" href="#1070">1070</a> <em class="jxr_javadoccomment">	 * and no have clause body. The body for this clause type is null. The other</em>
-<a class="jxr_linenumber" name="1071" href="#1071">1071</a> <em class="jxr_javadoccomment">	 * parameters are boolean clause properties. If a clause have any of this</em>
-<a class="jxr_linenumber" name="1072" href="#1072">1072</a> <em class="jxr_javadoccomment">	 * properties specify with true value.</em>
+<a class="jxr_linenumber" name="1061" href="#1061">1061</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1062" href="#1062">1062</a> <em class="jxr_javadoccomment">	 * @param head   clause head</em>
+<a class="jxr_linenumber" name="1063" href="#1063">1063</a> <em class="jxr_javadoccomment">	 * @param body   clause body</em>
+<a class="jxr_linenumber" name="1064" href="#1064">1064</a> <em class="jxr_javadoccomment">	 * @param result function result</em>
+<a class="jxr_linenumber" name="1065" href="#1065">1065</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
+<a class="jxr_linenumber" name="1066" href="#1066">1066</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1067" href="#1067">1067</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newFunction(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, Object result, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> body);
+<a class="jxr_linenumber" name="1068" href="#1068">1068</a> 
+<a class="jxr_linenumber" name="1069" href="#1069">1069</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1070" href="#1070">1070</a> <em class="jxr_javadoccomment">	 * Create a new rule clause. A rule clause is represented by clause head and</em>
+<a class="jxr_linenumber" name="1071" href="#1071">1071</a> <em class="jxr_javadoccomment">	 * body. The other parameters are boolean clause properties. If a clause have</em>
+<a class="jxr_linenumber" name="1072" href="#1072">1072</a> <em class="jxr_javadoccomment">	 * any of this properties specify with true value.</em>
 <a class="jxr_linenumber" name="1073" href="#1073">1073</a> <em class="jxr_javadoccomment">	 * </em>
 <a class="jxr_linenumber" name="1074" href="#1074">1074</a> <em class="jxr_javadoccomment">	 * </em>
 <a class="jxr_linenumber" name="1075" href="#1075">1075</a> <em class="jxr_javadoccomment">	 * @param head   clause head</em>
-<a class="jxr_linenumber" name="1076" href="#1076">1076</a> <em class="jxr_javadoccomment">	 * @param result function result</em>
-<a class="jxr_linenumber" name="1077" href="#1077">1077</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="1078" href="#1078">1078</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1079" href="#1079">1079</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newFunction(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, Object result);
-<a class="jxr_linenumber" name="1080" href="#1080">1080</a> 
-<a class="jxr_linenumber" name="1081" href="#1081">1081</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1082" href="#1082">1082</a> <em class="jxr_javadoccomment">	 * Create a new rule clause. A rule clause is represented by clause head and</em>
-<a class="jxr_linenumber" name="1083" href="#1083">1083</a> <em class="jxr_javadoccomment">	 * body. The other parameters are boolean clause properties. If a clause have</em>
-<a class="jxr_linenumber" name="1084" href="#1084">1084</a> <em class="jxr_javadoccomment">	 * any of this properties specify with true value.</em>
-<a class="jxr_linenumber" name="1085" href="#1085">1085</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1086" href="#1086">1086</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1087" href="#1087">1087</a> <em class="jxr_javadoccomment">	 * @param head   clause head</em>
-<a class="jxr_linenumber" name="1088" href="#1088">1088</a> <em class="jxr_javadoccomment">	 * @param body   clause body</em>
-<a class="jxr_linenumber" name="1089" href="#1089">1089</a> <em class="jxr_javadoccomment">	 * @param result function result</em>
-<a class="jxr_linenumber" name="1090" href="#1090">1090</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="1091" href="#1091">1091</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1092" href="#1092">1092</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newFunction(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, Object result, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> body);
-<a class="jxr_linenumber" name="1093" href="#1093">1093</a> 
-<a class="jxr_linenumber" name="1094" href="#1094">1094</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1095" href="#1095">1095</a> <em class="jxr_javadoccomment">	 * Create a new rule clause. A rule clause is represented by clause head and</em>
-<a class="jxr_linenumber" name="1096" href="#1096">1096</a> <em class="jxr_javadoccomment">	 * body. The other parameters are boolean clause properties. If a clause have</em>
-<a class="jxr_linenumber" name="1097" href="#1097">1097</a> <em class="jxr_javadoccomment">	 * any of this properties specify with true value.</em>
-<a class="jxr_linenumber" name="1098" href="#1098">1098</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1099" href="#1099">1099</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1100" href="#1100">1100</a> <em class="jxr_javadoccomment">	 * @param head   clause head</em>
-<a class="jxr_linenumber" name="1101" href="#1101">1101</a> <em class="jxr_javadoccomment">	 * @param body   clause body</em>
-<a class="jxr_linenumber" name="1102" href="#1102">1102</a> <em class="jxr_javadoccomment">	 * @param result function result</em>
-<a class="jxr_linenumber" name="1103" href="#1103">1103</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="1104" href="#1104">1104</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1105" href="#1105">1105</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newFunction(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, Object result, PrologTerm... body);
-<a class="jxr_linenumber" name="1106" href="#1106">1106</a> 
-<a class="jxr_linenumber" name="1107" href="#1107">1107</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1108" href="#1108">1108</a> <em class="jxr_javadoccomment">	 * Create a new fact clause. A fatc clause is only represented by clause head</em>
-<a class="jxr_linenumber" name="1109" href="#1109">1109</a> <em class="jxr_javadoccomment">	 * and no have clause body. The body for this clause type is null. The other</em>
-<a class="jxr_linenumber" name="1110" href="#1110">1110</a> <em class="jxr_javadoccomment">	 * parameters are boolean clause properties. If a clause have any of this</em>
-<a class="jxr_linenumber" name="1111" href="#1111">1111</a> <em class="jxr_javadoccomment">	 * properties specify with true value.</em>
-<a class="jxr_linenumber" name="1112" href="#1112">1112</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1113" href="#1113">1113</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1114" href="#1114">1114</a> <em class="jxr_javadoccomment">	 * @param head          clause head</em>
-<a class="jxr_linenumber" name="1115" href="#1115">1115</a> <em class="jxr_javadoccomment">	 * @param result        function result</em>
-<a class="jxr_linenumber" name="1116" href="#1116">1116</a> <em class="jxr_javadoccomment">	 * @param dynamic       true if clause is dynamic, false otherwise</em>
-<a class="jxr_linenumber" name="1117" href="#1117">1117</a> <em class="jxr_javadoccomment">	 * @param multifile     true if clause is multifile, false otherwise</em>
-<a class="jxr_linenumber" name="1118" href="#1118">1118</a> <em class="jxr_javadoccomment">	 * @param discontiguous true if clause is discontiguous, false otherwise</em>
-<a class="jxr_linenumber" name="1119" href="#1119">1119</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="1120" href="#1120">1120</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1121" href="#1121">1121</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newFunction(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> result, <strong class="jxr_keyword">boolean</strong> dynamic, <strong class="jxr_keyword">boolean</strong> multifile,
-<a class="jxr_linenumber" name="1122" href="#1122">1122</a> 			<strong class="jxr_keyword">boolean</strong> discontiguous);
-<a class="jxr_linenumber" name="1123" href="#1123">1123</a> 
-<a class="jxr_linenumber" name="1124" href="#1124">1124</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1125" href="#1125">1125</a> <em class="jxr_javadoccomment">	 * Create a new rule clause. A rule clause is represented by clause head and</em>
-<a class="jxr_linenumber" name="1126" href="#1126">1126</a> <em class="jxr_javadoccomment">	 * body. The other parameters are boolean clause properties. If a clause have</em>
-<a class="jxr_linenumber" name="1127" href="#1127">1127</a> <em class="jxr_javadoccomment">	 * any of this properties specify with true value.</em>
+<a class="jxr_linenumber" name="1076" href="#1076">1076</a> <em class="jxr_javadoccomment">	 * @param body   clause body</em>
+<a class="jxr_linenumber" name="1077" href="#1077">1077</a> <em class="jxr_javadoccomment">	 * @param result function result</em>
+<a class="jxr_linenumber" name="1078" href="#1078">1078</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
+<a class="jxr_linenumber" name="1079" href="#1079">1079</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1080" href="#1080">1080</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newFunction(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, Object result, PrologTerm... body);
+<a class="jxr_linenumber" name="1081" href="#1081">1081</a> 
+<a class="jxr_linenumber" name="1082" href="#1082">1082</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1083" href="#1083">1083</a> <em class="jxr_javadoccomment">	 * Create a new fact clause. A fatc clause is only represented by clause head</em>
+<a class="jxr_linenumber" name="1084" href="#1084">1084</a> <em class="jxr_javadoccomment">	 * and no have clause body. The body for this clause type is null. The other</em>
+<a class="jxr_linenumber" name="1085" href="#1085">1085</a> <em class="jxr_javadoccomment">	 * parameters are boolean clause properties. If a clause have any of this</em>
+<a class="jxr_linenumber" name="1086" href="#1086">1086</a> <em class="jxr_javadoccomment">	 * properties specify with true value.</em>
+<a class="jxr_linenumber" name="1087" href="#1087">1087</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1088" href="#1088">1088</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1089" href="#1089">1089</a> <em class="jxr_javadoccomment">	 * @param head          clause head</em>
+<a class="jxr_linenumber" name="1090" href="#1090">1090</a> <em class="jxr_javadoccomment">	 * @param result        function result</em>
+<a class="jxr_linenumber" name="1091" href="#1091">1091</a> <em class="jxr_javadoccomment">	 * @param dynamic       true if clause is dynamic, false otherwise</em>
+<a class="jxr_linenumber" name="1092" href="#1092">1092</a> <em class="jxr_javadoccomment">	 * @param multifile     true if clause is multifile, false otherwise</em>
+<a class="jxr_linenumber" name="1093" href="#1093">1093</a> <em class="jxr_javadoccomment">	 * @param discontiguous true if clause is discontiguous, false otherwise</em>
+<a class="jxr_linenumber" name="1094" href="#1094">1094</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
+<a class="jxr_linenumber" name="1095" href="#1095">1095</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1096" href="#1096">1096</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newFunction(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> result, <strong class="jxr_keyword">boolean</strong> dynamic, <strong class="jxr_keyword">boolean</strong> multifile,
+<a class="jxr_linenumber" name="1097" href="#1097">1097</a> 			<strong class="jxr_keyword">boolean</strong> discontiguous);
+<a class="jxr_linenumber" name="1098" href="#1098">1098</a> 
+<a class="jxr_linenumber" name="1099" href="#1099">1099</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1100" href="#1100">1100</a> <em class="jxr_javadoccomment">	 * Create a new rule clause. A rule clause is represented by clause head and</em>
+<a class="jxr_linenumber" name="1101" href="#1101">1101</a> <em class="jxr_javadoccomment">	 * body. The other parameters are boolean clause properties. If a clause have</em>
+<a class="jxr_linenumber" name="1102" href="#1102">1102</a> <em class="jxr_javadoccomment">	 * any of this properties specify with true value.</em>
+<a class="jxr_linenumber" name="1103" href="#1103">1103</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1104" href="#1104">1104</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1105" href="#1105">1105</a> <em class="jxr_javadoccomment">	 * @param head          clause head</em>
+<a class="jxr_linenumber" name="1106" href="#1106">1106</a> <em class="jxr_javadoccomment">	 * @param body          clause body</em>
+<a class="jxr_linenumber" name="1107" href="#1107">1107</a> <em class="jxr_javadoccomment">	 * @param result        function result</em>
+<a class="jxr_linenumber" name="1108" href="#1108">1108</a> <em class="jxr_javadoccomment">	 * @param dynamic       true if clause is dynamic, false otherwise</em>
+<a class="jxr_linenumber" name="1109" href="#1109">1109</a> <em class="jxr_javadoccomment">	 * @param multifile     true if clause is multifile, false otherwise</em>
+<a class="jxr_linenumber" name="1110" href="#1110">1110</a> <em class="jxr_javadoccomment">	 * @param discontiguous true if clause is discontiguous, false otherwise</em>
+<a class="jxr_linenumber" name="1111" href="#1111">1111</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
+<a class="jxr_linenumber" name="1112" href="#1112">1112</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1113" href="#1113">1113</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newFunction(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> body, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> result, <strong class="jxr_keyword">boolean</strong> dynamic,
+<a class="jxr_linenumber" name="1114" href="#1114">1114</a> 			<strong class="jxr_keyword">boolean</strong> multifile, <strong class="jxr_keyword">boolean</strong> discontiguous);
+<a class="jxr_linenumber" name="1115" href="#1115">1115</a> 
+<a class="jxr_linenumber" name="1116" href="#1116">1116</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1117" href="#1117">1117</a> <em class="jxr_javadoccomment">	 * Get a Java to Prolog converter instance to map the abstract prolog data types</em>
+<a class="jxr_linenumber" name="1118" href="#1118">1118</a> <em class="jxr_javadoccomment">	 * to Java types.</em>
+<a class="jxr_linenumber" name="1119" href="#1119">1119</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1120" href="#1120">1120</a> <em class="jxr_javadoccomment">	 * @return Java to Prolog converter instance.</em>
+<a class="jxr_linenumber" name="1121" href="#1121">1121</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="1122" href="#1122">1122</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1123" href="#1123">1123</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologJavaConverter.html">PrologJavaConverter</a> getJavaConverter();
+<a class="jxr_linenumber" name="1124" href="#1124">1124</a> 
+<a class="jxr_linenumber" name="1125" href="#1125">1125</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1126" href="#1126">1126</a> <em class="jxr_javadoccomment">	 * Get a prolog converter instance to map the abstract prolog data types to</em>
+<a class="jxr_linenumber" name="1127" href="#1127">1127</a> <em class="jxr_javadoccomment">	 * under-laying prolog implementations data types.</em>
 <a class="jxr_linenumber" name="1128" href="#1128">1128</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1129" href="#1129">1129</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1130" href="#1130">1130</a> <em class="jxr_javadoccomment">	 * @param head          clause head</em>
-<a class="jxr_linenumber" name="1131" href="#1131">1131</a> <em class="jxr_javadoccomment">	 * @param body          clause body</em>
-<a class="jxr_linenumber" name="1132" href="#1132">1132</a> <em class="jxr_javadoccomment">	 * @param result        function result</em>
-<a class="jxr_linenumber" name="1133" href="#1133">1133</a> <em class="jxr_javadoccomment">	 * @param dynamic       true if clause is dynamic, false otherwise</em>
-<a class="jxr_linenumber" name="1134" href="#1134">1134</a> <em class="jxr_javadoccomment">	 * @param multifile     true if clause is multifile, false otherwise</em>
-<a class="jxr_linenumber" name="1135" href="#1135">1135</a> <em class="jxr_javadoccomment">	 * @param discontiguous true if clause is discontiguous, false otherwise</em>
-<a class="jxr_linenumber" name="1136" href="#1136">1136</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="1137" href="#1137">1137</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1138" href="#1138">1138</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> newFunction(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> head, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> body, <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> result, <strong class="jxr_keyword">boolean</strong> dynamic,
-<a class="jxr_linenumber" name="1139" href="#1139">1139</a> 			<strong class="jxr_keyword">boolean</strong> multifile, <strong class="jxr_keyword">boolean</strong> discontiguous);
-<a class="jxr_linenumber" name="1140" href="#1140">1140</a> 
-<a class="jxr_linenumber" name="1141" href="#1141">1141</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> newClass(String name);
+<a class="jxr_linenumber" name="1129" href="#1129">1129</a> <em class="jxr_javadoccomment">	 * @param &lt;K&gt; under-laying prolog data types</em>
+<a class="jxr_linenumber" name="1130" href="#1130">1130</a> <em class="jxr_javadoccomment">	 * @return prolog converter instance</em>
+<a class="jxr_linenumber" name="1131" href="#1131">1131</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="1132" href="#1132">1132</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1133" href="#1133">1133</a> 	<strong class="jxr_keyword">public</strong> &lt;K&gt; PrologConverter&lt;K&gt; getConverter();
+<a class="jxr_linenumber" name="1134" href="#1134">1134</a> 
+<a class="jxr_linenumber" name="1135" href="#1135">1135</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1136" href="#1136">1136</a> <em class="jxr_javadoccomment">	 * Get a prolog parser instance to parser the strings with prolog syntax.</em>
+<a class="jxr_linenumber" name="1137" href="#1137">1137</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1138" href="#1138">1138</a> <em class="jxr_javadoccomment">	 * @return prolog parser instance</em>
+<a class="jxr_linenumber" name="1139" href="#1139">1139</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="1140" href="#1140">1140</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1141" href="#1141">1141</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologParser.html">PrologParser</a> getParser();
 <a class="jxr_linenumber" name="1142" href="#1142">1142</a> 
 <a class="jxr_linenumber" name="1143" href="#1143">1143</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1144" href="#1144">1144</a> <em class="jxr_javadoccomment">	 * Get a Java to Prolog converter instance to map the abstract prolog data types</em>
-<a class="jxr_linenumber" name="1145" href="#1145">1145</a> <em class="jxr_javadoccomment">	 * to Java types.</em>
-<a class="jxr_linenumber" name="1146" href="#1146">1146</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1147" href="#1147">1147</a> <em class="jxr_javadoccomment">	 * @return Java to Prolog converter instance.</em>
-<a class="jxr_linenumber" name="1148" href="#1148">1148</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="1149" href="#1149">1149</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1150" href="#1150">1150</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologJavaConverter.html">PrologJavaConverter</a> getJavaConverter();
-<a class="jxr_linenumber" name="1151" href="#1151">1151</a> 
-<a class="jxr_linenumber" name="1152" href="#1152">1152</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1153" href="#1153">1153</a> <em class="jxr_javadoccomment">	 * Get a prolog converter instance to map the abstract prolog data types to</em>
-<a class="jxr_linenumber" name="1154" href="#1154">1154</a> <em class="jxr_javadoccomment">	 * under-laying prolog implementations data types.</em>
-<a class="jxr_linenumber" name="1155" href="#1155">1155</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1156" href="#1156">1156</a> <em class="jxr_javadoccomment">	 * @param &lt;K&gt; under-laying prolog data types</em>
-<a class="jxr_linenumber" name="1157" href="#1157">1157</a> <em class="jxr_javadoccomment">	 * @return prolog converter instance</em>
-<a class="jxr_linenumber" name="1158" href="#1158">1158</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="1159" href="#1159">1159</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1160" href="#1160">1160</a> 	<strong class="jxr_keyword">public</strong> &lt;K&gt; PrologConverter&lt;K&gt; getConverter();
-<a class="jxr_linenumber" name="1161" href="#1161">1161</a> 
-<a class="jxr_linenumber" name="1162" href="#1162">1162</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1163" href="#1163">1163</a> <em class="jxr_javadoccomment">	 * Get a prolog parser instance to parser the strings with prolog syntax.</em>
-<a class="jxr_linenumber" name="1164" href="#1164">1164</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1165" href="#1165">1165</a> <em class="jxr_javadoccomment">	 * @return prolog parser instance</em>
-<a class="jxr_linenumber" name="1166" href="#1166">1166</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="1167" href="#1167">1167</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1168" href="#1168">1168</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologParser.html">PrologParser</a> getParser();
-<a class="jxr_linenumber" name="1169" href="#1169">1169</a> 
-<a class="jxr_linenumber" name="1170" href="#1170">1170</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1171" href="#1171">1171</a> <em class="jxr_javadoccomment">	 * Get the prolog system logger instance to report any errors or exceptions</em>
-<a class="jxr_linenumber" name="1172" href="#1172">1172</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1173" href="#1173">1173</a> <em class="jxr_javadoccomment">	 * @return prolog system logger instance</em>
-<a class="jxr_linenumber" name="1174" href="#1174">1174</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="1175" href="#1175">1175</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1176" href="#1176">1176</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologLogger.html">PrologLogger</a> getLogger();
-<a class="jxr_linenumber" name="1177" href="#1177">1177</a> 
-<a class="jxr_linenumber" name="1178" href="#1178">1178</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1179" href="#1179">1179</a> <em class="jxr_javadoccomment">	 * Version of the wrapped engine.</em>
-<a class="jxr_linenumber" name="1180" href="#1180">1180</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1181" href="#1181">1181</a> <em class="jxr_javadoccomment">	 * @return String version of the wrapped engine.</em>
-<a class="jxr_linenumber" name="1182" href="#1182">1182</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="1183" href="#1183">1183</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1184" href="#1184">1184</a> 	<strong class="jxr_keyword">public</strong> String getVersion();
-<a class="jxr_linenumber" name="1185" href="#1185">1185</a> 
-<a class="jxr_linenumber" name="1186" href="#1186">1186</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1187" href="#1187">1187</a> <em class="jxr_javadoccomment">	 * Name of the wrapped engine.</em>
-<a class="jxr_linenumber" name="1188" href="#1188">1188</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="1189" href="#1189">1189</a> <em class="jxr_javadoccomment">	 * @return String name of the wrapped engine.</em>
-<a class="jxr_linenumber" name="1190" href="#1190">1190</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="1191" href="#1191">1191</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="1192" href="#1192">1192</a> 	<strong class="jxr_keyword">public</strong> String getName();
-<a class="jxr_linenumber" name="1193" href="#1193">1193</a> 
-<a class="jxr_linenumber" name="1194" href="#1194">1194</a> }
+<a class="jxr_linenumber" name="1144" href="#1144">1144</a> <em class="jxr_javadoccomment">	 * Get the prolog system logger instance to report any errors or exceptions</em>
+<a class="jxr_linenumber" name="1145" href="#1145">1145</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1146" href="#1146">1146</a> <em class="jxr_javadoccomment">	 * @return prolog system logger instance</em>
+<a class="jxr_linenumber" name="1147" href="#1147">1147</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="1148" href="#1148">1148</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1149" href="#1149">1149</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologLogger.html">PrologLogger</a> getLogger();
+<a class="jxr_linenumber" name="1150" href="#1150">1150</a> 
+<a class="jxr_linenumber" name="1151" href="#1151">1151</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1152" href="#1152">1152</a> <em class="jxr_javadoccomment">	 * Version of the wrapped engine.</em>
+<a class="jxr_linenumber" name="1153" href="#1153">1153</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1154" href="#1154">1154</a> <em class="jxr_javadoccomment">	 * @return String version of the wrapped engine.</em>
+<a class="jxr_linenumber" name="1155" href="#1155">1155</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="1156" href="#1156">1156</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1157" href="#1157">1157</a> 	<strong class="jxr_keyword">public</strong> String getVersion();
+<a class="jxr_linenumber" name="1158" href="#1158">1158</a> 
+<a class="jxr_linenumber" name="1159" href="#1159">1159</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1160" href="#1160">1160</a> <em class="jxr_javadoccomment">	 * Name of the wrapped engine.</em>
+<a class="jxr_linenumber" name="1161" href="#1161">1161</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="1162" href="#1162">1162</a> <em class="jxr_javadoccomment">	 * @return String name of the wrapped engine.</em>
+<a class="jxr_linenumber" name="1163" href="#1163">1163</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="1164" href="#1164">1164</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="1165" href="#1165">1165</a> 	<strong class="jxr_keyword">public</strong> String getName();
+<a class="jxr_linenumber" name="1166" href="#1166">1166</a> 
+<a class="jxr_linenumber" name="1167" href="#1167">1167</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

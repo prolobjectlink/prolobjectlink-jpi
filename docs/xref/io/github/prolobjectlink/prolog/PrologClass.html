@@ -59,8 +59,8 @@
 <a class="jxr_linenumber" name="49" href="#49">49</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Set&lt;PrologTerm&gt; fields = <strong class="jxr_keyword">new</strong> LinkedHashSet&lt;PrologTerm&gt;();
 <a class="jxr_linenumber" name="50" href="#50">50</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Set&lt;PrologClause&gt; constructors = <strong class="jxr_keyword">new</strong> LinkedHashSet&lt;PrologClause&gt;();
 <a class="jxr_linenumber" name="51" href="#51">51</a>  
-<a class="jxr_linenumber" name="52" href="#52">52</a>  	PrologClass(<a href="../../../../io/github/prolobjectlink/prolog/PrologProvider.html">PrologProvider</a> provider, String name) {
-<a class="jxr_linenumber" name="53" href="#53">53</a>  		<strong class="jxr_keyword">super</strong>(CLASS_TYPE, provider, name);
+<a class="jxr_linenumber" name="52" href="#52">52</a>  	PrologClass(<a href="../../../../io/github/prolobjectlink/prolog/PrologEngine.html">PrologEngine</a> engine, String name) {
+<a class="jxr_linenumber" name="53" href="#53">53</a>  		<strong class="jxr_keyword">super</strong>(CLASS_TYPE, engine, name);
 <a class="jxr_linenumber" name="54" href="#54">54</a>  	}
 <a class="jxr_linenumber" name="55" href="#55">55</a>  
 <a class="jxr_linenumber" name="56" href="#56">56</a>  	<strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">void</strong> checkClassFunctor(<a href="../../../../io/github/prolobjectlink/prolog/PrologClause.html">PrologClause</a> emptyConstructor) {
@@ -150,7 +150,7 @@
 <a class="jxr_linenumber" name="140" href="#140">140</a> 	}
 <a class="jxr_linenumber" name="141" href="#141">141</a> 
 <a class="jxr_linenumber" name="142" href="#142">142</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClass.html">PrologClass</a> addNestedClass(String name) {
-<a class="jxr_linenumber" name="143" href="#143">143</a> 		PrologClass cls = <strong class="jxr_keyword">new</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClass.html">PrologClass</a>(provider, name);
+<a class="jxr_linenumber" name="143" href="#143">143</a> 		PrologClass cls = <strong class="jxr_keyword">new</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologClass.html">PrologClass</a>(engine, name);
 <a class="jxr_linenumber" name="144" href="#144">144</a> 		addNestedClass(cls);
 <a class="jxr_linenumber" name="145" href="#145">145</a> 		<strong class="jxr_keyword">return</strong> cls;
 <a class="jxr_linenumber" name="146" href="#146">146</a> 	}

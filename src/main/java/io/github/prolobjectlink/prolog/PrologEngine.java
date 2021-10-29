@@ -199,6 +199,42 @@ import java.util.Set;
  * }
  * </pre>
  * 
+ * The shortcuts methods to obtain N results are
+ * 
+ *  {@code PrologEngine.queryN(Class)},
+ * {@code PrologEngine.queryN(Object)}, {@code PrologEngine.queryN(PrologTerm)},
+ * {@code PrologEngine.queryN(String)}, {@code PrologEngine.queryN(Class, Class...)},
+ * {@code PrologEngine.queryN(Object, Object...)},
+ * {@code PrologEngine.queryN(PrologTerm, PrologTerm...)}.
+ * 
+ * This methods are equivalent to call
+ * {@code PrologEngine.query(...).nVariablesResult()}.
+ *
+ * Java Prolog Interface have shortcuts methods to obtain queries result from
+ * the engine. The shortcuts methods to obtain one result are
+ * {@code PrologEngine.queryOne(Class)}, {@code PrologEngine.queryOne(Object)},
+ * {@code PrologEngine.queryOne(PrologTerm)}, {@code PrologEngine.queryOne(String)},
+ * {@code PrologEngine.queryOne(Class, Class...)}, {@code PrologEngine.queryOne(Object, Object...)},
+ * {@code PrologEngine.queryOne(PrologTerm, PrologTerm...)}. This methods are equivalent to
+ * call {@code PrologEngine.query(...).oneVariablesResult()}.
+ * 
+ * The shortcuts methods to obtain N results are {@code PrologEngine.queryN(Class)},
+ * {@code PrologEngine.queryN(Object)}, {@code PrologEngine.queryN(PrologTerm)},
+ * {@code PrologEngine.queryN(String)}, {@code PrologEngine.queryN(Class, Class...)},
+ * {@code PrologEngine.queryN(Object, Object...)},
+ * {@code PrologEngine.queryN(PrologTerm, PrologTerm...)}. This methods are equivalent to
+ * call {@code PrologEngine.query(...).nVariablesResult()}.
+ * 
+ * The shortcuts methods to obtain all results are {@code PrologEngine.queryAll(Class)},
+ * {@code PrologEngine.queryAll(Object)}, {@code PrologEngine.queryAll(PrologTerm)},
+ * {@code PrologEngine.queryAll(String)}, {@code PrologEngine.queryAll(Class, Class...)},
+ * {@code PrologEngine.queryAll(Object, Object...)},
+ * {@code PrologEngine.queryAll(PrologTerm, PrologTerm...)}. This methods are equivalent to
+ * call {@code PrologEngine.query(...).allVariablesResult()}.
+ * 
+ * 
+ * 
+ * 
  * @author Jose Zalacain
  * @since 1.0
  */

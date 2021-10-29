@@ -135,6 +135,7 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-java-
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologLogger getLogger()
 	===  UNCHANGED METHOD: PUBLIC FINAL java.lang.String getOSArch()
 	===  UNCHANGED METHOD: PUBLIC FINAL java.lang.String getOSName()
+	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.lang.String getOSVersion()
 	===  UNCHANGED METHOD: PUBLIC FINAL java.util.Set getProgramClauses()
 	===  UNCHANGED METHOD: PUBLIC FINAL java.util.Map getProgramMap()
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologProvider getProvider()
@@ -144,7 +145,10 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-java-
 	+++  NEW METHOD: PUBLIC(+) FINAL(+) boolean isEmpty()
 	===  UNCHANGED METHOD: PUBLIC FINAL boolean isProgramEmpty()
 	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.util.Set keySet()
+	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologTerm newClass(java.lang.String)
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.DefaultClauseBuilder newClauseBuilder()
+	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologTerm newMixin(java.lang.String)
+	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologTerm newMixin(java.lang.String, io.github.prolobjectlink.prolog.PrologTerm[])
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.DefaultQueryBuilder newQueryBuilder()
 	===  UNCHANGED METHOD: PUBLIC FINAL void persist(java.io.Writer)
 	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.Prologable put(java.lang.Class, io.github.prolobjectlink.prolog.Prologable)
@@ -357,7 +361,6 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-java-
 	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologThread joinThreads(io.github.prolobjectlink.prolog.PrologThread[])
 	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologThread joinThreads(java.lang.String, io.github.prolobjectlink.prolog.PrologThread[])
 	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.util.Set keySet()
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologTerm newClass(java.lang.String)
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologDouble newDouble()
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologFloat newFloat()
 	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologClause newFunction(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm)
@@ -380,8 +383,6 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-java-
 	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologClause newMethod(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm[])
 	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologClause newMethod(io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
 	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologClause newMethod(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologTerm newMixin(java.lang.String)
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologTerm newMixin(java.lang.String, io.github.prolobjectlink.prolog.PrologTerm[])
 	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.lang.Object newObject(java.lang.String)
 	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.lang.Object newObject(java.lang.String, java.lang.Object[])
 	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.lang.Object newObject(io.github.prolobjectlink.prolog.PrologAtom)
@@ -777,6 +778,7 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-java-
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT java.lang.String getName()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT java.lang.String getOSArch()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT java.lang.String getOSName()
+	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) java.lang.String getOSVersion()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT java.util.Set getPredicates()
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologProgram getProgram()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT java.util.Set getProgramClauses()
@@ -790,7 +792,10 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-java-
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT void include(java.lang.String)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT void include(java.io.Reader)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isProgramEmpty()
+	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newClass(java.lang.String)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologClauseBuilder newClauseBuilder()
+	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newMixin(java.lang.String, io.github.prolobjectlink.prolog.PrologTerm[])
+	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newMixin(java.lang.String)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologQueryBuilder newQueryBuilder()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT void operator(int, java.lang.String, java.lang.String)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT void persist(java.lang.String)
@@ -1020,12 +1025,13 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-java-
 	+++  NEW INTERFACE: java.lang.Comparable
 	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologTerm
 	+++  NEW SUPERCLASS: io.github.prolobjectlink.prolog.AbstractCompounds
+	+++  NEW FIELD: PROTECTED(+) FINAL(+) io.github.prolobjectlink.prolog.PrologEngine engine
 	+++  NEW FIELD: PROTECTED(+) FINAL(+) java.util.Set directives
 	+++  NEW FIELD: PROTECTED(+) FINAL(+) java.util.Set methods
 	+++  NEW FIELD: PROTECTED(+) FINAL(+) java.lang.String name
 	+++  NEW FIELD: PROTECTED(+) FINAL(+) java.util.Set ancestors
 	+++  NEW FIELD: PROTECTED(+) FINAL(+) java.util.Set nesteds
-	+++  NEW CONSTRUCTOR: PROTECTED(+) PrologMixin(int, io.github.prolobjectlink.prolog.PrologProvider, java.lang.String)
+	+++  NEW CONSTRUCTOR: PROTECTED(+) PrologMixin(int, io.github.prolobjectlink.prolog.PrologEngine, java.lang.String)
 	+++  NEW METHOD: PUBLIC(+) FINAL(+) void addAncestor(io.github.prolobjectlink.prolog.PrologMixin)
 	+++  NEW METHOD: PUBLIC(+) FINAL(+) void addDirective(io.github.prolobjectlink.prolog.PrologTerm)
 	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm addDirective(java.lang.String, io.github.prolobjectlink.prolog.PrologTerm[])
@@ -1156,7 +1162,6 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-java-
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologThread joinThreads(io.github.prolobjectlink.prolog.PrologThread[])
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologThread joinThreads(java.lang.String, io.github.prolobjectlink.prolog.PrologThread[])
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologAtom newAtom(java.lang.String)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newClass(java.lang.String)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologDouble newDouble()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologDouble newDouble(java.lang.Number)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologEngine newEngine()
@@ -1198,8 +1203,6 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-java-
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologClause newMethod(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm[])
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologClause newMethod(io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologClause newMethod(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newMixin(java.lang.String)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newMixin(java.lang.String, io.github.prolobjectlink.prolog.PrologTerm[])
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) java.lang.Object newObject(java.lang.String)
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) java.lang.Object newObject(java.lang.String, java.lang.Object[])
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) java.lang.Object newObject(io.github.prolobjectlink.prolog.PrologAtom)
