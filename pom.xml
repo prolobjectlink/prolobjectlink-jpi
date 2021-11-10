@@ -261,7 +261,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 					<excludes>
 						<exclude>src/main/javax</exclude>
 					</excludes>
-					<roots>
+					<roots><root>src/assembly</root><root>src/changes</root>
 						<root>src/main</root>
 						<root>src/test</root>
 						<root>src/site</root>
