@@ -114,11 +114,11 @@ public class PrologThreadPool implements Executor, ExecutorService {
 	}
 
 	PrologThreadPool(int n) {
-		executors = Executors.newWorkStealingPool(n);
+		executors = Executors.newFixedThreadPool(n);
 	}
 
 	PrologThreadPool() {
-		executors = Executors.newWorkStealingPool();
+		executors = Executors.newFixedThreadPool(0);
 	}
 
 }

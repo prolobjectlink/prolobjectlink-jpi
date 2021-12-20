@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.2.5" timestamp="2021-10-29T16:12:07.065">
-<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\AbstractConsole.java">
+<pmd version="4.2.5" timestamp="2021-12-20T12:34:10.154">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-jee-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\AbstractConsole.java">
 <violation beginline="163" endline="165" begincolumn="57" endcolumn="25" rule="EmptyIfStmt" ruleset="Basic Rules" package="io.github.prolobjectlink.prolog" class="AbstractConsole" method="run" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
 </violation>
 </file>
-<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\AbstractJavaConverter.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-jee-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\AbstractJavaConverter.java">
 <violation beginline="33" endline="316" begincolumn="1" endcolumn="3" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="io.github.prolobjectlink.prolog" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
 Too many static imports may lead to messy code
 </violation>
 </file>
-<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\AbstractTerm.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-jee-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\AbstractTerm.java">
 <violation beginline="33" endline="389" begincolumn="1" endcolumn="3" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="io.github.prolobjectlink.prolog" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
 Too many static imports may lead to messy code
 </violation>
@@ -18,7 +18,7 @@ Too many static imports may lead to messy code
 These nested if statements could be combined
 </violation>
 </file>
-<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologClass.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-jee-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologClass.java">
 <violation beginline="56" endline="61" begincolumn="25" endcolumn="9" rule="UnnecessaryFinalModifier" ruleset="Basic Rules" package="io.github.prolobjectlink.prolog" class="PrologClass" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#UnnecessaryFinalModifier" priority="3">
 Unnecessary final modifier in final class
 </violation>
@@ -83,12 +83,12 @@ Unnecessary final modifier in final class
 Unnecessary final modifier in final class
 </violation>
 </file>
-<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologThread.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-jee-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\PrologThread.java">
 <violation beginline="79" endline="82" begincolumn="9" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="io.github.prolobjectlink.prolog" class="PrologThread" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
 Avoid unused constructor parameters such as 'thread'.
 </violation>
 </file>
-<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\ReflectionUtil.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-jee-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\ReflectionUtil.java">
 <violation beginline="121" endline="126" begincolumn="27" endcolumn="25" rule="EmptyCatchBlock" ruleset="Basic Rules" package="io.github.prolobjectlink.prolog" class="ReflectionUtil" method="newInstance" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
 </violation>
