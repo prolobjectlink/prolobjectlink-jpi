@@ -1,3 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pmd-cpd>
+<duplication lines="45" tokens="237">
+<file line="66" path="C:\Users\Jose Zalacain\Documents\eclipse-jee-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\Prolog.java"/>
+<file line="64" path="C:\Users\Jose Zalacain\Documents\eclipse-jee-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\spi\ServiceProviderLocator.java"/>
+<codefragment>
+<![CDATA[
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * Create and return an instance of Prolog Provider using the Prolog Provider
+	 * class name.
+	 * 
+	 * @return an instance of Prolog Provider from the given class.
+	 * @since 1.1
+	 */
+	public static PrologProvider getProvider(String className) {
+		PrologProvider provider = null;
+		try {
+			return getProvider(Class.forName(className));
+		} catch (ClassNotFoundException e) {
+			Logger.getLogger(Prolog.class.getName()).log(Level.FINEST, null, e);
+		}
+		return provider;
+	}
+
+	/**
+	 * Create and return an instance of Prolog Provider from the given class.
+	 * 
+	 * @param providerClass Prolog Provider class used to create a new instance.
+	 * @return an instance of Prolog Provider from the given class.
+	 * @since 1.1
+	 */
+	public static PrologProvider getProvider(Class<?> providerClass) {
+		PrologProvider provider = null;
+		try {
+			Constructor<?> constructor = providerClass.getDeclaredConstructor();
+			constructor.setAccessible(true);
+			provider = (PrologProvider) providerClass.newInstance();
+			constructor.setAccessible(false);
+		} catch (InstantiationException e) {
+			Logger.getLogger(Prolog.class.getName()).log(Level.FINEST, null, e);
+		} catch (IllegalAccessException e) {
+			Logger.getLogger(Prolog.class.getName()).log(Level.FINEST, null, e);
+		} catch (NoSuchMethodException e) {
+			Logger.getLogger(Prolog.class.getName()).log(Level.FINEST, null, e);
+		} catch (SecurityException e) {
+			Logger.getLogger(Prolog.class.getName()).log(Level.FINEST, null, e);
+		}
+		return provider;
+	}
+]]>
+</codefragment>
+</duplication>
 </pmd-cpd>

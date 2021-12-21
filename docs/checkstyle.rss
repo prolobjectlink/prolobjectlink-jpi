@@ -8,8 +8,8 @@
     <language>en-us</language>
     <copyright>&#169;2020 - 2021 Prolobjectlink Project</copyright>
     <item>
-      <title>File: 86,
-             Errors: 15281,
+      <title>File: 87,
+             Errors: 15371,
              Warnings: 0,
              Infos: 0
       </title>
@@ -977,6 +977,20 @@
                 </td>
                 <td>
                   110
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.spi.ServiceProviderLocator.java">io/github/prolobjectlink/prolog/spi/ServiceProviderLocator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  90
                 </td>
               </tr>
                           <tr>
