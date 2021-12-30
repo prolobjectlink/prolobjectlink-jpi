@@ -63,7 +63,7 @@
 <a class="jxr_linenumber" name="53" href="#53">53</a>  <em class="jxr_javadoccomment"> * @author Jose Zalacain</em>
 <a class="jxr_linenumber" name="54" href="#54">54</a>  <em class="jxr_javadoccomment"> * @since 1.0</em>
 <a class="jxr_linenumber" name="55" href="#55">55</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="56" href="#56">56</a>  <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologScriptEngine.html">PrologScriptEngine</a> <strong class="jxr_keyword">extends</strong> AbstractScriptEngine <strong class="jxr_keyword">implements</strong> ScriptEngine {
+<a class="jxr_linenumber" name="56" href="#56">56</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologScriptEngine.html">PrologScriptEngine</a> <strong class="jxr_keyword">extends</strong> AbstractScriptEngine <strong class="jxr_keyword">implements</strong> ScriptEngine {
 <a class="jxr_linenumber" name="57" href="#57">57</a>  
 <a class="jxr_linenumber" name="58" href="#58">58</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologEngine.html">PrologEngine</a> prolog;
 <a class="jxr_linenumber" name="59" href="#59">59</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> ScriptEngineFactory factory;
@@ -159,7 +159,7 @@
 <a class="jxr_linenumber" name="149" href="#149">149</a> 		<strong class="jxr_keyword">return</strong> eval(reader, getContext());
 <a class="jxr_linenumber" name="150" href="#150">150</a> 	}
 <a class="jxr_linenumber" name="151" href="#151">151</a> 
-<a class="jxr_linenumber" name="152" href="#152">152</a> 	PrologProvider getProvider() {
+<a class="jxr_linenumber" name="152" href="#152">152</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologProvider.html">PrologProvider</a> getProvider() {
 <a class="jxr_linenumber" name="153" href="#153">153</a> 		<strong class="jxr_keyword">return</strong> prolog.getProvider();
 <a class="jxr_linenumber" name="154" href="#154">154</a> 	}
 <a class="jxr_linenumber" name="155" href="#155">155</a> 

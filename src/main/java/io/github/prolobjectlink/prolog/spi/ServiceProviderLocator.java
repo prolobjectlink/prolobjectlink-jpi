@@ -36,8 +36,12 @@ import java.lang.reflect.Constructor;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+
 import io.github.prolobjectlink.prolog.Prolog;
 import io.github.prolobjectlink.prolog.PrologProvider;
+import io.github.prolobjectlink.prolog.PrologScriptEngine;
 
 /**
  * Bootstrap platform class. Contains {@link #getProvider(Class)} method that
@@ -58,10 +62,9 @@ public final class ServiceProviderLocator {
 	 * @since 1.1
 	 */
 	public static PrologProvider getProvider() {
-		// ScriptEngineManager manager = new ScriptEngineManager()
-		// ScriptEngine engine = manager.getEngineByName("prolog")
-		// return ((PrologScriptEngine) engine).getProvider()
-		throw new UnsupportedOperationException();
+		ScriptEngineManager manager = new ScriptEngineManager();
+		ScriptEngine engine = manager.getEngineByName("prolog");
+		return ((PrologScriptEngine) engine).getProvider();
 	}
 
 	/**

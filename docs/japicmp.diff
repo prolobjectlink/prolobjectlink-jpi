@@ -1299,6 +1299,25 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-jee-p
 	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologTerm
 	+++  NEW SUPERCLASS: java.lang.Object
 	+++  NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm getNameTerm()
+***  MODIFIED CLASS: PUBLIC (<- PACKAGE_PROTECTED) FINAL io.github.prolobjectlink.prolog.PrologScriptEngine  (not serializable)
+	===  CLASS FILE FORMAT VERSION: 50.0 <- 50.0
+	===  UNCHANGED INTERFACE: javax.script.ScriptEngine
+	===  UNCHANGED SUPERCLASS: javax.script.AbstractScriptEngine (<- javax.script.AbstractScriptEngine)
+	===  UNCHANGED METHOD: PUBLIC javax.script.Bindings createBindings()
+	===  UNCHANGED METHOD: PUBLIC java.lang.Object eval(java.lang.String, javax.script.ScriptContext)
+		===  UNCHANGED EXCEPTION: javax.script.ScriptException
+	===  UNCHANGED METHOD: PUBLIC java.lang.Object eval(java.io.Reader, javax.script.ScriptContext)
+		===  UNCHANGED EXCEPTION: javax.script.ScriptException
+	===  UNCHANGED METHOD: PUBLIC java.lang.Object eval(java.io.Reader, javax.script.Bindings)
+		===  UNCHANGED EXCEPTION: javax.script.ScriptException
+	===  UNCHANGED METHOD: PUBLIC java.lang.Object eval(java.lang.String, javax.script.Bindings)
+		===  UNCHANGED EXCEPTION: javax.script.ScriptException
+	===  UNCHANGED METHOD: PUBLIC java.lang.Object eval(java.lang.String)
+		===  UNCHANGED EXCEPTION: javax.script.ScriptException
+	===  UNCHANGED METHOD: PUBLIC java.lang.Object eval(java.io.Reader)
+		===  UNCHANGED EXCEPTION: javax.script.ScriptException
+	===  UNCHANGED METHOD: PUBLIC javax.script.ScriptEngineFactory getFactory()
+	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologProvider getProvider()
 ===  UNCHANGED CLASS: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologScriptEngineFactory  (not serializable)
 	===  CLASS FILE FORMAT VERSION: 50.0 <- 50.0
 	===  UNCHANGED INTERFACE: javax.script.ScriptEngineFactory

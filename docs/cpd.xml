@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pmd-cpd>
-<duplication lines="45" tokens="237">
-<file line="66" path="C:\Users\Jose Zalacain\Documents\eclipse-jee-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\Prolog.java"/>
+<duplication lines="48" tokens="269">
+<file line="63" path="C:\Users\Jose Zalacain\Documents\eclipse-jee-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\Prolog.java"/>
 <file line="64" path="C:\Users\Jose Zalacain\Documents\eclipse-jee-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\spi\ServiceProviderLocator.java"/>
 <codefragment>
 <![CDATA[
-		throw new UnsupportedOperationException();
+	public static PrologProvider getProvider() {
+		ScriptEngineManager manager = new ScriptEngineManager();
+		ScriptEngine engine = manager.getEngineByName("prolog");
+		return ((PrologScriptEngine) engine).getProvider();
 	}
 
 	/**

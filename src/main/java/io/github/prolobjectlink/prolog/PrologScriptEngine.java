@@ -53,7 +53,7 @@ import javax.script.SimpleBindings;
  * @author Jose Zalacain
  * @since 1.0
  */
-final class PrologScriptEngine extends AbstractScriptEngine implements ScriptEngine {
+public final class PrologScriptEngine extends AbstractScriptEngine implements ScriptEngine {
 
 	private final PrologEngine prolog;
 	private final ScriptEngineFactory factory;
@@ -149,7 +149,7 @@ final class PrologScriptEngine extends AbstractScriptEngine implements ScriptEng
 		return eval(reader, getContext());
 	}
 
-	PrologProvider getProvider() {
+	public PrologProvider getProvider() {
 		return prolog.getProvider();
 	}
 
