@@ -78,160 +78,11 @@ public abstract class AbstractEngine implements PrologEngine {
 		}
 	}
 
-	public final void abolish(Class<?> cls) {
-		PrologTerm term = getTerm(get(cls));
-		String functor = term.getFunctor();
-		int arity = term.getArity();
-		abolish(functor, arity);
-	}
-
-	public final <O> void asserta(O o) {
-		asserta(getTerm(get(o.getClass()), o));
-	}
-
-	public final void asserta(Class<?> cls) {
-		asserta(getTerm(get(cls)));
-	}
-
-	public final <O> void asserta(O head, O... body) {
-		PrologTerm[] terms = new PrologTerm[body.length];
-		for (int i = 0; i < body.length; i++) {
-			terms[i] = getTerm(get(body[i].getClass()), body[i]);
-		}
-		PrologTerm term = getTerm(get(head.getClass()), head);
-		asserta(term, terms);
-	}
-
-	public final void asserta(Class<?> head, Class<?>... body) {
-		PrologTerm[] terms = new PrologTerm[body.length];
-		for (int i = 0; i < body.length; i++) {
-			terms[i] = getTerm(get(body[i]));
-		}
-		PrologTerm term = getTerm(get(head));
-		asserta(term, terms);
-	}
-
-	public final <O> void assertz(O o) {
-		assertz(getTerm(get(o.getClass()), o));
-	}
-
-	public final void assertz(Class<?> cls) {
-		assertz(getTerm(get(cls)));
-	}
-
-	public final <O> void assertz(O head, O... body) {
-		PrologTerm[] terms = new PrologTerm[body.length];
-		for (int i = 0; i < body.length; i++) {
-			terms[i] = getTerm(get(body[i].getClass()), body[i]);
-		}
-		PrologTerm term = getTerm(get(head.getClass()), head);
-		assertz(term, terms);
-	}
-
-	public final void assertz(Class<?> head, Class<?>... body) {
-		PrologTerm[] terms = new PrologTerm[body.length];
-		for (int i = 0; i < body.length; i++) {
-			terms[i] = getTerm(get(body[i]));
-		}
-		PrologTerm term = getTerm(get(head));
-		assertz(term, terms);
-	}
-
-	public final <O> boolean clause(O o) {
-		return clause(getTerm(get(o.getClass()), o));
-	}
-
-	public final boolean clause(Class<?> cls) {
-		return clause(getTerm(get(cls)));
-	}
-
-	public final <O> boolean clause(O head, O... body) {
-		PrologTerm[] terms = new PrologTerm[body.length];
-		for (int i = 0; i < body.length; i++) {
-			terms[i] = getTerm(get(body[i].getClass()), body[i]);
-		}
-		PrologTerm term = getTerm(get(head.getClass()), head);
-		return clause(term, terms);
-	}
-
-	public final boolean clause(Class<?> head, Class<?>... body) {
-		PrologTerm[] terms = new PrologTerm[body.length];
-		for (int i = 0; i < body.length; i++) {
-			terms[i] = getTerm(get(body[i]));
-		}
-		PrologTerm term = getTerm(get(head));
-		return clause(term, terms);
-	}
-
-	public final <O> void retract(O o) {
-		retract(getTerm(get(o.getClass()), o));
-	}
-
-	public final void retract(Class<?> cls) {
-		retract(getTerm(get(cls)));
-	}
-
-	public final <O> void retract(O head, O... body) {
-		PrologTerm[] terms = new PrologTerm[body.length];
-		for (int i = 0; i < body.length; i++) {
-			terms[i] = getTerm(get(body[i].getClass()), body[i]);
-		}
-		PrologTerm term = getTerm(get(head.getClass()), head);
-		retract(term, terms);
-	}
-
-	public final void retract(Class<?> head, Class<?>... body) {
-		PrologTerm[] terms = new PrologTerm[body.length];
-		for (int i = 0; i < body.length; i++) {
-			terms[i] = getTerm(get(body[i]));
-		}
-		PrologTerm term = getTerm(get(head));
-		retract(term, terms);
-	}
-
-	public boolean unify(Object o1, Object o2) {
-		if (!o1.equals(o2)) {
-			PrologTerm t1 = null;
-			PrologTerm t2 = null;
-			try {
-				t1 = provider.getJavaConverter().toTerm(o1);
-				t2 = provider.getJavaConverter().toTerm(o2);
-			} catch (UnknownTermError e) {
-				t1 = get(o1.getClass()).toTerm(provider, o1);
-				t2 = get(o2.getClass()).toTerm(provider, o2);
-			}
-			return unify(t1, t2);
-		}
-		return true;
-	}
-
-	public boolean unify(Class<?> cls1, Class<?> cls2) {
-		if (cls1 != cls2) {
-			Prologable<?> p1 = get(cls1);
-			Prologable<?> p2 = get(cls2);
-			if (p1 == null || p2 == null) {
-				return false;
-			}
-			PrologTerm t1 = p1.toTerm(provider);
-			PrologTerm t2 = p2.toTerm(provider);
-			return unify(t1, t2);
-		}
-		return true;
-	}
-
 	public final boolean unify(PrologTerm t1, PrologTerm t2) {
 		return t1.unify(t2);
 	}
 
 	public final boolean contains(String goal) {
-		return query(goal).hasSolution();
-	}
-
-	public final <O> boolean contains(O goal) {
-		return query(goal).hasSolution();
-	}
-
-	public final boolean contains(Class<?> goal) {
 		return query(goal).hasSolution();
 	}
 
@@ -243,49 +94,7 @@ public abstract class AbstractEngine implements PrologEngine {
 		return query(goal, goals).hasSolution();
 	}
 
-	public final <O> boolean contains(O goal, O... goals) {
-		return query(goal, goals).hasSolution();
-	}
-
-	public final boolean contains(Class<?> goal, Class<?>... goals) {
-		return query(goal, goals).hasSolution();
-	}
-
-	public final <O> PrologQuery query(O goal) {
-		return query(get(goal.getClass()).toTerm(provider, goal));
-	}
-
-	public final PrologQuery query(Class<?> goal) {
-		return query(get(goal).toTerm(provider));
-	}
-
-	public final <O> PrologQuery query(O goal, O... goals) {
-		PrologTerm[] terms = new PrologTerm[goals.length];
-		for (int i = 0; i < goals.length; i++) {
-			terms[i] = getTerm(get(goals[i].getClass()), goals[i]);
-		}
-		PrologTerm term = getTerm(get(goal.getClass()), goal);
-		return query(term, terms);
-	}
-
-	public final PrologQuery query(Class<?> goal, Class<?>... goals) {
-		PrologTerm[] terms = new PrologTerm[goals.length];
-		for (int i = 0; i < goals.length; i++) {
-			terms[i] = getTerm(get(goals[i]));
-		}
-		PrologTerm term = getTerm(get(goal));
-		return query(term, terms);
-	}
-
 	public final Map<String, PrologTerm> queryOne(String goal) {
-		return query(goal).oneVariablesSolution();
-	}
-
-	public final Map<String, PrologTerm> queryOne(Class<?> goal) {
-		return query(goal).oneVariablesSolution();
-	}
-
-	public final <O> Map<String, PrologTerm> queryOne(O goal) {
 		return query(goal).oneVariablesSolution();
 	}
 
@@ -297,25 +106,7 @@ public abstract class AbstractEngine implements PrologEngine {
 		return query(goal, goals).oneVariablesSolution();
 	}
 
-	public final Map<String, PrologTerm> queryOne(Class<?> goal, Class<?>... goals) {
-		return query(goal, goals).oneVariablesSolution();
-	}
-
-	public final <O> Map<String, PrologTerm> queryOne(O goal, O... goals) {
-		return query(goal, goals).oneVariablesSolution();
-	}
-
 	public final List<Map<String, PrologTerm>> queryN(int n, String goal) {
-		return Arrays.asList(query(goal).nVariablesSolutions(n));
-	}
-
-	@Override
-	public final List<Map<String, PrologTerm>> queryN(int n, Class<?> goal) {
-		return Arrays.asList(query(get(goal).toTerm(provider)).nVariablesSolutions(n));
-	}
-
-	@Override
-	public final <O> List<Map<String, PrologTerm>> queryN(int n, O goal) {
 		return Arrays.asList(query(goal).nVariablesSolutions(n));
 	}
 
@@ -327,28 +118,7 @@ public abstract class AbstractEngine implements PrologEngine {
 		return Arrays.asList(query(term, terms).nVariablesSolutions(n));
 	}
 
-	@Override
-	public final List<Map<String, PrologTerm>> queryN(int n, Class<?> goal, Class<?>... goals) {
-		return Arrays.asList(query(goal, goals).nVariablesSolutions(n));
-	}
-
-	@Override
-	public final <O> List<Map<String, PrologTerm>> queryN(int n, O goal, O... goals) {
-		return Arrays.asList(query(goal, goals).nVariablesSolutions(n));
-	}
-
 	public final List<Map<String, PrologTerm>> queryAll(String goal) {
-		return query(goal).all();
-	}
-
-	@Override
-	public final List<Map<String, PrologTerm>> queryAll(Class<?> goal) {
-		PrologTerm term = get(goal).toTerm(provider);
-		return query(term).all();
-	}
-
-	@Override
-	public final <O> List<Map<String, PrologTerm>> queryAll(O goal) {
 		return query(goal).all();
 	}
 
@@ -357,16 +127,6 @@ public abstract class AbstractEngine implements PrologEngine {
 	}
 
 	public final List<Map<String, PrologTerm>> queryAll(PrologTerm goal, PrologTerm... goals) {
-		return query(goal, goals).all();
-	}
-
-	@Override
-	public final List<Map<String, PrologTerm>> queryAll(Class<?> goal, Class<?>... goals) {
-		return query(goal, goals).all();
-	}
-
-	@Override
-	public final <O> List<Map<String, PrologTerm>> queryAll(O goal, O... goals) {
 		return query(goal, goals).all();
 	}
 
@@ -458,83 +218,6 @@ public abstract class AbstractEngine implements PrologEngine {
 
 	public final PrologLogger getLogger() {
 		return provider.getLogger();
-	}
-
-	@Override
-	public final int size() {
-		return provider.size();
-	}
-
-	@Override
-	public final boolean isEmpty() {
-		return provider.isEmpty();
-	}
-
-	@Override
-	public final boolean containsKey(Object key) {
-		return provider.containsKey(key);
-	}
-
-	@Override
-	public final boolean containsValue(Object value) {
-		return provider.containsValue(value);
-	}
-
-	@Override
-	public final Prologable<?> get(Object key) {
-		return provider.get(key);
-	}
-
-	@Override
-	public final Prologable<?> put(Class<?> key, Prologable<?> value) {
-		return provider.put(key, value);
-	}
-
-	@Override
-	public final Prologable<?> remove(Object key) {
-		return provider.remove(key);
-	}
-
-	@Override
-	public final void putAll(Map<? extends Class<?>, ? extends Prologable<?>> m) {
-		provider.putAll(m);
-	}
-
-	@Override
-	public final void clear() {
-		provider.clear();
-	}
-
-	@Override
-	public final Set<Class<?>> keySet() {
-		return provider.keySet();
-	}
-
-	@Override
-	public final Collection<Prologable<?>> values() {
-		return provider.values();
-	}
-
-	@Override
-	public final Set<Entry<Class<?>, Prologable<?>>> entrySet() {
-		return provider.entrySet();
-	}
-
-	@Override
-	public final void register(Prologable<?> mapping) {
-		put(mapping.getType(), mapping);
-	}
-
-	public final PrologTerm getTerm(Prologable<?> mapping) {
-		return mapping.toTerm(provider);
-	}
-
-	public final <O> PrologTerm getTerm(Prologable<?> mapping, O o) {
-		return mapping.toTerm(provider, o);
-	}
-
-	public final void unregister(Prologable<?> mapping) {
-		remove(mapping.getType());
 	}
 
 	protected final <K extends PrologTerm> K toTerm(Object o, Class<K> from) {

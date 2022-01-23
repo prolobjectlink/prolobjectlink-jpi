@@ -46,14 +46,11 @@ import static io.github.prolobjectlink.prolog.PrologTermType.TRUE_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.VARIABLE_TYPE;
 
 import java.lang.reflect.Array;
-import java.util.AbstractMap;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.Map.Entry;
 
 /**
  * Partial implementation of {@link PrologJavaConverter} interface.
@@ -61,15 +58,10 @@ import java.util.Set;
  * @author Jose Zalacain
  * @since 1.0
  */
-public abstract class AbstractJavaConverter extends AbstractMap<Class<?>, Prologable<?>>
+public abstract class AbstractJavaConverter 
 		implements PrologJavaConverter {
 
 	private final PrologProvider provider;
-	private static final Map<Class<?>, Prologable<?>> converters;
-
-	static {
-		converters = new IdentityHashMap<Class<?>, Prologable<?>>();
-	}
 
 	protected AbstractJavaConverter(PrologProvider provider) {
 		this.provider = provider;
@@ -209,82 +201,6 @@ public abstract class AbstractJavaConverter extends AbstractMap<Class<?>, Prolog
 			list.add(toObjectList(prologTerms));
 		}
 		return list;
-	}
-
-	@Override
-	public final int size() {
-		return converters.size();
-	}
-
-	@Override
-	public final boolean isEmpty() {
-		return converters.isEmpty();
-	}
-
-	@Override
-	public final boolean containsKey(Object key) {
-		return converters.containsKey(key);
-	}
-
-	@Override
-	public final boolean containsValue(Object value) {
-		return converters.containsValue(value);
-	}
-
-	@Override
-	public final Prologable<?> get(Object key) {
-		return converters.get(key);
-	}
-
-	@Override
-	public final Prologable<?> put(Class<?> key, Prologable<?> value) {
-		return converters.put(key, value);
-	}
-
-	@Override
-	public final Prologable<?> remove(Object key) {
-		return converters.remove(key);
-	}
-
-	@Override
-	public final void putAll(Map<? extends Class<?>, ? extends Prologable<?>> m) {
-		converters.putAll(m);
-	}
-
-	@Override
-	public final void clear() {
-		converters.clear();
-	}
-
-	@Override
-	public final Set<Class<?>> keySet() {
-		return converters.keySet();
-	}
-
-	@Override
-	public final Collection<Prologable<?>> values() {
-		return converters.values();
-	}
-
-	@Override
-	public final Set<Entry<Class<?>, Prologable<?>>> entrySet() {
-		return converters.entrySet();
-	}
-
-	public final void register(Prologable<?> mapping) {
-		put(mapping.getType(), mapping);
-	}
-
-	public final PrologTerm getTerm(Prologable<?> mapping) {
-		return mapping.toTerm(provider);
-	}
-
-	public final <O> PrologTerm getTerm(Prologable<?> mapping, O o) {
-		return mapping.toTerm(provider, o);
-	}
-
-	public void unregister(Prologable<?> mapping) {
-		remove(mapping.getType());
 	}
 
 	@Override

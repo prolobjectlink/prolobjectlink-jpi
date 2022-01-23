@@ -6,10 +6,10 @@
     <link>https://prolobjectlink.github.io/prolobjectlink-jpi</link>
     <description>prolobjectlink-jpi - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2020 - 2021 Prolobjectlink Project</copyright>
+    <copyright>&#169;2020 - 2022 Prolobjectlink Project</copyright>
     <item>
-      <title>File: 87,
-             Errors: 15370,
+      <title>File: 86,
+             Errors: 13967,
              Warnings: 0,
              Infos: 0
       </title>
@@ -66,7 +66,7 @@
                   0
                 </td>
                 <td>
-                  1952
+                  1316
                 </td>
               </tr>
                           <tr>
@@ -192,7 +192,7 @@
                   0
                 </td>
                 <td>
-                  198
+                  150
                 </td>
               </tr>
                           <tr>
@@ -234,7 +234,7 @@
                   0
                 </td>
                 <td>
-                  303
+                  219
                 </td>
               </tr>
                           <tr>
@@ -388,7 +388,7 @@
                   0
                 </td>
                 <td>
-                  1442
+                  1396
                 </td>
               </tr>
                           <tr>
@@ -416,7 +416,7 @@
                   0
                 </td>
                 <td>
-                  711
+                  330
                 </td>
               </tr>
                           <tr>
@@ -599,20 +599,6 @@
                 </td>
                 <td>
                   125
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.Prologable.java">io/github/prolobjectlink/prolog/Prologable.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  118
                 </td>
               </tr>
                           <tr>
@@ -1004,7 +990,7 @@
                   0
                 </td>
                 <td>
-                  895
+                  817
                 </td>
               </tr>
                           <tr>
@@ -1144,7 +1130,7 @@
                   0
                 </td>
                 <td>
-                  401
+                  389
                 </td>
               </tr>
                           <tr>

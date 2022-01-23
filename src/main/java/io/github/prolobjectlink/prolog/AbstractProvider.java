@@ -35,7 +35,6 @@ package io.github.prolobjectlink.prolog;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -593,70 +592,6 @@ public abstract class AbstractProvider implements PrologProvider {
 		if (!term.isStructure()) {
 			throw new StructureExpectedError(term);
 		}
-	}
-
-	public final int size() {
-		return getJavaConverter().size();
-	}
-
-	public final boolean isEmpty() {
-		return getJavaConverter().isEmpty();
-	}
-
-	public final boolean containsKey(Object key) {
-		return getJavaConverter().containsKey(key);
-	}
-
-	public final boolean containsValue(Object value) {
-		return getJavaConverter().containsValue(value);
-	}
-
-	public final Prologable<?> get(Object key) {
-		return getJavaConverter().get(key);
-	}
-
-	public final Prologable<?> put(Class<?> key, Prologable<?> value) {
-		return getJavaConverter().put(key, value);
-	}
-
-	public final Prologable<?> remove(Object key) {
-		return getJavaConverter().remove(key);
-	}
-
-	public final void putAll(Map<? extends Class<?>, ? extends Prologable<?>> m) {
-		getJavaConverter().putAll(m);
-	}
-
-	public final void clear() {
-		getJavaConverter().clear();
-	}
-
-	public final Set<Class<?>> keySet() {
-		return getJavaConverter().keySet();
-	}
-
-	public final Collection<Prologable<?>> values() {
-		return getJavaConverter().values();
-	}
-
-	public final Set<Entry<Class<?>, Prologable<?>>> entrySet() {
-		return getJavaConverter().entrySet();
-	}
-
-	public final void register(Prologable<?> mapping) {
-		put(mapping.getType(), mapping);
-	}
-
-	public final PrologTerm getTerm(Prologable<?> mapping) {
-		return mapping.toTerm(this);
-	}
-
-	public final <O> PrologTerm getTerm(Prologable<?> mapping, O o) {
-		return mapping.toTerm(this, o);
-	}
-
-	public void unregister(Prologable<?> mapping) {
-		remove(mapping.getType());
 	}
 
 }

@@ -92,7 +92,7 @@ import java.util.Map;
  * @author Jose Zalacain
  * @since 1.0
  */
-public interface PrologJavaConverter extends Map<Class<?>, Prologable<?>> {
+public interface PrologJavaConverter {
 
 	/**
 	 * Create an equivalent Java object map list using the given Prolog terms map
@@ -195,41 +195,5 @@ public interface PrologJavaConverter extends Map<Class<?>, Prologable<?>> {
 	 * @since 1.0
 	 */
 	public String removeQuotes(String functor);
-
-	/**
-	 * Register a PrologMapping to be used in object conversions
-	 * 
-	 * @param mapping PrologMapping to be used in object conversions.
-	 * @since 1.1
-	 */
-	public void register(Prologable<?> mapping);
-
-	/**
-	 * Return a the most general form PrologTerm implicit in the PrologMapping
-	 * 
-	 * @param mapping PrologMapping to resolve PrologTerm
-	 * @return the most general form PrologTerm implicit in the PrologMapping
-	 * @since 1.1
-	 */
-	public PrologTerm getTerm(Prologable<?> mapping);
-
-	/**
-	 * Return the PrologTerm equivalent to Java object using the correspondent
-	 * PrologMapping
-	 * 
-	 * @param mapping mapping PrologMapping to resolve PrologTerm
-	 * @param o       Java object to convert in PrologTerm
-	 * @return the PrologTerm equivalent to Java object
-	 * @since 1.1
-	 */
-	public <O> PrologTerm getTerm(Prologable<?> mapping, O o);
-
-	/**
-	 * Remove a PrologMapping to be used in object conversions
-	 * 
-	 * @param mapping PrologMapping to be removed.
-	 * @since 1.1
-	 */
-	public void unregister(Prologable<?> mapping);
 
 }

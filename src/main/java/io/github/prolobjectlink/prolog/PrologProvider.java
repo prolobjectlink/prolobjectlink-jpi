@@ -49,7 +49,7 @@ import java.util.Map;
  * @author Jose Zalacain
  * @since 1.0
  */
-public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?>> {
+public interface PrologProvider extends PrologParser {
 
 	/**
 	 * True if wrapped engine implement ISO Prolog and false in other case
@@ -439,7 +439,7 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 
 	/**
 	 * Create a new PrologEntry using key-value pair of PrologTerm type. The
-	 * resulting term is an implementation of {@link Entry} and {@link PrologTerm}.
+	 * resulting term is an implementation of {@link PrologEntry} and {@link PrologTerm}.
 	 * 
 	 * @param key   key of the entry
 	 * @param value value of the entry
@@ -451,7 +451,7 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 	/**
 	 * Create a new PrologEntry using key-value pair of Java object type.The given
 	 * objects are converted to PrologTerm before entry creation. The resulting term
-	 * is an implementation of {@link Entry} and {@link PrologTerm}.
+	 * is an implementation of {@link PrologEntry} and {@link PrologTerm}.
 	 * 
 	 * @param key   key of the entry
 	 * @param value value of the entry
@@ -543,42 +543,6 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 	 * @since 1.1
 	 */
 	public <T extends PrologTerm> T cast(PrologTerm term);
-
-	/**
-	 * Register a PrologMapping to be used in object conversions
-	 * 
-	 * @param mapping PrologMapping to be used in object conversions.
-	 * @since 1.1
-	 */
-	public void register(Prologable<?> mapping);
-
-	/**
-	 * Return a the most general form PrologTerm implicit in the PrologMapping
-	 * 
-	 * @param mapping PrologMapping to resolve PrologTerm
-	 * @return the most general form PrologTerm implicit in the PrologMapping
-	 * @since 1.1
-	 */
-	public PrologTerm getTerm(Prologable<?> mapping);
-
-	/**
-	 * Return the PrologTerm equivalent to Java object using the correspondent
-	 * PrologMapping
-	 * 
-	 * @param mapping mapping PrologMapping to resolve PrologTerm
-	 * @param o       Java object to convert in PrologTerm
-	 * @return the PrologTerm equivalent to Java object
-	 * @since 1.1
-	 */
-	public <O> PrologTerm getTerm(Prologable<?> mapping, O o);
-
-	/**
-	 * Remove a PrologMapping to be used in object conversions
-	 * 
-	 * @param mapping PrologMapping to be removed.
-	 * @since 1.1
-	 */
-	public void unregister(Prologable<?> mapping);
 
 	/**
 	 * Create an object instance using the class name for instantiation to the
@@ -815,7 +779,7 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 
 	/**
 	 * Create a new PrologField using name of PrologTerm type. The resulting term is
-	 * an implementation of {@link Entry} and {@link PrologTerm}.
+	 * an implementation of {@link PrologEntry} and {@link PrologTerm}.
 	 * 
 	 * @param name key of the entry
 	 * @return new PrologEntry term
@@ -826,7 +790,7 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 	/**
 	 * Create a new PrologField using name of String type.The given objects are
 	 * converted to PrologTerm before entry creation. The resulting term is an
-	 * implementation of {@link Entry} and {@link PrologTerm}.
+	 * implementation of {@link PrologEntry} and {@link PrologTerm}.
 	 * 
 	 * @param name key of the entry
 	 * @return new PrologEntry term
@@ -836,7 +800,7 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 
 	/**
 	 * Create a new PrologField using name-type pair of PrologTerm. The resulting
-	 * term is an implementation of {@link Entry} and {@link PrologTerm}.
+	 * term is an implementation of {@link PrologEntry} and {@link PrologTerm}.
 	 * 
 	 * @param name key of the entry
 	 * @param type value of the entry
@@ -848,7 +812,7 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 	/**
 	 * Create a new PrologField using name-type pair of String.The given objects are
 	 * converted to PrologTerm before entry creation. The resulting term is an
-	 * implementation of {@link Entry} and {@link PrologTerm}.
+	 * implementation of {@link PrologEntry} and {@link PrologTerm}.
 	 * 
 	 * @param name key of the entry
 	 * @param type value of the entry
@@ -859,7 +823,7 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 
 	/**
 	 * Create a new PrologResult using name of PrologTerm type. The resulting term
-	 * is an implementation of {@link Entry} and {@link PrologTerm}.
+	 * is an implementation of {@link PrologEntry} and {@link PrologTerm}.
 	 * 
 	 * @param name key of the entry
 	 * @return new PrologEntry term
@@ -870,7 +834,7 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 	/**
 	 * Create a new PrologResult using name of String type.The given objects are
 	 * converted to PrologTerm before entry creation. The resulting term is an
-	 * implementation of {@link Entry} and {@link PrologTerm}.
+	 * implementation of {@link PrologEntry} and {@link PrologTerm}.
 	 * 
 	 * @param name key of the entry
 	 * @return new PrologEntry term
@@ -880,7 +844,7 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 
 	/**
 	 * Create a new PrologResult using name-type pair of PrologTerm. The resulting
-	 * term is an implementation of {@link Entry} and {@link PrologTerm}.
+	 * term is an implementation of {@link PrologEntry} and {@link PrologTerm}.
 	 * 
 	 * @param name key of the entry
 	 * @param type value of the entry
@@ -892,7 +856,7 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 	/**
 	 * Create a new PrologResult using name-type pair of String.The given objects
 	 * are converted to PrologTerm before entry creation. The resulting term is an
-	 * implementation of {@link Entry} and {@link PrologTerm}.
+	 * implementation of {@link PrologEntry} and {@link PrologTerm}.
 	 * 
 	 * @param name key of the entry
 	 * @param type value of the entry
@@ -903,7 +867,7 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 
 	/**
 	 * Create a new PrologParameter using name of PrologTerm type. The resulting
-	 * term is an implementation of {@link Entry} and {@link PrologTerm}.
+	 * term is an implementation of {@link PrologEntry} and {@link PrologTerm}.
 	 * 
 	 * @param name key of the entry
 	 * @return new PrologEntry term
@@ -914,7 +878,7 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 	/**
 	 * Create a new PrologParameter using name of String type.The given objects are
 	 * converted to PrologTerm before entry creation. The resulting term is an
-	 * implementation of {@link Entry} and {@link PrologTerm}.
+	 * implementation of {@link PrologEntry} and {@link PrologTerm}.
 	 * 
 	 * @param name key of the entry
 	 * @return new PrologEntry term
@@ -924,7 +888,7 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 
 	/**
 	 * Create a new PrologParameter using name-type pair of PrologTerm. The
-	 * resulting term is an implementation of {@link Entry} and {@link PrologTerm}.
+	 * resulting term is an implementation of {@link PrologEntry} and {@link PrologTerm}.
 	 * 
 	 * @param name key of the entry
 	 * @param type value of the entry
@@ -936,7 +900,7 @@ public interface PrologProvider extends PrologParser, Map<Class<?>, Prologable<?
 	/**
 	 * Create a new PrologParameter using name-type pair of String.The given objects
 	 * are converted to PrologTerm before entry creation. The resulting term is an
-	 * implementation of {@link Entry} and {@link PrologTerm}.
+	 * implementation of {@link PrologEntry} and {@link PrologTerm}.
 	 * 
 	 * @param name key of the entry
 	 * @param type value of the entry

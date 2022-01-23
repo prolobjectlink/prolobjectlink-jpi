@@ -128,7 +128,7 @@
 <a class="jxr_linenumber" name="118" href="#118">118</a> 	}
 <a class="jxr_linenumber" name="119" href="#119">119</a> 
 <a class="jxr_linenumber" name="120" href="#120">120</a> 	PrologThreadPool() {
-<a class="jxr_linenumber" name="121" href="#121">121</a> 		executors = Executors.newFixedThreadPool(0);
+<a class="jxr_linenumber" name="121" href="#121">121</a> 		executors = Executors.newCachedThreadPool();
 <a class="jxr_linenumber" name="122" href="#122">122</a> 	}
 <a class="jxr_linenumber" name="123" href="#123">123</a> 
 <a class="jxr_linenumber" name="124" href="#124">124</a> }

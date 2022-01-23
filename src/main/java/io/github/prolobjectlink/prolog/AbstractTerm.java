@@ -55,7 +55,6 @@ import static io.github.prolobjectlink.prolog.PrologTermType.TRUE_TYPE;
 import static io.github.prolobjectlink.prolog.PrologTermType.VARIABLE_TYPE;
 
 import java.util.ArrayDeque;
-import java.util.Collection;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
@@ -204,18 +203,7 @@ public abstract class AbstractTerm implements PrologTerm {
 		case LIST_TYPE:
 			return fromTermArray(term.getArguments(), Object[].class);
 		case STRUCTURE_TYPE:
-			// NOTE if structure no have mapping
-			// the term itself will be returned ???
-			// Object object = term
-			Object object = null;
-			Collection<Prologable<?>> c = provider.values();
-			for (Prologable<?> prologMapping : c) {
-				PrologTerm mgu = prologMapping.toTerm(provider);
-				if (mgu.unify(term)) {
-					object = prologMapping.fromTerm(provider, term);
-				}
-			}
-			return object;
+			return term;
 		case OBJECT_TYPE:
 			return term.getObject();
 		case FIELD_TYPE:
