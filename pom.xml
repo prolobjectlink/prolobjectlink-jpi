@@ -1,6 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.github.prolobjectlink</groupId>
 	<artifactId>prolobjectlink-jpi</artifactId>
@@ -54,7 +52,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 		<developerConnection>scm:git:https://github.com/prolobjectlink/${project.name}.git</developerConnection>
 		<connection>scm:git:https://github.com/prolobjectlink/${project.name}.git</connection>
 		<url>https://prolobjectlink.github.io/${project.name}</url>
-		<tag>v@{project.version}</tag>
+		<tag>prolobjectlink-jpi-all-1.1</tag>
 	</scm>
 
 	<ciManagement>
@@ -469,19 +467,17 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 					<excludeSubProjects>false</excludeSubProjects>
 					<numUnapprovedLicenses>0</numUnapprovedLicenses>
 					<licenses>
-						<license
-							implementation="org.apache.rat.analysis.license.SimplePatternBasedLicense">
+						<license implementation="org.apache.rat.analysis.license.SimplePatternBasedLicense">
 							<licenseFamilyCategory>BSD</licenseFamilyCategory>
 							<licenseFamilyName>Berkeley Software Distribution</licenseFamilyName>
-							<notes></notes>
+							<notes />
 							<patterns>
 								<pattern>Redistribution and use in source and binary forms,</pattern>
 							</patterns>
 						</license>
 					</licenses>
 					<licenseFamilies>
-						<licenseFamily
-							implementation="org.apache.rat.license.SimpleLicenseFamily">
+						<licenseFamily implementation="org.apache.rat.license.SimpleLicenseFamily">
 							<familyName>Berkeley Software Distribution</familyName>
 						</licenseFamily>
 					</licenseFamilies>
