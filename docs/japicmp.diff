@@ -1,4 +1,4 @@
-Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-jee-photon-workspace\prolobjectlink-jpi\target\prolobjectlink-jpi-1.1-SNAPSHOT.jar against C:\Users\Jose Zalacain\.m2\repository\io\github\prolobjectlink\prolobjectlink-jpi\1.0\prolobjectlink-jpi-1.0.jar
+Comparing source compatibility of C:\eclipse-jee-photon-workspace\prolobjectlink-jpi\target\prolobjectlink-jpi-1.1.jar against C:\Users\Jose Zalacain\.m2\repository\io\github\prolobjectlink\prolobjectlink-jpi\1.0\prolobjectlink-jpi-1.0.jar
 ***  MODIFIED CLASS: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.AbstractClause  (not serializable)
 	===  CLASS FILE FORMAT VERSION: 50.0 <- 50.0
 	===* UNCHANGED INTERFACE: io.github.prolobjectlink.prolog.PrologClause
@@ -118,10 +118,7 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-jee-p
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologProvider getProvider()
 	===  UNCHANGED METHOD: PUBLIC int hashCode()
 	===  UNCHANGED METHOD: PUBLIC FINAL boolean isProgramEmpty()
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologTerm newClass(java.lang.String)
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.DefaultClauseBuilder newClauseBuilder()
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologTerm newMixin(java.lang.String)
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologTerm newMixin(java.lang.String, io.github.prolobjectlink.prolog.PrologTerm[])
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.DefaultQueryBuilder newQueryBuilder()
 	===  UNCHANGED METHOD: PUBLIC FINAL void persist(java.io.Writer)
 	===  UNCHANGED METHOD: PUBLIC FINAL java.util.List queryAll(java.lang.String)
@@ -280,14 +277,6 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-jee-p
 	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologThread joinThreads(java.lang.String, io.github.prolobjectlink.prolog.PrologThread[])
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologDouble newDouble()
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologFloat newFloat()
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologClause newFunction(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm)
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologClause newFunction(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm)
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologClause newFunction(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm[])
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologClause newFunction(io.github.prolobjectlink.prolog.PrologTerm, java.lang.Object)
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologClause newFunction(io.github.prolobjectlink.prolog.PrologTerm, java.lang.Object, io.github.prolobjectlink.prolog.PrologTerm)
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologClause newFunction(io.github.prolobjectlink.prolog.PrologTerm, java.lang.Object, io.github.prolobjectlink.prolog.PrologTerm[])
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologClause newFunction(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologClause newFunction(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologInteger newInteger()
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologList newList(io.github.prolobjectlink.prolog.PrologTerm)
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologList newList(java.lang.Object)
@@ -295,11 +284,6 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-jee-p
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologList newList(java.lang.Object, java.lang.Object)
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologList newList(java.lang.Object[], java.lang.Object)
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologLong newLong()
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologClause newMethod(io.github.prolobjectlink.prolog.PrologTerm)
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologClause newMethod(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm)
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologClause newMethod(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm[])
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologClause newMethod(io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologClause newMethod(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
 	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.lang.Object newObject(java.lang.String)
 	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.lang.Object newObject(java.lang.String, java.lang.Object[])
 	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.lang.Object newObject(io.github.prolobjectlink.prolog.PrologAtom)
@@ -505,35 +489,6 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-jee-p
 	+++  NEW INTERFACE: java.lang.Comparable
 	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologTerm
 	+++  NEW SUPERCLASS: java.lang.Object
-+++* NEW CLASS: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologClass  (not serializable)
-	+++  CLASS FILE FORMAT VERSION: 50.0 <- n.a.
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologElement
-	+++  NEW INTERFACE: java.lang.Comparable
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologTerm
-	+++  NEW SUPERCLASS: io.github.prolobjectlink.prolog.PrologMixin
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) void addConstructor(io.github.prolobjectlink.prolog.PrologClause)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologClause addConstructor(io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologClause addConstructor(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) void addField(io.github.prolobjectlink.prolog.PrologTerm)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTypedField addField(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTypedField addField(java.lang.String, java.lang.String)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologClass addNestedClass(java.lang.String)
-	+++  NEW METHOD: PROTECTED(+) FINAL(+) void checkClassFunctor(io.github.prolobjectlink.prolog.PrologClause)
-	+++  NEW METHOD: PUBLIC(+) boolean equals(java.lang.Object)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologClause[] findConstructor(java.lang.String, io.github.prolobjectlink.prolog.PrologTerm[])
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm findField(java.lang.String)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm[] getArguments()
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) int getArity()
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.util.Collection getConstructors()
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.util.Collection getFields()
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologMixin getSuperclass()
-	+++  NEW METHOD: PUBLIC(+) int hashCode()
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) boolean isInstance(io.github.prolobjectlink.prolog.PrologTerm)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm newInstance()
-	+++  NEW METHOD: PROTECTED(+) FINAL(+) void removeConstructor(io.github.prolobjectlink.prolog.PrologMethod)
-	+++  NEW METHOD: PROTECTED(+) FINAL(+) void removeFields(io.github.prolobjectlink.prolog.PrologTypedField)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) void setSuperclass(io.github.prolobjectlink.prolog.PrologMixin)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.lang.String toString()
 **** MODIFIED INTERFACE: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologClause  (not serializable)
 	===  CLASS FILE FORMAT VERSION: 50.0 <- 50.0
 	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologElement
@@ -675,10 +630,7 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-jee-p
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT void include(java.lang.String)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT void include(java.io.Reader)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isProgramEmpty()
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newClass(java.lang.String)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologClauseBuilder newClauseBuilder()
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newMixin(java.lang.String, io.github.prolobjectlink.prolog.PrologTerm[])
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newMixin(java.lang.String)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologQueryBuilder newQueryBuilder()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT void operator(int, java.lang.String, java.lang.String)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT void persist(java.lang.String)
@@ -717,14 +669,6 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-jee-p
 	===  UNCHANGED SUPERCLASS: java.lang.Error (<- java.lang.Error)
 	===  UNCHANGED CONSTRUCTOR: PUBLIC PrologError(java.lang.String)
 	===  UNCHANGED CONSTRUCTOR: PUBLIC PrologError(java.lang.String, java.lang.Throwable)
-+++  NEW INTERFACE: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologField  (not serializable)
-	+++  CLASS FILE FORMAT VERSION: 50.0 <- n.a.
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologVariable
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologElement
-	+++  NEW INTERFACE: java.lang.Comparable
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologTerm
-	+++  NEW SUPERCLASS: java.lang.Object
-	+++  NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm getNameTerm()
 ===* UNCHANGED INTERFACE: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologFloat  (not serializable)
 	===  CLASS FILE FORMAT VERSION: 50.0 <- 50.0
 	===* UNCHANGED INTERFACE: io.github.prolobjectlink.prolog.PrologNumber
@@ -736,17 +680,6 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-jee-p
 	===  CLASS FILE FORMAT VERSION: 50.0 <- 50.0
 	===  UNCHANGED SUPERCLASS: java.lang.Object (<- java.lang.Object)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT java.lang.String format(java.util.logging.LogRecord)
-+++* NEW CLASS: PUBLIC(+) io.github.prolobjectlink.prolog.PrologFunction  (not serializable)
-	+++  CLASS FILE FORMAT VERSION: 50.0 <- n.a.
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologClause
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologElement
-	+++  NEW SUPERCLASS: io.github.prolobjectlink.prolog.PrologMethod
-	+++  NEW METHOD: PUBLIC(+) boolean equals(java.lang.Object)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm getResult()
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm getTerm()
-	+++  NEW METHOD: PUBLIC(+) int hashCode()
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) boolean isFunction()
-	+++  NEW METHOD: PUBLIC(+) java.lang.String toString()
 ===  UNCHANGED INTERFACE: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologIndicator  (not serializable)
 	===  CLASS FILE FORMAT VERSION: 50.0 <- 50.0
 	===  UNCHANGED SUPERCLASS: java.lang.Object (<- java.lang.Object)
@@ -846,84 +779,6 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-jee-p
 	+++  NEW METHOD: PUBLIC(+) ABSTRACT(+) void put(java.util.Map$Entry)
 	+++  NEW METHOD: PUBLIC(+) ABSTRACT(+) void putAll(java.util.Collection)
 	+++  NEW METHOD: PUBLIC(+) ABSTRACT(+) void remove(java.util.Map$Entry)
-+++* NEW CLASS: PUBLIC(+) io.github.prolobjectlink.prolog.PrologMethod  (not serializable)
-	+++  CLASS FILE FORMAT VERSION: 50.0 <- n.a.
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologClause
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologElement
-	+++  NEW SUPERCLASS: io.github.prolobjectlink.prolog.AbstractClause
-	+++  NEW CONSTRUCTOR: PROTECTED(+) PrologMethod(io.github.prolobjectlink.prolog.PrologProvider, io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
-	+++  NEW CONSTRUCTOR: PROTECTED(+) PrologMethod(io.github.prolobjectlink.prolog.PrologProvider, io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm)
-	+++  NEW CONSTRUCTOR: PROTECTED(+) PrologMethod(io.github.prolobjectlink.prolog.PrologProvider, io.github.prolobjectlink.prolog.PrologTerm)
-	+++  NEW CONSTRUCTOR: PROTECTED(+) PrologMethod(io.github.prolobjectlink.prolog.PrologProvider, io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologClause addFunction(io.github.prolobjectlink.prolog.PrologClause)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologClause addFunction(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologClause addFunction(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologClause addFunction(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) void addMethod(io.github.prolobjectlink.prolog.PrologClause)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologClause addMethod(io.github.prolobjectlink.prolog.PrologTerm)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologClause addMethod(io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologClause addMethod(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologClause addMethod(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
-	+++  NEW METHOD: PUBLIC(+) boolean equals(java.lang.Object)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologIndicator getPrologIndicator()
-	+++  NEW METHOD: PUBLIC(+) java.util.List getSubrutines()
-	+++  NEW METHOD: PUBLIC(+) int hashCode()
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologTerm invoke(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm[])
-	+++  NEW METHOD: PUBLIC(+) boolean isFunction()
-	+++  NEW METHOD: PUBLIC(+) boolean isMethod()
-	+++  NEW METHOD: PROTECTED(+) FINAL(+) void removeFunction(io.github.prolobjectlink.prolog.PrologClause)
-	+++  NEW METHOD: PROTECTED(+) FINAL(+) void removeMethod(io.github.prolobjectlink.prolog.PrologClause)
-+++* NEW CLASS: PUBLIC(+) io.github.prolobjectlink.prolog.PrologMixin  (not serializable)
-	+++  CLASS FILE FORMAT VERSION: 50.0 <- n.a.
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologElement
-	+++  NEW INTERFACE: java.lang.Comparable
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologTerm
-	+++  NEW SUPERCLASS: io.github.prolobjectlink.prolog.AbstractCompounds
-	+++  NEW FIELD: PROTECTED(+) FINAL(+) io.github.prolobjectlink.prolog.PrologEngine engine
-	+++  NEW FIELD: PROTECTED(+) FINAL(+) java.util.Set directives
-	+++  NEW FIELD: PROTECTED(+) FINAL(+) java.util.Set methods
-	+++  NEW FIELD: PROTECTED(+) FINAL(+) java.lang.String name
-	+++  NEW FIELD: PROTECTED(+) FINAL(+) java.util.Set ancestors
-	+++  NEW FIELD: PROTECTED(+) FINAL(+) java.util.Set nesteds
-	+++  NEW CONSTRUCTOR: PROTECTED(+) PrologMixin(int, io.github.prolobjectlink.prolog.PrologEngine, java.lang.String)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) void addAncestor(io.github.prolobjectlink.prolog.PrologMixin)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) void addDirective(io.github.prolobjectlink.prolog.PrologTerm)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm addDirective(java.lang.String, io.github.prolobjectlink.prolog.PrologTerm[])
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm addDirective(java.lang.String, java.lang.Object[])
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) void addFunction(io.github.prolobjectlink.prolog.PrologClause)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologClause addFunction(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologClause addFunction(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) void addMethod(io.github.prolobjectlink.prolog.PrologClause)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologClause addMethod(io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologClause addMethod(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) void addNestedClass(io.github.prolobjectlink.prolog.PrologMixin)
-	+++  NEW METHOD: PUBLIC(+) boolean equals(java.lang.Object)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologMixin findAncestor(java.lang.String)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologClause[] findMethod(java.lang.String, io.github.prolobjectlink.prolog.PrologTerm[])
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologClause[] findMethod(java.lang.String, io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm[])
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologMixin findNestedClass(java.lang.String)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.util.Collection getAncestors()
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologTerm[] getArguments()
-	+++  NEW METHOD: PUBLIC(+) int getArity()
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.util.Collection getDirectives()
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.lang.String getFunctor()
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) char getLeftencloser()
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.util.Collection getMethods()
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.lang.String getName()
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.util.Collection getNesteds()
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) char getRightencloser()
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) char getSeparator()
-	+++  NEW METHOD: PUBLIC(+) int hashCode()
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) boolean isEmptyList()
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) boolean isList()
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) boolean isStructure()
-	+++  NEW METHOD: PROTECTED(+) FINAL(+) void removeAncestor(io.github.prolobjectlink.prolog.PrologMixin)
-	+++  NEW METHOD: PROTECTED(+) FINAL(+) void removeDirective(io.github.prolobjectlink.prolog.PrologTerm)
-	+++  NEW METHOD: PROTECTED(+) FINAL(+) void removeMethod(io.github.prolobjectlink.prolog.PrologClause)
-	+++  NEW METHOD: PROTECTED(+) FINAL(+) void removeNestedClass(io.github.prolobjectlink.prolog.PrologMixin)
-	+++  NEW METHOD: PROTECTED(+) FINAL(+) void removFunction(io.github.prolobjectlink.prolog.PrologClause)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.lang.String toPath()
-	+++  NEW METHOD: PUBLIC(+) java.lang.String toString()
 ===* UNCHANGED INTERFACE: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologNumber  (not serializable)
 	===  CLASS FILE FORMAT VERSION: 50.0 <- 50.0
 	===  UNCHANGED INTERFACE: io.github.prolobjectlink.prolog.PrologElement
@@ -952,14 +807,6 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-jee-p
 	===  UNCHANGED INTERFACE: java.lang.Iterable
 	===  UNCHANGED SUPERCLASS: java.lang.Object (<- java.lang.Object)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean currentOp(java.lang.String)
-+++  NEW INTERFACE: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologParameter  (not serializable)
-	+++  CLASS FILE FORMAT VERSION: 50.0 <- n.a.
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologVariable
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologElement
-	+++  NEW INTERFACE: java.lang.Comparable
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologTerm
-	+++  NEW SUPERCLASS: java.lang.Object
-	+++  NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm getNameTerm()
 +++  NEW INTERFACE: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologProgram  (not serializable)
 	+++  CLASS FILE FORMAT VERSION: 50.0 <- n.a.
 	+++  NEW INTERFACE: java.util.Map
@@ -1019,20 +866,8 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-jee-p
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologEngine newEngine(java.lang.String)
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newEntry(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm)
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newEntry(java.lang.Object, java.lang.Object)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newField(io.github.prolobjectlink.prolog.PrologTerm)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newField(java.lang.String)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newField(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newField(java.lang.String, java.lang.String)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologFloat newFloat()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologFloat newFloat(java.lang.Number)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologClause newFunction(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologClause newFunction(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologClause newFunction(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm[])
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologClause newFunction(io.github.prolobjectlink.prolog.PrologTerm, java.lang.Object)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologClause newFunction(io.github.prolobjectlink.prolog.PrologTerm, java.lang.Object, io.github.prolobjectlink.prolog.PrologTerm)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologClause newFunction(io.github.prolobjectlink.prolog.PrologTerm, java.lang.Object, io.github.prolobjectlink.prolog.PrologTerm[])
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologClause newFunction(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologClause newFunction(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologInteger newInteger()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologInteger newInteger(java.lang.Number)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologList newList()
@@ -1049,24 +884,11 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-jee-p
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newMap(java.util.Map)
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newMap(int)
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newMap()
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologClause newMethod(io.github.prolobjectlink.prolog.PrologTerm)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologClause newMethod(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologClause newMethod(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm[])
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologClause newMethod(io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologClause newMethod(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm, boolean, boolean, boolean)
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) java.lang.Object newObject(java.lang.String)
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) java.lang.Object newObject(java.lang.String, java.lang.Object[])
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) java.lang.Object newObject(io.github.prolobjectlink.prolog.PrologAtom)
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) java.lang.Object newObject(io.github.prolobjectlink.prolog.PrologAtom, io.github.prolobjectlink.prolog.PrologTerm[])
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newParameter(io.github.prolobjectlink.prolog.PrologTerm)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newParameter(java.lang.String)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newParameter(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newParameter(java.lang.String, java.lang.String)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologTerm newReference(java.lang.Object)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newResult(io.github.prolobjectlink.prolog.PrologTerm)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newResult(java.lang.String)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newResult(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm newResult(java.lang.String, java.lang.String)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologStructure newStructure(java.lang.String, io.github.prolobjectlink.prolog.PrologTerm[])
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologTerm newStructure(java.lang.String, java.lang.Object[])
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologTerm newStructure(io.github.prolobjectlink.prolog.PrologTerm, java.lang.String, io.github.prolobjectlink.prolog.PrologTerm)
@@ -1140,14 +962,6 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-jee-p
 	===* UNCHANGED INTERFACE: io.github.prolobjectlink.prolog.PrologTerm
 	===  UNCHANGED SUPERCLASS: java.lang.Object (<- java.lang.Object)
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) java.lang.Class getReferenceType()
-+++  NEW INTERFACE: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologResult  (not serializable)
-	+++  CLASS FILE FORMAT VERSION: 50.0 <- n.a.
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologVariable
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologElement
-	+++  NEW INTERFACE: java.lang.Comparable
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologTerm
-	+++  NEW SUPERCLASS: java.lang.Object
-	+++  NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm getNameTerm()
 ***  MODIFIED CLASS: PUBLIC (<- PACKAGE_PROTECTED) FINAL io.github.prolobjectlink.prolog.PrologScriptEngine  (not serializable)
 	===  CLASS FILE FORMAT VERSION: 50.0 <- 50.0
 	===  UNCHANGED INTERFACE: javax.script.ScriptEngine
@@ -1314,61 +1128,10 @@ Comparing source compatibility of C:\Users\Jose Zalacain\Documents\eclipse-jee-p
 	+++  NEW METHOD: PUBLIC(+) java.util.concurrent.Future submit(java.util.concurrent.Callable)
 	+++  NEW METHOD: PUBLIC(+) java.util.concurrent.Future submit(java.lang.Runnable, java.lang.Object)
 	+++  NEW METHOD: PUBLIC(+) java.util.concurrent.Future submit(java.lang.Runnable)
-+++  NEW CLASS: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologType  (not serializable)
++++  NEW INTERFACE: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologType  (not serializable)
 	+++  CLASS FILE FORMAT VERSION: 50.0 <- n.a.
 	+++  NEW SUPERCLASS: java.lang.Object
-	+++  NEW FIELD: PUBLIC(+) STATIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm FLOAT
-	+++  NEW FIELD: PUBLIC(+) STATIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm STRUCTURE
-	+++  NEW FIELD: PUBLIC(+) STATIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm TERM
-	+++  NEW FIELD: PUBLIC(+) STATIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm OBJECT
-	+++  NEW FIELD: PUBLIC(+) STATIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm INT
-	+++  NEW FIELD: PUBLIC(+) STATIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm BOOLEAN
-	+++  NEW FIELD: PUBLIC(+) STATIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm ATOM
-	+++  NEW FIELD: PUBLIC(+) STATIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm BOOL
-	+++  NEW FIELD: PUBLIC(+) STATIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm OBJ
-	+++  NEW FIELD: PUBLIC(+) STATIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm DOUBLE
-	+++  NEW FIELD: PUBLIC(+) STATIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm ID
-	+++  NEW FIELD: PUBLIC(+) STATIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm LIST
-	+++  NEW FIELD: PUBLIC(+) STATIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm STRUCT
-	+++  NEW FIELD: PUBLIC(+) STATIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm MAP
-	+++  NEW FIELD: PUBLIC(+) STATIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm LONG
-	+++  NEW FIELD: PUBLIC(+) STATIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm INTEGER
-+++  NEW INTERFACE: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTypedField  (not serializable)
-	+++  CLASS FILE FORMAT VERSION: 50.0 <- n.a.
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologEntry
-	+++  NEW INTERFACE: java.util.Map$Entry
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologVariable
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologElement
-	+++  NEW INTERFACE: java.lang.Comparable
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologTerm
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologField
-	+++  NEW SUPERCLASS: java.lang.Object
-	+++  NEW METHOD: PUBLIC(+) ABSTRACT(+) java.lang.String getKind()
-	+++  NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm getKindTerm()
-+++  NEW INTERFACE: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTypedParameter  (not serializable)
-	+++  CLASS FILE FORMAT VERSION: 50.0 <- n.a.
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologEntry
-	+++  NEW INTERFACE: java.util.Map$Entry
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologVariable
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologElement
-	+++  NEW INTERFACE: java.lang.Comparable
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologTerm
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologParameter
-	+++  NEW SUPERCLASS: java.lang.Object
-	+++  NEW METHOD: PUBLIC(+) ABSTRACT(+) java.lang.String getKind()
-	+++  NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm getKindTerm()
-+++  NEW INTERFACE: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTypedResult  (not serializable)
-	+++  CLASS FILE FORMAT VERSION: 50.0 <- n.a.
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologEntry
-	+++  NEW INTERFACE: java.util.Map$Entry
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologVariable
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologElement
-	+++  NEW INTERFACE: java.lang.Comparable
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologTerm
-	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologField
-	+++  NEW SUPERCLASS: java.lang.Object
-	+++  NEW METHOD: PUBLIC(+) ABSTRACT(+) java.lang.String getKind()
-	+++  NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm getKindTerm()
+	+++  NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologProvider getProvider()
 ===* UNCHANGED INTERFACE: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologVariable  (not serializable)
 	===  CLASS FILE FORMAT VERSION: 50.0 <- 50.0
 	===  UNCHANGED INTERFACE: io.github.prolobjectlink.prolog.PrologElement

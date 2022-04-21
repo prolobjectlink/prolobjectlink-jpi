@@ -27,8 +27,8 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 
 	<licenses>
 		<license>
-			<name>BSD License</name>
-			<url>http://www.opensource.org/licenses/bsd-license.php</url>
+			<name>MIT</name>
+			<url>http://www.opensource.org/licenses/mit-license.php</url>
 		</license>
 	</licenses>
 
@@ -252,7 +252,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 					<canUpdateDescription>true</canUpdateDescription>
 					<failOnMissingHeader>true</failOnMissingHeader>
 					<acceptPomPackaging>true</acceptPomPackaging>
-					<licenseName>bsd_3</licenseName>
+					<licenseName>mit</licenseName>
 					<!-- <dryRun>true</dryRun> -->
 					<licenseFile>LICENSE.md</licenseFile>
 					<addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>

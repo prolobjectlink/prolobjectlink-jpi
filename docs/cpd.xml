@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pmd-cpd>
 <duplication lines="48" tokens="269">
-<file line="63" path="C:\Users\Jose Zalacain\Documents\eclipse-jee-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\Prolog.java"/>
-<file line="64" path="C:\Users\Jose Zalacain\Documents\eclipse-jee-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\spi\ServiceProviderLocator.java"/>
+<file line="56" path="C:\eclipse-jee-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\Prolog.java"/>
+<file line="57" path="C:\eclipse-jee-photon-workspace\prolobjectlink-jpi\src\main\java\io\github\prolobjectlink\prolog\spi\ServiceProviderLocator.java"/>
 <codefragment>
 <![CDATA[
 	public static PrologProvider getProvider() {

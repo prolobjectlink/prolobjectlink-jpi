@@ -4,30 +4,23 @@
  * %%
  * Copyright (C) 2019 Prolobjectlink Project
  * %%
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  * 
- * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  * 
- * 2. Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- * 
- * 3. Neither the name of the Prolobjectlink Project nor the names of its contributors
- *    may be used to endorse or promote products derived from this software without
- *    specific prior written permission.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
- * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
- * OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  * #L%
  */
 package io.github.prolobjectlink.prolog;
@@ -439,7 +432,8 @@ public interface PrologProvider extends PrologParser {
 
 	/**
 	 * Create a new PrologEntry using key-value pair of PrologTerm type. The
-	 * resulting term is an implementation of {@link PrologEntry} and {@link PrologTerm}.
+	 * resulting term is an implementation of {@link PrologEntry} and
+	 * {@link PrologTerm}.
 	 * 
 	 * @param key   key of the entry
 	 * @param value value of the entry
@@ -764,318 +758,23 @@ public interface PrologProvider extends PrologParser {
 	public PrologThread joinThreads(String name, PrologThread... threads);
 
 	/**
+	 * Create a new thread pool that executes each submitted task using one of
+	 * possibly several pooled threads.
 	 * 
-	 * @return
+	 * @return a new thread pool that executes each submitted task.
 	 * @since 1.1
 	 */
 	public PrologThreadPool newThreadPool();
 
 	/**
+	 * Create a new thread pool that executes each submitted task using one of
+	 * possibly several pooled threads.
 	 * 
-	 * @return
+	 * @param parallelismLevel threads number in the pool.
+	 * @return a new thread pool that executes each submitted task.
 	 * @since 1.1
 	 */
 	public PrologThreadPool newThreadPool(int parallelismLevel);
-
-	/**
-	 * Create a new PrologField using name of PrologTerm type. The resulting term is
-	 * an implementation of {@link PrologEntry} and {@link PrologTerm}.
-	 * 
-	 * @param name key of the entry
-	 * @return new PrologEntry term
-	 * @since 1.1
-	 */
-	public PrologTerm newField(PrologTerm name);
-
-	/**
-	 * Create a new PrologField using name of String type.The given objects are
-	 * converted to PrologTerm before entry creation. The resulting term is an
-	 * implementation of {@link PrologEntry} and {@link PrologTerm}.
-	 * 
-	 * @param name key of the entry
-	 * @return new PrologEntry term
-	 * @since 1.1
-	 */
-	public PrologTerm newField(String name);
-
-	/**
-	 * Create a new PrologField using name-type pair of PrologTerm. The resulting
-	 * term is an implementation of {@link PrologEntry} and {@link PrologTerm}.
-	 * 
-	 * @param name key of the entry
-	 * @param type value of the entry
-	 * @return new PrologEntry term
-	 * @since 1.1
-	 */
-	public PrologTerm newField(PrologTerm name, PrologTerm type);
-
-	/**
-	 * Create a new PrologField using name-type pair of String.The given objects are
-	 * converted to PrologTerm before entry creation. The resulting term is an
-	 * implementation of {@link PrologEntry} and {@link PrologTerm}.
-	 * 
-	 * @param name key of the entry
-	 * @param type value of the entry
-	 * @return new PrologEntry term
-	 * @since 1.1
-	 */
-	public PrologTerm newField(String name, String type);
-
-	/**
-	 * Create a new PrologResult using name of PrologTerm type. The resulting term
-	 * is an implementation of {@link PrologEntry} and {@link PrologTerm}.
-	 * 
-	 * @param name key of the entry
-	 * @return new PrologEntry term
-	 * @since 1.1
-	 */
-	public PrologTerm newResult(PrologTerm name);
-
-	/**
-	 * Create a new PrologResult using name of String type.The given objects are
-	 * converted to PrologTerm before entry creation. The resulting term is an
-	 * implementation of {@link PrologEntry} and {@link PrologTerm}.
-	 * 
-	 * @param name key of the entry
-	 * @return new PrologEntry term
-	 * @since 1.1
-	 */
-	public PrologTerm newResult(String name);
-
-	/**
-	 * Create a new PrologResult using name-type pair of PrologTerm. The resulting
-	 * term is an implementation of {@link PrologEntry} and {@link PrologTerm}.
-	 * 
-	 * @param name key of the entry
-	 * @param type value of the entry
-	 * @return new PrologEntry term
-	 * @since 1.1
-	 */
-	public PrologTerm newResult(PrologTerm name, PrologTerm type);
-
-	/**
-	 * Create a new PrologResult using name-type pair of String.The given objects
-	 * are converted to PrologTerm before entry creation. The resulting term is an
-	 * implementation of {@link PrologEntry} and {@link PrologTerm}.
-	 * 
-	 * @param name key of the entry
-	 * @param type value of the entry
-	 * @return new PrologEntry term
-	 * @since 1.1
-	 */
-	public PrologTerm newResult(String name, String type);
-
-	/**
-	 * Create a new PrologParameter using name of PrologTerm type. The resulting
-	 * term is an implementation of {@link PrologEntry} and {@link PrologTerm}.
-	 * 
-	 * @param name key of the entry
-	 * @return new PrologEntry term
-	 * @since 1.1
-	 */
-	public PrologTerm newParameter(PrologTerm name);
-
-	/**
-	 * Create a new PrologParameter using name of String type.The given objects are
-	 * converted to PrologTerm before entry creation. The resulting term is an
-	 * implementation of {@link PrologEntry} and {@link PrologTerm}.
-	 * 
-	 * @param name key of the entry
-	 * @return new PrologEntry term
-	 * @since 1.1
-	 */
-	public PrologTerm newParameter(String name);
-
-	/**
-	 * Create a new PrologParameter using name-type pair of PrologTerm. The
-	 * resulting term is an implementation of {@link PrologEntry} and {@link PrologTerm}.
-	 * 
-	 * @param name key of the entry
-	 * @param type value of the entry
-	 * @return new PrologEntry term
-	 * @since 1.1
-	 */
-	public PrologTerm newParameter(PrologTerm name, PrologTerm type);
-
-	/**
-	 * Create a new PrologParameter using name-type pair of String.The given objects
-	 * are converted to PrologTerm before entry creation. The resulting term is an
-	 * implementation of {@link PrologEntry} and {@link PrologTerm}.
-	 * 
-	 * @param name key of the entry
-	 * @param type value of the entry
-	 * @return new PrologEntry term
-	 * @since 1.1
-	 */
-	public PrologTerm newParameter(String name, String type);
-
-	/**
-	 * Create a new rule clause. A rule clause is represented by clause head and
-	 * body. The other parameters are boolean clause properties. If a clause have
-	 * any of this properties specify with true value.
-	 * 
-	 * 
-	 * @param head clause head
-	 * @since 1.1
-	 */
-	public PrologClause newMethod(PrologTerm head);
-
-	/**
-	 * Create a new rule clause. A rule clause is represented by clause head and
-	 * body. The other parameters are boolean clause properties. If a clause have
-	 * any of this properties specify with true value.
-	 * 
-	 * 
-	 * @param head clause head
-	 * @param body clause body
-	 * @since 1.1
-	 */
-	public PrologClause newMethod(PrologTerm head, PrologTerm body);
-
-	public PrologClause newMethod(PrologTerm head, PrologTerm... body);
-
-	/**
-	 * Create a new fact clause. A fatc clause is only represented by clause head
-	 * and no have clause body. The body for this clause type is null. The other
-	 * parameters are boolean clause properties. If a clause have any of this
-	 * properties specify with true value.
-	 * 
-	 * 
-	 * @param head          clause head
-	 * @param dynamic       true if clause is dynamic, false otherwise
-	 * @param multifile     true if clause is multifile, false otherwise
-	 * @param discontiguous true if clause is discontiguous, false otherwise
-	 * @since 1.1
-	 */
-	public PrologClause newMethod(PrologTerm head, boolean dynamic, boolean multifile, boolean discontiguous);
-
-	/**
-	 * Create a new rule clause. A rule clause is represented by clause head and
-	 * body. The other parameters are boolean clause properties. If a clause have
-	 * any of this properties specify with true value.
-	 * 
-	 * 
-	 * @param head          clause head
-	 * @param body          clause body
-	 * @param dynamic       true if clause is dynamic, false otherwise
-	 * @param multifile     true if clause is multifile, false otherwise
-	 * @param discontiguous true if clause is discontiguous, false otherwise
-	 * @since 1.1
-	 */
-	public PrologClause newMethod(PrologTerm head, PrologTerm body, boolean dynamic, boolean multifile,
-			boolean discontiguous);
-
-	/**
-	 * Create a new fact clause. A fatc clause is only represented by clause head
-	 * and no have clause body. The body for this clause type is null. The other
-	 * parameters are boolean clause properties. If a clause have any of this
-	 * properties specify with true value.
-	 * 
-	 * 
-	 * @param head   clause head
-	 * @param result function result
-	 * @since 1.1
-	 */
-	public PrologClause newFunction(PrologTerm head, PrologTerm result);
-
-	/**
-	 * Create a new rule clause. A rule clause is represented by clause head and
-	 * body. The other parameters are boolean clause properties. If a clause have
-	 * any of this properties specify with true value.
-	 * 
-	 * 
-	 * @param head   clause head
-	 * @param body   clause body
-	 * @param result function result
-	 * @since 1.1
-	 */
-	public PrologClause newFunction(PrologTerm head, PrologTerm result, PrologTerm body);
-
-	/**
-	 * Create a new rule clause. A rule clause is represented by clause head and
-	 * body. The other parameters are boolean clause properties. If a clause have
-	 * any of this properties specify with true value.
-	 * 
-	 * 
-	 * @param head   clause head
-	 * @param body   clause body
-	 * @param result function result
-	 * @since 1.1
-	 */
-	public PrologClause newFunction(PrologTerm head, PrologTerm result, PrologTerm... body);
-
-	/**
-	 * Create a new fact clause. A fatc clause is only represented by clause head
-	 * and no have clause body. The body for this clause type is null. The other
-	 * parameters are boolean clause properties. If a clause have any of this
-	 * properties specify with true value.
-	 * 
-	 * 
-	 * @param head   clause head
-	 * @param result function result
-	 * @since 1.1
-	 */
-	public PrologClause newFunction(PrologTerm head, Object result);
-
-	/**
-	 * Create a new rule clause. A rule clause is represented by clause head and
-	 * body. The other parameters are boolean clause properties. If a clause have
-	 * any of this properties specify with true value.
-	 * 
-	 * 
-	 * @param head   clause head
-	 * @param body   clause body
-	 * @param result function result
-	 * @since 1.1
-	 */
-	public PrologClause newFunction(PrologTerm head, Object result, PrologTerm body);
-
-	/**
-	 * Create a new rule clause. A rule clause is represented by clause head and
-	 * body. The other parameters are boolean clause properties. If a clause have
-	 * any of this properties specify with true value.
-	 * 
-	 * 
-	 * @param head   clause head
-	 * @param body   clause body
-	 * @param result function result
-	 * @since 1.1
-	 */
-	public PrologClause newFunction(PrologTerm head, Object result, PrologTerm... body);
-
-	/**
-	 * Create a new fact clause. A fatc clause is only represented by clause head
-	 * and no have clause body. The body for this clause type is null. The other
-	 * parameters are boolean clause properties. If a clause have any of this
-	 * properties specify with true value.
-	 * 
-	 * 
-	 * @param head          clause head
-	 * @param result        function result
-	 * @param dynamic       true if clause is dynamic, false otherwise
-	 * @param multifile     true if clause is multifile, false otherwise
-	 * @param discontiguous true if clause is discontiguous, false otherwise
-	 * @since 1.1
-	 */
-	public PrologClause newFunction(PrologTerm head, PrologTerm result, boolean dynamic, boolean multifile,
-			boolean discontiguous);
-
-	/**
-	 * Create a new rule clause. A rule clause is represented by clause head and
-	 * body. The other parameters are boolean clause properties. If a clause have
-	 * any of this properties specify with true value.
-	 * 
-	 * 
-	 * @param head          clause head
-	 * @param body          clause body
-	 * @param result        function result
-	 * @param dynamic       true if clause is dynamic, false otherwise
-	 * @param multifile     true if clause is multifile, false otherwise
-	 * @param discontiguous true if clause is discontiguous, false otherwise
-	 * @since 1.1
-	 */
-	public PrologClause newFunction(PrologTerm head, PrologTerm body, PrologTerm result, boolean dynamic,
-			boolean multifile, boolean discontiguous);
 
 	/**
 	 * Get a Java to Prolog converter instance to map the abstract prolog data types

@@ -8,8 +8,8 @@
     <language>en-us</language>
     <copyright>&#169;2020 - 2022 Prolobjectlink Project</copyright>
     <item>
-      <title>File: 86,
-             Errors: 13967,
+      <title>File: 76,
+             Errors: 10632,
              Warnings: 0,
              Infos: 0
       </title>
@@ -38,7 +38,7 @@
                   0
                 </td>
                 <td>
-                  31
+                  18
                 </td>
               </tr>
                           <tr>
@@ -52,7 +52,7 @@
                   0
                 </td>
                 <td>
-                  92
+                  79
                 </td>
               </tr>
                           <tr>
@@ -66,7 +66,7 @@
                   0
                 </td>
                 <td>
-                  1316
+                  1255
                 </td>
               </tr>
                           <tr>
@@ -80,7 +80,7 @@
                   0
                 </td>
                 <td>
-                  31
+                  18
                 </td>
               </tr>
                           <tr>
@@ -94,7 +94,7 @@
                   0
                 </td>
                 <td>
-                  87
+                  74
                 </td>
               </tr>
                           <tr>
@@ -108,7 +108,7 @@
                   0
                 </td>
                 <td>
-                  385
+                  372
                 </td>
               </tr>
                           <tr>
@@ -122,21 +122,7 @@
                   0
                 </td>
                 <td>
-                  56
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologClass.java">io/github/prolobjectlink/prolog/PrologClass.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  411
+                  43
                 </td>
               </tr>
                           <tr>
@@ -150,7 +136,7 @@
                   0
                 </td>
                 <td>
-                  32
+                  19
                 </td>
               </tr>
                           <tr>
@@ -164,7 +150,7 @@
                   0
                 </td>
                 <td>
-                  158
+                  14
                 </td>
               </tr>
                           <tr>
@@ -178,7 +164,7 @@
                   0
                 </td>
                 <td>
-                  31
+                  18
                 </td>
               </tr>
                           <tr>
@@ -192,7 +178,7 @@
                   0
                 </td>
                 <td>
-                  150
+                  137
                 </td>
               </tr>
                           <tr>
@@ -206,7 +192,7 @@
                   0
                 </td>
                 <td>
-                  275
+                  262
                 </td>
               </tr>
                           <tr>
@@ -220,7 +206,7 @@
                   0
                 </td>
                 <td>
-                  48
+                  35
                 </td>
               </tr>
                           <tr>
@@ -234,7 +220,7 @@
                   0
                 </td>
                 <td>
-                  219
+                  206
                 </td>
               </tr>
                           <tr>
@@ -248,7 +234,7 @@
                   0
                 </td>
                 <td>
-                  17
+                  4
                 </td>
               </tr>
                           <tr>
@@ -262,7 +248,7 @@
                   0
                 </td>
                 <td>
-                  60
+                  47
                 </td>
               </tr>
                           <tr>
@@ -276,7 +262,7 @@
                   0
                 </td>
                 <td>
-                  145
+                  132
                 </td>
               </tr>
                           <tr>
@@ -290,7 +276,7 @@
                   0
                 </td>
                 <td>
-                  142
+                  129
                 </td>
               </tr>
                           <tr>
@@ -304,35 +290,7 @@
                   0
                 </td>
                 <td>
-                  17
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologField.java">io/github/prolobjectlink/prolog/PrologField.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  19
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologParameter.java">io/github/prolobjectlink/prolog/PrologParameter.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  19
+                  4
                 </td>
               </tr>
                           <tr>
@@ -346,7 +304,7 @@
                   0
                 </td>
                 <td>
-                  64
+                  51
                 </td>
               </tr>
                           <tr>
@@ -360,7 +318,7 @@
                   0
                 </td>
                 <td>
-                  47
+                  34
                 </td>
               </tr>
                           <tr>
@@ -374,7 +332,7 @@
                   0
                 </td>
                 <td>
-                  58
+                  45
                 </td>
               </tr>
                           <tr>
@@ -388,21 +346,7 @@
                   0
                 </td>
                 <td>
-                  1396
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologMethod.java">io/github/prolobjectlink/prolog/PrologMethod.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  365
+                  981
                 </td>
               </tr>
                           <tr>
@@ -416,7 +360,7 @@
                   0
                 </td>
                 <td>
-                  330
+                  294
                 </td>
               </tr>
                           <tr>
@@ -430,7 +374,7 @@
                   0
                 </td>
                 <td>
-                  23
+                  10
                 </td>
               </tr>
                           <tr>
@@ -444,7 +388,7 @@
                   0
                 </td>
                 <td>
-                  110
+                  97
                 </td>
               </tr>
                           <tr>
@@ -458,7 +402,7 @@
                   0
                 </td>
                 <td>
-                  87
+                  74
                 </td>
               </tr>
                           <tr>
@@ -472,7 +416,7 @@
                   0
                 </td>
                 <td>
-                  269
+                  256
                 </td>
               </tr>
                           <tr>
@@ -486,7 +430,7 @@
                   0
                 </td>
                 <td>
-                  40
+                  27
                 </td>
               </tr>
                           <tr>
@@ -500,21 +444,7 @@
                   0
                 </td>
                 <td>
-                  226
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologMixin.java">io/github/prolobjectlink/prolog/PrologMixin.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  556
+                  213
                 </td>
               </tr>
                           <tr>
@@ -528,7 +458,7 @@
                   0
                 </td>
                 <td>
-                  17
+                  4
                 </td>
               </tr>
                           <tr>
@@ -542,7 +472,7 @@
                   0
                 </td>
                 <td>
-                  23
+                  10
                 </td>
               </tr>
                           <tr>
@@ -556,7 +486,7 @@
                   0
                 </td>
                 <td>
-                  139
+                  126
                 </td>
               </tr>
                           <tr>
@@ -570,7 +500,7 @@
                   0
                 </td>
                 <td>
-                  178
+                  165
                 </td>
               </tr>
                           <tr>
@@ -584,7 +514,7 @@
                   0
                 </td>
                 <td>
-                  16
+                  3
                 </td>
               </tr>
                           <tr>
@@ -598,7 +528,7 @@
                   0
                 </td>
                 <td>
-                  125
+                  112
                 </td>
               </tr>
                           <tr>
@@ -612,7 +542,7 @@
                   0
                 </td>
                 <td>
-                  31
+                  18
                 </td>
               </tr>
                           <tr>
@@ -626,21 +556,7 @@
                   0
                 </td>
                 <td>
-                  111
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologResult.java">io/github/prolobjectlink/prolog/PrologResult.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  19
+                  98
                 </td>
               </tr>
                           <tr>
@@ -654,7 +570,7 @@
                   0
                 </td>
                 <td>
-                  190
+                  177
                 </td>
               </tr>
                           <tr>
@@ -668,21 +584,7 @@
                   0
                 </td>
                 <td>
-                  23
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologFunction.java">io/github/prolobjectlink/prolog/PrologFunction.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  149
+                  10
                 </td>
               </tr>
                           <tr>
@@ -696,7 +598,7 @@
                   0
                 </td>
                 <td>
-                  323
+                  310
                 </td>
               </tr>
                           <tr>
@@ -710,7 +612,7 @@
                   0
                 </td>
                 <td>
-                  110
+                  97
                 </td>
               </tr>
                           <tr>
@@ -724,21 +626,7 @@
                   0
                 </td>
                 <td>
-                  234
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologTypedParameter.java">io/github/prolobjectlink/prolog/PrologTypedParameter.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  23
+                  221
                 </td>
               </tr>
                           <tr>
@@ -752,7 +640,7 @@
                   0
                 </td>
                 <td>
-                  296
+                  283
                 </td>
               </tr>
                           <tr>
@@ -766,7 +654,7 @@
                   0
                 </td>
                 <td>
-                  68
+                  55
                 </td>
               </tr>
                           <tr>
@@ -780,7 +668,7 @@
                   0
                 </td>
                 <td>
-                  192
+                  179
                 </td>
               </tr>
                           <tr>
@@ -794,7 +682,7 @@
                   0
                 </td>
                 <td>
-                  40
+                  27
                 </td>
               </tr>
                           <tr>
@@ -808,7 +696,7 @@
                   0
                 </td>
                 <td>
-                  26
+                  13
                 </td>
               </tr>
                           <tr>
@@ -822,21 +710,7 @@
                   0
                 </td>
                 <td>
-                  533
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologTypedField.java">io/github/prolobjectlink/prolog/PrologTypedField.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  23
+                  520
                 </td>
               </tr>
                           <tr>
@@ -850,7 +724,7 @@
                   0
                 </td>
                 <td>
-                  51
+                  38
                 </td>
               </tr>
                           <tr>
@@ -864,7 +738,7 @@
                   0
                 </td>
                 <td>
-                  79
+                  66
                 </td>
               </tr>
                           <tr>
@@ -878,7 +752,7 @@
                   0
                 </td>
                 <td>
-                  100
+                  87
                 </td>
               </tr>
                           <tr>
@@ -892,7 +766,7 @@
                   0
                 </td>
                 <td>
-                  183
+                  170
                 </td>
               </tr>
                           <tr>
@@ -906,7 +780,7 @@
                   0
                 </td>
                 <td>
-                  122
+                  109
                 </td>
               </tr>
                           <tr>
@@ -920,7 +794,7 @@
                   0
                 </td>
                 <td>
-                  158
+                  145
                 </td>
               </tr>
                           <tr>
@@ -934,7 +808,7 @@
                   0
                 </td>
                 <td>
-                  334
+                  321
                 </td>
               </tr>
                           <tr>
@@ -948,7 +822,7 @@
                   0
                 </td>
                 <td>
-                  21
+                  8
                 </td>
               </tr>
                           <tr>
@@ -962,7 +836,7 @@
                   0
                 </td>
                 <td>
-                  110
+                  97
                 </td>
               </tr>
                           <tr>
@@ -976,7 +850,7 @@
                   0
                 </td>
                 <td>
-                  89
+                  76
                 </td>
               </tr>
                           <tr>
@@ -990,7 +864,7 @@
                   0
                 </td>
                 <td>
-                  817
+                  671
                 </td>
               </tr>
                           <tr>
@@ -1004,7 +878,7 @@
                   0
                 </td>
                 <td>
-                  60
+                  47
                 </td>
               </tr>
                           <tr>
@@ -1018,7 +892,7 @@
                   0
                 </td>
                 <td>
-                  104
+                  91
                 </td>
               </tr>
                           <tr>
@@ -1032,7 +906,7 @@
                   0
                 </td>
                 <td>
-                  36
+                  23
                 </td>
               </tr>
                           <tr>
@@ -1046,7 +920,7 @@
                   0
                 </td>
                 <td>
-                  49
+                  36
                 </td>
               </tr>
                           <tr>
@@ -1060,7 +934,7 @@
                   0
                 </td>
                 <td>
-                  26
+                  13
                 </td>
               </tr>
                           <tr>
@@ -1074,7 +948,7 @@
                   0
                 </td>
                 <td>
-                  52
+                  39
                 </td>
               </tr>
                           <tr>
@@ -1088,7 +962,7 @@
                   0
                 </td>
                 <td>
-                  17
+                  4
                 </td>
               </tr>
                           <tr>
@@ -1102,7 +976,7 @@
                   0
                 </td>
                 <td>
-                  272
+                  259
                 </td>
               </tr>
                           <tr>
@@ -1116,7 +990,7 @@
                   0
                 </td>
                 <td>
-                  89
+                  76
                 </td>
               </tr>
                           <tr>
@@ -1130,7 +1004,7 @@
                   0
                 </td>
                 <td>
-                  389
+                  373
                 </td>
               </tr>
                           <tr>
@@ -1144,7 +1018,7 @@
                   0
                 </td>
                 <td>
-                  27
+                  14
                 </td>
               </tr>
                           <tr>
@@ -1158,7 +1032,7 @@
                   0
                 </td>
                 <td>
-                  88
+                  75
                 </td>
               </tr>
                           <tr>
@@ -1172,21 +1046,7 @@
                   0
                 </td>
                 <td>
-                  138
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologTypedResult.java">io/github/prolobjectlink/prolog/PrologTypedResult.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  23
+                  125
                 </td>
               </tr>
                           <tr>
@@ -1200,7 +1060,7 @@
                   0
                 </td>
                 <td>
-                  270
+                  257
                 </td>
               </tr>
                           <tr>
@@ -1214,7 +1074,7 @@
                   0
                 </td>
                 <td>
-                  31
+                  18
                 </td>
               </tr>
                           <tr>
@@ -1228,7 +1088,7 @@
                   0
                 </td>
                 <td>
-                  31
+                  18
                 </td>
               </tr>
                       </tbody>
