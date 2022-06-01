@@ -25,16 +25,8 @@
  */
 package io.github.prolobjectlink.prolog.spi;
 
-import java.lang.reflect.Constructor;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-
 import io.github.prolobjectlink.prolog.Prolog;
 import io.github.prolobjectlink.prolog.PrologProvider;
-import io.github.prolobjectlink.prolog.PrologScriptEngine;
 
 /**
  * Bootstrap platform class. Contains {@link #getProvider(Class)} method that
@@ -55,9 +47,7 @@ public final class ServiceProviderLocator {
 	 * @since 1.1
 	 */
 	public static PrologProvider getProvider() {
-		ScriptEngineManager manager = new ScriptEngineManager();
-		ScriptEngine engine = manager.getEngineByName("prolog");
-		return ((PrologScriptEngine) engine).getProvider();
+		return Prolog.getProvider();
 	}
 
 	/**
@@ -68,13 +58,7 @@ public final class ServiceProviderLocator {
 	 * @since 1.1
 	 */
 	public static PrologProvider getProvider(String className) {
-		PrologProvider provider = null;
-		try {
-			return getProvider(Class.forName(className));
-		} catch (ClassNotFoundException e) {
-			Logger.getLogger(Prolog.class.getName()).log(Level.FINEST, null, e);
-		}
-		return provider;
+		return Prolog.getProvider(className);
 	}
 
 	/**
@@ -85,22 +69,7 @@ public final class ServiceProviderLocator {
 	 * @since 1.1
 	 */
 	public static PrologProvider getProvider(Class<?> providerClass) {
-		PrologProvider provider = null;
-		try {
-			Constructor<?> constructor = providerClass.getDeclaredConstructor();
-			constructor.setAccessible(true);
-			provider = (PrologProvider) providerClass.newInstance();
-			constructor.setAccessible(false);
-		} catch (InstantiationException e) {
-			Logger.getLogger(Prolog.class.getName()).log(Level.FINEST, null, e);
-		} catch (IllegalAccessException e) {
-			Logger.getLogger(Prolog.class.getName()).log(Level.FINEST, null, e);
-		} catch (NoSuchMethodException e) {
-			Logger.getLogger(Prolog.class.getName()).log(Level.FINEST, null, e);
-		} catch (SecurityException e) {
-			Logger.getLogger(Prolog.class.getName()).log(Level.FINEST, null, e);
-		}
-		return provider;
+		return Prolog.getProvider(providerClass);
 	}
 
 	private ServiceProviderLocator() {
