@@ -8,8 +8,8 @@
     <language>en-us</language>
     <copyright>&#169;2020 - 2022 Prolobjectlink Project</copyright>
     <item>
-      <title>File: 75,
-             Errors: 9983,
+      <title>File: 73,
+             Errors: 9642,
              Warnings: 0,
              Infos: 0
       </title>
@@ -39,20 +39,6 @@
                 </td>
                 <td>
                   18
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologThread.java">io/github/prolobjectlink/prolog/PrologThread.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  79
                 </td>
               </tr>
                           <tr>
@@ -346,7 +332,7 @@
                   0
                 </td>
                 <td>
-                  781
+                  670
                 </td>
               </tr>
                           <tr>
@@ -771,20 +757,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologThreadPool.java">io/github/prolobjectlink/prolog/PrologThreadPool.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  109
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.PrologMapper.java">io/github/prolobjectlink/prolog/PrologMapper.java</a>
                 </td>
                 <td>
@@ -850,7 +822,7 @@
                   0
                 </td>
                 <td>
-                  572
+                  530
                 </td>
               </tr>
                           <tr>

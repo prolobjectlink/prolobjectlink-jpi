@@ -318,35 +318,6 @@ public abstract class AbstractProvider implements PrologProvider {
 		return newStructure(leftTerm, operator, rightTerm);
 	}
 
-	public final PrologThread newThread(PrologTerm... goals) {
-		return new PrologThread(this, goals);
-	}
-
-	public final PrologThread newThread(String name, PrologTerm... goals) {
-		return new PrologThread(this, name, goals);
-	}
-
-	public PrologThread currentThread(PrologTerm... goals) {
-		Thread thread = Thread.currentThread();
-		return new PrologThread(this, thread, goals);
-	}
-
-	public PrologThread joinThreads(PrologThread... threads) {
-		throw new UnsupportedOperationException();
-	}
-
-	public PrologThread joinThreads(String name, PrologThread... threads) {
-		throw new UnsupportedOperationException();
-	}
-
-	public PrologThreadPool newThreadPool() {
-		return new PrologThreadPool();
-	}
-
-	public PrologThreadPool newThreadPool(int parallelismLevel) {
-		return new PrologThreadPool(parallelismLevel);
-	}
-
 	/**
 	 * Casts a PrologTerm to the class or interface represented by this
 	 * {@code Class} object.

@@ -256,7 +256,6 @@ Comparing source compatibility of C:\eclipse-jee-photon-workspace\prolobjectlink
 	===  UNCHANGED CONSTRUCTOR: PUBLIC AbstractProvider(io.github.prolobjectlink.prolog.PrologConverter)
 	+++  NEW METHOD: PROTECTED(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm cast(io.github.prolobjectlink.prolog.PrologTerm, java.lang.Class)
 	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologTerm cast(io.github.prolobjectlink.prolog.PrologTerm)
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologThread currentThread(io.github.prolobjectlink.prolog.PrologTerm[])
 	===  UNCHANGED METHOD: PUBLIC boolean equals(java.lang.Object)
 	===  UNCHANGED METHOD: PUBLIC FINAL java.lang.Object fromTerm(io.github.prolobjectlink.prolog.PrologTerm, java.lang.Class)
 	===  UNCHANGED METHOD: PUBLIC FINAL java.lang.Object fromTerm(io.github.prolobjectlink.prolog.PrologTerm, io.github.prolobjectlink.prolog.PrologTerm[], java.lang.Class)
@@ -267,8 +266,6 @@ Comparing source compatibility of C:\eclipse-jee-photon-workspace\prolobjectlink
 	===  UNCHANGED METHOD: PUBLIC FINAL java.lang.String getVersion()
 	===  UNCHANGED METHOD: PUBLIC int hashCode()
 	+++  NEW METHOD: PUBLIC(+) FINAL(+) boolean isCompliant()
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologThread joinThreads(io.github.prolobjectlink.prolog.PrologThread[])
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologThread joinThreads(java.lang.String, io.github.prolobjectlink.prolog.PrologThread[])
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologDouble newDouble()
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologFloat newFloat()
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologInteger newInteger()
@@ -280,10 +277,6 @@ Comparing source compatibility of C:\eclipse-jee-photon-workspace\prolobjectlink
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologLong newLong()
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologTerm newStructure(java.lang.String, java.lang.Object[])
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologTerm newStructure(java.lang.Object, java.lang.String, java.lang.Object)
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologThread newThread(io.github.prolobjectlink.prolog.PrologTerm[])
-	+++  NEW METHOD: PUBLIC(+) FINAL(+) io.github.prolobjectlink.prolog.PrologThread newThread(java.lang.String, io.github.prolobjectlink.prolog.PrologTerm[])
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologThreadPool newThreadPool()
-	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologThreadPool newThreadPool(int)
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologClause parseClause(java.lang.String)
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologList parseList(java.lang.String)
 	===  UNCHANGED METHOD: PUBLIC FINAL java.util.Set parseProgram(java.lang.String)
@@ -830,7 +823,6 @@ Comparing source compatibility of C:\eclipse-jee-photon-workspace\prolobjectlink
 	===  UNCHANGED INTERFACE: io.github.prolobjectlink.prolog.PrologParser
 	===  UNCHANGED SUPERCLASS: java.lang.Object (<- java.lang.Object)
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm cast(io.github.prolobjectlink.prolog.PrologTerm)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologThread currentThread(io.github.prolobjectlink.prolog.PrologTerm[])
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm falseReference()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologConverter getConverter()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologJavaConverter getJavaConverter()
@@ -839,8 +831,6 @@ Comparing source compatibility of C:\eclipse-jee-photon-workspace\prolobjectlink
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologParser getParser()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT java.lang.String getVersion()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isCompliant()
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologThread joinThreads(io.github.prolobjectlink.prolog.PrologThread[])
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologThread joinThreads(java.lang.String, io.github.prolobjectlink.prolog.PrologThread[])
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologAtom newAtom(java.lang.String)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologDouble newDouble()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologDouble newDouble(java.lang.Number)
@@ -871,10 +861,6 @@ Comparing source compatibility of C:\eclipse-jee-photon-workspace\prolobjectlink
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologTerm newStructure(java.lang.String, java.lang.Object[])
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologTerm newStructure(io.github.prolobjectlink.prolog.PrologTerm, java.lang.String, io.github.prolobjectlink.prolog.PrologTerm)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologTerm newStructure(java.lang.Object, java.lang.String, java.lang.Object)
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologThread newThread(io.github.prolobjectlink.prolog.PrologTerm[])
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologThread newThread(java.lang.String, io.github.prolobjectlink.prolog.PrologTerm[])
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologThreadPool newThreadPool()
-	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologThreadPool newThreadPool(int)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologVariable newVariable(int)
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologVariable newVariable(java.lang.String, int)
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologTerm nullReference()
@@ -1059,51 +1045,6 @@ Comparing source compatibility of C:\eclipse-jee-photon-workspace\prolobjectlink
 	+++  NEW FIELD: PUBLIC(+) STATIC(+) FINAL(+) int NAMESPACE_TYPE
 	+++  NEW FIELD: PUBLIC(+) STATIC(+) FINAL(+) int MIXIN_TYPE
 	+++  NEW FIELD: PUBLIC(+) STATIC(+) FINAL(+) int CLASS_TYPE
-+++* NEW CLASS: PUBLIC(+) io.github.prolobjectlink.prolog.PrologThread  (not serializable)
-	+++  CLASS FILE FORMAT VERSION: 50.0 <- n.a.
-	+++  NEW INTERFACE: java.util.concurrent.RunnableFuture
-	+++  NEW INTERFACE: java.util.concurrent.Future
-	+++  NEW INTERFACE: java.util.concurrent.Callable
-	+++  NEW INTERFACE: java.lang.Runnable
-	+++  NEW SUPERCLASS: java.lang.Thread
-	+++  NEW METHOD: PUBLIC(+) java.util.List call()
-		+++  NEW EXCEPTION: java.lang.Exception
-	+++  NEW METHOD: PUBLIC(+) boolean cancel(boolean)
-	+++  NEW METHOD: PUBLIC(+) java.util.List get()
-		+++  NEW EXCEPTION: java.lang.InterruptedException
-		+++  NEW EXCEPTION: java.util.concurrent.ExecutionException
-	+++  NEW METHOD: PUBLIC(+) java.util.List get(long, java.util.concurrent.TimeUnit)
-		+++  NEW EXCEPTION: java.lang.InterruptedException
-		+++  NEW EXCEPTION: java.util.concurrent.ExecutionException
-		+++  NEW EXCEPTION: java.util.concurrent.TimeoutException
-	+++  NEW METHOD: PUBLIC(+) boolean isCancelled()
-	+++  NEW METHOD: PUBLIC(+) boolean isDone()
-+++  NEW CLASS: PUBLIC(+) io.github.prolobjectlink.prolog.PrologThreadPool  (not serializable)
-	+++  CLASS FILE FORMAT VERSION: 50.0 <- n.a.
-	+++  NEW INTERFACE: java.util.concurrent.Executor
-	+++  NEW INTERFACE: java.util.concurrent.ExecutorService
-	+++  NEW SUPERCLASS: java.lang.Object
-	+++  NEW METHOD: PUBLIC(+) boolean awaitTermination(long, java.util.concurrent.TimeUnit)
-		+++  NEW EXCEPTION: java.lang.InterruptedException
-	+++  NEW METHOD: PUBLIC(+) void execute(java.lang.Runnable)
-	+++  NEW METHOD: PUBLIC(+) java.util.List invokeAll(java.util.Collection)
-		+++  NEW EXCEPTION: java.lang.InterruptedException
-	+++  NEW METHOD: PUBLIC(+) java.util.List invokeAll(java.util.Collection, long, java.util.concurrent.TimeUnit)
-		+++  NEW EXCEPTION: java.lang.InterruptedException
-	+++  NEW METHOD: PUBLIC(+) java.lang.Object invokeAny(java.util.Collection)
-		+++  NEW EXCEPTION: java.lang.InterruptedException
-		+++  NEW EXCEPTION: java.util.concurrent.ExecutionException
-	+++  NEW METHOD: PUBLIC(+) java.lang.Object invokeAny(java.util.Collection, long, java.util.concurrent.TimeUnit)
-		+++  NEW EXCEPTION: java.lang.InterruptedException
-		+++  NEW EXCEPTION: java.util.concurrent.ExecutionException
-		+++  NEW EXCEPTION: java.util.concurrent.TimeoutException
-	+++  NEW METHOD: PUBLIC(+) boolean isShutdown()
-	+++  NEW METHOD: PUBLIC(+) boolean isTerminated()
-	+++  NEW METHOD: PUBLIC(+) void shutdown()
-	+++  NEW METHOD: PUBLIC(+) java.util.List shutdownNow()
-	+++  NEW METHOD: PUBLIC(+) java.util.concurrent.Future submit(java.util.concurrent.Callable)
-	+++  NEW METHOD: PUBLIC(+) java.util.concurrent.Future submit(java.lang.Runnable, java.lang.Object)
-	+++  NEW METHOD: PUBLIC(+) java.util.concurrent.Future submit(java.lang.Runnable)
 +++  NEW INTERFACE: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologType  (not serializable)
 	+++  CLASS FILE FORMAT VERSION: 50.0 <- n.a.
 	+++  NEW SUPERCLASS: java.lang.Object

@@ -547,142 +547,57 @@
 <a class="jxr_linenumber" name="537" href="#537">537</a> 	<strong class="jxr_keyword">public</strong> &lt;T <strong class="jxr_keyword">extends</strong> PrologTerm&gt; T <strong class="jxr_keyword">cast</strong>(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> term);
 <a class="jxr_linenumber" name="538" href="#538">538</a> 
 <a class="jxr_linenumber" name="539" href="#539">539</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="540" href="#540">540</a> <em class="jxr_javadoccomment">	 * Prolog thread is a thread of execution in a program. The Java Virtual Machine</em>
-<a class="jxr_linenumber" name="541" href="#541">541</a> <em class="jxr_javadoccomment">	 * allows an application to have multiple threads of execution running</em>
-<a class="jxr_linenumber" name="542" href="#542">542</a> <em class="jxr_javadoccomment">	 * concurrently.</em>
-<a class="jxr_linenumber" name="543" href="#543">543</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="544" href="#544">544</a> <em class="jxr_javadoccomment">	 * Every thread has a priority. Threads with higher priority are executed in</em>
-<a class="jxr_linenumber" name="545" href="#545">545</a> <em class="jxr_javadoccomment">	 * preference to threads with lower priority. Each thread may or may not also be</em>
-<a class="jxr_linenumber" name="546" href="#546">546</a> <em class="jxr_javadoccomment">	 * marked as a daemon. When code running in some thread creates a new Thread</em>
-<a class="jxr_linenumber" name="547" href="#547">547</a> <em class="jxr_javadoccomment">	 * object, the new thread has its priority initially set equal to the priority</em>
-<a class="jxr_linenumber" name="548" href="#548">548</a> <em class="jxr_javadoccomment">	 * of the creating thread, and is a daemon thread if and only if the creating</em>
-<a class="jxr_linenumber" name="549" href="#549">549</a> <em class="jxr_javadoccomment">	 * thread is a daemon.</em>
-<a class="jxr_linenumber" name="550" href="#550">550</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="551" href="#551">551</a> <em class="jxr_javadoccomment">	 * @param goals targets goals to be executed</em>
-<a class="jxr_linenumber" name="552" href="#552">552</a> <em class="jxr_javadoccomment">	 * @return new prolog thread</em>
-<a class="jxr_linenumber" name="553" href="#553">553</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="554" href="#554">554</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="555" href="#555">555</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologThread.html">PrologThread</a> newThread(PrologTerm... goals);
-<a class="jxr_linenumber" name="556" href="#556">556</a> 
-<a class="jxr_linenumber" name="557" href="#557">557</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="558" href="#558">558</a> <em class="jxr_javadoccomment">	 * Prolog thread is a thread of execution in a program. The Java Virtual Machine</em>
-<a class="jxr_linenumber" name="559" href="#559">559</a> <em class="jxr_javadoccomment">	 * allows an application to have multiple threads of execution running</em>
-<a class="jxr_linenumber" name="560" href="#560">560</a> <em class="jxr_javadoccomment">	 * concurrently.</em>
-<a class="jxr_linenumber" name="561" href="#561">561</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="562" href="#562">562</a> <em class="jxr_javadoccomment">	 * Every thread has a priority. Threads with higher priority are executed in</em>
-<a class="jxr_linenumber" name="563" href="#563">563</a> <em class="jxr_javadoccomment">	 * preference to threads with lower priority. Each thread may or may not also be</em>
-<a class="jxr_linenumber" name="564" href="#564">564</a> <em class="jxr_javadoccomment">	 * marked as a daemon. When code running in some thread creates a new Thread</em>
-<a class="jxr_linenumber" name="565" href="#565">565</a> <em class="jxr_javadoccomment">	 * object, the new thread has its priority initially set equal to the priority</em>
-<a class="jxr_linenumber" name="566" href="#566">566</a> <em class="jxr_javadoccomment">	 * of the creating thread, and is a daemon thread if and only if the creating</em>
-<a class="jxr_linenumber" name="567" href="#567">567</a> <em class="jxr_javadoccomment">	 * thread is a daemon.</em>
+<a class="jxr_linenumber" name="540" href="#540">540</a> <em class="jxr_javadoccomment">	 * Get a Java to Prolog converter instance to map the abstract prolog data types</em>
+<a class="jxr_linenumber" name="541" href="#541">541</a> <em class="jxr_javadoccomment">	 * to Java types.</em>
+<a class="jxr_linenumber" name="542" href="#542">542</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="543" href="#543">543</a> <em class="jxr_javadoccomment">	 * @return Java to Prolog converter instance.</em>
+<a class="jxr_linenumber" name="544" href="#544">544</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="545" href="#545">545</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="546" href="#546">546</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologJavaConverter.html">PrologJavaConverter</a> getJavaConverter();
+<a class="jxr_linenumber" name="547" href="#547">547</a> 
+<a class="jxr_linenumber" name="548" href="#548">548</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="549" href="#549">549</a> <em class="jxr_javadoccomment">	 * Get a prolog converter instance to map the abstract prolog data types to</em>
+<a class="jxr_linenumber" name="550" href="#550">550</a> <em class="jxr_javadoccomment">	 * under-laying prolog implementations data types.</em>
+<a class="jxr_linenumber" name="551" href="#551">551</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="552" href="#552">552</a> <em class="jxr_javadoccomment">	 * @param &lt;K&gt; under-laying prolog data types</em>
+<a class="jxr_linenumber" name="553" href="#553">553</a> <em class="jxr_javadoccomment">	 * @return prolog converter instance</em>
+<a class="jxr_linenumber" name="554" href="#554">554</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="555" href="#555">555</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="556" href="#556">556</a> 	<strong class="jxr_keyword">public</strong> &lt;K&gt; PrologConverter&lt;K&gt; getConverter();
+<a class="jxr_linenumber" name="557" href="#557">557</a> 
+<a class="jxr_linenumber" name="558" href="#558">558</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="559" href="#559">559</a> <em class="jxr_javadoccomment">	 * Get a prolog parser instance to parser the strings with prolog syntax.</em>
+<a class="jxr_linenumber" name="560" href="#560">560</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="561" href="#561">561</a> <em class="jxr_javadoccomment">	 * @return prolog parser instance</em>
+<a class="jxr_linenumber" name="562" href="#562">562</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="563" href="#563">563</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="564" href="#564">564</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologParser.html">PrologParser</a> getParser();
+<a class="jxr_linenumber" name="565" href="#565">565</a> 
+<a class="jxr_linenumber" name="566" href="#566">566</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="567" href="#567">567</a> <em class="jxr_javadoccomment">	 * Get the prolog system logger instance to report any errors or exceptions</em>
 <a class="jxr_linenumber" name="568" href="#568">568</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="569" href="#569">569</a> <em class="jxr_javadoccomment">	 * @param name  name of the thread</em>
-<a class="jxr_linenumber" name="570" href="#570">570</a> <em class="jxr_javadoccomment">	 * @param goals targets goals to be executed</em>
-<a class="jxr_linenumber" name="571" href="#571">571</a> <em class="jxr_javadoccomment">	 * @return new prolog thread</em>
-<a class="jxr_linenumber" name="572" href="#572">572</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="573" href="#573">573</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="574" href="#574">574</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologThread.html">PrologThread</a> newThread(String name, PrologTerm... goals);
-<a class="jxr_linenumber" name="575" href="#575">575</a> 
-<a class="jxr_linenumber" name="576" href="#576">576</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="577" href="#577">577</a> <em class="jxr_javadoccomment">	 * Get the current prolog thread. More formally wrap the current runtime thread</em>
-<a class="jxr_linenumber" name="578" href="#578">578</a> <em class="jxr_javadoccomment">	 * into prolog thread class and return an instance.</em>
-<a class="jxr_linenumber" name="579" href="#579">579</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="580" href="#580">580</a> <em class="jxr_javadoccomment">	 * @param goals targets goals to be executed in the current thread</em>
-<a class="jxr_linenumber" name="581" href="#581">581</a> <em class="jxr_javadoccomment">	 * @return current prolog thread</em>
-<a class="jxr_linenumber" name="582" href="#582">582</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="583" href="#583">583</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="584" href="#584">584</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologThread.html">PrologThread</a> currentThread(PrologTerm... goals);
-<a class="jxr_linenumber" name="585" href="#585">585</a> 
-<a class="jxr_linenumber" name="586" href="#586">586</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="587" href="#587">587</a> <em class="jxr_javadoccomment">	 * Return a single thread that is the union of all given threads</em>
-<a class="jxr_linenumber" name="588" href="#588">588</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="589" href="#589">589</a> <em class="jxr_javadoccomment">	 * @param threads thread array to be joined</em>
-<a class="jxr_linenumber" name="590" href="#590">590</a> <em class="jxr_javadoccomment">	 * @return a single thread that is the union of all given threads</em>
-<a class="jxr_linenumber" name="591" href="#591">591</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="592" href="#592">592</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="593" href="#593">593</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologThread.html">PrologThread</a> joinThreads(PrologThread... threads);
-<a class="jxr_linenumber" name="594" href="#594">594</a> 
-<a class="jxr_linenumber" name="595" href="#595">595</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="596" href="#596">596</a> <em class="jxr_javadoccomment">	 * Return a single thread that is the union of all given threads</em>
-<a class="jxr_linenumber" name="597" href="#597">597</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="598" href="#598">598</a> <em class="jxr_javadoccomment">	 * @param name    resulting thread name</em>
-<a class="jxr_linenumber" name="599" href="#599">599</a> <em class="jxr_javadoccomment">	 * @param threads thread array to be joined</em>
-<a class="jxr_linenumber" name="600" href="#600">600</a> <em class="jxr_javadoccomment">	 * @return a single thread that is the union of all given threads</em>
-<a class="jxr_linenumber" name="601" href="#601">601</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="602" href="#602">602</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="603" href="#603">603</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologThread.html">PrologThread</a> joinThreads(String name, PrologThread... threads);
-<a class="jxr_linenumber" name="604" href="#604">604</a> 
-<a class="jxr_linenumber" name="605" href="#605">605</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="606" href="#606">606</a> <em class="jxr_javadoccomment">	 * Create a new thread pool that executes each submitted task using one of</em>
-<a class="jxr_linenumber" name="607" href="#607">607</a> <em class="jxr_javadoccomment">	 * possibly several pooled threads.</em>
-<a class="jxr_linenumber" name="608" href="#608">608</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="609" href="#609">609</a> <em class="jxr_javadoccomment">	 * @return a new thread pool that executes each submitted task.</em>
-<a class="jxr_linenumber" name="610" href="#610">610</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="611" href="#611">611</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="612" href="#612">612</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologThreadPool.html">PrologThreadPool</a> newThreadPool();
-<a class="jxr_linenumber" name="613" href="#613">613</a> 
-<a class="jxr_linenumber" name="614" href="#614">614</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="615" href="#615">615</a> <em class="jxr_javadoccomment">	 * Create a new thread pool that executes each submitted task using one of</em>
-<a class="jxr_linenumber" name="616" href="#616">616</a> <em class="jxr_javadoccomment">	 * possibly several pooled threads.</em>
-<a class="jxr_linenumber" name="617" href="#617">617</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="618" href="#618">618</a> <em class="jxr_javadoccomment">	 * @param parallelismLevel threads number in the pool.</em>
-<a class="jxr_linenumber" name="619" href="#619">619</a> <em class="jxr_javadoccomment">	 * @return a new thread pool that executes each submitted task.</em>
-<a class="jxr_linenumber" name="620" href="#620">620</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="621" href="#621">621</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="622" href="#622">622</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologThreadPool.html">PrologThreadPool</a> newThreadPool(<strong class="jxr_keyword">int</strong> parallelismLevel);
-<a class="jxr_linenumber" name="623" href="#623">623</a> 
-<a class="jxr_linenumber" name="624" href="#624">624</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="625" href="#625">625</a> <em class="jxr_javadoccomment">	 * Get a Java to Prolog converter instance to map the abstract prolog data types</em>
-<a class="jxr_linenumber" name="626" href="#626">626</a> <em class="jxr_javadoccomment">	 * to Java types.</em>
-<a class="jxr_linenumber" name="627" href="#627">627</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="628" href="#628">628</a> <em class="jxr_javadoccomment">	 * @return Java to Prolog converter instance.</em>
-<a class="jxr_linenumber" name="629" href="#629">629</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="630" href="#630">630</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="631" href="#631">631</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologJavaConverter.html">PrologJavaConverter</a> getJavaConverter();
-<a class="jxr_linenumber" name="632" href="#632">632</a> 
-<a class="jxr_linenumber" name="633" href="#633">633</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="634" href="#634">634</a> <em class="jxr_javadoccomment">	 * Get a prolog converter instance to map the abstract prolog data types to</em>
-<a class="jxr_linenumber" name="635" href="#635">635</a> <em class="jxr_javadoccomment">	 * under-laying prolog implementations data types.</em>
-<a class="jxr_linenumber" name="636" href="#636">636</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="637" href="#637">637</a> <em class="jxr_javadoccomment">	 * @param &lt;K&gt; under-laying prolog data types</em>
-<a class="jxr_linenumber" name="638" href="#638">638</a> <em class="jxr_javadoccomment">	 * @return prolog converter instance</em>
-<a class="jxr_linenumber" name="639" href="#639">639</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="640" href="#640">640</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="641" href="#641">641</a> 	<strong class="jxr_keyword">public</strong> &lt;K&gt; PrologConverter&lt;K&gt; getConverter();
-<a class="jxr_linenumber" name="642" href="#642">642</a> 
-<a class="jxr_linenumber" name="643" href="#643">643</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="644" href="#644">644</a> <em class="jxr_javadoccomment">	 * Get a prolog parser instance to parser the strings with prolog syntax.</em>
-<a class="jxr_linenumber" name="645" href="#645">645</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="646" href="#646">646</a> <em class="jxr_javadoccomment">	 * @return prolog parser instance</em>
-<a class="jxr_linenumber" name="647" href="#647">647</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="648" href="#648">648</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="649" href="#649">649</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologParser.html">PrologParser</a> getParser();
-<a class="jxr_linenumber" name="650" href="#650">650</a> 
-<a class="jxr_linenumber" name="651" href="#651">651</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="652" href="#652">652</a> <em class="jxr_javadoccomment">	 * Get the prolog system logger instance to report any errors or exceptions</em>
-<a class="jxr_linenumber" name="653" href="#653">653</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="654" href="#654">654</a> <em class="jxr_javadoccomment">	 * @return prolog system logger instance</em>
-<a class="jxr_linenumber" name="655" href="#655">655</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="656" href="#656">656</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="657" href="#657">657</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologLogger.html">PrologLogger</a> getLogger();
-<a class="jxr_linenumber" name="658" href="#658">658</a> 
-<a class="jxr_linenumber" name="659" href="#659">659</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="660" href="#660">660</a> <em class="jxr_javadoccomment">	 * Version of the wrapped engine.</em>
-<a class="jxr_linenumber" name="661" href="#661">661</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="662" href="#662">662</a> <em class="jxr_javadoccomment">	 * @return String version of the wrapped engine.</em>
-<a class="jxr_linenumber" name="663" href="#663">663</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="664" href="#664">664</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="665" href="#665">665</a> 	<strong class="jxr_keyword">public</strong> String getVersion();
-<a class="jxr_linenumber" name="666" href="#666">666</a> 
-<a class="jxr_linenumber" name="667" href="#667">667</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="668" href="#668">668</a> <em class="jxr_javadoccomment">	 * Name of the wrapped engine.</em>
-<a class="jxr_linenumber" name="669" href="#669">669</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="670" href="#670">670</a> <em class="jxr_javadoccomment">	 * @return String name of the wrapped engine.</em>
-<a class="jxr_linenumber" name="671" href="#671">671</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="672" href="#672">672</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="673" href="#673">673</a> 	<strong class="jxr_keyword">public</strong> String getName();
-<a class="jxr_linenumber" name="674" href="#674">674</a> 
-<a class="jxr_linenumber" name="675" href="#675">675</a> }
+<a class="jxr_linenumber" name="569" href="#569">569</a> <em class="jxr_javadoccomment">	 * @return prolog system logger instance</em>
+<a class="jxr_linenumber" name="570" href="#570">570</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="571" href="#571">571</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="572" href="#572">572</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologLogger.html">PrologLogger</a> getLogger();
+<a class="jxr_linenumber" name="573" href="#573">573</a> 
+<a class="jxr_linenumber" name="574" href="#574">574</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="575" href="#575">575</a> <em class="jxr_javadoccomment">	 * Version of the wrapped engine.</em>
+<a class="jxr_linenumber" name="576" href="#576">576</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="577" href="#577">577</a> <em class="jxr_javadoccomment">	 * @return String version of the wrapped engine.</em>
+<a class="jxr_linenumber" name="578" href="#578">578</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="579" href="#579">579</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="580" href="#580">580</a> 	<strong class="jxr_keyword">public</strong> String getVersion();
+<a class="jxr_linenumber" name="581" href="#581">581</a> 
+<a class="jxr_linenumber" name="582" href="#582">582</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="583" href="#583">583</a> <em class="jxr_javadoccomment">	 * Name of the wrapped engine.</em>
+<a class="jxr_linenumber" name="584" href="#584">584</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="585" href="#585">585</a> <em class="jxr_javadoccomment">	 * @return String name of the wrapped engine.</em>
+<a class="jxr_linenumber" name="586" href="#586">586</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="587" href="#587">587</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="588" href="#588">588</a> 	<strong class="jxr_keyword">public</strong> String getName();
+<a class="jxr_linenumber" name="589" href="#589">589</a> 
+<a class="jxr_linenumber" name="590" href="#590">590</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>
