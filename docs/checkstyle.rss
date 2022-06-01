@@ -8,8 +8,8 @@
     <language>en-us</language>
     <copyright>&#169;2020 - 2022 Prolobjectlink Project</copyright>
     <item>
-      <title>File: 76,
-             Errors: 10632,
+      <title>File: 75,
+             Errors: 10012,
              Warnings: 0,
              Infos: 0
       </title>
@@ -346,7 +346,7 @@
                   0
                 </td>
                 <td>
-                  981
+                  781
                 </td>
               </tr>
                           <tr>
@@ -799,20 +799,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.ReflectionUtil.java">io/github/prolobjectlink/prolog/ReflectionUtil.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  321
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpi/checkstyle.html#io.github.prolobjectlink.prolog.AbstractIterator.java">io/github/prolobjectlink/prolog/AbstractIterator.java</a>
                 </td>
                 <td>
@@ -864,7 +850,7 @@
                   0
                 </td>
                 <td>
-                  671
+                  572
                 </td>
               </tr>
                           <tr>

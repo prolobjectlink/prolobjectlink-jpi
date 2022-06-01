@@ -26,8 +26,6 @@
 package io.github.prolobjectlink.prolog;
 
 import java.io.File;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -318,69 +316,6 @@ public abstract class AbstractProvider implements PrologProvider {
 		PrologTerm leftTerm = transformer.toTerm(left);
 		PrologTerm rightTerm = transformer.toTerm(right);
 		return newStructure(leftTerm, operator, rightTerm);
-	}
-
-	public final Object newObject(String className) {
-		Class<?> cls = ReflectionUtil.classForName(className);
-		return ReflectionUtil.newInstance(cls);
-	}
-
-	public final Object newObject(String className, Object... arguments) {
-		Class<?>[] parameterTypes = new Class<?>[arguments.length];
-		for (int i = 0; i < parameterTypes.length; i++) {
-			parameterTypes[i] = arguments[i].getClass();
-		}
-		Class<?> cls = ReflectionUtil.classForName(className);
-		return ReflectionUtil.newInstance(cls, parameterTypes, arguments);
-	}
-
-	public final Object newObject(PrologAtom className) {
-		return newObject(removeQuoted(className.getFunctor()));
-	}
-
-	public final Object newObject(PrologAtom className, PrologTerm[] arguments) {
-		Object[] args = getJavaConverter().toObjectsArray(arguments);
-		return newObject(removeQuoted(className.getFunctor()), args);
-	}
-
-	public final Object getObject(Object reference, String fieldName) {
-		Field field = ReflectionUtil.getDeclaredField(reference.getClass(), fieldName);
-		return ReflectionUtil.readValue(field, reference);
-	}
-
-	public final Object getObject(Object reference, PrologAtom fieldName) {
-		return getObject(reference, fieldName.getFunctor());
-	}
-
-	public final void setObject(Object reference, String fieldName, Object value) {
-		Field field = ReflectionUtil.getDeclaredField(reference.getClass(), fieldName);
-		ReflectionUtil.writeValue(field, reference, value);
-	}
-
-	public final void setObject(Object reference, PrologAtom fieldName, PrologTerm value) {
-		setObject(reference, fieldName.getFunctor(), value.getObject());
-	}
-
-	public final Object callObject(Object reference, String methodName, Object... arguments) {
-		Class<?>[] parameterTypes = new Class<?>[arguments.length];
-		for (int i = 0; i < parameterTypes.length; i++) {
-			parameterTypes[i] = arguments[i].getClass();
-		}
-		Method method = ReflectionUtil.getDeclaredMethod(reference.getClass(), methodName, parameterTypes);
-		return ReflectionUtil.invoke(reference, method, arguments);
-	}
-
-	public final Object callObject(Object reference, PrologAtom methodName, PrologTerm... arguments) {
-		Object[] args = getJavaConverter().toObjectsArray(arguments);
-		return callObject(reference, methodName.getFunctor(), args);
-	}
-
-	public final Object callObject(Object reference, String methodName) {
-		return callObject(reference, methodName, new Object[0]);
-	}
-
-	public final Object callObject(Object reference, PrologAtom methodName) {
-		return callObject(reference, methodName.getFunctor());
 	}
 
 	public final PrologThread newThread(PrologTerm... goals) {
