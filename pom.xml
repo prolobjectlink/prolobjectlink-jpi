@@ -365,16 +365,6 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 					<autoReleaseAfterClose>true</autoReleaseAfterClose>
 					<skipStaging>true</skipStaging>
 				</configuration>
-				<executions>
-					<execution>
-						<id>deploy-to-sonatype</id>
-						<phase>deploy</phase>
-						<goals>
-							<goal>deploy</goal>
-							<goal>release</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -509,7 +499,6 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 				<version>2.5.3</version>
 				<configuration>
 					<mavenHome>../apache-maven</mavenHome>
-					<goals>deploy -P release</goals>
 					<preparationGoals>clean install site</preparationGoals>
 					<allowTimestampedSnapshots>true</allowTimestampedSnapshots>
 					<tagNameFormat>v-@{project.version}</tagNameFormat>
