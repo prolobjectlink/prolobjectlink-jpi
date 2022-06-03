@@ -1,8 +1,8 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.prolobjectlink/prolobjectlink-jpi/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/io.github.prolobjectlink/prolobjectlink-jpi)
 ![Build Status](https://github.com/prolobjectlink/prolobjectlink-jpi/actions/workflows/maven.yml/badge.svg?event=push)
-
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=prolobjectlink_prolobjectlink-jpi&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=prolobjectlink_prolobjectlink-jpi)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=prolobjectlink_prolobjectlink-jpi&metric=coverage)](https://sonarcloud.io/summary/new_code?id=prolobjectlink_prolobjectlink-jpi)
-
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=prolobjectlink_prolobjectlink-jpi&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=prolobjectlink_prolobjectlink-jpi)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=prolobjectlink_prolobjectlink-jpi&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=prolobjectlink_prolobjectlink-jpi)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=prolobjectlink_prolobjectlink-jpi&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=prolobjectlink_prolobjectlink-jpi)
