@@ -2,8 +2,6 @@
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=prolobjectlink_prolobjectlink-jpi&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=prolobjectlink_prolobjectlink-jpi)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=prolobjectlink_prolobjectlink-jpi&metric=coverage)](https://sonarcloud.io/summary/new_code?id=prolobjectlink_prolobjectlink-jpi)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=prolobjectlink_prolobjectlink-jpi&metric=bugs)](https://sonarcloud.io/summary/new_code?id=prolobjectlink_prolobjectlink-jpi)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=prolobjectlink_prolobjectlink-jpi&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=prolobjectlink_prolobjectlink-jpi)
 
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=prolobjectlink_prolobjectlink-jpi&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=prolobjectlink_prolobjectlink-jpi)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=prolobjectlink_prolobjectlink-jpi&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=prolobjectlink_prolobjectlink-jpi)
