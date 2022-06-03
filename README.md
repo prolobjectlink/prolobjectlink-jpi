@@ -1,5 +1,14 @@
 ![GitHub](https://img.shields.io/github/license/prolobjectlink/prolobjectlink-jpi/badge.svg)(https://github.com/prolobjectlink/prolobjectlink-jpi/blob/master/LICENSE.md)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=prolobjectlink_prolobjectlink-jpi&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=prolobjectlink_prolobjectlink-jpi)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=prolobjectlink_prolobjectlink-jpi&metric=coverage)](https://sonarcloud.io/summary/new_code?id=prolobjectlink_prolobjectlink-jpi)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=prolobjectlink_prolobjectlink-jpi&metric=bugs)](https://sonarcloud.io/summary/new_code?id=prolobjectlink_prolobjectlink-jpi)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=prolobjectlink_prolobjectlink-jpi&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=prolobjectlink_prolobjectlink-jpi)
+
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=prolobjectlink_prolobjectlink-jpi&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=prolobjectlink_prolobjectlink-jpi)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=prolobjectlink_prolobjectlink-jpi&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=prolobjectlink_prolobjectlink-jpi)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=prolobjectlink_prolobjectlink-jpi&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=prolobjectlink_prolobjectlink-jpi)
+
 Java Prolog Interface (JPI) is an Application Provider Interface (API) for interaction between Java and Prolog programming languages. Is a bidirectional interface that communicate Java applications with Prolog program or database and Prolog procedures with Java class and methods.
 
 JPI is an abstraction layer over concrete prolog drivers over Prolog Engines. This API define all mechanism to interact with any Prolog Engine and maintain the application independent to a specific underlying engine. JPI have several connectors to open source prolog engines like SWI, YAP, XSB native engines and tuProlog, jTrolog, jLog Java based prolog engines.
