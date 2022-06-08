@@ -61,7 +61,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 	</ciManagement>
 
 	<issueManagement>
-		<system>GitHub</system>
+		<system>GitHub Issues</system>
 		<url>https://github.com/prolobjectlink/prolobjectlink-jpi/issues</url>
 	</issueManagement>
 
