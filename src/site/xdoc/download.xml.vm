@@ -27,12 +27,12 @@ THE SOFTWARE.
     <title>Download ${project.name}</title>
   </properties>
   <body>
-    <section name="Download ${project.name} ${project.version} Source">
+    <section name="Download ${project.name}-${project.version}">
 
       <p>${project.name} is distributed under the The MIT License (MIT). 
       ${project.name} ${project.version} is distributed in binary format.</p>
 
-      <subsection name="${project.name} ${project.version}">
+      <subsection name="${project.name}-${project.version}">
         
       <p>This is the current stable version of ${project.name}.</p>
         
@@ -45,8 +45,49 @@ THE SOFTWARE.
         </thead>
         <tbody>
           <tr>
-            <td>${project.name} ${project.version} (Binary zip)</td>
-            <td><a href="index.html">${project.name}-${project.version}.zip</a></td>
+            <td>${project.name}-${project.version} (Binary zip)</td>
+            <td><a href="https://github.com/prolobjectlink/prolobjectlink-jpi/releases/download/1.1.0/prolobjectlink-jpi-1.1-dist.zip">${project.name}-${project.version}.zip</a></td>
+          </tr>
+          <tr>
+            <td>${project.name}-${project.version} (Source zip)</td>
+            <td><a href="https://github.com/prolobjectlink/prolobjectlink-jpi/archive/refs/tags/1.1.0.zip">${project.name}-${project.version}-source.zip</a></td>
+          </tr>
+          <tr>
+            <td>${project.name}-${project.version} (Binary tar.gz)</td>
+            <td><a href="https://github.com/prolobjectlink/prolobjectlink-jpi/releases/download/1.1.0/prolobjectlink-jpi-1.1-dist.tar.gz">${project.name}-${project.version}.tar.gz</a></td>
+          </tr>
+          <tr>
+            <td>${project.name}-${project.version} (Source tar.gz)</td>
+            <td><a href="https://github.com/prolobjectlink/prolobjectlink-jpi/archive/refs/tags/1.1.0.tar.gz">${project.name}-${project.version}.tar.gz</a></td>
+          </tr>
+          <tr>
+            <td>${project.name}-${project.version} (Binary jar)</td>
+            <td><a href="https://github.com/prolobjectlink/prolobjectlink-jpi/releases/download/1.1.0/prolobjectlink-jpi-1.1.jar">${project.name}-${project.version}.jar</a></td>
+          </tr>
+        </tbody>
+        <tr>
+            <td>${project.name}-${project.version} (Source jar)</td>
+            <td><a href="https://github.com/prolobjectlink/prolobjectlink-jpi/releases/download/1.1.0/prolobjectlink-jpi-1.1-sources.jar">${project.name}-${project.version}-source.jar</a></td>
+          </tr>
+        </tbody>
+        <tr>
+            <td>${project.name}-${project.version} (Javadoc jar)</td>
+            <td><a href="https://github.com/prolobjectlink/prolobjectlink-jpi/releases/download/1.1.0/prolobjectlink-jpi-1.1-javadoc.jar">${project.name}-${project.version}-javadoc.jar</a></td>
+          </tr>
+        </tbody>
+        <tr>
+            <td>${project.name}-${project.version} (Binary Signature asc)</td>
+            <td><a href="https://github.com/prolobjectlink/prolobjectlink-jpi/releases/download/1.1.0/prolobjectlink-jpi-1.1.jar.asc">${project.name}-${project.version}.jar.asc</a></td>
+          </tr>
+        </tbody>
+        <tr>
+            <td>${project.name}-${project.version} (Source Signature asc)</td>
+            <td><a href="https://github.com/prolobjectlink/prolobjectlink-jpi/releases/download/1.1.0/prolobjectlink-jpi-1.1-sources.jar.asc">${project.name}-${project.version}-source.jar.asc</a></td>
+          </tr>
+        </tbody>
+        <tr>
+            <td>${project.name}-${project.version} (Javadoc Signature asc)</td>
+            <td><a href="https://github.com/prolobjectlink/prolobjectlink-jpi/releases/download/1.1.0/prolobjectlink-jpi-1.1-javadoc.jar.asc">${project.name}-${project.version}-javadoc.jar.asc</a></td>
           </tr>
         </tbody>
       </table>
@@ -54,7 +95,7 @@ THE SOFTWARE.
 
       <subsection name="Previous Versions">
         
-      <p>Older releases can be found on our <a href="index.html">archive site</a>.</p>
+      <p>Older releases can be found on our <a href="https://github.com/prolobjectlink/prolobjectlink-jpi/releases">archive site</a>.</p>
 
       </subsection>
     </section>
