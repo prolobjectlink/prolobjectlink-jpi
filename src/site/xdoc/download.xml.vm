@@ -61,27 +61,22 @@ under the License.
             <td>${project.name}-${project.version} (Binary jar)</td>
             <td><a href="https://github.com/prolobjectlink/prolobjectlink-jpi/releases/download/1.1.0/prolobjectlink-jpi-1.1.jar">${project.name}-${project.version}.jar</a></td>
           </tr>
-        </tbody>
         <tr>
             <td>${project.name}-${project.version} (Source jar)</td>
             <td><a href="https://github.com/prolobjectlink/prolobjectlink-jpi/releases/download/1.1.0/prolobjectlink-jpi-1.1-sources.jar">${project.name}-${project.version}-source.jar</a></td>
           </tr>
-        </tbody>
         <tr>
             <td>${project.name}-${project.version} (Javadoc jar)</td>
             <td><a href="https://github.com/prolobjectlink/prolobjectlink-jpi/releases/download/1.1.0/prolobjectlink-jpi-1.1-javadoc.jar">${project.name}-${project.version}-javadoc.jar</a></td>
           </tr>
-        </tbody>
         <tr>
             <td>${project.name}-${project.version} (Binary Signature asc)</td>
             <td><a href="https://github.com/prolobjectlink/prolobjectlink-jpi/releases/download/1.1.0/prolobjectlink-jpi-1.1.jar.asc">${project.name}-${project.version}.jar.asc</a></td>
           </tr>
-        </tbody>
         <tr>
             <td>${project.name}-${project.version} (Source Signature asc)</td>
             <td><a href="https://github.com/prolobjectlink/prolobjectlink-jpi/releases/download/1.1.0/prolobjectlink-jpi-1.1-sources.jar.asc">${project.name}-${project.version}-source.jar.asc</a></td>
           </tr>
-        </tbody>
         <tr>
             <td>${project.name}-${project.version} (Javadoc Signature asc)</td>
             <td><a href="https://github.com/prolobjectlink/prolobjectlink-jpi/releases/download/1.1.0/prolobjectlink-jpi-1.1-javadoc.jar.asc">${project.name}-${project.version}-javadoc.jar.asc</a></td>

@@ -51,8 +51,7 @@ import java.util.Map.Entry;
  * @author Jose Zalacain
  * @since 1.0
  */
-public abstract class AbstractJavaConverter 
-		implements PrologJavaConverter {
+public abstract class AbstractJavaConverter implements PrologJavaConverter {
 
 	private final PrologProvider provider;
 
@@ -125,6 +124,9 @@ public abstract class AbstractJavaConverter
 
 		// string data type
 		else if (object instanceof String) {
+			if (((String) object).matches("[A-Z_]*")) {
+				return provider.newVariable("" + (String) object + "", 0);
+			}
 			return provider.newAtom("" + (String) object + "");
 		}
 
