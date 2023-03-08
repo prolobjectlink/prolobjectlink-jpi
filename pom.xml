@@ -390,7 +390,7 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
 				<extensions>true</extensions>
-				<version>2.3.7</version>
+				<version>3.5.1</version>
 				<configuration>
 					<instructions>
 						<Bundle-Name>Java Prolog Interface</Bundle-Name>
@@ -738,6 +738,11 @@ JPI is developed and maintained by Prolobjectlink Project an open source initiat
 					</parameter>
 				</configuration>
 			</plugin>
+			<plugin>
+		        <groupId>org.apache.felix</groupId>
+		        <artifactId>maven-bundle-plugin</artifactId>
+		        <version>3.5.1</version>
+		    </plugin>
 		</plugins>
 	</reporting>
 
