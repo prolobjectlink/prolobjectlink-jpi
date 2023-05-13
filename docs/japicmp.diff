@@ -1,4 +1,4 @@
-Comparing source compatibility of C:\eclipse-jee-2022-03-R-workspace\prolobjectlink-jpi\target\prolobjectlink-jpi-1.2-SNAPSHOT.jar against C:\Users\Jose Zalacain\.m2\repository\io\github\prolobjectlink\prolobjectlink-jpi\1.0\prolobjectlink-jpi-1.0.jar
+Comparing source compatibility of C:\prolobjectlink-dev\workspace\prolobjectlink-jpi\target\prolobjectlink-jpi-1.2-SNAPSHOT.jar against C:\Users\Jose Zalacain\.m2\repository\io\github\prolobjectlink\prolobjectlink-jpi\1.0\prolobjectlink-jpi-1.0.jar
 ***  MODIFIED CLASS: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.AbstractClause  (not serializable)
 	===  CLASS FILE FORMAT VERSION: 50.0 <- 50.0
 	===* UNCHANGED INTERFACE: io.github.prolobjectlink.prolog.PrologClause
