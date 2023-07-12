@@ -673,6 +673,18 @@ public interface PrologEngine extends Iterable<PrologClause> {
 	public boolean unify(PrologTerm t1, PrologTerm t2);
 
 	/**
+	 * Match to other term returning list of substitutions. Used to compute the most
+	 * general unifier.
+	 * 
+	 * @param t1 the term to unify.
+	 * @param t2 the term to unify.
+	 * @return true if the specified term unify whit the current term, false
+	 *         otherwise.
+	 * @since 1.2
+	 */
+	public Map<String, PrologTerm> match(PrologTerm t1, PrologTerm t2);
+
+	/**
 	 * Parse the string creating internal prolog clause and returning true if the
 	 * given goal have solution using the resolution engine mechanism. If wrapped
 	 * engine not support a dedicated method then contains can be defined like

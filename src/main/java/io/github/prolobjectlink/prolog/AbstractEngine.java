@@ -75,6 +75,10 @@ public abstract class AbstractEngine implements PrologEngine {
 		return t1.unify(t2);
 	}
 
+	public Map<String, PrologTerm> match(PrologTerm t1, PrologTerm t2) {
+		return queryOne(t1 + "=" + t2);
+	}
+
 	public final boolean contains(String goal) {
 		return query(goal).hasSolution();
 	}
