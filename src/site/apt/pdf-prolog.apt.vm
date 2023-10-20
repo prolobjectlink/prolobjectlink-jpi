@@ -33,21 +33,177 @@
 
 Prolog Programming
  
-* Prolog Language
+* Introduction
+
+	Prolog is a programming language that originated in the early 1970s and was initially
+ 	developed for natural language processing. It became popular with the introduction of
+ 	interpreters for various computer systems. Prolog evolved from being interpreted to a
+ 	semi-interpreted language, thanks to the creation of a compiler. Its adoption for the
+ 	fifth-generation computer project and the establishment of an ISO standard (ISO/IEC 13211-1)
+ 	further contributed to its widespread use.
+ 	
+	Prolog belongs to the paradigm of logic and declarative languages, which sets it apart
+	significantly from more popular languages such as FORTRAN, Pascal, C, or Java. In the
+	aforementioned programming languages, instructions are typically executed sequentially,
+	one after another, in the same order as they are written. The order only changes when a
+	control instruction is reached (such as a loop, conditional statement, or transfer).
+
+	Prolog programs consist of Horn clauses that represent "modus ponens" rules, meaning
+	"If the antecedent is true, then the consequent is true." However, the way Horn clauses
+	are written is the opposite of the usual convention. First, the consequent is written,
+	followed by the antecedent. The antecedent can be a conjunction of conditions referred
+	to as a sequence of goals. Each goal is separated by a comma and can be seen as similar
+	to an instruction or procedure call in imperative languages. In Prolog, there are no 
+	control instructions. Execution is based on two concepts: unification and backtracking.
+
+	Thanks to unification, each goal determines a subset of clauses that can be executed.
+	Each of these subsets is called a choice point. Prolog selects the first choice point
+	and continues executing the program until determining whether the goal is true or false.
+	If the goal is false, backtracking comes into play. Backtracking involves undoing everything
+	that has been executed, placing the program in the same state it was in just before 
+	reaching the choice point. Then, the next pending choice point is taken, and the process
+	is repeated. All goals conclude their execution either successfully ("true") or 
+	unsuccessfully ("false").
+
+* Data types
+
+	Prolog has a single data type called "term." Terms can be atoms, numbers, variables, or
+	compound terms. Atoms are general-purpose names with no built-in meaning. Examples of 
+	atoms are x, red, 'Taco', and 'some atom'. Numbers can be floats or integers. Prolog 
+	systems compatible with the ISO standard can check the "bounded" flag. Most major Prolog 
+	systems support integers of arbitrary length. Variables are represented by strings 
+	consisting of letters, numbers, and underscores. They start with an uppercase letter 
+	or underscore. Variables closely resemble logic variables as they act as placeholders 
+	for any term.
+	
+	A compound term consists of an atom called a "functor" and a number of "arguments," 
+	which are themselves terms. Compound terms are typically written as a functor followed 
+	by a list of comma-separated argument terms enclosed in parentheses. The number of 
+	arguments is referred to as the term's "arity." An atom can be seen as a compound 
+	term with arity zero. For example, person_friends(zelda, [tom, jim]) is a compound term.
+	
+	Special cases of compound terms:
+		- Lists: An ordered collection of terms denoted by square brackets. The terms are 
+			separated by commas. An empty list is represented by []. For instance, [1, 2, 3] 
+			or [red, green, blue].
+			
+		- Strings: A sequence of characters surrounded by quotes. Depending on the value of 
+		the Prolog flag "double_quotes," a string can be treated as a list of character codes, 
+		a list of single-character atoms, or simply as an atom. For example, "to be, or not to be".
  
- 	The Prolog belongs to the declarative programming languages paradigm. the Prolog
- 	programs are based on valid conclusion over facts. Prolog is a LP 
- 	language specially indicated to modeling problems that imply objects and relations
- 	among objects. Prolog have simple syntax, is weakness typed, have simples data 
- 	structures, support recursion and is extensible. One Prolog program have two basic
- 	components or clause, facts and rules.
- 	
- 	All Prolog programs are a succession of clauses where every clause end with dot 
- 	character. They are two kind of clauses, Facts and Rules. Every Prolog clause have
- 	two components, one head and one body. Facts are the case where the clause only have
- 	head component but don't have body and they are used to indicate things unconditionally
- 	true about some domain. Rule have head and body and both are separate by neck operator
- 	(:-). Rules are used to indicate things conditionally true about some domain. Neck
- 	operator semantic denote that one condition should be satisfy by the clause head to be
- 	true. The clause body specify the condition order to verify for the conclusion or head.
- 	
+	ISO Prolog provides predicates like atom/1, number/1, integer/1, and float/1 for type-checking.
+
+* Rules and Facts
+
+	Prolog programs define relationships using clauses. Pure Prolog is limited to Horn clauses. 
+	There are two types of clauses: facts and rules. A rule has the form:
+	
+	Head :- Body.
+	
+	This signifies that "Head is true if Body is true." The body of a rule consists of calls to 
+	predicates, which are the goals of the rule. The built-in logical operator ,/2 
+	(denoting a binary operator named ",") represents the conjunction of goals, while ;/2 
+	represents disjunction. Conjunctions and disjunctions can only appear in the body of a rule, 
+	not in the head.
+	
+	Clauses with empty bodies are referred to as facts. An example of a fact is:
+	
+	cat(tom).
+	
+	This is equivalent to the rule:
+	
+	cat(tom) :- true.
+	
+	The built-in predicate true/0 is always true.
+	Based on the given fact, we can ask:
+	Is tom a cat?
+	
+	?- cat(tom).
+	
+	The answer is "Yes."
+	We can also inquire about the things that are cats:
+	What things are cats?
+	
+	?- cat(X).
+	
+	The answer is X = tom.
+	Clauses with bodies are known as rules. An example of a rule is:
+	
+	animal(X) :- cat(X).
+	
+	If we include this rule and ask what things are animals:
+	
+	?- animal(X).
+	
+	The answer is X = tom.
+	
+	Due to the relational nature of many built-in predicates, they can be used in multiple ways. 
+	For instance, length/2 can be used to find the length of a list (length(List, L)) given a list 
+	List, generate a list skeleton of a specific length (length(X, 5)), or generate both list 
+	skeletons and their lengths together (length(X, L)). Similarly, append/3 can be employed to 
+	append two lists (append(ListA, ListB, X)) given lists ListA and ListB, or split a given list 
+	into parts (append(X, Y, List)) given a list List. Consequently, a relatively small set of library 
+	predicates is sufficient for many Prolog programs.
+	
+	As a general-purpose language, Prolog also offers various built-in predicates for common tasks 
+	such as input/output, graphics usage, and interaction with the operating system. These predicates 
+	do not have relational meanings and are only useful for their system-related effects. For example, 
+	the predicate write/1 displays a term on the screen.
+	
+* Execution
+
+	To run a Prolog program, you start by entering a single goal called the query. The Prolog engine 
+	then attempts to find a resolution refutation of the negated query. Prolog uses a method called 
+	SLD resolution. If the negated query can be proven false, it means that the original query, with 
+	the appropriate variable assignments, is a logical consequence of the program. In this case, all 
+	the variable assignments are displayed, and the query is considered successful. 
+	
+	Operatively, Prolog's execution strategy can be seen as an extension of function calls in other 
+	programming languages. One difference is that multiple clause heads can match a particular call. 
+	When this happens, the system creates a choice point, where it matches the goal with the clause 
+	head of the first alternative and proceeds with that alternative's goals. If any goal fails during 
+	program execution, all variable assignments made since the most recent choice point was created are 
+	undone, and execution continues with the next alternative of that choice point. This strategy is 
+	known as chronological backtracking. 
+	
+	For example:
+	
++------------------------------------------------------------+
+	mother_child(trude, sally).
+	father_child(tom, sally).
+	father_child(tom, erica).
+	father_child(mike, tom).
+	sibling(X, Y)      :- parent_child(Z, X), parent_child(Z, Y).
+	parent_child(X, Y) :- father_child(X, Y).
+	parent_child(X, Y) :- mother_child(X, Y).
++------------------------------------------------------------+
+
+	Executing the following query will yield a true result:
+
++------------------------------------------------------------+
+	?- sibling(sally, erica).
+	Yes
++------------------------------------------------------------+
+
+	Here's how the result is obtained: Initially, the only clause head that matches the query `sibling(sally, erica)` 
+	is the first one. Therefore, proving the query is equivalent to proving the body of that clause with the 
+	appropriate variable assignments, which in this case is the conjunction `(parent_child(Z,sally), parent_child(Z,erica))`. 
+	The next goal to prove is the leftmost part of this conjunction: `parent_child(Z, sally)`. There are two 
+	clause heads that match this goal. The system creates a choice point and attempts the first alternative, 
+	which has the body `father_child(Z, sally)`. This goal can be proven with the fact `father_child(tom, sally)`, 
+	leading to the assignment `Z = tom`. The next goal to prove is the second part of the conjunction: `parent_child(tom, erica)`. 
+	This is also proven by the corresponding fact. Since all the goals have been proven, the query is considered successful. 
+	As the query doesn't contain any variables, no assignments are displayed to the user. 
+	
+	A query that includes variables, such as `?- father_child(Father, Child).`, will list all valid answers through backtracking.
+	Note that with the given code, the query `?- sibling(sally, sally).` also succeeds. If there are specific restrictions, additional goals should be added to the code.
+	
+	ISO Prolog is a technical standard developed by the International Organization for Standardization (ISO). 
+	It consists of two main parts. The first part, ISO/IEC 13211-1, was published in 1995 with the goal of 
+	standardizing the core elements of Prolog. This standard aims to bring clarity and remove ambiguities in 
+	the language, making it easier to write portable programs. Additionally, there have been three corrigenda 
+	issued: Cor.1:2007, Cor.2:2012, and Cor.3:2017.
+	
+	The second part, ISO/IEC 13211-2, was published in 2000 and provides support for modules within the standard. 
+	The maintenance of this standard is overseen by the ISO/IEC JTC1/SC22/WG17 working group. In the United States, 
+	the US Technical Advisory Group for the standard is ANSI X3J17.
