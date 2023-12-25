@@ -38,6 +38,12 @@ import java.util.NoSuchElementException;
  */
 public abstract class AbstractClause implements PrologClause {
 
+	private String see = "";
+	private String since = "";
+	private String author = "";
+	private String version = "";
+	private String description = "";
+
 	private boolean dynamic;
 	private boolean multifile;
 	private boolean discontiguous;
@@ -196,15 +202,60 @@ public abstract class AbstractClause implements PrologClause {
 		return (T) this;
 	}
 
+	public final String getSee() {
+		return see;
+	}
+
+	public final void setSee(String see) {
+		this.see = see;
+	}
+
+	public final String getSince() {
+		return since;
+	}
+
+	public final void setSince(String since) {
+		this.since = since;
+	}
+
+	public final String getAuthor() {
+		return author;
+	}
+
+	public final void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public final String getVersion() {
+		return version;
+	}
+
+	public final void setVersion(String version) {
+		this.version = version;
+	}
+
+	public final String getDescription() {
+		return description;
+	}
+
+	public final void setDescription(String description) {
+		this.description = description;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((author == null) ? 0 : author.hashCode());
 		result = prime * result + ((body == null) ? 0 : body.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + (discontiguous ? 1231 : 1237);
 		result = prime * result + (dynamic ? 1231 : 1237);
 		result = prime * result + ((head == null) ? 0 : head.hashCode());
 		result = prime * result + (multifile ? 1231 : 1237);
+		result = prime * result + ((see == null) ? 0 : see.hashCode());
+		result = prime * result + ((since == null) ? 0 : since.hashCode());
+		result = prime * result + ((version == null) ? 0 : version.hashCode());
 		return result;
 	}
 
@@ -217,12 +268,21 @@ public abstract class AbstractClause implements PrologClause {
 		if (getClass() != obj.getClass())
 			return false;
 		AbstractClause other = (AbstractClause) obj;
+		if (author == null) {
+			if (other.author != null)
+				return false;
+		} else if (!author.equals(other.author))
+			return false;
 		if (body == null) {
 			if (other.body != null)
 				return false;
-		} else if (!body.equals(other.body)) {
+		} else if (!body.equals(other.body))
 			return false;
-		}
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
 		if (discontiguous != other.discontiguous)
 			return false;
 		if (dynamic != other.dynamic)
@@ -230,10 +290,26 @@ public abstract class AbstractClause implements PrologClause {
 		if (head == null) {
 			if (other.head != null)
 				return false;
-		} else if (!head.equals(other.head)) {
+		} else if (!head.equals(other.head))
 			return false;
-		}
-		return multifile == other.multifile;
+		if (multifile != other.multifile)
+			return false;
+		if (see == null) {
+			if (other.see != null)
+				return false;
+		} else if (!see.equals(other.see))
+			return false;
+		if (since == null) {
+			if (other.since != null)
+				return false;
+		} else if (!since.equals(other.since))
+			return false;
+		if (version == null) {
+			if (other.version != null)
+				return false;
+		} else if (!version.equals(other.version))
+			return false;
+		return true;
 	}
 
 	@Override

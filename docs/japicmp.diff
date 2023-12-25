@@ -2,6 +2,7 @@ Comparing source compatibility of C:\prolobjectlink-dev\workspace\prolobjectlink
 ***  MODIFIED CLASS: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.AbstractClause  (not serializable)
 	===  CLASS FILE FORMAT VERSION: 50.0 <- 50.0
 	===* UNCHANGED INTERFACE: io.github.prolobjectlink.prolog.PrologClause
+	===  UNCHANGED INTERFACE: io.github.prolobjectlink.prolog.PrologDocumentable
 	===  UNCHANGED INTERFACE: io.github.prolobjectlink.prolog.PrologElement
 	===  UNCHANGED SUPERCLASS: java.lang.Object (<- java.lang.Object)
 	***  MODIFIED FIELD: PROTECTED (<- PRIVATE) FINAL io.github.prolobjectlink.prolog.PrologProvider provider
@@ -12,14 +13,19 @@ Comparing source compatibility of C:\prolobjectlink-dev\workspace\prolobjectlink
 	===  UNCHANGED METHOD: PUBLIC io.github.prolobjectlink.prolog.PrologTerm getArgument(int)
 	===  UNCHANGED METHOD: PUBLIC io.github.prolobjectlink.prolog.PrologTerm[] getArguments()
 	===  UNCHANGED METHOD: PUBLIC FINAL int getArity()
+	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.lang.String getAuthor()
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologTerm getBody()
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologTerm[] getBodyArray()
 	===  UNCHANGED METHOD: PUBLIC FINAL java.util.Iterator getBodyIterator()
+	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.lang.String getDescription()
 	===  UNCHANGED METHOD: PUBLIC FINAL java.lang.String getFunctor()
 	===  UNCHANGED METHOD: PUBLIC FINAL io.github.prolobjectlink.prolog.PrologTerm getHead()
 	===  UNCHANGED METHOD: PUBLIC FINAL java.lang.String getIndicator()
 	+++  NEW METHOD: PUBLIC(+) io.github.prolobjectlink.prolog.PrologIndicator getPrologIndicator()
+	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.lang.String getSee()
+	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.lang.String getSince()
 	***  MODIFIED METHOD: PUBLIC NON_FINAL (<- FINAL) io.github.prolobjectlink.prolog.PrologTerm getTerm()
+	+++  NEW METHOD: PUBLIC(+) FINAL(+) java.lang.String getVersion()
 	===  UNCHANGED METHOD: PUBLIC int hashCode()
 	===  UNCHANGED METHOD: PUBLIC FINAL boolean hasIndicator(java.lang.String, int)
 	+++  NEW METHOD: PUBLIC(+) FINAL(+) boolean isClause()
@@ -32,6 +38,11 @@ Comparing source compatibility of C:\prolobjectlink-dev\workspace\prolobjectlink
 	===  UNCHANGED METHOD: PUBLIC FINAL boolean isMultifile()
 	===  UNCHANGED METHOD: PUBLIC FINAL boolean isRule()
 	+++  NEW METHOD: PUBLIC(+) FINAL(+) boolean isTerm()
+	+++  NEW METHOD: PUBLIC(+) FINAL(+) void setAuthor(java.lang.String)
+	+++  NEW METHOD: PUBLIC(+) FINAL(+) void setDescription(java.lang.String)
+	+++  NEW METHOD: PUBLIC(+) FINAL(+) void setSee(java.lang.String)
+	+++  NEW METHOD: PUBLIC(+) FINAL(+) void setSince(java.lang.String)
+	+++  NEW METHOD: PUBLIC(+) FINAL(+) void setVersion(java.lang.String)
 	===  UNCHANGED METHOD: PUBLIC java.lang.String toString()
 	===  UNCHANGED METHOD: PUBLIC FINAL boolean unify(io.github.prolobjectlink.prolog.PrologClause)
 +++  NEW CLASS: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.AbstractCompounds  (not serializable)
@@ -473,6 +484,7 @@ Comparing source compatibility of C:\prolobjectlink-dev\workspace\prolobjectlink
 	+++  NEW SUPERCLASS: java.lang.Object
 **** MODIFIED INTERFACE: PUBLIC ABSTRACT io.github.prolobjectlink.prolog.PrologClause  (not serializable)
 	===  CLASS FILE FORMAT VERSION: 50.0 <- 50.0
+	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologDocumentable
 	+++  NEW INTERFACE: io.github.prolobjectlink.prolog.PrologElement
 	===  UNCHANGED SUPERCLASS: java.lang.Object (<- java.lang.Object)
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) io.github.prolobjectlink.prolog.PrologClause cast()

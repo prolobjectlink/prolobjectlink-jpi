@@ -28,32 +28,57 @@
 	xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
 	<properties>
 		<title>Realease Notes</title>
-		<author email="jruiz@exist.com">Johnny R. Ruiz III</author>
+		<author email="jzalacainllanes@gmail.com">Jose Zalacain</author>
 	</properties>
 	<body>
-		<release version="1.1" date="2005-03-01"
-			description="Subsequent release">
+		<release version="1.1" date="2022-06-06" description="Subsequent release">
+			<action dev="jzalacain" type="add" issue="12">
+				Introduce PrologType interface.
+			</action>
+			<action dev="jzalacain" type="update" issue="11">
+				Update PrologTerm with: isVariableBound(...) method,
+				isVariableNotBound(...) method, isEntry(...) method, 
+				isMap(...) method, match(...) method and
+				cast(...) method.
+			</action>
+			<action dev="jzalacain" type="add" issue="10">
+				Introduce PrologReference interface.
+			</action>
+			<action dev="jzalacain" type="update" issue="9">
+				Update PrologQuery with: nextResult(...) method,
+				nextVariableResult(...) method, nResult(...) method, 
+				nVariableResult(...) method, more(...) method and
+				nths(...) method.
+			</action>
+			<action dev="jzalacain" type="update" issue="8">
+				Update PrologProvider with: newMap(...) method,
+				newEntry(...) method, falseReference(...) method, 
+				trueReference(...) method, nullReference(...) method, 
+				voidReference(...) method, cast(...) method.
+			</action>
+			<action dev="jzalacain" type="add" issue="7">
+				Introduce PrologMap interface.
+			</action>
+			<action dev="jzalacain" type="add" issue="6">
+				Introduce PrologEntry interface.
+			</action>
+			<action dev="jzalacain" type="add" issue="5">
+				Introduce PrologElement interface.
+			</action>
 			<action dev="jzalacain" type="add" issue="4">
-				Added additional
-				documentation on how to configure the plugin.
+				Introduce PrologDocumentable interface.
 			</action>
-			<action dev="jzalacain" type="fix" issue="3">
-				Enable retrieving
-				component-specific issues.
+			<action dev="jzalacain" type="add" issue="3">
+				Introduce cast method in AbstractTerm to casts a PrologTerm.
 			</action>
-			<action dev="jzalacain" type="remove" issue="2">
-				The element type "
-				link " must be terminated by the matching end-tag.
-				Deleted the
-				erroneous code.
+			<action dev="jzalacain" type="add" issue="2">
+				Introduce cast method in AbstractProvider to casts a PrologTerm.
 			</action>
 		</release>
 
-		<release version="1.0" date="2005-01-01"
-			description="First release">
+		<release version="1.0" date="2020-09-12" description="Initial release">
 			<action dev="jzalacain" type="update" issue="1">
-				Uploaded
-				documentation on how to use the plugin.
+				Initial release.
 			</action>
 		</release>
 	</body>
