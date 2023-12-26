@@ -44,7 +44,7 @@ package io.github.prolobjectlink.prolog;
  * quotes if they are needed.
  * </p>
  * <p>
- * The Prolog Provider is the mechanism to create a new Prolog structures
+ * The Prolog Provider is the mechanism to create a new Prolog atoms
  * invoking {@link PrologProvider#newAtom(String)}.
  * </p>
  * <p>
