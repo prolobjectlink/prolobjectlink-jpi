@@ -1004,6 +1004,7 @@ Comparing source compatibility of C:\prolobjectlink-dev\workspace\prolobjectlink
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isAtom()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isAtomic()
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) boolean isClass()
+		+++  NEW ANNOTATION: java.lang.Deprecated
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isCompound()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isDouble()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isEmptyList()
@@ -1011,19 +1012,23 @@ Comparing source compatibility of C:\prolobjectlink-dev\workspace\prolobjectlink
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isEvaluable()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isFalseType()
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) boolean isField()
+		+++  NEW ANNOTATION: java.lang.Deprecated
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isFloat()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isInteger()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isList()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isLong()
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) boolean isMap()
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) boolean isMixin()
+		+++  NEW ANNOTATION: java.lang.Deprecated
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isNil()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isNullType()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isNumber()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isObjectType()
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) boolean isParameter()
+		+++  NEW ANNOTATION: java.lang.Deprecated
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isReference()
 	+++* NEW METHOD: PUBLIC(+) ABSTRACT(+) boolean isResult()
+		+++  NEW ANNOTATION: java.lang.Deprecated
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isStructure()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isTrueType()
 	===  UNCHANGED METHOD: PUBLIC ABSTRACT boolean isVariable()

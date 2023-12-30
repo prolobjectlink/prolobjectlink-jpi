@@ -362,6 +362,7 @@ public interface PrologTerm extends Comparable<PrologTerm>, PrologElement {
 	 * @return whether this Term is a field
 	 * @since 1.1
 	 */
+	@Deprecated
 	public boolean isField();
 
 	/**
@@ -370,6 +371,7 @@ public interface PrologTerm extends Comparable<PrologTerm>, PrologElement {
 	 * @return whether this Term is a result
 	 * @since 1.1
 	 */
+	@Deprecated
 	public boolean isResult();
 
 	/**
@@ -378,6 +380,7 @@ public interface PrologTerm extends Comparable<PrologTerm>, PrologElement {
 	 * @return whether this Term is a parameter
 	 * @since 1.1
 	 */
+	@Deprecated
 	public boolean isParameter();
 
 	/**
@@ -386,6 +389,7 @@ public interface PrologTerm extends Comparable<PrologTerm>, PrologElement {
 	 * @return whether this Term is a mixin
 	 * @since 1.1
 	 */
+	@Deprecated
 	public boolean isMixin();
 
 	/**
@@ -394,6 +398,7 @@ public interface PrologTerm extends Comparable<PrologTerm>, PrologElement {
 	 * @return whether this Term is a class
 	 * @since 1.1
 	 */
+	@Deprecated
 	public boolean isClass();
 
 	/**

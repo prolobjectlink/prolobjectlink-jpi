@@ -372,154 +372,159 @@
 <a class="jxr_linenumber" name="362" href="#362">362</a> <em class="jxr_javadoccomment">	 * @return whether this Term is a field</em>
 <a class="jxr_linenumber" name="363" href="#363">363</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
 <a class="jxr_linenumber" name="364" href="#364">364</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="365" href="#365">365</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> isField();
-<a class="jxr_linenumber" name="366" href="#366">366</a> 
-<a class="jxr_linenumber" name="367" href="#367">367</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="368" href="#368">368</a> <em class="jxr_javadoccomment">	 * True if this Term is a Result, false in other case</em>
-<a class="jxr_linenumber" name="369" href="#369">369</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="370" href="#370">370</a> <em class="jxr_javadoccomment">	 * @return whether this Term is a result</em>
-<a class="jxr_linenumber" name="371" href="#371">371</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="372" href="#372">372</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="373" href="#373">373</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> isResult();
-<a class="jxr_linenumber" name="374" href="#374">374</a> 
-<a class="jxr_linenumber" name="375" href="#375">375</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="376" href="#376">376</a> <em class="jxr_javadoccomment">	 * True if this Term is a Parameter, false in other case</em>
-<a class="jxr_linenumber" name="377" href="#377">377</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="378" href="#378">378</a> <em class="jxr_javadoccomment">	 * @return whether this Term is a parameter</em>
-<a class="jxr_linenumber" name="379" href="#379">379</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="380" href="#380">380</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="381" href="#381">381</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> isParameter();
-<a class="jxr_linenumber" name="382" href="#382">382</a> 
-<a class="jxr_linenumber" name="383" href="#383">383</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="384" href="#384">384</a> <em class="jxr_javadoccomment">	 * True if this Term is a Mixin, false in other case</em>
-<a class="jxr_linenumber" name="385" href="#385">385</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="386" href="#386">386</a> <em class="jxr_javadoccomment">	 * @return whether this Term is a mixin</em>
-<a class="jxr_linenumber" name="387" href="#387">387</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="388" href="#388">388</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="389" href="#389">389</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> isMixin();
-<a class="jxr_linenumber" name="390" href="#390">390</a> 
-<a class="jxr_linenumber" name="391" href="#391">391</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="392" href="#392">392</a> <em class="jxr_javadoccomment">	 * True if this Term is a Class, false in other case</em>
-<a class="jxr_linenumber" name="393" href="#393">393</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="394" href="#394">394</a> <em class="jxr_javadoccomment">	 * @return whether this Term is a class</em>
-<a class="jxr_linenumber" name="395" href="#395">395</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="396" href="#396">396</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="397" href="#397">397</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> isClass();
-<a class="jxr_linenumber" name="398" href="#398">398</a> 
-<a class="jxr_linenumber" name="399" href="#399">399</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="400" href="#400">400</a> <em class="jxr_javadoccomment">	 * For references terms return the referenced object.</em>
-<a class="jxr_linenumber" name="401" href="#401">401</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="402" href="#402">402</a> <em class="jxr_javadoccomment">	 * @return the referenced object if the current term is a reference prolog term</em>
-<a class="jxr_linenumber" name="403" href="#403">403</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="404" href="#404">404</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="405" href="#405">405</a> 	<strong class="jxr_keyword">public</strong> Object getObject();
-<a class="jxr_linenumber" name="406" href="#406">406</a> 
-<a class="jxr_linenumber" name="407" href="#407">407</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="408" href="#408">408</a> <em class="jxr_javadoccomment">	 * Return current term instance if current term is not a variable or is a free</em>
-<a class="jxr_linenumber" name="409" href="#409">409</a> <em class="jxr_javadoccomment">	 * variable term. If current term is a variable bound term then return the</em>
-<a class="jxr_linenumber" name="410" href="#410">410</a> <em class="jxr_javadoccomment">	 * linked term hold by this variable after dereferencing.</em>
-<a class="jxr_linenumber" name="411" href="#411">411</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="412" href="#412">412</a> <em class="jxr_javadoccomment">	 * @return return a dereferencing term if current term is bound variable,</em>
-<a class="jxr_linenumber" name="413" href="#413">413</a> <em class="jxr_javadoccomment">	 *         current term in otherwise</em>
-<a class="jxr_linenumber" name="414" href="#414">414</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="415" href="#415">415</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="416" href="#416">416</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> getTerm();
-<a class="jxr_linenumber" name="417" href="#417">417</a> 
-<a class="jxr_linenumber" name="418" href="#418">418</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="419" href="#419">419</a> <em class="jxr_javadoccomment">	 * Term arity. The arity of a term is a argument number for compound terms. If a</em>
-<a class="jxr_linenumber" name="420" href="#420">420</a> <em class="jxr_javadoccomment">	 * the current term is not a compound term, then an exception is raised</em>
-<a class="jxr_linenumber" name="421" href="#421">421</a> <em class="jxr_javadoccomment">	 * indicating a violation.</em>
-<a class="jxr_linenumber" name="422" href="#422">422</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="423" href="#423">423</a> <em class="jxr_javadoccomment">	 * @return term arity for compound terms or an exception is raised if the term</em>
-<a class="jxr_linenumber" name="424" href="#424">424</a> <em class="jxr_javadoccomment">	 *         is not a compound term.</em>
-<a class="jxr_linenumber" name="425" href="#425">425</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="426" href="#426">426</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="427" href="#427">427</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> getArity();
-<a class="jxr_linenumber" name="428" href="#428">428</a> 
-<a class="jxr_linenumber" name="429" href="#429">429</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="430" href="#430">430</a> <em class="jxr_javadoccomment">	 * Term functor.The functor of a term is a name for compound terms. If a the</em>
-<a class="jxr_linenumber" name="431" href="#431">431</a> <em class="jxr_javadoccomment">	 * current term is not a compound term, then an exception is raised indicating a</em>
-<a class="jxr_linenumber" name="432" href="#432">432</a> <em class="jxr_javadoccomment">	 * violation.</em>
-<a class="jxr_linenumber" name="433" href="#433">433</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="434" href="#434">434</a> <em class="jxr_javadoccomment">	 * @return term functor for compound terms or an exception is raised if the term</em>
-<a class="jxr_linenumber" name="435" href="#435">435</a> <em class="jxr_javadoccomment">	 *         is not a compound term.</em>
-<a class="jxr_linenumber" name="436" href="#436">436</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="437" href="#437">437</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="438" href="#438">438</a> 	<strong class="jxr_keyword">public</strong> String getFunctor();
-<a class="jxr_linenumber" name="439" href="#439">439</a> 
-<a class="jxr_linenumber" name="440" href="#440">440</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="441" href="#441">441</a> <em class="jxr_javadoccomment">	 * Term arguments if the current term is a compound term. Compound terms are</em>
-<a class="jxr_linenumber" name="442" href="#442">442</a> <em class="jxr_javadoccomment">	 * Structures and List data types. They are compoused by a PrologTerm[] array.</em>
-<a class="jxr_linenumber" name="443" href="#443">443</a> <em class="jxr_javadoccomment">	 * Atoms, Variables and Numbers return an empty term array.</em>
-<a class="jxr_linenumber" name="444" href="#444">444</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="445" href="#445">445</a> <em class="jxr_javadoccomment">	 * @return Term arguments if the current term is a compound term.</em>
-<a class="jxr_linenumber" name="446" href="#446">446</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="447" href="#447">447</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="448" href="#448">448</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a>[] getArguments();
-<a class="jxr_linenumber" name="449" href="#449">449</a> 
-<a class="jxr_linenumber" name="450" href="#450">450</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="451" href="#451">451</a> <em class="jxr_javadoccomment">	 * Term located at some given index position in the current term arguments if</em>
-<a class="jxr_linenumber" name="452" href="#452">452</a> <em class="jxr_javadoccomment">	 * current term is a compound term. If the current term is not compound term an</em>
-<a class="jxr_linenumber" name="453" href="#453">453</a> <em class="jxr_javadoccomment">	 * {@link ArrayIndexOutOfBoundsException} exception is raised.</em>
-<a class="jxr_linenumber" name="454" href="#454">454</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="455" href="#455">455</a> <em class="jxr_javadoccomment">	 * @param index position to retrieve the correspondent term.</em>
-<a class="jxr_linenumber" name="456" href="#456">456</a> <em class="jxr_javadoccomment">	 * @return Term located at some given index position.</em>
-<a class="jxr_linenumber" name="457" href="#457">457</a> <em class="jxr_javadoccomment">	 * @throws ArrayIndexOutOfBoundsException if the index value is out of term</em>
-<a class="jxr_linenumber" name="458" href="#458">458</a> <em class="jxr_javadoccomment">	 *                                        array bound.</em>
-<a class="jxr_linenumber" name="459" href="#459">459</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="460" href="#460">460</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="461" href="#461">461</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> getArgument(<strong class="jxr_keyword">int</strong> index);
-<a class="jxr_linenumber" name="462" href="#462">462</a> 
-<a class="jxr_linenumber" name="463" href="#463">463</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="464" href="#464">464</a> <em class="jxr_javadoccomment">	 * Check that the current term unify with the given term. Prolog unification</em>
-<a class="jxr_linenumber" name="465" href="#465">465</a> <em class="jxr_javadoccomment">	 * algorithm is based on three principals rules:</em>
-<a class="jxr_linenumber" name="466" href="#466">466</a> <em class="jxr_javadoccomment">	 * &lt;ul&gt;</em>
-<a class="jxr_linenumber" name="467" href="#467">467</a> <em class="jxr_javadoccomment">	 * &lt;li&gt;If x and y are atomics constants then x and y unify only if they are same</em>
-<a class="jxr_linenumber" name="468" href="#468">468</a> <em class="jxr_javadoccomment">	 * object.&lt;/li&gt;</em>
-<a class="jxr_linenumber" name="469" href="#469">469</a> <em class="jxr_javadoccomment">	 * &lt;li&gt;If x is a variable and y is anything then they unify and x is</em>
-<a class="jxr_linenumber" name="470" href="#470">470</a> <em class="jxr_javadoccomment">	 * instantiated to y. Conversely, if y is a variable then this is instantiated</em>
-<a class="jxr_linenumber" name="471" href="#471">471</a> <em class="jxr_javadoccomment">	 * to x.&lt;/li&gt;</em>
-<a class="jxr_linenumber" name="472" href="#472">472</a> <em class="jxr_javadoccomment">	 * &lt;li&gt;If x and y are structured terms then unify only if they match (equals</em>
-<a class="jxr_linenumber" name="473" href="#473">473</a> <em class="jxr_javadoccomment">	 * funtor and arity) and all their correspondents arguments unify.&lt;/li&gt;</em>
-<a class="jxr_linenumber" name="474" href="#474">474</a> <em class="jxr_javadoccomment">	 * &lt;/ul&gt;</em>
-<a class="jxr_linenumber" name="475" href="#475">475</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="476" href="#476">476</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="477" href="#477">477</a> <em class="jxr_javadoccomment">	 * @param term the term to unify with the current term</em>
-<a class="jxr_linenumber" name="478" href="#478">478</a> <em class="jxr_javadoccomment">	 * @return true if the specified term unify whit the current term, false if not</em>
-<a class="jxr_linenumber" name="479" href="#479">479</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="480" href="#480">480</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="481" href="#481">481</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> unify(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> term);
-<a class="jxr_linenumber" name="482" href="#482">482</a> 
-<a class="jxr_linenumber" name="483" href="#483">483</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="484" href="#484">484</a> <em class="jxr_javadoccomment">	 * Match to other term returning list of substitutions.</em>
-<a class="jxr_linenumber" name="485" href="#485">485</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="486" href="#486">486</a> <em class="jxr_javadoccomment">	 * @param term - term to match check</em>
-<a class="jxr_linenumber" name="487" href="#487">487</a> <em class="jxr_javadoccomment">	 * @return list of substitutions.</em>
-<a class="jxr_linenumber" name="488" href="#488">488</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="489" href="#489">489</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="490" href="#490">490</a> 	<strong class="jxr_keyword">public</strong> Map&lt;String, PrologTerm&gt; match(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> term);
-<a class="jxr_linenumber" name="491" href="#491">491</a> 
-<a class="jxr_linenumber" name="492" href="#492">492</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="493" href="#493">493</a> <em class="jxr_javadoccomment">	 * Prolog provider associated to the current term.</em>
-<a class="jxr_linenumber" name="494" href="#494">494</a> <em class="jxr_javadoccomment">	 * </em>
-<a class="jxr_linenumber" name="495" href="#495">495</a> <em class="jxr_javadoccomment">	 * @return Prolog provider associated to the current term.</em>
-<a class="jxr_linenumber" name="496" href="#496">496</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
-<a class="jxr_linenumber" name="497" href="#497">497</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="498" href="#498">498</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologProvider.html">PrologProvider</a> getProvider();
-<a class="jxr_linenumber" name="499" href="#499">499</a> 
-<a class="jxr_linenumber" name="500" href="#500">500</a> 	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="501" href="#501">501</a> <em class="jxr_javadoccomment">	 * Casts the current PrologTerm to the class or interface represented by this</em>
-<a class="jxr_linenumber" name="502" href="#502">502</a> <em class="jxr_javadoccomment">	 * {@code Class} object.</em>
-<a class="jxr_linenumber" name="503" href="#503">503</a> <em class="jxr_javadoccomment">	 *</em>
-<a class="jxr_linenumber" name="504" href="#504">504</a> <em class="jxr_javadoccomment">	 * @return the PrologTerm after casting, or null if term is null</em>
-<a class="jxr_linenumber" name="505" href="#505">505</a> <em class="jxr_javadoccomment">	 *</em>
-<a class="jxr_linenumber" name="506" href="#506">506</a> <em class="jxr_javadoccomment">	 * @throws ClassCastException if the object is not null and is not assignable to</em>
-<a class="jxr_linenumber" name="507" href="#507">507</a> <em class="jxr_javadoccomment">	 *                            the type T.</em>
-<a class="jxr_linenumber" name="508" href="#508">508</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
-<a class="jxr_linenumber" name="509" href="#509">509</a> <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="510" href="#510">510</a> 	<strong class="jxr_keyword">public</strong> &lt;T <strong class="jxr_keyword">extends</strong> PrologTerm&gt; T <strong class="jxr_keyword">cast</strong>();
-<a class="jxr_linenumber" name="511" href="#511">511</a> 
-<a class="jxr_linenumber" name="512" href="#512">512</a> }
+<a class="jxr_linenumber" name="365" href="#365">365</a> 	@Deprecated
+<a class="jxr_linenumber" name="366" href="#366">366</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> isField();
+<a class="jxr_linenumber" name="367" href="#367">367</a> 
+<a class="jxr_linenumber" name="368" href="#368">368</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="369" href="#369">369</a> <em class="jxr_javadoccomment">	 * True if this Term is a Result, false in other case</em>
+<a class="jxr_linenumber" name="370" href="#370">370</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="371" href="#371">371</a> <em class="jxr_javadoccomment">	 * @return whether this Term is a result</em>
+<a class="jxr_linenumber" name="372" href="#372">372</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
+<a class="jxr_linenumber" name="373" href="#373">373</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="374" href="#374">374</a> 	@Deprecated
+<a class="jxr_linenumber" name="375" href="#375">375</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> isResult();
+<a class="jxr_linenumber" name="376" href="#376">376</a> 
+<a class="jxr_linenumber" name="377" href="#377">377</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="378" href="#378">378</a> <em class="jxr_javadoccomment">	 * True if this Term is a Parameter, false in other case</em>
+<a class="jxr_linenumber" name="379" href="#379">379</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="380" href="#380">380</a> <em class="jxr_javadoccomment">	 * @return whether this Term is a parameter</em>
+<a class="jxr_linenumber" name="381" href="#381">381</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
+<a class="jxr_linenumber" name="382" href="#382">382</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="383" href="#383">383</a> 	@Deprecated
+<a class="jxr_linenumber" name="384" href="#384">384</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> isParameter();
+<a class="jxr_linenumber" name="385" href="#385">385</a> 
+<a class="jxr_linenumber" name="386" href="#386">386</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="387" href="#387">387</a> <em class="jxr_javadoccomment">	 * True if this Term is a Mixin, false in other case</em>
+<a class="jxr_linenumber" name="388" href="#388">388</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="389" href="#389">389</a> <em class="jxr_javadoccomment">	 * @return whether this Term is a mixin</em>
+<a class="jxr_linenumber" name="390" href="#390">390</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
+<a class="jxr_linenumber" name="391" href="#391">391</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="392" href="#392">392</a> 	@Deprecated
+<a class="jxr_linenumber" name="393" href="#393">393</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> isMixin();
+<a class="jxr_linenumber" name="394" href="#394">394</a> 
+<a class="jxr_linenumber" name="395" href="#395">395</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="396" href="#396">396</a> <em class="jxr_javadoccomment">	 * True if this Term is a Class, false in other case</em>
+<a class="jxr_linenumber" name="397" href="#397">397</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="398" href="#398">398</a> <em class="jxr_javadoccomment">	 * @return whether this Term is a class</em>
+<a class="jxr_linenumber" name="399" href="#399">399</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
+<a class="jxr_linenumber" name="400" href="#400">400</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="401" href="#401">401</a> 	@Deprecated
+<a class="jxr_linenumber" name="402" href="#402">402</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> isClass();
+<a class="jxr_linenumber" name="403" href="#403">403</a> 
+<a class="jxr_linenumber" name="404" href="#404">404</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="405" href="#405">405</a> <em class="jxr_javadoccomment">	 * For references terms return the referenced object.</em>
+<a class="jxr_linenumber" name="406" href="#406">406</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="407" href="#407">407</a> <em class="jxr_javadoccomment">	 * @return the referenced object if the current term is a reference prolog term</em>
+<a class="jxr_linenumber" name="408" href="#408">408</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="409" href="#409">409</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="410" href="#410">410</a> 	<strong class="jxr_keyword">public</strong> Object getObject();
+<a class="jxr_linenumber" name="411" href="#411">411</a> 
+<a class="jxr_linenumber" name="412" href="#412">412</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="413" href="#413">413</a> <em class="jxr_javadoccomment">	 * Return current term instance if current term is not a variable or is a free</em>
+<a class="jxr_linenumber" name="414" href="#414">414</a> <em class="jxr_javadoccomment">	 * variable term. If current term is a variable bound term then return the</em>
+<a class="jxr_linenumber" name="415" href="#415">415</a> <em class="jxr_javadoccomment">	 * linked term hold by this variable after dereferencing.</em>
+<a class="jxr_linenumber" name="416" href="#416">416</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="417" href="#417">417</a> <em class="jxr_javadoccomment">	 * @return return a dereferencing term if current term is bound variable,</em>
+<a class="jxr_linenumber" name="418" href="#418">418</a> <em class="jxr_javadoccomment">	 *         current term in otherwise</em>
+<a class="jxr_linenumber" name="419" href="#419">419</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="420" href="#420">420</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="421" href="#421">421</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> getTerm();
+<a class="jxr_linenumber" name="422" href="#422">422</a> 
+<a class="jxr_linenumber" name="423" href="#423">423</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="424" href="#424">424</a> <em class="jxr_javadoccomment">	 * Term arity. The arity of a term is a argument number for compound terms. If a</em>
+<a class="jxr_linenumber" name="425" href="#425">425</a> <em class="jxr_javadoccomment">	 * the current term is not a compound term, then an exception is raised</em>
+<a class="jxr_linenumber" name="426" href="#426">426</a> <em class="jxr_javadoccomment">	 * indicating a violation.</em>
+<a class="jxr_linenumber" name="427" href="#427">427</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="428" href="#428">428</a> <em class="jxr_javadoccomment">	 * @return term arity for compound terms or an exception is raised if the term</em>
+<a class="jxr_linenumber" name="429" href="#429">429</a> <em class="jxr_javadoccomment">	 *         is not a compound term.</em>
+<a class="jxr_linenumber" name="430" href="#430">430</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="431" href="#431">431</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="432" href="#432">432</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> getArity();
+<a class="jxr_linenumber" name="433" href="#433">433</a> 
+<a class="jxr_linenumber" name="434" href="#434">434</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="435" href="#435">435</a> <em class="jxr_javadoccomment">	 * Term functor.The functor of a term is a name for compound terms. If a the</em>
+<a class="jxr_linenumber" name="436" href="#436">436</a> <em class="jxr_javadoccomment">	 * current term is not a compound term, then an exception is raised indicating a</em>
+<a class="jxr_linenumber" name="437" href="#437">437</a> <em class="jxr_javadoccomment">	 * violation.</em>
+<a class="jxr_linenumber" name="438" href="#438">438</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="439" href="#439">439</a> <em class="jxr_javadoccomment">	 * @return term functor for compound terms or an exception is raised if the term</em>
+<a class="jxr_linenumber" name="440" href="#440">440</a> <em class="jxr_javadoccomment">	 *         is not a compound term.</em>
+<a class="jxr_linenumber" name="441" href="#441">441</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="442" href="#442">442</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="443" href="#443">443</a> 	<strong class="jxr_keyword">public</strong> String getFunctor();
+<a class="jxr_linenumber" name="444" href="#444">444</a> 
+<a class="jxr_linenumber" name="445" href="#445">445</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="446" href="#446">446</a> <em class="jxr_javadoccomment">	 * Term arguments if the current term is a compound term. Compound terms are</em>
+<a class="jxr_linenumber" name="447" href="#447">447</a> <em class="jxr_javadoccomment">	 * Structures and List data types. They are compoused by a PrologTerm[] array.</em>
+<a class="jxr_linenumber" name="448" href="#448">448</a> <em class="jxr_javadoccomment">	 * Atoms, Variables and Numbers return an empty term array.</em>
+<a class="jxr_linenumber" name="449" href="#449">449</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="450" href="#450">450</a> <em class="jxr_javadoccomment">	 * @return Term arguments if the current term is a compound term.</em>
+<a class="jxr_linenumber" name="451" href="#451">451</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="452" href="#452">452</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="453" href="#453">453</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a>[] getArguments();
+<a class="jxr_linenumber" name="454" href="#454">454</a> 
+<a class="jxr_linenumber" name="455" href="#455">455</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="456" href="#456">456</a> <em class="jxr_javadoccomment">	 * Term located at some given index position in the current term arguments if</em>
+<a class="jxr_linenumber" name="457" href="#457">457</a> <em class="jxr_javadoccomment">	 * current term is a compound term. If the current term is not compound term an</em>
+<a class="jxr_linenumber" name="458" href="#458">458</a> <em class="jxr_javadoccomment">	 * {@link ArrayIndexOutOfBoundsException} exception is raised.</em>
+<a class="jxr_linenumber" name="459" href="#459">459</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="460" href="#460">460</a> <em class="jxr_javadoccomment">	 * @param index position to retrieve the correspondent term.</em>
+<a class="jxr_linenumber" name="461" href="#461">461</a> <em class="jxr_javadoccomment">	 * @return Term located at some given index position.</em>
+<a class="jxr_linenumber" name="462" href="#462">462</a> <em class="jxr_javadoccomment">	 * @throws ArrayIndexOutOfBoundsException if the index value is out of term</em>
+<a class="jxr_linenumber" name="463" href="#463">463</a> <em class="jxr_javadoccomment">	 *                                        array bound.</em>
+<a class="jxr_linenumber" name="464" href="#464">464</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="465" href="#465">465</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="466" href="#466">466</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> getArgument(<strong class="jxr_keyword">int</strong> index);
+<a class="jxr_linenumber" name="467" href="#467">467</a> 
+<a class="jxr_linenumber" name="468" href="#468">468</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="469" href="#469">469</a> <em class="jxr_javadoccomment">	 * Check that the current term unify with the given term. Prolog unification</em>
+<a class="jxr_linenumber" name="470" href="#470">470</a> <em class="jxr_javadoccomment">	 * algorithm is based on three principals rules:</em>
+<a class="jxr_linenumber" name="471" href="#471">471</a> <em class="jxr_javadoccomment">	 * &lt;ul&gt;</em>
+<a class="jxr_linenumber" name="472" href="#472">472</a> <em class="jxr_javadoccomment">	 * &lt;li&gt;If x and y are atomics constants then x and y unify only if they are same</em>
+<a class="jxr_linenumber" name="473" href="#473">473</a> <em class="jxr_javadoccomment">	 * object.&lt;/li&gt;</em>
+<a class="jxr_linenumber" name="474" href="#474">474</a> <em class="jxr_javadoccomment">	 * &lt;li&gt;If x is a variable and y is anything then they unify and x is</em>
+<a class="jxr_linenumber" name="475" href="#475">475</a> <em class="jxr_javadoccomment">	 * instantiated to y. Conversely, if y is a variable then this is instantiated</em>
+<a class="jxr_linenumber" name="476" href="#476">476</a> <em class="jxr_javadoccomment">	 * to x.&lt;/li&gt;</em>
+<a class="jxr_linenumber" name="477" href="#477">477</a> <em class="jxr_javadoccomment">	 * &lt;li&gt;If x and y are structured terms then unify only if they match (equals</em>
+<a class="jxr_linenumber" name="478" href="#478">478</a> <em class="jxr_javadoccomment">	 * funtor and arity) and all their correspondents arguments unify.&lt;/li&gt;</em>
+<a class="jxr_linenumber" name="479" href="#479">479</a> <em class="jxr_javadoccomment">	 * &lt;/ul&gt;</em>
+<a class="jxr_linenumber" name="480" href="#480">480</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="481" href="#481">481</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="482" href="#482">482</a> <em class="jxr_javadoccomment">	 * @param term the term to unify with the current term</em>
+<a class="jxr_linenumber" name="483" href="#483">483</a> <em class="jxr_javadoccomment">	 * @return true if the specified term unify whit the current term, false if not</em>
+<a class="jxr_linenumber" name="484" href="#484">484</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="485" href="#485">485</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="486" href="#486">486</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> unify(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> term);
+<a class="jxr_linenumber" name="487" href="#487">487</a> 
+<a class="jxr_linenumber" name="488" href="#488">488</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="489" href="#489">489</a> <em class="jxr_javadoccomment">	 * Match to other term returning list of substitutions.</em>
+<a class="jxr_linenumber" name="490" href="#490">490</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="491" href="#491">491</a> <em class="jxr_javadoccomment">	 * @param term - term to match check</em>
+<a class="jxr_linenumber" name="492" href="#492">492</a> <em class="jxr_javadoccomment">	 * @return list of substitutions.</em>
+<a class="jxr_linenumber" name="493" href="#493">493</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
+<a class="jxr_linenumber" name="494" href="#494">494</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="495" href="#495">495</a> 	<strong class="jxr_keyword">public</strong> Map&lt;String, PrologTerm&gt; match(<a href="../../../../io/github/prolobjectlink/prolog/PrologTerm.html">PrologTerm</a> term);
+<a class="jxr_linenumber" name="496" href="#496">496</a> 
+<a class="jxr_linenumber" name="497" href="#497">497</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="498" href="#498">498</a> <em class="jxr_javadoccomment">	 * Prolog provider associated to the current term.</em>
+<a class="jxr_linenumber" name="499" href="#499">499</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="500" href="#500">500</a> <em class="jxr_javadoccomment">	 * @return Prolog provider associated to the current term.</em>
+<a class="jxr_linenumber" name="501" href="#501">501</a> <em class="jxr_javadoccomment">	 * @since 1.0</em>
+<a class="jxr_linenumber" name="502" href="#502">502</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="503" href="#503">503</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../io/github/prolobjectlink/prolog/PrologProvider.html">PrologProvider</a> getProvider();
+<a class="jxr_linenumber" name="504" href="#504">504</a> 
+<a class="jxr_linenumber" name="505" href="#505">505</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="506" href="#506">506</a> <em class="jxr_javadoccomment">	 * Casts the current PrologTerm to the class or interface represented by this</em>
+<a class="jxr_linenumber" name="507" href="#507">507</a> <em class="jxr_javadoccomment">	 * {@code Class} object.</em>
+<a class="jxr_linenumber" name="508" href="#508">508</a> <em class="jxr_javadoccomment">	 *</em>
+<a class="jxr_linenumber" name="509" href="#509">509</a> <em class="jxr_javadoccomment">	 * @return the PrologTerm after casting, or null if term is null</em>
+<a class="jxr_linenumber" name="510" href="#510">510</a> <em class="jxr_javadoccomment">	 *</em>
+<a class="jxr_linenumber" name="511" href="#511">511</a> <em class="jxr_javadoccomment">	 * @throws ClassCastException if the object is not null and is not assignable to</em>
+<a class="jxr_linenumber" name="512" href="#512">512</a> <em class="jxr_javadoccomment">	 *                            the type T.</em>
+<a class="jxr_linenumber" name="513" href="#513">513</a> <em class="jxr_javadoccomment">	 * @since 1.1</em>
+<a class="jxr_linenumber" name="514" href="#514">514</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="515" href="#515">515</a> 	<strong class="jxr_keyword">public</strong> &lt;T <strong class="jxr_keyword">extends</strong> PrologTerm&gt; T <strong class="jxr_keyword">cast</strong>();
+<a class="jxr_linenumber" name="516" href="#516">516</a> 
+<a class="jxr_linenumber" name="517" href="#517">517</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>
