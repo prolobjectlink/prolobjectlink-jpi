@@ -242,6 +242,30 @@ public abstract class AbstractClause implements PrologClause {
 		this.description = description;
 	}
 
+	public final boolean hasDescription() {
+		return !getDescription().isEmpty();
+	}
+
+	public final boolean hasVersion() {
+		return !getVersion().isEmpty();
+	}
+
+	public final boolean hasAuthor() {
+		return !getAuthor().isEmpty();
+	}
+
+	public final boolean hasSince() {
+		return !getSince().isEmpty();
+	}
+
+	public final boolean hasSee() {
+		return !getSee().isEmpty();
+	}
+
+	public final boolean hasDocumentation() {
+		return hasDescription() || hasVersion() || hasAuthor() || hasSince() || hasSee();
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -315,6 +339,30 @@ public abstract class AbstractClause implements PrologClause {
 	@Override
 	public String toString() {
 		StringBuilder b = new StringBuilder();
+		if (hasDocumentation()) {
+			b.append("/*");
+			if (hasDescription()) {
+				b.append(getDescription());
+				b.append("\n");
+			}
+			if (hasVersion()) {
+				b.append(getVersion());
+				b.append("\n");
+			}
+			if (hasAuthor()) {
+				b.append(getAuthor());
+				b.append("\n");
+			}
+			if (hasSince()) {
+				b.append(getSince());
+				b.append("\n");
+			}
+			if (hasSee()) {
+				b.append(getSee());
+				b.append("\n");
+			}
+			b.append("*/");
+		}
 		b.append(getHead());
 		if (isRule()) {
 			b.append(":-\n\t");

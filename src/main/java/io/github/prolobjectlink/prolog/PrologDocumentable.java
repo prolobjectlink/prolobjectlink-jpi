@@ -32,14 +32,121 @@ package io.github.prolobjectlink.prolog;
  */
 public interface PrologDocumentable {
 
+	/**
+	 * Check if exist at least one tag like documentation comment
+	 * 
+	 * @since 1.2
+	 */
+	public boolean hasDocumentation();
+
+	/**
+	 * Check if exist description tag in doc comment
+	 * 
+	 * @since 1.2
+	 */
+	public boolean hasDescription();
+
+	/**
+	 * Check if exist version tag in doc comment
+	 * 
+	 * @since 1.2
+	 */
+	public boolean hasVersion();
+
+	/**
+	 * Check if exist author tag in doc comment
+	 * 
+	 * @since 1.2
+	 */
+	public boolean hasAuthor();
+
+	/**
+	 * Check if exist since tag in doc comment
+	 * 
+	 * @since 1.2
+	 */
+	public boolean hasSince();
+
+	/**
+	 * Check if exist see tag in doc comment
+	 * 
+	 * @since 1.2
+	 */
+	public boolean hasSee();
+
+	/**
+	 * Set the description tag in doc comment
+	 * 
+	 * @param description description for this doc object
+	 * @since 1.2
+	 */
+	public void setDescription(String description);
+
+	/**
+	 * Set the version tag in doc comment
+	 * 
+	 * @param version version for this doc object
+	 * @since 1.2
+	 */
+	public void setVersion(String version);
+
+	/**
+	 * Set the author tag in doc comment
+	 * 
+	 * @param author author for this doc object
+	 * @since 1.2
+	 */
+	public void setAuthor(String author);
+
+	/**
+	 * Set the since tag in doc comment
+	 * 
+	 * @param since since for this doc object
+	 * @since 1.2
+	 */
+	public void setSince(String since);
+
+	/**
+	 * Set the see tag in doc comment
+	 * 
+	 * @param see see for this doc object
+	 * @since 1.2
+	 */
+	public void setSee(String see);
+
+	/**
+	 * Get the description tag in doc comment
+	 * 
+	 * @since 1.2
+	 */
 	public String getDescription();
 
+	/**
+	 * Get the version tag in doc comment
+	 * 
+	 * @since 1.2
+	 */
 	public String getVersion();
 
+	/**
+	 * Get the author tag in doc comment
+	 * 
+	 * @since 1.2
+	 */
 	public String getAuthor();
 
+	/**
+	 * Get the since tag in doc comment
+	 * 
+	 * @since 1.2
+	 */
 	public String getSince();
 
+	/**
+	 * Get the see tag in doc comment
+	 * 
+	 * @since 1.2
+	 */
 	public String getSee();
 
 }
